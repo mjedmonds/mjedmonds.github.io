@@ -232,51 +232,151 @@ ul#nav li.current a { color: #F06000; }
 
 
 /* ------------------------------------------------------------------ */
-/* d. Resume Section
+/* d. education Section
 /* ------------------------------------------------------------------ */
 
-#resume {
+#education {
    background: #fff;
    padding-top: 90px;
-   padding-bottom: 72px;
+   padding-bottom: 0px;
    overflow: hidden;
 }
 
-#resume a, #resume a:visited  { color: #11ABB0; }
-#resume a:hover, #resume a:focus { color: #313131; }
+#education a, #education a:visited  { color: #11ABB0; }
+#education a:hover, #education a:focus { color: #313131; }
 
-#resume h1 {
+#education h1 {
    font: 18px/24px 'opensans-bold', sans-serif;
    text-transform: uppercase;
    letter-spacing: 1px;
 }
-#resume h1 span {
+#education h1 span {
    border-bottom: 3px solid #11ABB0;
    padding-bottom: 6px;
 }
-#resume h3 {
+#education h3 {
    font: 25px/30px 'opensans-bold', sans-serif;
 }
 
-#resume .header-col { padding-top: 9px; }
-#resume .main-col { padding-right: 10%; }
+#education .header-col { padding-top: 9px; }
+#education .main-col { padding-right: 10%; }
 
-.education, .work {
+.education {
    margin-bottom: 48px;
    padding-bottom: 24px;
    border-bottom: 1px solid #E8E8E8;
 }
-#resume .info {
+#education .info {
    font: 16px/24px 'librebaskerville-italic', serif;
    color: #6E7881;
    margin-bottom: 18px;
    margin-top: 9px;
 }
-#resume .info span {
+#education .info span {
    margin-right: 5px;
    margin-left: 5px;
 }
-#resume .date {
+#education .date {
+   font: 15px/24px 'opensans-regular', sans-serif;
+   margin-top: 6px;
+}
+
+/* ------------------------------------------------------------------ */
+/* d. Publications Section
+/* ------------------------------------------------------------------ */
+
+#publications {
+   background: #fff;
+   padding-top: 0px;
+   padding-bottom: 0px;
+   overflow: hidden;
+}
+
+#publications a, #publications a:visited  { color: #11ABB0; }
+#publications a:hover, #publications a:focus { color: #313131; }
+
+#publications h1 {
+   font: 18px/24px 'opensans-bold', sans-serif;
+   text-transform: uppercase;
+   letter-spacing: 1px;
+}
+#publications h1 span {
+   border-bottom: 3px solid #11ABB0;
+   padding-bottom: 6px;
+}
+#publications h3 {
+   font: 25px/30px 'opensans-bold', sans-serif;
+}
+
+#publications .header-col { padding-top: 9px; }
+#publications .main-col { padding-right: 10%; }
+
+.publications {
+   margin-bottom: 48px;
+   padding-bottom: 24px;
+   border-bottom: 1px solid #E8E8E8;
+}
+#publications .info {
+   font: 16px/24px 'librebaskerville-italic', serif;
+   color: #6E7881;
+   margin-bottom: 18px;
+   margin-top: 9px;
+}
+#publications .info span {
+   margin-right: 5px;
+   margin-left: 5px;
+}
+#publications .date {
+   font: 15px/24px 'opensans-regular', sans-serif;
+   margin-top: 6px;
+}
+
+/* ------------------------------------------------------------------ */
+/* d. experience Section
+/* ------------------------------------------------------------------ */
+
+#experience {
+   background: #fff;
+   padding-top: 0px;
+   padding-bottom: 0px;
+   overflow: hidden;
+}
+
+#experience a, #experience a:visited  { color: #11ABB0; }
+#experience a:hover, #experience a:focus { color: #313131; }
+
+#experience h1 {
+   font: 18px/24px 'opensans-bold', sans-serif;
+   text-transform: uppercase;
+   letter-spacing: 1px;
+}
+#experience h1 span {
+   border-bottom: 3px solid #11ABB0;
+   padding-bottom: 6px;
+}
+#experience h3 {
+   font: 25px/30px 'opensans-bold', sans-serif;
+}
+
+#experience .header-col { padding-top: 9px; }
+#experience .main-col { padding-right: 10%; }
+
+.experience {
+   margin-bottom: 48px;
+   padding-bottom: 24px;
+   border-bottom: 1px solid #E8E8E8;
+}
+#experience .info {
+   font: 16px/24px 'librebaskerville-italic', serif;
+   color: #6E7881;
+   margin-bottom: 18px;
+   margin-top: 9px;
+}
+#experience .info span {
+   margin-right: 5px;
+   margin-left: 5px;
+}
+#experience .date {
    font: 15px/24px 'opensans-regular', sans-serif;
    margin-top: 6px;
 }
