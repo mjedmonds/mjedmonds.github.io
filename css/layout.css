@@ -263,7 +263,7 @@ ul#nav li.current a { color: #F06000; }
 
 .education {
    margin-bottom: 48px;
-   padding-bottom: 24px;
+   padding-bottom: 48px;
    border-bottom: 1px solid #E8E8E8;
 }
 #education .info {
@@ -287,7 +287,7 @@ ul#nav li.current a { color: #F06000; }
 
 #publications {
    background: #fff;
-   padding-top: 0px;
+   padding-top: 48px;
    padding-bottom: 0px;
    overflow: hidden;
 }
@@ -313,7 +313,7 @@ ul#nav li.current a { color: #F06000; }
 
 .publications {
    margin-bottom: 48px;
-   padding-bottom: 24px;
+   padding-bottom: 48px;
    border-bottom: 1px solid #E8E8E8;
 }
 #publications .info {
@@ -337,7 +337,7 @@ ul#nav li.current a { color: #F06000; }
 
 #experience {
    background: #fff;
-   padding-top: 0px;
+   padding-top: 48px;
    padding-bottom: 0px;
    overflow: hidden;
 }
@@ -363,7 +363,7 @@ ul#nav li.current a { color: #F06000; }
 
 .experience {
    margin-bottom: 24px;
-   padding-bottom: 24px;
+   padding-bottom: 48px;
    /*border-bottom: 1px solid #E8E8E8;*/
 }
 #experience .info {
