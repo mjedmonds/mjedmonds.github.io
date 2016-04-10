@@ -1,923 +1,601 @@
 <!DOCTYPE html>
 <!--[if lt IE 8 ]><html class="no-js ie ie7" lang="en"> <![endif]-->
 <!--[if IE 8 ]><html class="no-js ie ie8" lang="en"> <![endif]-->
-<!--[if (gte IE 8)|!(IE)]><!--><html class="no-js" lang="en"> <!--<![endif]-->
+<!--[if (gte IE 8)|!(IE)]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+
 <head>
 
   <!--- Basic Page Needs
     ================================================== -->
-    <meta charset="utf-8">
-    <title>Mark Edmonds</title>
-    <meta name="description" content="Personal website for Mark Edmonds">
-    <meta name="author" content="Mark Edmonds">
+  <meta charset="utf-8">
+  <title>Mark Edmonds</title>
+  <meta name="description" content="Personal website for Mark Edmonds">
+  <meta name="author" content="Mark Edmonds">
 
-    <!-- Mobile Specific Metas
+  <!-- Mobile Specific Metas
       ================================================== -->
-      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-      <!-- CSS
+  <!-- CSS
         ================================================== -->
-        <link rel="stylesheet" href="css/default.css">
-        <link rel="stylesheet" href="css/layout.css">
-        <link rel="stylesheet" href="css/media-queries.css">
-        <link rel="stylesheet" href="css/magnific-popup.css">
+  <link rel="stylesheet" href="css/default.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/media-queries.css">
+  <link rel="stylesheet" href="css/magnific-popup.css">
 
-        <!-- Script
+  <!-- Script
           ================================================== -->
-          <script src="js/modernizr.js"></script>
+  <script src="js/modernizr.js"></script>
+  <script src="js/smooth-scroll.js"></script>
 
-          <!-- Favicons
+  <!-- Favicons
             ================================================== -->
-            <link rel="shortcut icon" href="favicon.png" >
+  <link rel="shortcut icon" href="favicon.png">
 
 </head>
 
-            <body>
+<body>
 
-              <!-- Header
+  <!-- Header
                 ================================================== -->
-                <header id="home">
+  <header id="home">
 
-                  <nav id="nav-wrap">
+    <nav id="nav-wrap">
 
-                    <a class="mobile-btn" href="#nav-wrap" title="Show navigation">Show navigation</a>
-                    <a class="mobile-btn" href="#" title="Hide navigation">Hide navigation</a>
+      <a class="mobile-btn" href="#nav-wrap" title="Show navigation">Show navigation</a>
+      <a class="mobile-btn" href="#" title="Hide navigation">Hide navigation</a>
 
-                    <ul id="nav" class="nav">
-                      <li class="current"><a class="smoothscroll" href="#home">Home</a></li>
-                      <li><a class="smoothscroll" href="#about">About</a></li>
-                      <li><a class="smoothscroll" href="#education">Education</a></li>
-                      <li><a class="smoothscroll" href="#publications">Publications</a></li>
-                      <li><a class="smoothscroll" href="#experience">Experience</a></li>
-                      <li><a class="smoothscroll" href="#motivation">Motivation</a></li>
-                      <li><a class="smoothscroll" href="#contact">Contact</a></li>
-                    </ul> <!-- end #nav -->
+      <ul id="nav" class="nav">
+        <li class="current"><a class="smoothscroll" href="#home">Home</a></li>
+        <li><a data-scroll data-options='{"offset": 0}' href="#about">About</a></li>
+        <li><a data-scroll data-options='{"offset": 0}' href="#education">Education</a></li>
+        <li><a data-scroll href="#publications">Publications</a></li>
+        <li><a data-scroll href="#experience">Experience</a></li>
+        <!--<li><a class="smoothscroll" href="#motivation">Motivation</a></li>-->
+        <li><a data-scroll href="#contact">Contact</a></li>
+        <li><a href="./teaching.html">Teaching</a></li>
+      </ul>
+      <!-- end #nav -->
 
-                  </nav> <!-- end #nav-wrap -->
+    </nav>
+    <!-- end #nav-wrap -->
 
-                  <div class="row banner">
-                    <div class="banner-text">
-                      <h1 class="responsive-headline">I'm Mark Edmonds.</h1>
-                      <h3>I want to make <span>the world as smart as possible</span>. I'm currently pursuing a Master's degree at <span>UCLA</span> with a focus on <span>computer vision</span> and <span>machine intelligence</span>. Let's start scrolling and learn more <a class="smoothscroll" href="#about">about me</a>.</h3>
-                      <hr />
-                      <ul class="social">
-                        <li><a href="https://facebook.com/mjedmonds2"><i class="fa fa-facebook"></i></a></li>
-                        <!--<li><a href="https://twitter.com/mjedmonds_"><i class="fa fa-twitter"></i></a></li>-->
-                        <!--<li><a href="https://plus.google.com/+MarkEdmonds2/"><i class="fa fa-google-plus"></i></a></li>-->
-                        <li><a href="https://www.linkedin.com/in/mjedmonds"><i class="fa fa-linkedin"></i></a></li>
-                        <li><a href="https://github.com/mjedmonds"><i class="fa fa-github"></i></a></li>
-                        <!--<li><a href="https://instagram.com/mjedmonds_"><i class="fa fa-instagram"></i></a></li>-->
-                        <!--<li><a href="#"><i class="fa fa-dribbble"></i></a></li>-->
-                        <!--<li><a href="#"><i class="fa fa-skype"></i></a></li>-->
-                      </ul>
-                    </div>
-                  </div>
+    <div class="row banner">
+      <div class="banner-text">
+        <h1 class="responsive-headline">I'm Mark Edmonds.</h1>
+        <h3>I want to make <span>the world as smart as possible</span>. I'm currently pursuing a Master's degree at <span>UCLA</span> with a focus on <span>computer vision</span> and <span>machine intelligence</span>. Start scrolling more learn more <a class="smoothscroll" href="#about">about me</a>.</h3>
+        <hr />
+        <ul class="social">
+          <li><a href="https://facebook.com/mjedmonds2"><i class="fa fa-facebook"></i></a></li>
+          <!--<li><a href="https://twitter.com/mjedmonds_"><i class="fa fa-twitter"></i></a></li>-->
+          <!--<li><a href="https://plus.google.com/+MarkEdmonds2/"><i class="fa fa-google-plus"></i></a></li>-->
+          <li><a href="https://www.linkedin.com/in/mjedmonds"><i class="fa fa-linkedin"></i></a></li>
+          <li><a href="https://github.com/mjedmonds"><i class="fa fa-github"></i></a></li>
+          <!--<li><a href="https://instagram.com/mjedmonds_"><i class="fa fa-instagram"></i></a></li>-->
+          <!--<li><a href="#"><i class="fa fa-dribbble"></i></a></li>-->
+          <!--<li><a href="#"><i class="fa fa-skype"></i></a></li>-->
+        </ul>
+      </div>
+    </div>
 
-                  <p class="scrolldown">
-                  <a class="smoothscroll" href="#about"><i class="icon-down-circle"></i></a>
-                  </p>
+    <p class="scrolldown">
+      <a class="smoothscroll" href="#about"><i class="icon-down-circle"></i></a>
+    </p>
 
-                </header> <!-- Header End -->
+  </header>
+  <!-- Header End -->
 
 
-                <!-- About Section
+  <!-- About Section
                   ================================================== -->
-                  <section id="about">
+  <section id="about">
 
-                    <div class="row">
+    <div class="row">
 
-                      <div class="three columns">
+      <div class="three columns">
 
-                        <img class="profile-pic"  src="images/profilepic.jpg" alt="" />
+        <img class="profile-pic" src="images/profilepic.jpg" alt="" />
 
-                      </div>
+      </div>
 
-                      <div class="nine columns main-col">
+      <div class="nine columns main-col">
 
-                        <h2>About Me</h2>
+        <h2>About Me</h2>
 
-                        <p>I'm fascinated by human intelligence and system design. I study computer science, but I primarily see computers as a means to design systems. My life goal lies at the intersection of intelligence and system design; I want to create general machine intelligence that will increase access to education and further general technological progress.</p>
+        <p>I'm fascinated by human intelligence and system design. I study computer science, but I primarily see computers as a means to design systems. My life goal lies at the intersection of intelligence and system design; I want to create general machine intelligence that will increase access to education and further general technological progress.</p>
 
-                        <div class="row">
+        <div class="row">
 
-                          <div class="columns contact-details">
+          <div class="columns contact-details">
 
-                            <br>
-                            <h2>Contact Details</h2>
-                            <p class="address">
-                            <span>Mark Edmonds</span><br>
-                            <!--<span>5631 Tahoe Ln<br>-->
-                            <!--Fairway, KS 66205-->
-                            <!--</span><br>-->
-                            <!--<span>(123)456-7890</span><br>-->
-                            <span><a href="malto:mark@mjedmonds.com">mark@mjedmonds.com</a></span>
-                            </p>
+            <br>
+            <h2>Contact Details</h2>
+            <p class="address">
+              <span>Mark Edmonds</span><br>
+              <!--<span>5631 Tahoe Ln<br>-->
+              <!--Fairway, KS 66205-->
+              <!--</span><br>-->
+              <!--<span>(123)456-7890</span><br>-->
+              <span><a href="malto:mark@mjedmonds.com">mark@mjedmonds.com</a></span>
+            </p>
 
-                          </div>
+          </div>
 
-                          <div class="columns download">
-                            <br>
-                            <p>
+          <div class="columns download">
+            <br>
+            <p>
 
-                            <a href="resume/mark_edmonds_resume.pdf" class="button"><i class="fa fa-download"></i>Download Resume</a>
-                            </p>
-                          </div>
+              <a href="resume/mark_edmonds_resume.pdf" class="button"><i class="fa fa-download"></i>Download Resume</a>
+            </p>
+          </div>
 
-                        </div> <!-- end row -->
+        </div>
+        <!-- end row -->
 
-                      </div> <!-- end .main-col -->
+      </div>
+      <!-- end .main-col -->
 
-                    </div>
+    </div>
 
-                  </section> <!-- About Section End-->
+  </section>
+  <!-- About Section End-->
 
 
-                  <!-- Resume Section
+  <!-- Resume Section
                     ================================================== -->
-                    <section id="education">
+  <section id="education">
 
-                      <!-- Education  -->
-                      <div class="row education">
+    <!-- Education  -->
+    <div class="row education">
 
-                        <div class="three columns header-col">
-                          <h1><span>Education</span></h1>
-                        </div>
+      <div class="three columns header-col">
+        <h1><span>Education</span></h1>
+      </div>
 
-                        <div class="nine columns main-col">
+      <div class="nine columns main-col">
 
-                          <div class="row item">
+        <div class="row item">
 
-                            <div class="twelve columns">
+          <div class="twelve columns">
 
-                              <h3>University of California, Los Angeles</h3>
-                              <p class="info">M.S. in Computer Science <span>&bull;</span> <em class="date">Present</em></p>
+            <h3>University of California, Los Angeles</h3>
+            <p class="info">M.S. in Computer Science <span>&bull;</span> <em class="date">Present</em></p>
 
-                              <!--<p>-->
-                              <!--Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.-->
-                              <!--Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis,-->
-                              <!--ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.-->
-                              <!--Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. Nullam dictum felis eu pede mollis pretium.-->
-                              <!--</p>-->
+            <!--<p>-->
+            <!--Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.-->
+            <!--Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis,-->
+            <!--ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.-->
+            <!--Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. Nullam dictum felis eu pede mollis pretium.-->
+            <!--</p>-->
 
-                            </div>
+          </div>
 
-                          </div> <!-- item end -->
+        </div>
+        <!-- item end -->
 
-                          <div class="row item">
+        <div class="row item">
 
-                            <div class="twelve columns">
+          <div class="twelve columns">
 
-                              <br>
-                              <h3>University of Dayton</h3>
-                              <p class="info">B.S. in Computer Engineering, Magna Cum Laude <span>&bull;</span> <em class="date">May 2015</em></p>
+            <br>
+            <h3>University of Dayton</h3>
+            <p class="info">B.S. in Computer Engineering, Magna Cum Laude <span>&bull;</span> <em class="date">May 2015</em></p>
 
-                            </div>
+          </div>
 
-                          </div> <!-- item end -->
+        </div>
+        <!-- item end -->
 
-                        </div> <!-- main-col end -->
+      </div>
+      <!-- main-col end -->
 
-                      </div> <!-- End Education -->
+    </div>
+    <!-- End Education -->
 
-                    </section> <!-- Education Section End-->
+  </section>
+  <!-- Education Section End-->
 
-                    <section id="publications">
+  <section id="publications">
 
-                      <!-- publications -->
-                      <div class="row publications">
+    <!-- publications -->
+    <div class="row publications">
 
-                        <div class="three columns header-col">
-                          <h1><span>Publications</span></h1>
-                        </div>
+      <div class="three columns header-col">
+        <h1><span>Publications</span></h1>
+      </div>
 
-                        <div class="nine columns main-col">
+      <div class="nine columns main-col">
 
-                          <div class="row item">
+        <div class="row item">
 
-                            <div class="twelve columns">
+          <div class="twelve columns">
 
-                              <h3><a href="http://ieeexplore.ieee.org/xpl/articleDetails.jsp?reload=true&arnumber=7176183">High Performance Declarative Memory Systems through MapReduce</a></h3>
-                              <p class="info">SNPD 2015<span>&bull;</span> <em class="date">Mark Edmonds, Tanvir Atahary, Scott Douglass, Tarek Taha</em></p>
+            <h3><a href="http://ieeexplore.ieee.org/xpl/articleDetails.jsp?reload=true&arnumber=7176183">High Performance Declarative Memory Systems through MapReduce</a></h3>
+            <p class="info">SNPD 2015<span>&bull;</span> <em class="date">Mark Edmonds, Tanvir Atahary, Scott Douglass, Tarek Taha</em></p>
 
-                              <!--<br>-->
-                              <!--<h3>Brain Machine Interface using Emotiv EPOC for controlling a Robotic Arm</h3>-->
-                              <!--<p class="info">NAECON 2015<span>&bull;</span> <em class="date">Daniel Prince, Andrew Sutter, Mark Edmonds, Matthew Cusumano, Wenjie Lu, and Vijayan K. Asari,</em></p>-->
+            <!--<br>-->
+            <!--<h3>Brain Machine Interface using Emotiv EPOC for controlling a Robotic Arm</h3>-->
+            <!--<p class="info">NAECON 2015<span>&bull;</span> <em class="date">Daniel Prince, Andrew Sutter, Mark Edmonds, Matthew Cusumano, Wenjie Lu, and Vijayan K. Asari,</em></p>-->
 
 
-                              <!--<p>-->
-                              <!--Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.-->
-                              <!--Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis,-->
-                              <!--ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.-->
-                              <!--Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. Nullam dictum felis eu pede mollis pretium.-->
-                              <!--</p>-->
+            <!--<p>-->
+            <!--Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.-->
+            <!--Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis,-->
+            <!--ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.-->
+            <!--Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. Nullam dictum felis eu pede mollis pretium.-->
+            <!--</p>-->
 
 
-                            </div>
+          </div>
 
-                          </div> <!-- item end -->
+        </div>
+        <!-- item end -->
 
-                        </div> <!-- main-col end -->
+      </div>
+      <!-- main-col end -->
 
-                      </div> <!-- End publications -->
+    </div>
+    <!-- End publications -->
 
-                    </section> <!-- publcations Section End-->
+  </section>
+  <!-- publcations Section End-->
 
-                    <section id="experience">
+  <section id="experience">
 
-                      <!-- Experience -->
-                      <div class="row experience">
+    <!-- Experience -->
+    <div class="row experience">
 
-                        <div class="three columns header-col">
-                          <h1><span>Experience</span></h1>
-                        </div>
+      <div class="three columns header-col">
+        <h1><span>Experience</span></h1>
+      </div>
 
-                        <div class="nine columns main-col">
+      <div class="nine columns main-col">
 
-                          <div class="row item">
+        <div class="row item">
 
-                            <div class="twelve columns">
+          <div class="twelve columns">
 
-                              <h3>Robot Localization</h3>
-                              <p class="info">Center for Vision, Cognition, Learning, and Autonomy, UCLA<span>&bull;</span> <em class="date">Present</em></p>
+            <h3>Robot Localization</h3>
+            <p class="info">Center for Vision, Cognition, Learning, and Autonomy, UCLA<span>&bull;</span> <em class="date">Present</em></p>
 
-                              <p>
-                              The <a href="http://vcla.stat.ucla.edu/Projects/HuRoCo/">Human Robot Collaborations Project</a> aims to create a robot platform capable of autonomously collaborating with humans to accomplish meaningful, everday tasks. My current goal is to give our mobile Baxter robot localization in the environment using simultaneous localization and mapping (SLAM), IMU data and wheel odometry. The three sources are combined through extended Kalman filtering. This solution will enable the robot to accurately position itself within a space while maintaining path reconstruction information.
-                              </p>
-                              <iframe src="https://player.vimeo.com/video/148162670" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-<p><a href="https://vimeo.com/148162670">Human-Robot-Collaboration (Hu-Ro-Co)</a> from <a href="https://vimeo.com/yixinzhu">Yixin Zhu</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
-                            </div>
+            <p>
+              The <a href="http://vcla.stat.ucla.edu/Projects/HuRoCo/">Human Robot Collaborations Project</a> aims to create a robot platform capable of autonomously collaborating with humans to accomplish meaningful, everday tasks. My current goal is to give our mobile Baxter robot localization in the environment using simultaneous localization and mapping (SLAM), IMU data and wheel odometry. The three sources are combined through extended Kalman filtering. This solution will enable the robot to accurately position itself within a space while maintaining path reconstruction information.
+            </p>
+            <iframe src="https://player.vimeo.com/video/148162670" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+            <p><a href="https://vimeo.com/148162670">Human-Robot-Collaboration (Hu-Ro-Co)</a> from <a href="https://vimeo.com/yixinzhu">Yixin Zhu</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
+          </div>
 
-                          </div> <!-- item end -->
+        </div>
+        <!-- item end -->
 
-                          <div class="row item">
+        <div class="row item">
 
-                            <div class="twelve columns">
+          <div class="twelve columns">
 
-                              <h3>Declarative Memory Research</h3>
-                              <p class="info">Wright Patterson Air Force Base, University of Dayton<span>&bull;</span> <em class="date">January 2014 - September 2015</em></p>
+            <h3>Declarative Memory Research</h3>
+            <p class="info">Wright Patterson Air Force Base, University of Dayton<span>&bull;</span> <em class="date">January 2014 - September 2015</em></p>
 
-                              <p>
-                              My undergraduate thesis was focused on accelerating the declarative memory module of the CECEP cognitive architecture, a derivative of ACT-R. The research centered on leveraging the parallel computing abilities of the CUDA programming platform to accelerate declarative retrieval. The initial, C++ implementation produced a 20 times speedup over the fastest previous implementation of declarative memory. The CUDA implementation accelerates declarative memory by a factor of 100 times while providing massive scalability. The work was jointly supported by the Air Force Research Lab and the University of Dayton Research Institute.
-                              </p>
+            <p>
+              My undergraduate thesis was focused on accelerating the declarative memory module of the CECEP cognitive architecture, a derivative of ACT-R. The research centered on leveraging the parallel computing abilities of the CUDA programming platform to accelerate declarative retrieval. The initial, C++ implementation produced a 20 times speedup over the fastest previous implementation of declarative memory. The CUDA implementation accelerates declarative memory by a factor of 100 times while providing massive scalability. The work was jointly supported by the Air Force Research Lab and the University of Dayton Research Institute.
+            </p>
 
-                            </div>
+          </div>
 
-                          </div> <!-- item end -->
+        </div>
+        <!-- item end -->
 
-                          <div class="row item">
+        <div class="row item">
 
-                            <div class="twelve columns">
+          <div class="twelve columns">
 
-                              <h3>Robotic Arm Brain Machine Interface</h3>
-                              <p class="info">University of Dayton Senior Design Project<span>&bull;</span> <em class="date">August 2014 - May 2015</em></p>
+            <h3>Robotic Arm Brain Machine Interface</h3>
+            <p class="info">University of Dayton Senior Design Project<span>&bull;</span> <em class="date">August 2014 - May 2015</em></p>
 
-                              <p>
-                              This project expanded the capability of a brain machine interface through EEG signals and a robotic arm. The research centered on adding additional gestures and improving the universality of the interface. The team implemented 6 new useful actions for the robotic and developed a in-house EEG signal classifier using liner discriminate analysis. The EEG classifier currently can successfully distinguish between two states but successive senior design teams will increase the number of distinguishable states.
-                              </p>
+            <p>
+              This project expanded the capability of a brain machine interface through EEG signals and a robotic arm. The research centered on adding additional gestures and improving the universality of the interface. The team implemented 6 new useful actions for the robotic and developed a in-house EEG signal classifier using liner discriminate analysis. The EEG classifier currently can successfully distinguish between two states but successive senior design teams will increase the number of distinguishable states.
+            </p>
 
-                            </div>
+          </div>
 
-                          </div> <!-- item end -->
+        </div>
+        <!-- item end -->
 
-                          <div class="row item">
+        <div class="row item">
 
-                            <div class="twelve columns">
+          <div class="twelve columns">
 
-                              <h3>Software Engineering Intern</h3>
-                              <p class="info">Garmin International<span>&bull;</span> <em class="date">May 2013 - August 2013</em></p>
+            <h3>Software Engineering Intern</h3>
+            <p class="info">Garmin International<span>&bull;</span> <em class="date">May 2013 - August 2013</em></p>
 
-                              <p>
-                              Interned as a member of the Datalink team in the Aviation department of Garmin. Contributed to the ACARS protocol for Garmin Avionics software.
-                              </p>
+            <p>
+              Interned as a member of the Datalink team in the Aviation department of Garmin. Contributed to the ACARS protocol for Garmin Avionics software.
+            </p>
 
-                            </div>
+          </div>
 
-                          </div> <!-- item end -->
+        </div>
+        <!-- item end -->
 
-                          <div class="row item">
+        <div class="row item">
 
-                            <div class="twelve columns">
+          <div class="twelve columns">
 
-                              <h3>Tutor and Teacher</h3>
-                              <p class="info">Cristo Rey Kansas City<span>&bull;</span> <em class="date">May 2011 - August 2012</em></p>
+            <h3>Tutor and Teacher</h3>
+            <p class="info">Cristo Rey Kansas City<span>&bull;</span> <em class="date">May 2011 - August 2012</em></p>
 
-                              <p>
-                              Taught pre-calculus, chemistry, and physics at an inner city high school during summer and winter breaks. 
-                              </p>
+            <p>
+              Taught pre-calculus, chemistry, and physics at an inner city high school during summer and winter breaks.
+            </p>
 
-                            </div>
+          </div>
 
-                          </div> <!-- item end -->
+        </div>
+        <!-- item end -->
 
-                        </div> <!-- main-col end -->
+      </div>
+      <!-- main-col end -->
 
-                      </div> <!-- End experience -->
+    </div>
+    <!-- End experience -->
 
-                    </section> <!-- experience Section End-->
+  </section>
+  <!-- experience Section End-->
 
-                    <!-- Skills -->
-                    <!--<div class="row skill">-->
-
-                    <!--<div class="three columns header-col">-->
-                    <!--<h1><span>Skills</span></h1>-->
-                    <!--</div>-->
-
-                    <!--<div class="nine columns main-col">-->
-
-                    <!--<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam,-->
-                    <!--eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam-->
-                    <!--voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione-->
-                    <!--voluptatem sequi nesciunt.-->
-                    <!--</p>-->
-
-                    <!--<div class="bars">-->
-
-                    <!--<ul class="skills">-->
-                    <!--<li><span class="bar-expand photoshop"></span><em>Photoshop</em></li>-->
-                    <!--<li><span class="bar-expand illustrator"></span><em>Illustrator</em></li>-->
-                    <!--<li><span class="bar-expand wordpress"></span><em>Wordpress</em></li>-->
-                    <!--<li><span class="bar-expand css"></span><em>CSS</em></li>-->
-                    <!--<li><span class="bar-expand html5"></span><em>HTML5</em></li>-->
-                    <!--<li><span class="bar-expand jquery"></span><em>jQuery</em></li>-->
-                    <!--</ul>-->
-
-                    <!--</div>[> end skill-bars <]-->
-
-                    <!--</div> [> main-col end <]-->
-
-                    <!--</div> [> End skills <]-->
-
-                    <!--</section> [> Resume Section End<]-->
-
-
-                    <!--<!-- Portfolio Section-->
-                    <!--================================================== -->
-                    <!--<section id="portfolio">-->
-
-                    <!--<div class="row">-->
-
-                    <!--<div class="twelve columns collapsed">-->
-
-                    <!--<h1>Check Out Some of My Works.</h1>-->
-
-                    <!--[> portfolio-wrapper <]-->
-                    <!--<div id="portfolio-wrapper" class="bgrid-quarters s-bgrid-thirds cf">-->
-
-                    <!--<div class="columns portfolio-item">-->
-                    <!--<div class="item-wrap">-->
-
-                    <!--<a href="#modal-01" title="">-->
-                    <!--<img alt="" src="images/portfolio/coffee.jpg">-->
-                    <!--<div class="overlay">-->
-                    <!--<div class="portfolio-item-meta">-->
-                    <!--<h5>Coffee</h5>-->
-                    <!--<p>Illustrration</p>-->
-                    <!--</div>-->
-                    <!--</div>-->
-                    <!--<div class="link-icon"><i class="icon-plus"></i></div>-->
-                    <!--</a>-->
-
-                    <!--</div>-->
-                    <!--</div> [> item end <]-->
-
-                    <!--<div class="columns portfolio-item">-->
-                    <!--<div class="item-wrap">-->
-
-                    <!--<a href="#modal-02" title="">-->
-                    <!--<img alt="" src="images/portfolio/console.jpg">-->
-                    <!--<div class="overlay">-->
-                    <!--<div class="portfolio-item-meta">-->
-                    <!--<h5>Console</h5>-->
-                    <!--<p>Web Development</p>-->
-                    <!--</div>-->
-                    <!--</div>-->
-                    <!--<div class="link-icon"><i class="icon-plus"></i></div>-->
-                    <!--</a>-->
-
-                    <!--</div>-->
-                    <!--</div> [> item end <]-->
-
-                    <!--<div class="columns portfolio-item">-->
-                    <!--<div class="item-wrap">-->
-
-                    <!--<a href="#modal-03" title="">-->
-                    <!--<img alt="" src="images/portfolio/judah.jpg">-->
-                    <!--<div class="overlay">-->
-                    <!--<div class="portfolio-item-meta">-->
-                    <!--<h5>Judah</h5>-->
-                    <!--<p>Webdesign</p>-->
-                    <!--</div>-->
-                    <!--</div>-->
-                    <!--<div class="link-icon"><i class="icon-plus"></i></div>-->
-                    <!--</a>-->
-
-                    <!--</div>-->
-                    <!--</div> [> item end <]-->
-
-                    <!--<div class="columns portfolio-item">-->
-                    <!--<div class="item-wrap">-->
-
-                    <!--<a href="#modal-04" title="">-->
-                    <!--<img alt="" src="images/portfolio/into-the-light.jpg">-->
-                    <!--<div class="overlay">-->
-                    <!--<div class="portfolio-item-meta">-->
-                    <!--<h5>Into The Light</h5>-->
-                    <!--<p>Photography</p>-->
-                    <!--</div>-->
-                    <!--</div>-->
-                    <!--<div class="link-icon"><i class="icon-plus"></i></div>-->
-                    <!--</a>-->
-
-                    <!--</div>-->
-                    <!--</div> [> item end <]-->
-
-                    <!--<div class="columns portfolio-item">-->
-                    <!--<div class="item-wrap">-->
-
-                    <!--<a href="#modal-05" title="">-->
-                    <!--<img alt="" src="images/portfolio/farmerboy.jpg">-->
-                    <!--<div class="overlay">-->
-                    <!--<div class="portfolio-item-meta">-->
-                    <!--<h5>Farmer Boy</h5>-->
-                    <!--<p>Branding</p>-->
-                    <!--</div>-->
-                    <!--</div>-->
-                    <!--<div class="link-icon"><i class="icon-plus"></i></div>-->
-                    <!--</a>-->
-
-                    <!--</div>-->
-                    <!--</div> [> item end <]-->
-
-                    <!--<div class="columns portfolio-item">-->
-                    <!--<div class="item-wrap">-->
-
-                    <!--<a href="#modal-06" title="">-->
-                    <!--<img alt="" src="images/portfolio/girl.jpg">-->
-                    <!--<div class="overlay">-->
-                    <!--<div class="portfolio-item-meta">-->
-                    <!--<h5>Girl</h5>-->
-                    <!--<p>Photography</p>-->
-                    <!--</div>-->
-                    <!--</div>-->
-                    <!--<div class="link-icon"><i class="icon-plus"></i></div>-->
-                    <!--</a>-->
-
-                    <!--</div>-->
-                    <!--</div> [> item end <]-->
-
-                    <!--<div class="columns portfolio-item">-->
-                    <!--<div class="item-wrap">-->
-
-                    <!--<a href="#modal-07" title="">-->
-                    <!--<img alt="" src="images/portfolio/origami.jpg">-->
-                    <!--<div class="overlay">-->
-                    <!--<div class="portfolio-item-meta">-->
-                    <!--<h5>Origami</h5>-->
-                    <!--<p>Illustrration</p>-->
-                    <!--</div>-->
-                    <!--</div>-->
-                    <!--<div class="link-icon"><i class="icon-plus"></i></div>-->
-                    <!--</a>-->
-
-                    <!--</div>-->
-                    <!--</div> [> item end <]-->
-
-                    <!--<div class="columns portfolio-item">-->
-                    <!--<div class="item-wrap">-->
-
-                    <!--<a href="#modal-08" title="">-->
-                    <!--<img alt="" src="images/portfolio/retrocam.jpg">-->
-                    <!--<div class="overlay">-->
-                    <!--<div class="portfolio-item-meta">-->
-                    <!--<h5>Retrocam</h5>-->
-                    <!--<p>Web Development</p>-->
-                    <!--</div>-->
-                    <!--</div>-->
-                    <!--<div class="link-icon"><i class="icon-plus"></i></div>-->
-                    <!--</a>-->
-
-                    <!--</div>-->
-                    <!--</div>  [> item end <]-->
-
-                    <!--</div> [> portfolio-wrapper end <]-->
-
-                    <!--</div> [> twelve columns end <]-->
-
-
-                    <!-- Modal Popup -->
-
-                    <!--        <div id="modal-01" class="popup-modal mfp-hide">-->
-
-                    <!--<img class="scale-with-grid" src="images/portfolio/modals/m-coffee.jpg" alt="" />-->
-
-                    <!--<div class="description-box">-->
-                    <!--<h4>Coffee Cup</h4>-->
-                    <!--<p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, ni<][>si elit consequat ipsum, nec sagittis sem nibh id elit.</p>-->
-                    <!--<span class="categories"><i class="fa fa-tag"></i>Branding, Webdesign</span>-->
-                    <!--</div>-->
-
-                    <!--<div class="link-box">-->
-                    <!--<a href="http://www.behance.net">Details</a>-->
-                    <!--<a class="popup-modal-dismiss">Close</a>-->
-                    <!--</div>-->
-
-                    <!--</div>[> modal-01 End <]-->
-
-                    <!--<div id="modal-02" class="popup-modal mfp-hide">-->
-
-                    <!--<img class="scale-with-grid" src="images/portfolio/modals/m-console.jpg" alt="" />-->
-
-                    <!--<div class="description-box">-->
-                    <!--<h4>Console</h4>-->
-                    <!--<p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit.</p>-->
-                    <!--<span class="categories"><i class="fa fa-tag"></i>Branding, Web Development</span>-->
-                    <!--</div>-->
-
-                    <!--<div class="link-box">-->
-                    <!--<a href="http://www.behance.net">Details</a>-->
-                    <!--<a class="popup-modal-dismiss">Close</a>-->
-                    <!--</div>-->
-
-                    <!--</div>[> modal-02 End <]-->
-
-                    <!--<div id="modal-03" class="popup-modal mfp-hide">-->
-
-                    <!--<img class="scale-with-grid" src="images/portfolio/modals/m-judah.jpg" alt="" />-->
-
-                    <!--<div class="description-box">-->
-                    <!--<h4>Judah</h4>-->
-                    <!--<p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit.</p>-->
-                    <!--<span class="categories"><i class="fa fa-tag"></i>Branding</span>-->
-                    <!--</div>-->
-
-                    <!--<div class="link-box">-->
-                    <!--<a href="http://www.behance.net">Details</a>-->
-                    <!--<a class="popup-modal-dismiss">Close</a>-->
-                    <!--</div>-->
-
-                    <!--</div>[> modal-03 End <]-->
-
-                    <!--<div id="modal-04" class="popup-modal mfp-hide">-->
-
-                    <!--<img class="scale-with-grid" src="images/portfolio/modals/m-intothelight.jpg" alt="" />-->
-
-                    <!--<div class="description-box">-->
-                    <!--<h4>Into the Light</h4>-->
-                    <!--<p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit.</p>-->
-                    <!--<span class="categories"><i class="fa fa-tag"></i>Photography</span>-->
-                    <!--</div>-->
-
-                    <!--<div class="link-box">-->
-                    <!--<a href="http://www.behance.net">Details</a>-->
-                    <!--<a class="popup-modal-dismiss">Close</a>-->
-                    <!--</div>-->
-
-                    <!--</div>[> modal-04 End <]-->
-
-                    <!--<div id="modal-05" class="popup-modal mfp-hide">-->
-
-                    <!--<img class="scale-with-grid" src="images/portfolio/modals/m-farmerboy.jpg" alt="" />-->
-
-                    <!--<div class="description-box">-->
-                    <!--<h4>Farmer Boy</h4>-->
-                    <!--<p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit.</p>-->
-                    <!--<span class="categories"><i class="fa fa-tag"></i>Branding, Webdesign</span>-->
-                    <!--</div>-->
-
-                    <!--<div class="link-box">-->
-                    <!--<a href="http://www.behance.net">Details</a>-->
-                    <!--<a class="popup-modal-dismiss">Close</a>-->
-                    <!--</div>-->
-
-                    <!--</div>[> modal-05 End <]-->
-
-                    <!--<div id="modal-06" class="popup-modal mfp-hide">-->
-
-                    <!--<img class="scale-with-grid" src="images/portfolio/modals/m-girl.jpg" alt="" />-->
-
-                    <!--<div class="description-box">-->
-                    <!--<h4>Girl</h4>-->
-                    <!--<p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit.</p>-->
-                    <!--<span class="categories"><i class="fa fa-tag"></i>Photography</span>-->
-                    <!--</div>-->
-
-                    <!--<div class="link-box">-->
-                    <!--<a href="http://www.behance.net">Details</a>-->
-                    <!--<a class="popup-modal-dismiss">Close</a>-->
-                    <!--</div>-->
-
-                    <!--</div>[> modal-06 End <]-->
-
-                    <!--<div id="modal-07" class="popup-modal mfp-hide">-->
-
-                    <!--<img class="scale-with-grid" src="images/portfolio/modals/m-origami.jpg" alt="" />-->
-
-                    <!--<div class="description-box">-->
-                    <!--<h4>Origami</h4>-->
-                    <!--<p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit.</p>-->
-                    <!--<span class="categories"><i class="fa fa-tag"></i>Branding, Illustration</span>-->
-                    <!--</div>-->
-
-                    <!--<div class="link-box">-->
-                    <!--<a href="http://www.behance.net">Details</a>-->
-                    <!--<a class="popup-modal-dismiss">Close</a>-->
-                    <!--</div>-->
-
-                    <!--</div>[> modal-07 End <]-->
-
-                    <!--<div id="modal-08" class="popup-modal mfp-hide">-->
-
-                    <!--<img class="scale-with-grid" src="images/portfolio/modals/m-retrocam.jpg" alt="" />-->
-
-                    <!--<div class="description-box">-->
-                    <!--<h4>Retrocam</h4>-->
-                    <!--<p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit.</p>-->
-                    <!--<span class="categories"><i class="fa fa-tag"></i>Webdesign, Photography</span>-->
-                    <!--</div>-->
-
-                    <!--<div class="link-box">-->
-                    <!--<a href="http://www.behance.net">Details</a>-->
-                    <!--<a class="popup-modal-dismiss">Close</a>-->
-                    <!--</div>-->
-
-                    <!--</div>[> modal-01 End <]-->
-
-
-                    <!--</div> [> row End <]-->
-
-                    <!--</section> [> Portfolio Section End<]-->
-
-
-                    <!-- Call-To-Action Section
-                      ================================================== -->
-                      <!--<section id="call-to-action">-->
-
-                      <!--<div class="row">-->
-
-                      <!--<div class="two columns header-col">-->
-
-                      <!--<h1><span>Get Hosting.</span></h1>-->
-
-                      <!--</div>-->
-
-                      <!--<div class="seven columns">-->
-
-                      <!--<h2><a href="http://www.dreamhost.com/r.cgi?287326|STYLESHOUT">Host This Template on Dreamhost.</a></h2>-->
-                      <!--<p>Looking for an awesome and reliable webhosting? Try <a href="http://www.dreamhost.com/r.cgi?287326|STYLESHOUT"><span>DreamHost</span></a>.-->
-                      <!--Get <span>$50 off</span> when you sign up with the promocode <span>STYLESHOUT</span>. -->
-                      <!--[> Simply type	the promocode in the box labeled “Promo Code” when placing your order. <]</p>-->
-
-                      <!--</div>-->
-
-                      <!--<div class="three columns action">-->
-
-                      <!--<a href="http://www.dreamhost.com/r.cgi?287326|STYLESHOUT" class="button">Sign Up Now</a>-->
-
-                      <!--</div>-->
-
-                      <!--</div>-->
-
-                      <!--</section> [> Call-To-Action Section End<]-->
-
-
-                      <!-- motivation Section
+  <!-- motivation Section
                         ================================================== -->
-                        <section id="motivation">
+  <section id="motivation">
 
-                          <div class="text-container">
+    <div class="text-container">
 
-                            <div class="row">
+      <div class="row">
 
-                              <div class="two columns header-col">
+        <div class="two columns header-col">
 
-                                <h1><span>Motivation</span></h1>
+          <h1><span>Motivation</span></h1>
 
-                              </div>
+        </div>
 
-                              <div class="ten columns flex-container">
+        <div class="ten columns flex-container">
 
-                                <div class="flexslider">
+          <div class="flexslider">
 
-                                  <ul class="slides">
+            <ul class="slides">
 
-                                    <li>
-                                      <blockquote>
-                                        <p>Your work is going to fill a large part of your life, and the only way to be truly satisfied is
-                                        to do what you believe is great work. And the only way to do great work is to love what you do.
-                                        If you haven't found it yet, keep looking. Don't settle. As with all matters of the heart, you'll know when you find it.
-                                        </p>
-                                        <cite>Steve Jobs</cite>
-                                      </blockquote>
-                                    </li> <!-- slide ends -->
+              <li>
+                <blockquote>
+                  <p>Your work is going to fill a large part of your life, and the only way to be truly satisfied is to do what you believe is great work. And the only way to do great work is to love what you do. If you haven't found it yet, keep looking. Don't settle. As with all matters of the heart, you'll know when you find it.
+                  </p>
+                  <cite>Steve Jobs</cite>
+                </blockquote>
+              </li>
+              <!-- slide ends -->
 
-                                    <li>
-                                      <blockquote>
-                                        <p>One finds limits by pushing them.</p>
-                                        <cite>Herbert Simon</cite>
-                                      </blockquote>
-                                    </li> <!-- slide ends -->
+              <li>
+                <blockquote>
+                  <p>One finds limits by pushing them.</p>
+                  <cite>Herbert Simon</cite>
+                </blockquote>
+              </li>
+              <!-- slide ends -->
 
-                                    <li>
-                                      <blockquote>
-                                        <p>The world needs dreamers and the world needs doers. But above all, the world needs dreamers who do.</p>
-                                        <cite>Sarah Ban Breathnach</cite>
-                                      </blockquote>
-                                    </li> <!-- slide ends -->
+              <li>
+                <blockquote>
+                  <p>The world needs dreamers and the world needs doers. But above all, the world needs dreamers who do.</p>
+                  <cite>Sarah Ban Breathnach</cite>
+                </blockquote>
+              </li>
+              <!-- slide ends -->
 
-                                    <li>
-                                      <blockquote>
-                                        <p>People think that computer science is the art of geniuses but the actual reality is the opposite, just many people doing things that build on each other, like a wall of mini stones. </p>
-                                        <cite>Donald Knuth</cite>
-                                      </blockquote>
-                                    </li> <!-- slide ends -->
+              <li>
+                <blockquote>
+                  <p>People think that computer science is the art of geniuses but the actual reality is the opposite, just many people doing things that build on each other, like a wall of mini stones. </p>
+                  <cite>Donald Knuth</cite>
+                </blockquote>
+              </li>
+              <!-- slide ends -->
 
-                                    <li>
-                                      <blockquote>
-                                        <p>I've always tried to go a step past wherever people expected me to end up.</p>
-                                        <cite>Beverly Sills</cite>
-                                      </blockquote>
-                                    </li> <!-- slide ends -->
+              <li>
+                <blockquote>
+                  <p>I've always tried to go a step past wherever people expected me to end up.</p>
+                  <cite>Beverly Sills</cite>
+                </blockquote>
+              </li>
+              <!-- slide ends -->
 
-                                  </ul>
+            </ul>
 
-                                </div> <!-- div.flexslider ends -->
+          </div>
+          <!-- div.flexslider ends -->
 
-                              </div> <!-- div.flex-container ends -->
+        </div>
+        <!-- div.flex-container ends -->
 
-                            </div> <!-- row ends -->
+      </div>
+      <!-- row ends -->
 
-                          </div>  <!-- text-container ends -->
+    </div>
+    <!-- text-container ends -->
 
-                        </section> <!-- motivation Section End-->
+  </section>
+  <!-- motivation Section End-->
 
 
-                        <!-- Contact Section
+  <!-- Contact Section
                           ================================================== -->
-                          <section id="contact">
+  <section id="contact">
 
-                            <div class="row section-head">
+    <div class="row section-head">
 
-                              <div class="two columns header-col">
+      <div class="two columns header-col">
 
-                                <h1><span>Get In Touch.</span></h1>
+        <h1><span>Get In Touch.</span></h1>
 
-                              </div>
+      </div>
 
-                              <div class="ten columns">
+      <div class="ten columns">
 
-                                <p class="lead">If you have any questions about me, my research interests, or my work, please reach out. Interesting thoughts from interesting people are always welcome. <a href="malto:mark@mjedmonds.com">mark@mjedmonds.com</a></p>
+        <p class="lead">If you have any questions about me, my research interests, or my work, please reach out. Interesting thoughts from interesting people are always welcome. <a href="malto:mark@mjedmonds.com">mark@mjedmonds.com</a></p>
 
-                              </div>
+      </div>
 
-                            </div>
+    </div>
 
-                            <!--<div class="row">-->
+    <!--<div class="row">-->
 
-                            <!--<div class="eight columns">-->
+    <!--<div class="eight columns">-->
 
-                            <!--[> form <]-->
-                            <!--<form action="" method="post" id="contactForm" name="contactForm">-->
-                            <!--<fieldset>-->
+    <!--[> form <]-->
+    <!--<form action="" method="post" id="contactForm" name="contactForm">-->
+    <!--<fieldset>-->
 
-                            <!--<div>-->
-                            <!--<label for="contactName">Name <span class="required">*</span></label>-->
-                            <!--<input type="text" value="" size="35" id="contactName" name="contactName">-->
-                            <!--</div>-->
+    <!--<div>-->
+    <!--<label for="contactName">Name <span class="required">*</span></label>-->
+    <!--<input type="text" value="" size="35" id="contactName" name="contactName">-->
+    <!--</div>-->
 
-                            <!--<div>-->
-                            <!--<label for="contactEmail">Email <span class="required">*</span></label>-->
-                            <!--<input type="text" value="" size="35" id="contactEmail" name="contactEmail">-->
-                            <!--</div>-->
+    <!--<div>-->
+    <!--<label for="contactEmail">Email <span class="required">*</span></label>-->
+    <!--<input type="text" value="" size="35" id="contactEmail" name="contactEmail">-->
+    <!--</div>-->
 
-                            <!--<div>-->
-                            <!--<label for="contactSubject">Subject</label>-->
-                            <!--<input type="text" value="" size="35" id="contactSubject" name="contactSubject">-->
-                            <!--</div>-->
+    <!--<div>-->
+    <!--<label for="contactSubject">Subject</label>-->
+    <!--<input type="text" value="" size="35" id="contactSubject" name="contactSubject">-->
+    <!--</div>-->
 
-                            <!--<div>-->
-                            <!--<label for="contactMessage">Message <span class="required">*</span></label>-->
-                            <!--<textarea cols="50" rows="15" id="contactMessage" name="contactMessage"></textarea>-->
-                            <!--</div>-->
+    <!--<div>-->
+    <!--<label for="contactMessage">Message <span class="required">*</span></label>-->
+    <!--<textarea cols="50" rows="15" id="contactMessage" name="contactMessage"></textarea>-->
+    <!--</div>-->
 
-                            <!--<div>-->
-                            <!--<button class="submit">Submit</button>-->
-                            <!--<span id="image-loader">-->
-                            <!--<img alt="" src="images/loader.gif">-->
-                            <!--</span>-->
-                            <!--</div>-->
+    <!--<div>-->
+    <!--<button class="submit">Submit</button>-->
+    <!--<span id="image-loader">-->
+    <!--<img alt="" src="images/loader.gif">-->
+    <!--</span>-->
+    <!--</div>-->
 
-                            <!--</fieldset>-->
-                            <!--</form> [> Form End <]-->
+    <!--</fieldset>-->
+    <!--</form> [> Form End <]-->
 
-                            <!--[> contact-warning <]-->
-                            <!--<div id="message-warning"> Error boy</div>-->
-                            <!--[> contact-success <]-->
-                            <!--<div id="message-success">-->
-                            <!--<i class="fa fa-check"></i>Your message was sent, thank you!<br>-->
-                            <!--</div>-->
+    <!--[> contact-warning <]-->
+    <!--<div id="message-warning"> Error boy</div>-->
+    <!--[> contact-success <]-->
+    <!--<div id="message-success">-->
+    <!--<i class="fa fa-check"></i>Your message was sent, thank you!<br>-->
+    <!--</div>-->
 
-                            <!--</div>-->
-
-
-                            <!--<aside class="four columns footer-widgets">-->
-
-                            <!--<div class="widget widget_contact">-->
-
-                            <!--<h4></h4>-->
-                            <!--<p class="address">-->
-                            <!--Name<br>-->
-                            <!--Street<br>-->
-                            <!--City, State Zip<br>-->
-                            <!--<span>Number</span>-->
-                            <!--<span><a href="malto:email@email.com">email@email.com</a></span>-->
-                            <!--</p>-->
-
-                            <!--</div>-->
-
-                            <!--<div class="widget widget_tweets">-->
-
-                            <!--<h4 class="widget-title">Latest Tweets</h4>-->
-
-                            <!--<ul id="twitter">-->
-                            <!--<li>-->
-                            <!--<span>-->
-                            <!--This is Photoshop's version  of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet.-->
-                            <!--Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum-->
-                            <!--<a href="#">http://t.co/CGIrdxIlI3</a>-->
-                            <!--</span>-->
-                            <!--<b><a href="#">2 Days Ago</a></b>-->
-                            <!--</li>-->
-                            <!--<li>-->
-                            <!--<span>-->
-                            <!--Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam,-->
-                            <!--eaque ipsa quae ab illo inventore veritatis et quasi-->
-                            <!--<a href="#">http://t.co/CGIrdxIlI3</a>-->
-                            <!--</span>-->
-                            <!--<b><a href="#">3 Days Ago</a></b>-->
-                            <!--</li>-->
-                            <!--</ul>-->
-
-                            <!--</div>-->
-
-                            <!--</aside>-->
-
-                            </div>
-
-                          </section> <!-- Contact Section End-->
+    <!--</div>-->
 
 
-                          <!-- footer
+    <!--<aside class="four columns footer-widgets">-->
+
+    <!--<div class="widget widget_contact">-->
+
+    <!--<h4></h4>-->
+    <!--<p class="address">-->
+    <!--Name<br>-->
+    <!--Street<br>-->
+    <!--City, State Zip<br>-->
+    <!--<span>Number</span>-->
+    <!--<span><a href="malto:email@email.com">email@email.com</a></span>-->
+    <!--</p>-->
+
+    <!--</div>-->
+
+    <!--<div class="widget widget_tweets">-->
+
+    <!--<h4 class="widget-title">Latest Tweets</h4>-->
+
+    <!--<ul id="twitter">-->
+    <!--<li>-->
+    <!--<span>-->
+    <!--This is Photoshop's version  of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet.-->
+    <!--Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum-->
+    <!--<a href="#">http://t.co/CGIrdxIlI3</a>-->
+    <!--</span>-->
+    <!--<b><a href="#">2 Days Ago</a></b>-->
+    <!--</li>-->
+    <!--<li>-->
+    <!--<span>-->
+    <!--Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam,-->
+    <!--eaque ipsa quae ab illo inventore veritatis et quasi-->
+    <!--<a href="#">http://t.co/CGIrdxIlI3</a>-->
+    <!--</span>-->
+    <!--<b><a href="#">3 Days Ago</a></b>-->
+    <!--</li>-->
+    <!--</ul>-->
+
+    <!--</div>-->
+
+    <!--</aside>-->
+
+    </div>
+
+  </section>
+  <!-- Contact Section End-->
+
+
+  <!-- footer
                             ================================================== -->
-                            <footer>
+  <footer>
 
-                              <div class="row">
+    <div class="row">
 
-                                <div class="twelve columns">
+      <div class="twelve columns">
 
-                                  <ul class="social-links">
-                                    <li><a href="https://facebook.com/mjedmonds2"><i class="fa fa-facebook"></i></a></li>
-                                    <!--<li><a href="https://twitter.com/mjedmonds_"><i class="fa fa-twitter"></i></a></li>-->
-                                    <!--<li><a href="https://plus.google.com/+MarkEdmonds2/"><i class="fa fa-google-plus"></i></a></li>-->
-                                    <li><a href="https://www.linkedin.com/in/mjedmonds"><i class="fa fa-linkedin"></i></a></li>
-                                    <li><a href="https://github.com/mjedmonds"><i class="fa fa-github"></i></a></li>
-                                    <!--<li><a href="https://instagram.com/mjedmonds_"><i class="fa fa-instagram"></i></a></li>-->
-                                    <!--<li><a href="#"><i class="fa fa-dribbble"></i></a></li>-->
-                                    <!--<li><a href="#"><i class="fa fa-skype"></i></a></li>-->
-                                    <!-- original undefinied social links -->
-                                    <!--<li><a href="#"><i class="fa fa-facebook"></i></a></li>-->
-                                    <!--<li><a href="#"><i class="fa fa-twitter"></i></a></li>-->
-                                    <!--<li><a href="#"><i class="fa fa-google-plus"></i></a></li>-->
-                                    <!--<li><a href="#"><i class="fa fa-linkedin"></i></a></li>-->
-                                    <!--<li><a href="#"><i class="fa fa-instagram"></i></a></li>-->
-                                    <!--<li><a href="#"><i class="fa fa-dribbble"></i></a></li>-->
-                                    <!--<li><a href="#"><i class="fa fa-skype"></i></a></li>-->
-                                  </ul>
+        <ul class="social-links">
+          <li><a href="https://facebook.com/mjedmonds2"><i class="fa fa-facebook"></i></a></li>
+          <!--<li><a href="https://twitter.com/mjedmonds_"><i class="fa fa-twitter"></i></a></li>-->
+          <!--<li><a href="https://plus.google.com/+MarkEdmonds2/"><i class="fa fa-google-plus"></i></a></li>-->
+          <li><a href="https://www.linkedin.com/in/mjedmonds"><i class="fa fa-linkedin"></i></a></li>
+          <li><a href="https://github.com/mjedmonds"><i class="fa fa-github"></i></a></li>
+          <!--<li><a href="https://instagram.com/mjedmonds_"><i class="fa fa-instagram"></i></a></li>-->
+          <!--<li><a href="#"><i class="fa fa-dribbble"></i></a></li>-->
+          <!--<li><a href="#"><i class="fa fa-skype"></i></a></li>-->
+          <!-- original undefinied social links -->
+          <!--<li><a href="#"><i class="fa fa-facebook"></i></a></li>-->
+          <!--<li><a href="#"><i class="fa fa-twitter"></i></a></li>-->
+          <!--<li><a href="#"><i class="fa fa-google-plus"></i></a></li>-->
+          <!--<li><a href="#"><i class="fa fa-linkedin"></i></a></li>-->
+          <!--<li><a href="#"><i class="fa fa-instagram"></i></a></li>-->
+          <!--<li><a href="#"><i class="fa fa-dribbble"></i></a></li>-->
+          <!--<li><a href="#"><i class="fa fa-skype"></i></a></li>-->
+        </ul>
 
-                                  <ul class="copyright">
-                                    <li>&copy; Copyright 2014 CeeVee</li>
-                                    <li>Design by <a title="Styleshout" href="http://www.styleshout.com/">Styleshout</a></li>
-                                  </ul>
+        <ul class="copyright">
+          <li>&copy; Copyright 2014 CeeVee</li>
+          <li>Design by <a title="Styleshout" href="http://www.styleshout.com/">Styleshout</a></li>
+        </ul>
 
-                                </div>
+      </div>
 
-                                <div id="go-top"><a class="smoothscroll" title="Back to Top" href="#home"><i class="icon-up-open"></i></a></div>
+      <div id="go-top"><a class="smoothscroll" title="Back to Top" href="#home"><i class="icon-up-open"></i></a></div>
 
-                              </div>
+    </div>
 
-                            </footer> <!-- Footer End-->
+  </footer>
+  <!-- Footer End-->
 
-                            <!-- Java Script
+  <!-- Java Script
                               ================================================== -->
-                              <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-                              <script>window.jQuery || document.write('<script src="js/jquery-1.10.2.min.js"><\/script>')</script>
-                              <script type="text/javascript" src="js/jquery-migrate-1.2.1.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script>
+    window.jQuery || document.write('<script src="js/jquery-1.10.2.min.js"><\/script>')
+  </script>
+  <script type="text/javascript" src="js/jquery-migrate-1.2.1.min.js"></script>
 
-                              <script src="js/jquery.flexslider.js"></script>
-                              <script src="js/waypoints.js"></script>
-                              <script src="js/jquery.fittext.js"></script>
-                              <script src="js/magnific-popup.js"></script>
-                              <script src="js/init.js"></script>
+  <script src="js/jquery.flexslider.js"></script>
+  <script src="js/waypoints.js"></script>
+  <script src="js/jquery.fittext.js"></script>
+  <script src="js/magnific-popup.js"></script>
+  <script src="js/init.js"></script>
+  <script>
+    smoothScroll.init();
+  </script>
 
-            </body>
+</body>
 
 </html>

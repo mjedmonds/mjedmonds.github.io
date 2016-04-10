@@ -146,7 +146,7 @@ body {
    font-family: 'opensans-regular', sans-serif;
    font-weight: normal;
    font-size: 15px;
-   line-height: 30px;
+   line-height: 25px;
 	color: #838C95;
 
    -webkit-font-smoothing: antialiased; /* Fix for webkit rendering */

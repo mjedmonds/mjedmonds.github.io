@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<!--[if lt IE 8 ]><html class="no-js ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="no-js ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 8)|!(IE)]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+
+<head>
+
+  <!--- Basic Page Needs
+    ================================================== -->
+  <meta charset="utf-8">
+  <title>CS 32 TA Course Content</title>
+  <meta name="description" content="CS 32 TA Course Content">
+  <meta name="author" content="Mark Edmonds">
+
+  <!-- Mobile Specific Metas
+      ================================================== -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- CSS
+        ================================================== -->
+  <link rel="stylesheet" href="css/default.css">
+  <link rel="stylesheet" href="css/teaching-layout.css">
+  <link rel="stylesheet" href="css/media-queries.css">
+  <link rel="stylesheet" href="css/magnific-popup.css">
+  <link rel="stylesheet" href="highlight/styles/default.css">
+
+  <!-- Script
+          ================================================== -->
+  <script src="js/modernizr.js"></script>
+  <script src="js/smooth-scroll.js"></script>
+
+  <!--code hightlighting-->
+  <script src="highlight/highlight.pack.js"></script>
+
+  <!-- Favicons
+            ================================================== -->
+  <link rel="shortcut icon" href="favicon.png">
+
+</head>
+
+<body>
+
+  <!-- Header
+                ================================================== -->
+  <header id="home">
+
+    <nav id="nav-wrap">
+
+      <a class="mobile-btn" href="#nav-wrap" title="Show navigation">Show navigation</a>
+      <a class="mobile-btn" href="#" title="Hide navigation">Hide navigation</a>
+
+      <ul id="nav" class="nav">
+        <li><a href="./index.html">Home</a></li>
+        <li><a href="./CS31.html">CS 31 - Intro to Computer Science I</a></li>
+        <li><a href="./CS32.html">CS 32 - Intro to Computer Science II</a></li>
+      </ul>
+      <!-- end #nav -->
+
+    </nav>
+    <!-- end #nav-wrap -->
+
+  </header>
+  <!-- Header End -->
+
+  <section id="general">
+    <!-- Experience -->
+    <div class="row general">
+
+      <div class="three columns header-col">
+        <h1><span>General</span></h1>
+      </div>
+
+      <div class="nine columns main-col">
+
+        <div class="row item">
+
+          <div class="twelve columns">
+
+            <h3>CS 32 - Introduction to Computer Science II</h3>
+            <p class="info"><em class="date">Spring 2016</em></p>
+            <p>
+              Office hours: Wednesday 5:30-6:30 PM<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Thursday 11:30AM-1:30PM<br> Contact: <a href="mailto:markedmonds@cs.ucla.edu">markedmonds@cs.ucla.edu</a>
+            </p>
+            The purpose of this site is to provide small code examples of particular concepts presented in discussion. It is not intended to replace attending discussion.<br><br>
+            Content:
+            <ul class="bullet">
+              <li>
+                <div id="normal-move"><a data-scroll href="#arrays">Constructors, Destructors, Copy Constructors, Assignment Operators</a></div>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+
+      </div>
+      <!-- main-col end -->
+
+    </div>
+  </section>
+
+
+  <section id="course-content">
+    <!-- Experience -->
+    <div id="ctors" class="row course-content">
+
+      <div class="three columns header-col">
+        <h1><span>Constructors,<br>Destructors,<br>Copy Constuctors,<br>Assignment Operators</span></h1>
+        <em class="date">Week 2 Discussion</em> <br>
+        <div><a data-scroll data-options='{"offset": 0}' href="#home">Back to top</a></div>
+      </div>
+
+      <div class="nine columns main-col">
+
+        <div class="row item">
+
+          <div class="twelve columns">
+
+            <h4>Key Concepts</h4>
+            <ul>
+              <li>If you dynamically allocate memory, you need to write your own:</li>
+              <ul>
+                <li>destructor</li>
+                <li>copy constructor</li>
+                <li>assignment operator</li>
+              </ul>
+            </ul>
+            <h4>main.cpp</h4>
+            <pre><code class="cpp hljs">#include &lt;iostream&gt;
+
+class Class1
+{
+ public:
+  Class1();                              // constructor
+  ~Class1();                             // destructor
+  Class1(const Class1&amp; obj);             // copy constructor
+  Class1&amp; operator=(const Class1&amp; rhs);  // assignment operator
+
+  int geta() { return *a_; }
+  int getb() { return b_; }
+  void seta(int a) { *a_ = a; }
+  void setb(int b) { b_ = b; }
+ private:
+  int* a_;
+  int b_;
+};
+
+Class1::Class1() : b_(10) // member initializer list
+{
+  a_ = new int(5);
+  std::cout &lt;&lt; "Class1 constructor" &lt;&lt; std::endl;
+}
+
+Class1::~Class1()
+{
+  delete a_;
+  std::cout &lt;&lt; "Class1 destructor" &lt;&lt; std::endl;
+}
+
+Class1::Class1(const Class1&amp; obj)
+{
+  // deep copy the contects of obj into this
+  a_ = new int;
+  *a_ = *obj.a_;
+  b_ = obj.b_;
+  std::cout &lt;&lt; "Class1 copy-constructor" &lt;&lt; std::endl;
+}
+
+Class1&amp; Class1::operator=(const Class1&amp; rhs)
+{
+  if(this == &amp;rhs) //assignment to self
+    return *this;
+  // deep copy the contects of rhs into this
+  a_ = new int;
+  *a_ = *rhs.a_;
+  b_ = rhs.b_;
+  std::cout &lt;&lt; "Class1 assignment operator called" &lt;&lt; std::endl;
+  return *this;
+}
+
+int main()
+{
+  // Part 1. Construction
+  Class1 c1;
+  std::cout &lt;&lt; "c1 exists in main()" &lt;&lt; std::endl;
+  // Part 2. Destructor
+  Class1* c1_ptr = new Class1;
+  std::cout &lt;&lt; "c1_ptr exists in main()" &lt;&lt; std::endl;
+  delete c1_ptr;
+  // Part 3. Copy Constructors
+  Class1 c2(c1);
+  std::cout &lt;&lt; "c2 exists in main()\n";
+  // Part 4. Assignment Operator
+  Class1 c3;
+  c3 = c2;
+  std::cout &lt;&lt; "c3 exists in main()\n";
+  // Note that destructors for c1, c2, c3 will called at the end of main()
+}</code></pre>
+
+            <br><h4>Output: </h4>
+            <pre><code class="nohighlight hljs">Class1 constructor
+c1 exists in main()
+Class1 constructor
+c1_ptr exists in main()
+Class1 destructor
+Class1 copy-constructor
+c2 exists in main()
+Class1 constructor
+Class1 assignment operator called
+c3 exists in main()
+Class1 destructor
+Class1 destructor
+Class1 destructor</code></pre>
+
+          </div>
+
+        </div>
+
+      </div>
+      <!-- main-col end -->
+
+    </div>
+  </section>
+
+
+  <!-- footer
+                            ================================================== -->
+  <footer>
+
+    <div class="row">
+
+      <div class="twelve columns">
+
+        <ul class="copyright">
+          <li>&copy; Copyright 2014 CeeVee</li>
+          <li>Design by <a title="Styleshout" href="http://www.styleshout.com/">Styleshout</a></li>
+        </ul>
+
+      </div>
+
+      <div id="go-top"><a data-scroll data-options='{"offset": 0}' title="Back to Top" href="#home"><i class="icon-up-open"></i></a></div>
+
+    </div>
+
+  </footer>
+  <!-- Footer End-->
+
+
+  <!-- Java Script
+                              ================================================== -->
+  <script>
+    hljs.initHighlightingOnLoad();
+  </script>
+  <script>
+    smoothScroll.init();
+  </script>
+</body>
+
+</html>

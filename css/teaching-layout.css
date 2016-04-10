@@ -26,7 +26,7 @@
 /* ------------------------------------------------------------------ */
 
 body {
-  background: #0f0f0f;
+  background: #fff;
 }
 
 
@@ -38,12 +38,10 @@ body {
 
 header {
   position: relative;
-  height: 800px;
-  min-height: 500px;
+  height: 150px;
+  min-height: 150px;
   width: 100%;
-  background: #161415 url(../images/header-background.jpg) no-repeat top center;
-  background-size: cover !important;
-  -webkit-background-size: cover !important;
+  background: #fff;
   text-align: center;
   overflow: hidden;
 }
@@ -163,6 +161,7 @@ header .scrolldown a:hover {
   padding: 0;
   border: none;
   outline: none;
+  background: #333
 }
 
 
@@ -232,147 +231,202 @@ ul#nav li.current a {
 }
 
 
-/* ------------------------------------------------------------------ */
-
-
-/* c. About Section
-/* ------------------------------------------------------------------ */
-
-#about {
-  background: #2B2B2B;
-  padding-top: 96px;
-  padding-bottom: 66px;
-  overflow: hidden;
+ul#bullet {
+  min-height: 10px;
+  width: auto;
+  text-align: left;
 }
 
-#about a,
-#about a:visited {
-  color: #fff;
-}
-
-#about a:hover,
-#about a:focus {
-  color: #11ABB0;
-}
-
-#about h2 {
-  font: 22px/30px 'opensans-bold', sans-serif;
-  color: #fff;
-  margin-bottom: 12px;
-}
-
-#about p {
-  line-height: 30px;
-  color: #7A7A7A;
-}
-
-#about .profile-pic {
+ul#bullet li {
   position: relative;
-  width: 120px;
-  height: 120px;
-  border-radius: 100%;
+  list-style: none outside;
+  margin-left: 1em;
+  height: 10px;
+  display: list-item;
 }
 
-#about .contact-details {
-  width: 41.66667%;
+
+/* Links */
+
+ul#bullet li a {
+  /* 8px padding top + 8px padding bottom + 32px line-height = 48px */
+  display: inline-block;
+  padding: 8px 13px;
+  line-height: 10px;
+  text-decoration: none;
+  text-align: left;
+  color: #fff;
+  -webkit-transition: color .2s ease-in-out;
+  -moz-transition: color .2s ease-in-out;
+  -o-transition: color .2s ease-in-out;
+  -ms-transition: color .2s ease-in-out;
+  transition: color .2s ease-in-out;
 }
 
-#about .download {
-  width: 58.33333%;
-  padding-top: 6px;
+ul#bullet li a:active {
+  background-color: transparent !important;
 }
 
-#about .main-col {
-  padding-right: 5%;
+ul#bullet li.current a {
+  color: #F06000;
 }
-
-#about .download .button {
-  margin-top: 6px;
-  background: #444;
-}
-
-#about .download .button:hover {
-  background: #fff;
-  color: #2B2B2B;
-}
-
-#about .download .button i {
-  margin-right: 15px;
-  font-size: 20px;
-}
-
 
 /* ------------------------------------------------------------------ */
 
 
-/* d. education Section
+/* d. general Section
 /* ------------------------------------------------------------------ */
 
-#education {
+#general {
   background: #fff;
-  padding-top: 90px;
+  padding-top: 0px;
   padding-bottom: 0px;
   overflow: hidden;
 }
 
-#education a,
-#education a:visited {
-  color: #11ABB0;
-}
-
-#education a:hover,
-#education a:focus {
+#general a,
+#general a:visited {
   color: #313131;
 }
 
-#education h1 {
+#general a:hover,
+#general a:focus {
+  color: #11ABB0;
+}
+
+#general h1 {
   font: 18px/24px 'opensans-bold', sans-serif;
   text-transform: uppercase;
   letter-spacing: 1px;
 }
 
-#education h1 span {
+#general h1 span {
   border-bottom: 3px solid #11ABB0;
   padding-bottom: 6px;
 }
 
-#education h3 {
+#general h3 {
   font: 25px/30px 'opensans-bold', sans-serif;
 }
 
-#education .header-col {
+#general .header-col {
   padding-top: 9px;
 }
 
-#education .main-col {
+#general .main-col {
   padding-right: 10%;
 }
 
-.education {
+.general {
   margin-bottom: 48px;
   padding-bottom: 48px;
   border-bottom: 1px solid #E8E8E8;
 }
 
-#education .info {
+#general .info {
   font: 16px/24px 'librebaskerville-italic', serif;
   color: #6E7881;
   margin-bottom: 18px;
   margin-top: 9px;
 }
 
-#education .info span {
+#general .info span {
   margin-right: 5px;
   margin-left: 5px;
 }
 
-#education .date {
+#general .date {
   font: 15px/24px 'opensans-regular', sans-serif;
   margin-top: 6px;
 }
 
 
 /* ------------------------------------------------------------------ */
+/* d. course-content Section
+/* ------------------------------------------------------------------ */
+
+#course-content {
+  background: #fff;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  overflow: hidden;
+}
+
+#course-content a,
+#course-content a:visited {
+  color: #313131;
+}
+
+#course-content a:hover,
+#course-content a:focus {
+  color: #11ABB0;
+}
+
+#course-content h1 {
+  font: 18px/24px 'opensans-bold', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  /*line-height: 40px*/
+}
+
+#course-content h1 span {
+  /*border-bottom: 3px solid #11ABB0;*/
+  padding-bottom: 6px;
+}
+
+#course-content h3 {
+  font: 25px/30px 'opensans-bold', sans-serif;
+}
+
+#course-content pre {
+  line-height: 20px;
+}
+
+#course-content ul {
+  list-style: none;
+  padding: 0;
+}
+
+#course-content li { 
+    padding-left: 16px; 
+}
+
+#course-content li:before {
+    content: "•"; /* Insert content that looks like bullets */
+    padding-right: 8px;
+}
+
+#course-content .header-col {
+  padding-top: 9px;
+}
+
+#course-content .main-col {
+  padding-right: 10%;
+}
+
+.course-content {
+  margin-bottom: 48px;
+  padding-bottom: 48px;
+  border-bottom: 1px solid #E8E8E8;
+}
+
+#course-content .info {
+  font: 16px/24px 'librebaskerville-italic', serif;
+  color: #6E7881;
+  margin-bottom: 18px;
+  margin-top: 9px;
+}
+
+#course-content .info span {
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
+#course-content .date {
+  font: 15px/24px 'opensans-regular', sans-serif;
+  margin-top: 6px;
+}
+
 
 
 /* d. Publications Section
@@ -380,7 +434,7 @@ ul#nav li.current a {
 
 #publications {
   background: #fff;
-  padding-top: 25px;
+  padding-top: 48px;
   padding-bottom: 0px;
   overflow: hidden;
 }
@@ -453,7 +507,7 @@ ul#nav li.current a {
 
 #experience {
   background: #fff;
-  padding-top: 25px;
+  padding-top: 48px;
   padding-bottom: 0px;
   overflow: hidden;
 }
@@ -1180,29 +1234,22 @@ background: #0D0D0D;
 .flex-control-nav {
   width: 100%;
   position: absolute;
-  bottom: -20px;
+  bottom: 0px;
   text-align: left;
 }
 
 .flex-control-nav li {
-  margin: 0 6px;
   display: inline-block;
   zoom: 1;
   *display: inline;
 }
 
 .flex-control-paging li a {
-  width: 12px;
-  height: 12px;
   display: block;
   background: #ddd;
   background: rgba(255, 255, 255, .3);
   cursor: pointer;
   text-indent: -9999px;
-  -webkit-border-radius: 20px;
-  -moz-border-radius: 20px;
-  -o-border-radius: 20px;
-  border-radius: 20px;
   box-shadow: inset 0 0 3px rgba(255, 255, 255, .3);
 }
 
@@ -1472,7 +1519,6 @@ footer .social-links li {
 footer .social-links li:first-child {
   margin-left: 0;
 }
-
 
 /* Go To Top Button */
 
