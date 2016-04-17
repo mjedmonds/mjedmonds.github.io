@@ -255,7 +255,7 @@ Class1 destructor</code></pre>
 
           <div class="twelve columns">
 
-            The following code stubs are for example's sake and need a full linked list to actually be useful. Given the nature of project 2, I can't give you a linked list class! But this should still be helpful. We will rely heavily on the supplemental material for Linked Lists on CCLE<!--<a href="./SupplementLinkedLists.pdf">supplemental</a> -->. Let's start with this basic definition of a node:
+            The following code stubs are for example's sake and need a full linked list to actually be useful. Given the nature of project 2, I can't give you a linked list class! But this should still be helpful. We will rely heavily on this <a href="./SupplementLinkedLists.pdf">supplemental material</a>. Let's start with this basic definition of a node:
             <pre><code class="cpp hljs">// Simple class, for the sake of the demo
 // This should live inside of a linked list class
 class Node
@@ -298,7 +298,7 @@ void remove_head()
     delete old_head;
   }
 }</code></pre>
-            <br> Here we introduce a circularly linked list  <!--(see <a href="./SupplementLinkedLists.pdf">supplemental</a>) --> to make our implementation less error prone. Note that we don't need a tail in a circularly linked list, as that is simply head-&gt;previous:
+            <br> Here we introduce a circularly linked list (see <a href="./SupplementLinkedLists.pdf">supplemental</a>) to make our implementation less error prone. Note that we don't need a tail in a circularly linked list, as that is simply head-&gt;previous:
             <pre><code class="cpp hljs">// circularly linked list safe function
 // Note: explicit tail is removed from this model
 void remove_head()
@@ -324,7 +324,7 @@ void remove_head()
     delete old_head;
   }
 }</code></pre>
-            <br> We'll introduce a dummy node to further reduce the error-proniness of our implementation <!--(see <a href="./SupplementLinkedLists.pdf">supplemental</a>) -->. The resulting remove_head() function is:
+            <br> We'll introduce a dummy node to further reduce the error-proniness of our implementation (see <a href="./SupplementLinkedLists.pdf">supplemental</a>). The resulting remove_head() function is:
             <pre><code class="cpp hljs">// dummy included
 // main advantage: there is *always* at least one element in the list!
 //    This avoids a lot of the special cases we had to handle
