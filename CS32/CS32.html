@@ -20,19 +20,19 @@
 
   <!-- CSS
         ================================================== -->
-  <link rel="stylesheet" href="css/default.css">
-  <link rel="stylesheet" href="css/teaching-layout.css">
-  <link rel="stylesheet" href="css/media-queries.css">
-  <link rel="stylesheet" href="css/magnific-popup.css">
-  <link rel="stylesheet" href="highlight/styles/default.css">
+  <link rel="stylesheet" href="../css/default.css">
+  <link rel="stylesheet" href="../css/teaching-layout.css">
+  <link rel="stylesheet" href="../css/media-queries.css">
+  <link rel="stylesheet" href="../css/magnific-popup.css">
+  <link rel="stylesheet" href="../highlight/styles/default.css">
 
   <!-- Script
           ================================================== -->
-  <script src="js/modernizr.js"></script>
-  <script src="js/smooth-scroll.js"></script>
+  <script src="../js/modernizr.js"></script>
+  <script src="../js/smooth-scroll.js"></script>
 
   <!--code hightlighting-->
-  <script src="highlight/highlight.pack.js"></script>
+  <script src="../highlight/highlight.pack.js"></script>
 
   <!-- Favicons
             ================================================== -->
@@ -52,8 +52,8 @@
       <a class="mobile-btn" href="#" title="Hide navigation">Hide navigation</a>
 
       <ul id="nav" class="nav">
-        <li><a href="./index.html">Home</a></li>
-        <li><a href="./CS31.html">CS 31 - Intro to Computer Science I</a></li>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../CS31/CS31.html">CS 31 - Intro to Computer Science I</a></li>
         <li><a href="./CS32.html">CS 32 - Intro to Computer Science II</a></li>
       </ul>
       <!-- end #nav -->
@@ -83,11 +83,26 @@
             <p>
               Office hours: Wednesday 5:30-6:30 PM<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Thursday 11:30AM-1:30PM<br> Contact: <a href="mailto:markedmonds@cs.ucla.edu">markedmonds@cs.ucla.edu</a>
             </p>
-            The purpose of this site is to provide small code examples of particular concepts presented in discussion. It is not intended to replace attending discussion.<br><br>
+            The purpose of this site is to provide small code examples of particular concepts presented in discussion. It is not intended to replace attending discussion.
+
+            <p>
+              <h5>General questions to ask yourself during this course:</h5>
+              <ol>
+                <li>Does my function work for cases in the middle? </li>
+                <li>Does my function work for beginning cases?</li>
+                <li>Does my function work for end cases?</li>
+                <li>Does my function work for an empty structure?</li>
+                <li>Does my function work for single-element structures?</li>
+                <li>Does my function protect against undefined references?</li>
+              </ol>
+            </p>
             Content:
             <ul class="bullet">
               <li>
-                <div id="normal-move"><a data-scroll href="#arrays">Constructors, Destructors, Copy Constructors, Assignment Operators</a></div>
+                <div id="normal-move"><a data-scroll href="#ctors">Constructors, Destructors, Copy Constructors, Assignment Operators</a></div>
+              </li>
+              <li>
+                <div id="normal-move"><a data-scroll href="#linkedlists">Linked Lists</a></div>
               </li>
             </ul>
           </div>
@@ -117,7 +132,7 @@
 
           <div class="twelve columns">
 
-            <h4>Key Concepts</h4>
+            <h5>Key Concepts</h5>
             <ul>
               <li>If you dynamically allocate memory, you need to write your own (this is not an exhaustive list in general, just what we have covered so far):</li>
               <ul>
@@ -126,7 +141,7 @@
                 <li>assignment operator</li>
               </ul>
             </ul>
-            <h4>main.cpp</h4>
+            <h5>main.cpp</h5>
             <pre><code class="cpp hljs">#include &lt;iostream&gt;
 
 class Class1
@@ -198,7 +213,8 @@ int main()
   // Note that destructors for c1, c2, c3 will called at the end of main()
 }</code></pre>
 
-            <br><h4>Output: </h4>
+            <br>
+            <h5>Output: </h5>
             <pre><code class="nohighlight hljs">Class1 constructor
 c1 exists in main()
 Class1 constructor
@@ -222,6 +238,121 @@ Class1 destructor</code></pre>
 
     </div>
   </section>
+
+  <section id="course-content">
+    <!-- Experience -->
+    <div id="linkedlists" class="row course-content">
+
+      <div class="three columns header-col">
+        <h1><span>Linked Lists</span></h1>
+        <em class="date">Week 3 Discussion</em> <br>
+        <div><a data-scroll data-options='{"offset": 0}' href="#home">Back to top</a></div>
+      </div>
+
+      <div class="nine columns main-col">
+
+        <div class="row item">
+
+          <div class="twelve columns">
+
+            The following code stubs are for example's sake and need a full linked list to actually be useful. Given the nature of project 2, I can't give you a linked list class! But this should still be helpful. We will rely heavily on the supplemental material for Linked Lists on CCLE<!--<a href="./SupplementLinkedLists.pdf">supplemental</a> -->. Let's start with this basic definition of a node:
+            <pre><code class="cpp hljs">// Simple class, for the sake of the demo
+// You should make members private in practice
+// This should live inside of a linked list class
+class Node
+{
+ public:
+  Node() : m_prev(nullptr), m_next(nullptr) {}
+  Node* m_prev;
+  Node* m_next;
+  int value;
+}</code></pre>
+            <br> Now suppose you wanted to remove the head item in the linked list. Consider the following:
+            <pre><code class="cpp hljs">// this function lives somewhere in the LinkedList class
+// initial remove_head()
+void remove_head()
+{  // so much bad!
+  Node* old_head = head;
+  //might be dereferencing nullptr (Q 4,6)
+  head = head-&gt;m_next;
+  //might be dereferencing nullptr (Q 5,6)
+  head-&gt;m_prev = nullptr; 
+  delete old_head;
+}</code></pre>
+            <br> This has a lot of problems: 1) head might be null, 2) if we are removing the last element, we should update tail:
+            <pre><code class="cpp hljs">// safe remove head function
+void remove_head()
+{
+  if (head != nullptr)
+  {  // make sure head is safe to dereference
+    Node* old_head = head;
+    head = head-&gt;m_next;
+    if (head == nullptr)
+    {  // if head is at nullptr, tail should be too
+      tail = nullptr;
+    }
+    else
+    {  // safe to deference head in this case
+       // set new head's previous to null
+      head-&gt;m_prev = nullptr;
+    }
+    delete old_head;
+  }
+}</code></pre>
+            <br> Here we introduce a circularly linked list  <!--(see <a href="./SupplementLinkedLists.pdf">supplemental</a>) --> to make our implementation less error prone. Note that we don't need a tail in a circularly linked list, as that is simply head-&gt;previous:
+            <pre><code class="cpp hljs">// circularly linked list safe function
+// Note: explicit tail is removed from this model
+void remove_head()
+{
+  if (head != nullptr)
+  {  // make sure head is safe to dereference
+    Node* old_head = head;
+    if (head-&gt;m_next == head)
+    {  // removing the last element
+      head = nullptr;
+    }
+    else
+    {  // Things to do:
+      //  1) update head
+      //  2) update new head's previous
+      //  3) update tail's next
+      head = head-&gt;m_next;
+      // copy old previous
+      head-&gt;m_prev = old_head-&gt;m_prev;
+      // update tail's next
+      head-&gt;m_prev-&gt;m_next = head;
+    }
+    delete old_head;
+  }
+}</code></pre>
+            <br> We'll introduce a dummy node to further reduce the error-proniness of our implementation <!--(see <a href="./SupplementLinkedLists.pdf">supplemental</a>) -->. The resulting remove_head() function is:
+            <pre><code class="cpp hljs">// dummy included
+// main advantage: there is *always* at least one element in the list!
+//    This avoids a lot of the special cases we had to handle
+void remove_head()
+{
+  Node* actual_head = head-&gt;m_next;
+  if (actual_head != head)
+  {  // don't want to delete the dummy head, empty list case if oldHead == head
+    // Things to do:
+    // 1) update dummy head's next to the new actual head
+    // 2) update new actual head's previous to the dummy head
+    head-&gt;m_next = actual_head-&gt;m_next;
+    actual_head-&gt;m_next-&gt;m_prev = head;
+    delete actual_head;
+  }
+}</code></pre>
+            <br> Notice how much simplier our final implementation is compared to our initial correct version. The key takeaway: we can reduce the complexity of our implementation by removing edge cases from our data structure model.
+          </div>
+
+        </div>
+
+      </div>
+      <!-- main-col end -->
+
+    </div>
+  </section>
+
 
 
   <!-- footer
