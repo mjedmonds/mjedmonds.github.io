@@ -104,6 +104,10 @@
               <li>
                 <div id="normal-move"><a data-scroll href="#linkedlists">Linked Lists</a></div>
               </li>
+              <li>
+                <div id="normal-move"><a data-scroll href="#StacksQueues">Stacks and Queues</a></div>
+              </li>
+
             </ul>
           </div>
 
@@ -352,6 +356,182 @@ void remove_head()
     </div>
   </section>
 
+
+  <section id="course-content">
+    <!-- Experience -->
+    <div id="StacksQueues" class="row course-content">
+
+      <div class="three columns header-col">
+        <h1><span>Stacks and Queues</span></h1>
+        <em class="date">Week 4 Discussion</em> <br>
+        <div><a data-scroll data-options='{"offset": 0}' href="#home">Back to top</a></div>
+      </div>
+
+      <div class="nine columns main-col">
+
+        <div class="row item">
+
+          <div class="twelve columns">
+
+            <h5>Stacks</h5>
+
+            <p>
+              Stacks follow a First-In, Last-Out (FILO) policy. Stacks have three primary operations: push, pop, and top. Push adds an element to the stack. Pop removes and element from the stack. Top access the element at the top of the stack. Typical stack usage consists of at least one push, followed by top, then pop. You can obviously push after popping.
+            </p>
+            <p>
+              Here's the implementation we created in class, using the standard library's list class as our underlying data structure.
+            </p>
+
+
+            <pre><code class="cpp hljs">#include &lt;list&gt;
+#include &lt;iostream&gt;
+#include &lt;stdexcept&gt;
+
+typedef int ItemType;
+
+class Stack
+{
+ public:
+  Stack();
+  bool pop();
+  ItemType top();
+  void push(const ItemType&amp; val);
+  int size() { return list_.size(); }
+ private:
+  std::list&lt;ItemType&gt; list_;
+};
+
+Stack::Stack()
+{
+}
+
+bool Stack::pop()
+{
+  if (list_.size() == 0)
+    return false;
+
+  list_.pop_front();
+  return true;
+}
+
+ItemType Stack::top()
+{
+  if (list_.size() == 0)
+    throw std::runtime_error("Trying to access empty stack");
+
+  return list_.front();
+}
+
+void Stack::push(const ItemType&amp; val)
+{
+  list_.push_front(val);
+}
+
+int main()
+{
+  Stack s;
+  s.push(5);
+  s.push(6);
+  s.push(7);
+  try
+  {
+    std::cout &lt;&lt; s.top() &lt;&lt; std::endl;
+    s.pop();
+    std::cout &lt;&lt; s.top() &lt;&lt; std::endl;
+    s.pop();
+    std::cout &lt;&lt; s.top() &lt;&lt; std::endl;
+    s.pop();
+  }
+  catch (std::runtime_error e)
+  {
+    std::cout &lt;&lt; e.what() &lt;&lt; std::endl;
+  }
+}</code></pre>
+            <br>
+            <h5>Queues</h5>
+
+            <p>
+              Queues follow a First-In, First-Out (FIFO) policy. Queues have three primary operations: enqueue, dequeue, and front. Enqueue adds an element to the queue. Dequeue removes and element from the queue. Front access the element at the top of the queue. 
+            </p>
+            <p>
+              Here's the implementation we created in class, using the standard library's list class as our underlying data structure. Notice that outside of renaming functions, we only changed one line of one function: where we insert elements into our linked list (at the begninning for a stack, now at the end).
+            </p>
+
+
+            <pre><code class="cpp hljs">#include &lt;list&gt;
+#include &amp;lt;iostream&amp;gt;
+#include &amp;lt;stdexcept&amp;gt;
+
+typedef int ItemType;
+
+class Queue
+{
+ public:
+  Queue();
+  bool dequeue();
+  ItemType front();
+  void enqueue(const ItemType&amp; val);
+  int size() { return list_.size(); }
+ private:
+  std::list&lt;ItemType&gt; list_;
+};
+
+Queue::Queue()
+{
+}
+
+bool Queue::dequeue()
+{
+  if (list_.size() == 0)
+    return false;
+
+  list_.pop_front();
+  return true;
+}
+
+ItemType Queue::front()
+{
+  if (list_.size() == 0)
+    throw std::runtime_error("Trying to access empty stack");
+
+  return list_.front();
+}
+
+void Queue::enqueue(const ItemType&amp; val)
+{
+  list_.push_back(val);
+}
+
+int main()
+{
+  Queue s;
+  s.enqueue(5);
+  s.enqueue(6);
+  s.enqueue(7);
+  try
+  {
+    std::cout &lt;&lt; s.front() &lt;&lt; std::endl;
+    s.dequeue();
+    std::cout &lt;&lt; s.front() &lt;&lt; std::endl;
+    s.dequeue();
+    std::cout &lt;&lt; s.front() &lt;&lt; std::endl;
+    s.dequeue();
+  }
+  catch (std::runtime_error e)
+  {
+    std::cout &lt;&lt; e.what() &lt;&lt; std::endl;
+  }
+}</code></pre>
+
+          </div>
+
+        </div>
+
+      </div>
+      <!-- main-col end -->
+
+    </div>
+  </section>
 
 
   <!-- footer
