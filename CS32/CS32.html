@@ -81,11 +81,7 @@
             <h3>CS 32 - Introduction to Computer Science II</h3>
             <p class="info"><em class="date">Spring 2016</em></p>
             <p>
-              Office hours: Wednesday 5:30-6:30 PM<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Thursday 11:30AM-1:30PM<br> Contact: <a href="mailto:markedmonds@cs.ucla.edu">markedmonds@cs.ucla.edu</a>
-            </p>
-            The purpose of this site is to provide small code examples of particular concepts presented in discussion. It is not intended to replace attending discussion.
-
-            <p>
+              The purpose of this site is to provide small code examples of particular concepts presented in discussion. It is not intended to replace attending discussion.
               <h5>General questions to ask yourself during this course:</h5>
               <ol>
                 <li>Does my function work for cases in the middle? </li>
@@ -107,6 +103,9 @@
               <li>
                 <div id="normal-move"><a data-scroll href="#StacksQueues">Stacks and Queues</a></div>
               </li>
+              <li>
+                <div id="normal-move"><a data-scroll href="#RecursionTemplates">Recursion and Templates</a></div>
+              </li>
 
             </ul>
           </div>
@@ -126,7 +125,7 @@
 
       <div class="three columns header-col">
         <h1><span>Constructors,<br>Destructors,<br>Copy Constuctors,<br>Assignment Operators</span></h1>
-        <em class="date">Week 2 Discussion</em> <br>
+        <em class="date">Week 2 discussion</em> <br>
         <div><a data-scroll data-options='{"offset": 0}' href="#home">Back to top</a></div>
       </div>
 
@@ -249,7 +248,7 @@ Class1 destructor</code></pre>
 
       <div class="three columns header-col">
         <h1><span>Linked Lists</span></h1>
-        <em class="date">Week 3 Discussion</em> <br>
+        <em class="date">Week 3 discussion</em> <br>
         <div><a data-scroll data-options='{"offset": 0}' href="#home">Back to top</a></div>
       </div>
 
@@ -363,7 +362,7 @@ void remove_head()
 
       <div class="three columns header-col">
         <h1><span>Stacks and Queues</span></h1>
-        <em class="date">Week 4 Discussion</em> <br>
+        <em class="date">Week 4 discussion</em> <br>
         <div><a data-scroll data-options='{"offset": 0}' href="#home">Back to top</a></div>
       </div>
 
@@ -451,10 +450,10 @@ int main()
             <h5>Queues</h5>
 
             <p>
-              Queues follow a First-In, First-Out (FIFO) policy. Queues have three primary operations: enqueue, dequeue, and front. Enqueue adds an element to the queue. Dequeue removes and element from the queue. Front access the element at the top of the queue. 
+              Queues follow a First-In, First-Out (FIFO) policy. Queues have three primary operations: enqueue, dequeue, and front. Enqueue adds an element to the queue. Dequeue removes and element from the queue. Front access the element at the top of the queue.
             </p>
             <p>
-              Here's the implementation we created in class, using the standard library's list class as our underlying data structure. Notice that outside of renaming functions, we only changed one line of one function: where we insert elements into our linked list (at the begninning for a stack, now at the end).
+              Here's the implementation we created in class, using the standard library's list class as our underlying data structure. Notice that outside of renaming functions, we only changed one line of one function: where we insert elements into our linked list (at the beginning for a stack, now at the end).
             </p>
 
 
@@ -533,9 +532,595 @@ int main()
     </div>
   </section>
 
+  <section id="course-content">
+    <!-- Experience -->
+    <div id="RecursionTemplates" class="row course-content">
 
-  <!-- footer
-                            ================================================== -->
+      <div class="three columns header-col">
+        <h1><span>Recursion and Templates</span></h1>
+        <em class="date">Week 6 discussion</em> <br>
+        <div><a data-scroll data-options='{"offset": 0}' href="#home">Back to top</a></div>
+      </div>
+
+      <div class="nine columns main-col">
+
+        <div class="row item">
+
+          <div class="twelve columns">
+
+            <h5>Recursion</h5>
+
+            <p>Recursion is an incredibly powerful and critical mechanism to control a function's repeated execution. Recursive functions call themselves and terminate upon a <i>base case</i>. The base case is a condition for the function to stop calling itself. Without it, a recursive function will call itself forever, eventually crashing your program due to stack overflow (or other nasty things). I unfortunately cannot post what we went over in class online since it was based on the homework solution, however, you should have received an email with the solutions. The basic idea I presented to help with debugging/examining recursive functions is the following: visually display the level of recursion using a depth parameter and a simple helper function. Here's the helper function:</p>
+
+            <pre><code class="cpp hljs">void print_tabs(int level)
+{
+  // print tabs out to the level
+  for (int i = 0; i &lt; level; i++)
+  {
+    std::cout &lt;&lt; "\t";
+  }
+  std::cout &lt;&lt; "level: " &lt;&lt; level;
+}
+</code></pre>
+            <br>
+            <p>To use it, you would add a parameter to represent the recursive level you are currently executing. Here's an example:
+            </p>
+
+            <pre><code class="cpp hljs">int indexOfLeast(const string a[], int n, int level)</code></pre>
+
+            <br>
+            <p>In the recursive call to <code>indexOfLeast()</code>, you increment the current level. This way, calls to <code>print_tabs()</code> will print the number of tabs of the current recursive depth, providing a nice visualization. See the following example for <code>indexOfLeast()</code>:
+            </p>
+
+            <pre><code class="cpp hljs">level: 0
+	level: 1
+		level: 2
+			level: 3
+			level: 3	returning: 0
+		level: 2	k: 1	returning: 0
+	level: 1	k: 1	returning: 1
+level: 0	k: 2	returning: 2
+2</code></pre>
+
+
+            <br>
+            <h5>Templates</h5>
+            <p>
+              Templates enable generic types for a given class or function. This is similar to the <code>typedef ItemType int</code> we used for our Stack and Queue class, but significantly more abstract and power. Templates allow for generic types of a given class for function. What does this mean? For templated functions, you don't have to worry about the types passed to the function - if the user passes two ints or two strings, the function will process the corresponding types the same way. This does place a requirement on the types passed; the types must support the operations the function performs (e.g. the operators used are defined for T). Here's our stack and queue class implemented using templates:
+            </p>
+            <pre><code class="cpp hljs">#include &lt;list&gt;
+#include &lt;iostream&gt;
+#include &lt;stdexcept&gt;
+
+template&lt;typename T&gt;
+class Stack
+{
+ public:
+  Stack();
+  bool pop();
+  T top();
+  void push(const T&amp; val);
+  int size() { return list_.size(); }
+ private:
+  std::list&lt;T&gt; list_;
+};
+
+template&lt;typename T&gt;
+Stack&lt;T&gt;::Stack()
+{
+}
+
+template&lt;typename T&gt;
+bool Stack&lt;T&gt;::pop()
+{
+  if (list_.size() == 0)
+    return false;
+
+  list_.pop_front();
+  return true;
+}
+
+template&lt;typename T&gt;
+T Stack&lt;T&gt;::top()
+{
+  if (list_.size() == 0)
+    throw std::runtime_error("Trying to access empty stack");
+
+  return list_.front();
+}
+
+template&lt;typename T&gt;
+void Stack&lt;T&gt;::push(const T&amp; val)
+{
+  list_.push_front(val);
+}
+
+int main()
+{
+  Stack&lt;int&gt; s;
+  s.push(5);
+  s.push(6);
+  s.push(7);
+  try
+  {
+    std::cout &lt;&lt; s.top() &lt;&lt; std::endl;
+    s.pop();
+    std::cout &lt;&lt; s.top() &lt;&lt; std::endl;
+    s.pop();
+    std::cout &lt;&lt; s.top() &lt;&lt; std::endl;
+    s.pop();
+  }
+  catch (std::runtime_error e)
+  {
+    std::cout &lt;&lt; e.what() &lt;&lt; std::endl;
+  }
+}
+</code></pre>
+            <br>
+            <pre><code class="cpp hljs">#include &lt;list&gt;
+#include &lt;iostream&gt;
+#include &lt;stdexcept&gt;
+
+template &lt;typename T&gt;
+class Queue
+{
+ public:
+  Queue();
+  bool dequeue();
+  T front();
+  void enqueue(const T&amp; val);
+  int size() { return list_.size(); }
+ private:
+  std::list&lt;T&gt; list_;
+};
+
+template &lt;typename T&gt;
+Queue&lt;T&gt;::Queue()
+{
+}
+
+template &lt;typename T&gt;
+bool Queue&lt;T&gt;::dequeue()
+{
+  if (list_.size() == 0)
+    return false;
+
+  list_.pop_front();
+  return true;
+}
+
+template &lt;typename T&gt;
+T Queue&lt;T&gt;::front()
+{
+  if (list_.size() == 0)
+    throw std::runtime_error("Trying to access empty stack");
+
+  return list_.front();
+}
+
+template &lt;typename T&gt;
+void Queue&lt;T&gt;::enqueue(const T&amp; val)
+{
+  list_.push_back(val);
+}
+
+int main()
+{
+  Queue&lt;int&gt; s;
+  s.enqueue(5);
+  s.enqueue(6);
+  s.enqueue(7);
+  try
+  {
+    std::cout &lt;&lt; s.front() &lt;&lt; std::endl;
+    s.dequeue();
+    std::cout &lt;&lt; s.front() &lt;&lt; std::endl;
+    s.dequeue();
+    std::cout &lt;&lt; s.front() &lt;&lt; std::endl;
+    s.dequeue();
+  }
+  catch (std::runtime_error e)
+  {
+    std::cout &lt;&lt; e.what() &lt;&lt; std::endl;
+  }
+} 
+</code></pre>
+
+
+          </div>
+
+        </div>
+
+      </div>
+      <!-- main-col end -->
+
+    </div>
+  </section>
+
+  <section id="course-content">
+    <!-- Experience -->
+    <div id="InheritancePolymorphism" class="row course-content">
+
+      <div class="three columns header-col">
+        <h1><span>Inheritance and Polymorphism</span></h1>
+        <em class="date">Not covered in discussion</em> <br>
+        <div><a data-scroll data-options='{"offset": 0}' href="#home">Back to top</a></div>
+      </div>
+
+      <div class="nine columns main-col">
+
+        <div class="row item">
+
+          <div class="twelve columns">
+
+            <h5>Inheritance and Polymorphism</h5>
+            <p>
+              We didn't cover this in discussion due to the lecture that took place instead, but here are the fundamentals. Inheritance lets you define type-hierarchy relationships. The classic example is that a Truck is-a Vehicle, and similarly a Car is-a Vehicle. However, Trucks and Cars have different enough properties that they should be represented with different classes. Trucks and Cars also have a lot in common; they both move, turn, honk, etc. So it makes sense to have a <i>base class</i> that represents those common properties (Vehicle), and <i>derived classes</i> that build on the base class (Truck and Car). In this model, the Truck and Car class would inherit from the Vehicle class.
+            </p>
+            <p>
+              In our vehicle example, suppose we wanted to store a list of all trucks <i>and</i> cars. We can accomplish this by have a list of pointers to each Vehicle. If we want the execute the derived class behavior with this list of Vehicles, we need to tell the Vehicle pointer it might actually be a derived class. We accomplish this using the <pre>virtual</pre> keyword on the Vehicle (base class) functions we want to be polymorphic. The virtual keyword basically means 'if I am actually a pointer to a derived class, prefer to run their version of the function, if it exists.' Here's a trivial example that encompasses inheritance, polymorphism, and order of construction when using inheritance:
+            </p>
+            <pre><code class="cpp hljs">#include &lt;iostream&gt;
+
+class A
+{
+ public:
+  A() { std::cout &lt;&lt; "A "; };
+  ~A() { std::cout &lt;&lt; "~A "; };
+};
+
+class B
+{
+ public:
+  B() { std::cout &lt;&lt; "B "; };
+  ~B() { std::cout &lt;&lt; "~B "; };
+  void hello() { std::cout &lt;&lt; "\nB says hello \n"; };
+  virtual void goodbye() { std::cout &lt;&lt; "B says goodbye \n"; };
+ private:
+  A a;
+};
+
+class D
+{
+ public:
+  D() { std::cout &lt;&lt; "D "; };
+  ~D() { std::cout &lt;&lt; "~D "; };
+};
+
+class C : public B
+{
+ public:
+  C() { std::cout &lt;&lt; "C "; };
+  ~C() { std::cout &lt;&lt; "~C "; };
+  void hello() { std::cout &lt;&lt; "\nC says hello \n"; };
+  void goodbye() { std::cout &lt;&lt; "C says goodbye \n"; };
+ private:
+  D d;
+};
+
+int main()
+{
+  C c;
+  B* b = &c;
+  b-&gt;hello();
+  b-&gt;goodbye();
+}
+</code></pre>
+
+          </div>
+
+        </div>
+
+      </div>
+      <!-- main-col end -->
+
+    </div>
+  </section>
+
+  <section id="course-content">
+    <!-- Experience -->
+    <div id="Sorting" class="row course-content">
+
+      <div class="three columns header-col">
+        <h1><span>Sorting</span></h1>
+        <em class="date">Week 8 discussion</em> <br>
+        <div><a data-scroll data-options='{"offset": 0}' href="#home">Back to top</a></div>
+      </div>
+
+      <div class="nine columns main-col">
+
+        <div class="row item">
+
+          <div class="twelve columns">
+            <h5>Sorting</h5>
+            <p>
+              We'll use the following helper functions for these sorting algorithms:
+            </p>
+            <pre><code class="cpp hljs">void print_arr(int arr[], int n, int start = 0)
+{
+  for (int j = start; j &lt; n; j++)
+  {
+    std::cout &lt;&lt; arr[j] &lt;&lt; " ";
+  }
+  std::cout &lt;&lt; std::endl;
+}
+
+void print_iteration(int arr[], int i, int n, int start = 0)
+{
+  std::cout &lt;&lt; "Iteration " &lt;&lt; i &lt;&lt; "\t";
+  print_arr(arr, n, start);
+}
+
+// swap items i and j
+void swap(int arr[], int i, int j)
+{
+  int temp;
+  temp = arr[i];
+  arr[i] = arr[j];
+  arr[j] = temp;
+}
+            </pre></code>
+            <br>
+
+            <h6>Selection Sort</h6>
+            <ul>
+              <li> Divide the list into two parts: sorted and unsorted (unsorted begins empty)
+                <li>
+                  <li> Find the smallest element in the unsorted list, place it at the end of the sorted list </li>
+                  <li> Continue until the unsorted list is empty </li>
+            </ul>
+            <p>
+              The complexity of selection sort is O(n^2).
+            </p>
+            <pre><code class="cpp hljs">void selection_sort(int arr[], int n)
+{
+  std::cout &lt;&lt; "Running selection sort on array: ";
+  print_arr(arr, n);
+  int i_min, temp;
+
+  for (int i = 0; i &lt; n - 1; i++)
+  {
+    print_iteration(arr, i, n);
+    // assume first element is the min
+    i_min = i;
+
+    for (int j = i + 1; j &lt; n; j++)
+    {
+      // update i_min if we find an element smaller
+      if (arr[j] &lt; arr[i_min])
+        i_min = j;
+    }
+
+    // if i_min no longer equals i than a smaller value was found
+    // this means we need to swap
+    if (i_min != i)
+    {
+      swap(arr, i, i_min);
+    }
+  }
+  std::cout &lt;&lt; "Final selection sort array: ";
+  print_arr(arr, n);
+}
+</pre></code>
+            <br>
+
+            <h6>Insertion Sort</h6>
+            <ul>
+              <li> Divide the list into two parts: sorted and unsorted (sorted begins empty) </li>
+              <li> Arbitrarily pick an element in the unsorted list (usually the first) </li>
+              <li> Scan the sorted list for where to insert the element, insert where appropriate </li>
+              <li> Continue until the unsorted list is empty </li>
+            </ul>
+            <p>
+              The complexity of insertion sort is O(n^2).
+            </p>
+
+            <pre><code class="cpp hljs">void insertion_sort(int arr[], int n)
+{
+  std::cout &lt;&lt; "Running insertion sort on array: ";
+  print_arr(arr, n);
+  // iterate over the entire array
+  for (int i = 0; i &lt; n; i++)
+  {
+    print_iteration(arr, i, n);
+    // scan the sorted list for the position to insert the i-th element
+    for (int j = i; j &gt; 0 &amp;&amp; arr[j - 1] &gt; arr[j]; j--)
+    {
+      swap(arr, j - 1, j);
+    }
+  }
+  std::cout &lt;&lt; "Final insertion sort array: ";
+  print_arr(arr, n);
+}          
+            </pre></code>
+
+            <br>
+            <h6>Bubble Sort</h6>
+            <ul>
+              <li> Starting at the beginning of the list, compare adjacent elements. If the adjacent elements are unsorted, swap them </li>
+              <li> Repeat passing over the entire list until you make a pass over the list without making a swap </li>
+            </ul>
+            <p>
+              The complexity of bubble sort is O(n^2).
+            </p>
+
+            <pre><code class="cpp hljs">void bubble_sort(int arr[], int n)
+{
+  std::cout &lt;&lt; "Running bubble sort on array: ";
+  print_arr(arr, n);
+  bool swapped;
+  // make at least one pass over the list
+  int i = 0;
+  do
+  {
+    print_iteration(arr, i, n);
+    swapped = false;
+
+    for (int j = 1; j &lt; n; j++)
+    {
+      // if this pair is out of order
+      if (arr[j - 1] &gt; arr[j])
+      {
+        swap(arr, j - 1, j);
+        swapped = true;
+      }
+    }
+    i++;
+  } while (swapped);  // continue loop until we never swap
+
+  std::cout &lt;&lt; "Final bubble sort array: ";
+  print_arr(arr, n);
+}</pre></code>
+
+            <br>
+            <h6>Bubble Sort</h6>
+            <ul>
+              <li> Starting at the beginning of the list, compare adjacent elements. If the adjacent elements are unsorted, swap them </li>
+              <li> Repeat passing over the entire list until you make a pass over the list without making a swap </li>
+            </ul>
+            <p>
+              The complexity of bubble sort is O(n^2).
+            </p>
+
+            <pre><code class="cpp hljs">void bubble_sort(int arr[], int n)
+{
+  std::cout &lt;&lt; "Running bubble sort on array: ";
+  print_arr(arr, n);
+  bool swapped;
+  // make at least one pass over the list
+  int i = 0;
+  do
+  {
+    print_iteration(arr, i, n);
+    swapped = false;
+
+    for (int j = 1; j &lt; n; j++)
+    {
+      // if this pair is out of order
+      if (arr[j - 1] &gt; arr[j])
+      {
+        swap(arr, j - 1, j);
+        swapped = true;
+      }
+    }
+    i++;
+  } while (swapped);  // continue loop until we never swap
+
+  std::cout &lt;&lt; "Final bubble sort array: ";
+  print_arr(arr, n);
+}</pre></code>
+
+            <br>
+            <h6>Merge Sort</h6>
+            <ul>
+              <li>Divides an unsorted list into n sublists (each sublist has one element and by definition is sorted) </li>
+              <li>Merge sublists to produce sorted sublists </li>
+              <li>Continue merging until there is one sublist remaining (the entire, sorted list) </li>
+            </ul>
+            <p>
+              The complexity of merge sort is O(nlogn).
+            </p>
+
+            <pre><code class="cpp hljs">void merge(int arr[], int working[], int start, int mid, int end);
+void merge_sort_aux(int arr[], int working[], int start, int end, int depth);
+
+void merge_sort(int arr[], int n)
+{
+  std::cout &lt;&lt; "Running merge sort on array: ";
+  print_arr(arr, n);
+  int* working = new int[n];
+
+  // run merge sort on entire array
+  merge_sort_aux(arr, working, 0, n - 1, 0);
+
+  delete[] working;
+  std::cout &lt;&lt; "Final merge sort array: ";
+  print_arr(arr, n);
+}
+
+void merge_sort_aux(int arr[], int working[], int start, int end, int depth)
+{
+  int mid;
+  if (start &lt; end)
+  {
+    // find mipoint, use it to recursively split
+    mid = (start + end) / 2;
+    merge_sort_aux(arr, working, start, mid, depth + 1);
+    merge_sort_aux(arr, working, mid + 1, end, depth + 1);
+    // after splitting, merge the two sublists
+    merge(arr, working, start, mid, end);
+    std::cout &lt;&lt; "Depth: " &lt;&lt; depth &lt;&lt; "\t";
+    print_arr(working, end, start);
+  }
+}
+
+void merge(int arr[], int working[], int start, int mid, int end)
+{
+  int h, i, j, k;
+  h = start;    // position in left sublist
+  i = start;    // position in working list
+  j = mid + 1;  // position in right sublist
+
+  while (h &lt;= mid &amp;&amp; j &lt;= end)
+  {
+    if (arr[h] &lt;= arr[j])
+    {  // copy from the left sublist
+      working[i] = arr[h];
+      h++;
+    }
+    else
+    {  // copy right the right sublist
+      working[i] = arr[j];
+      j++;
+    }
+    i++;
+  }
+  if (h &gt; mid)
+  {  // we have more contents in the right sublist to copy
+    for (k = j; k &lt;= end; k++)
+    {
+      working[i] = arr[k];
+      i++;
+    }
+  }
+  else
+  {  // we have more contents in the left sublist to copy
+    for (k = h; k &lt;= mid; k++)
+    {
+      working[i] = arr[k];
+      i++;
+    }
+  }
+
+  // copy result into original array
+  for (k = start; k &lt;= end; k++)
+  {
+    arr[k] = working[k];
+  }
+}</pre></code>
+
+            <br>
+            <h6>Quicksort</h6>
+            <ul>
+              <li> Pick an element in the array (pivot) </li>
+              <li> Partition the array such that all elements less than the pivot are before the pivot and all elements greater are after the pivot </li>
+              <li> Recursively run this partition on the elements less than the pivot and on the elements greater than the pivot (base case: array size of 0) </li>
+
+            </ul>
+            <p>
+              The complexity of quicksort is O(nlogn) on average, O(n^2) worst case. We did an implementation for Homework 3.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+      <!-- main-col end -->
+
+    </div>
+  </section>
+  <!-- footer ================================================== -->
   <footer>
 
     <div class="row">
@@ -557,8 +1142,7 @@ int main()
   <!-- Footer End-->
 
 
-  <!-- Java Script
-                              ================================================== -->
+  <!-- Java Script ================================================== -->
   <script>
     hljs.initHighlightingOnLoad();
   </script>
