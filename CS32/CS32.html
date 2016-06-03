@@ -979,44 +979,6 @@ void swap(int arr[], int i, int j)
 }</pre></code>
 
             <br>
-            <h6>Bubble Sort</h6>
-            <ul>
-              <li> Starting at the beginning of the list, compare adjacent elements. If the adjacent elements are unsorted, swap them </li>
-              <li> Repeat passing over the entire list until you make a pass over the list without making a swap </li>
-            </ul>
-            <p>
-              The complexity of bubble sort is O(n^2).
-            </p>
-
-            <pre><code class="cpp hljs">void bubble_sort(int arr[], int n)
-{
-  std::cout &lt;&lt; "Running bubble sort on array: ";
-  print_arr(arr, n);
-  bool swapped;
-  // make at least one pass over the list
-  int i = 0;
-  do
-  {
-    print_iteration(arr, i, n);
-    swapped = false;
-
-    for (int j = 1; j &lt; n; j++)
-    {
-      // if this pair is out of order
-      if (arr[j - 1] &gt; arr[j])
-      {
-        swap(arr, j - 1, j);
-        swapped = true;
-      }
-    }
-    i++;
-  } while (swapped);  // continue loop until we never swap
-
-  std::cout &lt;&lt; "Final bubble sort array: ";
-  print_arr(arr, n);
-}</pre></code>
-
-            <br>
             <h6>Merge Sort</h6>
             <ul>
               <li>Divides an unsorted list into n sublists (each sublist has one element and by definition is sorted) </li>
