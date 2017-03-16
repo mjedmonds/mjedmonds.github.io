@@ -52,6 +52,7 @@
         <li><a data-scroll data-options='{"offset": 0}' href="#about">About</a></li>
         <li><a data-scroll data-options='{"offset": 0}' href="#education">Education</a></li>
         <li><a data-scroll href="#publications">Publications</a></li>
+        <li><a data-scroll href="#research">Research</a></li>
         <li><a data-scroll href="#experience">Experience</a></li>
         <!--<li><a data-scroll data-options='{"offset": 0}' href="#motivation">Motivation</a></li>-->
         <li><a data-scroll href="#contact">Contact</a></li>
@@ -193,6 +194,84 @@
   </section>
   <!-- Education Section End-->
 
+
+ <section id="research">
+
+    <!-- research -->
+    <div class="row research">
+
+      <div class="three columns header-col">
+        <h1><span>Research</span></h1>
+      </div>
+
+      <div class="nine columns main-col">
+
+        <div class="row item">
+
+          <div class="twelve columns">
+
+            <h3>Human Robot Collaboration</h3>
+            <p class="info">Center for Vision, Cognition, Learning, and Autonomy, UCLA<span>&bull;</span> <em class="date">Present</em></p>
+
+            <p>
+              The Human Robot Collaboration Project aims to create a robot platform capable of autonomously collaborating with humans to accomplish meaningful, everday tasks. Currently, the project aims to transfer causal knowledge from human demonstrators to robots. This transfer focuses on using a tactile glove to capture visually latent states in the demonstration that are irrecoverable from vision along (e.g. forces exerted by the hand). From these demonstrations, we transfer the knowledge to the robot using an And-Or graph. In the future, we plan to expand this system to include intention prediction so the robot can take an active and collaborative role assisting with human tasks.
+            </p>
+
+            <p>
+              <b>Engineering contributions:</b>
+              <ul>
+                <li> Localization using SLAM, IMU, and wheel odometry combined with Kalman filtering </li>
+                <li> ROS navigation stack, including a dynamic footprint based on current position of arms </li>
+              </ul> 
+            </p>
+            <iframe src="https://player.vimeo.com/video/148162670" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+            <p><a href="https://vimeo.com/148162670">Human-Robot-Collaboration (Hu-Ro-Co)</a> from <a href="https://vimeo.com/yixinzhu">Yixin Zhu</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
+          </div>
+
+        </div>
+        <!-- item end -->
+
+        <div class="row item">
+
+          <div class="twelve columns">
+
+            <h3>Declarative Memory</h3>
+            <p class="info">Wright Patterson Air Force Base, University of Dayton<span>&bull;</span> <em class="date">January 2014 - September 2015</em></p>
+
+            <p>
+              My undergraduate thesis was focused on accelerating the declarative memory module of the CECEP cognitive architecture, a derivative of ACT-R. The research centered on leveraging the parallel computing abilities of the CUDA programming platform to accelerate declarative retrieval. The initial, C++ implementation produced a 20 times speedup over the fastest previous implementation of declarative memory. The CUDA implementation accelerates declarative memory by a factor of 100 times while providing massive scalability. The work was jointly supported by the Air Force Research Lab and the University of Dayton Research Institute.
+            </p>
+
+          </div>
+
+        </div>
+        <!-- item end -->
+
+        <div class="row item">
+
+          <div class="twelve columns">
+
+            <h3>Robotic Arm Brain Machine Interface</h3>
+            <p class="info">University of Dayton Senior Design Project<span>&bull;</span> <em class="date">August 2014 - May 2015</em></p>
+
+            <p>
+              This project expanded the capability of a brain machine interface through EEG signals and a robotic arm. The research centered on adding additional gestures and improving the universality of the interface. The team implemented 6 new useful actions for the robotic and developed a in-house EEG signal classifier using liner discriminate analysis. The EEG classifier currently can successfully distinguish between two states but successive senior design teams will increase the number of distinguishable states.
+            </p>
+
+          </div>
+
+        </div>
+        <!-- item end -->
+
+      </div>
+      <!-- main-col end -->
+
+    </div>
+    <!-- End research -->
+
+  </section>
+  <!-- research Section End-->
+
   <section id="publications">
 
     <!-- publications -->
@@ -208,21 +287,13 @@
 
           <div class="twelve columns">
 
-            <h3><a href="http://ieeexplore.ieee.org/xpl/articleDetails.jsp?reload=true&arnumber=7176183">High Performance Declarative Memory Systems through MapReduce</a></h3>
-            <p class="info">SNPD 2015<span>&bull;</span> <em class="date">Mark Edmonds, Tanvir Atahary, Scott Douglass, Tarek Taha</em></p>
+            <h5><a href="http://ieeexplore.ieee.org/xpl/articleDetails.jsp?reload=true&arnumber=7176183">High Performance Declarative Memory Systems through MapReduce</a></h5>
+            <p class="paper"><b>Mark Edmonds</b>, Tanvir Atahary, Scott Douglass, &amp; Tarek Taha</p>
+            <p class="paper">Software Engineering, Artificial Intelligence, Networking and Parallel/Distributed Computing (SNPD), 2015</p>
 
-            <!--<br>-->
-            <!--<h3>Brain Machine Interface using Emotiv EPOC for controlling a Robotic Arm</h3>-->
-            <!--<p class="info">NAECON 2015<span>&bull;</span> <em class="date">Daniel Prince, Andrew Sutter, Mark Edmonds, Matthew Cusumano, Wenjie Lu, and Vijayan K. Asari,</em></p>-->
-
-
-            <!--<p>-->
-            <!--Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.-->
-            <!--Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis,-->
-            <!--ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.-->
-            <!--Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. Nullam dictum felis eu pede mollis pretium.-->
-            <!--</p>-->
-
+            <h5><a href="http://ecommons.udayton.edu/cgi/viewcontent.cgi?article=1388&context=ece_fac_pub">Brain Machine Interface using Emotiv EPOC for controlling a Robotic Arm</a></h5>
+            <p class="paper">Daniel Prince, Andrew Sutter, <b>Mark Edmonds</b>, Matthew Cusumano, Wenjie Lu, &amp; Vijayan K. Asari</p>
+            <p class="paper">Aerospace and Electronics Conference (NAECON), 2015.</p>
 
           </div>
 
@@ -253,44 +324,11 @@
 
           <div class="twelve columns">
 
-            <h3>Robot Localization</h3>
-            <p class="info">Center for Vision, Cognition, Learning, and Autonomy, UCLA<span>&bull;</span> <em class="date">Present</em></p>
+            <h3>Adjuct Professor</h3>
+            <p class="info">Santa Monica College<span>&bull;</span> <em class="date">June 2016 - Dec 2016</em></p>
 
             <p>
-              The <a href="http://vcla.stat.ucla.edu/Projects/HuRoCo/">Human Robot Collaborations Project</a> aims to create a robot platform capable of autonomously collaborating with humans to accomplish meaningful, everday tasks. My current goal is to give our mobile Baxter robot localization in the environment using simultaneous localization and mapping (SLAM), IMU data and wheel odometry. The three sources are combined through extended Kalman filtering. This solution will enable the robot to accurately position itself within a space while maintaining path reconstruction information.
-            </p>
-            <iframe src="https://player.vimeo.com/video/148162670" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-            <p><a href="https://vimeo.com/148162670">Human-Robot-Collaboration (Hu-Ro-Co)</a> from <a href="https://vimeo.com/yixinzhu">Yixin Zhu</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
-          </div>
-
-        </div>
-        <!-- item end -->
-
-        <div class="row item">
-
-          <div class="twelve columns">
-
-            <h3>Declarative Memory Research</h3>
-            <p class="info">Wright Patterson Air Force Base, University of Dayton<span>&bull;</span> <em class="date">January 2014 - September 2015</em></p>
-
-            <p>
-              My undergraduate thesis was focused on accelerating the declarative memory module of the CECEP cognitive architecture, a derivative of ACT-R. The research centered on leveraging the parallel computing abilities of the CUDA programming platform to accelerate declarative retrieval. The initial, C++ implementation produced a 20 times speedup over the fastest previous implementation of declarative memory. The CUDA implementation accelerates declarative memory by a factor of 100 times while providing massive scalability. The work was jointly supported by the Air Force Research Lab and the University of Dayton Research Institute.
-            </p>
-
-          </div>
-
-        </div>
-        <!-- item end -->
-
-        <div class="row item">
-
-          <div class="twelve columns">
-
-            <h3>Robotic Arm Brain Machine Interface</h3>
-            <p class="info">University of Dayton Senior Design Project<span>&bull;</span> <em class="date">August 2014 - May 2015</em></p>
-
-            <p>
-              This project expanded the capability of a brain machine interface through EEG signals and a robotic arm. The research centered on adding additional gestures and improving the universality of the interface. The team implemented 6 new useful actions for the robotic and developed a in-house EEG signal classifier using liner discriminate analysis. The EEG classifier currently can successfully distinguish between two states but successive senior design teams will increase the number of distinguishable states.
+            Teaching CS 80, Internet Programming, a class focused on HTML, CSS, JavaScript, MySQL, and PHP.
             </p>
 
           </div>

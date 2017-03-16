@@ -355,7 +355,7 @@ ul#nav li.current a {
 }
 
 #education .info {
-  font: 16px/24px 'librebaskerville-italic', serif;
+  font: 16px/24px 'opensans-regular', serif;
   color: #6E7881;
   margin-bottom: 18px;
   margin-top: 9px;
@@ -428,7 +428,7 @@ ul#nav li.current a {
 }
 
 #publications .info {
-  font: 16px/24px 'librebaskerville-italic', serif;
+  font: 16px/24px 'opensans-regular', serif;
   color: #6E7881;
   margin-bottom: 18px;
   margin-top: 9px;
@@ -439,6 +439,13 @@ ul#nav li.current a {
   margin-left: 5px;
 }
 
+#publications .paper {
+  font: 14px/22px 'opensans-regular', serif;
+  color: #6E7881;
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+
 #publications .date {
   font: 15px/24px 'opensans-regular', sans-serif;
   margin-top: 6px;
@@ -447,6 +454,79 @@ ul#nav li.current a {
 
 /* ------------------------------------------------------------------ */
 
+/* d. research Section
+/* ------------------------------------------------------------------ */
+
+#research {
+  background: #fff;
+  padding-top: 25px;
+  padding-bottom: 0px;
+  overflow: hidden;
+}
+
+#research a,
+#research a:visited {
+  color: #11ABB0;
+}
+
+#research a:hover,
+#research a:focus {
+  color: #313131;
+}
+
+#research h1 {
+  font: 18px/24px 'opensans-bold', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+#research h1 span {
+  border-bottom: 3px solid #11ABB0;
+  padding-bottom: 6px;
+}
+
+#research h3 {
+  font: 25px/30px 'opensans-bold', sans-serif;
+}
+
+#research .header-col {
+  padding-top: 9px;
+}
+
+#research .main-col {
+  padding-right: 10%;
+}
+
+.research {
+  margin-bottom: 24px;
+  padding-bottom: 48px;
+  border-bottom: 1px solid #E8E8E8;
+}
+
+#research ul {
+  list-style: disc;
+  padding-left: 4%;
+}
+
+
+#research .info {
+  font: 16px/24px 'opensans-regular', serif;
+  color: #6E7881;
+  margin-bottom: 18px;
+  margin-top: 9px;
+}
+
+#research .info span {
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
+
+
+#research .date {
+  font: 15px/24px 'opensans-regular', sans-serif;
+  margin-top: 6px;
+}
 
 /* d. experience Section
 /* ------------------------------------------------------------------ */
@@ -498,7 +578,7 @@ ul#nav li.current a {
 }
 
 #experience .info {
-  font: 16px/24px 'librebaskerville-italic', serif;
+  font: 16px/24px 'opensans-regular', serif;
   color: #6E7881;
   margin-bottom: 18px;
   margin-top: 9px;
@@ -518,7 +598,7 @@ ul#nav li.current a {
 /*----------------------------------------------*/
 
 
-/*	Skill Bars
+/*  Skill Bars
 /*----------------------------------------------*/
 
 .bars {
@@ -1040,7 +1120,7 @@ background: #0D0D0D;
 }
 
 
-/*	Blockquotes */
+/*  Blockquotes */
 
 #motivation blockquote {
   margin: 0 0px 30px 0px;
@@ -1054,7 +1134,7 @@ background: #0D0D0D;
 }
 
 #motivation blockquote p {
-  font-family: 'librebaskerville-italic', serif;
+  font-family: 'opensans-regular', serif;
   padding: 0;
   font-size: 24px;
   line-height: 48px;
