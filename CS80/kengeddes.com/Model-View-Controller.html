@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0059)http://kengeddes.com/cs86/lectures/modelViewController.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>Model-View-Controller</title>
+<link href="./Model-View-Controller_files/styles.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+.superscript {
+	vertical-align: super;
+	font-size: small;
+}
+</style></head>
+
+<body>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+<tbody><tr>
+<td align="center"> <a href="http://kengeddes.com/cs86/index.html" class="linkNoDec"><img src="./Model-View-Controller_files/android_logo-sm.png" alt="CS 86" width="67" height="50"><br>
+CS 86</a></td>
+<td width="709" align="center">
+<h1>CS 86 &nbsp;Android Development</h1>
+</td>
+<td align="center"><a href="http://developer.android.com/index.html" target="_blank"><img src="./Model-View-Controller_files/bg_logo.png" alt="writing for android" width="180" height="50"></a></td>
+</tr>
+</tbody></table>
+<h1 class="center">Model-View-Controller</h1>
+<p>The Model-View-Controller (MVC) architecture clearly separates  applications into three parts: data&nbsp;model, presentation, and program logic. </p>
+<ul>
+<li>The <span class="italic">model</span> is the data plus any constraints on the data.</li>
+<li> The <span class="italic">view</span> prepares and presents results to the user. </li>
+<li>The <span class="italic">controller</span> controls the interaction between the user and the application. </li>
+</ul>
+<p>The MVC reduces the coupling among the three parts of an application  making it easier to  develop and maintain. Originally developed for GUIs with Smalltalk, it was later discovered to be a valuable architecture for other applications, especially web apps. <span class="superscript">1</span></p>
+<p>&nbsp;</p>
+<p>MVC is an application of the software engineering principle known as <span class="bold">separation of concerns</span>, which basically stated implies that it is best to segregate different types of functionality within an application as much as possible.</p>
+<ul>
+<li>The <span class="italic">model</span> encapsulates the application logic and state. It maintains and manipulates the application's state. It includes a database, DBMS, and database driver.</li>
+<li> The <span class="italic">view</span> presents a UI. It includes HTML, images, scripts, taglibs, etc. It includes all of the modules presented directly to the user.</li>
+<li>The <span class="italic">controller</span> handles user actions. It includes handling  user requests, validating requests, obtaining request parameters, and reformating data for transaction processing.</li>
+</ul>
+<p> Advantages of the MVC architecture are&nbsp;simplicity, independence, scalability, and developer specialization. <span class="superscript">2</span></p>
+<p>&nbsp;</p>
+<p><img src="./Model-View-Controller_files/MVC_BigNerdAndroidChapter2.png" width="917" height="1413" alt="MVC and Android"><span class="superscript">3</span>&nbsp;</p>
+<h4>&nbsp;</h4>
+<h4>&nbsp;</h4>
+<h2>Web App Tiers and the MVC Pattern</h2>
+<h3>Web App Tiers</h3>
+<p>Most web apps have a three-tiered&nbsp;architecture:</p>
+<ol>
+<li>The <span class="bold">HTTP client </span> (the front end)  runs in the browser. Client-side technologies, such as  HTML, CSS, JS, Ajax, and others, are  used here. Also, XML and JSON which are data representation technologies, may&nbsp;appear in all three tiers.</li>
+<li>The <span class="bold">middle tier</span> is the business logic that runs on the HTTP server. Server-side technologies, such as  PHP, JSP, ASP, or ColdFusion among others, are used here.</li>
+<li>The<span class="bold"> information tier</span> (the back end)   is the data store. This is often a RDBMS that is manipulated using  SQL.</li>
+</ol>
+<p> The client cannot  directly access  the information tier. Rather, it does so indirectly through the web server as  follows: </p>
+<ol>
+<li>The client sends an HTTP GET or POST request to the web server. </li>
+<li>The web server handles this request by creating a SQL query which it sends to the database system.</li>
+<li>The database system returns the query results  to the  web server.</li>
+<li>The web server puts these results in a form the client can understand -   some combination of HTML,  XML or  JSON, etc. which it then sends to the client. </li>
+</ol>
+<p class="center"><img src="./Model-View-Controller_files/webAppArchitecture.png" width="608" height="133" alt="web app architecture" longdesc="http://kengeddes.com/images/webAppArchitecture.png"></p>
+<p class="center">Figure 1.  Web App Tiers</p>
+<p>As you can see, the client, the server, and the database&nbsp;each have a role to play and a set of technologies  they support. It is  through the   communication and cooperation of  these three distinct tiers that the  web app does its magic.</p>
+<h3>Mapping Web App Tiers to the MVC Pattern</h3>
+<p>Now, let us see how these tiers map to the MVC pattern:</p>
+<table width="608" border="1" align="center">
+<tbody><tr align="center">
+<td width="277">HTTP client</td>
+<td width="263">middle tier</td>
+<td width="263">information tier</td>
+</tr>
+<tr align="center">
+<td>View</td>
+<td>Controller</td>
+<td>Model</td>
+</tr>
+</tbody></table>
+<h3>Conclusion</h3>
+<p>With the MVC approach, we organize our work&nbsp;into  three areas of responsibility. Initially, this involves more work and yields a  more complex app. However, it makes the app much more  flexible, robust, secure, and extensible.</p>
+<p>&nbsp;</p>
+<h3>For more information</h3>
+<p><a href="http://en.wikipedia.org/wiki/Model-View-Controller" target="_blank">Model–View–Controller (MVC)</a>&nbsp;  Wikipedia</p>
+<a href="http://martinfowler.com/eaaCatalog/modelViewController.html" target="_blank">Model View Controller</a>  Martin Fowler
+<p><a href="http://www.oracle.com/technetwork/java/mvc-140477.html" target="_blank">Model-View-Controller</a>  Oracle/Sun </p>
+<p>&nbsp;</p>
+<p><span class="superscript">1</span> Programming the World Wide Web, 6e, Robert W. Sebesta</p>
+<p><span class="superscript">2&nbsp;</span>Web-Based Application Development, Ralph F. Grove</p>
+<p><span class="superscript">3</span>&nbsp;Android Programming, The Big Nerd Ranch Guide, Bill Phillips and Brian Hardy</p>
+
+
+</body></html>

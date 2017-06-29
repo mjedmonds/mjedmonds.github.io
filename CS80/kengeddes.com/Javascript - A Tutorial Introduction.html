@@ -1,0 +1,560 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0079)http://kengeddes.com/JavaScript%20Done%20Right/A%20Tutorial%20Introduction.html -->
+<html xmlns="http://www.w3.org/1999/xhtml" class="gr__kengeddes_com"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>A Tutorial Introduction</title>
+<link href="./Javascript - A Tutorial Introduction_files/styles.css" rel="stylesheet" type="text/css">
+</head>
+<body data-gr-c-s-loaded="true">
+<h1 class="center">A Tutorial Introduction</h1>
+<p><span class="italic">Simplicity is bliss. </span><br>
+— Leonard Bernstein</p>
+<h2>A Few Simple Examples</h2>
+<p>Let's start with a few simple examples that demonstrate the expressiveness of  JavaScript.</p>
+<h3>Hello, world!</h3>
+<p>The classic first program to write in every   language is "Hello, world!".</p>
+<p class="center"><img src="./Javascript - A Tutorial Introduction_files/helloWorldRun.png" width="521" height="202" alt="helloWorldRun"></p>
+<p class="center"><span class="figureNumber">Figure 1.1</span> helloWorld.html</p>
+<p><img src="./Javascript - A Tutorial Introduction_files/helloWorldSource.png" width="470" height="113" alt="helloWorldSource"></p>
+<div class="lineByLine">
+<p>3 The HTML <span class="code">&lt;script&gt;</span> element is nested inside
+the <span class="code">&lt;body&gt;</span> element.
+The MIME <span class="code">type</span> of the element is <span class="code">text</span> with
+subtype <span class="code">javascript</span>.</p>
+<p>4 The browser creates the <span class="code">document</span> object which represents the HTML source for the web page. It has a <span class="code">write()</span> method that allows us to write HTML into the document which then gets rendered by the browser. We <span class="code">write</span> the string of HTML <span class="code">"&lt;p&gt;Hello, world!&lt;/p&gt;"</span> into the document. </p>
+</div>
+<h3>Event Handling</h3>
+<p>That was easy. Now, let's respond to a user event, say when she clicks something in the page.</p>
+<p class="center"><img src="./Javascript - A Tutorial Introduction_files/onclickRunA.png" width="306" height="76" alt="onclickRunA">&nbsp;&nbsp;&nbsp;&nbsp;<img src="./Javascript - A Tutorial Introduction_files/onclickRunB.png" width="297" height="76" alt="onclickRunB"></p>
+<p class="center"><span class="figureNumber">Figure 1.2</span> onclick.html</p>
+<p><img src="./Javascript - A Tutorial Introduction_files/onclickSource.png" width="567" height="80" alt="onclickSource"></p>
+<div class="lineByLine">
+<p>3 The <span class="code">onclick</span> attribute allows us to respond in the event  the user clicks the <span class="code">&lt;p&gt;</span> element. The value of this attribute is the JavaScript code to be run when that event occurs. We <span class="code">write</span> the string of HTML '<span class="code">&lt;p&gt;You rang?&lt;/p&gt;'</span> into the document using single quotes to delimit the string to avoid conflict with the double quotes that delimit the attribute value.</p>
+</div>
+<h3>Mouseover</h3>
+<p>For our next trick we do a mouseover. When we move the mouse over an image we'd
+like it to become larger.</p>
+<p><img src="./Javascript - A Tutorial Introduction_files/onmouseoverRunA.png" width="313" height="266" alt="onmouseoverRunA">&nbsp;&nbsp;&nbsp;&nbsp;<img src="./Javascript - A Tutorial Introduction_files/onmouseoverRunB.png" width="249" height="266" alt="onmouseoverRunB"></p>
+<p class="center"><span class="figureNumber">Figure 1.3</span> onmouseover.html</p>
+<p><img src="./Javascript - A Tutorial Introduction_files/onmouseoverSource.png" width="834" height="80" alt="onmouseoverSource"></p>
+<div class="lineByLine">3 The <span class="code">onmouseover</span> attribute allows
+us to respond in the event the user mouses over the image. The browser creates an
+object for each HTML element in the page. <span class="reservedWord">this</span> refers
+to the image object. It has <span class="code">width</span> and <span class="code">height</span> properties
+that correspond to the <span class="code">width</span> and <span class="code">height</span> attributes
+of the <span class="code">&lt;img&gt;</span> element. The <span class="code">*=
+2</span> notation
+multiplies the property by 2.</div>
+<h3>Form Validation</h3>
+<p>This is a typical use for JavaScript. Here we check that the user has filled in a required field.</p>
+<p class="center"><img src="./Javascript - A Tutorial Introduction_files/entryRequiredRunA.png" width="359" height="199" alt="entryRequiredRunA">&nbsp;&nbsp;&nbsp;&nbsp;<img src="./Javascript - A Tutorial Introduction_files/entryRequiredRunB.png" width="361" height="200" alt="entryRequiredRunB"></p>
+<p class="center"><span class="figureNumber">Figure 1.4</span> entryRequired.html</p>
+<p><img src="./Javascript - A Tutorial Introduction_files/entryRequiredSource.png" width="678" height="112" alt="entryRequiredSource"></p>
+<div class="lineByLine">
+<p>4 The <span class="code">onblur</span> attribute allows
+us to respond in the event the textbox loses the focus.  <span class="reservedWord">this</span> always
+refers to the current object, in this case the textbox. It has a <span class="code">value</span> property
+that corresponds to the <span class="code">value</span> attribute. If it equals the
+empty string, the stuff in<span class="code"> {</span>...<span class="code">}</span>,
+called a <span class="newTerm">block</span>, gets executed. The block contains two
+statements. A statement is terminated with a semicolon. The first statement pops
+up an alert dialog. When the user dismisses the dialog, the second statement runs.
+The <span class="code">focus()</span> method
+returns focus to the textbox.</p>
+</div>
+<h3>Review</h3>
+<p>The above examples illustrate the following points:</p>
+<ul>
+<li>JavaScript code can be the contents of  a  <span class="code">&lt;script&gt;</span> element
+or the value of an event attribute.</li>
+<li>Use <span class="code">document.write()</span> to  write HTML source into a document
+which the browser then interprets.</li>
+<li>Statements are terminated with a semicolon.</li>
+<li>Use the <span class="code">onlick</span>, <span class="code">onmouseover</span>,
+and <span class="code">onblur</span> attributes to specify event handlers. </li>
+<li> For each HTML element in a web page the browser creates an object. For each
+ attribute, the object has a property with the same name.</li>
+<li><span class="reservedWord">this</span> always refers to the current object, such
+as the textbox for which we are coding an <span class="code">onclick</span> event
+handler.</li>
+<li>Strings are delimited with either single or double quotes.</li>
+<li>The <span class="code">alert()</span> method pops up a dialog box.</li>
+<li>A <span class="newTerm">block</span>&nbsp;is a set
+of statements enclosed in curly braces. For example,<br>
+<span class="code">{</span><span class="reservedWord">var</span><span class="code"> insult = "You're a blockhead, Charlie Brown!"; alert(insult);}</span></li>
+<li>Use an  <span class="reservedWord">if</span> statement to conditionally execute
+a block. For example,<br>
+<span class="code">if (</span><span class="reservedWord">this</span><span class="code">.value
+=== 'Charlie Brown') {alert("You're a blockhead!");}</span></li>
+</ul>
+<h3>Exercises</h3>
+<p>It is strongly recommended that you now apply this knowledge by coding the following
+exercises. Even if you don't understand everything so far,  you can
+successfully write the scripts by imitating the examples. Start with a similar
+example and modify it as needed.</p>
+<p>For your scripts to run successfully, the HTML must also be correct. Use the
+ W3C Markup Validation Service at <a href="http://validator.w3.org/" target="_blank">http://validator.w3.org</a> to
+check your HTML. (For brevity's sake, the  <span class="code">DOCTYPE</span> and <span class="code">&lt;head&gt;</span> element
+have been omitted from the examples. The W3C validator complains about this.)</p>
+<p>Note that the validator will often spuriously report  errors when the page contains
+HTML tags within a script.&nbsp;You
+will need to judge whether there actually is an error.</p>
+<p>The Firefox browser is a favorite of developers. Use the  <span class="menus">Tools
+| Error Console</span> to
+ help  find  bugs.</p>
+<ol>
+<li>When the user mouses over an image, it  changes  to a different  image. (Hint:
+Assign a new value to&nbsp;the image object's <span class="code">src</span> property.)</li>
+<li>When the user clicks a button, a paragraph of text is displayed.</li>
+<li>When the user moves from one textbox to the next, a "Thank you for sharing." alert pops up.</li>
+<li>When the user clicks a textbox, if its value is "Rumpelstiltskin",
+an alert says  "I shall fly away on a cooking ladle." (Hint: If you are
+mystified about how to do this, see the last bullet in the <span class="bold">Review</span> section
+above.)</li>
+</ol>
+<h2>Express Yourself</h2>
+<p>Our goal in this chapter is to teach you what could be called "conversational
+JavaScript"&nbsp;by
+providing a set of examples that you can use as models for doing basic tasks like
+getting input, displaying output, doing basic math, responding to mouse clicks and
+mouseovers, etc. We'd like you to start speaking JavaScript right away
+without having to first spend a lot of time studying the underlying structure and
+syntactic details of the language.</p>
+<p>So, here are a few more (not as simple)  examples that show how to do some useful
+tasks. They illustrate  creating variables for storing values, gluing strings together,
+doing basic arithmetic, and comparing values.</p>
+<h3>Values</h3>
+<p>A <span class="newTerm">value</span> can be a number, string, boolean, array, function,  object, or the special value <span class="code">undefined</span>.</p>
+<p class="center"><img src="./Javascript - A Tutorial Introduction_files/valuesRunA.png" width="385" height="229" alt="valuesRunA"></p>
+<p class="center"><img src="./Javascript - A Tutorial Introduction_files/valuesRunB.png" width="575" height="214" alt="valuesRunB"></p>
+<p class="center"><span class="figureNumber">Figure 1.5</span> values.html</p>
+<p><img src="./Javascript - A Tutorial Introduction_files/valuesSource.png" width="712" height="305" alt="valuesSource"></p>
+<div class="lineByLine">
+<p>4 <span class="code">//</span> flags all text to the end of the line as a comment.</p>
+<p>6 The <span class="reservedWord">var</span> statement allows declaration of a
+comma-separated list of variables. A variable can be assigned an initial <span class="newTerm">value</span> which
+can be a number, string, boolean, array, function, or object. An uninitialized variable
+has the special value <span class="code">undefined</span>. </p>
+<p>13 <span class="code">document.writeln()</span> takes a comma-separated list of
+arguments each of which is an <span class="newTerm">expression</span> that is evaluated,
+converted to a string, and written to the document. It then outputs a newline character.
+Also, the escape sequence <span class="code">\n</span> inside a string indicates
+a newline character.</p>
+<p>15 The value of <span class="code">tellJoke</span> is
+a function. The  function call operator is <span class="code">()</span>, so <span class="code">tellJoke()</span> calls
+the function which does an alert. The  value of the function call <span class="code">tellJoke()</span> is <span class="code">undefined</span> since
+it does not return a value. </p>
+</div>
+<h3>Gluing Strings Together</h3>
+<p>We often want to glue a string to the end of another.</p>
+<p class="center"><img src="./Javascript - A Tutorial Introduction_files/stringConcatenationRun.png" width="521" height="158" alt="stringConcatenationRun"></p>
+<p class="center"><span class="figureNumber">Figure 1.6</span> stringConcatenation.html</p>
+<p><img src="./Javascript - A Tutorial Introduction_files/stringConcatenationSource.png" width="776" height="209" alt="stringConcatenationSource"></p>
+<div class="lineByLine">
+<p>4 The <span class="code">id</span> attribute is needed by the <span class="code">getElementById()</span> method (see line 8). When the <span class="code">+</span> button is clicked, the event handler runs. <span class="code">left</span> refers to the textbox with <span class="code">id="left"</span> (see line 8). Its value property corresponds to&nbsp;the <span class="code">value</span> attribute and is&nbsp;a string.&nbsp;The <span class="code">+</span> operator concatenates (glues together) its two string operands. This is assigned to the <span class="code">value</span> property of the <span class="code">result</span> textbox.</p>
+<p>8 The <span class="code">document.getElementById()</span> method returns a reference to the object with the specified <span class="code">id</span>&nbsp;which we then assign to the variable <span class="code">left</span>. This is a very common way to access elements in the web page. We will use it a lot. For brevity, clarity, and efficiency, it may be helpful to store the object reference in a variable&nbsp;as we do here.</p>
+<p> It is very important to understand the  order in which the code is executed. The <span class="code">result</span>, <span class="code">left</span>, and <span class="code">right</span> variables are used in the <span class="code">onclick</span> event handler up in line 4, but this does not run until the button is clicked. The <span class="code">input</span> elements (and their corresponding objects) get created in lines 4 and 5, so they exist, <span class="italic">as they must,</span> when we call <span class="code">getElementById()</span>in lines 8 - 10. </p>
+</div>
+<h3>Arithmetic</h3>
+<p>We can add, subtract, multiply, and divide with the arithmetic operators <span class="code">+</span>, <span class="code">-</span>, <span class="code">*</span>, and <span class="code">/</span>.</p>
+<p class="center"><img src="./Javascript - A Tutorial Introduction_files/arithmeticRun.png" width="633" height="90" alt="arithmeticRun"></p>
+<p class="center"><span class="figureNumber">Figure 1.7</span> arithmetic.html</p>
+<p><img src="./Javascript - A Tutorial Introduction_files/arithmeticSource.png" width="790" height="257" alt="arithmeticSource"></p>
+<div class="lineByLine">4 The <span class="code">+</span> operator is <span class="italic">overloaded</span>, i.e., it has more than one meaning.  If either of its operands is a string, it converts the other to a string and concatenates them. The <span class="code">value</span> of a textbox is a string. To convert it to a number use <span class="code">parseInt()</span> or <span class="code">parseFloat()</span>. If both operands are numbers, <span class="code">+</span> does addition. In fact,&nbsp;you&nbsp;should
+always use numbers, not strings, when doing math.</div>
+<h3>Comparisons</h3>
+<p>Quite often we want to compare two values for equality, inequality, less than, greater than, etc. The equality comparison operators are <span class="code">===</span> and <span class="code">!==</span>. Avoid their evils twins <span class="code">==</span> and <span class="code">!=</span> which do <span class="italic">type juggling</span>. The relational operators are <span class="code">&lt;,</span> <span class="code">&lt;=</span>, <span class="code">&gt;</span>, and <span class="code">&gt;=</span>. </p>
+<p><img src="./Javascript - A Tutorial Introduction_files/comparisonsRun.png" width="875" height="99" alt="comparisonsRun"></p>
+<p class="center"><span class="figureNumber">Figure 1.8</span> comparisons.html</p>
+<p><img src="./Javascript - A Tutorial Introduction_files/comparisonsSource.png" width="879" height="287" alt="comparisonsSource"></p>
+<div class="lineByLine">
+<p>4 The <span class="code">value</span> of a textbox is a string, so <span class="code">===</span> here
+does a string (i.e., lexicographical) comparison. The comparison is done before the
+assignment because the <span class="code">===</span> operator has a higher precedence
+than the <span class="code">=</span> operator. That is, <span class="fixed">===</span> precedes <span class="code">=</span> in order of
+evaluation.</p>
+<p>8 Here we have converted the  <span class="code">value</span>s of the  textboxes to floating point numbers, so <span class="code">&lt;</span>  does a numeric comparison.</p>
+</div>
+<h3>Review</h3>
+<p>The  examples in this section demonstrate these additional concepts, language elements, and techniques:</p>
+<ul>
+<li>A <span class="newTerm">value</span> can be a number, string, boolean, array, function,  object, or the special value <span class="code">undefined</span>.</li>
+<li><span class="comment">//</span> initiates a <span class="newTerm">single line comment</span>.</li>
+<li>The <span class="reservedWord">var</span> statement is used to declare a set
+of variables&nbsp;each of which may be assigned an initial value.</li>
+<li>An array can be created with an <span class="newTerm">array literal</span> such
+as<span class="code"> ['Corvette', 'Cadillac', 'Impala']</span>.</li>
+<li>A<span class="newTerm"> function literal</span> has the form <span class="reservedWord">function</span><span class="code">()</span> <span class="italic">block</span>.
+For example,<br>
+<span class="reservedWord">function</span><span class="code">() {alert('I just flew in from New York. And boy are my
+arms tired.');}</span></li>
+<li>An object can be created with an <span class="newTerm">object literal</span> such as<span class="code">
+ <br>
+{name: 'Jack', age: 39, occupation: 'comedian'}</span>.</li>
+<li>If a variable has not been given a value, it has the value <span class="code">undefined</span>.</li>
+<li><span class="code">document.writeln()</span> writes its arguments to the document
+followed by a newline character.</li>
+<li>The <span class="newTerm">escape sequence</span> <span class="code">\n</span> inside
+a string&nbsp;represents the&nbsp;newline character.</li>
+<li>To call a  function, append <span class="code">()</span> to the function name.</li>
+<li>To glue two strings together, use the <span class="code">+</span> operator. If only one of the operands
+is a string, the other will be converted to a string and glued on.</li>
+<li><span class="code">document.getElementById()</span> is a great way to get the
+object for any element in the document. Be sure the browser has created the
+element and its object before trying to get it. The browser processes the HTML document
+from top to bottom. Functions and event handlers do not run until they are called.</li>
+<li>The contents of a textbox is a string. If you want to do math with it, convert
+it to a number with either <span class="code">parseInt()</span> or <span class="code">parseFloat()</span>.</li>
+<li>We can compare two values for equality with <span class="code">===</span>, inequality
+with <span class="code">!==</span>, less than
+with <span class="code">&lt;</span>, less than or equal to with <span class="code">&lt;=</span>,
+greater than with <span class="code">&gt;</span>, and greater than or
+equal to with <span class="code">&gt;=</span>.</li>
+</ul>
+<p>OK, you've been reading JavaScript, now it's time to practice speaking it.</p>
+<h3>Exercises</h3>
+<p>Using the previous examples as models, have fun creating the following dynamic
+web pages.</p>
+<p>Remember to  check your HTML with  <a href="http://validator.w3.org/" target="_blank">http://validator.w3.org</a> and
+to use the  Firefox <span class="menus">Tools
+| Error Console</span> to help you find bugs.</p>
+<ol start="5">
+<li>When the user clicks an <span class="bold">Embellish</span> button, the <span class="bold">Result</span> textbox
+displays the contents of the <span class="bold">Name</span> textbox with the suffix <span class="code">"orama"</span> appended
+to it. <span class="boldRed">Warning: </span>Don't name your variable <span class="code">name</span>.&nbsp; Use
+some other name. For example, <span class="reservedWord">var</span><span class="code"> namex = </span>....</li>
+<li>There are two textboxes and a  <span class="bold">===</span> button which, when
+ clicked, displays in the <span class="bold">Result</span> textbox "These strings
+are equal" if, in fact,
+they are. (See the <span class="bold">Form Validation</span> section above for
+an example of the <span class="reservedWord">if</span> statement.) Provide another button
+that clears the <span class="bold">Result</span> textbox. (Hint: Provide an onclick
+event handler that assigns the empty string
+to the <span class="code">value</span> property of the textbox.)</li>
+<li>There are two images each with a textbox next to it. When the <span class="bold">Which
+is Wider?</span> button is clicked, the word "wider" is displayed in the
+textbox next to the wider image.</li>
+<li>Display an image's     width, height, area, and src&nbsp;in a
+textbox. (Hint: You will need to compute the area.)</li>
+</ol>
+<h2>Go With the Flow</h2>
+<p>The browser processes the HTML file from top to bottom. However, only one of the <span class="italic">block</span>s
+in an <span class="reservedWord">if else</span> statement  gets executed. And by
+using a <span class="italic">loop</span> we
+can cause a block
+to be executed multiple times. Also, functions and event handlers do not actually
+run until they are called.&nbsp;The following four scripts exemplify these <span class="italic">control
+flow</span> concepts
+of selection,
+repetition, and invocation.</p>
+<h3>Selecting with<span class="reservedWord"> if else</span></h3>
+<p>This powerful statement gives the computer the ability to&nbsp;select one block
+or another for execution based on some runtime <span class="newTerm">condition</span>.</p>
+<p><img src="./Javascript - A Tutorial Introduction_files/screenResolutionSource.png" width="372" height="225" alt="screenResolutionSource"></p>
+<p class="center"><span class="figureNumber">Figure 1.9</span> screenResolution.html</p>
+<div class="lineByLine">7 The browser creates the <span class="code">screen</span> object
+which represents
+the user's screen. Its  <span class="code">height</span> property&nbsp;is in pixels.
+The <span class="newTerm">condition</span> here
+is
+<span class="code">screen.height &lt; 720</span>. If it evaluates to <span class="reservedWord">true</span>,
+the first block is executed. Otherwise,
+the second block is executed.</div>
+<h3>Looping with <span class="reservedWord">for in</span></h3>
+<p>The <span class="reservedWord">for in </span>statement repeats a block for each
+property an object has.</p>
+<p class="center"><img src="./Javascript - A Tutorial Introduction_files/loopyRun.png" width="253" height="235" alt="loopyRun"></p>
+<p class="center"><span class="figureNumber">Figure 1.10</span> loopy.html</p>
+<p><img src="./Javascript - A Tutorial Introduction_files/loopySource.png" width="515" height="161" alt="loopySource"></p>
+<div class="lineByLine">
+<p>5 For each property of the <span class="code">screen</span> object, the block
+will execute. The    <span class="code">property</span> variable will contain 
+the property name (which is a string).</p>
+<p>6  <span class="code">screen[property]</span> gets
+the property's value.</p>
+</div>
+<h3>Looping with <span class="reservedWord">while</span></h3>
+<p>The <span class="reservedWord">while</span> statement
+can be used to repeat a block of code as many times as desired.</p>
+<p class="center"><img src="./Javascript - A Tutorial Introduction_files/powersOf2Run.png" width="571" height="250" alt="powersOf2Run"></p>
+<p class="center"><span class="figureNumber">Figure 1.11</span> powersOf2.html</p>
+<p><img src="./Javascript - A Tutorial Introduction_files/powersOf2Source.png" width="563" height="224" alt="powersOf2Source"></p>
+<div class="lineByLine">
+<p>6 <span class="code">more</span> is initialized to the boolean value <span class="reservedWord">true</span>.</p>
+<p>7 The block will repeat as long as <span class="code">more</span> is <span class="reservedWord">true</span>.</p>
+<p>8 The value of <span class="code">result</span> is stored in the textbox.</p>
+<p>9 <span class="code">result</span> is multiplied by 2 and the product is stored back into the variable <span class="code">result</span>.</p>
+<p>10 The <span class="code">confirm</span> dialog box returns <span class="reservedWord">true</span> or <span class="reservedWord">false</span> depending
+on whether the user clicks OK or Cancel, respectively. This value is then stored
+in the <span class="code">more</span> variable. If <span class="code">more</span> becomes <span class="reservedWord">false</span>,
+the  iteration (i.e., repetition) stops.</p>
+</div>
+<h3>Fun&nbsp;with Functions</h3>
+<p>A very common use for a function is to handle  an event.</p>
+<p class="center"><img src="./Javascript - A Tutorial Introduction_files/invertRunA.png" width="253" height="357" alt="invertRunA">&nbsp;&nbsp;&nbsp;<img src="./Javascript - A Tutorial Introduction_files/invertRunB.png" width="253" height="357" alt="invertRunB"></p>
+<p class="center"><span class="figureNumber">Figure 1.12</span> invert.html</p>
+<p><img src="./Javascript - A Tutorial Introduction_files/invertSource.png" width="564" height="305" alt="invertSource"></p>
+<div class="lineByLine">
+<p>5 The   boolean variable <span class="code">inverted</span> keeps track of
+the&nbsp;orientation of the image.</p>
+<p>6 The <span class="code">invert</span> function switches the image with its counterpart.&nbsp;The
+<span class="code">obj</span> parameter receives the image object.</p>
+<p>7 The condition of this <span class="reservedWord">if</span> statement is the boolean variable <span class="code">inverted</span>.</p>
+<p>8 The image's <span class="code">src</span> property gets a new value.</p>
+<p>12 <span class="code">!</span> is the logical <span class="italic">not</span> operator.
+It flips the truth value of its operand. <span class="code">!</span><span class="reservedWord">true</span> is
+<span class="reservedWord">false</span>. <span class="code">!</span><span class="reservedWord">false</span> is <span class="reservedWord">true</span>.</p>
+<p>17 The <span class="code">onclick</span> event handler calls the<span class="code"> invert()</span> function,
+passing <span class="reservedWord">this</span> to
+the <span class="code">obj</span> parameter. <span class="reservedWord">this</span> always refers
+to the current object, in this case the image object.</p>
+</div>
+<h3>Review</h3>
+<p>In the last four examples we have seen how to control the program flow by selecting
+a block with <span class="reservedWord">if
+else</span>, repeating
+a block with either <span class="reservedWord">for in</span> or <span class="reservedWord">while</span>,&nbsp;and
+ calling a <span class="reservedWord">function</span>. Here are 
+the  new things we have seen demonstrated:</p>
+<ul>
+<li>The <span class="reservedWord">if else</span> statement selects one block or
+another for execution based on the truth value (<span class="reservedWord">true</span> or <span class="reservedWord">false</span>)
+of a condition. For example,<br>
+<span class="reservedWord">if</span><span class="code"> (likeCircus) { </span><span class="comment">// true block</span><span class="code"><br>
+&nbsp;&nbsp;
+runAwayWithCircus();<br>
+} </span><span class="reservedWord">else</span><span class="code"> { <span class="comment">//
+false block</span><br>
+&nbsp;&nbsp;
+goToSchool(); </span><span class="code"><br>
+}</span></li>
+<li>The <span class="code">screen</span> object contains information about the user's
+screen&nbsp;such as <span class="code">width</span>,
+<span class="code">height</span>, and <span class="code">colorDepth</span>.</li>
+<li>The <span class="reservedWord">for in</span> statement iterates through all the
+properties of an object. Each property has a name and a value. The block, called
+the <span class="italic">body</span> of the loop, gets repeated for each property.
+For example,<br>
+<span class="reservedWord">var</span><span class="code"> willie = {firstName: 'Emmett',
+lastName: 'Kelly', clownName: 'Weary Willie'};<br>
+</span><span class="reservedWord">for</span><span class="code"> (prop </span><span class="reservedWord">in</span><span class="code"> willie)
+{<br>
+&nbsp;&nbsp;&nbsp;alert(willie[prop]);<br>
+}</span><br>
+This snippet of code pops up three alerts. The first says <span class="outputText">Emmett</span>,
+the second <span class="outputText">Kelly</span>,
+and the third <span class="outputText">Weary Willie</span>. </li>
+<li>The <span class="reservedWord">while</span> statement loops as long as the condition
+is <span class="reservedWord">true</span>. For example,<br>
+<span class="reservedWord">while</span><span class="code"> (</span><span class="reservedWord">true</span><span class="code">)
+{ </span><span class="comment">// loop forever (probably not a good idea)</span><span class="code"><br>
+&nbsp;&nbsp;&nbsp;alert('Number 9'); <br>
+}
+</span></li>
+<li>The <span class="code">confirm()</span> method pops up a dialog box with <span class="outputText">OK</span> and <span class="outputText">Cancel</span> buttons.
+It returns
+a value of <span class="reservedWord">true</span> or <span class="reservedWord">false</span>.
+Guess which button returns what value.</li>
+<li>An event handler is often a function call. First we put the <span class="newTerm">function
+definition</span> in the <span class="code">&lt;head&gt;</span> element. For example,<br>
+<span class="reservedWord">var</span><span class="code"> enlargeImage = </span><span class="reservedWord">function</span><span class="code"> (img)
+{<br>
+&nbsp;&nbsp;&nbsp;img.width *= 2;<br>
+&nbsp;&nbsp;&nbsp;img.height *= 2;<br>
+} </span><span class="comment">// enlargeImage</span><br>
+Then we can make a <span class="newTerm">function call</span> from anywhere in the
+page. For example,<br>
+<span class="code">&lt;img onmouseover="enlargeImage(</span><span class="reservedWord">this</span><span class="code">);" </span>...<br>
+When the image is moused over the <span class="code">enlargeImage()</span> function
+is called. The argument <span class="reservedWord">this</span> is passed to the receiving
+parameter <span class="code">img</span>.
+Since the image to enlarge is passed to function,
+this function can be used to  enlarge <span class="italic">any</span> image in
+the page.</li>
+<li><span class="code">! </span>is the logical <span class="italic">not</span> operator.
+It flips the truth value of its operand. <br>
+</li>
+</ul>
+<p>It is now time for you to write some  code.</p>
+<h3>Exercises</h3>
+<p>Emulate the examples above to create solutions to the following problems.</p>
+<p>Remember to check your HTML with <a href="http://validator.w3.org/" target="_blank">http://validator.w3.org</a> and
+to use the Firefox <span class="menus">Tools | Error Console</span> to help you find
+bugs.</p>
+<ol start="9">
+<li>If an image's
+width is greater than the screen&nbsp;width,
+make the image 50% narrower and shorter. Otherwise, make it 25% wider and taller.</li>
+<li>Display both the name and  value of every property of the <span class="code">document</span> object.</li>
+<li>Start with   100 and repeatedly increase it by  5% of its current value
+as long as the result is less than 200. Display the final value in a textbox.</li>
+<li>When the user mouses over&nbsp;a link, call a function that  displays the
+values of its href
+and target attributes in textboxes.</li>
+</ol>
+<h2>The Big Event</h2>
+<p>We have already seen   examples of the <span class="code">onclick</span>, <span class="code">onmouseover</span>,
+and <span class="code">onblur</span> events.
+Other common events we'd like to handle are <span class="code">onmouseout</span>, <span class="code">onfocus</span>,
+and <span class="code">onload</span>.
+In the spirit of P. T. Barnum, here  are some examples with a circus
+theme.</p>
+<h3 class="code">onclick</h3>
+<p>Most elements can respond to the <span class="code">onclick</span> event. Here
+we click a button to show an image.</p>
+<p class="center"><img src="./Javascript - A Tutorial Introduction_files/lionTamerRunA.jpg" width="250" height="364" alt="lionTamerRunA">&nbsp;&nbsp;&nbsp;&nbsp;<img src="./Javascript - A Tutorial Introduction_files/lionTamerRunB.jpg" width="270" height="364" alt="lionTamerRunB"></p>
+<p class="center"><span class="figureNumber">Figure 1.13</span> lionTamer.html</p>
+<p><img src="./Javascript - A Tutorial Introduction_files/lionTamerSource.png" width="834" height="112" alt="lionTamerSource"></p>
+<div class="lineByLine">
+<p>4 When the <span class="outputText">Sit</span> button is
+clicked the JavaScript code that is the value of its <span class="code">onlick</span> attribute
+runs loading a picture of Felix sitting into the image object's <span class="code">src</span> property.
+Since the code is fairly brief, we supply it inline in the <span class="code">input</span> element.</p>
+<p>5 Similarly, when the <span class="outputText">Stand</span> button is clicked,
+its  <span class="code">onlick</span> event handler
+runs causing  a picture of Felix standing to be loaded
+into the image's <span class="code">src</span> property.</p>
+</div>
+<h3><span class="code">onmouseover</span> and <span class="code">onmouseout</span></h3>
+<p>When the&nbsp;user moves the mouse off an element we often want to undo the <span class="code">mouseover</span> effect.
+We can do that by handling the <span class="code">onmouseout</span> event. Most elements
+support this pair of event attributes.</p>
+<p class="center"><img src="./Javascript - A Tutorial Introduction_files/elephantsRunA.png" width="316" height="267" alt="elephantsRunA">&nbsp;&nbsp;&nbsp;&nbsp;<img src="./Javascript - A Tutorial Introduction_files/elephantsRunB.png" width="316" height="267" alt="elephantsRunB"></p>
+<p class="center"><span class="figureNumber">Figure 1.14</span> elephants.html</p>
+<p><img src="./Javascript - A Tutorial Introduction_files/elephantsSource.png" width="777" height="113" alt="elephantsSource"></p>
+<div class="lineByLine">
+<p>4 Mousing over the image causes the  picture of the elephant facing right 
+to appear.</p>
+<p>5 Moving the mouse off the image causes the picture of the elephant facing left
+to reappear.</p>
+</div>
+<h3><span class="code">onfocus</span>, <span class="code">onblur</span></h3>
+<p>Supported by most elements, this pair of event attributes allows us to take action
+when an element  gains or loses
+the focus.</p>
+<p class="center">images TBS</p>
+<p class="center"><span class="figureNumber">Figure 1.15</span> ringMaster.html</p>
+<p><img src="./Javascript - A Tutorial Introduction_files/ringmasterSource.png" width="759" height="144" alt="ringmasterSource"></p>
+<div class="lineByLine">
+<p>5 When the <span class="outputText">Text 1</span> textbox gets the focus the ringmaster gets the
+spotlight.</p>
+<p>6 When the <span class="outputText">Text 1</span> textbox loses the focus the ringmaster loses the
+spotlight.</p>
+</div>
+<h3><span class="code">onload</span></h3>
+<p>This event applies to  the body and image elements only. It occurs when the page
+or image has finished loading.</p>
+<p class="center"><img src="./Javascript - A Tutorial Introduction_files/flyingWallendasRunA.png" width="358" height="291" alt="flyingWallendasRunA">&nbsp;&nbsp;&nbsp;&nbsp;<img src="./Javascript - A Tutorial Introduction_files/flyingWallendasRunB.png" width="370" height="295" alt="flyingWallendasRunB"></p>
+<p class="center"><span class="figureNumber">Figure 1.16</span> flyingWallendas.html</p>
+<p><img src="./Javascript - A Tutorial Introduction_files/flyingWallendasSource.png" width="738" height="208" alt="flyingWallendasSource"></p>
+<div class="lineByLine">
+<p>5 The<span class="code"> loaded()</span> function has one parameter, <span class="code">str</span>, that
+gets assigned a string 
+that it inserts into the alert.</p>
+<p>6 The <span class="code">str</span> parameter is glued to the string <span class="code">'
+has finished loading.'</span>  and passed
+to the <span class="code">alert()</span>&nbsp;function.</p>
+<p>10 When the&nbsp;page has finished loading the <span class="code">loaded()</span> function
+is called passing to it the string <span class="code">'The body'</span>.</p>
+<p>11 When the&nbsp;image has finished loading the <span class="code">loaded()</span> function
+is called passing to it the string <span class="code">'The Flying Wallendas image'</span>.
+Note that the image finishes loading before the page finishes loading. This clearly
+shows that the order in which statements appear in the source code is not necessarily
+the order in which they will be executed. In particular,   functions and event
+handlers don't run until they are called.</p>
+</div>
+<h3>Review</h3>
+<p>In this  section  we introduced three more&nbsp;event attributes.</p>
+<ul>
+<li>We have now seen examples of six event attributes:  <span class="code">onclick</span>, <span class="code">onmouseover</span>,
+<span class="code">onmouseout</span>, <span class="code">onfocus</span>, <span class="code">onblur</span>,
+ and <span class="code">onload</span>.</li>
+<li>An element fires an  <span class="code">onmouseout</span> event  when
+the mouse  moves off of it.</li>
+<li>An element fires an <span class="code">onfocus</span> event when it gets the
+focus.</li>
+<li>The <span class="code">&lt;body&gt;</span> element fires an <span class="code">onload</span> event
+when the page has finished loading.</li>
+<li>An <span class="code">&lt;img&gt;</span> element fires an <span class="code">onload</span> event
+when the image has finished loading.</li>
+<li>If the  event handling code can easily fit  on one line, you can put it inline
+as the attribute value.</li>
+<li>If
+the event handler is more than one line, you must use a function call.</li>
+<li>Whenever a significant amount of  code is needed in more than one place, put
+the code in a function in the <span class="code">&lt;head&gt;</span> and call the
+function when needed. This is known as <span class="italic">centralized maintenance</span> and <span class="italic">code
+reuse</span>&nbsp;- both very desirable features. </li>
+<li>We can pass  a value, such as an
+image  or a string, to each parameter of the function&nbsp;for it to use. This makes
+the function more
+flexible and powerful.</li>
+<li>Functions and event handlers run when called. This has nothing to do with the
+order in which they appear in the source code. Put function  definitions
+in the <span class="code">&lt;head&gt;</span> element. An event handler is the 
+value of an event attribute.</li>
+</ul>
+<h3>Exercises</h3>
+<p>You can write scripts for these exercises by closely imitating  the examples.</p>
+<p>Remember to check your HTML with <a href="http://validator.w3.org/" target="_blank">http://validator.w3.org</a> and
+to use the Firefox <span class="menus">Tools | Error Console</span> to help you find
+bugs.</p>
+<ol start="13">
+<li>TBS</li>
+<li>TBS</li>
+<li>TBS</li>
+<li>TBS</li>
+</ol>
+<h2>Alley OOP</h2>
+<p>JavaScript is an Object-Oriented Programming (OOP) language. We have seen many
+objects already in the previous examples: <span class="code">document</span>, <span class="code">screen</span>,
+image objects, textbox objects, arrays, functions, and object literals. Objects have properties such as <span class="code">write</span>,
+<span class="code">width</span>, <span class="code">height</span>, <span class="code">value</span>, <span class="code">getElementById</span>, <span class="code">src</span>,
+and <span class="code">colorDepth</span>. If the value of a  property is a function,
+such as is the case for the <span class="code">document</span> object's <span class="code">write</span> and <span class="code">getElementById</span> properties,
+we call it a method. </p>
+<p>The  objects we will deal with in this book fall into four groups:
+JavaScript objects, browser objects, HTML DOM objects, and programmer-defined objects.&nbsp;Here
+is an  example from each group.</p>
+<h3>JavaScript Objects</h3>
+<p class="center">images TBS</p>
+<p class="center"><span class="figureNumber">Figure 1.17</span> Math.html</p>
+<pre>// some useful Math methods
+var r = Math.random(); // pseudo-random number between 0 and 1
+var x = Math.round(12.34); // 12
+var y = Math.sqrt(25); // 5</pre>
+<div class="lineByLine">Content for class "lineByLine" Goes Here</div>
+<h3>Browser Objects</h3>
+<p class="center">images TBS</p>
+<p class="center"><span class="figureNumber">Figure 1.18</span> navigator.html</p>
+<pre>// some useful navigator properties
+var browser = navigator.appName;
+var version = navigator.appVersion;
+var client = navigator.userAgent;</pre>
+<div class="lineByLine">Content for class "lineByLine" Goes Here</div>
+<h3>HTML DOM Objects</h3>
+<p class="center">images TBS</p>
+<p class="center"><span class="figureNumber">Figure 1.19</span> input.html</p>
+<p>source</p>
+<div class="lineByLine">Content for class "lineByLine" Goes Here</div>
+<h3>Programmer-Defined Objects</h3>
+<p class="center">images TBS</p>
+<p class="center"><span class="figureNumber">Figure 1.20</span> contact.html</p>
+<pre>var contact = {
+   fullname: 'Charles Brown',
+   nickname: 'Charlie Brown',
+   email: 'chuck@peanuts.com',
+   phone: '000.555.1234',
+   address: 'Minneapolis, Minnesota',
+   birthday: '10/02/1950',
+   URL: 'http://peanuts.com'
+};</pre>
+<div class="lineByLine">Content for class "lineByLine" Goes Here</div>
+<h3>Review</h3>
+<p>&nbsp;</p>
+<h3>Exercises</h3>
+<p>&nbsp;</p>
+<p class="center">© 2011 James K. Geddes, Jr. All Rights Reserved</p>
+
+
+</body><span class="gr__tooltip"><span class="gr__tooltip-content"></span><i class="gr__tooltip-logo"></i><span class="gr__triangle"></span></span></html>

@@ -1,0 +1,754 @@
+
+<!-- saved from url=(0055)http://kengeddes.com/cs85/lectureNotes/MySQLBasics.html -->
+<html xmlns="http://www.w3.org/TR/REC-html40"><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>CS 85&nbsp; PHP Programming - MySQL Basics</title>
+<link rel="stylesheet" type="text/css" href="https://dl.dropbox.com/s/p6zt773weewbvzs/styles.css?dl=0">
+<style>
+<!--
+.style1 {
+	font-family: Arial, Helvetica, sans-serif
+}
+.style2 {
+	color: #0000FF
+}
+.style3 {
+	font-family: "Courier New", Courier, monospace
+}
+.style5 {
+	color: #FF0000;
+	font-weight: bold;
+}
+-->
+</style>
+</head>
+<body lang="EN-US">
+<h1 align="center" style="text-align:center;text-autospace:none">MySQL Basics</h1>
+   <p>Here is an introduction to MySQL including installation suggestions, overall client/server architecture, related commands, MySQL commands, examples, etc. </p>
+   <p>In the latter part of our course, we will begin our study of the MySQL Database Management System (DBMS). Then we will write PHP scripts that connect to a MySQL server. Thus, we will be creating <span class="italic">3-tier web apps</span> consisting of the following three tiers:</p>
+<ol>
+<li> front end - HTML and CSS running in the browser</li>
+<li>middle tier - PHP scripts running on the web server</li>
+<li>information tier - SQL statements executed by the MySQL server</li>
+</ol>
+<h2>MySQL Servers</h2>
+<p>In this course, you will be using two different MySQL servers:</p>
+<ol>
+<li>The one on your machine:</li>
+<ul>
+<li>It is usually easiest to create and test software on your local machine. You create and manipulate MySQL databases using the MySQL system installed locally. This will be the   MySQL  that is part of the LAMP stack (such as WampServer)&nbsp;you installed on your machine.</li>
+</ul>
+<li>The one on ciswebs.smc.edu:</li>
+<ul>
+<li>A  MySQL server is installed and  running on our ciswebs&nbsp;host machine (CLASSWEBS). If you run a  PHP script  on ciswebs and  it connects to the MySQL server on 'localhost', it connects to this MySQL server.</li>
+<li><span class="bold">Note:</span> You do not have permission to <span class="code">CREATE DATABASE</span> on ciswebs. For your work in this course, you will use databases that have already been created.</li>
+</ul>
+</ol>
+<h2 style="text-autospace:none">Installing  MySQL  on Windows </h2>
+<p style="text-autospace:none">Use one of the following two methods to install MySQL on your local machine.</p>
+   <h3 align="left">Method 1. Install  WampServer 2.0 (really easy/recommended) </h3>
+   <p style="text-autospace:none">By far the easiest way to get MySQL installed on your Windows computer is to install the WampServer. See <a href="http://kengeddes.com/cs85/install%20a%20LAMP%20stack.html">Install a LAMP stack</a> for more information. </p>
+   <h3 align="left">Method 2. Install MySQL (much harder) </h3>
+   <p align="left"><strong>Note:</strong> By default, a MySQL server "listens" for requests on port 3306. If you want to run both the  WampServer and a second MySQL server at the same time (probably not a good idea), be sure to configure them with different port numbers.  For more info, see the <span style="text-autospace:none"><a href="http://kengeddes.com/cs85/install%20a%20LAMP%20stack.html">Install a LAMP stack</a></span> page. </p>
+   <p style="text-autospace:none">You can download, install, and configure MySQL on your system for free. Here is how the process went for me on  02/05/13:</p>
+<ol>
+<li>Click on <a href="http://www.mysql.com/" target="mysql">www.mysql.com</a>.</li>
+<li>Click  the <span class="bold">Downloads (GA)</span> tab.</li>
+<li>Click <span class="bold">MySQL Community Server</span>.</li>
+<li>Select the <span class="bold">Windows</span> platform.</li>
+<li>On the <span class="bold">Windows (x86, 32-bit), MSI Installer</span> line, click <span class="bold">Download</span>.</li>
+<li>Skip the  login prompts and  click <span class="bold">No thanks, just start my download</span>.</li>
+<li>Save the <span class="bold">mysql-5.5.30-win32.msi</span>&nbsp;file on your system. When the download is complete, the <span class="bold">MySQL Server 5.5 Setup  Wizard</span>&nbsp;should start automatically:
+<ol>
+<li>When prompted for <span class="bold">Setup Type</span>, select <span class="bold">Complete</span>.</li>
+</ol>
+</li>
+         <li>When the MySQL Server 5.5 Setup has finished, the  <span class="bold">MySQL Instance Configuration Wizard</span> should run:
+<ol>
+<li>When prompted for configuration type:
+<ul>
+<li>If you are upgrading an existing installation of MySQL, select <span class="bold">Detailed Configuration</span>. </li>
+<li>If this is a new installation, select <span class="bold">Standard Configuration</span>.</li>
+</ul>
+</li>
+<li>Server type: Developer Machine</li>
+<li>Database usage: Multifunctional Database</li>
+<li>InnoDB Tablespace Settings: use the defaults</li>
+<li>Approximate number of concurrent connections to the server: Manual Setting: 5</li>
+<li>Networking options: Enable TCP/IP Networking; Port Number: 3306 </li>
+<li>Server SQL mode: Enable Strict Mode</li>
+<li>Default character set: Standard Character Set</li>
+<li>Windows options: Install As Windows Service
+<ol>
+<li>Service Name: MySQL5.5</li>
+<li>Uncheck the <span class="bold">Launch the MySQL Server automatically</span> box.</li>
+</ol>
+</li>
+<li>Check the <span class="bold">Include Bin Directory in Windows PATH</span>&nbsp;box.</li>
+<li>Check the <span class="bold">Modify Security Settings</span> box.
+<ol>
+<li>Set a root password.</li>
+<li>Uncheck the <span class="bold">Enable root access from remote machines</span>.</li>
+</ol>
+</li>
+<li>Uncheck the <span class="bold">Create an Anonymous Account</span> box.</li>
+</ol>
+</li>
+   </ol>
+   <h4>Adding the mysql\bin folder to the path</h4>
+   <p>The <strong>Setup Wizard for MySQL 5.5</strong> will set the path for you automatically. Or, you can do this manually as follows: </p>
+   <p>Click <strong>Start</strong>, click <strong>Control Panel</strong>, double-click <strong>System</strong>, click the <strong>Advanced</strong> tab, click the <strong>Environment Variables</strong> button. Then, in the <strong>System variables</strong> area, click <strong>Path. </strong>Click the <strong>Edit</strong> button. Go to the end of the path string and  put a semicolon (<strong>;</strong>) followed by the path to your <span class="style3">mysql\bin\</span> folder (for example <span class="style3">c:\Program Files\MySQL\MySQL Server 5.5\bin</span>)</p>
+   <h2 style="text-autospace:none">For MAMP Users </h2>
+   <p>Much of the examples in the book drop you into a windows CMD prompt.     If you are working on a non-windows machine, this will do the same:<br>
+  <br>
+     To use the MySQL command line with <span style="text-decoration:underline; "><strong>MAMP</strong></span> or MAMP PRO, perform the following steps:<br>
+  <br>
+     Start MAMP or MAMP PRO<br>
+  <br>
+     Start the server<br>
+     Open Terminal (Applications -&gt; Utilities)<br>
+     Type in: (one line)<br>
+  <br>
+  <strong>/Applications/MAMP/Library/bin/mysql --host=localhost -uroot -proot</strong><br>
+  &nbsp;<br>
+     Now you can use the MySQL command line.<br>
+  <br>
+For example, to show all your databases: &nbsp; <strong>show databases;</strong></p>
+   <p>     mysql&gt; show databases;<br>
+     +--------------------+<br>
+     | Database &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; |<br>
+     +--------------------+<br>
+     | information_schema |<br>
+     | mysql &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;|<br>
+     | performance_schema |<br>
+     | <strong>test01</strong> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; |<br>
+     +--------------------+<br>
+     4 rows in set (0.00 sec)   </p>
+   <h2 class="870565416-31102003" style="text-autospace:none"><font face="Arial">Client
+      / Server Architecture of MySQL</font></h2>
+   <p style="text-autospace:none"><strong>Note</strong>:  If you install the WampServer (recommended), you can easily do many of the tasks listed below using the WampServer menu. So, use the menu and</p>
+   <blockquote>
+      <p style="text-autospace:none"><em>Work smarter, not harder.</em> - Dan Hurley </p>
+   </blockquote>
+   <p class="870565416-31102003" style="text-autospace:none"><font face="Arial">MySQL
+      has a client/server architecture. Thus, it consists of two parts:<br>
+      1) a server/daemon (mysqld.exe), <b><u>and</u></b><br>
+      2) a client/monitor (mysql.exe)</font></p>
+   <p style="text-autospace:none"><b><span style="font-size:16.0pt;font-family:Arial">The
+      MySQL server/daemon</span></b></p>
+   <p class="870565416-31102003" style="text-autospace:none"><font face="Arial">The
+      MySQL server can be started and stopped in either of two ways:<br>
+      1) You can run the server as an OS service, <u><b>or</b></u><br>
+      2) You can start and stop the server from the Windows Command Prompt.</font></p>
+   <h3 style="text-autospace:none">Running the MySQL server as
+      a service</h3>
+   <h4 style="text-autospace:none"><u><span style="font-size:10.0pt;font-family:Arial">To
+      install the MySQL server as a service:</span></u></h4>
+   <p style="text-autospace:none">1. Start a
+      Windows Command Prompt.</p>
+   <p style="text-autospace:none"><span style="font-size:10.0pt;font-family:Arial">2. </span><span style="font-size:10.0pt;"><font face="Courier New">mysqld -install</font></span></p>
+   <h4 style="text-autospace:none"><u><span style="font-size:10.0pt;font-family:Arial">To
+      start the MySQL service:</span></u></h4>
+   <p style="text-autospace:none">1. Open
+      the Services window (Control Panel -&gt; Administrative Tools -&gt;
+      Services).</p>
+   <p style="text-autospace:none">2. Select <b>MySql</b>.</p>
+   <p style="text-autospace:none">3. Click
+      the <b>Start Service </b>button on the toolbar at the top of the window.</p>
+   <h4 style="text-autospace:none"><u><span style="font-size:10.0pt;font-family:Arial">To stop
+      the MySQL service:</span></u></h4>
+   <p style="text-autospace:none">1. Open
+      the Services window (Control Panel -&gt; Administrative Tools -&gt;
+      Services).</p>
+   <p style="text-autospace:none">2. Select <b>MySql</b>.</p>
+   <p style="text-autospace:none">3. Click
+      the <b>Stop Service </b>button on the toolbar at the top of the window.</p>
+   <h4 style="text-autospace:none"><u><span style="font-size:10.0pt;font-family:Arial">To
+      remove the MySQL service:</span></u></h4>
+   <p style="text-autospace:none">1. Stop
+      the MySQL service (see above).</p>
+   <p style="text-autospace:none">2. At the
+      Windows Command Prompt, enter</p>
+   <p style="text-autospace:none"><span style="font-size:10.0pt;font-family:Arial">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="font-size:10.0pt;"><font face="Courier New">mysqld
+      --remove</font></span></p>
+   <h3 style="text-autospace:none">Starting and stopping the
+      MySQL server from the command prompt</h3>
+   <h4 style="text-autospace:none"><u><span style="font-size:10.0pt;font-family:Arial">To
+      start the MySQL server:</span></u></h4>
+   <p style="text-autospace:none">At the
+      Windows Command Prompt, enter<u></u></p>
+   <p style="text-autospace:none"><span style="font-size:10.0pt;font-family:Arial">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="font-size:10.0pt;"><font face="Courier New">mysqld</font></span></p>
+   <h4 style="text-autospace:none"><u><span style="font-size:10.0pt;font-family:Arial">To stop
+      the MySQL server:</span></u></h4>
+   <p style="text-autospace:none">I will
+      assume here that a password has been set for the root user (see below).</p>
+   <p style="text-autospace:none">1. Start
+      another Command Prompt and enter<u></u></p>
+   <p style="text-autospace:none"><span style="font-size:10.0pt;font-family:Arial">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="font-size:10.0pt;"><font face="Courier New">mysqladmin
+      -u root shutdown -p</font></span></p>
+   <p style="text-autospace:none">2. At the <b>Enter
+      password: </b>prompt, enter the password for the root user</p>
+   <h2 style="text-autospace:none"><span style="font-family:Arial">Miscellaneous</span><span style="font-size:14.0pt;font-family:Arial">&nbsp; </span></h2>
+   <h4 style="text-autospace:none"><u><span style="font-size:10.0pt;font-family:Arial">To find
+      the IP address of your computer:</span></u></h4>
+   <p style="text-autospace:none">At the
+      Windows Command Prompt, enter<u></u></p>
+   <p style="text-autospace:none"><span style="font-size:10.0pt;font-family:Arial">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-size:10.0pt;"><font face="Courier New"> ipconfig /all</font></span></p>
+   <h4 style="text-autospace:none"><u><span style="font-size:10.0pt;font-family:Arial">To get
+      help on the ipconfig command:</span></u></h4>
+   <p style="text-autospace:none">At the
+      Windows Command Prompt, enter<u></u></p>
+   <p style="text-autospace:none"><span style="font-size:10.0pt;font-family:Arial">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-size:10.0pt;"><font face="Courier New"> ipconfig /?</font></span></p>
+   <h4 style="text-autospace:none"><u><span style="font-size:10.0pt;font-family:Arial">To get
+      help on the Command Prompt:</span></u></h4>
+   <p style="text-autospace:none">At the
+      Windows Command Prompt, enter<u></u></p>
+   <p style="text-autospace:none"><span style="font-size:10.0pt;font-family:Arial">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-size:10.0pt;"><font face="Courier New"> help</font></span></p>
+   <h4 style="text-autospace:none"><u><span style="font-size:10.0pt;font-family:Arial">To
+      start a GUI version of the MySQL Administrator:</span></u></h4>
+   <p style="text-autospace:none">1.At the
+      Windows Command Prompt, enter<u></u></p>
+   <p style="text-autospace:none"><span style="font-size:10.0pt;font-family:Arial">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-size:10.0pt;"><font face="Courier New"> winmysqladmin</font></span></p>
+   <p style="text-autospace:none">2. Fill in
+      the <b>Quick Setup</b> form and click <b>OK</b>.</p>
+   <p style="text-autospace:none">3. Click
+      on the traffic signal icon in the system tray on the task bar for more
+      options.</p>
+   <h2 style="text-autospace:none"><a name="MySQLmonitor"></a>The MySQL client/monitor</h2>
+   <p class="870565416-31102003" style="text-autospace:none"><font face="Arial">A MySQL
+      client application (aka the MySQL monitor) with a command line interface can
+      be started from a Windows Command Prompt.</font></p>
+   <p style="text-autospace:none"> Open a Command Prompt window in Windows 8 as follows:<br> 
+     Apps by name &gt; Windows System &gt; Command Prompt
+</p>
+   <p style="text-autospace:none">You will now see the Windows command prompt. This is a  <em>Command-Line Interface</em> (CLI). When working with a CLI,  enter the command,  then press the <span class="fixed">Enter</span> key to run the command.<br>
+   <br>
+      From the directory where the mysql.exe file is (for example, C:\wamp2.5\bin\mysql\mysql5.6.17\bin)  connect to the MySQL server by entering the following at the Command Prompt.</p>
+   <pre style="text-autospace:none">mysql -h localhost -u root -p
+</pre>
+ Press <span class="fixed">Enter</span> the the password prompt.
+   <p style="text-autospace:none">You should now see the <strong>mysql&gt;</strong> prompt.
+      You can  enter MySQL commands and SQL statements at the <strong>mysql&gt;</strong> prompt.</p>
+   <p style="text-autospace:none"><u><span style="font-size:10.0pt;font-family:Arial"><strong>To get
+      MySQL client help:</strong></span></u>   </p>
+   <h4 style="text-autospace:none"><u><span style="font-size:10.0pt;font-family:Arial">To
+      start the MySQL client program:</span></u></h4>
+   <p style="text-autospace:none">If you
+      have set the PATH environment variable (see above), you can start the monitor
+      at the Windows Command Prompt as follows. Enter<u></u></p>
+   <p style="text-autospace:none"><span style="font-size:10.0pt;font-family:Arial">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-size:10.0pt;"><font face="Courier New"> mysql</font></span></p>
+   <p style="text-autospace:none">This will
+      start the MySQL client and connect to the MySQL server. Since you have not
+      specified the -h option, the client will connect to the MySQL server running
+      on the localhost, i.e., the same computer as the client. Since you have not
+      specified the -u option, the client will connect as the "anonymous"
+      user. This is insecure. You should delete the anonymous user.</p>
+   <h4 style="text-autospace:none"><u><span style="font-size:10.0pt;font-family:Arial">To
+      delete the anonymous user:</span></u></h4>
+   <p style="text-autospace:none"><span style="font-size:10.0pt;font-family:Arial">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="font-size:10.0pt;"><font face="Courier New">use mysql;</font></span></p>
+   <p style="text-autospace:none"><font face="Courier New">&nbsp;&nbsp;&nbsp;
+      delete from user where User = '';&nbsp; </font><span style="font-family: Arial">Those are two adjacent apostrophes</span></p>
+   <p style="text-autospace:none"><font face="Courier New">&nbsp;&nbsp;&nbsp;
+      quit;</font></p>
+   <p style="text-autospace:none"><font face="Courier New">&nbsp;&nbsp;&nbsp;
+      mysqladmin
+      reload&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font><span style="font-family: Arial">This reloads the grant tables into
+      the MySQL server</span></p>
+   <h4 style="text-autospace:none"><u><span style="font-size:10.0pt;font-family:Arial">To
+      connect to MySQL as the root user:</span></u></h4>
+   <p style="text-autospace:none">At the
+      Windows Command Prompt, enter<u></u></p>
+   <p style="text-autospace:none"><span style="font-size:10.0pt;font-family:Arial">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-size:10.0pt;"><font face="Courier New"> mysql -u root</font></span></p>
+   <p style="text-autospace:none">This
+      connects as the "root" user. The root user has full administrative
+      privileges. At this point, no password has been set for the root user. This
+      is insecure. You should set a password for the root user.</p>
+   <h4 style="text-autospace:none"><u><span style="font-size:10.0pt;font-family:Arial">To set
+      a password for the root user:</span></u></h4>
+   <p style="text-autospace:none">1. First
+      exit from the MySQL client program. At the mysql prompt, enter</p>
+   <p style="text-autospace:none"><span style="font-size:10.0pt;font-family:Arial">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="font-size:10.0pt;"><font face="Courier New">quit;</font></span></p>
+   <p style="text-autospace:none">2. At the
+      Windows Command Prompt, enter</p>
+   <p style="text-autospace:none"><span style="font-size:10.0pt;font-family:Arial">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span style="font-size:10.0pt;"><font face="Courier New">mysqladmin
+      -u root password <i>password_of_your_choice</i></font></span></p>
+   <h4 style="text-autospace:none"><u><span style="font-size:10.0pt;font-family:Arial">To
+      create user cs85 with full privileges and a password:</span></u></h4>
+   <p style="text-autospace:none">The MySQL
+      grant command allows you to create users, set privileges, and set passwords.</p>
+   <p style="text-autospace:none">1. First
+      connect as the root user. At the Windows Command Prompt, enter</p>
+   <p style="text-autospace:none"><span style="font-size:10.0pt;font-family:Arial">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><font face="Courier New"><span style="font-size: 10.0pt">&nbsp; mysql -u root -p</span></font></p>
+   <p style="text-autospace:none">2. At the <b>Enter
+      password: </b>prompt, enter the password for the root user</p>
+   <p style="text-autospace:none">3. At the
+      mysql prompt, enter</p>
+   <p style="text-autospace:none"><font face="Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      grant all on *.* to cs85 identified by '<i>password_for_cs85</i>' with grant
+      option;</font></p>
+   <h4 style="text-autospace:none"><u><span style="font-size:10.0pt;font-family:Arial">To get
+      MySQL client help:</span></u></h4>
+   <p style="text-autospace:none"><font face="Courier New">mysql&gt;
+      \h</font></p>
+   <p style="text-autospace:none"><font face="Courier New">For
+      the complete MySQL Manual online visit:</font></p>
+   <p style="text-autospace:none"><font face="Courier New">&nbsp;&nbsp;
+      http://www.mysql.com/documentation</font></p>
+   <p style="text-autospace:none"><font face="Courier New">For
+      info on technical support from MySQL developers visit:</font></p>
+   <p style="text-autospace:none"><font face="Courier New">&nbsp;&nbsp;
+      http://www.mysql.com/support</font></p>
+   <p style="text-autospace:none"><font face="Courier New">For
+      info on MySQL books, utilities, consultants, etc. visit:</font></p>
+   <p style="text-autospace:none"><font face="Courier New">&nbsp;&nbsp;
+      http://www.mysql.com/portal</font></p>
+   <p style="text-autospace:none"><font face="Courier New">List
+      of all MySQL commands:</font></p>
+   <p style="text-autospace:none"><font face="Courier New">&nbsp;&nbsp;
+      (Commands must appear first on line and end with ';')</font></p>
+   <p style="text-autospace:none"><font face="Courier New">help&nbsp;&nbsp;&nbsp;
+      (\h)&nbsp;&nbsp;&nbsp; Display this help.</font></p>
+   <p style="text-autospace:none"><font face="Courier New">?&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      (\?)&nbsp;&nbsp;&nbsp; Synonym for `help'.</font></p>
+   <p style="text-autospace:none"><font face="Courier New">clear&nbsp;&nbsp;
+      (\c)&nbsp;&nbsp;&nbsp; Clear command.</font></p>
+   <p style="text-autospace:none"><font face="Courier New">connect
+      (\r)&nbsp;&nbsp;&nbsp; Reconnect to the server. Optional arguments a</font></p>
+   <p style="text-autospace:none"><font face="Courier New">ego&nbsp;&nbsp;&nbsp;&nbsp;
+      (\G)&nbsp;&nbsp;&nbsp; Send command to mysql server, display result</font></p>
+   <p style="text-autospace:none"><font face="Courier New">exit&nbsp;&nbsp;&nbsp;
+      (\q)&nbsp;&nbsp;&nbsp; Exit mysql. Same as quit.</font></p>
+   <p style="text-autospace:none"><font face="Courier New">go&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      (\g)&nbsp;&nbsp;&nbsp; Send command to mysql server.</font></p>
+   <p style="text-autospace:none"><font face="Courier New">notee&nbsp;&nbsp;
+      (\t)&nbsp;&nbsp;&nbsp; Don't write into outfile.</font></p>
+   <p style="text-autospace:none"><font face="Courier New">print&nbsp;&nbsp;
+      (\p)&nbsp;&nbsp;&nbsp; Print current command.</font></p>
+   <p style="text-autospace:none"><font face="Courier New">prompt&nbsp;
+      (\R)&nbsp;&nbsp;&nbsp; Change your mysql prompt.</font></p>
+   <p style="text-autospace:none"><font face="Courier New">quit&nbsp;&nbsp;&nbsp;
+      (\q)&nbsp;&nbsp;&nbsp; Quit mysql.</font></p>
+   <p style="text-autospace:none"><font face="Courier New">rehash&nbsp;
+      (\#)&nbsp;&nbsp;&nbsp; Rebuild completion hash.</font></p>
+   <p style="text-autospace:none"><font face="Courier New">source&nbsp;
+      (\.)&nbsp;&nbsp;&nbsp; Execute a SQL script file. Takes a file name</font></p>
+   <p style="text-autospace:none"><font face="Courier New">status&nbsp;
+      (\s)&nbsp;&nbsp;&nbsp; Get status information from the server.</font></p>
+   <p style="text-autospace:none"><font face="Courier New">tee&nbsp;&nbsp;&nbsp;&nbsp;
+      (\T)&nbsp;&nbsp;&nbsp; Set outfile [to_outfile]. Append everything i</font></p>
+   <p style="text-autospace:none"><font face="Courier New">use&nbsp;&nbsp;&nbsp;&nbsp;
+      (\u)&nbsp;&nbsp;&nbsp; Use another database. Takes database name as</font></p>
+   <p style="text-autospace:none"><font face="Courier New">Connection
+      id: 453&nbsp; (Can be used with mysqladmin kill)</font></p>
+   <h2 style="text-autospace:none">Some common MySQL and SQL commands</h2>
+   <h4 style="text-autospace:none"><u>To list the databases available to the current user:</u></h4>
+   <p style="text-autospace:none"><font face="Courier New">mysql&gt;
+      show databases;</font></p>
+   <p style="text-autospace:none"><font face="Courier New">+----------+</font></p>
+   <p style="text-autospace:none"><font face="Courier New">|
+      Database |</font></p>
+   <p style="text-autospace:none"><font face="Courier New">+----------+</font></p>
+   <p style="text-autospace:none"><font face="Courier New">|
+      mysql&nbsp;&nbsp;&nbsp; |</font></p>
+   <p style="text-autospace:none"><font face="Courier New">|
+      test&nbsp;&nbsp;&nbsp;&nbsp; |</font></p>
+   <p style="text-autospace:none"><font face="Courier New">+----------+</font></p>
+   <p style="text-autospace:none"><font face="Courier New">2
+      rows in set (0.00 sec)</font></p>
+   <h4 style="text-autospace:none"><u>To create a database:</u></h4>
+   <p style="text-autospace:none"><font face="Courier New"><span style="font-size: 10.0pt">mysql&gt;
+      create database </span></font><font face="Courier New"><span style="font-size: 10.0pt">books</span></font><font face="Courier New"><span style="font-size: 10.0pt">;<br>
+      Query OK, 1 row affected (0.02 sec)</span></font></p>
+   <h4 style="text-autospace:none"><u>To select a database:</u></h4>
+   <p style="text-autospace:none"><font face="Courier New"><span style="font-size: 10.0pt">mysql&gt;
+      use books;<br>
+      </span></font><font face="Courier New"><span style="font-size: 10.0pt">Database
+      changed</span></font></p>
+   <h4 style="  text-autospace:none; font-family: Arial, Helvetica, sans-serif;">To use the MySQL source command:</h4>
+   <p style="  text-autospace:none; font-family: Arial, Helvetica, sans-serif;">The MySQL <strong>source</strong> command allows you to run a SQL <em>script</em> file, a text file you can create with a text editor such as Notepad that contains SQL statements. In the next example, we use a SQL script file called <strong>bookorama.sql</strong> that creates several tables for the <strong>books</strong> database that you just created and selected.</p>
+   <p style="  text-autospace:none; font-family: Arial, Helvetica, sans-serif;">First, you need to obtain a copy of the <strong>bookorama.sql</strong> file. Click the following link to view the file:<br>
+      <a href="http://ciswebs.smc.edu/cs85/geddes_james/PHPandMySQL3e-examples/09/bookorama.sql.txt" target="_blank">http://ciswebs.smc.edu/cs85/geddes_james/PHPandMySQL3e-examples/09/bookorama.sql.txt</a></p>
+   <p style="  text-autospace:none; font-family: Arial, Helvetica, sans-serif;">Save the file on your system as <strong>bookorama.sql</strong> in a folder such as <strong>C:\Welling</strong></p>
+   <p style="  text-autospace:none; font-family: Arial, Helvetica, sans-serif;">Now, you can input the <strong>bookorama.sql</strong> file into MySQL using the <strong>source</strong> command as follows: </p>
+   <p style="text-autospace:none"> <font face="Courier New"><span style="font-size: 10.0pt">Note:
+      In the source command, you must use forward slashes (/) in the path.</span></font> (BTW, it took me an hour or two to figure that out the first time I tried using this command.) </p>
+   <p style="text-autospace:none"><span style="font-size:10.0pt;"><font face="Courier New">mysql&gt; source C:/Welling/bookorama.sql</font></span> </p>
+   <p style="text-autospace:none"><font face="Courier New">Query
+      OK, 0 rows affected (0.06 sec)</font></p>
+   <p style="text-autospace:none"><font face="Courier New">Query
+      OK, 0 rows affected (0.00 sec)</font></p>
+   <p style="text-autospace:none"><font face="Courier New">Query
+      OK, 0 rows affected (0.00 sec)</font></p>
+   <p style="text-autospace:none"><font face="Courier New">Query
+      OK, 0 rows affected (0.00 sec)</font></p>
+   <p style="text-autospace:none"><font face="Courier New">Query
+      OK, 0 rows affected (0.01 sec)</font></p>
+   <h4 style="text-autospace:none"><u>To list the tables in the current database:</u></h4>
+   <p style="text-autospace:none"><font face="Courier New">mysql&gt;
+      show tables;</font></p>
+   <p style="text-autospace:none"><font face="Courier New">+-----------------+</font></p>
+   <p style="text-autospace:none"><font face="Courier New">|
+      Tables_in_books |</font></p>
+   <p style="text-autospace:none"><font face="Courier New">+-----------------+</font></p>
+   <p style="text-autospace:none"><font face="Courier New">|
+      book_reviews&nbsp;&nbsp;&nbsp; |</font></p>
+   <p style="text-autospace:none"><font face="Courier New">|
+      books&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</font></p>
+   <p style="text-autospace:none"><font face="Courier New">|
+      customers&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</font></p>
+   <p style="text-autospace:none"><font face="Courier New">|
+      order_items&nbsp;&nbsp;&nbsp;&nbsp; |</font></p>
+   <p style="text-autospace:none"><font face="Courier New">|
+      orders&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</font></p>
+   <p style="text-autospace:none"><font face="Courier New">+-----------------+</font></p>
+   <p style="text-autospace:none"><font face="Courier New">5
+      rows in set (0.00 sec)</font></p>
+   <h4 style="text-autospace:none"><u>To display the structure of a table:</u></h4>
+   <p style="text-autospace:none"><font face="Courier New">mysql&gt;
+      describe books;</font></p>
+   <p style="text-autospace:none"><font face="Courier New">+--------+------------+------+-----+---------+-------+</font></p>
+   <p style="text-autospace:none"><font face="Courier New">|
+      Field&nbsp; | Type&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Null | Key | Default
+      | Extra |</font></p>
+   <p style="text-autospace:none"><font face="Courier New">+--------+------------+------+-----+---------+-------+</font></p>
+   <p style="text-autospace:none"><font face="Courier New">|
+      isbn&nbsp;&nbsp; | char(13)&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | PRI
+      |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</font></p>
+   <p style="text-autospace:none"><font face="Courier New">|
+      author | char(30)&nbsp;&nbsp; | YES&nbsp; |&nbsp;&nbsp; &nbsp;&nbsp;|
+      NULL&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</font></p>
+   <p style="text-autospace:none"><font face="Courier New">|
+      title&nbsp; | char(60)&nbsp;&nbsp; | YES&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp; |
+      NULL&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</font></p>
+   <p style="text-autospace:none"><font face="Courier New">|
+      price&nbsp; | float(4,2) | YES&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp; |
+      NULL&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</font></p>
+   <p style="text-autospace:none"><font face="Courier New">+--------+------------+------+-----+---------+-------+</font></p>
+   <p style="text-autospace:none"><font face="Courier New">4
+      rows in set (0.00 sec)</font></p>
+   <h4 style="  text-autospace:none; font-family: Arial, Helvetica, sans-serif;">To use the MySQL source command (second example):</h4>
+   <p style="  text-autospace:none; font-family: Arial, Helvetica, sans-serif;">First, you need to obtain a copy of the <strong>book_insert.sql</strong> file. Click the following link to view the file:<br>
+      <a href="http://ciswebs.smc.edu/cs85/geddes_james/PHPandMySQL3e-examples/10/book_insert.sql.txt" target="_blank">http://ciswebs.smc.edu/cs85/geddes_james/PHPandMySQL3e-examples/10/book_insert.sql.txt</a></p>
+   <p style="  text-autospace:none; font-family: Arial, Helvetica, sans-serif;">Save the file on your system as <strong>book_insert.sql</strong> in a folder such as <strong>C:\Welling</strong></p>
+   <p style="  text-autospace:none; font-family: Arial, Helvetica, sans-serif;">Now, you can input the <strong>book_insert.sql</strong> file into MySQL using the <strong>source</strong> command as follows: </p>
+   <p style="  text-autospace:none; font-family: Arial, Helvetica, sans-serif;"><font face="Courier New"><span style="font-size: 10.0pt">Reminder:
+      In the source command, you must use forward slashes (/) in the path.</span></font></p>
+   <p style="text-autospace:none"> <span style="font-size:10.0pt;"><font face="Courier New">mysql&gt;</font></span><span style="text-autospace:none"><span style="font-size:10.0pt;"><font face="Courier New"> source C:/Welling/book_insert.sql</font></span></span></p>
+   <p style="text-autospace:none"><font face="Courier New">Database
+      changed</font></p>
+   <p style="text-autospace:none"><font face="Courier New">Query
+      OK, 3 rows affected (0.01 sec)</font></p>
+   <p style="text-autospace:none"><font face="Courier New">Records:
+      3&nbsp; Duplicates: 0&nbsp; Warnings: 0</font></p>
+   <p style="text-autospace:none"><font face="Courier New">Query
+      OK, 4 rows affected (0.01 sec)</font></p>
+   <p style="text-autospace:none"><font face="Courier New">Records:
+      4&nbsp; Duplicates: 0&nbsp; Warnings: 0</font></p>
+   <p style="text-autospace:none"><font face="Courier New">Query
+      OK, 4 rows affected (0.00 sec)</font></p>
+   <p style="text-autospace:none"><font face="Courier New">Records:
+      4&nbsp; Duplicates: 0&nbsp; Warnings: 0</font></p>
+   <p style="text-autospace:none"><font face="Courier New">Query
+      OK, 5 rows affected (0.00 sec)</font></p>
+   <p style="text-autospace:none"><font face="Courier New">Records:
+      5&nbsp; Duplicates: 0&nbsp; Warnings: 0</font></p>
+   <p style="text-autospace:none"><font face="Courier New">Query
+      OK, 1 row affected (0.01 sec)</font></p>
+   <h4 style="text-autospace:none"><u>To select all the rows in a table:</u></h4>
+   <p style="text-autospace:none"><font face="Courier New">mysql&gt;
+      select * from books;</font></p>
+   <p style="text-autospace:none"><span style="font-size:10.0pt;"><font face="Courier New">+---------------+----------------+----------------------------------------------</font></span><span style="font-size:10.0pt;"><font face="Courier New">-----+-------+</font></span></p>
+   <p style="text-autospace:none"><span style="font-size:10.0pt;"><font face="Courier New">|
+      isbn&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |
+      author&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | title</font></span><span style="font-size:10.0pt;"><font face="Courier New">&nbsp;&nbsp;&nbsp;&nbsp; | price |</font></span></p>
+   <p style="text-autospace:none"><span style="font-size:10.0pt;"><font face="Courier New">+---------------+----------------+----------------------------------------------</font></span><span style="font-size:10.0pt;"><font face="Courier New">-----+-------+</font></span></p>
+   <p style="text-autospace:none"><span style="font-size:10.0pt;"><font face="Courier New">|
+      0-672-31697-8 | Michael Morgan | Java 2 for Professional Developers</font></span><span style="font-size:10.0pt;"><font face="Courier New">&nbsp;&nbsp;&nbsp;&nbsp;
+      | 34.99 |</font></span></p>
+   <p style="text-autospace:none"><span style="font-size:10.0pt;"><font face="Courier New">|
+      0-672-31745-1 | Thomas Down&nbsp;&nbsp;&nbsp; | Installing Debian GNU/Linux</font></span><span style="font-size:10.0pt;"><font face="Courier New">&nbsp;&nbsp;&nbsp;&nbsp;
+      | 24.99 |</font></span></p>
+   <p style="text-autospace:none"><span style="font-size:10.0pt;"><font face="Courier New">|
+      0-672-31509-2 | Pruitt, et al. | Teach Yourself GIMP in 24 Hours</font></span><span style="font-size:10.0pt;"><font face="Courier New">&nbsp;&nbsp;&nbsp;&nbsp;
+      | 24.99 |</font></span></p>
+   <p style="text-autospace:none"><span style="font-size:10.0pt;"><font face="Courier New">|
+      0-672-31769-9 | Thomas Schenk&nbsp; | Caldera OpenLinux System Administration
+      Unlea</font></span><span style="font-size:10.0pt;"><font face="Courier New">shed
+      | 49.99 |</font></span></p>
+   <p style="text-autospace:none"><span style="font-size:10.0pt;"><font face="Courier New">+---------------+----------------+----------------------------------------------</font></span><span style="font-size:10.0pt;"><font face="Courier New">-----+-------+</font></span></p>
+   <p style="text-autospace:none"><font face="Courier New">4
+      rows in set (0.00 sec)</font></p>
+   <pre>mysql&gt; select * from book_reviews;</pre>
+   <p style="text-autospace:none"><span style="font-size:10.0pt;"><font face="Courier New">+---------------+-----------------------------------------</font></span><span style="font-size:10.0pt;"><font face="Courier New">------------------------------------------------------+</font></span></p>
+   <p style="text-autospace:none"><span style="font-size:10.0pt;"><font face="Courier New">|
+      isbn&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | review</font></span><span style="font-size:10.0pt;"><font face="Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      |</font></span></p>
+   <p style="text-autospace:none"><span style="font-size:10.0pt;"><font face="Courier New">+---------------+-----------------------------------------</font></span><span style="font-size:10.0pt;"><font face="Courier New">------------------------------------------------------+</font></span></p>
+   <p style="text-autospace:none"><span style="font-size:10.0pt;"><font face="Courier New">|
+      0-672-31697-8 | Morgan's book is clearly written and goes well beyond</font></span><span style="font-size:10.0pt;"><font face="Courier New"> most of the basic Java books out there. |</font></span></p>
+   <p style="text-autospace:none"><font face="Courier New">+---------------+-----------------------------------------------------------------------------------------------+</font></p>
+   <p style="text-autospace:none"><font face="Courier New">1
+      row in set (0.00 sec)</font></p>
+   <p style="text-autospace:none"><font face="Courier New">mysql&gt;
+      select * from customers;</font></p>
+   <p style="text-autospace:none"><font face="Courier New">+------------+-----------------+--------------------+--------------+</font></p>
+   <p style="text-autospace:none"><font face="Courier New">|
+      customerid |
+      name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |
+      address&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |
+      city&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</font></p>
+   <p style="text-autospace:none"><font face="Courier New">+------------+-----------------+--------------------+--------------+</font></p>
+   <p style="text-autospace:none"><font face="Courier New">|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      1 | Julie Smith&nbsp;&nbsp;&nbsp;&nbsp; | 25 Oak
+      Street&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Airport West |</font></p>
+   <p style="text-autospace:none"><font face="Courier New">|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      2 | Alan Wong&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | 1/47 Haines Avenue | Box
+      Hill&nbsp;&nbsp;&nbsp;&nbsp; |</font></p>
+   <p style="text-autospace:none"><font face="Courier New">|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      3 | Michelle Arthur | 357 North Road&nbsp;&nbsp;&nbsp;&nbsp; |
+      Yarraville&nbsp;&nbsp; |</font></p>
+   <p style="text-autospace:none"><font face="Courier New">+------------+-----------------+--------------------+--------------+</font></p>
+   <p style="text-autospace:none"><font face="Courier New">3
+      rows in set (0.00 sec)</font></p>
+   <h4 style="text-autospace:none"><u>To "project" specified columns of a table:</u></h4>
+   <p style="text-autospace:none"><font face="Courier New">mysql&gt;
+      select name, city from customers;</font></p>
+   <p style="text-autospace:none"><font face="Courier New">+-----------------+--------------+</font></p>
+   <p style="text-autospace:none"><font face="Courier New">|
+      name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |
+      city&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</font></p>
+   <p style="text-autospace:none"><font face="Courier New">+-----------------+--------------+</font></p>
+   <p style="text-autospace:none"><font face="Courier New">|
+      Julie Smith&nbsp;&nbsp;&nbsp;&nbsp; | Airport West |</font></p>
+   <p style="text-autospace:none"><font face="Courier New">|
+      Alan Wong&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Box
+      Hill&nbsp;&nbsp;&nbsp;&nbsp; |</font></p>
+   <p style="text-autospace:none"><font face="Courier New">|
+      Michelle Arthur | Yarraville&nbsp;&nbsp; |</font></p>
+   <p style="text-autospace:none"><font face="Courier New">+-----------------+--------------+</font></p>
+   <p style="text-autospace:none"><font face="Courier New">3
+      rows in set (0.00 sec)</font></p>
+   <h4 style="text-autospace:none"><u>To filter a table (select rows that meet criteria) :</u></h4>
+   <p style="text-autospace:none"><font face="Courier New">mysql&gt;
+      select name, city from customers</font></p>
+   <p style="text-autospace:none"><font face="Courier New">&nbsp;&nbsp;&nbsp;
+      -&gt; where name like '%Smith';</font></p>
+   <p style="text-autospace:none"><font face="Courier New">+-------------+--------------+</font></p>
+   <p style="text-autospace:none"><font face="Courier New">|
+      name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |
+      city&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</font></p>
+   <p style="text-autospace:none"><font face="Courier New">+-------------+--------------+</font></p>
+   <p style="text-autospace:none"><font face="Courier New">|
+      Julie Smith | Airport West |</font></p>
+   <p style="text-autospace:none"><font face="Courier New">+-------------+--------------+</font></p>
+   <p style="text-autospace:none"><font face="Courier New">1
+      row in set (0.00 sec)</font></p>
+   <h4 style="text-autospace:none"><u>To put record set (aka result set) in order:</u></h4>
+   <p style="text-autospace:none"><font face="Courier New">mysql&gt;
+      select name, city from customers order by name;</font></p>
+   <p style="text-autospace:none"><font face="Courier New">+-----------------+--------------+</font></p>
+   <p style="text-autospace:none"><font face="Courier New">|
+      name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |
+      city&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</font></p>
+   <p style="text-autospace:none"><font face="Courier New">+-----------------+--------------+</font></p>
+   <p style="text-autospace:none"><font face="Courier New">|
+      Alan Wong&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Box
+      Hill&nbsp;&nbsp;&nbsp;&nbsp; |</font></p>
+   <p style="text-autospace:none"><font face="Courier New">|
+      Julie Smith&nbsp;&nbsp;&nbsp;&nbsp; | Airport West |</font></p>
+   <p style="text-autospace:none"><font face="Courier New">|
+      Michelle Arthur | Yarraville&nbsp;&nbsp; |</font></p>
+   <p style="text-autospace:none"><font face="Courier New">+-----------------+--------------+</font></p>
+   <p style="text-autospace:none"><font face="Courier New">3
+      rows in set (0.02 sec)</font></p>
+   <p style="text-autospace:none"><font face="Courier New">mysql&gt;
+      select * from customers order by name desc;</font></p>
+   <p style="text-autospace:none"><font face="Courier New">+------------+-----------------+--------------------+--------------+</font></p>
+   <p style="text-autospace:none"><font face="Courier New">|
+      customerid |
+      name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |
+      address&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |
+      city&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;|</font></p>
+   <p style="text-autospace:none"><font face="Courier New">+------------+-----------------+--------------------+--------------+</font></p>
+   <p style="text-autospace:none"><font face="Courier New">|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      3 | Michelle Arthur | 357 North Road&nbsp;&nbsp;&nbsp;&nbsp; |
+      Yarraville&nbsp;&nbsp; |</font></p>
+   <p style="text-autospace:none"><font face="Courier New">|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      1 | Julie Smith&nbsp;&nbsp;&nbsp;&nbsp; | 25 Oak
+      Street&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Airport West |</font></p>
+   <p style="text-autospace:none"><font face="Courier New">|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      2 | Alan Wong&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | 1/47 Haines Avenue | Box
+      Hill&nbsp;&nbsp;&nbsp;&nbsp; |</font></p>
+   <p style="text-autospace:none"><font face="Courier New">+------------+-----------------+--------------------+--------------+</font></p>
+   <p style="text-autospace:none"><font face="Courier New">3
+      rows in set (0.00 sec)</font></p>
+   <p style="text-autospace:none"><font face="Courier New">mysql&gt;
+      select * from books;</font></p>
+   <p style="text-autospace:none"><span style="font-size:10.0pt;"><font face="Courier New">+---------------+----------------+----------------------------------------------</font></span><span style="font-size:10.0pt;"><font face="Courier New">-----+-------+</font></span></p>
+   <p style="text-autospace:none"><span style="font-size:10.0pt;"><font face="Courier New">|
+      isbn&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | author&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| title</font></span><span style="font-size:10.0pt;"><font face="Courier New">&nbsp;&nbsp;&nbsp;&nbsp; | price |</font></span></p>
+   <p style="text-autospace:none"><span style="font-size:10.0pt;"><font face="Courier New">+---------------+----------------+----------------------------------------------</font></span><span style="font-size:10.0pt;"><font face="Courier New">-----+-------+</font></span></p>
+   <p style="text-autospace:none"><span style="font-size:10.0pt;"><font face="Courier New">|
+      0-672-31697-8 | Michael Morgan | Java 2 for Professional Developers</font></span><span style="font-size:10.0pt;"><font face="Courier New">&nbsp;&nbsp;&nbsp;&nbsp; | 34.99 |</font></span></p>
+   <p style="text-autospace:none"><span style="font-size:10.0pt;"><font face="Courier New">|
+      0-672-31745-1 | Thomas Down&nbsp;&nbsp;&nbsp; | Installing Debian GNU/Linux</font></span><span style="font-size:10.0pt;"><font face="Courier New">&nbsp;&nbsp;&nbsp;&nbsp; | 24.99 |</font></span></p>
+   <p style="text-autospace:none"><span style="font-size:10.0pt;"><font face="Courier New">|
+      0-672-31509-2 | Pruitt, et al. | Teach Yourself GIMP in 24 Hours</font></span><span style="font-size:10.0pt;"><font face="Courier New">&nbsp;&nbsp;&nbsp;&nbsp; | 24.99 |</font></span></p>
+   <p style="text-autospace:none"><span style="font-size:10.0pt;"><font face="Courier New">|
+      0-672-31769-9 | Thomas Schenk&nbsp; | Caldera OpenLinux System Administration
+      Unlea</font></span><span style="font-size:10.0pt;"><font face="Courier New">shed
+      | 49.99 |</font></span></p>
+   <p style="text-autospace:none"><span style="font-size:10.0pt;"><font face="Courier New">+---------------+----------------+----------------------------------------------</font></span><span style="font-size:10.0pt;"><font face="Courier New">-----+-------+</font></span></p>
+   <p style="text-autospace:none"><font face="Courier New">4
+      rows in set (0.00 sec)</font></p>
+   <p style="text-autospace:none"><font face="Courier New">mysql&gt;
+      select * from books order by author;</font></p>
+   <p style="text-autospace:none"><span style="font-size:10.0pt;"><font face="Courier New">+---------------+----------------+----------------------------------------------</font></span><span style="font-size:10.0pt;"><font face="Courier New">-----+-------+</font></span></p>
+   <p style="text-autospace:none"><span style="font-size:10.0pt;"><font face="Courier New">|
+      isbn&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |
+      author&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | title</font></span><span style="font-size:10.0pt;"><font face="Courier New">&nbsp;&nbsp;&nbsp;&nbsp; | price |</font></span></p>
+   <p style="text-autospace:none"><span style="font-size:10.0pt;"><font face="Courier New">+---------------+----------------+----------------------------------------------</font></span><span style="font-size:10.0pt;"><font face="Courier New">-----+-------+</font></span></p>
+   <p style="text-autospace:none"><span style="font-size:10.0pt;"><font face="Courier New">|
+      0-672-31697-8 | Michael Morgan | Java 2 for Professional Developers</font></span><span style="font-size:10.0pt;"><font face="Courier New">&nbsp;&nbsp;&nbsp;&nbsp; | 34.99 |</font></span></p>
+   <p style="text-autospace:none"><span style="font-size:10.0pt;"><font face="Courier New">|
+      0-672-31509-2 | Pruitt, et al. | Teach Yourself GIMP in 24 Hours</font></span><span style="font-size:10.0pt;"><font face="Courier New">&nbsp;&nbsp;&nbsp;&nbsp;
+      | 24.99 |</font></span></p>
+   <p style="text-autospace:none"><span style="font-size:10.0pt;"><font face="Courier New">|
+      0-672-31745-1 | Thomas Down&nbsp;&nbsp;&nbsp; | Installing Debian GNU/Linux</font></span><span style="font-size:10.0pt;"><font face="Courier New">&nbsp;&nbsp;&nbsp;&nbsp; | 24.99 |</font></span></p>
+   <p style="text-autospace:none"><span style="font-size:10.0pt;"><font face="Courier New">|
+      0-672-31769-9 | Thomas Schenk&nbsp; | Caldera OpenLinux System Administration
+      Unlea</font></span><span style="font-size:10.0pt;"><font face="Courier New">shed
+      | 49.99 |</font></span></p>
+   <p style="text-autospace:none"><span style="font-size:10.0pt;"><font face="Courier New">+---------------+----------------+----------------------------------------------</font></span><span style="font-size:10.0pt;"><font face="Courier New">-----+-------+</font></span></p>
+   <p style="text-autospace:none"><font face="Courier New">4
+      rows in set (0.00 sec)</font></p>
+   <h4 style="text-autospace:none"><u>To use an alias:</u></h4>
+   <p style="text-autospace:none"><font face="Courier New">mysql&gt;
+      select isbn, author as writer from books;</font></p>
+   <p style="text-autospace:none"><font face="Courier New">+---------------+----------------+</font></p>
+   <p style="text-autospace:none"><font face="Courier New">|
+      isbn&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |
+      writer&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</font></p>
+   <p style="text-autospace:none"><font face="Courier New">+---------------+----------------+</font></p>
+   <p style="text-autospace:none"><font face="Courier New">|
+      0-672-31697-8 | Michael Morgan |</font></p>
+   <p style="text-autospace:none"><font face="Courier New">|
+      0-672-31745-1 | Thomas Down&nbsp;&nbsp;&nbsp; |</font></p>
+   <p style="text-autospace:none"><font face="Courier New">|
+      0-672-31509-2 | Pruitt, et al. |</font></p>
+   <p style="text-autospace:none"><font face="Courier New">|
+      0-672-31769-9 | Thomas Schenk&nbsp; |</font></p>
+   <p style="text-autospace:none"><font face="Courier New">+---------------+----------------+</font></p>
+   <p style="text-autospace:none"><font face="Courier New">4
+      rows in set (0.00 sec)</font></p>
+   <h4 style="text-autospace:none"><u>To modify data in a table:</u></h4>
+   <p style="text-autospace:none"><font face="Courier New">mysql&gt;
+      update books</font></p>
+   <p style="text-autospace:none"><font face="Courier New">&nbsp;&nbsp;&nbsp;
+      -&gt; set author = 'Thomas More'</font></p>
+   <p style="text-autospace:none"><font face="Courier New">&nbsp;&nbsp;&nbsp;
+      -&gt; where author = 'Thomas Down';</font></p>
+   <p style="text-autospace:none"><font face="Courier New">Query
+      OK, 1 row affected (0.02 sec)</font></p>
+   <p style="text-autospace:none"><font face="Courier New">Rows
+      matched: 1&nbsp; Changed: 1&nbsp; Warnings: 0</font></p>
+   <p style="text-autospace:none"><font face="Courier New">mysql&gt;
+      select isbn, author as writer from books;</font></p>
+   <p style="text-autospace:none"><font face="Courier New">+---------------+----------------+</font></p>
+   <p style="text-autospace:none"><font face="Courier New">|
+      isbn&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |
+      writer&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</font></p>
+   <p style="text-autospace:none"><font face="Courier New">+---------------+----------------+</font></p>
+   <p style="text-autospace:none"><font face="Courier New">|
+      0-672-31697-8 | Michael Morgan |</font></p>
+   <p style="text-autospace:none"><font face="Courier New">|
+      0-672-31745-1 | Thomas More&nbsp;&nbsp;&nbsp; |</font></p>
+   <p style="text-autospace:none"><font face="Courier New">|
+      0-672-31509-2 | Pruitt, et al. |</font></p>
+   <p style="text-autospace:none"><font face="Courier New">|
+      0-672-31769-9 | Thomas Schenk&nbsp; |</font></p>
+   <p style="text-autospace:none"><font face="Courier New">+---------------+----------------+</font></p>
+   <p style="text-autospace:none"><font face="Courier New">4
+      rows in set (0.00 sec)</font></p>
+   <h4 style="text-autospace:none"><u>To delete rows in a table:</u></h4>
+   <p style="text-autospace:none"><font face="Courier New">mysql&gt;
+      delete from books</font></p>
+   <p style="text-autospace:none"><font face="Courier New">&nbsp;&nbsp;&nbsp;
+      -&gt; where author = 'Thomas More';</font></p>
+   <p style="text-autospace:none"><font face="Courier New">Query
+      OK, 1 row affected (0.00 sec)</font></p>
+   <p style="text-autospace:none"><font face="Courier New">mysql&gt;
+      select isbn, author as writer from books;</font></p>
+   <p style="text-autospace:none"><font face="Courier New">+---------------+----------------+</font></p>
+   <p style="text-autospace:none"><font face="Courier New">|
+      isbn&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |
+      writer&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</font></p>
+   <p style="text-autospace:none"><font face="Courier New">+---------------+----------------+</font></p>
+   <p style="text-autospace:none"><font face="Courier New">|
+      0-672-31697-8 | Michael Morgan |</font></p>
+   <p style="text-autospace:none"><font face="Courier New">|
+      0-672-31509-2 | Pruitt, et al. |</font></p>
+   <p style="text-autospace:none"><font face="Courier New">|
+      0-672-31769-9 | Thomas Schenk&nbsp; |</font></p>
+   <p style="text-autospace:none"><font face="Courier New">+---------------+----------------+</font></p>
+   <p style="text-autospace:none"><span style="font-size:10.0pt;"><font face="Courier New">3
+      rows in set (0.00 sec)</font></span><span style="font-size:10.0pt;"><font face="Courier New">&nbsp;</font></span></p>
+   <h4 style="text-autospace:none"><u>To delete a table:</u></h4>
+   <p style="text-autospace:none"><font face="Courier New">mysql&gt;
+      drop table books;</font></p>
+   <p style="text-autospace:none"><font face="Courier New">Query
+      OK, 0 rows affected (0.00 sec)</font></p>
+   <p style="text-autospace:none"><font face="Courier New">mysql&gt;
+      show tables;</font></p>
+   <p style="text-autospace:none"><font face="Courier New">+-----------------+</font></p>
+   <p style="text-autospace:none"><font face="Courier New">|
+      Tables_in_books |</font></p>
+   <p style="text-autospace:none"><font face="Courier New">+-----------------+</font></p>
+   <p style="text-autospace:none"><font face="Courier New">|
+      book_reviews&nbsp;&nbsp;&nbsp; |</font></p>
+   <p style="text-autospace:none"><font face="Courier New">|
+      customers&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</font></p>
+   <p style="text-autospace:none"><font face="Courier New">|
+      order_items&nbsp;&nbsp;&nbsp;&nbsp; |</font></p>
+   <p style="text-autospace:none"><font face="Courier New">|
+      orders&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</font></p>
+   <p style="text-autospace:none"><font face="Courier New">+-----------------+</font></p>
+   <p style="text-autospace:none"><font face="Courier New">4
+      rows in set (0.00 sec)</font></p>
+   <h4 style="text-autospace:none"><u>To delete a database:</u></h4>
+   <p style="text-autospace:none"><font face="Courier New">mysql&gt;
+      drop database books;</font></p>
+   <p style="text-autospace:none"><font face="Courier New">Query
+      OK, 0 rows affected (0.08 sec)</font></p>
+   <p style="text-autospace:none"><font face="Courier New">mysql&gt;
+      show databases;</font></p>
+   <p style="text-autospace:none"><font face="Courier New">+----------+</font></p>
+   <p style="text-autospace:none"><font face="Courier New">|
+      Database |</font></p>
+   <p style="text-autospace:none"><font face="Courier New">+----------+</font></p>
+   <p style="text-autospace:none"><font face="Courier New">|
+      mysql&nbsp;&nbsp;&nbsp; |</font></p>
+   <p style="text-autospace:none"><font face="Courier New">|
+      test&nbsp;&nbsp;&nbsp;&nbsp; |</font></p>
+   <p style="text-autospace:none"><font face="Courier New">+----------+</font></p>
+   <p style="text-autospace:none"><font face="Courier New">2
+      rows in set (0.00 sec)</font></p>
+   <h4 style="text-autospace:none">To exit from the MySQL client program:</h4>
+   <p style="text-autospace:none"><font face="Courier New">mysql&gt;
+      quit;</font></p>
+   <p style="text-autospace:none"><font face="Courier New">Bye</font></p>
+   <p style="text-autospace:none"><span style="font-size:10.0pt;"><font face="Courier New">C:\Documents
+      and Settings\geddes_james&gt;</font></span><span style="font-size:10.0pt;"><font face="Courier New">&nbsp;</font></span> 
+
+</p><p><font color="#999999" size="2">Last Modified:
+   <script language="Javascript" type="text/javascript"><!--
+   document.write(document.lastModified)
+   // -->
+</script>09/25/2016 20:37:10
+   </font></p>
+
+
+</body></html>

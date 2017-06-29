@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<!-- saved from url=(0053)http://kengeddes.com/cs81/lectureNotes/debugging.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="Author" content="J. Ken Geddes, Jr.">
+<meta name="Classification" content="computer programming">
+<meta name="Description" content="resources for CS 81 JavaScript and DHTML course at SMC">
+<meta name="Keywords" content="Internet, JavaScript, computer programming">
+<title>CS81&nbsp;JS Debugging</title>
+<link rel="stylesheet" type="text/css" href="https://dl.dropbox.com/s/yr1e1f04lzyrj6i/styles.css">
+</head>
+<body>
+<table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber3">
+   <tbody><tr>
+      <td width="84%" align="center">
+         <h1>CS 81&nbsp;&nbsp;JavaScript and Dynamic HTML</h1>
+
+      </td>
+
+   </tr>
+
+</tbody></table>
+
+<h2 class="center">Debugging JavaScript</h2>
+<h2>Some Useful Tools</h2>
+<p> JavaScript Runner: <a href="http://javascript.cs.lmu.edu/runner/" target="_blank">http://javascript.cs.lmu.edu/runner/</a></p>
+<p>JavaScript Shell 1.4:&nbsp;<a href="http://www.squarefree.com/shell/" target="_new">http://www.squarefree.com/shell/</a><br>
+<span class="bold">Note</span>: In Chrome, right click this link and select 'Open link in new tab'. </p>
+<h3>What is Debugging?</h3>
+<ul>
+
+   <li>Whenever you write a script or program, you will inevitably make mistakes. </li>
+
+   <li><em>debugging</em> - finding and eliminating coding errors (aka <em>bugs</em>) in a script or
+
+      program</li>
+   <li><em>debugger</em> - a program that helps a programmer find and eradicate bugs
+
+      in a computer program</li>
+
+   <li>types of errors
+
+      <ul>
+
+         <li>HTML error - a violation of the rules for writing   HTML tags </li>
+<li>CSS error - a violation of the rules for writing   CSS rules </li>
+
+         <li><em>syntax</em> error - a statement or expression that violates the syntax rules of the language</li>
+
+         <li><em>runtime</em> error - when the interpreter attempts to execute the
+instructions, an error occurs causing the script to crash; for example, attempting
+to divide by 0 </li>
+
+         <li><em>logic</em> error - a mistake in your algorithm; for example, dividing when
+you should have multiplied</li>
+      </ul>
+   </li>
+</ul>
+
+<h3>Browser Support for Debugging </h3>
+<p>Whenever the JavaScript interpreter in the browser encounters a syntax or runtime error while executing your script, it  will notify you  by producing an error message. It is extremely important and useful to study these error messages when debugging your script.
+You may need to adjust your browser's settings to see these  messages. How you do this depends on the particular browser you are using, as follows:</p>
+<h4>Chrome</h4>
+<p>To display the <span class="bold">JavaScript Console</span> in Chrome:</p>
+<blockquote>
+  <p>Click the  <span class="bold">Chrome menu</span> (in upper right area of browser window) &gt; <span class="bold">More tools</span> &gt; <span class="bold">Developer tools</span> &gt; <span class="bold">Console</span>. <span class="highlight">&lt;&lt;&lt;-- Please use this when debugging your programs</span></p>
+</blockquote>
+<p>For more information about Chrome Developer Tools:</p>
+<ul>
+<li>Documentation: <a href="https://developer.chrome.com/devtools/index" target="_blank">https://developer.chrome.com/devtools/index</a></li>
+<li>CodeSchool has a free course on Chrome DevTools at <a href="https://www.codeschool.com/courses/discover-devtools" target="_blank">https://www.codeschool.com/courses/discover-devtools</a></li>
+</ul>
+<h4> Firefox </h4>
+<p>To display the <em>Error Console</em> click <span class="bold">Tools</span> &gt; <span class="bold">Web
+Developer</span> &gt; <span class="bold">Error
+Console</span>.</p>
+<h4>Internet Explorer (aka IE)</h4>
+
+<p> To display the various JavaScript options click <strong>Tools</strong> &gt; <strong>Internet Options</strong> &gt; <strong>Advanced</strong>.  Also, look for some kind of icon in the status bar at the bottom of your browser window. You may need to click or double-click this to bring up the error message window. </p>
+<h4>Safari for Mac</h4>
+<ol>
+<li>Click on Safari in the Menu Bar and select Preferences. </li>
+<li>Go to the   Advanced tab and check the checkbox 'Show Develop menu in menu bar'.</li>
+<li> Close out Preferences. </li>
+<li>Click on Develop in the Menu Bar and select Show Error Console.</li>
+</ol>
+<h3>Errors in Your HTML Code</h3>
+
+<ul>
+
+   <li>Validate your HTML code before adding scripts and after you add scripts
+
+      and more HTML.</li>
+
+   <li>Your HTML editor may have a built-in validator.</li>
+
+   <li>Or use <a href="http://validator.w3.org/" target="_blank">The W3C MarkUp Validation
+
+      Service</a>.</li>
+   <li><a href="http://www.htmlhelp.com/tools/validator/problems.html#script" target="_blank">Common HTML Validation Problems</a> <span class="small">contributed by Christopher Kilian</span></li>
+</ul>
+<h3>Errors in Your CSS Code</h3>
+<ul>
+<li>As with  HTML, you will find the  W3C CSS Validation Service very helpful in finding and correcting your CSS errors. </li>
+<li><a href="http://jigsaw.w3.org/css-validator/" target="_blank">http://jigsaw.w3.org/css-validator/</a></li>
+</ul>
+<h3 align="left">Syntax Errors</h3>
+
+<ul>
+
+   <li>violation of the rules of valid/legal statement formation</li>
+
+   <li>error messages need to be considered carefully; may be hard to understand</li>
+
+   <li>common errors: missing closing <b>}</b>, <b>)</b>, <b>"</b>,<b> '</b></li>
+
+   <li>editor with syntax coloring very helpful; See <a href="http://kengeddes.com/cs81/references.html#JavaScriptIDEs">kengeddes.com/cs81/references.html#JavaScriptIDEs</a></li>
+
+   <li>javascript pseudo-protocol
+
+       <ul>
+          
+          <li>enter in Location bar</li>
+
+         <li><b>javascript:</b> <i>statement</i></li>
+
+         <li>can be bookmarked</li>
+
+  </ul>
+
+   </li>
+
+   <li>check the following as you write and review your code:
+
+      <ul>
+
+         <li>closing <b>}</b></li>
+
+         <li>closing <b>)</b></li>
+
+         <li>closing <b>"</b></li>
+
+         <li>closing <b>'</b></li>
+
+         <li>function call matches function name exactly</li>
+
+         <li>arguments match parameters in number, order, and type</li>
+
+         <li>watch case on object, property, and methods names; most are initial
+
+            lowercase; exceptions:
+
+            <ul>
+
+               <li>Core JavaScript Objects: <b>Array</b>, <b>Boolean</b>, <b>Date</b>,
+
+                  <b>Function</b>, <b>Math</b>, <b>Number</b>, <b>Object</b>, <b>RegExp</b>,
+
+                  <b>String</b></li>
+
+            </ul>
+
+         </li>
+
+         <li>check that names of HTML objects script match those in the HTML</li>
+
+      </ul>
+
+   </li>
+   <li>Common Syntax Error Messages:
+       
+       <ul>
+           
+           <li>expected identifier</li>
+           
+           <li>missing variable name</li>
+           
+           <li>missing (...</li>
+           
+           <li>missing )...</li>
+           
+           <li>missing ; after for-loop condition</li>
+           
+           <li>missing ; after for-loop initializer</li>
+           
+           <li>expected ;</li>
+           
+           <li>missing { before function body</li>
+           
+           <li>missing { after function body</li>
+           
+           <li>missing } in compound statement</li>
+           
+           <li>expected }</li>
+           
+           <li>expected {</li>
+           
+           <li>nested comment</li>
+           
+           <li>syntax error</li>
+           
+           <li>test for equality (==) mistyped as assignment (=)? Assuming
+               
+            equality test</li>
+           
+           <li>unterminated string literal</li>
+           
+        </ul>
+       
+   </li>
+
+   <li>When you test your page, your browser may use a cached copy, so you may need  to clear your browser's cache.</li>
+</ul>
+
+
+
+</body></html>

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<!-- saved from url=(0057)http://kengeddes.com/cs3/lectureNotes/problemSolving.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>Problem Solving</title>
+<link href="./Problem Solving_files/styles.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h1 align="center">Problem Solving</h1>
+<p>The hard part of computer programming is not learning the rules of syntax or becoming familiar with fundamental programming features such as variables, expressions, etc. The hard part is developing an algorithm that solves the problem.  This is also known as planning and is something you must do before actually writing the computer code  in some programming language such as JavaScript.</p>
+<p>Solving a problem differs from following someone else's solution to a problem, just as writing a story differs from reading a story.   You need  analytical skills, imagination, and perseverance. </p>
+<p>It helps to look at a lot of examples. Unfortunately, a lot of the examples in tutorials and reference manuals are <em>toy programs</em> designed only to illustrate  the particular statement or language feature being discussed. Typically, your homework assignments require you to do something  more complex and  challenging.</p>
+<p> There are two approaches:</p>
+<ol>
+   <li><strong>Top-down structured design and programming</strong> is a powerful, tried and true method for solving even the most complex problems. Think of what needs to be done. Use the divide-and-conquer technique to break the problem down into  smaller and smaller sub-problems.</li>
+   <li>In the<strong> bottom-up approach</strong> you consider  what tools you have to work with, so you don't end up reinventing the wheel. For example, if you need to sort some items and  a sort method already exists, use the existing sort method rather than write your own. You also may wish to create a set of tools (that is, methods or functions) that perform useful tasks such as displaying an error message or getting input from the user. </li>
+</ol>
+<p>In practice, you use a combination of both techniques. </p>
+<p>&nbsp;</p>
+<h2>Example of Algorithm Development</h2>
+<p>This example uses all the control structures: sequence, selection, and repetition. </p>
+<p>Prior to  writing low-level code for a program of any complexity, it is useful to first develop the algorithm. Otherwise, you may find that  weeks of programming can save hours of planning.&nbsp; : ) &nbsp;Develop the algorithm from the top-down by a process Niklaus Wirth calls <em>stepwise refinement</em>. Start with a birds-eye view - a single sentence that states what must be done to solve the problem. This is your level 0 algorithm. Add some detail to create the level 1 algorithm. Continue this way until the algorithm is sufficiently detailed that you can easily code it in your target programming language. </p>
+<p>&nbsp;</p>
+<h2 align="center">Number Guessing Game</h2>
+<p align="left"><strong>Problem statement:</strong> <em>Play the number guessing game where one person thinks of a number and another person tries to guess the number. </em></p>
+<p>&nbsp;</p>
+<h3 align="left">0: </h3>
+<p align="left">The first person thinks of a number, invites a second person to try to guess it, and gives feedback such as "That's too high" or "That's too low" until the second person correctly guesses the number. </p>
+<p>&nbsp;</p>
+<p>Now, lets break the problem down into one or more parts or sub-problems. Let's call the two players A and B. </p>
+<h3>1:</h3>
+<p> A thinks of a number between one and ten.<br>
+A invites  B to play the game.</p>
+<ol>
+   <li> A asks  B for his guess.</li>
+   <li> B makes a guess.</li>
+   <li> A gives feedback: 'you got it', or 'too low', or 'too high'.    </li>
+</ol>
+<p>If the number has not been  guessed,</p>
+<ol>
+   <li> A asks  B for his guess. </li>
+   <li> B makes a guess.</li>
+   <li> A gives feedback: 'you got it', or 'too low', or 'too high'. </li>
+</ol>
+<p>If the number has not been  guessed,</p>
+<ol>
+   <li> A asks  B for his guess. </li>
+   <li> B makes a guess.</li>
+   <li> A gives feedback: 'you got it', or 'too low', or 'too high'. </li>
+</ol>
+<p>If the number has not been  guessed, </p>
+<ol>
+   <li> A asks  B for his guess. </li>
+   <li>and so on... </li>
+</ol>
+<p>&nbsp;</p>
+<p>We notice there is a repeating pattern here. We could more concisely express our algorithm as follows:</p>
+<h3>2:</h3>
+<ol>
+   <li> A thinks of a number between one and ten.</li>
+   <li> A invites  B to play the game.</li>
+   <li>repeat
+      until the number is guessed
+         <ol>
+         <li> A asks  B for his guess.</li>
+         <li> B makes a guess.</li>
+         <li> A gives feedback: 'you got it', or 'too low', or 'too high'. </li>
+      </ol>
+   </li>
+</ol>
+<p>&nbsp;</p>
+<p align="left">Let's let the computer be player A. The user will be player B. Also, we continue to refine the algorithm by choosing names for the data, using math symbols, etc. </p>
+<h3 align="left">3:</h3>
+<ol>
+   <li>Generate a random number, <strong>target</strong>, between 1 and 10.</li>
+   <li>Invite the user to try to guess the number.</li>
+   <li>Repeat until number is guessed:
+      <ol>
+            <li>Get the <strong>guess</strong> from the user.</li>
+         <li>If <strong>guess</strong> equals <strong>target</strong>, display "You got it!"</li>
+         <li>Else if <strong>guess</strong> &lt; <strong>target</strong>, display "Too low."</li>
+         <li>Else  display "Too high." </li>
+      </ol>
+   </li>
+</ol>
+<p>&nbsp;</p>
+<p align="left"><font face="Courier New, Courier, monospace">&lt;-</font> is a pseudocode symbol for assignment. The algorithm begins to look more and more like code as we get nearer and nearer to implementing the algorithm in our target language. </p>
+<h3 align="left">4:</h3>
+<pre>target &lt;- a random number between 1 and 10.
+display "I am thinking of a number between 1 and 10. Try to guess what it is."
+guessed &lt;- false
+repeat while not guessed
+   guess &lt;- value entered by  user
+   if guess == target
+      display "You got it!"
+      guessed &lt;- true
+   else if guess &lt; target
+      display "Too low."
+   else
+      display "Too high."</pre>
+<p>&nbsp;</p>
+<p>If we know what our target language is, we can start to use its syntax as we continue to refine our algorithm. Suppose we decide to implement our algorithm in Alice. </p>
+<h3>5:</h3>
+<pre>target.set(random number with minimum 1, maximum 10);
+alice.say("I am thinking of a number between 1 and 10. Try to guess what it is.");
+guessed.set(false);
+while (!guessed) {
+   guess.set(number dialog("What is your guess?"));
+   if (guess == target) {
+      alice.say("You got it!");
+      guessed.set(true);
+   } else if (guess &lt; target) {
+      alice.say("Too low!");
+   } else {
+      alice.say ("Too high!");
+   }
+}
+
+
+</pre>
+<p>By now our algorithm is sufficiently refined that coding it in our target language is  easy.</p>
+<p>Code in Alice: </p>
+<table cellpadding="2" cellspacing="0" width="100%">
+   <tbody><tr>
+      <td colspan="5" bgcolor="#ffffd2" style="border-left: 1px solid #c0c0c0; border-top: 1px solid #c0c0c0; border-right: 1px solid #c0c0c0">&nbsp;&nbsp;<b>public void my_first_method</b>&nbsp;(&nbsp;) <b>{</b> <br>
+         &nbsp;&nbsp;&nbsp;&nbsp;<b>Number </b> <b>target</b> <b> = </b> <span style="background-color: #f0f0ff"><b>1</b></span> <b> ; </b> <b>Number </b> <b>guess</b> <b> = </b> <span style="background-color: #f0f0ff"><b>1</b></span> <b> ; </b> <b>Boolean </b> <b>guessed</b> <b> = </b> <span style="background-color: #f0f0ff"><b>true</b></span> <b>;</b></td>
+   </tr>
+   <tr>
+      <td width="20" rowspan="17" bgcolor="#ffffd2" style="border-left: 1px solid #c0c0c0">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+      <td width="100%" colspan="4" bgcolor="#ffe6b4" style="border-bottom: 1px solid #c0c0c0; border-right: 1px solid #c0c0c0; border-left: 1px solid #c0c0c0; border-top: 1px solid #c0c0c0">&nbsp;&nbsp;<span style="background-color: #f0f0ff"><b>target</b></span> <b>.set( </b> <b>value</b> <b>, </b> ( <b>Math.floor( </b> ( <b>Random.nextDouble()</b> <span style="background-color: #f0f0ff">minimum = <b>1</b></span> <span style="background-color: #f0f0ff">maximum = <b>10</b></span> ) <b> )</b> ) <b> );</b> <span style="background-color: #f0f0ff">duration = <b>0.25 </b> seconds</span></td>
+   </tr>
+   <tr>
+      <td width="100%" colspan="4" bgcolor="#e6e6e6" style="border-bottom: 1px solid #c0c0c0; border-right: 1px solid #c0c0c0; border-left: 1px solid #c0c0c0; border-top: 1px solid #c0c0c0">&nbsp;&nbsp;<strike><font color="#c8c8c8"><span style="background-color: #f0f0ff"><b>alice</b></span> <b>.say( </b> ( <span style="background-color: #f0f0ff"><b>The target is </b></span> <b>+</b> ( <span style="background-color: #f0f0ff"><b>target</b></span> <b>.toString()</b> ) ) <b> );</b> <span style="background-color: #f0f0ff">duration = <b>1 </b> second</span></font></strike></td>
+   </tr>
+   <tr>
+      <td width="100%" colspan="4" bgcolor="#ffe6b4" style="border-bottom: 1px solid #c0c0c0; border-right: 1px solid #c0c0c0; border-left: 1px solid #c0c0c0; border-top: 1px solid #c0c0c0">&nbsp;&nbsp;<span style="background-color: #f0f0ff"><b>alice</b></span> <b>.say( </b> <span style="background-color: #f0f0ff"><b>I am thinking of a number between 1 and 10. Try to guess what it is.</b></span> <b> );</b> <span style="background-color: #f0f0ff">duration = <b>2 </b> seconds</span></td>
+   </tr>
+   <tr>
+      <td width="100%" colspan="4" bgcolor="#ffe6b4" style="border-bottom: 1px solid #c0c0c0; border-right: 1px solid #c0c0c0; border-left: 1px solid #c0c0c0; border-top: 1px solid #c0c0c0">&nbsp;&nbsp;<span style="background-color: #f0f0ff"><b>guessed</b></span> <b>.set( </b> <b>value</b> <b>, </b> <span style="background-color: #f0f0ff"><b>false</b></span> <b> );</b></td>
+   </tr>
+   <tr>
+      <td colspan="4" bgcolor="#ccffdd" style="border-left: 1px solid #c0c0c0; border-top: 1px solid #c0c0c0; border-right: 1px solid #c0c0c0">&nbsp;&nbsp;<b>while (</b> ( <b>!</b> <span style="background-color: #f0f0ff"><b>guessed</b></span> ) <b>) {</b></td>
+   </tr>
+   <tr>
+      <td width="20" rowspan="11" bgcolor="#ccffdd" style="border-left: 1px solid #c0c0c0">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+      <td width="100%" colspan="3" bgcolor="#ffe6b4" style="border-bottom: 1px solid #c0c0c0; border-right: 1px solid #c0c0c0; border-left: 1px solid #c0c0c0; border-top: 1px solid #c0c0c0">&nbsp;&nbsp;<span style="background-color: #f0f0ff"><b>guess</b></span> <b>.set( </b> <b>value</b> <b>, </b> ( <b>NumberDialog(</b> <span style="background-color: #f0f0ff">question = <b>What is your guess?</b></span> <b>)</b> ) <b> );</b></td>
+   </tr>
+   <tr>
+      <td colspan="3" bgcolor="#cceedd" style="border-left: 1px solid #c0c0c0; border-top: 1px solid #c0c0c0; border-right: 1px solid #c0c0c0">&nbsp;&nbsp;<b>if (</b> ( <span style="background-color: #f0f0ff"><b>guess</b></span> <b>==</b> <span style="background-color: #f0f0ff"><b>target</b></span> ) <b>) {</b></td>
+   </tr>
+   <tr>
+      <td width="20" rowspan="2" bgcolor="#cceedd" style="border-left: 1px solid #c0c0c0">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+      <td width="100%" colspan="2" bgcolor="#ffe6b4" style="border-bottom: 1px solid #c0c0c0; border-right: 1px solid #c0c0c0; border-left: 1px solid #c0c0c0; border-top: 1px solid #c0c0c0">&nbsp;&nbsp;<span style="background-color: #f0f0ff"><b>alice</b></span> <b>.say( </b> <span style="background-color: #f0f0ff"><b>You got it!</b></span> <b> );</b> <span style="background-color: #f0f0ff">duration = <b>2 </b> seconds</span></td>
+   </tr>
+   <tr>
+      <td width="100%" colspan="2" bgcolor="#ffe6b4" style="border-bottom: 1px solid #c0c0c0; border-right: 1px solid #c0c0c0; border-left: 1px solid #c0c0c0; border-top: 1px solid #c0c0c0">&nbsp;&nbsp;<span style="background-color: #f0f0ff"><b>guessed</b></span> <b>.set( </b> <b>value</b> <b>, </b> <span style="background-color: #f0f0ff"><b>true</b></span> <b> );</b></td>
+   </tr>
+   <tr>
+      <td colspan="3" bgcolor="#cceedd" style="border-left: 1 solid #c0c0c0; border-right: 1 solid #c0c0c0">&nbsp;&nbsp;<b>} else {</b></td>
+   </tr>
+   <tr>
+      <td width="20" rowspan="5" bgcolor="#cceedd" style="border-left: 1 solid #c0c0c0">&nbsp;</td>
+      <td colspan="2" bgcolor="#cceedd" style="border-left: 1px solid #c0c0c0; border-top: 1px solid #c0c0c0; border-right: 1px solid #c0c0c0">&nbsp;&nbsp;<b>if (</b> ( <span style="background-color: #f0f0ff"><b>guess</b></span> <b>&lt;</b> <span style="background-color: #f0f0ff"><b>target</b></span> ) <b>) {</b></td>
+   </tr>
+   <tr>
+      <td width="20" rowspan="1" bgcolor="#cceedd" style="border-left: 1px solid #c0c0c0">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+      <td width="100%" colspan="1" bgcolor="#ffe6b4" style="border-bottom: 1px solid #c0c0c0; border-right: 1px solid #c0c0c0; border-left: 1px solid #c0c0c0; border-top: 1px solid #c0c0c0">&nbsp;&nbsp;<span style="background-color: #f0f0ff"><b>alice</b></span> <b>.say( </b> <span style="background-color: #f0f0ff"><b>Too low.</b></span> <b> );</b> <span style="background-color: #f0f0ff">duration = <b>2 </b> seconds</span></td>
+   </tr>
+   <tr>
+      <td colspan="2" bgcolor="#cceedd" style="border-left: 1 solid #c0c0c0; border-right: 1 solid #c0c0c0">&nbsp;&nbsp;<b>} else {</b></td>
+   </tr>
+   <tr>
+      <td width="20" rowspan="1" bgcolor="#cceedd" style="border-left: 1 solid #c0c0c0">&nbsp;</td>
+      <td colspan="1" bgcolor="#ffe6b4" style="border-bottom: 1 solid #c0c0c0; border-right: 1 solid #c0c0c0; border-left: 1 solid #c0c0c0; border-top: 1 solid #c0c0c0">&nbsp;&nbsp;<span style="background-color: #f0f0ff"><b>alice</b></span> <b>.say( </b> <span style="background-color: #f0f0ff"><b>Too high.</b></span> <b> );</b> <span style="background-color: #f0f0ff">duration = <b>2 </b> seconds</span></td>
+   </tr>
+   <tr>
+      <td colspan="2" bgcolor="#cceedd" style="border-left: 1 solid #c0c0c0; border-bottom: 1 solid #c0c0c0; border-right: 1 solid #c0c0c0"><b>&nbsp;&nbsp;}</b></td>
+   </tr>
+   <tr>
+      <td></td></tr>
+   
+   <tr>
+      <td colspan="3" bgcolor="#cceedd" style="border-left: 1 solid #c0c0c0; border-bottom: 1 solid #c0c0c0; border-right: 1 solid #c0c0c0"><b>&nbsp;&nbsp;}</b></td>
+   </tr>
+   <tr>
+      <td colspan="4" bgcolor="#ccffdd" style="border-left: 1 solid #c0c0c0; border-bottom: 1 solid #c0c0c0; border-right: 1 solid #c0c0c0"><b>&nbsp;&nbsp;}</b></td>
+   </tr>
+   <tr>
+      <td colspan="5" bgcolor="#ffffd2" style="border-left: 1 solid #c0c0c0; border-bottom: 1 solid #c0c0c0; border-right: 1 solid #c0c0c0"><b>&nbsp;&nbsp;}</b></td>
+   </tr>
+</tbody></table>
+<p>&nbsp;</p>
+<p><a href="http://ciswebs.smc.edu/cs3/GEDDES_JAMES/Alice/KenWorlds/NumberGuessingGame.zip">ZIP file of NumberGuessingGame.a2w</a><br>
+
+   <a href="http://ciswebs.smc.edu/cs3/GEDDES_JAMES/Alice/KenWorlds/Number_Guessing_Game/Number_Guessing_Game.html">Number Guessing Game as a Web page</a></p>
+<p>&nbsp;</p>
+<p><br>
+   Or, suppose we decide to implement our algorithm in JavaScript. Then our level 5 algorithm is</p>
+<h3>5:</h3>
+<pre>var target &lt;- random() * 10 + 1
+write("I am thinking of a number between 1 and 10. Try to guess what it is.")
+var guessed &lt;- false
+while (!guessed)
+   var guess &lt;- prompt("Enter a number between 1 and 10")
+   if (guess == target) {
+      write ("You got it!")
+      guessed &lt;- true
+   } else if (guess &lt; target)
+      write ("Too low.")
+   else
+      write ("Too high.")
+<br>
+</pre>
+<p>Code in JavaScript:</p>
+<pre><img src="./Problem Solving_files/numberGuessingGameInJavaScript.png" width="684" height="409" alt="Number Guessing Game in JavaScript"></pre>
+<pre>&nbsp;
+</pre>
+<p>The following Web page contains the above JavaScript program:  <a href="http://kengeddes.com/cs3/examples/numberGuessingGame.html">numberGuessingGame.html<br>
+</a><span class="bold">Note</span>: Please use either Chrome, Firefox,  or Safari web browsers. With  IE you may need to enable 'allow websites to prompt for information using scripted windows' in Tools &gt;  Internet Options &gt; Security &gt; Internet. </p>
+<p>Here's another version of this game, this one written in PHP: <a href="http://ciswebs.smc.edu/cs85/geddes_james/labs/lab04/numberGuessingGame.php">numberGuessingGame.php</a></p>
+
+
+</body></html>
