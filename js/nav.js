@@ -5,7 +5,7 @@ document.write('\
 \
       <!-- nav will be imported here -->\
       <ul id="nav" class="nav">\
-        <li class="current"><a data-scroll data-options=\' {\'offset\': 0} \' href="#home">Home</a></li>\
+        <li class="current"><a data-scroll data-options=\' {"offset": 0} \' href="#home">Home</a></li>\
         <li><a data-scroll data-options=\' {"offset": 0} \' href="#about">About</a></li>\
         <li><a data-scroll data-options=\' {"offset": 0} \' href="#education">Education</a></li>\
         <li><a data-scroll href="#publications">Publications</a></li>\
