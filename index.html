@@ -7,37 +7,31 @@
 
 <head>
 
-  <!--- Basic Page Needs
-    ================================================== -->
+  <!--- Basic Page Needs -->
   <meta charset="utf-8">
   <title>Mark Edmonds</title>
   <meta name="description" content="Personal website for Mark Edmonds">
   <meta name="author" content="Mark Edmonds">
 
-  <!-- Mobile Specific Metas
-      ================================================== -->
+  <!-- Mobile Specific Metas -->
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <!-- CSS
-        ================================================== -->
+  <!-- CSS -->
   <link rel="stylesheet" href="css/default.css">
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/media-queries.css">
   <link rel="stylesheet" href="css/magnific-popup.css">
   <link rel="stylesheet" href="css/mjedmonds.css">
+  <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css"/>
   
-  <!-- Script
-          ================================================== -->
+  <!-- Script -->
   <script src="js/modernizr.js"></script>
   <script src="js/smooth-scroll.js"></script>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-  <script>
-    window.jQuery || document.write('<script src="js/jquery-1.10.2.min.js"><\/script>')
-  </script>
+  <script src="js/jquery-3.2.1.min.js"></script>
   <script type="text/javascript" src="js/jquery-migrate-1.2.1.min.js"></script>
+  <script type="text/javascript" src="js/jquery-migrate-3.0.0.min.js"></script>
 
-  <!-- Favicons
-            ================================================== -->
+  <!-- Favicons -->
   <link rel="shortcut icon" href="favicon.png">
 
   <!-- Google analytics -->
@@ -56,10 +50,26 @@
 <body>
   
   <!-- Header -->
-  <header id="#home">
+  <header id="home">
     
-    <!-- import navigation -->
-    <script src="js/nav.js"></script>
+    <!-- navigation -->
+    <nav id="nav-wrap">
+      <a class="mobile-btn" href="#nav-wrap" title="Show navigation">Show navigation</a>
+      <a class="mobile-btn" href="#" title="Hide navigation">Hide navigation</a>
+
+      <ul id="nav" class="nav">
+        <li class="current"><a data-scroll data-options=' {"offset": 0} ' href="#home">Home</a></li>
+        <li><a data-scroll data-options=' {"offset": 0} ' href="#about">About</a></li>
+        <li><a data-scroll data-options=' {"offset": 0} ' href="#education">Education</a></li>
+        <li><a data-scroll href="#publications">Publications</a></li>
+        <li><a data-scroll href="#research">Research</a></li>
+        <li><a data-scroll href="#experience">Experience</a></li>
+        <!--<li><a data-scroll data-options=' "offset": 0} ' href="#motivation">Motivation</a></li>-->
+        <li><a data-scroll href="#contact">Contact</a></li>
+        <li><a href="./teaching.html">Teaching</a></li>
+      </ul>
+    </nav>
+    <!-- end #nav-wrap -->
 
     <div class="row banner">
       <div class="banner-text">
@@ -221,6 +231,10 @@
               <img class="researchimg" src="images/open_bottle2.gif" alt="Open bottle demo 2"/>
             </div>
             <br style="clear:both" />
+           <!-- <div data-collapse>
+              <b>Bibtex</b>
+              <p>I'm the expanded content.</p>
+            </div>-->
 
             <h5><a href="#publications">A Glove-based System for Studying Hand-Object Manipulation via Pose and Force Sensing</a></h5>
             <p class="paper">H. Liu*, X. Xie*, M. Millar*, <b>M. Edmonds</b>, F. Gao, Y. Zhu, V. Santos, B. Rothrock, &amp; S.C. Zhu</p>
@@ -699,7 +713,6 @@
   <!-- Footer End-->
 
   <!-- JavaScript -->
-
 
   <script src="js/jquery.flexslider.js"></script>
   <script src="js/waypoints.js"></script>
