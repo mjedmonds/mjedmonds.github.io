@@ -1,0 +1,30 @@
+.researchimgcontainer{
+  display: table;
+  margin: 0 auto;
+}
+
+.researchimg {
+  float: left;
+  width: 250px;
+  margin: 20px;
+  vertical-align: middle;
+  text-align:center;
+  display: table-cell;
+}
+
+.collabcontainer{
+  display: inline-block;
+  width: 100%;
+  padding-left: 10px;
+  margin: 0 0;
+}
+
+.collableft {
+  float: left;
+  width:80%
+}
+
+.collabright{
+ text-align: center;
+  float: right;
+}

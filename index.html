@@ -24,11 +24,17 @@
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/media-queries.css">
   <link rel="stylesheet" href="css/magnific-popup.css">
-
+  <link rel="stylesheet" href="css/mjedmonds.css">
+  
   <!-- Script
           ================================================== -->
   <script src="js/modernizr.js"></script>
   <script src="js/smooth-scroll.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script>
+    window.jQuery || document.write('<script src="js/jquery-1.10.2.min.js"><\/script>')
+  </script>
+  <script type="text/javascript" src="js/jquery-migrate-1.2.1.min.js"></script>
 
   <!-- Favicons
             ================================================== -->
@@ -49,35 +55,16 @@
 
 <body>
 
-  <!-- Header
-                ================================================== -->
+  <!-- Header -->
   <header id="home">
-
-    <nav id="nav-wrap">
-
-      <a class="mobile-btn" href="#nav-wrap" title="Show navigation">Show navigation</a>
-      <a class="mobile-btn" href="#" title="Hide navigation">Hide navigation</a>
-
-      <ul id="nav" class="nav">
-        <li class="current"><a data-scroll data-options='{"offset": 0}' href="#home">Home</a></li>
-        <li><a data-scroll data-options='{"offset": 0}' href="#about">About</a></li>
-        <li><a data-scroll data-options='{"offset": 0}' href="#education">Education</a></li>
-        <li><a data-scroll href="#research">Research</a></li>
-        <li><a data-scroll href="#publications">Publications</a></li>
-        <li><a data-scroll href="#experience">Experience</a></li>
-        <!--<li><a data-scroll data-options='{"offset": 0}' href="#motivation">Motivation</a></li>-->
-        <li><a data-scroll href="#contact">Contact</a></li>
-        <li><a href="./teaching.html">Teaching</a></li>
-      </ul>
-      <!-- end #nav -->
-
-    </nav>
-    <!-- end #nav-wrap -->
+    
+    <!-- import navigation -->
+    <script src="js/nav.js"></script>
 
     <div class="row banner">
       <div class="banner-text">
         <h1 class="responsive-headline">I'm Mark Edmonds.</h1>
-        <h3>I want to make <span>the world as smart as possible</span>. I'm currently pursuing a PhD at <span>UCLA</span> with a focus on <span>computer vision</span> and <span>machine intelligence</span>. Start scrolling to more learn more <a data-scroll data-options='{"offset": 0}' href="#about">about me</a>.</h3>
+        <h3>I'm currently pursuing a PhD at UCLA under <a href="http://www.stat.ucla.edu/~sczhu/">Dr. Song-Chun Zhu</a> with a focus on artificial intelligence and computer vision. Start scrolling to more learn more <a data-scroll data-options='{"offset": 0}' href="#about">about me</a>.</h3>
         <hr />
         <ul class="social">
           <!-- <li><a href="https://facebook.com/mjedmonds2"><i class="fa fa-facebook"></i></a></li> -->
@@ -100,8 +87,7 @@
   <!-- Header End -->
 
 
-  <!-- About Section
-                  ================================================== -->
+  <!-- About Section -->
   <section id="about">
 
     <div class="row">
@@ -116,7 +102,7 @@
 
         <h2>About Me</h2>
 
-        <p>I study computer science, but I primarily see computers as a means to design systems. My life goal lies at the intersection of intelligence and system design; I want to create general machine intelligence that will increase access to education and further general technological progress.</p>
+        <p>I want to make the world as smart as possible. I study computer science, but I primarily see computers as a means to design systems. My life goal lies at the intersection of intelligence and system design; I want to create general machine intelligence that will increase access to education and further general technological progress.</p>
 
         <div class="row">
 
@@ -169,7 +155,7 @@
           <div class="twelve columns">
 
             <h3>University of California, Los Angeles</h3>
-            <p class="info">PhD in Computer Science <span>&bull;</span> <em class="date">Present</em></p>
+            <p class="info">PhD in Computer Science, Artificial Intelligence concentration <span>&bull;</span> <em class="date">Present</em></p>
 
           </div>
 
@@ -211,6 +197,67 @@
   </section>
   <!-- Education Section End-->
 
+  
+  <section id="publications">
+
+    <!-- publications -->
+    <div class="row publications">
+
+      <div class="three columns header-col">
+        <h1><span>Publications</span></h1>
+      </div>
+
+      <div class="nine columns main-col">
+
+        <div class="row item">
+
+          <div class="twelve columns">
+
+            <h5><a href="#publications">Feeling the Force: Integrating Force and Pose for Fluent Discovery through Imitation Learning to Open Medicine Bottles</a></h5>
+            <p class="paper"><b>M. Edmonds</b>*, F. Gao*, X. Xie, H. Liu, S. Qi, Y. Zhu, B. Rothrock, &amp; S.C. Zhu/p>
+            <p class="paper">International Conference on Intelligent Robots and Systems (IROS), 2017</p>
+            <div class="researchimgcontainer">
+              <img class="researchimg" src="images/open_bottle1.gif" alt="Open bottle demo 1"/>
+              <img class="researchimg" src="images/open_bottle2.gif" alt="Open bottle demo 2"/>
+            </div>
+            <br style="clear:both" />
+
+            <h5><a href="#publications">A Glove-based System for Studying Hand-Object Manipulation via Pose and Force Sensing</a></h5>
+            <p class="paper">H. Liu*, X. Xie*, M. Millar*, <b>M. Edmonds</b>, F. Gao, Y. Zhu, V. Santos, B. Rothrock, &amp; S.C. Zhu</p>
+            <p class="paper">International Conference on Intelligent Robots and Systems (IROS), 2017</p>
+            <div class="researchimgcontainer">
+              <img class="researchimg" src="images/glove1.png" alt="Glove visualization 1"/>
+              <img class="researchimg" src="images/glove2.png" alt="Glove visualization 2"/>
+            </div>
+            <br style="clear:both" />
+
+            <h5><a href="http://ieeexplore.ieee.org/xpl/articleDetails.jsp?reload=true&arnumber=7176183">High Performance Declarative Memory Systems through MapReduce</a></h5>
+            <p class="paper"><b>Mark Edmonds</b>, Tanvir Atahary, Scott Douglass, &amp; Tarek Taha</p>
+            <p class="paper">Software Engineering, Artificial Intelligence, Networking and Parallel/Distributed Computing (SNPD), 2015</p>
+            <div class="researchimgcontainer">
+              <img class="researchimg" src="images/dm1.png" alt="Glove visualization 1"/>
+              <img class="researchimg" style="width: 200px" src="images/dm2.png" alt="Glove visualization 2"/>
+            </div>
+            <br style="clear:both" />
+
+            <h5><a href="http://ecommons.udayton.edu/cgi/viewcontent.cgi?article=1388&context=ece_fac_pub">Brain Machine Interface using Emotiv EPOC for controlling a Robotic Arm</a></h5>
+            <p class="paper">Daniel Prince, Andrew Sutter, <b>Mark Edmonds</b>, Matthew Cusumano, Wenjie Lu, &amp; Vijayan K. Asari</p>
+            <p class="paper">Aerospace and Electronics Conference (NAECON), 2015.</p>
+
+            <p class="paper" align="right">(* indicates joint first authors)</p>
+          </div>
+
+        </div>
+        <!-- item end -->
+
+      </div>
+      <!-- main-col end -->
+
+    </div>
+    <!-- End publications -->
+
+  </section>
+  <!-- publcations Section End-->
 
  <section id="research">
 
@@ -234,15 +281,39 @@
               The Human Robot Collaboration Project aims to create a robot platform capable of autonomously collaborating with humans to accomplish meaningful, everday tasks. Currently, the project aims to transfer causal knowledge from human demonstrators to robots. This transfer focuses on using a tactile glove to capture visually latent states in the demonstration that are irrecoverable from vision along (e.g. forces exerted by the hand). From these demonstrations, we transfer the knowledge to the robot using an And-Or graph. In the future, we plan to expand this system to include intention prediction so the robot can take an active and collaborative role assisting with human tasks.
             </p>
 
-            <p>
+            <div>
               <b>Engineering contributions:</b>
               <ul>
+                <li> Neural network training for action planning and embodiment mapping between a human demonstrator and a robot</li>
                 <li> Localization using SLAM, IMU, and wheel odometry combined with Kalman filtering using a Microsoft Kinect and Velodyne VLP16</li>
                 <li> ROS navigation stack, including a dynamic footprint based on current position of arms </li>
               </ul> 
-            </p>
-            <iframe src="https://player.vimeo.com/video/148162670" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-            <p><a href="https://vimeo.com/148162670">Human-Robot-Collaboration (Hu-Ro-Co)</a> from <a href="https://vimeo.com/yixinzhu">Yixin Zhu</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
+            </div>
+            <div class="researchimgcontainer">
+              <iframe src="https://player.vimeo.com/video/148162670" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+              <p><a href="https://vimeo.com/148162670">Human-Robot-Collaboration (Hu-Ro-Co)</a> from <a href="https://vimeo.com/yixinzhu">Yixin Zhu</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
+            </div>
+            
+            <div class="collabcontainer">
+              <div class="collableft">
+                <b>Collaborators:</b>
+                <ul>
+                  <li> <a href="https://fen9.github.io/">Feng Gao</a>, University of California, Los Angeles</li>
+                  <li> <a href="https://liuhx111.github.io/">Hangxin Liu</a>, University of California, Los Angeles</li>
+                  <li> <a href="https://xuxie1031.github.io/">Xu Xie</a>, University of California, Los Angeles</li>
+                  <li> <a href="http://web.cs.ucla.edu/~mmillar/info.shtml">Matt Millar</a>, University of California, Los Angeles</li>
+                  <li> <a href="http://web.cs.ucla.edu/~syqi/">Siyuan Qi</a>, University of California, Los Angeles</li>
+                  <li> <a href="http://www.yzhu.io/">Yixin Zhu</a>, University of California, Los Angeles</li>
+                  <li> <a href="https://www-robotics.jpl.nasa.gov/people/Brandon_Rothrock/">Brandon Rothrock</a>, NASA Jet Propulsion Laboratory</li>
+                  <li> <a href="http://www.stat.ucla.edu/~sczhu/">Song-Chun Zhu</a>, University of California, Los Angeles</li>
+                </ul>
+              </div>
+              <div class="collabright">
+                <img src="images/VCLA.png" style="width: 75px" alt="Center for Vision, Cognition, Learning and Autonomy logo"/><br>                
+                <img src="images/JPL.png" style="width: 125px" alt="Jet Propulsion Laboratory logo"/>                
+              </div>
+            </div>
+            <p></p>
           </div>
 
         </div>
@@ -258,6 +329,24 @@
             <p>
               My undergraduate thesis was focused on accelerating the declarative memory module of the CECEP cognitive architecture, a derivative of ACT-R. The research centered on leveraging the parallel computing abilities of the CUDA programming platform to accelerate declarative retrieval. The initial, C++ implementation produced a 20 times speedup over the fastest previous implementation of declarative memory. The CUDA implementation accelerates declarative memory by a factor of 100 times while providing massive scalability. The work was jointly supported by the Air Force Research Lab and the University of Dayton Research Institute.
             </p>
+            
+            <div class="collabcontainer">
+              <div class="collableft">
+                <b>Collaborators:</b>
+                <ul>
+                  <li> <a href="https://udayton.edu/directory/engineering/electrical_and_computer/taha_tarek_m.php">Tarek Taha</a>, University of Dayton</li>
+                  <li> <a href="http://act-r.psy.cmu.edu/?post_type=authors&p=10523">Scott Douglass</a>, United States Air Force Research Lab</li>
+                  <li> <a href="http://dblp.uni-trier.de/pers/hd/a/Atahary:Tanvir">Tanvir Atahary</a>, United States Air Force Research Lab</li>
+                </ul>
+              </div>
+              <div>
+                <div class="collabright">
+                  <img src="images/UDlogo.png" style="width: 125px" alt="University of Dayton logo"/><br>             
+                  <img src="images/AFRL.png" style="width: 125px" alt="Air Force Research Lab logo"/>                
+                </div>
+              </div>
+            </div>
+            <p></p>
 
           </div>
 
@@ -274,7 +363,23 @@
             <p>
               This project expanded the capability of a brain machine interface through EEG signals and a robotic arm. The research centered on adding additional gestures and improving the universality of the interface. The team implemented 6 new useful actions for the robotic and developed a in-house EEG signal classifier using liner discriminate analysis. The EEG classifier currently can successfully distinguish between two states but successive senior design teams will increase the number of distinguishable states.
             </p>
-
+            
+            <div class="collabcontainer">
+              <div class="collableft">
+                <b>Collaborators:</b>
+                <ul>
+                  <li> <a href="https://udayton.edu/engineering/centers/vision_lab/people_profile/dan_prince_profile.php">Daniel Prince</a>, University of Dayton</li>
+                  <li> <a href="https://www.udayton.edu/engineering/centers/vision_lab/index.php#4">Andrew Sutter</a>, University of Dayton</li>
+                  <li> <a href="https://www.udayton.edu/engineering/centers/vision_lab/index.php#4">Matthew Cusumano</a>, University of Dayton</li>
+                  <li> <a href="https://www.udayton.edu/engineering/centers/vision_lab/index.php#4">Wenjie Lu</a>, University of Dayton</li>
+                  <li> <a href="https://udayton.edu/directory/engineering/electrical_and_computer/asari_vijayan.php">Vijayan K. Asari</a>, University of Dayton</li>
+                </ul>
+              </div>
+              <div class="collabright">
+                <img src="images/UDlogo.png" style="width: 125px" alt="University of Dayton logo"/>                
+              </div>
+            </div>
+            
           </div>
 
         </div>
@@ -288,52 +393,6 @@
 
   </section>
   <!-- research Section End-->
-
-  <section id="publications">
-
-    <!-- publications -->
-    <div class="row publications">
-
-      <div class="three columns header-col">
-        <h1><span>Publications</span></h1>
-      </div>
-
-      <div class="nine columns main-col">
-
-        <div class="row item">
-
-          <div class="twelve columns">
-
-            <h5><a href="#publications">Learning Complex Functional Manipulations by Human Demonstration and Fluent Discovery</a></h5>
-            <p class="paper"><b>M. Edmonds</b>*, F. Gao*, X. Xie, H. Liu, S. Qi, Y. Zhu, B. Rothrock, &amp; S.C. Zhu/p>
-            <p class="paper">International Conference on Intelligent Robots and Systems (IROS), 2017</p>
-
-            <h5><a href="#publications">A Glove-based System for Studying Hand-Object Manipulation via Pose and Force Sensing</a></h5>
-            <p class="paper">H. Liu*, X. Xie*, M. Millar*, <b>M. Edmonds</b>, F. Gao, Y. Zhu, V. Santos, B. Rothrock, &amp; S.C. Zhu</p>
-            <p class="paper">International Conference on Intelligent Robots and Systems (IROS), 2017</p>
-
-            <h5><a href="http://ieeexplore.ieee.org/xpl/articleDetails.jsp?reload=true&arnumber=7176183">High Performance Declarative Memory Systems through MapReduce</a></h5>
-            <p class="paper"><b>Mark Edmonds</b>, Tanvir Atahary, Scott Douglass, &amp; Tarek Taha</p>
-            <p class="paper">Software Engineering, Artificial Intelligence, Networking and Parallel/Distributed Computing (SNPD), 2015</p>
-
-            <h5><a href="http://ecommons.udayton.edu/cgi/viewcontent.cgi?article=1388&context=ece_fac_pub">Brain Machine Interface using Emotiv EPOC for controlling a Robotic Arm</a></h5>
-            <p class="paper">Daniel Prince, Andrew Sutter, <b>Mark Edmonds</b>, Matthew Cusumano, Wenjie Lu, &amp; Vijayan K. Asari</p>
-            <p class="paper">Aerospace and Electronics Conference (NAECON), 2015.</p>
-
-            <p class="paper" align="right">(* indicates joint first authors)</p>
-          </div>
-
-        </div>
-        <!-- item end -->
-
-      </div>
-      <!-- main-col end -->
-
-    </div>
-    <!-- End publications -->
-
-  </section>
-  <!-- publcations Section End-->
 
   <section id="experience">
 
@@ -639,13 +698,8 @@
   </footer>
   <!-- Footer End-->
 
-  <!-- Java Script
-                              ================================================== -->
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-  <script>
-    window.jQuery || document.write('<script src="js/jquery-1.10.2.min.js"><\/script>')
-  </script>
-  <script type="text/javascript" src="js/jquery-migrate-1.2.1.min.js"></script>
+  <!-- JavaScript -->
+
 
   <script src="js/jquery.flexslider.js"></script>
   <script src="js/waypoints.js"></script>
