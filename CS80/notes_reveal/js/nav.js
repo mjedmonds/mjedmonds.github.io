@@ -16,6 +16,7 @@ document.write('\
   <a href="#" class="dropdown-toggle my-dropdown-getting-started" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Contents<span class="caret"></span></a>\
   <ul class="dropdown-menu">\
     <li><a href="ch1_intro.html">Ch 1. Introduction to Computers & the Internet</a></li>\
+    <li><a href="ch2_html_pt1.html">Ch 2. Introduction to HTML: Part I</a></li>\
   </ul>\
 </li>\
 </ul>\
