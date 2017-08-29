@@ -1,0 +1,626 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+
+    <title>Introduction to Computers &amp; the Internet</title>
+
+    <meta name="description" content="A course on the world's fastest growing machine learning library, TensorFlow">
+    <meta name="author" content="Mark Edmonds">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    
+    <!-- Google analytics -->
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-98378227-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="reveal.js/css/reveal.css">
+    <link rel="stylesheet" href="reveal.js/css/theme/serif.css" id="theme">
+    <link href='css/ubuntu_font.css' rel='stylesheet' type='text/css'>
+
+    <style>
+      body {
+      padding-top: 30px;
+      padding-bottom: 40px;
+      }
+    </style>
+
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="css/pojoaque.css">
+
+    <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+    <script>
+      document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+    </script>
+
+    <script src="js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+  </head>
+  <body>
+    
+    <script src="js/nav.js"></script>
+
+    <script>
+      function toggleElements(one, two) {
+      document.getElementById(one).style.display = 'none';
+      document.getElementById(two).style.display = 'block';
+      }
+    </script>
+    
+    <!-- Main body -->
+    
+    <div class="reveal">
+      <div class="slides">
+        <section>
+          <h2>Welcome to CS 80: Internet Programming</h2>
+          <p>Instructor: Mark Edmonds</p>
+          <p><a href="mailto:edmonds_mark@smc.edu">edmonds_mark@smc.edu</a></p>
+        </section>
+        <section>
+          <h3>Using These Slides</h3>
+          <small>
+          <center>
+            <table>
+          <tr>
+            <td><code>&rarr;</code></td>
+            <td>next slide</td>
+          </tr>
+          <tr>
+            <td><code>&larr;</code></td>
+            <td>prev slide</td>
+          </tr>
+          <tr>
+            <td><code>Esc</code></td>
+            <td>global <code>ctrl+f</code></td>
+          </tr>
+            </table>
+          </center>
+          </small>
+
+          <aside class="notes">Hi there! This is a lecture note. Every slide can have a little blurb of text like this!</aside>
+        </section>
+        <section>
+          <h3>Expectations and Success</h3>
+          <ul>
+            <li>
+              <p>Turn in assignments, tests, projects on time</p>
+            </li>
+            <li>
+              <p>Complete the project </p>
+              <ul>
+                <li>
+                  <p>Minimum of HTML5, CSS, and JavaScript. See Project online for more info</p>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <p>Attend class</p>
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h3>Project Information</h3>
+          <small>
+          <ul>
+            <li>
+              <p>You will be required to submit a project worth 20% of your grade the last week of class</p>
+            </li>
+            <li>
+              <p>You may work in groups of up to 4. The expected quality/effort will be based on how many group members you have</p>
+            </li>
+            <li>
+              <p>You are only required to use HTML5 and CSS, but it is strongly encouraged to use other technologies you learn during the semester</p>
+            </li>
+            <li>
+              <p>You are expected to work a minimum of 20 hours on this project (it will show in the final result)</p>
+            </li>
+          </ul>
+          </small>
+        </section>
+        <section>
+          <h3>Motivation</h3>
+          <ul>
+            <li>
+              <p>Computer science is a huge, blossoming field</p>
+            </li>
+            <li>
+              <p>Learning about computer science will make you more employable</p>
+              <ul>
+                <li>
+                  <p>Regardless of your field</p>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <p>Applications of computer science:</p>
+              <ul>
+                <li>
+                  <p>Cloud computing, GPS, robotics, email, the web, video games, cars (self-driving or not), cell phones, etc.</p>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h2>Chapter 1: Introduction to Computers and the Internet</h2>
+        </section>
+        <section>
+          <h3>Client-side Programming</h3>
+          <ul>
+            <li>
+              <p>Web applications that run on the client</p>
+            </li>
+            <ul>
+                <li><em>Client</em> refers to the user's device (e.g. a computer or cell phone)</li>
+            </ul>
+            <li>Example: you make your own webpage using HTML5</li>
+            <li>Technologies: HTML5 (hyper-text markup language), CSS (cascading style sheets), Javascript</li>
+          </ul>
+        </section>
+        <section>
+          <h3>Server-side Programming</h3>
+          <ul>
+            <li>
+              <p>Applications that respond to client-side requests</p>
+            </li>
+            <ul>
+              <li>
+                <p><em>Server</em> refers to a machine that responds to <em>clients</em></p>
+              </li>
+              <li>
+                <p>These applications respond to information coming from the client</p>
+              </li>
+            </ul>
+            <li>
+              <p>Example: user submits a registration form that must be saved in the server's database</p>
+            </li>
+            <li>
+              <p>Technologies: Apache (web server), MySQL (database), PHP</p>
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h3>HTML5</h3>
+          <ul>
+            <li>
+              <p>Chapters 2 and 3</p>
+            </li>
+            <li>
+              <p>HyperText Markup Language</p>
+            </li>
+            <li>
+              <p>Specifies the content and the structure of a webpage</p>
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h3>CSS</h3>
+          <ul>
+            <li>
+              <p>Chapter 4</p>
+            </li>
+            <li>
+              <p>CSS = &ldquo;Cascading Style Sheet&rdquo;</p>
+            </li>
+            <li>
+              <p>Controls the presentation of the webpage</p>
+            </li>
+            <li>
+              <p>Separates the presentation from the content and structure of the webpage</p>
+            </li>
+            <li>
+              <p>Enables changing the view of the website</p>
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h3>Javascript</h3>
+          <ul>
+            <li>
+              <p>Chapters 6 and 7</p>
+            </li>
+            <li>
+              <p>Javascript helps make web pages dynamic; e.g. they change with user interaction</p>
+            </li>
+            <li>
+              <p>These interactions are referred to as <em>events</em></p>
+            </li>
+            <ul>
+              <li>
+                <p>Examples of events: losing focus on a form, hitting a button, changing the mouse location</p>
+              </li>
+            </ul>
+          </ul>
+        </section>
+        <section>
+          <h3>jQuery</h3>
+          <ul>
+            <li>
+              <p>Simplifies Javascript by providing expansive library</p>
+            </li>
+            <li>
+              <p>Provides portable behavior</p>
+            </li>
+            <ul>
+              <li>
+                <p>Why does portable matter?</p>
+              </li>
+              <ul>
+                <li>
+                  <p>Not ever web browser behaves the same way</p>
+                </li>
+                <li>
+                  <p>You've probably seen a web browser complain about compatibility issues before</p>
+                </li>
+              </ul>
+            </ul>
+          </ul>
+        </section>
+        <section>
+          <h3>Demos</h3>
+          <a href="https://developer.mozilla.org/en-US/docs/Web/Demos_of_open_web_technologies">https://developer.mozilla.org/en-US/docs/Web/Demos_of_open_web_technologies</a>          
+        </section>
+        <section>
+          <h3>A brief history of the Internet</h3>
+          <ul>
+            <li>
+              <p>ARPANET</p>
+              <ul>
+                <li>
+                  <p>The first version of the Internet</p>
+                </li>
+                <li>
+                  <p>ARPA = &ldquo;Advanced Research Projects Agency&rdquo;</p>
+                </li>
+                <li>
+                  <p>The first message was sent from UCLA to Stanford</p>
+                </li>
+                <li>
+                  <p>More universities and networks were added, slowly creating the modern Internet</p>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h3>A brief history of the Internet</h3>
+          <ul>
+            <li>
+              <p>TCP/IP</p>
+              <ul>
+                <li>
+                  <p>TCP = &ldquo;Transmission Control Protocol&rdquo;</p>
+                  <ul>
+                    <li>
+                      <p>Ensures transmitted data integrity and verifies destination address</p>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <p>IP = &ldquo;Internet Protocol&rdquo;</p>
+                  <ul>
+                    <li><p>Different types and configurations of networks appeared over time</p></li>
+                    <ul>
+                      <li><p>Each one was a sub-network&nbsp;</p></li>
+                    </ul>
+                    <li><p>IP creates a network of networks</p></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h3>A brief history of the Internet</h3>
+          <ul>
+            <li><p>Each computer on sub-networks and the Internet is assigned its own IP address</p></li>
+            <ul>
+                <li><p>We used to use IPv4, which is 32-bit (meaning approximately four billion address)</p></li>
+                <li><p>We ran out of IPv4 address; we now use IPv6, which is 128-bit (containing approximately 340 follow by 36 zeros worth of address</p></li>
+                <ul>
+                    <li><p>We should be good for a while!</p></li>
+                </ul>
+            </ul>
+          </ul>
+        </section>
+        <section>
+          <h3>World Wide Web, HTML, HTTP</h3>
+          <ul>
+              <li><p>World Wide Web is a section of the internet</p></li>
+              <li><p>Specifically, this 'section' of the internet servers HTML (hypertext markup language) documents</p></li>
+              <li><p>The hypertext transfer protocol (HTTP) is the communication protocol used to serve an HTML document</p></li>
+              <li><p>A URL (uniform resource locator) specifies the location of the html document on the web.&nbsp;</p></li>
+              <ul>
+                  <li><p>Start with http://</p></li>
+              </ul>
+          </ul>
+        </section>
+        <section>
+          <h3>Web Basics</h3>
+          <p>Hyperlinks</p>
+          <ul>
+              <li><p>Link to another document</p></li>
+              <li><p>Documents are typically HTML pages</p></li>
+              <ul>
+                <li><p>Can also link to an email address via <code>mailto:</code></p></li>
+                  <li><p>Can also link to a file, even a local file (the local file would need to exist)</p></li>
+              </ul>
+          </ul>
+        </section>
+        <section>
+          <h3>Web Basics</h3>
+          <p>URIs and URLs&nbsp;</p>
+          <ul>
+              <li><p>URI = uniform resource identifiers</p></li>
+              <ul>
+                <li><p>Can be files (<code>file://</code>), file transfers (<code>ftp://</code>),</p></li>
+              </ul>
+            <li><p>URL = URIs that start with <code>http://</code> or <code>https://</code></p></li>
+              <ul>
+                <li><p>Remember, <code>http://</code> = hypertext transfer protocol</p></li>
+              </ul>
+          </ul>
+        </section>
+        <section>
+          <h3>Web Basics</h3>
+          <p>Anatomy of a URL</p>
+          <ul>
+            <li><p>Ex: <code><a href="http://www.deitel.com/books/downloads.html">http://www.deitel.com/books/downloads.html</a></code></p></li>
+            <li><p><code><a href="http://www.deitel.com/">www.deitel.com</a></code> is the <strong>hostname </strong>(which is hosted on a <strong>host</strong> computer)</p></li>
+              <li><p>This hostname is translated into an IP address (remember IP stands for Internet Protocol)</p></li>
+            <li><p><code>/books/downloads.html</code> is the resource's location (<code>/books</code>) and name (downloads.html) on the webserver</p></li>
+          </ul>
+        </section>
+        <section>
+          <h3>Web Basics</h3>
+          <p>Anatomy of a URL</p>
+          <ul>
+            <li><p>This IP address uniquely identifies the host on the Internet</p></li>
+            <li><p>This translation occurs by looking up the hostname on a DNS server (DNS = domain name system)</p></li>
+            <small>
+            <ul>
+                <li><p>DNS is complex, but think of it like a network of computers whose sole purpose is to facilitate this lookup</p></li>
+                 <li><p>The complicated part: these servers need to sync updates without messing the entire system up</p></li>
+                <li><p>Hackers perform DNS attacks to trick people into giving up personal information to the wrong website (even though the site appears legitimate)</p></li>
+            </ul>
+            </small>
+          </ul>
+        </section>
+        <section>
+          <h3>Web Basics</h3>
+          <p>The request/receive process</p>
+          <small>
+          <ul>
+            <li><p>Web browser sends</p></li>
+            <ul>
+              <li><p><code>GET /books/downloads.html HTTP/1.1</code></p></li>
+            </ul>
+            <li><p><code>GET</code> is an HTTP command asked for a particular resource, in this case requesting</p></li>
+            <ul>
+              <li><p><code>/books/downloads/html</code></p></li>
+            </ul>
+            <li><p><code>HTTP/1.1</code> specifies the protocol and version</p></li>
+            <ul>
+              <li><p>Any server that can understand HTTP version 1.1 can successfully interpret this request</p></li>
+            </ul>
+          </ul>
+          </small>
+        </section>
+        <section>
+          <h3>Web Basics</h3>
+          <p>The request/receive process</p>
+          <ul>
+            <small>
+            <li><p>The server responds with another message, indicating what happened with the request</p></li>
+            <ul>
+              <li><p>HTTP/1.1 200 OK &rarr; indicates success</p></li>
+              <li><p>HTTP/1.1 404 Not found &rarr; indicates the resource could not be found</p></li>
+              <li><p>100s = informational (continue, switching protocols)</p></li>
+              <li><p>200s = success (ok, accepted, no content)</p></li>
+              <li><p>300s = redirects, more action needed (multiple choices, use proxy, permanent redirect)</p></li>
+              <li><p>400s = client error (bad request, unauthorized, forbidden)</p></li>
+              <li><p>500s = server error (internal server error, bad gateway, loop detected)</p></li>
+            </ul>
+            </small>
+          </ul>
+        </section>
+        <section>
+        <h3>HTTP Header</h3>
+          <ul>
+            <li><p>Part of the HTTP response</p></li>
+            <li><p>Provides additional information about the response, such as the type of information being sent (e.g. jpeg, html, etc.)</p></li>
+            <li><p>Ends with a blank line to indicate that the content is about to start</p></li>
+            <li><p>Then the content of the message is sent</p></li>
+          </ul>
+          <p>Two most common HTTP requests: <code>GET</code> (request information) and <code>POST</code> (send information)</p>
+        </section>
+        <section>
+        <h3>Client-side scripting</h3>
+        <ul>
+          <li><p>Script runs on the client</p></li>
+          <li><p>Example: Javascript</p></li>
+          <li><p>Problems: script execution is limited by client's browser's capabilities, security concerns</p></li>
+          <li><p>Benefits: doesn't use bandwidth to process information (e.g. form validation can happen entirely on the client</p></li>
+        </ul>
+        </section>
+        <section>
+          <h3>Server-side scripting</h3>
+          <ul>
+            <li><p>Scripts that run on the server</p></li>
+            <li><p>Example: PHP, database access</p></li>
+            <li><p>Problems: time (client may wait for server), extra bandwidth (potentially)</p></li>
+            <li><p>Benefits: not limited by client's computer; means web designer can control what's on the page</p></li>
+          </ul>
+        </section>
+        <section>
+          <h3>Ajax</h3>
+          <ul>
+            <li><p>Covered in detail in Chapter 16</p></li>
+            <li><p>Allows webpages to behave like desktop applications</p></li>
+            <li><p>Facilitated by sending requests to the server without loading an entirely new HTML document</p></li>
+          </ul>
+        </section>
+        <section>
+          <h3>Types of Programming Languages</h3>
+          <small>
+          <ul>
+            <li><p>Computers only understand 0's and 1's</p></li>
+            <li><p>When you write code, the code is eventually translated down to a language that is comprised of 0's and 1's</p></li>
+            <li><p>Languages that are understood directly by computers (e.g. they are made of 0's and 1's) are known as <em>machine langauges</em></p></li>
+            <ul>
+                <li><p>Writing code this way is very cumbersome</p></li>
+                <li><p>People started writing English abbreviations of these 0's and 1's</p></li>
+                <ul>
+                    <li><p>These formed a higher abstraction of programming, known as assembly languages</p></li>
+                </ul>
+            </ul>
+          </ul>
+          </small>
+        </section>
+        <section>
+          <h3>Types of Programming Languages</h3>
+          <ul>
+            <li><p>Machine languages still quite cumbersome, so <em>high-level languages</em> were created to provide more abstraction</p></li>
+            <ul>
+                <li><p>High level languages, such as C++, Python, Java, Javascript, etc, allow programmers to write statements that are almost english</p></li>
+            </ul>
+          </ul>
+        </section>
+        <section>
+          <h3>Types of Programming Languages</h3>
+          <ul>
+            <li><p>Two types of high-level languages: <em>interpreted</em> and <em>compiled</em></p></li>
+            
+            <li><p><em>Interpreted</em> - program statements are translated to machine code as the program executes (as each line of code is running)</p></li>
+            <ul>
+              <li><p>E.g. Python, Javascript</p></li>
+              <li><p>Good for the web, code can start running as soon as it downloads to th client's computer</p></li>
+            </ul>
+          </ul>
+        </section>
+        <section>
+          <h3>Types of Programming Languages</h3>
+          <ul>
+          <li><p><em>Compiled</em> - all program statements are converted into machine code, then the program can run</p></li>
+            <ul>
+              <li><p>E.g. C++, Java</p></li>
+              <li><p>Generally significantly faster than interpreted languages</p></li>
+              <li><p>The translation to machine langauge happens before the program is run, instead of as the program is running</p></li>
+            </ul>
+          </ul>
+        </section>
+        <section>
+          <h3>Object Oriented Programming</h3>
+          <ul>
+            <li><p>This is a topic for an entire course</p></li>
+            <li><p>How many people have heard of this before?</p></li>
+            <li><p>How many people have used OOP before?</p></li>
+            <li><p>Basic concept: group data and operations together logically and allow hierarchies of relationships</p></li>
+          </ul>
+        </section>
+        <section>
+          <h3>Object Oriented Programming</h3>
+          <ul>
+            <li><p>Operations (methods): steer, accelerate, decelerate, fill up with gas, etc</p></li>
+            <li><p>Data (attributes): speed, heading, gas tank status, odometer, etc.</p></li>
+
+          </ul>
+        </section>
+        <section>
+          <h3>Object Oriented Programming</h3>
+          <ul>
+            <li><p>You don't have to know how the car precisely works to use one. You simply know that the pedal accelerates the car, brake decelerates, etc</p></li>
+            <ul>
+                <li><p>This is known as <em>information hiding</em></p></li>
+                <li><p>Another engineer has designed how the care operates, you just use the public (available) operations</p></li>
+                <ul>
+                    <li><p>But there are many more operations happening inside the car than you are aware</p></li>
+                </ul>
+            </ul>
+          </ul>
+        </section>
+        <section>
+          <h3>Object Oriented Programming</h3>
+          <ul>
+            <li><p>We refer to the design of the car as the <em>class</em> (think of this like a blueprint)</p></li>
+            <li><p>Once you have the design for a car, you can reuse it</p></li>
+            <ul>
+              <li><p>Each "usage" is an <em>instantiation</em> of a car</p></li>
+            </ul>
+            <li><p>Similarly, once you have a design of a car, you can extend it to add new features</p></li>
+            <ul>
+                <li><p>E.g. add upgrades, wings, etc</p></li>
+                <li><p>This is known as inheritance</p></li>
+            </ul>
+          </ul>
+        </section>
+      </div>
+    </div>
+    
+    <!-- end main body -->
+    
+    <script src="lib/js/head.min.js"></script>
+    <script src="reveal.js/js/reveal.js"></script>
+    
+    <script>
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+      controls: true,
+      progress: true,
+      history: true,
+      center: true,
+      mouseWheel: false,
+      rollingLinks: false,
+      showNotes: true,
+
+      theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+      transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/none
+
+      // Optional libraries used to extend on reveal.js
+      dependencies: [
+      { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+      // { src: 'plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+      { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+      { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+      { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+      { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+      { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+      // { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+      { src: 'plugin/math/math.js', async: true }
+      ]
+      });
+
+    </script>
+
+    <script>window.jQuery || document.write('<script src="js/jquery-3.2.1.min.js"><\/script>')</script>
+    <script src="js/bootstrap.min.js"></script>
+
+    <script>
+      Reveal.addEventListener( 'slidechanged', function( event ) {
+      // event.previousSlide, event.currentSlide, event.indexh, event.indexv
+      var notes = event.currentSlide.querySelector(".notes");
+      if(notes) {
+          console.info("---");
+          console.info(notes.innerHTML.replace(/\n\s+/g,'\n'));
+      }
+      } );
+    </script>
+
+    <script>
+      Reveal.configure({ slideNumber: 'c/t' });
+    </script>
+
+
+    <script src="js/main.js"></script>
+  </body>
+</html>
