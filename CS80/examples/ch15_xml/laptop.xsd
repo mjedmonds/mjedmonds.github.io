@@ -1,0 +1,42 @@
+<?xml version = "1.0"?>
+<!-- Fig. 15.12: computer.xsd -->
+<!-- W3C XML Schema document
+-->
+<schema xmlns = "http://www.w3.org/2001/XMLSchema"
+  xmlns:computer = "http://www.deitel.com/computer"
+  targetNamespace = "http://www.deitel.com/computer">
+  <!-- declare a simple type of "gigahertz"-->
+  <simpleType name = "gigahertz">
+    <!-- sepcify a restriction on the base type decimal -->
+    <restriction base = "decimal">
+      <!-- set minimum value -->
+      <minInclusive value = "2.1"/>
+    </restriction>
+  </simpleType>
+  <!-- declare a complex type of CPU -->
+  <complexType name = "CPU">
+    <!-- create simple content -->
+    <simpleContent>
+      <!-- here we "extend" the simple content to contain a string -->
+      <extension base = "string">
+        <!-- set the name and the type of CPU -->
+        <attribute name = "model" type = "string"/>
+      </extension>
+    </simpleContent>
+  </complexType>
+  <!-- declare a complex type "portable" -->
+  <complexType name = "portable">
+    <!-- All specifies that each child element must be included -->
+    <all>
+      <!-- declare elements and their type -->
+      <element name = "processor" type = "computer:CPU"/>
+      <element name = "monitor" type = "int"/>
+      <element name = "CPUSpeed" type = "computer:gigahertz"/>
+      <element name = "RAM" type = "int"/>
+    </all>
+    <!-- declare an attribute for the manufacturer of the laptop -->
+    <attribute name = "manufacturer" type = "string"/>
+  </complexType>
+  <!-- declare a single laptop element -->
+  <element name = "laptop" type = "computer:portable"/>
+</schema>

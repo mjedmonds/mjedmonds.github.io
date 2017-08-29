@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<!-- Fig. 2.16: internal.html -->
+<!-- Internal Linking -->
+<head>
+  <meta charset="utf-8">
+  <title>Internal Linking</title>
+</head>
+
+<body>
+  <!-- id attribute creates an internal hyperlink destination -->
+  <h1 id="features">The Best Features of the Internet</h1>
+  <!-- an internal link's address is "#id" -->
+  <p><a href="#bugs">Go to <em>Favorite Bugs</em></a></p>
+  <ul>
+    <li>You can meet people from countries around the world.</li>
+    <li>You have access to new media as it becomes public:
+      <ul>
+        <li>New games</li>
+        <li>New applications
+          <ul>
+            <li>For Business</li>
+            <li>For Pleasure</li>
+          </ul>
+        </li>
+        <li>Around the clock news</li>
+        <li>Search Engines</li>
+        <li>Shopping</li>
+        <li>Programming
+          <ul>
+            <li>HTML5</li>
+            <li>Java</li>
+            <li>Dynamic HTML</li>
+            <li>Scripts</li>
+            <li>New languages</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li>Links</li>
+    <li>Keeping in touch with old friends</li>
+    <li>It is the technology of the future!</li>
+  </ul>
+
+  <br><br><br><br><p>Skipping a whole bunch of space where you would put amazing web content</p><br><br><br><br>
+  <p>Skipping a whole bunch of space where you would put amazing web content</p><br><br><br><br>
+  <p>Skipping a whole bunch of space where you would put amazing web content</p><br><br><br><br>
+  <p>Skipping a whole bunch of space where you would put amazing web content</p><br><br><br><br>
+  <p>Skipping a whole bunch of space where you would put amazing web content</p><br><br><br><br>
+
+  <!-- id attribute creates an internal hyperlink destination -->
+  <h1 id="bugs">My 3 Favorite Bugs</h1>
+  <p>
+    <!-- internal hyperlink to features -->
+    <a href="#features">Go to <em>Favorite Features</em></a>
+  </p>
+  <ol>
+    <li>Fire Fly</li>
+    <li>Gal Ant</li>
+    <li>Roman Tic</li>
+  </ol>
+
+  <h1>We can even reference an id in a different HTML document on a different host</h1>
+  <p>
+    <a href="https://en.wikipedia.org/wiki/HTML#Attributes">https://en.wikipedia.org/wiki/HTML#Attributes</a>
+  </p>
+  <p>
+    <a href="#">Top</a>
+  </p>
+
+</body>
+
+</html>

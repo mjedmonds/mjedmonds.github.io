@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p id="demo"></p>
+
+<script>
+
+// declaring a function using the 'function expression' method (varaible assignment)
+var to_fahrenheit = function(celsius) {
+  return (9/5) * celsius + 32
+}
+
+var celsius = to_celsius(77);
+var fahrenheit = to_fahrenheit(to_celsius(77));
+
+document.writeln("<p>The temperature is " + celsius + " in Celsius</p>");
+document.writeln("<p>The temperature is " + fahrenheit + " in Fahrenheit</p>");
+
+
+// declaring a function using the 'function declaration' method
+function to_celsius(fahrenheit) {
+  var temp = (5/9) * (fahrenheit - 32); 
+  return temp;
+} 
+</script>
+
+</body>
+</html>
+

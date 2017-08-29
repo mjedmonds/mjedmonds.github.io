@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+  <meta charset="utf-8">
+
+  <title></title>
+
+  <script>
+var shopping_list = ["pants", "grocercies", "car"];
+var i = 0;
+// purchase all items in the list
+while(i < shopping_list.length)
+{
+  purchase(shopping_list[i]); // purchase the item
+  i = i + 1;                  // move to the next item
+}
+
+function purchase(item){
+  window.alert("Purchased " + item);
+}
+  </script>
+
+</head>
+
+<body>
+</body>
+
+</html>
+

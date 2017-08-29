@@ -1,0 +1,31 @@
+<?xml version = "1.0"?>
+<!-- Fig. 15.10: book.xsd
+-->
+<!-- Simple W3C XML Schema document -->
+<!-- 
+The first xmlns defines the namespace for this document, which is a schema.
+xmlns:deitel defines a namespace of "dietel", used to differentiate between names used for the XML schema and names used by our schema
+targetNamespace defines which namespace will use this schema for validation
+-->
+<schema xmlns = "http://www.w3.org/2001/XMLSchema"
+  xmlns:deitel = "http://www.deitel.com/booklist"
+  targetNamespace = "http://www.deitel.com/booklist">
+  <!-- declaring an element named "books" and its schema type, "BooksType" in the "dietel" namespace -->
+  <element name = "books" type = "deitel:BooksType"/>
+  <!-- declare the complext type "BooksType" used with the "books" element -->
+  <complexType name = "BooksType">
+    <!-- sequence specifies the order in which child elements must appear -->
+    <sequence>
+      <!-- declare an element names "book" of type "SingleBookType" that must occur at least once and can occur an infinite amount of times -->
+      <element name = "book" type = "deitel:SingleBookType"
+        minOccurs = "1" maxOccurs = "unbounded"/>
+    </sequence>
+  </complexType>
+  <!-- declare the "SingleBookType" complex type used with the "book" element -->
+  <complexType name = "SingleBookType">
+    <sequence>
+      <!-- specify that the "title" element is a string -->
+      <element name = "title" type = "string"/>
+    </sequence>
+  </complexType>
+</schema>

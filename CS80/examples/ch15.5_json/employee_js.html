@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Employee JSON example</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <script>
+    // run when the document is ready
+    $(document).ready(function() {
+      // create JS object using JSON syntax
+      var employees = [ {"firstName": "John","lastName": "Doe" }, {"firstName": "Anna", "lastName": "Smith"}, {"firstName": "Peter","lastName": "Jones" }];
+
+      // setup document
+      document.writeln("<h2>Employees list</h2>");
+      document.writeln("<p>");
+      // loop over every employee
+      for (var i = 0; i < employees.length; i++) {
+        // print employee info  
+        document.writeln(employees[i].firstName + " " + employees[i].lastName + "<br>");
+      }
+      document.writeln("</p>");
+    });
+  </script>
+</head>
+
+<body>
+
+  <h2>JSON Object Creation in JavaScript</h2>
+
+  <p id="demo"></p>
+
+</body>
+
+</html>

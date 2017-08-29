@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Class Average Problem</title>
+  <style>
+    table,
+    th,
+    td {
+      border: 1px solid black;
+    }
+    
+    table {
+      border-collapse: collapse;
+    }
+    
+    th,
+    td {
+      padding: 15px;
+      text-align: left;
+    }
+  </style>
+  <script>
+    var total; // sum of grades
+    var gradeCounter; // number of grades entered
+    var grade; // grade typed by user  
+    var average; // average of all grades
+    // initialization phase
+    total = 0; // clear total
+    gradeCounter = 0;
+    var numStudents = window.prompt("Enter the number of students: ", "0");
+    numStudents = parseInt(numStudents);
+
+    if (numStudents == 0)
+    {
+      document.writeln("The number of students is 0");
+    } 
+    else
+    {
+      //setup table
+      document.writeln("<table>");
+      document.writeln("<caption><strong>Exam scores</strong></caption>");
+      document.writeln("<thead>\n<tr>\n<th>Student Number</th>\n<th>Grade</th>\n</thead>");
+      document.writeln("<tbody>");
+
+      // loop, processing phase
+      while (gradeCounter < numStudents) {
+        // prompt for input and read grade from user
+        grade = window.prompt("Enter integer grade:", "0");
+        // convert grade from a string to an integer
+        grade = parseInt(grade);
+        // add gradeValue to total
+        total = total + grade;
+        // add 1 to gradeCounter
+        gradeCounter = gradeCounter + 1;
+        // add data to table
+        document.writeln("<tr>\n<td>" + gradeCounter + "</td>\n<td>" + grade + "</td>\n</tr>");
+      } // end while
+
+      // calculate the average
+      average = total / numStudents;
+      // display average of exam grades
+      document.writeln("</tbody>");
+      document.writeln("<tfoot>\n<tr>\n<th>Average</th>\n<th>" + average + "</th>\n</tr>\n</tfoot>");
+      document.writeln("</table>");
+    }
+  </script>
+</head>
+
+<body>
+</body>
+
+</html>

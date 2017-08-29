@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Leap Year Checker</title>
+  <script type="text/javascript">
+    var year, leapYear = false,
+      leapYearText = "";
+    year = window.prompt("Input a year: ");
+    if (year % 100 === 0) {
+      if (year % 400 === 0) {
+        leapYear = true;
+      }
+    } else if (year % 4 === 0) {
+      leapYear = true;
+    }
+    if (!leapYear) {
+      leapYearText = " not";
+    }
+    document.writeln("<h2>" + year + " is" + leapYearText + " a leap year</h2>");
+  </script>
+</head>
+
+<body>
+</body>
+
+</html>

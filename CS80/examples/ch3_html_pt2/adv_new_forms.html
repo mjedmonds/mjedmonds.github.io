@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>New Forms in HTML5</title>
+</head>
+
+<body>
+  <h3>Demo of the new HTML5 form input types</h3>
+  <form method="post" action="http://deitel.com">
+    <p>
+      <label>color:
+        <input type="color" autofocus />
+      </label>
+    </p>
+    <p>
+      <label>date:
+        <input type="date" />
+      </label>
+    </p>
+    <p>
+      <label>email:
+        <input type="email" placeholder="edmonds_mark@smc.edu"/>
+      </label>
+    </p>
+    <p>
+      <label>number:
+        <input type="number" min="-50" max="100" />
+      </label>
+    </p>
+    <p>
+      <label>range:
+        <input type="range" min="5" max="10" value="7"/>
+      </label>
+    </p>
+    <p>
+      <label>tel:
+        <input type="tel" pattern = "\(\d{3}\) +\d{3}-\d{4}" placeholder="(###) ###-####" />
+      </label>
+    </p>
+    <p>
+      <label>url:
+        <input type="url" required />
+      </label>
+    </p>
+    <input type="submit" value="Submit" />
+    <input type="reset" value="Reset" />
+  </form>
+
+  <h3>Form without validation through form submit input type (formnovalidate)</h3>
+
+  <form action="http://deitel.com">
+    <p>
+      <label>number:
+        <input type="number" autofocus />
+      </label>
+    </p>
+    <p>
+      <label>url:
+        <input type="url" required />
+      </label>
+    </p>
+    <input type="submit" value="Submit" formnovalidate />
+    <input type="reset" value="Reset" />
+  </form>
+
+  <h3>Form without validation through form tag (novalidate)</h3>
+
+  <form action="http://deitel.com" novalidate autocomplete="on">
+    <p>
+      <label>number:
+        <input type="number" id="num" autofocus />
+      </label>
+    </p>
+    <p>
+      <label>url:
+        <input type="url" id="url" required />
+      </label>
+    </p>
+    <p>
+      <label>plain text:
+        <input type="text" id="pt" required autocomplete="off"/>
+      </label>
+    </p>
+    <p>
+      <label>Month:
+        <input type="text" id="month" list="months"/>
+        <datalist id="months">
+          <option value = "January">
+          <option value = "February">
+          <option value = "March">
+          <option value = "April">
+          <option value = "May">
+          <option value = "June">
+          <option value = "July">
+          <option value = "August">
+          <option value = "September">
+          <option value = "October">
+          <option value = "November">
+          <option value = "December">
+        </datalist>
+      </label>
+    </p>
+    <input type="submit" value="Submit" />
+    <input type="reset" value="Reset" />
+  </form>
+</body>
+
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <style>
+    .parent {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        height: 500px;
+        border-style: solid;
+    }
+    #kid {
+        width:70%; /* 70% of the parent*/
+        margin:10px auto;
+        border:2px solid #f00;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="parent">
+    <div id="kid">
+       This div is horizontally centered using auto
+    </div>
+  </div>
+</body>
+
+</html>
+

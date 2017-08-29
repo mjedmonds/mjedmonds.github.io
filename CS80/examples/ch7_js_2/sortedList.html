@@ -1,0 +1,33 @@
+<!doctype html>
+
+<!-- sortedList.html -->
+<!-- Input several names and display them in a sorted list. -->
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Sorted List</title>
+  </head>
+  <body>
+    <h1>People</h1>
+    <ol id="ol"></ol>
+    <script>
+var name; // name entry
+var people = []; // array of people
+
+// get names
+while (true) {
+    name = prompt("Name: ", "Done");
+    if (name === "Done") {
+        break; // stop getting names
+    }
+    people.push(name); // add name to end of array
+}
+
+// sort the array
+people.sort();
+
+// output the list
+document.getElementById("ol").innerHTML = "<li>" + people.join("</li><li>") + "</li>";
+    </script>
+  </body>
+</html>

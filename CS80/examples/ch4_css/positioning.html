@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<!-- Based on: http://learnlayout.com/position-example.html -->
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>CSS positioning</title>
+  <link href="https://dl.dropbox.com/s/p6zt773weewbvzs/styles.css" rel="stylesheet" type="text/css" />
+  <style>
+    .container {
+      position: relative;
+    }
+    
+    nav {
+      position: absolute;
+      width: 200px;
+    }
+    
+    section {
+      /* position is static by default */
+      margin-left: 200px;
+      padding: 5px;
+    }
+    
+    footer {
+      position: fixed;
+      padding: 20px;
+      bottom: 0;
+      left: 0;
+      height: 70px;
+      background-color: white;
+      width: 100%;
+    }
+    
+    body {
+      margin-bottom: 120px;
+    }
+
+    .div1 {
+      height: 100px;
+      width: 100px;
+      overflow: hidden;
+    }
+
+    .div2 {
+      height: 415px;
+      width: 715px;
+      overflow: scroll;
+    }
+
+    /* increase the height and width (koala.jpg is 710 x 408) to see the scroll disappear */
+    .div3 {
+      height: 415px;
+      width: 715px;
+      overflow: auto;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- positioned relative to its normal setting; has no effect size we didn't move it (play around with it!) -->
+  <h3>CSS Positioning and Element Dimensions</h3>
+  <div class="container">
+    <!-- our nav CSS applies; width is 200px -->
+    <nav>
+      <ul>
+        <li><a href="http://google.com">Google</a></li>
+        <li><a href="http://google.com">Google</a></li>
+        <li><a href="http://google.com">Google</a></li>
+        <li><a href="http://google.com">Google</a></li>
+        <li><a href="http://google.com">Google</a></li>
+      </ul>
+    </nav>
+    <!-- our section CSS applies; margin is 200px (will be on the right of nav)-->
+    <section>
+      The margin-left style for sections makes sure there is room for the nav. Otherwise the absolute and static elements would overlap
+    </section>
+    <section>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla et dictum interdum, nisi lorem egestas odio, vitae scelerisque enim ligula venenatis dolor. Maecenas nisl est, ultrices nec congue eget, auctor vitae massa. Fusce luctus vestibulum augue ut aliquet. Mauris ante ligula, facilisis sed ornare eu, lobortis in odio. Praesent convallis urna a lacus interdum ut hendrerit risus congue. Nunc sagittis dictum nisi, sed ullamcorper ipsum dignissim ac. In at libero sed nunc venenatis imperdiet sed ornare turpis. Donec vitae dui eget tellus gravida venenatis. Integer fringilla congue eros non fermentum. Sed dapibus pulvinar nibh tempor porta. Cras ac leo purus. Mauris quis diam velit.
+    </section>
+    <section>
+      Notice what happens when you resize your browser. It works nicely!
+    </section>
+    <section>
+      <div class="div1">
+        <img src="koala.jpg" alt="A koala eating a leaf">
+      </div>
+      <br>
+      <div class="div2">
+        <img src="koala.jpg" alt="A koala eating a leaf">
+      </div>
+      <div class="div3">
+        <img src="koala.jpg" alt="A koala eating a leaf">
+      </div>
+    </section>
+    <footer>
+      If you use a fixed header or footer, make sure there is room for it! I put a margin-bottom on the body.
+    </footer>
+  </div>
+</body>
+
+</html>

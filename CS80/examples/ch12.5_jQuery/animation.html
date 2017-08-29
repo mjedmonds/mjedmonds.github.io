@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- use google's hosting of jQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <!-- write our own jQuery code using the script above -->
+  <script>
+    $(document).ready(function() {
+      $("#box").mouseenter(function() {
+        $("#box").animate({
+          height: "300px",
+          width: "300px"
+        });
+      });
+      $("#box").mouseleave(function() {
+        $("#box").animate({
+          height: "100px",
+          width: "100px"
+        });
+      });
+    });
+  </script>
+</head>
+
+<body>
+  <div id="box" style="background:#98bf21; height:100px; width:100px; margin:6px;"></div>
+</body>
+
+</html>
+
+

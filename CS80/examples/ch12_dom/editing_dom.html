@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Using Javascript to edit HTML</title>
+  <script>
+    // wait until the DOM is loaded; we can't interact with it until it is loaded
+    document.addEventListener('DOMContentLoaded', function() {
+      // change the title
+      updateHeader("header");
+
+      // change the image
+      updateImage("img");
+
+      // create new p element
+      createElement("p", document.body, "Hello, World!");
+
+      // create new element without innerHTML
+      createElement("div", document.body);
+    });
+
+    // update header with new text
+    function updateHeader(id) {
+      var new_header = window.prompt("Enter a new title: ");
+      var header = document.getElementById(id);
+      if (header) {
+        header.innerHTML = new_header;
+      } else {
+        console.log("No header with id " + id);
+      }
+    }
+
+    // update the image 
+    function updateImage(id) {
+      var new_img_src = window.prompt("Enter a new image URL: ");
+      var new_img_alt = window.prompt("Enter a new image alt: ");
+      var img = document.getElementById(id);
+      img.setAttribute("src", new_img_src);
+      img.setAttribute("alt", new_img_alt);
+    }
+
+    // create a new 
+    function createElement(element, parentNode, innerHTML) {
+      var new_node = document.createElement(element);
+      if (innerHTML){
+        new_node.innerHTML = innerHTML;
+      }
+      parentNode.appendChild(new_node);
+    }
+  </script>
+</head>
+
+
+<body>
+
+  <h1 id="header">We can edit HTML using DOM</h1>
+  <img id="img" src="http://www.menucool.com/slider/jsImgSlider/images/image-slider-2.jpg" alt="scene from movie Up">
+
+</body>
+
+</html>

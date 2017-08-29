@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset=utf-8 />
+  <title>Proper Loading</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <script>
+    
+  $(document).ready(function(){
+    highlightOnMouseEnter("#p1");
+    highlightOnMouseEnter("#p2");
+  });
+  
+  function highlightOnMouseEnter(selector){
+    $(selector).mouseenter(function(){
+      $(selector).attr("style", "background-color: #3F6");
+    });
+    $(selector).mouseleave(function(){
+      $(selector).removeAttr("style");
+    });
+  };
+  </script>
+</head>
+
+<body>
+  <p id="p1">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque faucibus augue in risus tempus viverra. Etiam gravida augue a venenatis sollicitudin. Praesent varius ex varius, accumsan libero vel, bibendum eros. Aenean tristique mattis sem id scelerisque. In cursus ultrices massa nec tristique. Phasellus efficitur ac neque eu suscipit. Donec volutpat pretium justo, eget fringilla sapien. Integer vitae metus eget lorem auctor vestibulum non ut risus. Aenean hendrerit iaculis sapien. Nunc vestibulum purus quam, nec consequat sem cursus a. Aenean interdum euismod dui id dapibus. Curabitur vel placerat purus. Etiam dolor turpis, dictum in augue sit amet, suscipit suscipit leo. Aliquam auctor fringilla ligula, vitae sodales ligula facilisis quis. Donec consequat molestie tempus. Donec faucibus elit ullamcorper ante accumsan congue.
+  </p>
+  <p id="p2">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque faucibus augue in risus tempus viverra. Etiam gravida augue a venenatis sollicitudin. Praesent varius ex varius, accumsan libero vel, bibendum eros. Aenean tristique mattis sem id scelerisque. In cursus ultrices massa nec tristique. Phasellus efficitur ac neque eu suscipit. Donec volutpat pretium justo, eget fringilla sapien. Integer vitae metus eget lorem auctor vestibulum non ut risus. Aenean hendrerit iaculis sapien. Nunc vestibulum purus quam, nec consequat sem cursus a. Aenean interdum euismod dui id dapibus. Curabitur vel placerat purus. Etiam dolor turpis, dictum in augue sit amet, suscipit suscipit leo. Aliquam auctor fringilla ligula, vitae sodales ligula facilisis quis. Donec consequat molestie tempus. Donec faucibus elit ullamcorper ante accumsan congue.
+  </p>
+</body>
+
+</html>

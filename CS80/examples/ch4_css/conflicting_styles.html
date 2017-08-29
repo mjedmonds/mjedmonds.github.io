@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Classes and Selectors</title>
+  <style>
+    .emph { font-style: oblique; }
+    #id   { color: blue; }
+    p.emph { font-style: normal; }
+  </style>
+</head>
+
+<body>
+  <div class="emph">
+    This text adheres to the global CSS emph class
+  <p>
+    But with no class specified in the paragraph tag, the child is still inheriting from the parent
+  </p>
+  <p class="emph">
+    But now that we apply the more-specific class, the div is overridden
+  </p>
+  </div>
+</body>
+
+</html>
