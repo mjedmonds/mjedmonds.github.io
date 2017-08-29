@@ -1,3 +1,6 @@
 [submodule "resume"]
-	path = resume
-	url = https://github.com/mjedmonds/resume
+  path = resume
+  url = https://github.com/mjedmonds/resume
+[submodule "reveal.js"]
+  path = CS80/notes_reveal/reveal.js
+  url = https://github.com/hakimel/reveal.js/
