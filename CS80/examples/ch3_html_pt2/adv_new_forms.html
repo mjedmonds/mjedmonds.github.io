@@ -38,6 +38,7 @@
       <label>tel:
         <input type="tel" pattern = "\(\d{3}\) +\d{3}-\d{4}" placeholder="(###) ###-####" />
       </label>
+      <input type="tel" placeholder="telephone">
     </p>
     <p>
       <label>url:
@@ -79,12 +80,14 @@
       </label>
     </p>
     <p>
-      <label>plain text:
-        <input type="text" id="pt" required autocomplete="off"/>
+      <!-- for connects to input with id="pt" for autofocus when parent/child relationship does not exist-->
+      <label for="pt">
+        plain text:
       </label>
+      <input type="text" id="pt" required autocomplete="off"/>
     </p>
     <p>
-      <label>Month:
+      <label for="month">Month:
         <input type="text" id="month" list="months"/>
         <datalist id="months">
           <option value = "January">

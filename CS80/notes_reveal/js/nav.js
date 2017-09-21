@@ -17,6 +17,7 @@ document.write('\
   <ul class="dropdown-menu">\
     <li><a href="ch1_intro.html">Ch 1. Introduction to Computers & the Internet</a></li>\
     <li><a href="ch2_html_pt1.html">Ch 2. Introduction to HTML: Part I</a></li>\
+    <li><a href="ch3_html_pt2.html">Ch 3. Introduction to HTML: Part II</a></li>\
   </ul>\
 </li>\
 </ul>\
