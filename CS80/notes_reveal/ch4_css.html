@@ -1,0 +1,1269 @@
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Introduction to CSS</title>
+  <meta name="description" content="A course on the world's fastest growing machine learning library, TensorFlow">
+  <meta name="author" content="Mark Edmonds">
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <!-- Google analytics -->
+  <script>
+  (function(i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function() {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+  ga('create', 'UA-98378227-1', 'auto');
+  ga('send', 'pageview');
+  </script>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="reveal.js/css/reveal.css">
+  <link rel="stylesheet" href="reveal.js/css/theme/serif.css" id="theme">
+  <link href='css/ubuntu_font.css' rel='stylesheet' type='text/css'>
+  <style>
+  body {
+    padding-top: 30px;
+    padding-bottom: 40px;
+  }
+  </style>
+  <!-- For syntax highlighting -->
+  <link rel="stylesheet" href="css/pojoaque.css">
+  <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+  <script>
+  document.write('<link rel="stylesheet" href="css/print/' + (window.location.search.match(/print-pdf/gi) ? 'pdf' : 'paper') + '.css" type="text/css" media="print">');
+  </script>
+  <script src="js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+</head>
+
+<body>
+  <script src="js/nav.js"></script>
+  <script>
+  function toggleElements(one, two) {
+    document.getElementById(one).style.display = 'none';
+    document.getElementById(two).style.display = 'block';
+  }
+  </script>
+  <!-- Main body -->
+  <div class="reveal">
+    <div class="slides">
+      <section>
+        <h2>Chapter 4: CSS</h2>
+        <p>CS 80: Internet Programming</p>
+        <p>Instructor: Mark Edmonds</p>
+      </section>
+      <section>
+        <h3>Intro to CSS</h3>
+        <ul>
+          <li><p>CSS = Cascading Style Sheet</p></li>
+          <li><p>What does HTML5 do?</p>
+          <ul>
+            <li><p>Specifies the content and structure of the webpage</p></li>
+          </ul>
+          <li><p>So far, we haven&rsquo;t controlled the <em>presentation</em>&nbsp;of the webpage at all.</p></li>
+          <li><p>CSS allows us to control the presentation of the page</p></li>
+        </ul>
+      </section>
+      <section>
+        <h3>Intro to CSS</h3>
+        <ul>
+          <li><p>Why not control the presentation within the HTML?</p></li>
+          <ul>
+            <li><p>You can!</p></li>
+            <li><p>But in general, it&rsquo;s better to separate!</p></li>
+            <ul>
+              <li><p>Why? Because you can swap the style without changing anything in the HTML document</p></li>
+            </ul>
+          </ul>
+        </ul>
+      </section>
+      <section>
+        <h3>Inline Style</h3>
+        <ul>
+          <li><p>Specify the style in the html tag through a <code>style</code> attribute</p></li>
+          <ul>
+            <li><p>E.g. to change the font size, one might apply the attribute&nbsp;<code>style=&ldquo;font-size: 45pt;&rdquo;</code> which would set the font size to 45pt.</p></li>
+          </ul>
+        </ul>
+      </section>
+      <section>
+        <h3>Inline Styles</h3>
+        <ul>
+          <li><p>Advantage:&nbsp;</p></li>
+          <ul>
+            <li><p>Styling is applied solely to this instance of the tag (useful if we want custom styling for one particular tag)</p></li>
+          </ul>
+          <li><p>Disadvantage:&nbsp;</p></li>
+          <ul>
+            <li><p>Styling is applied solely to this instance of the tag (meaning it has no generality; we can&rsquo;t change the style of every tag across the entire document. In our example, we may want to change every <code>&lt;h2&gt;</code> in the document</p></li>
+          </ul>
+        </ul>
+      </section>
+      <section>
+        <h3><a href="../examples/ch4_css/inline_styles.html">Example: <code>inline_styles.html</code></a></h3>
+        <pre><code id="inline_styles" class="html">
+          </code></pre>
+      </section>
+      <section>
+        <h3>Embedded Style Sheets</h3>
+        <ul>
+          <li>Idea: embed a styling sheet inside the&nbsp;<code>&lt;head&gt;</code> tag of the HTML document</p></li>
+          <li><p>Example:</p></li>
+          <pre><code class="html"><style type="text/css">
+p { font-size: x-large;</div>
+font-family: arial, sans-serif; }</div>
+</style></code></pre>
+        </ul>
+      </section>
+      <section>
+        <h3>Embedded Style Sheets</h3>
+        <ul>
+          <li><p>What does this do?</p></li>
+          <ul>
+            <li><p>Changes every&nbsp;<code>&lt;p&gt;</code> tag in the document to have an extra large font and use Arial font</p></li>
+          </ul>
+        </ul>
+      </section>
+      <section>
+        <h3>Embedded Style Sheets</h3>
+        <ul>
+          <li><p>Each property is a key-value pair</p></li>
+          <ul>
+            <li><p>Key is the property to change (e.g.&nbsp;<code>font-size</code>)</p></li>
+            <li><p>Value is the setting of the property (e.g.&nbsp;<code>x-large</code>)</p></li>
+            <li><p>Key and value are always separated by a&nbsp;<code>:</code> and the key-value pair is terminated with a&nbsp;<code>;</code></p></li>
+          </ul>
+        </ul>
+      </section>
+      <section>
+        <h3>Embedded Style Sheets</h3>
+        <ul>
+          <li><p>Advantage:</p></li>
+          <ul>
+            <li><p>Styling is applied across every instance of an element in the entire document</p></li>
+          </ul>
+          <li><p>Disadvantage:</p></li>
+          <ul>
+            <li>Styling is still restricted to this HTML document; we cannot &ldquo;export&rdquo; the embedded style sheet to other HTML documents&nbsp;</p></li>
+          </ul>
+        </ul>
+      </section>
+      <section>
+        <h3><a href="../examples/ch4_css/embedded_styles.html">Example: <code>embedded_styles.html</code></a></h3>
+        <pre><code id="embedded_styles" class="html">
+          </code></pre>
+      </section>
+      <section>
+        <h3>Common CSS Properties</h3>
+        <ul>
+          <li>
+            <p><code>font-family</code></p>
+          </li>
+          <small>
+          <ul>
+            <li>
+              <p>Names the font to use.</p>
+            </li>
+            <li>
+              <p>Typically a comma-separated list. The browser will attempt to use the first font availabe in the list. The final entry in the list should be a generic font, like&nbsp;<code>serif</code>,&nbsp;<code>sans-serif</code>,&nbsp;<code>monospace</code>,&nbsp;<code>cursive</code>, or&nbsp;<code>fantasy</code></p>
+            </li>
+            <li>
+              <p>Example:&nbsp;<code>font-family: helvectica, tahoma, sans-serif;</code></p>
+            </li>
+          </ul>
+          </small>
+        </ul>
+      </section>
+      <section>
+        <h3>Common CSS Properties</h3>
+        <ul>
+          <li>
+            <p><code>font-size</code></p>
+          </li>
+          <small>
+          <ul>
+            <li>
+              <p>Controls the font size of text</p>
+            </li>
+            <li>
+              <p>Can specify size two different ways: through a point value (<code>NUMBERpt)</code> or with a relative size</p>
+            </li>
+            <ul>
+              <li>
+                <p>Available relative sizes:&nbsp;<code>xx-small</code><code>, x-small, small, smaller, medium, large,&nbsp;</code><code>larger</code><code>, x-large, xx-large</code>)</p>
+              </li>
+              <li>
+                <p>Preferrable to use relative sizes</p>
+              </li>
+              <ul>
+                <li>
+                  <p>Why? Different computers have different resolutions, so using&nbsp;<code>pt</code> will result in different effects based on the user&rsquo;s display</p>
+                </li>
+              </ul>
+            </ul>
+            <li>
+              <p>Example:&nbsp;<code>font-size: x-small;</code></p>
+            </li>
+          </small>
+          </ul>
+        </ul> 
+      </section>
+      <section>
+        <h3>Common CSS Properties</h3>
+        <ul>
+          <li>
+            <p><code>font-style</code>
+          </li>
+          <ul>
+            <li>
+              <p>Controls the font&rsquo;s additonal styling</p>
+            </li>
+            <li>
+              <p>Possible values:&nbsp;<code>normal, italic, oblique</code></p>
+            </li>
+            <li>
+              <p>Example: <code>font-style: italic</code></p>
+            </li>
+          </ul>
+        </ul>
+      </section>
+      <section>
+        <h3>Common CSS Properties</h3>
+        <ul>
+          <li>
+            <p><code>background-color</code></p>
+          </li>
+          <ul>
+            <li>
+              <p>Sets the background color. Takes hexidemial value or rgb</p>
+            </li>
+            <li>
+              <p>Example:&nbsp;<code>background-co</code><code>lor:&nbsp;#668B8B</code></p>
+            </li>
+          </ul>
+        </ul>
+      </section>
+      <section>
+        <h3><a href="../examples/ch4_css/background_color.html">Example: <code>background_color.html</code></a></h3>
+        <pre><code id="background_color" class="html">
+          </code></pre>
+      </section>
+      <section>
+        <h3>Common CSS Properties</h3>
+        <ul>
+          <li>
+            <p><code>background-image</code>
+          </li>
+          <ul>
+            <li>
+              <p>Takes a <code>url(&lsquo;image&rsquo;)</code> and uses it as the background</p>
+            </li>
+            <li>
+              <p>Can have a list of comma-separated&nbsp;<code>url()</code> &rsquo;s to fetch </p>
+            </li>
+            <li>
+              <p>Example:&nbsp;<code>background-image: url(&lsquo;http://eskipaper.com/images/sand-dune-pictures-1.jpg')</code></p>
+            </li>
+          </ul>
+        </ul>
+      </section>
+      <section>
+        <h3><a href="../examples/ch4_css/background_image.html">Example: <code>background_image.html</code></a></h3>
+        <pre><code id="background_image" class="html">
+          </code></pre>
+      </section>
+      <section>
+        <h3>Common CSS Properties</h3>
+        <ul>
+          <li>
+            <p><code>background-repeat</code>
+          </li>
+          <small>
+          <ul>
+            <li>
+              <p>Specifies whether or not you would like the background to repeat or not</p>
+            </li>
+            <li>
+              <p>By default, background repeats</p>
+            </li>
+            <li>
+              <p>Possible values:&nbsp;<code>repeat, repreat-x, repeat-y, no-repeat</code></p>
+            </li>
+            <ul>
+              <li>
+                <p><code>repeat</code> will repeat in both the x and y direction</p>
+              </li>
+            </ul>
+            <li>
+              <p>Example:&nbsp;<code>background-repeat: repeat-x</code></p>
+            </li>
+          </ul>
+          </small>
+        </ul>
+      </section>
+      <section>
+        <h3>Common CSS Properties</h3>
+        <ul>
+          <li>
+            <p><code>background-position</code>
+          </li>
+          <small>
+          <ul>
+            <li>
+              <p>Specifies the background relative to the HTML element.</p>
+            </li>
+            <li>
+              <p>X is offset from the left and Y is offset from the top</p>
+            </li>
+            <li>
+              <p>Takes unit values (like width and height) or&nbsp;<code>left, right, center,</code> for X <code>top, bottom, center</code> for Y</p>
+            </li>
+            <li>
+              <p>By default, background position is (0,0) relative to the element&rsquo;s position in the document</p>
+            </li>
+            <li>
+              <p>Example:&nbsp;<code></code><code>background-position: center left;</code></p>
+            </li>
+            <ul>
+              <li>
+                <p>If you only specify one, the other will default to center</p>
+              </li>
+            </ul>
+          </ul>
+          </small>
+        </ul>
+      </section>
+      <section>
+        <h3>Common CSS Properties</h3>
+        <ul>
+          <li>
+            <p><code>background</code>
+          </li>
+          <ul>
+            <li>
+              <p>This is a shorthand way to apply all of the above</p>
+            </li>
+            <li>
+              <p><code>background:&nbsp;bg-color bg-image position bg-repeat</code>
+            </li>
+          </ul>
+        </ul>
+      </section>
+      <section>
+        <h3>Common CSS Properties</h3>
+        <ul>
+          <li>
+            <p><code>text-align</code>
+              <br /> </p>
+          </li>
+          <ul>
+            <li>
+              <p><code>center</code>,&nbsp;<code>left</code>, or&nbsp;<code>right</code> to align text
+                <br /> </p>
+            </li>
+          </ul>
+          <li>
+            <p>CSS property list reference:&nbsp;<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Properties_Reference">https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Properties_Reference</a></p>
+          </li> 
+        </ul>
+      </section>
+      <section>
+        <h3>Common CSS-related HTML Tags</h3>
+        <ul>
+          <li>
+            <p><code>&lt;div&gt;</code>
+          </li>
+          <ul>
+            <li>
+              <p>Specifies a HTML block element, similar to&nbsp;<code>&lt;p&gt;</code>, but doesn&rsquo;t denote a paragraph</p>
+            </li>
+            <li>
+              <p>Starts with a new line and takes up as much width available (stretches to the left and right as much as possible)</p>
+            </li>
+            <ul>
+              <li>
+                <p><code>&lt;h1&gt;</code>-<code>&lt;h6&gt;</code> and&nbsp;<code>&lt;p&gt;</code> are also block elements (consider their behavior!)</p>
+              </li>
+            </ul>
+          </ul>
+        </ul>
+      </section>
+      <section>
+        <h3>Common CSS-related HTML Tags</h3>
+        <ul>
+          <li>
+            <p><code>&lt;span&gt;</code>
+              <br /> </p>
+          </li>
+          <small>
+          <ul>
+            <li>
+              <p>an inline block</p>
+            </li>
+            <li>
+              <p>has minimal width and doesn&rsquo;t start a new line</p>
+            </li>
+          </ul>
+          </small>
+          <li>
+            <p>Why do these matter?</p>
+          </li>
+          <small>
+          <ul>
+            <li>
+              <p> They are commonly used to apply styling to subsections of the document, when no other divisor exists </p>
+            </li>
+            <li>
+              <p> E.g. think o f the&nbsp;<code>&lt;em&gt;some text&lt;/em&gt;</code> as&nbsp;<code>&lt;span style="font-style: italic;&rdquo;&gt;some text&lt;/span&gt;</code> </p>
+            </li>
+            <ul>
+              <li>
+                <p>We may/probably don&rsquo;t have a built-in tag to help us, so&nbsp;<code>div</code> and&nbsp;<code>span</code> can be a very general way to apply styling to a specific section</p>
+              </li>
+            </ul>
+          </ul>
+          </small>
+        </ul>
+      </section>
+      <section>
+        <h3>CSS Classes and Selectors</h3>
+        <ul>
+          <li>
+            <p>It&rsquo;s pretty limiting to only be able to use CSS styling on an element-by-element basis</p>
+          </li>
+          <li>
+            <p>CSS classes are applied to a tag on a tag-by-tag basis using the&nbsp;<code>class</code> attribute</p>
+          </li>
+          <li>
+            <p>Advantages:</p>
+          </li>
+          <ul>
+            <li>
+              <p>Can use the same class among multiple HTML tags</p>
+            </li>
+            <li>
+              <p>Updating the CSS class will update all tags</p>
+            </li>
+          </ul>
+        </ul> 
+      </section>
+      <section>
+        <h3>CSS Classes and Selectors</h3>
+        <ul>
+          <li>
+            <p>Usage:</p>
+          </li>
+          <ul>
+            <li>
+              <p>All classes start with&nbsp;<code>.</code></p>
+            </li>
+            <li>
+              <p>Example:&nbsp;
+                <pre><code class="css">.emph { font-style: italic; }</code></pre>
+              </p>
+            </li>
+            <li>
+              <p>
+                Apply this class using the <code>class</code> attribute:
+                <pre><code>&lt;p class=&ldquo;emph&rdquo;&gt;some_text&lt;/p&gt;</code></pre>
+              </p>
+            </li>
+          </ul>
+        </ul>
+      </section>
+      <section>
+        <h3>CSS Classes and Selectors</h3>
+        <ul>
+          <li>
+            <p>We can even apply certain classes only to specific HTML tags</p>
+          </li>
+          <ul>
+            <li>
+              <p>This type CSS styling increases the <em>specifcity</em>&nbsp;of the styling, which help resolve styling conflicts (more on this in a bit)</p>
+            </li>
+            <li>
+              <p>Example:&nbsp;
+                <pre><code>p.emph { font-style: italic; }</code></pre>
+                only defines our&nbsp;<code>emph</code> class for use within a&nbsp;<code>&lt;p&gt;</code> HTML tag</p>
+            </li>
+          </ul>
+        </ul> 
+      </section>
+      <section>
+        <h3>CSS Classes and Selectors</h3>
+        <ul>
+          <li>
+            <p>Selectors are a bit more general (classes are a type of selector)</p>
+          </li>
+          <ul>
+            <small>
+            <li>
+              <p>They specify how the CSS rules should be applied</p>
+            </li>
+            <li>
+              <p>A class is a selector rule, but we also have selectors for&nbsp;<code>id</code>&rsquo;s with&nbsp;<code>#id</code></p>
+            </li>
+            </small>
+          </ul> 
+          <li>
+            <p>Example:
+              <pre><code class="css">#htmlid { color: blue }</code></pre> 
+            </p>
+          </li>
+          <li>Corresponding HTML:
+            <p><pre><code class="html">&lt;section id=&ldquo;htmlid&rdquo;&gt;</code></pre></p>
+          </li>
+        </ul>
+      </section>
+      <section>
+        <h3>CSS Precedence</h3>
+        <ul>
+          <li>
+            <p>ID selection has the highest precedence (e.g.&nbsp;<code>#id</code>)</p>
+          </li>
+          <li>
+            <p>Followed by tag-specific classes (e.g.&nbsp;<code>p.emph</code>)</p>
+          </li>
+          <li>
+            <p>Followed by classes (e.g.&nbsp;<code>emph</code>)</p>
+          </li>
+          <li>
+            <p>Followed by HTML tag rules (e.g.&nbsp;<code></code><code>p</code>)</p>
+          </li>
+        </ul>
+      </section>
+      <section>
+        <h3>Conflicting Styles</h3>
+        <ul>
+          <li>
+            <p>What does <em>Cascading</em> mean?</p>
+          </li>
+          <ul>
+            <li>
+              <p>&ldquo;falling through&rdquo;</p>
+            </li>
+          </ul>
+          <li>
+            <p>So far, we&rsquo;ve seen rules will maintain their presence in nested children until something overwrites their value (consider&nbsp;<a href="../examples/ch4_css/background_color.html"><code>background_color.html</code></a>)</p>
+          </li>
+        </ul>
+      </section>
+      <section>
+        <h3>Conflicting Styles</h3>
+        <ul>
+          <li>
+            <p>But what&rsquo;s the actual logic here?</p>
+          </li>
+          <ul>
+            <li>
+              <p>Children of HTML elements inherit the CSS styling of their parents</p>
+            </li>
+            <li>
+              <p>Children style&rsquo;s have a higher precendence over their parents, so their styling will always replace their parents (if applicable)</p>
+            </li>
+          </ul>
+        </ul>
+      </section>
+      <section>
+        <h3>Conflicting Styles</h3>
+        <ul>
+          <li>
+            <p>Let&rsquo;s try a weird scenario:</p>
+          </li>
+          <ul>
+            <li>
+              <p>We defined a&nbsp;<code>emph</code> both as a CSS class and a CSS class for&nbsp;<code>&lt;p&gt;</code></p>
+            </li>
+            <li>
+              <p>So what happens when we write a normal&nbsp;<code>&lt;p&gt;</code> (no class specified) inside of a&nbsp;<code>&lt;div class=&ldquo;emph&rdquo;&gt;</code>?</p>
+            </li>
+          </ul>
+        </ul>
+      </section>
+      <section>
+        <h3><a href="../examples/ch4_css/conflicting_styles.html">Example: <code>conflicting_styles.html</code></a></h3>
+        <pre><code id="conflicting_styles" class="html">
+          </code></pre>
+      </section>
+      <section>
+        <h3>Conflicting Styles</h3>
+        <ul>
+          <li>
+            <p>There are other ways to generate conflicts (such as&nbsp;<a href="../examples/ch4_css/background_color.html"><code>background_color.html</code></a> using normal nesting)</p>
+          </li>
+          <li>
+            <p>But the general rule: the most specific styling takes precedence</p>
+          </li>
+        </ul>
+      </section>
+      <section>
+        <h3>External Style Sheets</h3>
+        <ul>
+          <li>
+            <p>Idea: store the style sheet elsewhere and import it into the HTML document</p>
+          </li>
+          <li>
+            <p>Advantages:</p>
+          </li>
+          <ul>
+            <small>
+            <li>
+              <p>We can use the same styling across multiple HTML documents</p>
+            </li>
+            <li>
+              <p>If they all import the same external style sheet, they will all adhere to the same styling rules</p>
+            </li>
+            <li>
+              <p>If we change the stylesheet once, it will affect all documents that link to it!</p>
+            </li>
+            </small>
+          </ul>
+          <li>
+            <p>The&nbsp;<code>&lt;link&gt;</code> HTML tag is used to import external styling</p>
+          </li>
+        </ul>
+      </section>
+      <section>
+        <h3>External Style Sheets</h3>
+        <ul>
+          <li>
+            <p>Attributes required:</p>
+          </li>
+          <small>
+          <ul>
+            <li>
+              <p><code>rel=&ldquo;stylesheet&rdquo;</code> specifies the relationship between this document and the external one, in this case, we want to link to a stylesheet</p>
+            </li>
+            <li>
+              <p><code>type=&ldquo;text/css</code><code>&ldquo;</code> just like how we specified with&nbsp;<code>&lt;style type=&ldquo;text/css&rdquo;&gt;</code>
+                <br /> </p>
+            </li>
+            <li>
+              <p><code>href=&ldquo;style.css&rdquo;</code> is the hyperlink reference to the external document
+                <br /> </p>
+            </li>
+          </ul>
+          </small>
+          <li>
+            <p>Example:
+              <pre><code class="html">&lt;link rel=&ldquo;stylesheet&rdquo; type=&ldquo;text/css&rdquo; href=&ldquo;style.css"&gt;</code></pre>
+            </p>
+          </li>
+        </ul>
+      </section>
+      <section>
+        <h3><a href="../examples/ch4_css/external_styles.html">Example: <code>external_styles.html</code></a></h3>
+        <pre><code id="external_styles" class="html">
+          </code></pre>
+      </section>
+      <section>
+        <h3>CSS Comments</h3>
+        <p><pre><code class="css">/* This is a CSS comment. start with /* and end with */ */</code></pre></p>
+      </section>
+      <section>
+        <h3>CSS Units</h3>
+        <p>Used to control sizing</p>
+        <ul>
+          <small>
+          <li>
+            <p><code>#em</code> amount relative to the normal size
+              <br /> </p>
+          </li>
+          <li>
+            <p><code>#cm</code> amount in centimeters
+              <br /> </p>
+          </li>
+          <li>
+            <p><code>#px</code> amount in pixels
+              <br /> </p>
+          </li>
+          <li>
+            <p><code>#pt</code> amount in points</p>
+          </li>
+          <li>
+            <p>Keep these in mind when looking at CSS</p>
+          </li>
+          </small>
+        </ul>
+      </section>
+      <section>
+        <h3>CSS Positioning</h3>
+        <ul>
+          <li>
+            <p><code>position</code> property controls the location of document elements
+              <br /> </p>
+          </li>
+          <ul>
+            <li>
+              <p>Basic idea: answers the question: where should this element be relative to other elements?</p>
+            </li>
+          </ul>
+        </ul>
+      </section>
+      <section>
+        <h3>CSS Positioning</h3>
+        <p><code>position</code> property</p>
+        <ul>
+          <li>
+            <p>Corresponding attributes:&nbsp;<code>left: value;</code> and&nbsp;<code>top: value;</code> which control the amount of positioning to apply</p>
+          </li>
+          <ul>
+            <li>
+              <p>&ldquo;left&rdquo; corresponds to how much to move from left</p>
+            </li>
+            <li>
+              <p>&ldquo;top&rdquo; corresponds to how much to move from the top</p>
+            </li>
+            <li>
+              <p>See:&nbsp;<a href="http://www.w3schools.com/cssref/pr_pos_left.asp">http://www.w3schools.com/cssref/pr_pos_left.asp</a>&nbsp;for values</p>
+            </li>
+            <li>
+              <p>Keep these mind when considering the various positioning types</p>
+            </li>
+          </ul>
+        </ul>
+      </section>
+      <section>
+        <h3>CSS Positioning</h3>
+        <p>Absolute positioning</p>
+        <ul>
+          <li>
+            <p><code>position: absolute;</code> sepcifies this elements position <strong>relative to it&rsquo;s first positioned (not static) ancestor element</strong>
+              <br /> </p>
+          </li>
+          <ul>
+            <li>
+              <p>&ldquo;Ancestor&rdquo; refers to the parents of this HTML element (nesting establishes parent-child relationships)&nbsp; </p>
+            </li>
+          </ul>
+        </ul>
+      </section>
+      <section>
+        <h3>CSS Positioning</h3>
+        <p>Relative positioning</p>
+        <ul>
+          <li>
+            <p><code>position: relative;</code> specifies the element&rsquo;s position <strong>relative to its normal positioning</strong>
+              <br /> </p>
+          </li>
+          <ul>
+            <li>
+              <p>So if we move 5px from the left and 10px from the top, the element is positioned right 5px and down 10px</p>
+            </li>
+          </ul>
+        </ul>
+      </section>
+      <section>
+        <h3>CSS Positioning</h3>
+        <p>Fixed positioning</p>
+        <ul>
+          <li>
+            <p><code>position: fixed;</code> specifies the element&rsquo;s position <strong>relative to the browser window</strong></p>
+          </li>
+        </ul>
+      </section>
+      <section>
+        <h3>CSS Positioning</h3>
+        <p>Static positioning</p>
+        <ul>
+          <li>
+            <p><code>position: static;</code> the default behavior, positioning is determined by document flow/ordering</p>
+          </li>
+          <li> 
+            <p>Property values:&nbsp;<a href="http://www.w3schools.com/cssref/pr_class_position.asp">http://www.w3schools.com/cssref/pr_class_position.asp</a></p>
+          </li>
+        </ul>
+      </section>
+      <section>
+        <h3><a href="../examples/ch4_css/external_styles.html">Example: <code>positioning.html</code></a></h3>
+        <pre><code id="positioning" class="html"></code></pre>
+      </section>
+      <section>
+        <h3>Element Dimensions</h3>
+        <ul>
+          <li>
+            <p>These allow us to specify the actual dimensions of each page element.&nbsp;</p>
+          </li>
+          <li>
+            <p>Benefits: helps control the size of elements, which can be useful for positioning</p>
+          </li>
+          <li>
+            <p>Two main properties:</p>
+          </li>
+          <ul>
+            <li>
+              <p><code>width: value;</code>&nbsp;to specify width
+            </li>
+            <li>
+              <p><code>height: value;</code> to specify height
+            </li>
+          </ul>
+        </ul>
+      </section>
+      <section>
+        <h3>Element Dimensions</h3>
+        <ul>
+          <li>
+            <p><code>overflow</code> property defines what to do if the content of an element goes over the specified dimensions</p>
+          </li>
+          <ul>
+            <small>
+            <li>
+              <p>Possible values:</p>
+            </li>
+            <ul>
+              <li>
+                <p><code>overflow: visible;</code> overflow will still be rendered (overflowing into over elements)</p>
+              </li>
+              <li>
+                <p><code>overflow: hidden;</code> overflow will be clipped (overflowing content will be invisible)</p>
+              </li>
+              <li>
+                <p><code>overflow: scroll;</code> scroll bars are used to view the rest of the content</p>
+              </li>
+              <li>
+                <p><code>overflow: auto;</code> if the overflow is clipped, a scroll bar will appear</p>
+              </li>
+            </ul>
+            </small>
+          </ul> 
+        </ul>
+      </section>
+      <section>
+        <h3><a href="../examples/ch4_css/external_styles.html">Example: <code>positioning.html</code></a></h3>
+        <pre><code id="positioning2" class="html"></code></pre>
+      </section>
+      <section>
+        <h3>The Box Model</h3>
+        <ul>
+          <li>
+            <p>We&rsquo;ve loosely discussed the notion of boxes with html elements (like&nbsp;<code>p, div, h1-h6, section</code><code></code>), but let&rsquo;s formalize it</p>
+          </li>
+          <li>
+            <p>Key terms:</p>
+          </li>
+          <ul>
+            <li>
+              <p><strong>Content</strong>: the area the actual content makes up</p>
+            </li>
+            <li>
+              <p><strong>Padding</strong>: area between the content and the border</p>
+            </li>
+            <li>
+              <p><strong>Margin</strong>: area between the border and other elements</p>
+            </li>
+          </ul>
+        </ul>
+      </section>
+      <section>
+        <h3>The Box Model</h3>
+        <img src="images/css-box-model.png" alt="The box model" />
+      </section>
+      <section>
+        <h3>The Box Model</h3>
+        <ul>
+          <li>
+            <p><strong>A critical note:</strong>&nbsp;border defines the &ldquo;end&rdquo; of the element box in some sense</p>
+          </li>
+          <ul>
+            <li>
+              <p>Margin is a means to enforce a <strong>minimum distance between two elements&rsquo; borders</strong></p>
+            </li>
+            <li>
+              <p><strong>READ THE LAST SENTENCE CAREFULLY</strong></p>
+            </li>
+            <li>
+              <p>What this means: margins <strong>do not sum</strong></p>
+            </li>
+            <ul>
+              <li>
+                <p>Think of it as a &ldquo;max&rdquo; (which ever element has the largest margin will be enforcing the margin)</p>
+              </li>
+            </ul>
+          </ul>
+        </ul>
+      </section>
+      <section>
+        <h3>The Box Model</h3>
+        <ul>
+          <li>
+            <p>Quiz:</p>
+          </li>
+          <ul>
+            <li>
+              <p>If you have an element with a margin of 5 pixels next to an element with a margin of 10 pixels, what will be the number of pixels <strong>between the borders?</strong>&nbsp;(this is the effective margin)</p>
+            </li>
+            <li>
+              <p>If you have an element with a margin of 500 pixels next to an element with a margin of 10 pixels, what will be the number of pixels&nbsp;<strong>between the borders?</strong>&nbsp;(this is the effective margin)</p>
+            </li>
+          </ul>
+        </ul>
+      </section>
+      <section>
+        <h3>The Box Model</h3>
+        <ul>
+          <li>
+            <p>Controlling borders</p>
+          </li>
+          <small>
+          <ul>
+            <li>
+              <p><code></code><code>border-width</code> property
+                <br /> </p>
+            </li>
+            <ul>
+              <li>
+                <p><a href="http://www.w3schools.com/cssref/pr_border-width.asp">http://www.w3schools.com/cssref/pr_border-width.asp</a>
+                  <br /> </p>
+              </li>
+            </ul>
+            <li>
+              <p><code>border-style</code> property
+                <br /> </p>
+            </li>
+            <ul>
+              <li>
+                <p><a href="http://www.w3schools.com/cssref/pr_border-style.asp">http://www.w3schools.com/cssref/pr_border-style.asp</a>
+                  <br /> </p>
+              </li>
+            </ul>
+            <li>
+              <p><code>border-color</code> property
+                <br /> </p>
+            </li>
+            <ul>
+              <li>
+                <p><a href="http://www.w3schools.com/cssref/pr_border-color.asp"> http://www.w3schools.com/cssref/pr_border-color.asp </a></p>
+              </li>
+            </ul>
+            <li>
+              <p>Shorthand:&nbsp;<code>border: width style color;</code></p>
+            </li>
+          </ul>
+          </small>
+        </ul>
+      </section>
+      <section>
+        <h3><a href="../examples/ch4_css/box_model.html">Example: <code>box_model.html</code></a></h3>
+        <pre><code id="box_model" class="html"></code></pre>
+      </section>
+      <section>
+        <h3>Floating Elements</h3>
+        <ul>
+          <li>
+            <p>Allows you to move an element to one side of the screen while other content flows around it</p>
+          </li>
+          <li>
+            <p>This &ldquo;breaks&rdquo; our notion of block elements (such as&nbsp;<code>p, div, section, h1-h6</code>) to fill the width of the screen.</p>
+          </li>
+          <li>
+            <p>When used with element dimensions, page layout becomes very controllable</p>
+          </li>
+        </ul>
+      </section>
+      <section>
+        <h3>Floating Elements</h3>
+        <ul>
+          <li>
+            <p>Three property values:</p>
+          </li>
+          <ul>
+            <li>
+              <p><code>float: none;</code> default, element is not floated
+                <br /> </p>
+            </li>
+            <li>
+              <p><code>float: right;</code> element is floated to the right. Other content can flow on the left side
+                <br /> </p>
+            </li>
+            <li>
+              <p><code>float: left;</code> element is floated to the left. Other content can flow on the right side
+                <br /> </p>
+            </li>
+          </ul>
+        </ul>
+      </section>
+      <section>
+        <h3>Floating Elements</h3>
+        <ul>
+          <li>
+            <p><code>clear</code> allows you to specify that an element should not flow with a float (e.g. will not flow with an element on right/left; it will start below the floated element)
+              <br /> </p>
+          </li>
+          <ul>
+            <li>
+              <p><code>clear: left;</code> do not allow floating to the left
+                <br /> </p>
+            </li>
+            <li>
+              <p><code>clear: right;</code> do not allow floating to the right
+                <br /> </p>
+            </li>
+            <li>
+              <p><code>clear: both;</code> do not allow floating to the light or right
+                <br /> </p>
+            </li>
+          </ul>
+        </ul>
+      </section>
+      <section>
+        <h3><a href="../examples/ch4_css/floating.html">Example: <code>floating.html</code></a></h3>
+        <pre><code id="floating" class="html"></code></pre>
+      </section>
+      <section>
+        <h3>Margin and Padding</h3>
+        <small>
+        <ul>
+          <li>
+            <p><code><strong></strong>margin</code> property specifies the required space between the border and the next element (see box model above)
+              <br /> </p>
+          </li>
+          <ul>
+            <li>
+              <p>Value is a length (px, pt, cm, etc) or a % of the page</p>
+            </li>
+            <li>
+              <p>The&nbsp;<code>margin</code> attribute is shorthand for&nbsp;<code>margin-top</code>,&nbsp;<code>margin-right</code>,&nbsp;<code>margin-bottom</code>,&nbsp;<code>margin-left</code></p>
+            </li>
+            <ul>
+              <li>
+                <p>See&nbsp;<a href="http://www.w3schools.com/css/css_margin.asp">http://www.w3schools.com/css/css_margin.asp</a>&nbsp;for margin variations</p>
+              </li>
+            </ul>
+            <li>
+              <p>Example:&nbsp;<code>margin: 50px 40px 100px 25px</code> (what does this mean?)</p>
+            </li>
+            <li>
+              <p>Example:&nbsp;<code>margin-top: 100px</code></p>
+            </li>
+          </ul>
+        </ul>
+        </small>
+      </section>
+      <section>
+        <h3>Margin and Padding</h3>
+        <small>
+        <ul>
+          <li>
+            <p><code>padding</code> property specifies the amount of space between the content and the border (see box model above)
+              <br /> </p>
+          </li>
+          <ul>
+            <li>
+              <p>Value is a length (px, pt, cm, etc) or a % of the page</p>
+            </li>
+            <li>
+              <p>The&nbsp;<code>padding</code> attribute is shorthand for&nbsp;<code>padding-top</code>, <code>padding</code><code>-right</code>, <code>padding</code><code>-bottom</code>,&nbsp;<code>padding-left</code></p>
+            </li>
+            <ul>
+              <li>
+                <p>See&nbsp;<a href="http://www.w3schools.com/css/css_padding.asp">http://www.w3schools.com/css/css_padding.asp</a>&nbsp;for padding variations
+                  <br /> </p>
+              </li>
+            </ul>
+            <li>
+              <p>Example:&nbsp;<code>padding: 50px 40px 100px 25px</code> (what does this mean?)</p>
+            </li>
+            <li>
+              <p>Example:&nbsp;<code>padding-top: 100px</code></p>
+            </li>
+          </ul>
+          <li>
+            <p>See:&nbsp;<code>media_types_queries.html</code>&nbsp;or&nbsp;<code>positioning.html</code></p>
+          </li>
+        </ul>
+        </small>
+      </section>
+      <section>
+        <h3>Media Types and Media Queries</h3>
+        <p>Media Types</p>
+        <small>
+        <ul>
+          <ul>
+            <li>
+              <p>Allow you to specify what the page should look like on different media.</p>
+            </li>
+            <li>
+              <p>Standarad media type is&nbsp;<code>screen</code>, which stands for computer screen</p>
+            </li>
+            <li>
+              <p>Other options:&nbsp;<code>handheld</code> (cell phone/mobile),&nbsp;<code>speech</code> (read out old),&nbsp;<code>print</code> (printers).</p>
+            </li>
+            <li>
+              <p>Basic example:</p>
+            </li>
+          </ul>
+        </ul>
+        </small>
+        <pre><code class="css">@media all {
+body { background-color: black; }
+}
+@media print{
+body { background-color: white; }
+}</code></pre>
+      </section>
+      <section>
+        <h3>Media Types and Media Queries</h3>
+        <p>Media Queries</p>
+        <ul>
+          <li>
+            <p>Allow you to query the user&rsquo;s device and use different CSS rules based on the media&nbsp;</p>
+          </li>
+          <ul>
+            <li>
+              <p><code>height</code> - height of display area (the browser)&nbsp;</p>
+            </li>
+            <li>
+              <p><code>width</code> - width of display area (the browser)</p>
+            </li>
+            <li>
+              <p><code>resolution</code> - resolution of the output device</p>
+            </li>
+            <li>
+              <p><code>orientation</code> - landscape or portrait</p>
+            </li>
+          </ul>
+        </ul>
+      </section>
+      <section>
+        <h3>Media Types and Media Queries</h3>
+        <p>Media Queries</p>
+        <ul>
+          <li>CSS Syntax</li>
+          <pre><code class="css">@media not|only mediatype and (media feature) {
+CSS-Code;
+}</code></pre>
+          <li>
+            <p><code>not</code> negates the media query
+              <br /> </p>
+          </li>
+          <li>
+            <p><code>only</code> applies the style only if the query matches
+              <br /> </p>
+          </li>
+          <li>
+            <p>Note: you may omit the&nbsp;<code>mediatype</code> and only specify a&nbsp;<code>(media feature)</code> if you wish</p>
+          </li>
+        </ul>
+      </section>
+      <section>
+        <h3><a href="../examples/ch4_css/media_types_queries.html">Example: <code>media_types_queries.html</code></a></h3>
+        <pre><code id="media_types_queries" class="html"></code></pre>
+      </section>
+      <section>
+        <h3>Drop-Down Menus</h3>
+        <ul>
+          <li>
+            <p>Excellent way to control navigation panes without using screen space</p>
+          </li>
+          <li>
+            <p>Utilized through the&nbsp;<code>display</code> property:</p>
+          </li>
+          <small>
+          <ul>
+            <li>
+              <p>Controls how the element is displayed; e.g.&nbsp;<code>block</code> (like&nbsp;<code>p</code>, <code>section</code> etc) or&nbsp;<code>inline</code> (like&nbsp;<code>span</code>, <code>em</code> etc)</p>
+            </li>
+            <li>
+              <p><code>display: none;</code> element is not displayed</p>
+            </li>
+            <li>
+              <p><code>display: block;</code> displays a block level element</p>
+            </li>
+            <li>
+              <p><code>display: inline;</code> displays as an inline element</p>
+            </li>
+            <li>
+              <p><code>display: inline-block;</code> display is like an inline element, but can have a specified height and width</p>
+            </li>
+          </ul>
+          </small>
+        </ul>
+      </section>
+      <section>
+        <h3><a href="../examples/ch4_css/drop_down_menu.html">Example: <code>drop_down_menu.html</code></a></h3>
+        <pre><code id="drop_down_menu" class="html"></code></pre>
+      </section>
+    </div>
+  </div>
+  <!-- end main body -->
+  <script src="lib/js/head.min.js"></script>
+  <script src="reveal.js/js/reveal.js"></script>
+  <script>
+  // Full list of configuration options available here:
+  // https://github.com/hakimel/reveal.js#configuration
+  Reveal.initialize({
+    controls: true,
+    progress: true,
+    history: true,
+    center: true,
+    mouseWheel: false,
+    rollingLinks: false,
+    showNotes: true,
+
+    theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+    transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/none
+
+    // Optional libraries used to extend on reveal.js
+    dependencies: [
+      { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+      // { src: 'plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+      { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector('[data-markdown]'); } },
+      { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector('[data-markdown]'); } },
+      { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+      { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+      { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+      // { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+      { src: 'plugin/math/math.js', async: true }
+    ]
+  });
+  </script>
+  <script>
+  window.jQuery || document.write('<script src="js/jquery-3.2.1.min.js"><\/script>')
+  </script>
+  <script src="js/bootstrap.min.js"></script>
+  <script>
+  Reveal.addEventListener('slidechanged', function(event) {
+    // event.previousSlide, event.currentSlide, event.indexh, event.indexv
+    var notes = event.currentSlide.querySelector(".notes");
+    if (notes) {
+      console.info("---");
+      console.info(notes.innerHTML.replace(/\n\s+/g, '\n'));
+    }
+  });
+  </script>
+  <script>
+  Reveal.configure({ slideNumber: 'c/t' });
+  </script>
+  <!-- load source code -->
+  <script>
+    function get_example(dir, file, id){
+      jQuery.get('../examples/'+dir+'/'+file, function(data) {
+        $(id).text(data);
+      });
+    }
+    get_example('ch4_css','inline_styles.html','#inline_styles');
+    get_example('ch4_css','embedded_styles.html','#embedded_styles');
+    get_example('ch4_css','background_color.html','#background_color');
+    get_example('ch4_css','background_image.html','#background_image');
+    get_example('ch4_css','conflicting_styles.html','#conflicting_styles');
+    get_example('ch4_css','external_styles.html','#external_styles');
+    get_example('ch4_css','positioning.html','#positioning');
+    get_example('ch4_css','positioning.html','#positioning2');
+    get_example('ch4_css','box_model.html','#box_model');
+    get_example('ch4_css','floating.html','#floating');
+    get_example('ch4_css','media_types_queries.html','#media_types_queries');
+    get_example('ch4_css','drop_down_menu.html','#drop_down_menu');
+  </script>
+  <script src="js/main.js"></script>
+</body>
+
+</html>
