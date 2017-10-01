@@ -19,6 +19,7 @@ document.write('\
     <li><a href="ch2_html_pt1.html">Ch 2. Introduction to HTML: Part I</a></li>\
     <li><a href="ch3_html_pt2.html">Ch 3. Introduction to HTML: Part II</a></li>\
     <li><a href="ch4_css.html">Ch 4. CSS</a></li>\
+    <li><a href="ch6_js_intro.html"></a>Ch 6. Javascript: Introduction to Scripting</li>\
   </ul>\
 </li>\
 </ul>\
