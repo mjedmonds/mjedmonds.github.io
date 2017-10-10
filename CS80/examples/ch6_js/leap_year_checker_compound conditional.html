@@ -7,7 +7,7 @@
   <script type="text/javascript">
     var year, leapYear = false,
       leapYearText = "";
-    year = window.prompt("Input a year: ");
+    year = parseInt(window.prompt("Input a year: "));
     // Question: do the parenthesis matter? Why?
     if ((year % 4 === 0 && year % 100 !== 0) || year % 400 === 0) {
       leapYear = true;
