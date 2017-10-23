@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Leap Year Checker</title>
+  <script type="text/javascript">
+    var leapYearCheck2 = function(year){
+      return leapYearCheck(year);
+    }
+    var year;
+    year = parseInt(window.prompt("Input a year: "));
+    
+    var leapYear = leapYearCheck(year);
+    printLeapYear(leapYear);
+    
+    function leapYearCheck(year){
+      if (year % 100 === 0) {
+        if (year % 400 === 0) {
+          return true;
+        }
+      } else if (year % 4 === 0) {
+        return true;
+      }
+      return false;
+    }
+    
+    function printLeapYear(leapYear){
+      var leapYearText = "";
+      if (!leapYear) {
+        leapYearText = "not";
+      }
+
+      document.writeln("<h2>" + year + " is " + leapYearText + " a leap year</h2>");
+    }
+  </script>
+</head>
+
+<body>
+</body>
+
+</html>

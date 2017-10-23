@@ -1,0 +1,15 @@
+Write two functions: One to convert Fahrenheit to Celsius and another to convert Celsius to Fahrenheit.
+
+What do we need to know to write this function?
+1) How to convert Fahrenheit to Cecilius
+    T(C) = (T(F) - 32) * 5/9
+2) How to convert Cecilius to Fahrenheit
+    T(F) = T(C) * 9/5 + 32
+
+function FahrenheitToCelsius(F){
+  return (F - 32) * 5/9;
+}
+
+function CelsiusToFahrenheit(C){
+  return C * 9/5 + 32;
+}

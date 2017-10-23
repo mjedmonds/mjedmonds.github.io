@@ -20,6 +20,7 @@ document.write('\
     <li><a href="ch3_html_pt2.html">Ch 3. Introduction to HTML: Part II</a></li>\
     <li><a href="ch4_css.html">Ch 4. CSS</a></li>\
     <li><a href="ch6_js_intro.html">Ch 6. Javascript: Introduction to Scripting</a></li>\
+    <li><a href="ch7_js_control.html">Ch 7. Javascript: Control Statements</a></li>\
   </ul>\
 </li>\
 </ul>\

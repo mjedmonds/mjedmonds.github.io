@@ -143,11 +143,622 @@ else
         </small>
       </section>
       <section>
-        <h3><a href="../examples/ch7_js2/hello_world.html">Example: <code>hello_world.html</code></a></h3>
-        <pre><code id="hello_world" class="html"></code></pre>
+        <h3>Control Statements</h3>
+        <small>
+        <ul>
+          <li><p>Prior to the <code>if...else</code> statement, our programs executed sequentially
+            <ul>
+              <li><p>Programs executed from top to bottom</p></li>
+            </ul>
+          </p></li>
+          <li><p><code>if...else</code> introduced <em>branching</em>, or a <em>conditional jump</em>, meaning the program would "choose a fork in the road" based on some boolean evaluation
+            <ul>
+              <li><p>Branching enables more powerful programs, since the state of particular variables can vary with each execution</p></li>
+              <li><p><code>if...else</code> gave us control over what program statements to executes for cases we cared about</p></li>
+            </ul>
+          </p></li>
+        </ul>
+        </small>
+      </section>
+      <section>
+        <h3>Control Statements</h3>
+        <small>
+        <ul>
+          <li><p>History lesson: the <code>goto</code> statement
+          <ul>
+            <li><p>Instructed a program to jump to a particular line in the program</p></li>
+            <li><p>Think of a function: "goto the starting line of the called function" and terminates with a "goto to the next line of the calling function"</p></li>
+            <li><p>This is a largely deprecated programming practice</p></li>
+            <li><p>Enabled a "spaghetti programming" where a program was like a whole bunch of spaghetti laid out, with each piece of spaghetti representing a <code>goto</code> statement</p></li>
+          </ul>
+        </p></li>
+        </ul>
+        </small>
+      </section>
+     <section>
+        <h3>Control Statements</h3>
+        <small>
+        <ul>
+          <li><p>Now, imperative languages (Javascript, C, C++, Java, Python, ...) use <em>structed programming</em> that consists of three <em>control structures</em>
+            <ol>
+              <li><p><em>sequence structure</em> - execute the program linearly, one right after another</p></li>
+              <li><p><em>selection structure</em> - select or ignore a program statement (<code>if...else</code>)</p></li>
+              <li><p><em>repetition structure</em> - repeat the program statement(s) a certain number of times (<code>while, do...while, for, for...in</code>)</p></li>
+            </ol>
+          </p></li>
+        </ul>
+        </small>
+      </section> 
+      <section>
+        <h3>Control Statements</h3>
+        <ul>
+          <li><p>We can model the control structure of a program with graphical models that show the control flow of the program
+            <ul>
+              <li><p>A flowchart of the possible program executions</p></li>
+              <li><p>Useful for modeling sub components of a program, but infeasible to model an entire program's execution</p></li>
+            </ul>
+          </p></li>
+        </ul>
+      </section>
+      <section>
+        <h3>Control Statements</h3>
+        <p>Javascript Keywords</p>
+        <img src="images/js-keywords.png" alt="Javascript keywords" />
+      </section>
+      <section>
+        <h3>Control Statements</h3>
+        <ul>
+          <li><p><code>if</code> statement</p></li>
+          <ul>
+            <li><p>Already covered</p></li>
+            <li><p>Important new terminology in terms of control flow:
+              <ul>
+                <li><p><code>if</code> is a <em>single-selection</em> statement. It selects or ignores a single action (program statement(s))</p></li>
+                <li><p>We can think of an <code>if</code> statement as having a single entry point and single exit point</p></li>
+              </ul>
+            </p></li>
+          </ul>
+        </ul>
+      </section>
+      <section>
+        <h3>Control Statements</h3>
+        <ul>
+          <li><p><code>if...else</code> statement</p></li>
+          <ul>
+            <li><p>Already covered</p></li>
+            <li><p><code>if...else</code> is a <em>double-selection</em> statement
+              <ul>
+                <li><p>Selects among two actions</p></li>
+              </ul>
+            </p></li>
+          </ul>
+        </ul>
+      </section>
+      <section>
+        <h3>Control Statements</h3>
+        <p>Ternary Operator (Conditional Operator)</p>
+        <ul>
+          <li><p>We can shorthand the if else statement with a ternary operator of the following form:</p></li>
+          <pre><code>cond ? true_action : false_action</code></pre>
+          <li><p> Example:
+          <pre><code class="js">document.writeln( student_grade &gt;= 60 ? "Passed" : "Failed" ); // immediately using the result
+var courseResult = student_grade &gt;= 60 ? "Passed" : "Failed"; // assignment to the result</code></pre>
+          </p></li>
+      </section>
+      <section>
+        <h3>Control Statements</h3>
+        <p>Ternary Operator (Conditional Operator)</p>
+        <small>
+        <ul>
+          <li><p>Differences with <code>if...else</code>
+            <ul>
+              <li><p>Ternary operator <strong>returns</strong> a value</p></li>
+              <li><p>This is how the above two examples work (collapse/evaluate the ternary to see...)
+                <ul>
+                  <li><p>E.g. if <code>student_grade</code> was 50, this the same as calling <code>document.writeln("Failed");</code> or assigning <code>pass_fail = "Failed";</code></p></li>
+                </ul>
+              </p></li>
+            </ul>
+          </p></li>
+        </ul>
+        </small>
+      </section>
+      <section>
+        <h3>Dangling <code>else</code>'s</h3>
+        <ul>
+          <li><p>We are permitted to write nested <code>if...else</code> statements</p></li>
+          <li><p>We also don't have to include the curly braces <code>{}</code>, which start a <strong>block statement</strong>
+            <ul>
+              <li><p>Block statements are groupings of program statements
+                <ul>
+                  <li><p>You can think of them like compound statements, in the same sense of compound conditionals</p></li>
+                </ul>
+              </p></li>
+            </ul>
+          </p></li>
+        </ul>
+      </section>
+      <section>
+        <h3>Dangling <code>else</code>'s</h3>
+        <p>Variable Scope</p>
+        <ul>
+          <li><p>Example block statement:</p></li>
+          <pre><code class="js">var a1 = 3;
+{
+  var a2 = 5;
+}
+console.log(a1 + a2);</code></pre>
+          <li><p>This behavior is different from C/C++!
+            <ul>
+              <li><p>Block statements do not introduce <strong>scope</strong></p></li>
+            </ul>
+          </p></li>
+        </ul>
+      </section>
+      <section>
+        <h3>Dangling <code>else</code>'s</h3>
+        <p>Variable Scope</p>
+        <small>
+        <ul>
+          <li><p>Scope is the "lifetime of a variable"
+            <ul>
+              <li><p>When a variable/function goes out of scope, it is not valid to use that variable or function again</p></li>
+              <li><p>In the example above, an equivalent C/C++ code segement would fail to compile because <code>a2</code> would be out of scope
+                <ul>
+                  <li><p>The scope of <code>a2</code> would be from its declaration to its closing curly brace
+                    <br /> Back to why this matters for <code>if...else</code>...</p></li>
+                </ul>
+              </p></li>
+            </ul>
+          </p></li>
+        </ul>
+        </small>
+      </section>
+      <section>
+        <h3>Dangling <code>else</code>'s</h3>
+        <ul>
+          <li><p>If we don't include the curly braces, we have an implicit block statement
+            <ul>
+              <li><p>But what problems might we encounter with nested <code>if...else</code>'s?</p></li>
+            </ul>
+          </p></li>
+        </ul>
+      </section>
+      <section>
+        <h3>Dangling <code>else</code>'s</h3>
+        <ul>
+          <li><p>Consider the following possibilities (hint: the indentation does not affect the semantic meaning)</p></li>
+          <pre><code class="js">if ( x &gt; 5 )
+  if ( y &gt; 5 )
+    document.writeln( "&lt;p&gt;x and y are &gt; 5&lt;/p&gt;" );
+  else
+    document.writeln( "&lt;p&gt;x is &lt;= 5&lt;/p&gt;" );</code></pre>
+          <pre><code class="js">if ( x &gt; 5 )
+  if ( y &gt; 5 )
+    document.writeln( "&lt;p&gt;x and y are &gt; 5&lt;/p&gt;" );
+else
+  document.writeln( "&lt;p&gt;x is &lt;= 5&lt;/p&gt;" );</code></pre> 
+        </ul>
+      </section>
+      <section>
+        <h3>Dangling <code>else</code>'s</h3>
+        <ul>
+          <li><p>The first indentation reflects the semantics. Why?</p></li>
+          <pre><code class="js">if ( x &gt; 5 )
+  if ( y &gt; 5 )
+    document.writeln( "&lt;p&gt;x and y are &gt; 5&lt;/p&gt;" );
+  else
+    document.writeln( "&lt;p&gt;x is &lt;= 5&lt;/p&gt;" );</code></pre>
+          <pre><code class="js">if ( x &gt; 5 )
+  if ( y &gt; 5 )
+    document.writeln( "&lt;p&gt;x and y are &gt; 5&lt;/p&gt;" );
+else
+  document.writeln( "&lt;p&gt;x is &lt;= 5&lt;/p&gt;" );</code></pre> 
+        </ul>
+      </section>
+      <section>
+        <h3>Dangling <code>else</code>'s</h3>
+        <ul>
+          <li><p>If there is no included block statements, a single statement is grouped to the <code>if</code></p></li>
+          <ul>
+            <li><p><code>if...else</code> is considered a single conditional statement</p></li>
+            <li><p>This is part of JavaScript syntax, and is very common across programming languages</p></li>
+          </ul>
+          <li><p>What's the solution?</p></li>
+          <ul>
+            <li><p>Using block statements fixes this problem because it enforces which <code>if</code> the <code>else</code> belongs to</p></li>
+          </ul>
+        </ul>
+      </section>
+      <section>
+        <h3>Dangling <code>else</code>'s</h3>
+        <ul>
+          <li><p>Fix:</p></li>
+          <pre><code class="js">if ( x &gt; 5 ){
+  if ( y &gt; 5 )
+    document.writeln( "&lt;p&gt;x and y are &gt; 5&lt;/p&gt;" );
+} else 
+  document.writeln( "&lt;p&gt;x is &lt;= 5&lt;/p&gt;" );</code></pre>
+          <li><p>I (personally) recommend always wrapping conditionals, loops, etc. with block statements:
+          <pre><code class="js">if ( x &gt; 5 ) {
+  if ( y &gt; 5 ){
+    document.writeln( "&lt;p&gt;x and y are &gt; 5&lt;/p&gt;" );
+  }
+} else {
+  document.writeln( "&lt;p&gt;x is &lt;= 5&lt;/p&gt;" );
+}</code></pre> 
+        </ul>
+      </section>
+      <section>
+        <h3>Dangling <code>else</code>'s</h3>
+        <ul>
+          <li><p>Consider another error-prone situation:</p></li>
+          <pre><code class="js">if ( grade &gt;= 60 )
+  document.writeln( "&lt;p&gt;Passed&lt;/p&gt;" );
+else
+  document.writeln( "&lt;p&gt;Failed&lt;/p&gt;" );
+  document.writeln( "&lt;p&gt;You must take this course again.&lt;/p&gt;" );</code></pre>
+          <li><p>Under what circumstances will "You must take this course again" be printed to the user?</p></li>
+        </ul>
+      </section>
+      <section>
+        <h3>Dangling <code>else</code>'s</h3>
+        <ul>
+          <pre><code class="js">if ( grade &gt;= 60 )
+  document.writeln( "&lt;p&gt;Passed&lt;/p&gt;" );
+else
+  document.writeln( "&lt;p&gt;Failed&lt;/p&gt;" );
+  document.writeln( "&lt;p&gt;You must take this course again.&lt;/p&gt;" );</code></pre>
+          <li><p>Every time! Why?</p></li>
+          <li><p>The Javascript interpreter does not read indentation for semantics</p></li>
+          <li><p>The last line is not associated with the <code>else</code></p></li>
+          <li><p>Semantic version:
+          <pre><code class="js">if ( grade &gt;= 60 )
+  document.writeln( "&lt;p&gt;Passed&lt;/p&gt;" );
+else
+  document.writeln( "&lt;p&gt;Failed&lt;/p&gt;" );
+document.writeln( "&lt;p&gt;You must take this course again.&lt;/p&gt;" );</code></pre>
+        </ul>
+      </section>
+      <section>
+        <h3>Dangling <code>else</code>'s</h3>
+        <ul>
+          <li><p>Fix:</p></li>
+          <pre><code class="js">if ( grade &gt;= 60 )
+  document.writeln( "&lt;p&gt;Passed&lt;/p&gt;" );
+else {
+  document.writeln( "&lt;p&gt;Failed&lt;/p&gt;" );
+  document.writeln( "&lt;p&gt;You must take this course again.&lt;/p&gt;" );
+}</code></pre>
+        </ul>
+      </section>
+      <section>
+        <h3>Dangling <code>else</code>'s</h3>
+        <ul>
+          <li><p>The main point: don't trust indentation!
+            <ul>
+              <li><p>Use explicit block statements (through curly braces)
+                <ul>
+                  <li><p>You must use a block if</p></li>
+                  <li><p>I do this all the time, no matter. I personally believe it offers a cleaner, more consistent code style that has better defined semantics</p></li>
+                </ul>
+              </p></li>
+            </ul>
+          </p></li>
+        </ul>
+      </section>
+      <section>
+        <h3>Dangling <code>else</code>'s</h3>
+        <small>
+        <ul>
+          <li><p>Technical semantics (the actual logic here):
+            <ul>
+              <li><p><code>if</code> and <code>else</code> will associate with the next statement</p></li>
+              <li><p>That statement can be a single program statement, or a compound statement
+                <ul>
+                  <li><p>By making the next statement a block statement, we avoid the problem completely, even if we only execute one statement in that block statement.
+                    <ul>
+                      <li><p>Removes ambiguity in all cases while adding minimal amount of lines to your program (not that ever print source code anyway, so the length of your program doesn't really matter)</p></li>
+                    </ul>
+                  </p></li>
+                </ul>
+              </p></li>
+            </ul>
+          </p></li>
+        </ul>
+        </small>
+      </section>
+      <section>
+        <h3>Errors</h3>
+        <small>
+        <ul>
+          <li><p>When debugging, we need to evaluate what is causing the problem in our program and how we can fix it</p></li>
+          <li><p>Three main types of errors:
+            <ul>
+              <li><p><em>Syntax errors</em> - invalid code. The compiler/interpreter cannot succesfully execute the program. Will be detected by the computer. Basically means you violated the rules of the language. Example: forgetting to put a closing curly brace at the end of an <code>if...else</code>.</p></li>
+              <li><p><em>Semantic errors</em> - valid code, but does not produce the results you expect. Example: using the wrong variable or operator somewhere in your code</p></li>
+              <li><p><em>Design errors</em> - valid code and produces the results you expect. However, your understanding of the problem is wrong. Example: using the wrong forumla for something.</p></li>
+            </ul>
+          </p></li>
+        </ul>
+        </small>
+      </section>
+      <section>
+        <h3>Errors</h3>
+        <small>
+        <ul>
+          <li><p>Semantic and design errors are very similar but have different implications for debugging
+            <ul>
+              <li><p>A semantic error means we understand the problem and need to adjust our code to reflect that understanding</p></li>
+              <li><p>A design error means we don't understand the problem and will never be able to produce a working program</p></li>
+            </ul>
+          </p></li>
+          <li><p>A design error is a more significant problem than semantic error!</p></li>
+        </ul>
+        </small>
+      </section>
+      <section>
+        <h3>Errors</h3>
+        <small>
+        <ul>
+          <li><p>Ways to fix errors:
+            <ul>
+              <li><p>Syntax error: computer will usually give a hint as to what's causing the problem. Go inspect your code to see what might be wrong (generally easy, but can be incredibly frustrating)</p></li>
+              <li><p>Semantic error: assuming you have correct pseudocode, something in your program doesn't match the pseudocode. Compare the two and make sure the operations match up. This is when you facepalm and can't believe you've wasted an hour verifying your pseudocode matches your code but you mistyped a <code>+</code> for a <code>*</code>.</p></li>
+              <li><p>Design error: Your pseudocode is wrong. Fix the pseudocode first. There's no specific advice to give since this error is always problem-specific. This is when you email your professor/supervisor/(maybe) customer for guidance.</p></li>
+            </ul>
+          </p></li>
+        </ul>
+        </small>
+      </section>
+      <section>
+        <h3>Reptition (loops)</h3>
+        <ul>
+          <li><p>Repeat an action a number of times while a condition is true</p></li>
+          <li><p>Example shopping pseudocode:</p></li>
+          <pre><code>While there are more items on my shopping list
+  Purchase next item and cross it off my list</code></pre>
+          <li><p>When the condition becomes false, the loop exits</p></li>
+          <li><p>Critical part: the loop must do something that will eventually cause the condition to be false
+            <ul>
+              <li><p>Otherwise, we are stuck in an infinite loop!</p></li>
+            </ul>
+          </p></li>
+        </ul>
+      </section>
+      <section>
+        <h3>Reptition (loops)</h3>
+        <ul>
+          <li><p style="padding-right: 10em">Example for shopping:</p></li>
+          <pre><code class="js">var shopping_list = ["pants", "grocercies", "car"];
+var i = 0;
+// purchase all items in the list
+while(i &lt; shopping_list.length)
+{
+  purchase(shopping_list[i]); // purchase the item
+  i = i + 1; // move to the next item
+}
+function purchase(item){
+  window.alert("Purchased " + item);
+}</code></pre>
+        </ul>
+      </section>
+      <section>
+        <h3>Reptition (loops)</h3>
+        <ul>
+          <li><p>If you think visually, consider the following code &amp; flowchart</p></li>
+          <pre><code class="js">var product = 2;
+        while ( product &lt;= 1000 )
+        {
+        product = 2 * product;
+        }</code></pre>
+        </ul>
+      </section>
+      <section>
+        <h3>Reptition (loops)</h3>
+        <ul>
+          <small>
+          <li><p>If you think visually, consider the following code + flowchart</p></li>
+          <center><img src="images/js-program-flow.png" alt="Program flow" width="80%"/></center>
+          <li><p>We can think about a loop as a repeated cycle in a flowchart until a condition becomes false</p></li>
+          </small>
+        </ul>
       </section>
       <section data-background="#bfb">
         <h3>Exercise</h3>
+        <p>Class Average</p>
+        <ul>
+          <li><p>Write pseudocode and javascript to average a class's scores on an exam. </p></li>
+          <li><p>The program should prompt the user for the number of students in the class, then ask for each score.</p></li>
+          <li><p>The scores should be printed nicely into a table with the average at the bottom.</p></li>
+        </ul>
+      </section>
+      <section data-background="#bfb">
+        <h3>Exercise</h3>
+        <p>Class Average</p>
+        <ul>
+          <li><p>Pseudocode:</p></li>
+          <pre>Set total to zero
+Set grade counter to zero
+Input number of students
+Print table header
+While grade counter is less than number of students
+Input the next grade
+Add the grade into the total
+Add one to the grade counter
+Print grade to table
+Set the class average to the total divided by number of students
+Print the class average to table</pre>
+        </ul>
+      </section>
+      <section data-background="#bfb">
+        <h3><a href="../examples/ch7_js_2/class_average.html">Exercise: <code>class_average.html</code></a></h3>
+        <pre><code id="class_average" class="html"></code></pre>
+      </section>
+
+       <section data-background="#bfb">
+        <h3>Exercise</h3>
+        <p>Real Estate License</p>
+        <ul>
+          <small>
+          <li><p>A college offers a course that prepares students for the state licensing exam for real estate brokers. Last year, 10 of the students who completed this course took the licensing exam. Naturally, the college wants to know how well its students performed. You&rsquo;ve been asked to write a script to summarize the results. You&rsquo;ve been given a list of these 10 students. Next to each name is written a 1 if the student passed the exam and a 2 if the student failed.</p></li>
+          </small>
+        </ul>
+      </section>
+      <section data-background="#bfb">
+        <h3>Exercise</h3>
+        <p>Real Estate License</p>
+        <ul>
+          <small>
+          <li><p>Your script should analyze the results of the exam as follows:</p></li>
+          <ol>
+            <li><p>Input each test result (i.e., a 1 or a 2). Display the message &ldquo;Enter result&rdquo; on the screen each time the script requests another test result.</p></li>      
+            <li><p>Count the number of test results of each type.</p></li>      
+            <li><p>Display a summary of the test results indicating the number of students who passed and the number of students who failed.</p></li>
+            <li><p>If more than eight students passed the exam, print the message &ldquo;Bonus to instructor!&rdquo;</p></li>
+          </ol>
+          </small>
+        </ul>
+      </section>
+      <section data-background="#bfb">
+        <h3>Exercise</h3>
+        <p>Real Estate License</p>
+        <ul>
+          <li><p style="padding-right: 15em">Pseudocode:</p></li>
+          <pre>Initialize passes to zero
+Initialize failures to zero
+Initialize student to zero
+While student counter is less than ten
+Input the next exam result
+If the student passed
+Add one to passes
+Else
+Add one to failures
+Add one to student counter
+Print the number of passes
+Print the number of failures
+If more than eight students passed
+Print &ldquo;Bonus to Instructor!&rdquo;</pre>
+        </ul>
+      </section>
+      <section data-background="#bfb">
+        <h3><a href="../examples/ch7_js_2/bonus.html">Exercise: <code>bonus.html</code></a></h3>
+        <pre><code id="bonus" class="html"></code></pre>
+      </section>
+      <section>
+        <h3>Assignment Operators</h3>
+        <ul>
+          <li><p>Modifying a variable (changing its value) is extremely common. We have a shorthand way doing this:</p></li>
+          <pre><code class="js">c = c + 3;
+c += 3; </code></pre>
+          <li><p>More generally, any statement of the form</p></li>
+          <pre><code class="js">variable = variable operator expression;</code></pre>
+          <li><p>Can always be written as:</p></li>
+          <pre><code class="js">variable operator = expression; // operator could be +, -, *, /, %</code></pre>
+        </ul>
+      </section>
+      <section>
+        <h3>Assignment Operators</h3>
+        <center><img src="images/js-assignment.png"></center>
+      </section>
+      <section>
+        <h3>Increment and Decrement</h3>
+        <center><img src="images/js-inc-dec.png"></center>
+      </section>
+      <section>
+        <h3>Increment and Decrement</h3>
+        <ul>
+          <li><p>Key difference:
+            <ul>
+              <li><p>pre changes the value, then returns the new value</p></li>
+              <li><p>post returns the current value, then change the value</p></li>
+              <li><p>These operators break PEMDAS; they have a higher precedence than <code>*</code>, <code>/</code>, <code>%</code></p></li>
+            </ul>
+          </p></li>
+        </ul>
+      </section>
+      <section>
+        <h3>Increment and Decrement</h3>
+        <ul>
+          <li><p style="padding-right: 10em">Consider the following:</p></li>
+          <pre><code class="js">var a = 10;
+var counter1 = 0;
+var counter2 = 0;
+while(counter1++ &lt; a)
+{
+  ; //loop 1
+}
+while(++counter2 &lt; a)
+{
+  ; //loop 2
+}
+console.log(counter1);
+console.log(counter2);</pre></code>
+        </ul>
+      </section>
+      <section>
+        <h3>Increment and Decrement</h3>
+        <ul>
+          <li><p>What will be the final value of <code>counter1</code> and <code>counter2</code>?</p></li>
+        </ul>
+      </section>
+      <section>
+        <h3>Increment and Decrement</h3>
+        <ul>
+          <li><p>What will be the final value of <code>counter1</code> and <code>counter2</code>?
+            <ul>
+              <li><p><code>counter1</code> will be 11 (loop 1 runs 10 times, but counter1 is incremented an extra time (postincrement))</p></li>
+              <li><p><code>counter2</code> will be 10 (loop 2 runs 10 times)</p></li>
+            </ul>
+          </p></li>
+        </ul>
+      </section>
+      <section>
+        <h3>Additional Repetition Structures</h3>
+        <p><code>for</code></p>
+        <ul>
+          <li><p>Functionally equivalent to <code>while</code></p></li>
+        </ul>
+        <pre><code class="js">for(initialization_statement; loop_condition; loop_end_statement)
+{
+  // loop body
+}
+// in practice
+for (var i = 0; i &lt; 10; i++){
+}
+// which is the same as
+var i = 0;
+while (i &lt; 10){
+  i++;
+}</code></pre>
+      </section>
+      <section>
+        <h3>Additional Repetition Structures</h3>
+        <p><code>do...while</code></p>
+        <ul>
+          <li><p>Like a while loop, but guarantees that the loop will execute at least once</p></li>
+          <li><p>Condition is checked at the end of the loop</p></li>
+        </ul>
+        <pre><code class="js">var i = 0;
+do {
+  // loop body
+i++;
+}
+while(i &lt; 10);</code></pre>
+      </section>
+      <section>
+        <h3>Additional Repetition Structures</h3>
+        <ul>
+          <li><p><code>for...in</code>
+            <ul>
+              <li><p>Will be discussed after JSON</p></li>
+            </ul>
+          </p></li>
+        </ul>
+      </section>
+      <section>
+        <h3><a href="../examples/ch7_js_2/sortedList.html">Example: <code>sortedList.html</code></a></h3>
+        <pre><code id="sortedList" class="html"></code></pre>
       </section>
     
   
@@ -207,7 +818,10 @@ else
       $(id).text(data);
     });
   }
-  get_example('ch7_js2', 'hello_world.html', '#hello_world');
+  get_example('ch7_js_2', 'class_average.html', '#class_average');
+  get_example('ch7_js_2', 'bonus.html', '#bonus');
+  get_example('ch7_js_2', 'basic_while.html', '#basic_while');
+  get_example('ch7_js_2', 'sortedList.html', '#sortedList');
   </script>
   <script src="js/main.js"></script>
 </body>
