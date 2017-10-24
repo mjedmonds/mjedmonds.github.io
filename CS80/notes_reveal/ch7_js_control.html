@@ -112,9 +112,10 @@
       <section>
         <h3>Background and Terminology</h3>
         <p>Pseudocode</p>
-        <small>
         <ul>
+        <small>
           <li><p>Example: Leap year</p></li>
+        </small>
           <pre><code>if year is divisible by 400 then
   is_leap_year
 else if year is divisible by 100 then
@@ -123,24 +124,27 @@ else if year is divisible by 4 then
   is_leap_year
 else
   not_leap_year</code></pre> 
+        <small>
           <li><p>This is in between code and English!</p></li>
           <li><p>This can be directly converted to code, regardless of programming language used</p></li>
-         </ul> 
         </small>
+         </ul> 
       </section>
       <section>
         <h3>Background and Terminology</h3>
         <p>Pseudocode</p>
-        <small>
         <ul>
+        <small>
           <li><p>Example: Compound conditional leap year:</p></li>
+        </small>
           <pre><code>if (year is divisible by 4 and not divisible by 100)then
   is_leap_year
 else
   not_leap_year</code></pre> 
+        <small>
           <li><p>Notice we are just describing the logic behind the program without consideration of syntax</p></li>
-         </ul> 
         </small>
+         </ul> 
       </section>
       <section>
         <h3>Control Statements</h3>
@@ -409,10 +413,11 @@ else
 else
   document.writeln( "&lt;p&gt;Failed&lt;/p&gt;" );
   document.writeln( "&lt;p&gt;You must take this course again.&lt;/p&gt;" );</code></pre>
-          <li><p>Every time! Why?</p></li>
+        <small>
           <li><p>The Javascript interpreter does not read indentation for semantics</p></li>
           <li><p>The last line is not associated with the <code>else</code></p></li>
-          <li><p>Semantic version:
+          <li><p>Semantic version:</p></li>
+        </small>
           <pre><code class="js">if ( grade &gt;= 60 )
   document.writeln( "&lt;p&gt;Passed&lt;/p&gt;" );
 else
@@ -548,10 +553,10 @@ function purchase(item){
         <ul>
           <li><p>If you think visually, consider the following code &amp; flowchart</p></li>
           <pre><code class="js">var product = 2;
-        while ( product &lt;= 1000 )
-        {
-        product = 2 * product;
-        }</code></pre>
+while ( product &lt;= 1000 )
+{
+product = 2 * product;
+}</code></pre>
         </ul>
       </section>
       <section>
@@ -583,10 +588,10 @@ Set grade counter to zero
 Input number of students
 Print table header
 While grade counter is less than number of students
-Input the next grade
-Add the grade into the total
-Add one to the grade counter
-Print grade to table
+  Input the next grade
+  Add the grade into the total
+  Add one to the grade counter
+  Print grade to table
 Set the class average to the total divided by number of students
 Print the class average to table</pre>
         </ul>
@@ -629,12 +634,12 @@ Print the class average to table</pre>
 Initialize failures to zero
 Initialize student to zero
 While student counter is less than ten
-Input the next exam result
-If the student passed
-Add one to passes
-Else
-Add one to failures
-Add one to student counter
+  Input the next exam result
+  If the student passed
+    Add one to passes
+  Else
+    Add one to failures
+  Add one to student counter
 Print the number of passes
 Print the number of failures
 If more than eight students passed
