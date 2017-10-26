@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Motivator Map</title>
+        <!-- styles -->
+        <link href="styles.css" rel='stylesheet' type='text/css'>
+        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+            <!-- JQuery -->
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.js"></script>
+        <!-- jquery UI, mainly for drag/drop -->
+        <script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <!-- my own script -->
+        <script type="text/javascript" src="script.js"></script>
+	</head>
+
+	<body>
+    <div>
+    <h1 class="banner">Motivator Map</h1>
+    </div>
+    <div id="flexWrapper">
+        <div id="leftContainer">
+            <div id="explanation">
+                <h1>Start a conversation</h1>
+                <p>This motivator map is meant to be a conversation starter between manager and direct report.  Simply drag the below motivator into the appropriate column, describing if you would like more or less of that motivator, or if it's just right.<br><br>
+                You may also add a comment to a given card if you would like to provide context.</p>
+            </div>
+            <div id="cardsHeader"><h1>Motivator</h1>
+                <div id="motivators">
+                </div>
+            </div>
+            <div id="startOver">                
+            </div>
+        </div>
+
+        <div id="rightContainer">
+            <section id="moreOfColumn" class="flexCol">
+                <div class="columnHeader">
+                    <h2>More of</h2>
+                </div>
+                <div id="cardContainer1" class="dropzone"></div>
+            </section>
+
+            <section id="justRightColumn" class="flexCol">
+                <div class="columnHeader">
+                    <h2>Just Right</h2>
+                </div>
+                <div id="cardContainer2" class="dropzone"></div>
+            </section>
+
+            <section id="lessOfColumn" class="flexCol">
+                <div class="columnHeader">
+                    <h2>Less of</h2>
+                </div>
+                <div id="cardContainer3" class="dropzone"></div>
+            </section>
+
+        </div>
+    </div>
+	</body>
+</html>

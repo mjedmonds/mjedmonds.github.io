@@ -1,0 +1,242 @@
+body {
+   font-family: 'Source Sans Pro', sans-serif;
+   background-color: rgb(0, 119, 181);
+}
+
+#flexWrapper {
+   display: flex;
+   margin-right: 10px;
+   margin-left: 10px;
+   margin-top: 100px;
+}
+
+#leftContainer {
+   display: flex;
+   flex-direction: column;
+   height: 100%;
+   width: 20%;
+   justify-content: space-between;
+}
+
+#rightContainer {
+   display: flex;
+   justify-content: space-between;
+   width: 100%;
+   height: 100%;
+}
+
+.flexCol {
+   background-color: #ffffff;
+   border-style: solid;
+   border-width: 1px;
+   border-radius: 1em;
+   margin: 1em;
+   flex: 1;
+   text-align: center;
+   box-shadow: .1em .1em .1em #313335;
+   min-width: 13em;
+}
+
+.columnHeader {
+   text-align: center;
+   text-shadow: 2px 2px rgba(0,0,0,.15);
+   border-bottom: 1px solid #DD5143;
+   margin-bottom: 5px;
+}
+
+#cardContainer1, #cardContainer2, #cardContainer3 {
+   height: 100%;
+   min-height: 50vh;
+   width: 100%;
+   padding-bottom: 1em;
+}
+
+#cardsHeader, #explanation h1 {
+   padding: 0;
+   text-align: center;
+}
+
+#leftContainer {
+   background-color: white;
+   border-radius: 1em;
+   box-shadow: .1em .1em .1em #313335;
+   min-width: 15em;
+   padding: 1em;
+   margin-top: 1em;
+}
+
+/*Hide the card comment boxes until user decides to add a comment*/
+.commentBox-empty { 
+   display: none;
+}
+
+/*Show comment box when user presses comment button*/
+.commentBox-full { 
+   font-family: 'Source Sans Pro', sans-serif;
+   display: block;
+   resize: none;
+   width: 90%;
+   height: 40%;
+   margin-left: auto;
+   margin-right: auto;
+   border: 1px solid #DD5143;
+}
+
+.commentBtn {
+   width: 4em;
+   height: 2em;
+   position: absolute;
+   bottom: 0px;
+   right: 0px;
+   margin-right: 1em;
+   margin-bottom: 1em;
+}
+
+.commentDelBtn {
+   width: 2em;
+   height: 2em;
+   position: absolute;
+   bottom: 0px;
+   right: 0px;
+   margin-right: 1em;
+   margin-bottom: 1em;
+}
+
+.commentDelBtn-hide {
+   display: none;
+}
+
+.commentBtn-moved {
+   width: 4em;
+   height: 2em;
+   position: absolute;
+   bottom: 0px;
+   right: 3em;
+   margin-right: 1em;
+   margin-bottom: 1em;
+}
+
+button {
+   background-color: white;
+   border: 1px solid rgb(0, 119, 181);
+   border-radius: 1em;
+   color: #DD5143;
+   text-shadow: 1px 1px rgba(0,0,0,.15);
+}
+
+button:active {
+   background-color: #DD5143;
+   border: 1px solid rgb(0, 119, 181);
+   border-radius: 1em;
+   color: white;
+}
+
+/*Hide cards until one has been dragged and dropped*/
+.hideme {
+   display: none;
+}
+
+.placed {
+   display: flex;
+   flex-direction: column-reverse;
+   justify-content: space-between;
+   height: 100%;
+   width: 100%;
+   position: relative;
+}
+
+/*Show cards that have been dragged and dropped, and that are at the top of the deck*/
+.showme {
+   display: inline-block;
+   border-style: solid;
+   border-width: 1px;
+   border-radius: 1em;
+   height: 13em;
+   width: 13em;
+   box-shadow: .1em .1em .1em #313335;
+   user-select: none; /* avoid accidentally selecting text when trying to drag */
+   text-align: center;
+   margin: 5px;
+   border-color: rgb(0, 119, 181);
+   background-color: white;
+}
+
+.showme p {
+   font-size: medium;
+   font-weight: bold; 
+}
+
+.showme img {
+   margin-left: .75em;
+   margin-top: 1em;
+}
+
+.ui-draggable {
+   z-index: 1;
+}
+
+.imacard{
+  position:relative;
+  box-sizing:border-box;
+  padding: 1em .75em;
+}
+
+#startOver {
+   text-align: center;
+   margin-top: 20px;
+}
+
+.restartButton {
+   box-shadow: .1em .1em .1em #313335;
+}
+
+.restartButton:active {
+   transform: translateY(.1em);
+   transform: translateX(.1em);
+   box-shadow: 0 0 0;
+}
+
+/*Title Banner CSS - adapted from https://codepen.io/agrimsrud/pen/hcpKw*/
+.banner {
+   position: absolute;
+   left: 50%;
+   display: block;
+   margin: -90px -200px;
+   margin-bottom: 100px;
+   width: 400px;
+   height: 60px;
+   border: 1px solid #d3781d;
+   font: normal 36px/60px 'Source Sans Pro';
+   text-shadow: 2px 2px rgba(0,0,0,.15);
+   text-align: center;
+   color: white;
+   background: #E68523;
+   border-radius: 4px;
+   box-shadow: 0 0 30px rgba(0,0,0,.15) inset,
+                  0 6px 10px rgba(0,0,0,.15);
+}
+
+.banner::before,
+.banner::after {
+   content: '';
+   position: absolute;
+   z-index: -1;
+   left: -70px;
+   top: 24px;
+   display: block;
+   width: 40px;
+   height: 0px;
+   border: 30px solid #d3781d;
+   border-right: 20px solid #d16a04;
+   border-bottom-color: #d3781d;
+   border-left-color: transparent;
+   transform: rotate(-3deg);
+}
+
+.banner::after {
+   left: auto;
+   right: -70px;
+   border-left: 20px solid #d16a04;
+   border-right: 30px solid transparent;
+   transform: rotate(3deg);
+}

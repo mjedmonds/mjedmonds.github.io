@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<!--
+    Kyle Fox CS 80 / 1227
+    Final Project
+    2017-07-11
+
+    A "match two" or "memory" game - match two cards until all cards are
+    matched. The fastest time will be saved as the high score. The cards are
+    randomized on each shuffle, and they are adorable.
+-->
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+  <title> CS 80 : 1227 FOX, Kyle - Final Project</title>
+  <!-- jquery -->
+  <script src='https://code.jquery.com/jquery-3.2.1.min.js'></script>
+
+  <style>
+    body {
+        font-family: Helvetica, Arial, sans-serif;
+    }
+
+    .divTable{
+      display: table;
+      width: 600px;
+      table-layout: fixed;
+    }
+    .divTableRow {
+      display: table;
+      width: 680px;
+      table-layout: fixed;
+    }
+    .divTableCell {
+      border: 1px solid #999999;
+      display: table-cell;
+      padding: 3px 10px;
+      width: 150px;
+      height: 150px;
+    }
+    .divTableBody {
+      display: table-row-group;
+    }
+    .centered {
+      padding: 10px;
+      display: table-cell;
+      text-align: center;
+      width: 100%;
+    }
+
+    button {
+      margin-left: auto;
+      margin-right: auto;
+      display: inline-block;
+    }
+
+    img {
+      max-width: 100%;
+      max-height: 100%;
+      min-width: 150px;
+      min-height: 150px;
+    }
+
+    /*  for some strange reason, importing bootstrap would cause everything to
+        blank out. I need to style just one button anyway, so this'll do for now
+        from http://cssdemos.tupence.co.uk/button-styling.htm
+    */
+    .shuffle-button {
+      /*give the button curved corners, alter the size as required*/
+      -moz-border-radius: 10px;
+      -webkit-border-radius: 10px;
+      border-radius: 10px;
+      /*give the button a drop shadow*/
+      -webkit-box-shadow: 0 0 4px rgba(0,0,0, .75);
+      -moz-box-shadow: 0 0 4px rgba(0,0,0, .75);
+      box-shadow: 0 0 4px rgba(0,0,0, .75);
+      /*style the text*/
+      color:#000000;
+      font-size:1.1em;
+    }
+  </style>
+
+</head>
+<body>
+
+    <div class="divTableRow">
+      <div class="divTableCell clickable hidden" id="picture10"><img src='final_project/question-mark.jpg' alt='question-mark'/></div>
+      <div class="divTableCell clickable hidden" id="picture11"><img src='final_project/question-mark.jpg' alt='question-mark'/></div>
+      <div class="divTableCell clickable hidden" id="picture12"><img src='final_project/question-mark.jpg' alt='question-mark'/></div>
+      <div class="divTableCell clickable hidden" id="picture13"><img src='final_project/question-mark.jpg' alt='question-mark'/></div>
+    </div>
+
+    <div class="divTableRow">
+      <div class="divTableCell clickable hidden" id="picture14"><img src='final_project/question-mark.jpg' alt='question-mark'/></div>
+      <div class="divTableCell clickable hidden" id="picture15"><img src='final_project/question-mark.jpg' alt='question-mark'/></div>
+      <div class="divTableCell clickable hidden" id="picture16"><img src='final_project/question-mark.jpg' alt='question-mark'/></div>
+      <div class="divTableCell clickable hidden" id="picture17"><img src='final_project/question-mark.jpg' alt='question-mark'/></div>
+    </div>
+
+    <div class="divTableRow">
+      <div class="divTableCell clickable hidden" id="picture18"><img src='final_project/question-mark.jpg' alt='question-mark'/></div>
+      <div class="divTableCell clickable hidden" id="picture19"><img src='final_project/question-mark.jpg' alt='question-mark'/></div>
+      <div class="divTableCell clickable hidden" id="picture20"><img src='final_project/question-mark.jpg' alt='question-mark'/></div>
+      <div class="divTableCell clickable hidden" id="picture21"><img src='final_project/question-mark.jpg' alt='question-mark'/></div>
+    </div>
+
+    <div class="divTableRow">
+      <div class="divTableCell clickable hidden" id="picture22"><img src='final_project/question-mark.jpg' alt='question-mark'/></div>
+      <div class="divTableCell clickable hidden" id="picture23"><img src='final_project/question-mark.jpg' alt='question-mark'/></div>
+      <div class="divTableCell clickable hidden" id="picture24"><img src='final_project/question-mark.jpg' alt='question-mark'/></div>
+      <div class="divTableCell clickable hidden" id="picture25"><img src='final_project/question-mark.jpg' alt='question-mark'/></div>
+    </div>
+
+    <div class="divTableRow">
+      <div class="centered">
+        <button id="reshuffle" class="shuffle-button" type="button">reshuffle</button>
+      </div>
+    </div>
+
+
+<script>
+  var question_picture = 'question-mark.jpg';
+
+  var picture_array = [
+    'alligator_1.jpg',
+    'alligator_2.jpg',
+    'duck_1.jpg',
+    'duck_2.jpg',
+    'fox_1.jpg',
+    'fox_2.jpg',
+    'hedgehog_1.jpg',
+    'hedgehog_2.jpg',
+    'kitten_1.jpg',
+    'kitten_2.jpg',
+    'puppy_1.jpg',
+    'puppy_2.jpg',
+    'racoon_1.jpg',
+    'racoon_2.jpg',
+    'red_panda_1.jpg',
+    'red_panda_2.jpg',
+  ];
+
+  // Knuth-Fisher-Yates shuffle
+  // Randomize array element order in-place.
+  // https://bost.ocks.org/mike/shuffle/
+  // via https://stackoverflow.com/a/2450976
+  function shuffle(array) {
+    var currentIndex = array.length, temporaryValue, randomIndex;
+
+    // While there remain elements to shuffle...
+    while (0 !== currentIndex) {
+
+      // Pick a remaining element...
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+
+      // And swap it with the current element.
+      temporaryValue = array[currentIndex];
+      array[currentIndex] = array[randomIndex];
+      array[randomIndex] = temporaryValue;
+    }
+
+    return array;
+  }
+
+  var question_count = 16;
+  var base_count = 10;
+  var answer = [];
+  function set_pictures() {
+    picture_array = shuffle(picture_array);
+    for( i = 0; i < picture_array.length; i++) {
+      var picture_id = i + base_count;
+      var picture_id_name = '#picture' + picture_id + " img";
+      $(picture_id_name).attr("src", 'final_project/question-mark.jpg');
+
+      // reset class names
+      $(picture_id_name).parent().addClass("clickable hidden");
+
+      // picture_array[i] == duck_2.jpg
+      // if picture21 points to duck_1.jpg and picture10 points to duck_2.jpg
+      //   answer[21] => 10
+      //   answer[10] => 21
+      var image_name = picture_array[i].slice(0, -5); // duck_
+      var image_number = picture_array[i].slice(-5, -4); // 2
+      if( parseInt(image_number) === 1 ) {
+        answer[picture_id] = picture_array.indexOf(image_name + "2.jpg") + base_count;
+      }
+      else if( parseInt(image_number) === 2 ) {
+        answer[picture_id] = picture_array.indexOf(image_name + "1.jpg") + base_count;
+      }
+      else {
+        console.log('what?!');
+      }
+    }
+  }
+
+  function toggle_event() {
+    $('div.clickable').click(function(event) {
+      if( $(this).hasClass("clickable") ) {
+        if( $(this).hasClass("hidden") ) {
+          $(this).removeClass("hidden");
+          var div_id = $(this).attr('id');
+          var img_id_string = div_id.substr(-2); // div_id is of format "picture22"
+          var img_id = parseInt(img_id_string) - base_count;
+          $(this).children().attr("src", 'final_project/' + picture_array[img_id]);
+
+          // check if the answer is also revealed. if so, make them not clickable
+          var question_id = parseInt(img_id_string);
+          var answer_id = answer[question_id];
+          if( !$('#picture' + answer_id).hasClass("hidden") ) {
+            $(this).removeClass("clickable");
+            $('#picture' + answer_id).removeClass("clickable");
+          }
+
+          // if two mismatched tiles are shown, hide them
+          if( $('.hidden').length % 2 === 0 ) {
+            images = $('.clickable').not('.hidden').children();
+
+            // javascript doesn't have a blocking sleep() function
+            // fadeOut/fadeIn idea from https://stackoverflow.com/a/2744603
+            images.each( function( index, element ) {
+              $(this).fadeOut(750, function() {
+                $(this).attr('src', 'final_project/question-mark.jpg');
+                $(this).fadeIn(250);
+              });
+            });
+            $('.clickable').addClass('hidden');
+          }
+
+        }
+        else {
+          $(this).addClass("hidden");
+          $(this).children().attr("src", 'final_project/question-mark.jpg');
+        }
+      }
+    });
+  }
+
+  // shuffles the "cards"
+  function reshuffle() {
+    $('#reshuffle').click(function(event) {
+      set_pictures();
+      question_count = 16;
+    });
+  }
+
+  function sleep(delay) {
+  var start = new Date().getTime();
+    while (new Date().getTime() < start + delay);
+  }
+
+  $.ready(set_pictures());
+  $.ready(toggle_event());
+  $.ready(reshuffle());
+
+</script>
+</body>
+</html>

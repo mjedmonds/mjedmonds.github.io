@@ -5,7 +5,19 @@
     <title>Class Average Calculation</title>
   </head>
   <script>
-    
+    var total = 0;
+    var grade_counter = 0;
+    var num_students = parseInt(window.prompt("Enter number of students"));
+    document.writeln("<table>\n<thead>\n<tr>\n<td>Student Num</td>\n<td>Score</td>\n</tr>\n</thead>\n<tbody>");
+    while(grade_counter < num_students)
+    {
+      var grade = parseFloat(window.prompt("Enter student grade"));
+      total = total + grade;
+      grade_counter = grade_counter + 1;
+      document.writeln("<tr>\n<td>" + grade_counter + "</td>\n<td>" + grade + "</td>\n</tr>");
+    }
+    var avg = total / num_students;
+    document.writeln("</tbody>\n<tfoot>\n<tr>\n<td>Average</td>\n<td>" + avg + "</td>\n</tr>\n</tfoot>\n</table>");
   </script>
   <body>
   </body>
