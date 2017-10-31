@@ -102,12 +102,18 @@
       <section>
         <h3>DOM Nodes and Trees</h3>
         <ul>
-          <li><p>DOM nodes are elements in the tree (which directly correspond to HTML elements)
-            <ul>
-              <li><p>Every piece of an HTML5 page (elements, attributes, text) is modeled by a DOM node</p></li>
-            </ul>
-          </p></li>
-          <li><p>Let's take a look at what the DOM looks like and take a look in the debugger</p></li>
+          <li>
+            <p>DOM nodes are elements in the tree (which directly correspond to HTML elements)
+              <ul>
+                <li>
+                  <p>Every piece of an HTML5 page (elements, attributes, text) is modeled by a DOM node</p>
+                </li>
+              </ul>
+            </p>
+          </li>
+          <li>
+            <p>Let's take a look at what the DOM looks like and take a look in the debugger</p>
+          </li>
         </ul>
       </section>
       <section>
@@ -139,12 +145,18 @@
       <section>
         <h3>DOM Basics</h3>
         <ul>
-          <li><p>Let's dig into the object that <code>getElementById</code> returns<
-            <ul>
-              <li><p>An "Element"</p></li>
-              <li><p><a href="https://developer.mozilla.org/en-US/docs/Web/API/Element">https://developer.mozilla.org/en-US/docs/Web/API/Element</a></p></li>
-            </ul>
-          </p></li>
+          <li>
+            <p>Let's dig into the object that <code>getElementById</code> returns:
+              <ul>
+                <li>
+                  <p>An "Element"</p>
+                </li>
+                <li>
+                  <p><a href="https://developer.mozilla.org/en-US/docs/Web/API/Element">https://developer.mozilla.org/en-US/docs/Web/API/Element</a></p>
+                </li>
+              </ul>
+            </p>
+          </li>
         </ul>
       </section>
       <section>
@@ -175,35 +187,250 @@
         <h3>DOM Basics</h3>
         <p>Important Attributes</p>
         <ul>
-          <li><p><code>innerHTML</code> - accesses this node's inner HTML. This is the text to markup. E.g. if <code>&lt;p&gt;</code> is the <code>currentNode</code>. <code>currentNode.innerHTML</code> accesses the text within the <code>&lt;p&gt;</code> tag</p></li>
-          <li><p><code>parentNode</code> - accesses this node's parent HTML node.</p></li>
-          <li><p><code>length</code> - tells how many children node this node has</p></li>
+          <li>
+            <p><code>innerHTML</code> - accesses this node's inner HTML. This is the text to markup. E.g. if <code>&lt;p&gt;</code> is the <code>currentNode</code>. <code>currentNode.innerHTML</code> accesses the text within the <code>&lt;p&gt;</code> tag</p>
+          </li>
+          <li>
+            <p><code>parentNode</code> - accesses this node's parent HTML node.</p>
+          </li>
+          <li>
+            <p><code>length</code> - tells how many children node this node has</p>
+          </li>
         </ul>
       </section>
       <section>
         <h3>DOM Basics</h3>
         <ul>
-          <li><p>Changing/Setting the innerHTML of a node</p></li>
-          <pre><code class="js">
-// Case 1: create new node
+          <li>
+            <p>Changing/Setting the innerHTML of a node</p>
+          </li>
+          <pre><code class="js">// Case 1: create new node
 var h1_node = document.createElement("h1"); // create new h1_node
 h1_node.innerHTML = "Hello, World!"; // change the inner HTML using innerHTML
 document.body.appendChild(h1_node); // insert our new node to the document's body (document.body gives you the required &lt;body&gt; HTML tag)
 // Case 2: modify an existing node
 var h1_node = document.getElementById("h1_ele"); // assume there is an &lt;h1 id="h1_ele"&gt; tag in the document
-h1_node.innerHTML = "Hello, World!"; // change the inner HTML using innerHTML
-          </code></pre>
+h1_node.innerHTML = "Hello, World!"; // change the inner HTML using innerHTML</code></pre>
         </ul>
       </section>
       <section>
-        <h3></h3>
+        <h3><a href="../examples/ch12_dom/editing_dom.html">Example: <code>editing_dom.html</code></a></h3>
+        <pre><code id="editing_dom" class="html"></code></pre>
+      </section>
+      <section>
+        <h3>Traversing DOM</h3>
         <ul>
+          <li>
+            <p>A complicated, intimidating, and informative example of how you can interact with a DOM tree
+              <ul>
+                <li>
+                  <p>The javascript (<code>traversing_dom/dom.js</code>) is intimidating. I encourage you to dive into it. It will make more sense by the end of the lecture.</p>
+                </li>
+              </ul>
+            </p>
+          </li>
         </ul>
       </section>
       <section>
-        <h3></h3>
+        <h3><a href="../examples/ch12_dom/traversing_dom/dom.html">Example: <code>traversing_dom/dom.html</code></a></h3>
+        <pre><code id="traversing_dom" class="html"></code></pre>
+      </section>
+      <section>
+        <h3>Event Listeners</h3>
         <ul>
+          <li>
+            <p>Event listeners trigger Javascript code when the event
+              <it>fires</it>
+            </p>
+          </li>
+          <li>
+            <p>This enables the webpage to react to a users's actions
+              <ul>
+                <li>
+                  <p>Similar to the <code>:hover</code> we saw trigger different CSS rules based on the mouse's position</p>
+                </li>
+              </ul>
+            </p>
+          </li>
+          <li>
+            <p>Conceptual example: the event could be clicking a button in the document, and the function could be updating a table based on the input</p>
+          </li>
         </ul>
+      </section>
+      <section>
+        <h3>Event Listeners</h3>
+        <p><code>addEventListener()</code></p>
+        <small>
+        <ul>
+          <li><p>Enables you link a function to an action in the HTML document
+            <ul>
+              <li><p>The "action" is an event on the webpage</p></li>
+              <li><p>Events include things like:
+                <ul>
+                  <li><p><code>mouseenter</code> (mouse enters the corresponding HTML element)</p></li>
+                  <li><p><code>click</code> (a button has been pressed and released</p></li>
+                  <li><p><code>submit</code> (form submit button is pressed)</p></li>
+                </ul>
+              </p></li>
+              <li><p>A list of events available is here: <a href="https://developer.mozilla.org/en-US/docs/Web/Events">https://developer.mozilla.org/en-US/docs/Web/Events</a></p></li>
+            </ul>
+          </p></li>
+        </ul>
+        </small>
+      </section>
+      <section>
+        <h3>Event Listeners</h3>
+        <ul>
+          <li>
+            <p>Syntax:</p>
+          </li>
+          <pre><code class="js">target.addEventListener(event_type, listener);</code></pre>
+          <li>
+            <p><code>target</code> = HTML element to listen for <code>event_type</code>
+              <ul>
+                <li>
+                  <p>When <code>target</code> has <code>event_type</code> happen, <code>listener</code> is called
+                  </p>
+                </li>
+              </ul>
+      </section>
+      <section>
+        <h3><a href="../examples/ch12_dom/loading_event_listeners.html">Example: <code>loading_event_listeners.html</code></a></h3>
+        <pre><code id="loading_event_listeners" class="html"></code></pre>
+      </section>
+      <section>
+        <h3>DOM Collections</h3>
+        <small>
+        <ul>
+          <li><p>DOM contains a lot of information, most of which we won't usually care about</p></li>
+          <li><p>Collections are groups of related objects on a page</p></li>
+          <li><p>Each collection contains all of the elements of the corresponding type on the page.</p></li>
+          <li><p>Each collection is stored under the <code>document</code> object</p></li>
+          <li><p>Collections:
+            <ul>
+              <li><p>images</p></li>
+              <li><p>links</p></li>
+              <li><p>forms</p></li>
+            </ul>
+          </p></li>
+        </ul>
+        </small>
+      </section>
+      <section>
+        <h3>Images Collection</h3>
+        <small>
+        <ul>
+          <li><p>Stores all images on a page</p></li>
+          <li><p>Accessed through <code>document.images</code> (returns a list of images)</p></li>
+          <li><p>Each element in the list is an Image object
+            <ul>
+              <li><p><a href="http://www.w3schools.com/jsref/dom_obj_image.asp">http://www.w3schools.com/jsref/dom_obj_image.asp</a></p></li>
+            </ul>
+          </p></li>
+          <li><p>First image's link can be accessed through <code>document.images[0].src</code>
+            <ul>
+              <li><p><code>document.images[0].alt</code> is the alt display</p></li>
+            </ul>
+          </p></li>
+          <li><p><code>document.images.length</code> returns the number of images</p></li>
+          <li><p>Others are accessed similarly</p></li>
+        </ul>
+        </small>
+      </section>
+      <section>
+        <h3>Links Collection</h3>
+        <small>
+        <ul>
+          <li><p>Stores all links on a page</p></li>
+          <li><p>Accessed through <code>document.links</code> (returns a list of links)</p></li>
+          <li><p>Each element in the list is a Link object
+            <ul>
+              <li><p><a href="http://www.w3schools.com/jsref/dom_obj_link.asp">http://www.w3schools.com/jsref/dom_obj_link.asp</a></p></li>
+            </ul>
+          </p></li>
+          <li><p>First URL's link can be accessed through <code>document.links[0].href</code>
+            <ul>
+              <li><p><code>document.links[0].innerHTML</code> is the displayed text</p></li>
+            </ul>
+          </p></li>
+          <li><p><code>document.links.length</code> returns the number of images</p></li>
+          <li><p>Others are accessed similarly</p></li>
+        </ul>
+        </small>
+      </section>
+      <section>
+        <h3>Forms Collection</h3>
+        <small>
+        <ul>
+          <li><p>Stores all forms on a page</p></li>
+          <li><p>Accessed through <code>document.forms</code> (returns a list of links)</p></li>
+          <li><p>Each element in the list is a Form object
+            <ul>
+              <li><p><a href="http://www.w3schools.com/jsref/dom_obj_link.asp">http://www.w3schools.com/jsref/dom_obj_form.asp</a></p></li>
+            </ul>
+          </p></li>
+          <li><p>First form's inputs can be accessed through <code>document.forms[0].elements</code> (this is a list as well!)
+            <ul>
+              <li><p>Take a look at what is available for forms here</p></li>
+              <li><p><a href="http://www.w3schools.com/jsref/coll_form_elements.asp">http://www.w3schools.com/jsref/coll_form_elements.asp</a></p></li>
+            </ul>
+          </p></li>
+          <li><p><code>document.forms.length</code> returns the number of forms</p></li>
+          <li><p>Others are accessed similarly</p></li>
+        </ul>
+        </small>
+      </section>
+      <section data-background="#bfb">
+        <h3>Exercise</h3>
+        <small>
+        <ul>
+          <li><p>Write a Javascript function named <code>getFormvalue()</code> to print the values of First and Last name on the following form to <code>console</code>. Note that the <code>onsubmit</code> attribute specifies a Javascript function to call upon submission (one way to do form validation!) Use form object documentation to help <a href="http://www.w3schools.com/jsref/coll_form_elements.asp">http://www.w3schools.com/jsref/coll_form_elements.asp</a></p></li>
+        </ul>
+        </small>
+      </section>
+      <section data-background="#bfb">
+        <h3>Exercise</h3>
+        <pre><code class="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta charset=utf-8 /&gt;
+    &lt;title&gt;Return first and last name from a form - w3resource&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;form method="get" id="form1" onsubmit="getFormvalue()"&gt;
+      First name: 
+      &lt;input type="text" name="fname" value="David"&gt;&lt;br&gt;
+      Last name: 
+      &lt;input type="text" name="lname" value="Beckham"&gt;&lt;br&gt;
+      &lt;input type="submit" value="Submit"&gt;
+    &lt;/form&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+      </section>
+      <section data-background="#bfb">
+        <h3>Exercise</h3>
+        <pre><code class="js"> function getFormvalue() {
+  var form = document.getElementById("form1");
+  for (var i = 0; i &lt; form.length; i++) {
+    if (form.elements[i].value != 'Submit') {
+      console.log(form.elements[i].value);
+    }
+  }
+}</code></pre>
+      </section>
+      <section data-background="#bfb">
+        <h3><a href="../examples/ch7_js_2/first_last_name.html">Example: <code>first_last_name.html</code></a></h3>
+        <pre><code id="first_last_name" class="html"></code></pre>
+      </section>
+      <section data-background="#bfb">
+        <h3>Exercise</h3>
+        <ul>
+          <li><p>How could we have done this using <code>addEventListener()</code>?</p></li>
+        </ul>
+      </section>
+      <section data-background="#bfb">
+        <h3><a href="../examples/ch7_js_2/first_last_name_listener.html">Example: <code>first_last_name_listener.html</code></a></h3>
+        <pre><code id="first_last_name_listener" class="html"></code></pre>
       </section>
       <section>
         <h3></h3>
@@ -212,6 +439,7 @@ h1_node.innerHTML = "Hello, World!"; // change the inner HTML using innerHTML
       </section>
 
 
+      <!--
       <section data-background="#bfb">
         <h3>Exercise</h3>
       </section>
@@ -228,6 +456,7 @@ h1_node.innerHTML = "Hello, World!"; // change the inner HTML using innerHTML
         <h3>Assignment Operators</h3>
         <center><img src="images/js-assignment.png"></center>
       </section>
+      -->
       <!-- end main body -->
       <script src="lib/js/head.min.js"></script>
       <script src="reveal.js/js/reveal.js"></script>
@@ -285,6 +514,11 @@ h1_node.innerHTML = "Hello, World!"; // change the inner HTML using innerHTML
         });
       }
       get_example('ch12_dom', 'tables.html', '#tables');
+      get_example('ch12_dom', 'editing_dom.html', '#editing_dom');
+      get_example('ch12_dom', 'traversing_dom/dom.html', '#traversing_dom');
+      get_example('ch12_dom', 'loading_event_listeners.html', '#loading_event_listeners');
+      get_example('ch12_dom', 'first_last_name.html', '#first_last_name');
+      get_example('ch12_dom', 'first_last_name_listener.html', '#first_last_name_listener');
       </script>
       <script src="js/main.js"></script>
 </body>
