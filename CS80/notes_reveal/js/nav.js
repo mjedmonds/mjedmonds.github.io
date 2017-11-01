@@ -22,6 +22,7 @@ document.write('\
     <li><a href="ch6_js_intro.html">Ch 6. Javascript: Introduction to Scripting</a></li>\
     <li><a href="ch7_js_control.html">Ch 7. Javascript: Control Statements</a></li>\
     <li><a href="ch12_dom.html">Ch 12. Document Object Model</a></li>\
+    <li><a href="ch12.5_jQuery.html">Ch 12.5. jQuery</a></li>\
   </ul>\
 </li>\
 </ul>\

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Class Average</title>
+
+</head>
+
+<body>
+  <table>
+    <thead>
+      <tr>
+        <td>Student Num</td>
+        <td>Score</td>
+      </tr>
+    </thead>
+    <tbody id="table_body">
+    </tbody>
+    <tfoot>
+      <tr>
+        <td>Average</td>
+        <td id="average"></td>
+      </tr>
+    </tfoot>
+  </table>
+</body>
+
+  <script>
+    var total = 0;
+    var grade_counter = 0;
+    var num_students = parseInt(window.prompt("Enter number of students"));
+    var table_body = document.getElementById("table_body");
+    while(grade_counter < num_students)
+    {
+      var grade = parseFloat(window.prompt("Enter student grade"));
+      total = total + grade;
+      grade_counter = grade_counter + 1;
+      var row_node = document.createElement("tr");
+      row_node.innerHTML = "<td>" + grade_counter + "</td>\n<td>" + grade + "</td>";
+      table_body.appendChild(row_node);
+    }
+    var avg = total / num_students;
+    document.getElementById("average").innerHTML = avg;
+  </script>
+  
+</html>
