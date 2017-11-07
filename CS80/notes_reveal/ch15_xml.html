@@ -298,7 +298,7 @@
       </section>
       <section>
         <small><h3><a href="../examples/ch15_xml/article.xml">Example: <code>article.xml</code></a></h3></small>
-        <pre><code id="article" class="html"></code></pre>
+        <pre><code id="article" class="xml"></code></pre>
       </section>
       <section>
         <h3>Writing XML</h3>
@@ -515,7 +515,7 @@
       </section>
       <section>
         <h3>XML Types</h3>
-        <center><img src="images/ch15_xml_types-2.png"></center>
+        <center><img src="images/ch15_xml_types-2.png" style="width: 75%"></center>
       </section>
       <section>
         <small><h3><a href="../examples/ch15_xml/laptop.xml">Example: <code>laptop.xml</code></a></h3></small>
@@ -599,7 +599,7 @@
       function get_example(dir, file, id) {
         jQuery.get('../examples/' + dir + '/' + file, function(data) {
           $(id).text(data);
-        });
+        }, "text");
       }
       get_example('ch15_xml', 'article.xml', '#article');
       get_example('ch15_xml', 'namespaces.xml', '#namespaces');
