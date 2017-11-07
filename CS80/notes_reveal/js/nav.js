@@ -23,6 +23,7 @@ document.write('\
     <li><a href="ch7_js_control.html">Ch 7. Javascript: Control Statements</a></li>\
     <li><a href="ch12_dom.html">Ch 12. Document Object Model</a></li>\
     <li><a href="ch12.5_jQuery.html">Ch 12.5. jQuery</a></li>\
+    <li><a href="ch15_xml.html">Ch 15. XML</a></li>\
   </ul>\
 </li>\
 </ul>\
