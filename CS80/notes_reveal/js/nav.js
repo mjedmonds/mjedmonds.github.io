@@ -24,6 +24,7 @@ document.write('\
     <li><a href="ch12_dom.html">Ch 12. Document Object Model</a></li>\
     <li><a href="ch12.5_jQuery.html">Ch 12.5. jQuery</a></li>\
     <li><a href="ch15_xml.html">Ch 15. XML</a></li>\
+    <li><a href="ch15_xml.html">Ch 15.5. JSON</a></li>\
   </ul>\
 </li>\
 </ul>\
