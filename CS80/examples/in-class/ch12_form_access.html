@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset=utf-8 />
+    <title>Return first and last name from a form - w3resource</title>
+  </head>
+  <script>
+    window.addEventListener('load', function(){
+      var form = document.getElementById('form1');
+      form.addEventListener('submit', function(event){
+        event.preventDefault();
+        for(var i = 0; i < form.elements.length; i++){
+          var input_ele = form.elements[i];
+          if(input_ele.value != "Submit"){
+            console.log(input_ele.value);
+          }
+        }
+      });
+    });
+  </script>
+  <body>
+    <form method="get" id="form1">
+      First name: 
+      <input type="text" name="fname" value="David"><br>
+      Last name: 
+      <input type="text" name="lname" value="Beckham"><br>
+      <input type="submit" value="Submit">
+    </form>
+  </body>
+</html>
