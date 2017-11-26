@@ -1,0 +1,578 @@
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>PHP</title>
+  <meta name="description" content="A course on the world's fastest growing machine learning library, TensorFlow">
+  <meta name="author" content="Mark Edmonds">
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <!-- Google analytics -->
+  <script>
+  (function(i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function() {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+  ga('create', 'UA-98378227-1', 'auto');
+  ga('send', 'pageview');
+  </script>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="reveal.js/css/reveal.css">
+  <link rel="stylesheet" href="reveal.js/css/theme/serif.css" id="theme">
+  <link href='css/ubuntu_font.css' rel='stylesheet' type='text/css'>
+  <style>
+  body {
+    padding-top: 30px;
+    padding-bottom: 40px;
+  }
+  </style>
+  <!-- For syntax highlighting -->
+  <link rel="stylesheet" href="css/highlightjs/atom-one-light.css">
+  <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+  <script>
+  document.write('<link rel="stylesheet" href="css/print/' + (window.location.search.match(/print-pdf/gi) ? 'pdf' : 'paper') + '.css" type="text/css" media="print">');
+  </script>
+  <script src="js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+</head>
+
+<body>
+  <script src="js/nav.js"></script>
+  <script>
+  function toggleElements(one, two) {
+    document.getElementById(one).style.display = 'none';
+    document.getElementById(two).style.display = 'block';
+  }
+  </script>
+  <!-- Main body -->
+  <div class="reveal">
+    <div class="slides">
+      <section>
+        <h2>Chapter 18: PHP</h2>
+        <p>CS 80: Internet Programming</p>
+        <p>Instructor: Mark Edmonds</p>
+      </section>
+      <section>
+        <h3>PHP</h3>
+        <ul>
+          <li><p>Extremely common</p></li>
+          <li><p>Open-source</p></li>
+          <li><p>Platform independent</p></li>
+        </ul>
+      </section>
+      <section>
+        <h3>Preliminaries</h3>
+        <ul>
+          <li><p>PHP handles client requests</p></li>
+          <li><p>PHP is embedded into HTML documents, but executes on the server <em>before</em> the HTML document is delivered to the client</p></li>
+          <li><p>PHP files have the extension .php</p></li>
+        </ul>
+      </section>
+      <section>
+        <h3>Preliminaries</h3>
+        <ul>
+          <li><p>php code resides between <code>&lt;?php /* PHP code */ ?&gt;</code>
+          <ul>
+            <li><p>Single line php comments start with <code>//</code></p></li>
+            <li><p>Multiline comments are enclosed with <code>/* */</code></p></li>
+          </ul>
+        </p></li>
+        <li><p>Statements terminated with a semicolon <code>;</code> (required)</p></li>
+        </ul>
+      </section>
+      <section>
+        <h3>Variables</h3>
+        <ul>
+           <li><p>Declared with <code>$name</code>
+            <ul>
+              <li><p><code>name</code> must start with a letter or underscore</p></li>
+              <li><p><code>name</code> can only contain <code>A-z</code>, <code>0-9</code>, and <code>_</code></p></li>
+            </ul>
+          </p></li>
+        </ul>
+      </section>
+      <section>
+        <h3>Variables</h3>
+        <ul>
+          <li><p>Variables are case-sensitive</p></li>
+          <li><p>Loosely typed
+            <ul>
+              <li><p>Similar idea as Javascript. Variables have types, but their type can change on the fly</p></li>
+              <li><p>In PHP, we have to explicitly change types</p></li>
+            </ul>
+          </p></li>
+        </ul>
+      </section>
+      <section>
+        <h3>PHP Types</h3>
+        <center><img src="images/ch19_php_types.png"></center>
+      </section>
+      <section>
+        <small><h3><a href="../examples/ch19_php/first.php">Example: <code>first.php</code></a></h3></small>
+        <pre><code id="first" class="html"></code></pre>
+      </section>
+      <section>
+        <h3>Important Notes</h3>
+        <small>
+        <ul>
+          <li><p>Line 6 declares a php variable named <code>name</code> and sets it equal to Paul</p></li>
+          <li><p>Line 14 prints text into the <code>&lt;h1&gt;</code> tag <strong>before the file is served to the client</strong>
+            <ul>
+              <li><p>Note that the value of <code>$name</code> is printed, not the string "$name"</p></li>
+              <li><p>Double quoted strings will have variables evaluated (called <em>interpolating</em> a variable)</p></li>
+              <li><p>Single quoted strings will have the entire string taken as a literal value (no interpolation)</p></li>
+            </ul>
+          </p></li>
+        </ul>
+        </small>
+      </section>
+      <section>
+        <small><h3><a href="../examples/ch19_php/data.php">Example: <code>data.php</code></a></h3></small>
+        <pre><code id="data" class="html"></code></pre>
+      </section>
+      <section>
+        <h3>Types and Conversion</h3>
+        <ul>
+          <li><p><code>gettype</code> gets the type of the parameter</p></li>
+          <li><p><code>settype</code> changes the type of first parameter to the second parameter</p></li>
+          <li><p>Using <code>settype</code> can result in data loss: values may be truncated
+            <ul>
+              <li><p>For example, converting 3.5 to an int yields 3, and converting the int back to a double yields 3</p></li>
+              <li><p>Same thing happens with strings "3.5 seconds" as a double becomes 3.5</p></li>
+            </ul>
+          </p></li>
+        </ul>
+      </section>
+      <section>
+        <h3>Types and Conversion</h3>
+        <ul>
+          <li><p>Casting
+            <ul>
+              <li><p>Creates a temporary copy of the data before converting it</p></li>
+              <li><p>Means we won't lose data</p></li>
+              <li><p>Useful when a different type is required for a specific oepration, but you want to retain the original value</p></li>
+            </ul>
+          </p></li>
+        </ul>
+      </section>
+      <section>
+        <h3>String Concatenation</h3>
+        <ul>
+          <li><p>Same as with javascript, but the operator is <code>.</code></p></li>
+        </ul>
+      </section>
+      <section>
+        <h3>Constant values</h3>
+        <ul>
+          <li><p>Created with <code>define("NAME", value);</code></p></li>
+          <li><p>Not a variable, a constant</p></li>
+          <li><p>Used by simply typing <code>NAME</code> where you want the value</p></li>
+        </ul>
+      </section>
+      <section>
+        <h3>Conditionals</h3>
+        <ul>
+          <li><p>Basically the same as Javscript, but <code>else if</code> is <code>elseif</code> (another keyword)</p></li>
+        </ul>
+      </section>
+      <section>
+        <h3>Arithmetic Operators</h3>
+        <ul>
+          <li><p>Same as Javascript</p></li>
+        </ul>
+      </section>
+      <section>
+        <small><h3><a href="../examples/ch19_php/operators.php">Example: <code>operators.php</code></a></h3></small>
+        <pre><code id="operators" class="html"></code></pre>
+      </section>
+      <section>
+        <h3>Arrays</h3>
+        <ul>
+          <li><p>PHP also supports arrays
+            <ul>
+              <li><p>Note that if an array does not exist, but is assigned, the array will be created</p></li>
+            </ul>
+          </p></li>
+          <li><p>PHP arrays may be <em>associative arrays</em>, meaning they have non-integer indicies
+            <ul>
+              <li><p>E.g. you index an array by a name, or by student ID number (stored as a string)</p></li>
+            </ul>
+          </p></li>
+        </ul>
+      </section>
+      <section>
+        <h3>Arrays</h3>
+        <ul>
+          <li><p><code>reset</code> resets the internal pointer of the array to the beginning of the array
+            <ul>
+              <li><p><code>key</code> returns the index of the element pointed to by the internal pointer</p></li>
+              <li><p><code>next</code> moves the internal pointer down one element of the array</p></li>
+            </ul>
+          </p></li>
+          <li><p><code>foreach</code> is specifically for iterating through arrays
+            <ul>
+              <li><p><code>as</code> divides the key/value (key is on the left, value is on the right</p></li>
+            </ul>
+          </p></li>
+        </ul>
+      </section>
+      <section>
+        <small><h3><a href="../examples/ch19_php/array.php">Example: <code>array.php</code></a></h3></small>
+        <pre><code id="array" class="html"></code></pre>
+      </section>
+      <section>
+        <h3>String Comparisons</h3>
+        <ul>
+          <li><p><code>strcmp</code> compares two strings.
+            <ul>
+              <li><p>returns -1 if the first string alphabetically precedes the second string</p></li>
+              <li><p>returns 0 if the two strings are equal</p></li>
+              <li><p>returns 1 if the first string alphabetically follows the second string</p></li>
+            </ul>
+          </p></li>
+          <li><p>Can also use relational operators
+            <ul>
+              <li><p><code>==, !=, &lt;, &lt;=, &gt;, &gt;=</code></p></li>
+            </ul>
+          </p></li>
+        </ul>
+      </section>
+      <section>
+        <small><h3><a href="../examples/ch19_php/compare.php">Example: <code>compare.php</code></a></h3></small>
+        <pre><code id="compare" class="html"></code></pre>
+      </section>
+      <section>
+        <h3>Regular Expressions</h3>
+        <ul>
+          <li><p>There is no escape from regular expressions</p></li>
+          <li><p>php uses the <code>preg_match</code> function to search for a string with the specified pattern</p></li> 
+        </ul>
+      </section>
+      <section>
+        <h3>Regular Expressions</h3>
+        <small>
+        <ul>
+          <li><p>Important regex characters
+            <ul>
+              <li><p><code>^</code> means beginning of line</p></li>
+              <li><p><code>$</code> means end of line</p></li>
+              <li><p><code>[]</code> denotes a bracket expression
+                <ul>
+                  <li><p>lists of characters</p></li>
+                  <li><p>can specify a range with <code>-</code></p></li>
+                  <li><p>E.g. <code>[a-z]</code> are all characters a through z</p></li>
+                </ul>
+              </p></li>
+            </ul>
+          </p></li>
+        </ul>
+        </small>
+      </section>
+      <section>
+        <h3>Regular Expressions</h3>
+        <small>
+        <ul>
+          <li><p>Quantifiers
+            <ul>
+              <li><p>specifies a quanity to match with the previous expression</p></li>
+              <li><p><code>*</code> means 'zero or more times'</p></li>
+              <li><p><code>+</code> means 'one or more times'</p></li>
+              <li><p><code>?</code> means 'zero or one times'</p></li>
+              <li><p><code>{n}</code> means 'exactly n times'</p></li>
+              <li><p><code>{m,n}</code> means 'between m and n times'</p></li>
+              <li><p><code>{n,}</code> means 'n or more times'</p></li>
+            </ul>
+          </p></li>
+        </ul>
+        </small>
+      </section>
+      <section>
+        <h3>Character Classes</h3>
+        <center><img src="images/ch19_character_classes.png"></center>
+      </section>
+      <section>
+        <small><h3><a href="../examples/ch19_php/expression.php">Example: <code>expression.php</code></a></h3></small>
+        <pre><code id="expression" class="html"></code></pre>
+      </section>
+      <section>
+        <h3>Form Processing</h3>
+        <p>Superglobal Arrays</p>
+        <small>
+        <ul>
+          <li><p>Special arrays that contain client information</p></li>
+          <li><p>Client information includes:
+            <ul>
+              <li><p>Client's web browser</p></li>
+              <li><p>Data sent to the server by the client <code>$_GET</code> and <code>$_POST</code>
+                <ul>
+                  <li><p>E.g. if the user submit's a form and it is posted to a script (remember the <code>action</code> attribute), then the information is available in the <code>$_POST</code> array</p></li>
+                </ul>
+              </p></li>
+              <li><p>Cookies</p></li>
+            </ul>
+          </p></li>
+        </ul>
+        </small>
+      </section>
+      <section>
+        <h3>Superglobal Arrays</h3>
+        <center><img src="images/ch19_superglobal_arrays.png"></center>
+      </section>
+      <section>
+        <small><h3><a href="../examples/ch19_php/form.html">Example: <code>form.html</code></a></h3></small>
+        <pre><code id="form" class="html"></code></pre>
+      </section>
+      <section>
+        <h3>Form Processing</h3>
+        <small>
+        <ul>
+          <li><p>Let's break down this form (it's been a while)
+            <ul>
+              <li><p>It uses the <code>POST</code> HTTP method to send data to <code>form.php</code></p></li>
+              <li><p>It has the following inputs:
+                <ul>
+                  <li><p><code>fname</code> (text)</p></li>
+                  <li><p><code>lname</code> (text)</p></li>
+                  <li><p><code>email</code> (text)</p></li>
+                  <li><p><code>phone</code> (text)</p></li>
+                  <li><p><code>book</code> (options)</p></li>
+                  <li><p><code>os</code> (radio)</p></li>
+                </ul>
+              </p></li>
+            </ul>
+          </p></li> 
+        </ul>
+        </small>
+      </section>
+      <section>
+        <h3>Form Processing</h3>
+        <ul>
+          <li><p>So when we hit <code>Register</code> (the <code>submit</code> input), we will send the inputs to <code>form.php</code> using the <code>$_POST</code> superarray
+            <ul>
+              <li><p>Had we used the <code>GET</code> method we'd see values in the <code>$_GET</code> superarray</p></li>
+            </ul>
+          </p></li>
+          <li><p>The input names are the glue; the register an input to an entry in the superarray
+            <ul>
+              <li><p>This is why names mattered in chapter 2/3!!</p></li>
+            </ul>
+          </p></li>
+        </ul>
+      </section>
+      <section>
+        <small><h3><a href="../examples/ch19_php/form.php">Example: <code>form.php</code></a></h3></small>
+        <pre><code id="form_php" class="html"></code></pre>
+      </section>
+      <section>
+        <h3>Form Processing</h3>
+        <ul>
+           <li><p>This validates the phone number!
+            <ul>
+              <li><p>Very important to validate your form inputs</p></li>
+            </ul>
+          </p></li>
+          <li><p><code>die()</code> terminates the script, stops processing the form</p></li>
+        </ul>
+      </section>
+      <section>
+        <small><h3><a href="../examples/ch19_php/data.html">Example: <code>data.html</code></a></h3></small>
+        <pre><code id="data_html" class="html"></code></pre>
+      </section>
+      <section>
+        <small><h3><a href="../examples/ch19_php/database.php">Example: <code>database.php</code></a></h3></small>
+        <pre><code id="database" class="html"></code></pre>
+      </section>
+      <section>
+        <h3>Database Processing</h3>
+        <ul>
+          <li><p>This assumed we followed the Chapter 18 instructions for setting up MySQL
+            <ul>
+              <li><p>Includes source-ing the <code>products.sql</code> file</p></li>
+            </ul>
+          </p></li>
+          <li><p><code>mysql_connect</code> connects to the database</p></li>
+          <li><p><code>mysql_select_db</code> opens the <code>products</code> database</p></li>
+          <li><p><code>mysql_query</code> executes a MySQL query (what we learned about in chatper 18)</p></li>
+          <li><p><code>mysql_close</code> closes the database</p></li>
+        </ul>
+      </section>
+      <section>
+        <h3>Database Processing</h3>
+        <ul>
+          <li><p><code>mysql_fetch_row</code> returns an associative array containing the column of the current row from the query result
+            <ul>
+              <li><p>The <code>key</code> is a unique column ID for the query</p></li>
+            </ul>
+          </p></li>
+          <li><p><code>mysql_fecth_assoc</code> returns an associative array where the column names are the keys storing the corresponding values</p></li>
+          <li><p><code>mysql_num_rows</code> stores the number of rows in the query result</p></li>
+        </ul>
+      </section>
+      <section>
+        <h3>Cookies</h3>
+        <small>
+        <ul>
+          <li><p>What is a cookie?
+            <ul>
+              <li><p>A piece of information from the server that resides on the client's computer</p></li>
+              <li><p>Just a text file</p></li>
+              <li><p>Maintains information about the client in between browsing sessions
+                <ul>
+                  <li><p>Cookies mean you don't have to login everytime you visit a website</p></li>
+                  <li><p>The cookie stores your login session (not password), basically meaning the website assumes you are the same user</p></li>
+                </ul>
+              </p></li>
+              <li><p>You can disable cookies if you want, but it makes browsing significantly more annoying!</p></li>
+              <li><p>Can also track other client activity</p></li>
+            </ul>
+          </p></li>
+        </ul>
+        </small>
+      </section>
+      <section>
+        <h3>Cookies</h3>
+        <small>
+        <ul>
+          <li><p>Cookies are text files
+            <ul>
+              <li><p>Should never store passwords, credit card info, etc</p></li>
+            </ul>
+          </p></li>
+          <li><p>Cookies are only accessible by the website that placed the cookie on the client's computer</p></li>
+          <li><p>Cookies have an expiration date - at which point the browser will delete the cookie off of the client's computer</p></li>
+          <li><p>Cookies are sent back to the originating server when the user connects to that server</p></li>
+        </ul>
+        </small>
+      </section>
+      <section>
+        <small><h3><a href="../examples/ch19_php/cookies.html">Example: <code>cookies.html</code></a></h3></small>
+        <pre><code id="cookies_html" class="html"></code></pre>
+      </section>
+      <section>
+        <small><h3><a href="../examples/ch19_php/cookies.php">Example: <code>cookies.php</code></a></h3></small>
+        <pre><code id="cookies_php" class="html"></code></pre>
+      </section>
+      <section>
+        <h3>Cookies</h3>
+        <small>
+        <ul>
+          <li><p><code>setcookie</code> creates a cookie
+            <ul>
+              <li><p>First parameter is the name</p></li>
+              <li><p>Second parameter is the data</p></li>
+              <li><p>Third parameter is the expiration date
+                <ul>
+                  <li><p>If there is no expiration date, the cookie is a <em>session cookie</em>, which means it only exists during the current browsing session (when the user closes the browser, the session ends)</p></li>
+                  <li><p>If a expiration date is specified, we call this cookie a <em>persistent cookie</em></p></li>
+                </ul>
+              </p></li>
+            </ul>
+          </p></li>
+          <li><p>Cookies are then accessible through the <code>$_COOKIE</code> superarray</p></li>
+        </ul>
+        </small>
+      </section>
+      <section>
+        <small><h3><a href="../examples/ch19_php/readCookies.php">Example: <code>readCookies.php</code></a></h3></small>
+        <pre><code id="readCookies" class="html"></code></pre>
+      </section>
+
+
+      <!--
+      <section>
+        <h3></h3>
+        <ul>
+        </ul>
+      </section>
+      <section>
+        <small><h3><a href="../examples/ch7_js_2/sortedList.html">Example: <code>sortedList.html</code></a></h3></small>
+        <pre><code id="sortedList" class="html"></code></pre>
+      </section>
+      <section>
+        <h3>Assignment Operators</h3>
+        <center><img src="images/js-assignment.png"></center>
+      </section>
+      -->
+      <!-- end main body -->
+      <script src="lib/js/head.min.js"></script>
+      <script src="reveal.js/js/reveal.js"></script>
+      <script>
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        mouseWheel: false,
+        rollingLinks: false,
+        showNotes: true,
+
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/none
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+          { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          // { src: 'plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector('[data-markdown]'); } },
+          { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector('[data-markdown]'); } },
+          { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+          { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+          { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+          // { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+          { src: 'plugin/math/math.js', async: true }
+        ]
+      });
+      </script>
+      <script>
+      window.jQuery || document.write('<script src="js/jquery-3.2.1.min.js"><\/script>')
+      </script>
+      <script src="js/bootstrap.min.js"></script>
+      <script>
+      Reveal.addEventListener('slidechanged', function(event) {
+        // event.previousSlide, event.currentSlide, event.indexh, event.indexv
+        var notes = event.currentSlide.querySelector(".notes");
+        if (notes) {
+          console.info("---");
+          console.info(notes.innerHTML.replace(/\n\s+/g, '\n'));
+        }
+      });
+      </script>
+      <script>
+      Reveal.configure({ slideNumber: 'c/t' });
+      </script>
+      <!-- load source code -->
+      <script>
+
+      function get_example(dir, file, id) {
+        jQuery.get('../examples/' + dir + '/' + file, function(data) {
+          $(id).text(data);
+        }, "text");
+      }
+      get_example('ch19_php', 'first.php', '#first');
+      get_example('ch19_php', 'data.php', '#data');
+      get_example('ch19_php', 'operators.php', '#operators');
+      get_example('ch19_php', 'array.php', '#array');
+      get_example('ch19_php', 'compare.php', '#compare');
+      get_example('ch19_php', 'expression.php', '#expression');
+      get_example('ch19_php', 'form.html', '#form');
+      get_example('ch19_php', 'form.php', '#form_php');
+      get_example('ch19_php', 'data.html', '#data_html');
+      get_example('ch19_php', 'database.php', '#database');
+      get_example('ch19_php', 'cookies.html', '#cookies_html');
+      get_example('ch19_php', 'cookies.php', '#cookies_php');
+      get_example('ch19_php', 'readCookies.php', '#readCookies');
+      </script>
+      <script src="js/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,570 @@
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Databases</title>
+  <meta name="description" content="A course on the world's fastest growing machine learning library, TensorFlow">
+  <meta name="author" content="Mark Edmonds">
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <!-- Google analytics -->
+  <script>
+  (function(i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function() {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+  ga('create', 'UA-98378227-1', 'auto');
+  ga('send', 'pageview');
+  </script>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="reveal.js/css/reveal.css">
+  <link rel="stylesheet" href="reveal.js/css/theme/serif.css" id="theme">
+  <link href='css/ubuntu_font.css' rel='stylesheet' type='text/css'>
+  <style>
+  body {
+    padding-top: 30px;
+    padding-bottom: 40px;
+  }
+  </style>
+  <!-- For syntax highlighting -->
+  <link rel="stylesheet" href="css/highlightjs/atom-one-light.css">
+  <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+  <script>
+  document.write('<link rel="stylesheet" href="css/print/' + (window.location.search.match(/print-pdf/gi) ? 'pdf' : 'paper') + '.css" type="text/css" media="print">');
+  </script>
+  <script src="js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+</head>
+
+<body>
+  <script src="js/nav.js"></script>
+  <script>
+  function toggleElements(one, two) {
+    document.getElementById(one).style.display = 'none';
+    document.getElementById(two).style.display = 'block';
+  }
+  </script>
+  <!-- Main body -->
+  <div class="reveal">
+    <div class="slides">
+      <section>
+        <h2>Chapter 18: Databases</h2>
+        <p>CS 80: Internet Programming</p>
+        <p>Instructor: Mark Edmonds</p>
+      </section>
+      <section>
+        <h3>What is a database?</h3>
+        <ul>
+          <li><p>A more-structured, multi-sheet excel spreadsheet</p></li>
+          <li><p>We call an excel sheet a <strong>table</strong>, which has rows and columns of data</p></li>
+        </ul>
+      </section>
+      <section>
+        <h3>What is a database?</h3>
+        <ul>
+          <li><p>Each table contains a columdn with <strong>primary keys</strong>. Each row has a unique value for the primary key's column
+            <ul>
+              <li><p>This guarantees that each row has at least one unique value</p></li>
+              <li><p>Means we can identify and access a row uniquely</p></li>
+              <li><p>Examples of primary keys: ID numbers, social security numbers, etc</p></li>
+            </ul>
+          </p></li>
+        </ul>
+      </section>
+      <section>
+        <h3>What is a database?</h3>
+        <ul>
+          <li><p>We access data in a database through a <strong>query</strong>, which is just a request of information from a table</p></li>
+          <li><p>In this class, we will use SQL queries</p></li>
+        </ul>
+      </section>
+      <section>
+        <h3>Employee Table</h3>
+        <center><img src="images/ch18_employee_table.png"></center>
+      </section>
+      <section>
+        <h3>Employee Table</h3>
+        <small>
+        <ul>
+          <li><p>Rows are not guaranteed to be stored in any particular order</p></li>
+          <li><p>Any column value <em>except</em> the primary key may exist in multiple rows</p></li>
+          <li><p>Each column represents a different data attribute</p></li>
+          <li><p>Each row is typically unique</p></li>
+          <li><p>Typically we won't be interested in all the rows, and typically we won't be interested in all the columns of the rows we are interested in</p></li>
+          <li><p>We can have multiple tables in a database
+            <ul>
+              <li><p>When a primary key is used as a column in a different table, it is called a <strong>foreign key</strong>. This is important for linking tables together; without this mechanism we wouldn't have a way to guarantee unique links between tables</p></li>
+            </ul>
+          </p></li>
+        </ul>
+        </small>
+      </section>
+      <section>
+        <h3>Employee Table</h3>
+        <ul>
+          <li><p>An example query result: show where each department is located in increasing order by department number</p></li>
+          <center><img src="images/ch18_employee_query.png"></center>
+        </ul>
+      </section>
+      <section>
+        <h3>The Rule of Referential Integrity</h3>
+        <ul>
+          <li><p>A guarantee that every foreign key is used as a primary key in a different table</p></li>
+          <li><p>We can determine if a particular row in a table is valid; e.g. it's foreign key exists in a different table as a primary key</p></li>
+          <li><p>This also enables <strong>joining</strong>, where we bring data from multiple tables together; the foreign key acts as the link between the tables</p></li>
+        </ul>
+      </section>
+      <section>
+        <h3>A Books database</h3>
+        <ul>
+          <li><p>Consists of three tables: <code>Authors</code>, <code>AuthorISBN</code>, and <code>Titles</code>.</p></li>
+        </ul>
+      </section>
+      <section>
+        <h3>Authors Table</h3>
+        <ul>
+          <li><p>Contains information about authors</p></li>
+          <li><p>AuthorID is the primary key</p></li>
+        </ul>
+      </section>
+      <section>
+        <h3>Authors Table</h3>
+        <center><img src="images/ch18_authors_description.png"></center>
+      </section>
+      <section>
+        <h3>Authors Table</h3>
+        <center><img src="images/ch18_authors_table.png"></center>
+      </section>
+      <section>
+        <h3>AuthorISBN Table</h3>
+        <ul>
+          <li><p>Maintains AuthorID's and ISBNs</p></li>
+          <li><p>ISBN is a foreign key - it is the primary key in the Title table</p></li>
+          <li><p>AuthorID is a foreign key - it is the primary key in the Authors table</p></li>
+          <li><p>Primary key is the combination of the two foreign keys - guaranteed to be unique</p></li>
+        </ul>
+      </section>
+      <section>
+        <h3>AuthorsISBN Table</h3>
+        <center><img src="images/ch18_authorsISBN_description.png"></center>
+      </section>
+      <section>
+        <h3>AuthorsISBN Table</h3>
+        <center><img src="images/ch18_authorsISBN_table.png"></center>
+      </section>
+      <section>
+        <h3>Titles Table</h3>
+        <ul>
+          <li><p>Maintains information about ISBNs and Titles</p></li>
+          <li><p>ISBN is the primary key</p></li>
+          <li><p>Title is a string</p></li>
+        </ul>
+      </section>
+      <section>
+        <h3>Titles Table</h3>
+        <center><img src="images/ch18_titles_description1.png"></center>
+      </section>
+      <section>
+        <h3>Titles Table</h3>
+        <center><img src="images/ch18_titles_description2.png"></center>
+      </section>
+      <section>
+        <h3>Titles Table</h3>
+        <center><img src="images/ch18_titles_table.png"></center>
+      </section>
+      <section>
+        <h3>Table Relationships</h3>
+        <center><img src="images/ch18_table_relationships.png"></center>
+        <small>
+        <ul>
+          <li>Italics indicate a primary key</li>
+          <li>Lines between tables indicate how tables are connected</li>
+          <li>Numbers indicate the degree of the connection
+            <ul>
+              <li>E.g AuthorID is unique in the Authors table, but may be used multiple times in the AuthorISBN table</li>
+            </ul>
+          </li>
+          <li>AuthorISBN provides a <em>many-tomany relationship</em> between Authors and Titles
+            <ul>
+              <li>An author can write many books and a book can have many authors</li>
+            </ul>
+          </li>
+        </ul>
+        </small>
+      </section>
+      <section>
+        <h3>SQL</h3>
+        <ul>
+          <li><p>SQL is a means to query, or access, information in a database</p></li>
+          <li><p>SQL is a bit of a language in itself, people make careers out of being SQL wizards</p></li>
+        </ul>
+      </section>
+      <section>
+        <h3>SQL Keywords</h3>
+        <center><img src="images/ch18_sql_keywords.png"></center>
+      </section>
+      <section>
+        <h3>SQL Queries</h3>
+        <ul>
+          <li><p>Query Structure:
+            <ul>
+              <li><p>Specify the columns we want with <code>SELECT</code></p></li>
+              <li><p>Specify the tables to get the data from with <code>FROM</code></p></li>
+              <li><p>Specify additional criteria with <code>WHERE</code></p></li>
+            </ul>
+          </p></li>
+        </ul>
+      </section>
+      <section>
+        <h3>SQL Queries</h3>
+        <ul>
+          <li><p>Example for the Books database:</p></li>
+          <pre><code>SELECT AuthorID, LastName
+    FROM Authors</code></pre>
+          <li><p>Gets the AuthorID and LastName from the Authors table</p></li>
+        </ul>
+        <center><img src="images/ch18_sql_authorID_lastname.png"></center>
+      </section>
+      <section>
+        <h3>SQL Queries</h3>
+        <ul>
+          <li><p>A more complicated example:</p></li>
+          <pre><code>SELECT Title, EditionNumber, Copyright
+    FROM Titles
+    WHERE Copyright &gt; '2010'</code></pre>
+        </ul>
+        <center><img src="images/ch18_sql_title_edition_copyright.png"></center>
+      </section>
+      <section>
+        <h3>SQL Queries</h3>
+        <ul>
+          <li><p>Note: SQL strings are always single quoted ('), not double quoted (")
+            <ul>
+              <li><p>Note: A wildcard (<code>*</code>) may be used to select all columns, e.g. <code>SELECT * FROM Titles</code> selects all columns from the Titles table</p></li>
+            </ul>
+          </p></li>
+        </ul>
+      </section>
+      <section>
+        <h3>Pattern Matching</h3>
+        <small>
+        <ul>
+          <li><p>The <code>WHERE Copyright &gt; '2010'</code> line above uses an operator <code>&gt;</code>
+            <ul>
+              <li><p>We also have the <code>&lt;, &gt;, &lt;=, &gt;=, =, !=</code> and <code>LIKE</code></p></li>
+            </ul>
+          </p></li>
+          <li><p><code>LIKE</code> indicates a pattern matching qualification on a query</p></li>
+          <li><p>The percent sign (<code>%</code>) indicates a search for zero or more characters at the percent character's position (a wildcard)</p></li>
+          <li><p>The underscore (<code>_</code>) indicates a single wildcard at the position of the underscore</p></li>
+        </ul>
+        </small>
+      </section>
+      <section>
+        <h3>Pattern Matching Examples</h3>
+        <ul>
+          <li><p>Select all authors whose last name begins with a 'D'
+            <pre><code>SELECT AuthorID, FirstName, LastName
+    FROM Authors
+    WHERE LastName LIKE 'D%'</code></pre>
+          </p></li>
+          <li><p>Select all authors whose last name starts with any character, followed by an 'o', followed by any number of additional characters
+            <pre><code>SELECT AuthorID, FirstName, LastName
+              FROM Authors
+              WHERE LastName LIKE '_o%'
+            </code></pre>
+          </p></li>
+        </ul>
+      </section>
+      <section>
+        <h3>Ordering</h3>
+        <ul>
+          <li><p>We can add a qualifier to sort the query's result through <code>ORDER BY</code></p></li>
+          <li><p>Can sort by ascending (ASC), descending (DESC)
+            <ul>
+              <li><p>Defualt sorting order is by ascending (so if you don't specify, ascending order will be used</p></li>
+            </ul>
+          </p></li>
+        </ul>
+      </section>
+      <section>
+        <h3>Ordering</h3>
+        <ul>
+          <li><p>Can order by multiple columns - sorts by outer sort first, then each additional sorting specified (e.g. last name then by first name)
+            <pre><code>SELECT columnName1, columnName2, &hellip;
+    FROM tableName
+    ORDER BY column ASC
+    SELECT columnName1, columnName2, &hellip;
+    FROM tableName
+    ORDER BY column DESC</code></pre>
+          </p></li>
+        </ul>
+      </section>
+      <section>
+        <h3>Exercise</h3>
+        <ul>
+          <li><p>Write a query to get the AuthorID, FirstName, LastName, and order the results by descending last name</p></li>
+        </ul>
+      </section>
+      <section>
+        <h3>Exercise</h3>
+        <ul>
+          <li><p>Solution:
+            <pre><code>SELECT AuthorID, FirstName, LastName
+    FROM Authors
+    ORDER BY LastName DESC</code></pre>
+          </p></li>
+          <center><img src="images/ch18_sql_authorID_first_last_query.png"></center>
+        </ul>
+      </section>
+      <section>
+        <h3>Exercise</h3>
+        <ul>
+          <li><p>Write a query to get the ISBN, Title, EditionNumber, and Copyright from the Titles table that end with the phrase 'How to Program' and order them in ascending order by title</p></li>
+        </ul>
+      </section>
+      <section>
+        <h3>Exercise</h3>
+        <ul>
+          <li><p>Solution:
+            <pre><code>SELECT ISBN, Title, EditionNumber, Copyright
+    FROM Titles
+    WHERE Title LIKE '%How to Program'
+    ORDER BY Title ASC</code></pre>
+          </p></li>
+          <center><img src="images/ch18_sql_isbn_title_edition_copyright_query.png"></center>
+        </ul>
+      </section>
+      <section>
+        <h3>Merging Data from Multiple Tables</h3>
+        <ul>
+          <li><p>Achieved through a <code>INNER JOIN</code> which merges rows from two tables by matching values in columns that are common to both tables
+            <ul>
+              <li><p>This is a common use of primary and foreign keys!</p></li>
+            </ul>
+          </p></li>
+        </ul>
+      </section>
+      <section>
+        <h3>Merging Data from Multiple Tables</h3>
+        <pre><code>SELECT columnName1, columnName2, &hellip;
+    FROM table1
+    INNER JOIN table2
+    ON table1.columnName = table2.columnName</code></pre>
+        </ul>
+      </section>
+      <section>
+        <h3>Exercise</h3>
+        <ul>
+          <li><p>Write a query that results in the first name, last name, and ISBN for every author and order them by last name, then first name, in ascending order</p></li>
+        </ul>
+      </section>
+      <section>
+        <h3>Exercise</h3>
+        <ul>
+          <li><p>Solution:
+            <pre><code>SELECT FirstName, LastName, ISBN
+    FROM Authors
+    INNER JOIN AuthorISBN
+    ON Authors.AuthorID = AuthorISBN.AuthorID
+    ORDER BY LastName, FirstName</code></pre>
+          </p></li>
+          <small>
+          <li><p>Note: the use of <code>Authors.AuthorID</code> and <code>AuthorISBN.AuthorID</code> is called a <strong>qualified name</strong>. When tables have matching column names, we must be more specific by stating which table we want to use with each column (think about this: why we didn't have to quality the <code>ISBN</code> in the <code>SELECT</code> part of the query?)</p></li>
+          </small>
+        </ul>
+      </section>
+      <section>
+        <h3>Exercise</h3>
+        <center><img src="images/ch18_sql_qualified_name_query.png"></center>
+      </section>
+      <section>
+        <h3>SQL Insert</h3>
+        <ul>
+          <li><p>Insert inserts a row into a table</p></li>
+          <li><p>Syntax:
+            <pre><code>INSERT INTO tableName ( columnName1, columnName2, &hellip;, columnNameN )
+    VALUES ( value1, value2, &hellip;, valueN )</code></pre>
+          </p></li>
+        </ul>
+      </section>
+      <section>
+        <h3>Inserting, Updating, and Deleting information from a table</h3>
+        <ul>
+          <li><p>Example:
+            <pre><code>INSERT INTO Authors ( FirstName, LastName )
+    VALUES ( 'Sue', 'Red' )</code></pre>
+          </p></li>
+          <center><img src="images/ch18_sql_insert.png"></center>
+        </ul>
+      </section>
+      <section>
+        <h3>SQL Update</h3>
+        <ul>
+          <li><p>Update modifies existing data in a table</p></li>
+          <li><p>Syntax:
+            <pre><code>UPDATE tableName
+    SET columnName1 = value1, columnName2 = value2, &hellip;, columnNameN = valueN
+    WHERE criteria
+            </code></pre>
+          </p></li>
+        </ul>
+      </section>
+      <section>
+        <h3>SQL Update</h3>
+        <ul>
+          <li><p>Example:
+            <pre><code>UPDATE Authors
+    SET LastName = 'Black'
+    WHERE LastName = 'Red' AND FirstName = 'Sue'
+            </code></pre>
+          </p></li>
+          <center><img src="images/ch18_sql_update.png"></center>
+        </ul>
+      </section>
+      <section>
+        <h3>SQL Update</h3>
+        <ul>
+          <li><p>Question: What else could we have used for the <code>WHERE</code> portion of the previous example?</p></li>
+        </ul>
+      </section>
+      <section>
+        <h3>SQL Update</h3>
+        <ul>
+          <li><p>Question: What else could we have used for the <code>WHERE</code> portion of the previous example?
+            <pre><code>UPDATE Authors
+      SET LastName = 'Black'
+      WHERE AuthorID = 6</code></pre>
+          </p></li>
+        </ul>
+      </section>
+      <section>
+        <h3>SQL Delete</h3>
+        <ul>
+          <li><p>Removes a row from a table</p></li>
+          <li><p>Syntax:
+            <pre><code>DELETE FROM tableName
+    WHERE criteria</code></pre>
+          </p></li>
+          <li><p>Example:
+            <pre><code>DELETE FROM Authors
+    WHERE LastName = 'Black' AND FirstName = 'Sue'</code></pre>
+          </p></li>
+        </ul>
+      </section>
+      <section>
+        <h3>MySQL</h3>
+        <ul>
+          <li><p>Open source, multiuser, multithreaded relational database that uses SQL to interact and manipulate data</p></li>
+        </ul>
+      </section>
+      <section>
+        <h3>MySQL</h3>
+        <small>
+        <ul>
+          <li><p>Reasons why MySQL is good:
+            <ol>
+              <li><p>Scalability. You can embed it in an application or use it in massive data warehous- ing environments.</p></li>
+              <li><p>Performance. You can optimize performance based on the purpose of the data- base in your application.</p></li>
+              <li><p>Support for many programming languages. Later chapters demonstrate how to access a MySQL database from PHP (Chapter 19).</p></li>
+              <li><p>Implementations of MySQL for Windows, Mac OS X, Linux and UNIX.</p></li>
+              <li><p>Handling large databases (e.g., tens of thousands of tables with millions of rows).</p></li>
+            </ol>
+          </p></li>
+        </ul>
+        </small>
+      </section>
+      <section>
+        <h3>MySQL</h3>
+        <ul>
+          <li><p>You can start MySQL from XAMPP (Chapter 17)</p></li>
+        </ul>
+      </section>
+
+      <!--
+      <section>
+        <h3></h3>
+        <ul>
+        </ul>
+      </section>
+      <section>
+        <small><h3><a href="../examples/ch7_js_2/sortedList.html">Example: <code>sortedList.html</code></a></h3></small>
+        <pre><code id="sortedList" class="html"></code></pre>
+      </section>
+      <section>
+        <h3>Assignment Operators</h3>
+        <center><img src="images/js-assignment.png"></center>
+      </section>
+      -->
+      <!-- end main body -->
+      <script src="lib/js/head.min.js"></script>
+      <script src="reveal.js/js/reveal.js"></script>
+      <script>
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        mouseWheel: false,
+        rollingLinks: false,
+        showNotes: true,
+
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/none
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+          { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          // { src: 'plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector('[data-markdown]'); } },
+          { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector('[data-markdown]'); } },
+          { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+          { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+          { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+          // { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+          { src: 'plugin/math/math.js', async: true }
+        ]
+      });
+      </script>
+      <script>
+      window.jQuery || document.write('<script src="js/jquery-3.2.1.min.js"><\/script>')
+      </script>
+      <script src="js/bootstrap.min.js"></script>
+      <script>
+      Reveal.addEventListener('slidechanged', function(event) {
+        // event.previousSlide, event.currentSlide, event.indexh, event.indexv
+        var notes = event.currentSlide.querySelector(".notes");
+        if (notes) {
+          console.info("---");
+          console.info(notes.innerHTML.replace(/\n\s+/g, '\n'));
+        }
+      });
+      </script>
+      <script>
+      Reveal.configure({ slideNumber: 'c/t' });
+      </script>
+      <!-- load source code -->
+      <script>
+
+      function get_example(dir, file, id) {
+        jQuery.get('../examples/' + dir + '/' + file, function(data) {
+          $(id).text(data);
+        }, "text");
+      }
+      get_example('ch16_ajax', 'SwitchContent.html', '#SwitchContent');
+      get_example('ch16_ajax', 'PullImagesOntoPage.html', '#PullImagesOntoPage');
+      </script>
+      <script src="js/main.js"></script>
+</body>
+
+</html>
