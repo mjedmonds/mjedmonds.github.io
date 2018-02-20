@@ -1,0 +1,23 @@
+body {
+    background: url('images/result/resultbackground.jpg') no-repeat;
+    background-size: cover;
+    /* Image by: FoodieFactor 
+    https://pixabay.com/en/macaron-macarons-food-sweet-french-2564535 */
+}
+
+div#result {
+    font-family: "Tahoma", Geneva, sans-serif;
+    color: #FFF;
+    background: url('image/contact/transparentbg.png') repeat;
+    min-height: 300px;
+    width: 400px;
+    padding: 20px;
+    margin: 50px auto;
+}
+
+div#result a:link, div#result a:visited {
+    color: #9EE0F6; 
+    text-decoration: none;
+}
+
+

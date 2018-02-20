@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Derivative Game</title>
+    <link rel="stylesheet" type="text/css" href="gameStyle.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+
+<body>
+
+<div class="gameContainer">
+    <!-- row holding target box -->
+    <div class="gameRow">
+        <img class="gameSquare" id="targetSquare" src="javascript:void(0)" alt="integral">
+    </div>
+    <!-- message for end of game -->
+    <div class="gameOver">
+        <h3>Thanks for playing!</h3>
+    </div>
+    <!-- game instructions/progress/data -->
+    <div class="gameText">
+        <h3>Derivatives:</h3>
+        <p>Click the derivative of the integral!</p>
+    </div>
+    <!-- row holding guess boxes -->
+    <div class="gameRow">
+        <img class="guessSquare gameSquare" id="leftSquare" src="javascript:void(0)" alt="guess left" >
+        <span class="gameSquare" id="middleSquare" ></span>
+        <img class="guessSquare gameSquare" id="rightSquare" src="javascript:void(0)" alt="guess right">
+    </div>
+    <!-- row with match (and/or reset) button -->
+    <div class="gameRow">
+        <!--<button id="resetButton">Reset</button>-->
+        <button class="nextTrial resetButton">Next</button>
+    </div>
+    <!-- button to start or retart game -->
+    <div class="newGame resetButton">
+        <button>Start New Game</button>
+    </div>
+</div>
+
+<script>
+
+    // game settings
+    var derivativeImageHeight = 70;
+    var derivativeImageWidth = 200;
+    var derivativeImageSpacing = 200;
+
+    var trialNumber = 0;
+    var trialsPerGame = 5;
+    var correctGuesses = 0;
+    var incorrectGuesses = 0;
+    var guessed = false;
+
+    // Global variable of 8 pictures name.
+    var pictures= ["devOfCos", "devOfSin", "devOfSec", "devOfCsc", "devOfTan", "devOfCot", "devOfArccos", "devOfArcsin"];
+    //an array of size 2
+    var twoOptions=["", ""];
+    var indices = [0,1,2,3,4,5,6,7];
+    var picIndex = 0;
+
+    // determine if guess was correct, change img borders
+    $(".guessSquare").click(function() {
+
+
+        if (!guessed) {
+        // change color of clicked image
+            $(this).css("border-color", expectedAnswer($(this).attr('src')) ? "green" : "red");
+        }
+
+        if (!guessed) {
+            guessed = true;
+            if (expectedAnswer($(this).attr('src'))) {
+                correctGuesses += 1;
+            } else {
+                incorrectGuesses += 1;
+            }
+
+        if (trialNumber >= trialsPerGame) {
+            // end game
+            $(".gameText").html("Correct: " + correctGuesses + "\nIncorrect: " + incorrectGuesses);
+            $(".gameText, .newGame, .gameOver").css("display", "flex");
+            $(".nextTrial").css("display", "none");
+        }
+
+        }
+    });
+
+
+    // starts a new trial and/or game
+    $(".resetButton").click( function () {
+
+        if (this.className === 'newGame resetButton') {
+            // reset game state
+            trialNumber = 1;
+            picIndex = 0;
+            correctGuesses = 0;
+            incorrectGuesses = 0;
+            guessed = false;
+
+            // create squares for images
+            $(".gameSquare").width(derivativeImageWidth).height(derivativeImageHeight);
+            $("#middleSquare").css("width", derivativeImageSpacing);
+
+            // shuffle question order
+            indices.sort(function(a, b){return 0.5 - Math.random()});
+
+            // create and display game squares with desired sizes and spacing
+            $(".gameText").html("Trial: " + trialNumber + "/" + trialsPerGame);
+            resetDerivativeSquares();
+            $(".nextTrial").css("display", "flex");
+
+        } else {
+            // start next game trial
+            if(guessed) {
+                picIndex += 1;
+                trialNumber += 1;
+                guessed = false;
+                resetDerivativeSquares();
+                $(".gameText").html("Trial: " + trialNumber + "/" + trialsPerGame);
+            }
+        }
+
+        // reset borders
+        $(".gameSquare").css("border-color", "antiquewhite");
+
+        // hide start button and end message (if present)
+        $(".newGame, .gameOver").css("display","none");
+
+        // display game
+        $(".gameRow").css("display","flex");
+    });
+
+
+    // resets squares
+    function resetDerivativeSquares() {
+        document.getElementById("targetSquare").src="./images/"+pictures[picIndex]+".PNG";
+        // randomize squares
+        randomizeTwoOptionsArray(twoOptions);
+        document.getElementById("leftSquare").src="./images/"+twoOptions[0]+".PNG";
+        document.getElementById("rightSquare").src="./images/"+twoOptions[1]+".PNG";
+    }
+
+
+
+    /*
+    This function choose or not toR reverse the array twoOptions
+    */
+    function randomizeTwoOptionsArray(twoOptions){
+        //iniatiliaze the twoOptions array
+        answerImage(twoOptions);
+
+        if(Math.floor(Math.random()*2)){
+            reverseTwoOptionsArray(twoOptions);
+        }
+    }
+
+    /*
+    This function return an array of size 2.
+    they hold the options which the use has to guess the right solution.
+    */
+    function answerImage(twoOptions){
+        //twoOptions array will hold two solutions and the user have to choose one of them.
+        switch(picIndex){
+            case 0:
+                twoOptions[0]="negSin";
+                twoOptions[1]="sin";
+                break;
+            case 1:
+                twoOptions[0]="cos";
+                twoOptions[1]="negCos";
+                break;
+            case 2:
+                twoOptions[0]="secTan";
+                twoOptions[1]="negSecTan";
+                break;
+            case 3:
+                twoOptions[0]="negCscCot";
+                twoOptions[1]="cscCot";
+                break;
+            case 4:
+                twoOptions[0]="secSquare";
+                twoOptions[1]="negSecSquare";
+                break;
+            case 5:
+                twoOptions[0]="negCscSquare";
+                twoOptions[1]="cscSquare";
+                break;
+            case 6:
+                twoOptions[0]="sol2Arcsin";
+                twoOptions[1]="sol1Arcsin";
+                break;
+            case 7:
+                twoOptions[0]="sol1Arcsin";
+                twoOptions[1]="sol2Arcsin";
+                break;
+        }
+        return twoOptions;
+    }
+
+    /*
+    This function reverse twoOption array such that:
+     twoOption=["a", "b"] becomes twoOption=["b", "a"]
+    */
+    function reverseTwoOptionsArray(twoOptions){
+        var temporary= twoOptions[0];
+        twoOptions[0]=twoOptions[1];
+        twoOptions[1]=temporary;
+    }
+
+
+    function isRightAnswer(elem){
+        document.getElementById("text").innerHTML=expectedAnswer(elem);
+    }
+
+
+    /*
+    the function take the url image like "file:///C:/Users/Abibou/Desktop/cs80Project/images/sol1ArcSin.PNG"
+    and see if it contains a substring: the name of the derivative.
+
+    It returns true or false
+    */
+    function expectedAnswer(elem){
+        switch(pictures[picIndex]){
+            case "devOfCos":
+                return elem === "./images/negSin.PNG";
+            case "devOfSin":
+                return elem === "./images/cos.PNG";
+            case "devOfSec":
+                return elem === "./images/secTan.PNG";
+            case "devOfCsc":
+                return elem === "./images/negCscCot.PNG";
+            case "devOfTan":
+                return elem === "./images/secSquare.PNG";
+            case "devOfCot":
+                return elem === "./images/negCscSquare.PNG";
+            case "devOfArccos":
+                return elem === "./images/sol2Arcsin.PNG";
+            case "devOfArcsin":
+                return elem === "./images/sol1Arcsin.PNG";
+        }
+    }
+
+</script>
+
+</body>
+</html>

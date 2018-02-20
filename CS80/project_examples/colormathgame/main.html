@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CS 80 Final Project</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <style>
+        /*unify fonts*/
+        * {
+            font-family: sans-serif;
+        }
+
+        /* use full area */
+        html {
+            height: 100vh;
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        /* use full area, align navbar and game menu as desired */
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            box-sizing: border-box;
+        }
+
+        /* configure nav bar to stay at top of page
+           also arranges the menus correctly */
+        .topnav {
+            align-self: flex-start;
+            width: 100%;
+            top: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #333;
+        }
+
+        /* styling for password/username fields */
+        input[type=text], input[type=password] {
+            padding: 5px 16px;
+            box-sizing: border-box;
+        }
+
+        /* styling for buttons */
+        .menuButton {
+            background-color: #333;
+            color: white;
+            padding: 16px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* styling for dropdown menus */
+        .dropdown-content  {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        /* styling for dropdown menu links/items */
+        .dropdown-content a, .dropdown-content input {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+            font-size: 16px;
+        }
+
+        /* styling for dropdown menu items when they are hovered */
+        .dropdown-content a:hover,.dropdown-content input[type=submit]:hover {
+            background-color: #f1f1f1
+        }
+
+        /* styling specific to the login button */
+        .loginButton {
+            border: none;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        /* making sure the games frame stays were it should
+            and takes up the available space */
+        .gameContent {
+            box-sizing: border-box;
+            width: 100%;
+            flex-grow: 1;
+            align-self: flex-end;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<!-- navbar -->
+<div class="topnav">
+    <!-- dropdown menu for games selection -->
+    <div class="gamesNav">
+        <div class="menuButton">Games</div>
+        <div class="gamesMenu dropdown-content">
+            <a href="javascript:void(0)" id="colorLink">Color Match Game</a>
+            <a href="javascript:void(0)" id="derivativeLink">Derivative Game</a>
+        </div>
+    </div>
+    <!-- dropdown menu for login/logoff, username display -->
+    <div class="userNav" >
+        <div class="userButton menuButton">Log In</div>
+        <div class="loginMenu dropdown-content" style="right:0">
+            <form action="javascript:void(0)" id="loginForm">
+                <input type="text" class="loginFocus" id="userName" placeholder="Username" autocomplete="off" required>
+                <input type="password" class="loginFocus" id="passWord" placeholder="Password" required>
+                <input type="submit" class="loginButton" value="Log In" style="text-align: center">
+            </form>
+        </div>
+        <div class="logoutMenu dropdown-content" style="right:0">
+            <a href="javascript:void(0)" class="logoutButton" style="text-align: center">Log Out</a>
+        </div>
+    </div>
+
+</div>
+
+<!-- frame to handle/isolate game files -->
+<iframe class="gameContent" src="welcomeScreen.html" ></iframe>
+
+<script>
+    // variables to manage session
+    var userName = "User";
+    var userMenu = ".loginMenu";
+    var loggedIn = false;
+
+    // starts a new game color game
+    $("#colorLink").click( function () {
+        // $('.gameContent').load('colorMatchGame.html');
+        $(".gameContent").attr("src","colorMatchGame.html");
+    });
+    // starts a new game derivative game
+    $("#derivativeLink").click( function () {
+        // $('.gameContent').load('derivative.html');
+        $(".gameContent").attr("src","derivativeGame.html");
+    });
+
+    // handles login form submission (fake for sake of project)
+    // replaces login form and button with a logout button
+    $('#loginForm').submit(function(event) {
+        userName = $("#userName").val();
+        $(".userButton").text(userName);
+        $("#loginForm")[0].reset();
+        loggedIn = true;
+        userMenu = ".logoutMenu";
+        if ($(".loginMenu").is(":visible")){
+            $(".loginMenu").hide();
+        }
+    });
+
+    // handles logout button press
+    // replaces logout button with login button and form
+    $(".logoutButton").click( function () {
+        loggedIn = false;
+        userMenu = ".loginMenu";
+        $(".userButton").text("Log In");
+        if ($(".logoutMenu").is(":visible"))
+            $(".logoutMenu").hide();
+    });
+
+
+    // displays games menu dropdown
+    $(".gamesNav").hover(function() {
+        $(".gamesMenu").show();
+    }, function() {
+        $(".gamesMenu").hide();
+    });
+
+    // displays login menu dropdown on mouseover
+    // hides the dropdown on mouseoff IF no form fields are focused
+    $(".userNav").on({
+        mouseover: function(){
+            $(userMenu).show();
+        },
+        mouseout: function(){
+            if (!$(".loginFocus").is(":focus"))
+                $(userMenu).hide();
+        }
+    });
+
+    // (redundantly, probably) makes sure dropdown menu is displayed if an input field is focused
+    // hides dropdown on loss of focus UNLESS it is hovered
+    $(".loginFocus").on({
+        focus: function(){
+            $(userMenu).show();
+        },
+        blur: function(){
+            if (!$(".userNav").is(":hover"))
+                $(userMenu).hide();
+        }
+    });
+
+</script>
+
+</body>
+</html>

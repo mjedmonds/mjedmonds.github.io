@@ -1,0 +1,696 @@
+/* Credited Authors in comments */
+/* Logo design created by me - Jic Opiana */
+
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    }
+
+body {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/* ---------- FONT FACES AND STYLES ---------- */
+
+@font-face {
+    font-family: 'ZingRust';
+    src: url('fonts/ZingRust/ZingScriptRustSBDemo-Base.otf');
+    /* Font ZingRust by Fontfabric - http://zingrust.com/ */
+}
+
+@font-face {
+    font-family: 'SinkinSans';
+    src: url('fonts/SinkinSans-300Light.otf');
+    /* SinkinSans by K-Type - free for commercial use */
+    /* http://www.1001fonts.com/sinkin-sans-font.html */
+}
+
+@font-face {
+    font-family: 'Seminggu';
+    src: url('fonts/seminggu.ttf');
+    /* Font Seminggu di kota Cianjur by Sanz67 */
+    /* http://www.1001fonts.com/seminggu-di-kota-cianjur-font.html */
+}
+
+h1.Zing {
+    font-family: 'ZingRust';
+    font-size: 2.5em;
+    color: #FF5AF3;
+    padding: 0px 0px 10px 0px; 
+}
+
+h1.Seminggu {
+    font-family: 'Seminggu';
+    font-size: 3em;
+    color: #000;
+    font-weight: 700;
+}
+
+p {
+    padding-bottom: 20px;
+}
+
+/* ---------- NAVIGATION POSTITION AND STYLING ---------- */
+
+div.navbg {
+    display: block;
+    background: url('images/header/headerbg.jpg') repeat-x;
+    /* Victorian pattern from Pattern Shop: https://www.vecteezy.com/patterns/12402-free-damask-vector-pattern-2*/
+    height: 237px;
+    min-width: 1263px;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    z-index: 1;
+}
+
+nav.navbarbg {
+    background: url('images/header/awning.png') no-repeat;
+    height: 237px;
+    width: 801px;
+    margin: 0 auto;
+    padding: 0;
+    position: relative;
+    z-index: 1;
+}
+
+/* ---------- NAV LINKS ---------- */
+
+div.linkpos {
+    height: 35px;
+    width: 801px;
+    margin: 0 0 55px 0px;
+    padding: 0;
+    position: absolute;
+    bottom: 0;
+}
+
+.jsnav {
+    overflow: hidden;
+    width: 801px;
+    height: 43px;
+}
+
+.jsnav li {
+    width: 140px;
+    height: 43px;
+    float: left;
+    list-style-type: none;
+    padding: 10px;
+    text-align: center;
+}
+
+li.amt {
+    width: 273px;
+    height: 43px;
+    float: left;
+    list-style-type: none;
+    padding: 10px;
+    text-align: center;
+}
+
+li a {
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #FFF;
+    font-family: 'SinkinSans';
+    font-weight: 500;
+    -o-transition:.5s;
+    -ms-transition:.5s;
+    -moz-transition:.5s;
+    -webkit-transition:.5s;
+    transition:.5s;
+}
+
+li a:hover {
+    color: #FEB1F8;
+}
+
+/* ---------- STICKY MENU ON SCROLL ---------- */
+
+div#stickymenu {
+	position:fixed;
+	top:0px;
+	width: 100%;
+    min-width: 1263px;
+	height: 72px; 
+	background: url('images/header/stickynavbg.jpg') repeat;
+	color: #FFFFFF;
+	z-index:9999;
+	display: none;
+}
+
+div#macaronlogo {
+    height: 45px;
+    width: 419px;
+    padding: 10px 0px 0px 20px;
+    margin: 0px 30px 0px 0px;
+    float: left;
+}
+
+
+div#stickynav {
+    width: 620px;
+    height: 50px;
+    padding: 13px 0px 0px 0px;
+    margin: 0px 15px 0px 0px;
+    float: right;
+}
+
+li.stickyli {
+    list-style-type: none;
+    float: left;
+    height: 20px;
+    width: 100px;
+    text-align: center;
+    border-left: 1px dotted;
+    border-color: #287E95;
+    padding: 10px;
+}
+
+li.stickyli a {
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #287E95;
+    font-family: 'SinkinSans';
+    font-weight: 500;
+    -o-transition:.5s;
+    -ms-transition:.5s;
+    -moz-transition:.5s;
+    -webkit-transition:.5s;
+    transition:.5s;
+}
+
+li.stickyli a:hover {
+    color: #FEB1F8;
+}
+
+li.stickyli a:active {
+    color: #FEB1F8;
+}
+
+/* FADING IMAGES */
+
+#cycler {
+    position:relative; 
+    z-index: 0;
+    height: 490px;
+    min-width: 1263px;
+    width: 100%;
+    margin: 0 auto;
+}
+#cycler img {
+    position:absolute;
+    z-index:1;
+    width: 1263px;
+}
+#cycler img.active {
+    z-index:3;
+}
+
+div#FadingImages {
+    height: 484px;
+    width: 100%;
+    min-width: 1263px;
+    margin-top: -78px;
+    padding: 0;
+    background: url('images/header/woodbg.jpg') repeat;
+    /* Background by: Rawpixel - https://pixabay.com/en/xmas-background-celebrate-2953728/ */
+}
+
+div#MainImage {
+    height: 490px;
+    width: 1263px;
+    margin: 0 auto;
+    padding: 0;
+}
+
+/* VICTORIAN PATTERN BELOW FADING IMAGES */
+
+div#pattern {
+    height: 230px;
+    min-width: 1263px;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background: url('images/header/victorian.png') repeat;
+    border-top: 9px solid #4FA0B5;
+}
+
+/* ---------- SECTION DIVIDERS ---------- */
+
+div.divider{
+    min-width: 1263px;
+    width: 100%;
+    height:57px;
+    background: url(images/about/aboutbg.png) repeat;
+    /* Font Playball by TypeSETit */
+    padding: 0;
+    margin: 0;
+}
+
+/* ---------- ABOUT SECTION ---------- */
+
+div#About {
+    min-width: 1263px;
+    width: 100%;
+    height: 900px;
+    background-image: url('images/about/book.png'), url('images/about/about_macarons.png'), url('images/about/woodbg.png');
+    background-position: left top, right top, left top;
+    background-repeat: no-repeat, no-repeat, repeat;
+    /* Wood pattern from Pixeden.com */
+    /* Book image from Pixabay.com by Free-Photos */
+}
+
+div#AboutDescription {
+    position: relative;
+    top: 109px;
+    left: 401px;
+    width: 385px;
+    padding: 0;
+    color: #000;
+    font-family: 'Seminggu';
+    font-size: 1.1em;
+    font-weight: 600;
+    -ms-transform: rotate(34deg); /* IE 9 */
+    -webkit-transform: rotate(34deg); /* Chrome, Safari, Opera */
+    transform: rotate(34deg);
+}
+
+p.PAbout {
+    line-height: 150%;
+}
+
+
+/* ---------- FLAVORS SECTION ---------- */
+
+div#Flavors {
+    min-width: 1263px;
+    width: 100%;
+    height: 720px;
+    background: url('images/flavors/macaronbg.png') no-repeat;
+    /* Background by JohnRP - https://pixabay.com/en/macaroons-cakes-food-confection-1379180 */
+    background-size: cover;
+    padding: 50px 0px 0px 0px;
+}
+
+#FlavorsContent {
+    width: 420px;
+    height: 473px;
+    float: left;
+    background: url(images/flavors/bracket.png) right center no-repeat;
+    font-family: SinkinSans;
+    font-size: 0.7em;
+    color: #FFF;
+    padding: 28px 50px 0px 45px;
+    line-height: 230%;
+}
+
+/* FLAVORS IMAGE AND CAPTIONS */
+/* IMAGE CAPTIONS - https://github.com/hongkiat/css3-image-captions */
+
+#mainwrapper {
+	height: auto;
+	margin: 15px 0px;
+	text-align: center;
+	width: 720px;
+    float: right;
+}
+
+/* Image Box Style */
+#mainwrapper .box {
+	border: 5px solid #fff;
+	cursor: pointer;
+	height: 200px;
+	float: left;
+	margin: 10px;
+	position: relative;
+	overflow: hidden;
+	width: 200px;
+		-webkit-box-shadow: 1px 1px 1px 1px #ccc;
+		-moz-box-shadow: 1px 1px 1px 1px #ccc;
+		box-shadow: 1px 1px 1px 1px #ccc;
+}
+#mainwrapper .box img {
+	position: absolute;
+	left: 0;
+		-webkit-transition: all 300ms ease-out;
+		-moz-transition: all 300ms ease-out;
+		-o-transition: all 300ms ease-out;
+		-ms-transition: all 300ms ease-out;	
+	transition: all 300ms ease-out;
+}
+
+/* Caption Common Style */
+#mainwrapper .box .caption {
+	background-color: rgba(0,0,0,0.8);
+	position: absolute;
+	color: #fff;
+	z-index: 100;
+		-webkit-transition: all 300ms ease-out;
+		-moz-transition: all 300ms ease-out;
+		-o-transition: all 300ms ease-out;
+		-ms-transition: all 300ms ease-out;	
+		transition: all 300ms ease-out;
+	left: 0;
+}
+
+/** Caption 6: Scale **/
+#mainwrapper .box .scale-caption h3, #mainwrapper .box .scale-caption p {
+	font-family: 'SinkinSans';
+    position: relative;
+	left: -200px;
+	width: 160px;
+    font-size: 1em;
+	-webkit-transition: all 300ms ease-out;
+	-moz-transition: all 300ms ease-out;
+	-o-transition: all 300ms ease-out;
+	-ms-transition: all 300ms ease-out;	
+	transition: all 300ms ease-out;
+}
+
+#mainwrapper .box .scale-caption h3 {
+	-webkit-transition-delay: 300ms;
+	-moz-transition-delay: 300ms;
+	-o-transition-delay: 300ms;
+	-ms-transition-delay: 300ms;	
+	transition-delay: 300ms;
+    margin-bottom: 20px;
+    font-size: 1.5em;
+    font-family: 'Zingrust';
+}
+
+#mainwrapper .box .scale-caption p {
+	-webkit-transition-delay: 500ms;
+	-moz-transition-delay: 500ms;
+	-o-transition-delay: 500ms;
+	-ms-transition-delay: 500ms;	
+	transition-delay: 500ms;
+    font-size: 0.7em;
+}
+
+#mainwrapper .box:hover .scale-caption  {
+	opacity: 1;
+}
+
+#mainwrapper .box:hover {
+	border: 5px solid #FEB1F8;
+}
+
+#mainwrapper .box .scale-caption  {
+	opacity: 0;
+	width: 160px;
+	height: 160px;
+	text-align: center;
+	padding: 20px;
+}
+
+/** Scale Caption :hover Behaviour **/
+#mainwrapper .box:hover #image-6 {
+	-moz-transform: scale(1.4);
+	-o-transform: scale(1.4);
+	-webkit-transform: scale(1.4);
+	transform: scale(1.4);
+}
+
+#mainwrapper .box:hover .scale-caption h3, #mainwrapper .box:hover .scale-caption p {
+	-moz-transform: translateX(200px);
+	-o-transform: translateX(200px);
+	-webkit-transform: translateX(200px);
+	transform: translateX(200px);
+}
+
+/* ---------- ORDER SECTION ---------- */
+
+div#Order {
+    min-width: 1263px;
+    width: 100%;
+    height: 725px;
+    background: url('images/order/order.png') no-repeat;
+    /* Background by: Stevepb - https://pixabay.com/en/egg-ingredient-baking-cooking-food-944495 */
+    background-size: cover;
+    padding: 40px 0px 0px 0px;
+    color: #FFF;
+}
+
+div#ordertable
+{
+    width: 425px;
+    height: auto;
+    margin: 0 auto;
+    font-family: SinkinSans;
+    float: left;
+    padding: 28px 0px 0px 80px;
+}
+
+div#ordercontent {
+    float:right;
+    width: 550px;
+    height: 473px;
+    margin: 50px 0px 15px 0px;
+    font-family: SinkinSans;
+    font-size: 0.7em;
+    background: url(images/order/orderbracket.png) left top no-repeat;
+    padding: 8px 40px 0px 50px;
+}
+
+div#ordercontent p {
+    padding: 10px 0px 0px 45px;
+    line-height: 230%;
+}
+
+/* ORDER FORM */
+
+table.demoTbl {
+    border-collapse: collapse;
+}
+
+table.demoTbl td  { 
+    text-align:left; 
+    padding: 10px 5px 0px 5px;
+    font-size: 0.7em;
+}
+table.demoTbl th	{ 
+    text-align:center; 
+    font-size: 1.1em;
+    font-family: ZingRust;
+    background-color:#9EE0F7;
+    padding: 10px;
+    color: #4FA0B5;
+}
+
+table.demoTbl th.first { 
+    text-align:left;
+}
+table.demoTbl td.qty,
+table.demoTbl td.cur { 
+    text-align:center;
+}
+
+table.demoTbl td.label { 
+    text-align:right;
+}
+table.demoTbl td.submit {
+    text-align: center;
+    background-color: transparent;
+    width: 100px;
+    padding-top: 15px;
+}
+table.demoTbl td.total { 
+    text-align:right; 
+    font-weight:bold;
+}
+    
+table.demoTbl td.subtot { 
+    text-align:right; 
+    padding-bottom:18px;
+}
+table.demoTbl input.cur { 
+    text-align:right;
+}
+
+table.demoTbl input.cur, table.demoTbl input { 
+    color: #FFF;
+    background: url(images/contact/transparentbg.png) repeat;
+    border: 1px dotted #FFF;
+    padding: 5px;
+}
+
+table.demoTbl input { 
+    width: 269px;
+}
+
+table.demoTbl input[type="text"]:hover, table.demoTbl input[type="text"].cur:hover, table.demoTbl input[type="submit"]:hover, table.demoTbl input[type="text"].last:hover, table.demoTbl input[type="tel"]:hover, table.demoTbl input[type="email"]:hover {
+    border-color: #9EE0F7;
+}
+
+table.demoTbl input.cur{ 
+    width: 90px;
+}
+
+table.demoTbl input[type=submit]{
+    width: 100px;
+    color: #9EE0F7;
+}
+
+/* ---------- CONTACT SECTION ---------- */
+
+div#Contact {
+    min-width: 1263px;
+    width: 100%;
+    height: 1000px;
+    background-image: url('images/contact/bakingbg2.png'), url('images/contact/blackbg.png');
+    background-position: right center, left top;
+    background-repeat: no-repeat, repeat;
+    /* Background pattern from Subtle Patterns made by Atle Mo */
+    /* Baking ingredient background collage from different photos from Pixabay.com */
+    /* Butter - Pezibear */
+    /* Eggs - Oldmermaid */
+    /* Whisk Spoon and Chocolate - StockSnap */
+    /* Almonds - 632240 */
+}
+
+div#ContactContainer {
+    width: 90%;
+    color: #EEE;
+    font-family: 'ZingRust';
+    font-size: 1em;
+    margin: 50px 0px 80px 0px;
+    padding-left: 80px;
+    float: left;
+}
+
+img.ContactUs {
+    padding-bottom: 20px;
+}
+
+/* CONTACT FORM */
+
+div.error {
+    color: #FF57F3;
+}
+
+div.success {
+    color: #CCF2FF;
+}
+
+input[type="text"].contact, textarea.dotted, input[type=submit] {
+    background: url(images/contact/transparentbg.png) repeat;
+    border: 1px dotted #FFF;
+    color: #FFF;
+    font-family: 'ZingRust'; 
+}
+
+
+input[type="text"].contact {
+    width: 100%;
+    height: 30px;
+    padding: 0 10px 0 10px;
+    margin: 0;
+    box-sizing: border-box;
+    font-size: 1em;
+}
+
+input[type="text"].contact:hover, textarea.dotted:hover, input[type=submit]:hover {
+    background: rgba(153, 153, 153, .2);
+}
+
+textarea.dotted {
+    width: 300px;
+    height: 100px;
+    overflow: auto;
+    padding: 5px 10px 5px 10px;
+    margin: 0;
+    box-sizing: border-box;
+    resize: none;
+    font-size: 1em;
+}
+
+input[type=submit] {
+    width: 100px;
+    height: 30px;
+    float: right;
+    margin-bottom: 20px;
+}
+
+td.label {
+    height: 100%;
+    padding: 0px 10px 0px 0px;
+    margin: 0px;
+    vertical-align: center;  
+}
+
+td.labeltext {
+    vertical-align: top;
+    padding: 15px 10px 0px 0px;
+}
+
+td.boxes {
+    width: 200px;
+    height: auto;
+    padding: 10px 0px;
+    margin: 0px;
+}
+
+td.textbox {
+    height: auto;
+    margin: 0;
+    padding: 10px 0px;
+}
+
+td.submit {
+    padding-top: 20px;
+}
+
+/* BOTTOM CONTAINER */
+
+#ContactBottom {
+    width: 980px;
+    float: left;
+    height: auto;
+    padding: 0px 0px 0px 80px;
+}
+
+/* SEE TALK CONNECT */
+
+#SeeUs, #TalkToUs, #ConnectUs, #Disclaimer {
+    width: 195px;
+    color: #FFF;
+    font-family: 'SinkinSans';
+    float: left;
+    margin-right: 50px;
+}
+
+#ConnectUs {
+    text-align: center;   
+}
+
+.bottomtitle {
+    border-bottom: 1px dotted #FFF;
+    text-align: center;
+}
+
+.bottomcontent {
+    margin-top: 20px;
+    font-size: 0.7em;
+}
+
+.bottomcontent p {
+    padding-bottom: 8px;
+}
+
+.bottomcontent h3 {
+    color: #9EE0F6;
+    padding-bottom: 5px;
+}
+
+.bottomcontent a:link {
+    text-decoration: none;
+    margin-right: 10px;
+    color: #9EE0F6;
+}

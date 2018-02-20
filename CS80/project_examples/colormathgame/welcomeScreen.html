@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome!</title>
+    <link rel="stylesheet" type="text/css" href="gameStyle.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+</head>
+
+<body>
+
+<div class="gameContainer">
+    <!-- row holding/centering message -->
+    <div class="gameRow" style="display:flex">
+        <!-- starting text, welcome message display-->
+        <h2 id="greeting">Welcome, click  on Games to play your favorite game.</h2>
+    </div>
+</div>
+
+<script>
+    // array of welcome messages
+    var welcomeArray = ["Welcome, click  on Games to play your favorite game.",
+        "Bienvenido, haz clic en Games para jugar a tu juego favorito.",
+        "Bienvenue, appuyer sur Games pour jouer ton jeu préféré",
+        ""
+    ];
+
+    var msg = $("#greeting")
+    var index = 0;
+    var delaySeconds = 3.5;
+
+    // infinite fade out / fade in loop over array of messages
+    $(document).ready(function() {
+
+        msg.html("<h3>" + welcomeArray[index] + "</h3>");
+
+        function loop() {
+            if(++index >= welcomeArray.length - 1)
+                index = 0;
+            msg.delay(delaySeconds * 1000).fadeOut("slow", function() {
+                msg.html("<h3>" + welcomeArray[index] + "</h3>");
+            });
+            msg.fadeIn("slow", function() {
+                loop();
+            });
+        }
+        loop();
+    });
+
+</script>
+
+</body>
+</html>
