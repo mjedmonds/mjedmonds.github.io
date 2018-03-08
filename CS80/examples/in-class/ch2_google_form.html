@@ -1,0 +1,35 @@
+
+<!DOCTYPE html>
+<html>
+
+<!-- Fig. 2.14: form.html -->
+<!-- Form with a text field and hidden fields. -->
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+
+<body>
+  <h1>Custom Google Search</h1>
+  <!-- this tag starts the the form, gives the -->
+  <!-- method of sending information and the -->
+  <!-- location of the form-processing script -->
+  <form method="get" action="https://www.google.com/search">
+    <!-- hidden inputs contain non-visual -->
+    <!-- information that will also be submitted -->
+    <!-- <input type = "text"> inserts a text field -->
+    <p>
+      <label>Query:
+        <input name = "q" type = "text">
+      </label>
+    </p>
+    <p>
+      <input type="submit" value="Google Search">
+      <input type="reset" value="Clear">
+    </p>
+  </form>
+
+</body>
+
+</html>
