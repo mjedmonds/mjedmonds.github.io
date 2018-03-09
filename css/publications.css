@@ -1,0 +1,75 @@
+/* publications
+ **************************************************/
+ #publications .pageheader{
+  background-image: url(../img/publications.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  padding: 190px 0 35px 0;
+}
+
+#publications .pageheader .title{
+    color: #fff;
+    border: none;
+}
+
+#pub-grid .mix {
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  filter: alpha(opacity=0);
+  opacity: 0;
+  display: none;
+}
+
+.pitems .item {
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.pitems .pubmain {
+  padding: 0px 0px 35px 0px;
+  min-height: 130px;
+  position: relative;
+  cursor: pointer;
+}
+
+.pitems .pubtitle {
+  margin: 0;
+  padding: 0 0 15px 0;
+  font-size: 20px;
+  font-weight: 300;
+}
+
+.pitems .pubmain div {
+  font-size: small;
+}
+
+.pitems .pubmain .label {
+  margin-right: 10px;
+}
+
+.pitems .pubmain .pubassets {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background: #fafafa;
+  text-align: center;
+  border-top: 2px solid;
+}
+
+.pitems .pubmain .pubassets a {
+  color: #9b9b9b;
+  padding: 5px 15px;
+  float: right;
+  font-size: 18px;
+}
+
+.pitems .pubmain .pubassets a:hover,.pitems .pubmain .pubassets a:focus,.pitems .pubmain .pubassets a.pubcollapse {
+  /*background: #03cc85;*/
+  color: #fff;
+}
+
+.pitems .pubdetails {
+  background: #fff;
+  padding: 25px;
+  display: none;
+}
