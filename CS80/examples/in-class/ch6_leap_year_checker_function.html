@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Leap Year Checker</title>
+  <script type="text/javascript">
+    function checkLeapYear(year){
+      var isLeapYear = false;
+      // if comment
+      if(year % 400 == 0 || (year % 4 == 0 && year % 100 != 0))       {
+        isLeapYear = true;
+      } else {
+        console.log(year + "is not a leap year");
+      }
+      
+      return isLeapYear;
+    }
+    console.log(checkLeapYear(1996));
+    console.log(checkLeapYear(2000));
+    console.log(checkLeapYear(1000));
+
+  </script>
+</head>
+
+<body>
+</body>
+
+</html>

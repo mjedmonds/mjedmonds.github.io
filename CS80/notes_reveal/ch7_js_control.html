@@ -443,10 +443,12 @@ else {
           <li><p>The main point: don't trust indentation!
             <ul>
               <li><p>Use explicit block statements (through curly braces)
+                <small>
                 <ul>
-                  <li><p>You must use a block if</p></li>
+                  <li><p>You must use a block if you have more than a single statment under your conditional/loop</p></li>
                   <li><p>I do this all the time, no matter. I personally believe it offers a cleaner, more consistent code style that has better defined semantics</p></li>
                 </ul>
+                </small>
               </p></li>
             </ul>
           </p></li>
@@ -689,13 +691,19 @@ c += 3; </code></pre>
           <pre><code class="js">var a = 10;
 var counter1 = 0;
 var counter2 = 0;
+var i = 0;
 while(counter1++ &lt; a)
 {
-  ; //loop 1
+  //loop 1
+  console.log("Loop 1, i: ", i);
+  i++;
 }
+i=0;
 while(++counter2 &lt; a)
 {
-  ; //loop 2
+  //loop 2
+  console.log("Loop 1, i: ", i);
+  i++;
 }
 console.log(counter1);
 console.log(counter2);</pre></code>
@@ -713,7 +721,7 @@ console.log(counter2);</pre></code>
           <li><p>What will be the final value of <code>counter1</code> and <code>counter2</code>?
             <ul>
               <li><p><code>counter1</code> will be 11 (loop 1 runs 10 times, but counter1 is incremented an extra time (postincrement))</p></li>
-              <li><p><code>counter2</code> will be 10 (loop 2 runs 10 times)</p></li>
+              <li><p><code>counter2</code> will be 10 (loop 2 runs 9 times)</p></li>
             </ul>
           </p></li>
         </ul>

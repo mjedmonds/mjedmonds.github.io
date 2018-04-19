@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<!-- Write a JavaScript function that checks whether a passed string is palindrome or not.
+A palindrome is word, phrase, or sequence that reads the same backward as forward, e.g., madam or nurses run (ignoring whitespaces). -->
+
+<html>
+  <head>
+    <meta charset=utf-8 />
+    <title>Second greatest and second lowest</title>
+    <script type="text/javascript">
+      
+      function second_lowest_greatest(arr){
+        var greatest=Number.MIN_VALUE, second_greatest=Number.MIN_VALUE, lowest=Number.MAX_VALUE, second_lowest=Number.MAX_VALUE;
+        var result = [];
+        for(i = 0; i < arr.length; i++){
+          // update greatest
+          if (arr[i] > greatest){
+            greatest = arr[i];
+          }
+          // update lowest
+          if (arr[i] < lowest){
+            lowest = arr[i];
+          }
+        }
+        for(i = 0; i < arr.length; i++){
+          // update second greatest if the current arr is smaller than greatest but higher than second greatest
+          if (arr[i] > second_greatest && arr[i] < greatest){
+            second_greatest = arr[i];
+          }
+          // update second lowest if the current arr is greater than lowest but lower than second lowest
+          if (arr[i] < second_lowest && arr[i] > lowest){
+            second_lowest = arr[i];
+          }
+        }
+        result.push(second_lowest);
+        result.push(second_greatest);
+        return result;
+      }
+      var result = second_lowest_greatest([1,2,3,4,5]);
+      document.writeln("<p>Second lowest: " + result[0] + ", second greatest: " + result[1] + "</p>");
+     
+    </script>
+  </head>
+  <body>
+    
+  </body>
+</html>
