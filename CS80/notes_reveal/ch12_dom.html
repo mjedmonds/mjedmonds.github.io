@@ -390,33 +390,7 @@ h1_node.innerHTML = "Hello, World!"; // change the inner HTML using innerHTML</c
       </section>
       <section >
         <h3>Exercise</h3>
-        <pre><code class="html">&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-  &lt;head&gt;
-    &lt;meta charset=utf-8 /&gt;
-    &lt;title&gt;Return first and last name from a form - w3resource&lt;/title&gt;
-  &lt;/head&gt;
-  &lt;body&gt;
-    &lt;form method="get" id="form1" onsubmit="getFormvalue()"&gt;
-      First name: 
-      &lt;input type="text" name="fname" value="David"&gt;&lt;br&gt;
-      Last name: 
-      &lt;input type="text" name="lname" value="Beckham"&gt;&lt;br&gt;
-      &lt;input type="submit" value="Submit"&gt;
-    &lt;/form&gt;
-  &lt;/body&gt;
-&lt;/html&gt;</code></pre>
-      </section>
-      <section >
-        <h3>Exercise</h3>
-        <pre><code class="js"> function getFormvalue() {
-  var form = document.getElementById("form1");
-  for (var i = 0; i &lt; form.length; i++) {
-    if (form.elements[i].value != 'Submit') {
-      console.log(form.elements[i].value);
-    }
-  }
-}</code></pre>
+        <pre><code id="get_form_value" class="html"></code></pre>
       </section>
       <section >
         <h3><a href="../examples/ch7_js_2/first_last_name.html">Example: <code>first_last_name.html</code></a></h3>
@@ -432,12 +406,6 @@ h1_node.innerHTML = "Hello, World!"; // change the inner HTML using innerHTML</c
         <h3><a href="../examples/ch7_js_2/first_last_name_listener.html">Example: <code>first_last_name_listener.html</code></a></h3>
         <pre><code id="first_last_name_listener" class="html"></code></pre>
       </section>
-      <section>
-        <h3></h3>
-        <ul>
-        </ul>
-      </section>
-
 
       <!--
       <section >
@@ -517,6 +485,7 @@ h1_node.innerHTML = "Hello, World!"; // change the inner HTML using innerHTML</c
       get_example('ch12_dom', 'editing_dom.html', '#editing_dom');
       get_example('ch12_dom', 'traversing_dom/dom.html', '#traversing_dom');
       get_example('ch12_dom', 'loading_event_listeners.html', '#loading_event_listeners');
+      get_example('ch12_dom', 'get_form_value.html', '#get_form_value');
       get_example('ch12_dom', 'first_last_name.html', '#first_last_name');
       get_example('ch12_dom', 'first_last_name_listener.html', '#first_last_name_listener');
       </script>
