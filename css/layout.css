@@ -370,10 +370,92 @@ ul#nav li.current a {
   margin-top: 6px;
 }
 
-
+/* ------------------------------------------------------------------ */
+/* d. Publications Section
 /* ------------------------------------------------------------------ */
 
+#news {
+  background: #fff;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  overflow: hidden;
+}
 
+
+/* swapped these colors to fix link color */
+
+#news a,
+#news a:visited {
+  color: #313131;
+}
+
+#news a:hover,
+#news a:focus {
+  color: #11ABB0;
+}
+
+#news h1 {
+  font: 18px/24px 'opensans-bold', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+#news h1 span {
+  border-bottom: 3px solid #11ABB0;
+  padding-bottom: 6px;
+}
+
+#news h3 {
+  font: 25px/30px 'opensans-bold', sans-serif;
+}
+
+#news td {
+  padding-right: 20px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+#news .header-col {
+  padding-top: 9px;
+}
+
+#news .main-col {
+  padding-right: 10%;
+}
+
+.news {
+  margin-bottom: 48px;
+  padding-bottom: 48px;
+  border-bottom: 1px solid #E8E8E8;
+}
+
+#news .info {
+  font: 16px/24px 'opensans-regular', serif;
+  color: #6E7881;
+  margin-bottom: 18px;
+  margin-top: 9px;
+}
+
+#news .info span {
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
+#news .paper {
+  font: 14px/22px 'opensans-regular', serif;
+  color: #6E7881;
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+
+#news .date {
+  font: 15px/24px 'opensans-regular', sans-serif;
+  margin-top: 6px;
+}
+
+
+
+/* ------------------------------------------------------------------ */
 /* d. Publications Section
 /* ------------------------------------------------------------------ */
 
@@ -383,7 +465,6 @@ ul#nav li.current a {
   padding-bottom: 0px;
   overflow: hidden;
 }
-
 
 /* swapped these colors to fix link color */
 
