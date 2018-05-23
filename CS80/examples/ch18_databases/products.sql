@@ -20,3 +20,6 @@ INSERT INTO books (Title,Category,ISBN) VALUES ('C How to Program','Programming'
 INSERT INTO books (Title,Category,ISBN) VALUES ('Internet & World Wide Web How to Program','Programming','0132151006');
 INSERT INTO books (Title,Category,ISBN) VALUES ('Operating Systems','Operating Systems','0131828274');
 
+CREATE USER IF NOT EXISTS 'iw3htp'@'localhost' IDENTIFIED BY 'password';
+GRANT ALL privileges ON `products`.* TO 'iw3htp'@'localhost';
+FLUSH PRIVILEGES;

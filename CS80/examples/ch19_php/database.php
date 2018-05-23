@@ -24,18 +24,18 @@
       // build SELECT query
       $query = "SELECT " . $select . " FROM books";
       // Connect to MySQL
-      if ( !( $database = mysql_connect( "localhost", "iw3htp", "password" ) ) )
+      if ( !( $database = mysqli_connect( "localhost", "iw3htp", "password" ) ) )
         die( "Could not connect to database </body></html>" );
       // open Products database
-      if ( !mysql_select_db( "products", $database ) )
+      if ( !mysqli_select_db($database, "products") )
         die( "Could not open products database </body></html>" );
       // query Products database
-      if ( !( $result = mysql_query( $query, $database ) ) )
+      if ( !( $result = mysqli_query($database, $query) ) )
       {
         print( "<p>Could not execute query!</p>" );
-        die( mysql_error() . "</body></html>" );
+        die( mysqli_error() . "</body></html>" );
       } // end if
-      mysql_close( $database );
+      mysqli_close( $database );
     ?><!-- end PHP script -->
     <table>
       <caption>Results of "SELECT <?php print( "$select" ) ?>
@@ -43,7 +43,7 @@
       <?php
         // fetch each record in result set
         while (
-          $row = mysql_fetch_row( $result )
+          $row = mysqli_fetch_row( $result )
         )
         {
           // build table to display results
@@ -55,7 +55,7 @@
       ?><!-- end PHP script -->
       </table>
       <p>
-        Your search yielded <?php print( mysql_num_rows( $result )) ?> results.
+        Your search yielded <?php print( mysqli_num_rows( $result )) ?> results.
       </p>
     <p>
       Please email comments to <a href = "mailto:deitel@deitel.com">Deitel and Associates, Inc.</a>

@@ -53,7 +53,7 @@
         var baseUrl = asyncRequest.responseXML.getElementsByTagName(
           "baseurl").item(0).firstChild.nodeValue;
         // get the placeholder div element named covers
-        var output = document.getElementById("covers");
+        var html_covers = document.getElementById("covers");
         // create an unordered list to display the images
         var imagesUL = document.createElement("ul");
         // place images in unordered list
@@ -62,15 +62,18 @@
           // get the image filename
           var image = cover.getElementsByTagName("image").
           item(0).firstChild.nodeValue;
+          var title = cover.getElementsByTagName("title").
+          item(0).firstChild.nodeValue;
           // create li and img element to display the image
           var imageLI = document.createElement("li");
           var imageTag = document.createElement("img");
           // set img element's src attribute
-          imageTag.setAttribute("src", baseUrl + escape(image));
+          imageTag.setAttribute("src", baseUrl + encodeURI(image));
+          imageTag.setAttribute("alt", title);
           imageLI.appendChild(imageTag); // place img in li
           imagesUL.appendChild(imageLI); // place li in ul
         } // end for statement
-        output.appendChild(imagesUL); // append ul to covers div
+        html_covers.appendChild(imagesUL); // append ul to covers div
       } // end if
     } // end function processResponse
 
@@ -79,6 +82,7 @@
       document.getElementById("covers").innerHTML = "";
     } // end function clearImages
 
+    var global_name = "all.xml";
     // register event listeners
     function registerListeners() {
       document.getElementById("all").addEventListener(
@@ -89,7 +93,7 @@
       document.getElementById("simply").addEventListener(
         "click",
         function() {
-          getImages("simply.xml");
+          getImages(global_name);
         }, false);
       document.getElementById("howto").addEventListener(
         "click",

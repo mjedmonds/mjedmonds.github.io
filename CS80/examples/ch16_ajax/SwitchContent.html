@@ -22,38 +22,38 @@
       img.addEventListener("mouseover",
         function() {
           getContent("cpphtp8.html");
-        }, false);
-      img.addEventListener("mouseout", clearContent, false);
+        });
+      img.addEventListener("mouseout", clearContent);
       img = document.getElementById("iw3htp");
       img.addEventListener("mouseover",
         function() {
           getContent("iw3htp.html");
-        }, false);
-      img.addEventListener("mouseout", clearContent, false);
+        });
+      img.addEventListener("mouseout", clearContent);
       img = document.getElementById("jhtp");
       img.addEventListener("mouseover",
         function() {
           getContent("jhtp.html");
-        }, false);
-      img.addEventListener("mouseout", clearContent, false);
+        });
+      img.addEventListener("mouseout", clearContent);
       img = document.getElementById("vbhtp");
       img.addEventListener("mouseover",
         function() {
           getContent("vbhtp.html");
-        }, false);
-      img.addEventListener("mouseout", clearContent, false);
+        });
+      img.addEventListener("mouseout", clearContent);
       img = document.getElementById("vcshtp");
       img.addEventListener("mouseover",
         function() {
           getContent("vcshtp.html");
-        }, false);
-      img.addEventListener("mouseout", clearContent, false);
+        });
+      img.addEventListener("mouseout", clearContent);
       img = document.getElementById("javafp");
       img.addEventListener("mouseover",
         function() {
           getContent("javafp.html");
-        }, false);
-      img.addEventListener("mouseout", clearContent, false);
+        });
+      img.addEventListener("mouseout", clearContent);
     } // end function registerListeners
 
     // set up and send the asynchronous request.
@@ -63,7 +63,7 @@
         asyncRequest = new XMLHttpRequest(); // create request object
         // register event handler
         asyncRequest.addEventListener(
-          "readystatechange", stateChange, false);
+          "readystatechange", stateChange);
         asyncRequest.open("GET", url, true); // prepare the request
         asyncRequest.send(null); // send the request
       } // end try
@@ -84,7 +84,7 @@
     function clearContent() {
       document.getElementById("contentArea").innerHTML = "";
     } // end function clearContent
-    window.addEventListener("load", registerListeners, false);
+    window.addEventListener("load", registerListeners);
   </script>
 </head>
 
