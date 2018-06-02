@@ -18,14 +18,13 @@
       {
         // call function strcmp to compare the array element
         // to string "banana"
-        if (
-          strcmp( $fruits[ $i ], "banana" ) < 0
-        )
-        print( "<p>" . $fruits[ $i ] . " is less than banana " );
-        elseif ( strcmp( $fruits[ $i ], "banana" ) > 0 )
+        if (strcmp( $fruits[ $i ], "banana" ) < 0) { 
+          print( "<p>" . $fruits[ $i ] . " is less than banana " );
+        } elseif ( strcmp( $fruits[ $i ], "banana" ) > 0 ) {
           print( "<p>" . $fruits[ $i ] . " is greater than banana ");
-        else
+        } else {
           print( "<p>" . $fruits[ $i ] . " is equal to banana " );
+        }
         // use relational operators to compare each element
         // to string "apple"
         if ( $fruits[ $i ] < "apple" )
