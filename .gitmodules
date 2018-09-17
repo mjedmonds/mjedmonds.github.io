@@ -6,4 +6,4 @@
 	url = https://github.com/hakimel/reveal.js/
 [submodule "cv"]
 	path = cv
-	url = git@github.com:mjedmonds/cv.git
+	url = https://github.com/mjedmonds/cv
