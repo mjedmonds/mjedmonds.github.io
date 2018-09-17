@@ -4,3 +4,6 @@
 [submodule "CS80/notes_reveal/reveal.js"]
 	path = CS80/notes_reveal/reveal.js
 	url = https://github.com/hakimel/reveal.js/
+[submodule "cv"]
+	path = cv
+	url = git@github.com:mjedmonds/cv.git
