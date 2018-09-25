@@ -5,19 +5,19 @@
   <meta charset="utf-8">
   <title>Classes and Selectors</title>
   <style>
-    .emph { font-style: oblique; }
-    #id   { color: blue; }
-    p.emph { font-style: normal; }
+    .class1 { font-style: oblique; color: red;}
+    #blueele   { color: blue; }
+    p.class1 { font-style: normal; color: red;}
   </style>
 </head>
 
 <body>
-  <div class="emph">
+  <div class="class1">
     This text adheres to the global CSS emph class
   <p>
     But with no class specified in the paragraph tag, the child is still inheriting from the parent
   </p>
-  <p class="emph">
+  <p class="class1" id="blueele">
     But now that we apply the more-specific class, the div is overridden
   </p>
   </div>
