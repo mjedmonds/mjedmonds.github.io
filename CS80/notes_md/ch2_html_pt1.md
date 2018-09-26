@@ -156,6 +156,7 @@ Instructor: Mark Edmonds
   - Do a quick google search go all of the symbols available
   - <http://www.w3schools.com/html/html_entities.asp>
   - <https://www.w3.org/TR/REC-html40/sgml/entities.html>
+  - <https://dev.w3.org/html5/html-author/charref>
 
 ## Example: [`char.html`](../examples/ch2_html_pt1/char.html)
 
