@@ -178,15 +178,13 @@ arr[1][3] = 5; // sets the element in the second row and forth column to 5
 * We can also initialize a multi-dimensional array in a similar fashion as a single-dimension array using an intializer list:
 
 ```c
-int two_d[2][3] = {{ 5, 2, 1 },
-                   { 6, 7, 8 }};
+int two_d[2][3] = {{ 5, 2, 1 }, { 6, 7, 8 }};
 ```
 
 * The amount of columns must be explicitly specified, but the compiler will sort out how many rows are needed based on the initializer list. We could have written
 
 ```c
-int two_d[][3] = {{ 5, 2, 1 },
-                  { 6, 7, 8 }};
+int two_d[][3] = {{ 5, 2, 1 }, { 6, 7, 8 }};
 ```
 
 ### Passing multi-dimensional arrays to functions
