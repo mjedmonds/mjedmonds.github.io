@@ -2,517 +2,344 @@
 apple-mobile-web-app-capable: yes
 apple-mobile-web-app-status-bar-style: 'black-translucent'
 author: Mark Edmonds
-description: |
-    A course on the world\'s fastest growing machine learning library,
-    TensorFlow
+description: Chapter 18, Databases
 title: Databases
 ---
 
-::: {.reveal}
-::: {.slides}
-::: {.section}
-Chapter 18: Databases
----------------------
+# Chapter 18: Databases
 
 CS 80: Internet Programming
 
 Instructor: Mark Edmonds
-:::
 
-::: {.section}
-### What is a database?
+## What is a database?
 
--   A more-structured, multi-sheet excel spreadsheet
+- A more-structured, multi-sheet excel spreadsheet
+- We call an excel sheet a **table**, which has rows and columns of data
 
--   We call an excel sheet a **table**, which has rows and columns of
-    data
-:::
+## What is a database?
 
-::: {.section}
-### What is a database?
+- Each table contains a columdn with **primary keys**. Each row has a unique value for the primary key\'s column
+  - This guarantees that each row has at least one unique value
+  - Means we can identify and access a row uniquely
+  - Examples of primary keys: ID numbers, social security numbers, etc
 
--   Each table contains a columdn with **primary keys**. Each row has a
-    unique value for the primary key\'s column
+## What is a database?
 
-    -   This guarantees that each row has at least one unique value
+- We access data in a database through a **query**, which is just a request of information from a table
+- In this class, we will use SQL queries
 
-    -   Means we can identify and access a row uniquely
+## Employee Table
 
-    -   Examples of primary keys: ID numbers, social security numbers,
-        etc
-:::
+![Employee Table](images/ch18_employee_table.png)
 
-::: {.section}
-### What is a database?
+## Employee Table
 
--   We access data in a database through a **query**, which is just a
-    request of information from a table
+- Rows are not guaranteed to be stored in any particular order
+- Any column value *except* the primary key may exist in multiple rows
+- Each column represents a different data attribute
+- Each row is typically unique
+- Typically we won\'t be interested in all the rows, and typically we won\'t be interested in all the columns of the rows we are interested in
+- We can have multiple tables in a database
+  - When a primary key is used as a column in a different table, it is called a **foreign key**. This is important for linking tables together; without this mechanism we wouldn\'t have a way to guarantee unique links between tables
 
--   In this class, we will use SQL queries
-:::
+## Employee Table
 
-::: {.section}
-### Employee Table
+- An example query result: show where each department is located in increasing order by department number
 
-![](images/ch18_employee_table.png)
-:::
+## The Rule of Referential Integrity
 
-::: {.section}
-### Employee Table
+- A guarantee that every foreign key is used as a primary key in a different table
+- We can determine if a particular row in a table is valid; e.g. it\'s foreign key exists in a different table as a primary key
+- This also enables **joining**, where we bring data from multiple tables together; the foreign key acts as the link between the tables
 
--   Rows are not guaranteed to be stored in any particular order
+## A Books database
 
--   Any column value *except* the primary key may exist in multiple rows
+- Consists of three tables: `Authors`, `AuthorISBN`, and `Titles`.
 
--   Each column represents a different data attribute
+## Authors Table
 
--   Each row is typically unique
+- Contains information about authors
+- AuthorID is the primary key
 
--   Typically we won\'t be interested in all the rows, and typically we
-    won\'t be interested in all the columns of the rows we are
-    interested in
+## Authors Table
 
--   We can have multiple tables in a database
+![Authors table](images/ch18_authors_description.png)
 
-    -   When a primary key is used as a column in a different table, it
-        is called a **foreign key**. This is important for linking
-        tables together; without this mechanism we wouldn\'t have a way
-        to guarantee unique links between tables
-:::
+## Authors Table
 
-::: {.section}
-### Employee Table
+![Authors Table](images/ch18_authors_table.png)
 
--   An example query result: show where each department is located in
-    increasing order by department number
-:::
+## AuthorISBN Table
 
-::: {.section}
-### The Rule of Referential Integrity
+- Maintains AuthorID\'s and ISBNs
+- ISBN is a foreign key - it is the primary key in the Title table
+- AuthorID is a foreign key - it is the primary key in the Authors table
+- Primary key is the combination of the two foreign keys - guaranteed to be unique
 
--   A guarantee that every foreign key is used as a primary key in a
-    different table
+## AuthorsISBN Table
 
--   We can determine if a particular row in a table is valid; e.g. it\'s
-    foreign key exists in a different table as a primary key
+![AuthorsISBN Table Description](images/ch18_authorsISBN_description.png)
 
--   This also enables **joining**, where we bring data from multiple
-    tables together; the foreign key acts as the link between the tables
-:::
+## AuthorsISBN Table
 
-::: {.section}
-### A Books database
+![AuthorsISBN Table](images/ch18_authorsISBN_table.png)
 
--   Consists of three tables: `Authors`, `AuthorISBN`, and `Titles`.
-:::
+## Titles Table
 
-::: {.section}
-### Authors Table
+- Maintains information about ISBNs and Titles
+- ISBN is the primary key
+- Title is a string
 
--   Contains information about authors
+## Titles Table
 
--   AuthorID is the primary key
-:::
+![Titles Table Description 1](images/ch18_titles_description1.png)
 
-::: {.section}
-### Authors Table
+## Titles Table
 
-![](images/ch18_authors_description.png)
-:::
+![Titles Table Description 2](images/ch18_titles_description2.png)
 
-::: {.section}
-### Authors Table
+## Titles Table
 
-![](images/ch18_authors_table.png)
-:::
+![Titles Table](images/ch18_titles_table.png)
 
-::: {.section}
-### AuthorISBN Table
+## Table Relationships
 
--   Maintains AuthorID\'s and ISBNs
+![Table Relationships](images/ch18_table_relationships.png)
 
--   ISBN is a foreign key - it is the primary key in the Title table
+- Italics indicate a primary key
+- Lines between tables indicate how tables are connected
+- Numbers indicate the degree of the connection
+  - E.g AuthorID is unique in the Authors table, but may be used multiple times in the AuthorISBN table
+- AuthorISBN provides a *many-tomany relationship* between Authors and Titles
+  - An author can write many books and a book can have many authors
 
--   AuthorID is a foreign key - it is the primary key in the Authors
-    table
+## SQL
 
--   Primary key is the combination of the two foreign keys - guaranteed
-    to be unique
-:::
+- SQL is a means to query, or access, information in a database
+- SQL is a bit of a language in itself, people make careers out of being SQL wizards
 
-::: {.section}
-### AuthorsISBN Table
+## SQL Keywords
 
-![](images/ch18_authorsISBN_description.png)
-:::
+![SQL Keywords](images/ch18_sql_keywords.png)
 
-::: {.section}
-### AuthorsISBN Table
+## SQL Queries
 
-![](images/ch18_authorsISBN_table.png)
-:::
+- Query Structure:
+  - Specify the columns we want with `SELECT`
+  - Specify the tables to get the data from with `FROM`
+  - Specify additional criteria with `WHERE`
 
-::: {.section}
-### Titles Table
+## SQL Queries
 
--   Maintains information about ISBNs and Titles
+- Example for the Books database:
+- Gets the AuthorID and LastName from the Authors table
 
--   ISBN is the primary key
+![SQL Author ID and Lastname query](images/ch18_sql_authorID_lastname.png)
 
--   Title is a string
-:::
-
-::: {.section}
-### Titles Table
-
-![](images/ch18_titles_description1.png)
-:::
-
-::: {.section}
-### Titles Table
-
-![](images/ch18_titles_description2.png)
-:::
-
-::: {.section}
-### Titles Table
-
-![](images/ch18_titles_table.png)
-:::
-
-::: {.section}
-### Table Relationships
-
-![](images/ch18_table_relationships.png)
-
--   Italics indicate a primary key
--   Lines between tables indicate how tables are connected
--   Numbers indicate the degree of the connection
-    -   E.g AuthorID is unique in the Authors table, but may be used
-        multiple times in the AuthorISBN table
--   AuthorISBN provides a *many-tomany relationship* between Authors and
-    Titles
-    -   An author can write many books and a book can have many authors
-:::
-
-::: {.section}
-### SQL
-
--   SQL is a means to query, or access, information in a database
-
--   SQL is a bit of a language in itself, people make careers out of
-    being SQL wizards
-:::
-
-::: {.section}
-### SQL Keywords
-
-![](images/ch18_sql_keywords.png)
-:::
-
-::: {.section}
 ### SQL Queries
 
--   Query Structure:
+- A more complicated example:
 
-    -   Specify the columns we want with `SELECT`
+![SQL title, edition, copyright query](images/ch18_sql_title_edition_copyright.png)
 
-    -   Specify the tables to get the data from with `FROM`
+## SQL Queries
 
-    -   Specify additional criteria with `WHERE`
-:::
+- Note: SQL strings are always single quoted (\'), not double quoted (\")
+  - Note: A wildcard (`*`) may be used to select all columns, e.g. `SELECT * FROM Titles` selects all columns from the Titles table
 
-::: {.section}
-### SQL Queries
-
--   Example for the Books database:
-
--   Gets the AuthorID and LastName from the Authors table
-
-![](images/ch18_sql_authorID_lastname.png)
-:::
-
-::: {.section}
-### SQL Queries
-
--   A more complicated example:
-
-![](images/ch18_sql_title_edition_copyright.png)
-:::
-
-::: {.section}
-### SQL Queries
-
--   Note: SQL strings are always single quoted (\'), not double quoted
-    (\")
-
-    -   Note: A wildcard (`*`) may be used to select all columns, e.g.
-        `SELECT * FROM Titles` selects all columns from the Titles table
-:::
-
-::: {.section}
 ### Pattern Matching
 
--   The `WHERE Copyright > '2010'` line above uses an operator `>`
+- The `WHERE Copyright > '2010'` line above uses an operator `>`
+  - We also have the `<, >, <=, >=, =, !=` and `LIKE`
+- `LIKE` indicates a pattern matching qualification on a query
+- The percent sign (`%`) indicates a search for zero or more characters at the percent character\'s position (a wildcard)
+- The underscore (`_`) indicates a single wildcard at the position of the underscore
 
-    -   We also have the `<, >, <=, >=, =, !=` and `LIKE`
+## Pattern Matching Examples
 
--   `LIKE` indicates a pattern matching qualification on a query
+- Select all authors whose last name begins with a \'D\'
 
--   The percent sign (`%`) indicates a search for zero or more
-    characters at the percent character\'s position (a wildcard)
+```sql
+SELECT AuthorID, FirstName, LastName
+    FROM Authors
+    WHERE LastName LIKE 'D%'
+```
 
--   The underscore (`_`) indicates a single wildcard at the position of
-    the underscore
-:::
+- Select all authors whose last name starts with any character, followed by an \'o\', followed by any number of additional characters
 
-::: {.section}
-### Pattern Matching Examples
+```sql
+SELECT AuthorID, FirstName, LastName
+    FROM Authors
+    WHERE LastName LIKE '_o%'
+```
 
--   Select all authors whose last name begins with a \'D\'
+## Ordering
 
-        SELECT AuthorID, FirstName, LastName
-            FROM Authors
-            WHERE LastName LIKE 'D%'
+- We can add a qualifier to sort the query\'s result through `ORDER BY`
+- Can sort by ascending (ASC), descending (DESC)
+  - Defualt sorting order is by ascending (so if you don\'t specify, ascending order will be used
 
--   Select all authors whose last name starts with any character,
-    followed by an \'o\', followed by any number of additional
-    characters
+## Ordering
 
-        SELECT AuthorID, FirstName, LastName
-                      FROM Authors
-                      WHERE LastName LIKE '_o%'
-                    
-:::
+- Can order by multiple columns - sorts by outer sort first, then each additional sorting specified (e.g. last name then by first name)
 
-::: {.section}
-### Ordering
+```sql
+SELECT columnName1, columnName2, …
+    FROM tableName
+    ORDER BY column ASC
+    SELECT columnName1, columnName2, …
+    FROM tableName
+    ORDER BY column DESC
+```
 
--   We can add a qualifier to sort the query\'s result through
-    `ORDER BY`
+## Exercise
 
--   Can sort by ascending (ASC), descending (DESC)
+- Write a query to get the AuthorID, FirstName, LastName, and order the results by descending last name
 
-    -   Defualt sorting order is by ascending (so if you don\'t specify,
-        ascending order will be used
-:::
+## Exercise
 
-::: {.section}
-### Ordering
+- Solution:
 
--   Can order by multiple columns - sorts by outer sort first, then each
-    additional sorting specified (e.g. last name then by first name)
-
-        SELECT columnName1, columnName2, …
-            FROM tableName
-            ORDER BY column ASC
-            SELECT columnName1, columnName2, …
-            FROM tableName
-            ORDER BY column DESC
-:::
-
-::: {.section}
-### Exercise
-
--   Write a query to get the AuthorID, FirstName, LastName, and order
-    the results by descending last name
-:::
-
-::: {.section}
-### Exercise
-
--   Solution:
-
+```sql
         SELECT AuthorID, FirstName, LastName
             FROM Authors
             ORDER BY LastName DESC
-:::
+```
 
-::: {.section}
-### Exercise
+## Exercise
 
--   Write a query to get the ISBN, Title, EditionNumber, and Copyright
-    from the Titles table that end with the phrase \'How to Program\'
-    and order them in ascending order by title
-:::
+- Write a query to get the ISBN, Title, EditionNumber, and Copyright from the Titles table that end with the phrase \'How to Program\' and order them in ascending order by title
 
-::: {.section}
-### Exercise
+## Exercise
 
--   Solution:
+- Solution:
 
-        SELECT ISBN, Title, EditionNumber, Copyright
-            FROM Titles
-            WHERE Title LIKE '%How to Program'
-            ORDER BY Title ASC
-:::
+```sql
+SELECT ISBN, Title, EditionNumber, Copyright
+    FROM Titles
+    WHERE Title LIKE '%How to Program'
+    ORDER BY Title ASC
+```
 
-::: {.section}
-### Merging Data from Multiple Tables
+## Merging Data from Multiple Tables
 
--   Achieved through a `INNER JOIN` which merges rows from two tables by
-    matching values in columns that are common to both tables
+- Achieved through a `INNER JOIN` which merges rows from two tables by matching values in columns that are common to both tables
+  - This is a common use of primary and foreign keys!
 
-    -   This is a common use of primary and foreign keys!
-:::
+## Merging Data from Multiple Tables
 
-::: {.section}
-### Merging Data from Multiple Tables
+```sql
+SELECT columnName1, columnName2, …
+    FROM table1
+    INNER JOIN table2
+    ON table1.columnName = table2.columnName
+```
 
-    SELECT columnName1, columnName2, …
-        FROM table1
-        INNER JOIN table2
-        ON table1.columnName = table2.columnName
-:::
+## Exercise
 
-::: {.section}
-### Exercise
+- Write a query that results in the first name, last name, and ISBN for every author and order them by last name, then first name, in ascending order
 
--   Write a query that results in the first name, last name, and ISBN
-    for every author and order them by last name, then first name, in
-    ascending order
-:::
+## Exercise
 
-::: {.section}
-### Exercise
+- Solution:
 
--   Solution:
+```sql
+SELECT FirstName, LastName, ISBN
+    FROM Authors
+    INNER JOIN AuthorISBN
+    ON Authors.AuthorID = AuthorISBN.AuthorID
+    ORDER BY LastName, FirstName
+```
 
-        SELECT FirstName, LastName, ISBN
-            FROM Authors
-            INNER JOIN AuthorISBN
-            ON Authors.AuthorID = AuthorISBN.AuthorID
-            ORDER BY LastName, FirstName
+- Note: the use of `Authors.AuthorID` and `AuthorISBN.AuthorID` is called a **qualified name**. When tables have matching column names, we must be more specific by stating which table we want to use with each column (think about this: why we didn\'t have to quality the `ISBN` in the `SELECT` part of the query?)
 
--   Note: the use of `Authors.AuthorID` and `AuthorISBN.AuthorID` is
-    called a **qualified name**. When tables have matching column names,
-    we must be more specific by stating which table we want to use with
-    each column (think about this: why we didn\'t have to quality the
-    `ISBN` in the `SELECT` part of the query?)
-:::
+## Exercise
 
-::: {.section}
-### Exercise
+![SQL qualified name query](images/ch18_sql_qualified_name_query.png)
 
-![](images/ch18_sql_qualified_name_query.png)
-:::
+## SQL Insert
 
-::: {.section}
-### SQL Insert
+- Insert inserts a row into a table
+- Syntax:
 
--   Insert inserts a row into a table
+```sql
+INSERT INTO tableName ( columnName1, columnName2, …, columnNameN )
+    VALUES ( value1, value2, …, valueN )
+```
 
--   Syntax:
+## Inserting, Updating, and Deleting information from a table
 
-        INSERT INTO tableName ( columnName1, columnName2, …, columnNameN )
-            VALUES ( value1, value2, …, valueN )
-:::
+- Example:
 
-::: {.section}
-### Inserting, Updating, and Deleting information from a table
-
--   Example:
-
+```sql
         INSERT INTO Authors ( FirstName, LastName )
             VALUES ( 'Sue', 'Red' )
-:::
+```
 
-::: {.section}
-### SQL Update
+## SQL Update
 
--   Update modifies existing data in a table
+- Update modifies existing data in a table
+- Syntax:
 
--   Syntax:
+```sql
+UPDATE tableName
+    SET columnName1 = value1, columnName2 = value2, …, columnNameN = valueN
+    WHERE criteria
+```
 
-        UPDATE tableName
-            SET columnName1 = value1, columnName2 = value2, …, columnNameN = valueN
-            WHERE criteria
-                    
-:::
+## SQL Update
 
-::: {.section}
-### SQL Update
+- Example:
 
--   Example:
+```sql
+UPDATE Authors
+    SET LastName = 'Black'
+    WHERE LastName = 'Red' AND FirstName = 'Sue'
+```
 
-        UPDATE Authors
-            SET LastName = 'Black'
-            WHERE LastName = 'Red' AND FirstName = 'Sue'
-                    
-:::
+## SQL Update
 
-::: {.section}
-### SQL Update
+- Question: What else could we have used for the `WHERE` portion of the previous example?
 
--   Question: What else could we have used for the `WHERE` portion of
-    the previous example?
-:::
+## SQL Update
 
-::: {.section}
-### SQL Update
+- Question: What else could we have used for the `WHERE` portion of the previous example?
 
--   Question: What else could we have used for the `WHERE` portion of
-    the previous example?
+```sql
+UPDATE Authors
+    SET LastName = 'Black'
+    WHERE AuthorID = 6
+```
 
-        UPDATE Authors
-              SET LastName = 'Black'
-              WHERE AuthorID = 6
-:::
+## SQL Delete
 
-::: {.section}
-### SQL Delete
+- Removes a row from a table
+- Syntax:
 
--   Removes a row from a table
+```sql
+DELETE FROM tableName
+    WHERE criteria
+```
 
--   Syntax:
+- Example:
 
-        DELETE FROM tableName
-            WHERE criteria
+```sql
+DELETE FROM Authors
+    WHERE LastName = 'Black' AND FirstName = 'Sue'
+```
 
--   Example:
+## MySQL
 
-        DELETE FROM Authors
-            WHERE LastName = 'Black' AND FirstName = 'Sue'
-:::
+- Open source, multiuser, multithreaded relational database that uses SQL to interact and manipulate data
 
-::: {.section}
-### MySQL
+## MySQL
 
--   Open source, multiuser, multithreaded relational database that uses
-    SQL to interact and manipulate data
-:::
+- Reasons why MySQL is good:
+    1. Scalability. You can embed it in an application or use it in massive data warehous- ing environments.
+    2. Performance. You can optimize performance based on the purpose of the data- base in your application.
+    3. Support for many programming languages. Later chapters demonstrate how to access a MySQL database from PHP (Chapter 19).
+    4. Implementations of MySQL for Windows, Mac OS X, Linux and UNIX.
+    5. Handling large databases (e.g., tens of thousands of tables with millions of rows).
 
-::: {.section}
-### MySQL
-
--   Reasons why MySQL is good:
-
-    1.  Scalability. You can embed it in an application or use it in
-        massive data warehous- ing environments.
-
-    2.  Performance. You can optimize performance based on the purpose
-        of the data- base in your application.
-
-    3.  Support for many programming languages. Later chapters
-        demonstrate how to access a MySQL database from PHP (Chapter
-        19).
-
-    4.  Implementations of MySQL for Windows, Mac OS X, Linux and UNIX.
-
-    5.  Handling large databases (e.g., tens of thousands of tables with
-        millions of rows).
-:::
-
-::: {.section}
-### MySQL
-
--   You can start MySQL from XAMPP (Chapter 17)
-:::
-
-::: {.statcounter}
-[![Web Analytics Made Easy -
-StatCounter](//c.statcounter.com/11819202/0/3d207e19/0/){.statcounter}](http://statcounter.com/ "Web Analytics Made Easy -
-  StatCounter")
-:::
-:::
-:::
+## MySQL

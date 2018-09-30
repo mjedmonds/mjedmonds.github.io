@@ -2,6 +2,9 @@
 
 INPUT_DIR="./notes_md"
 TEMPLATE="./notes_md/template-revealjs.html"
-OUTPUT_DIR="./notes_reveal"
+OUTPUT_DIR="./notes_reveal_md"
 
-pandoc -t html5 -s --template=${TEMPLATE} --standalone --section-divs --no-highlight --filter pandoc-include-code -o ch2_html_pt1_test.html ch2_html_pt1.md
+command="pandoc --wrap=none -t hml5 -s --template=${TEMPLATE} --standalone --section-divs --no-highlight --filter pandoc-include-code -o ${OUTPUT_DIR}/ch4_css.html ch4_css.md"
+
+echo ${command}
+${command}

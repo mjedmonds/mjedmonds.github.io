@@ -2,520 +2,290 @@
 apple-mobile-web-app-capable: yes
 apple-mobile-web-app-status-bar-style: 'black-translucent'
 author: Mark Edmonds
-description: |
-    A course on the world\'s fastest growing machine learning library,
-    TensorFlow
+description: Chapter 15, XMl
 title: XML
 ---
 
-::: {.reveal}
-::: {.slides}
-::: {.section}
-Chapter 15: XML
----------------
+# Chapter 15: XML
 
 CS 80: Internet Programming
 
 Instructor: Mark Edmonds
-:::
 
-::: {.section}
-### XML describes data
+## XML describes data
 
--   Remember the above!
+- Remember the above!
+- Stands for \"Extensible Markup Language\"
+  - XML is a *meta-language* meaning it is not a lanugage itself, but rather a language for building languages
 
--   Stands for \"Extensible Markup Language\"
+## XML describes data
 
-    -   XML is a *meta-language* meaning it is not a lanugage itself,
-        but rather a language for building languages
-:::
+- HTML is a sort of \"variation\" of XML, though it technically is not XML
+  - XHTML is a version of HTML that does adhere to actual XML rules
+  - So, we\'ve seen something very similar before
 
-::: {.section}
-### XML describes data
+## XML describes data
 
--   HTML is a sort of \"variation\" of XML, though it technically is not
-    XML
+- What\'s the point?
+  - XML allows us to describe data in a strict, organized, but flexible manner
+  - This means we can create specific markup languages for any sort of data
+    - We\'d need to parse the data for it to be meaningful, but XML is a building block
 
-    -   XHTML is a version of HTML that does adhere to actual XML rules
+## XML describes data
 
-    -   So, we\'ve seen something very similar before
-:::
+- Consider we have the following data:
+  - `John 10 Bill 15 Judy 25`
+  - What does this data mean?
+    - I have no idea from just the above
+    - If I put this on the internet, no one else will know what it means either
 
-::: {.section}
-### XML describes data
+## XML describes data
 
--   What\'s the point?
+- XML allows us to share data efficiently
+- Consider the following
 
-    -   XML allows us to describe data in a strict, organized, but
-        flexible manner
+```xml
+<family>
+    <member>
+      <name>John</name>
+      <age>10</age>
+    </member>
+    <member>
+      <name>Bill</name>
+      <age>15</age>
+    </member>
+    <member>
+      <name>Judy</name>
+      <age>25</age>
+    </member>
+</family>
+```
 
-    -   This means we can create specific markup languages for any sort
-        of data
+## XML describes data
 
-        -   We\'d need to parse the data for it to be meaningful, but
-            XML is a building block
-:::
+- This data makes a lot more sense!
+  - The initial data had a lot of implicit information that we have made explicit through XML
 
-::: {.section}
-### XML describes data
+## XML Concepts
 
--   Consider we have the following data:
+- Why care?
+  - XML makes data formats portable and application indpendent
+    - Which makes them a very good idea for the internet!
+      - Application indpendent means I don\'t need the application using the data to understand the data (contrast a format like Word document to a .txt)
 
-    -   `John 10 Bill 15 Judy 25`
+## XML Concepts
 
-    -   What does this data mean?
+- Specify the document\'s structure
+- Consist of the element\'s name in angle brackets
+- Example: `<data>`
 
-        -   I have no idea from just the above
+## XML Concepts
 
-        -   If I put this on the internet, no one else will know what it
-            means either
-:::
+- XML elements have start and end tags
+  - Start tag proceeds as above, e.g. `<data>`
+  - End tag has a backslach (`\` after the `<`, e.g. `</data>`
+    - End tags can be shorthanded in the starting tag by place a forward slash `/` before the closing `<` of the opening tag. e.g. with `<data/>` as the start tag
+    - Looks familiar!
 
-::: {.section}
-### XML describes data
+## XML Concepts
 
--   XML allows us to share data efficiently
+- Every XML document contains one root element, which contains all other elements
+  - Similar to `<html>`
 
--   Consider the following
+## XML Concepts
 
-        <family>
-           <member>
-              <name>John</name>
-              <age>10</age>
-           </member>
-           <member>
-              <name>Bill</name>
-              <age>15</age>
-           </member>
-           <member>
-              <name>Judy</name>
-              <age>25</age>
-           </member>
-        </family>
-:::
+- XML-based markup languages are called **XML vocbaularies**
+  - Provide a mechanism to describe data in a standardized, structured way.
+  - Exmaples: XHTML, MathML (math), VoiceXML (speech), XBRL (financial data)
+  - Why do XML vocabularies matter?
+    - Large companies often employ their own XML vocabulary to describe their data internally
+    - They provide a standard for data markup using a standarad data format (e.g. if you can read XML, a XML vocabulary will be easier to understand than a propiertary data format)
 
-::: {.section}
-### XML describes data
+## XML Concepts
 
--   This data makes a lot more sense!
+- XML documents have the extension `.xml` and are readable by any text editor
+- XML is just a data format; it does not contain styling
+  - Devices are responsible for how a XML is rendered
+  - However, Extensible Stylesheet Language allows you specify rendering on different platforms
 
-    -   The initial data had a lot of implicit information that we have
-        made explicit through XML
-:::
+## XML Parsing
 
-::: {.section}
-### XML Concepts
+- Because we are specifying a data markup, we need a way to understand the format
+- XML parsers read XML
+  - Now that we have covered DOM, think about what your browser does to load a `.html` file into the DOM tree (it has to parse it!)
 
--   Why care?
+## XML Parsing
 
-    -   XML makes data formats portable and application indpendent
+- Basic XML Rules:
+  1. Single root element
+  2. A start and end tag for each element
+  3. Properly nested tags
+  4. Case sensitive
+  - Following these rules means the document is **well-formed**
 
-        -   Which makes them a very good idea for the internet!
+## XML Parsing
 
-        -   Application indpendent means I don\'t need the application
-            using the data to understand the data (contrast a format
-            like Word document to a .txt)
-:::
+- Basic XML Rules:
+  1. Single root element
+  2. A start and end tag for each element
+  3. Properly nested tags
+  4. Case sensitive
 
-::: {.section}
-### XML Concepts
+- Which of these rules does HTML break?
+  - 2, 3, and 4
 
--   Specify the document\'s structure
+## XML Validation
 
--   Consist of the element\'s name in angle brackets
+- Some parsers can also validate the XML\'s adhere to a particular markup
+- Relies on a Document Type Definition (DTD) or a Schema
+  - These documents describe the proper document structure
+  - Think of these like a grammar for what forms a valid XML document using this data markup
 
--   Example: `<data>`
-:::
+## XML Validation
 
-::: {.section}
-### XML Concepts
+- A validating parser reads the XML and makes sure that it follows the structure defined in the DTD or Schema
+  - If the document is well-formed XML and adheres to the DTD/Schema, then it is valid
+  - Otherwise, the document is invalid
+  - Note that a document may be well-formed XML but may not be a valid document
 
--   XML elements have start and end tags
+## Example: [`article.xml`](../examples/ch15_xml/article.xml)
 
-    -   Start tag proceeds as above, e.g. `<data>`
+```{include=../examples/ch15_xml/article.xml}
+```
 
-    -   End tag has a backslach (`\` after the `<`, e.g. `</data>`
+## Writing XML
 
-        -   End tags can be shorthanded in the starting tag by place a
-            forward slash `/` before the closing `<` of the opening tag.
-            e.g. with `<data/>` as the start tag
+- The first line, `<?xml version="1.0"?>` declares the document as a XML document
+  - Similar to `<!DOCTYPE HTML>`
+  - NO characters must be before the XML declaration
+- XML Comments are identical to HTML comments
+- The first XML element is the root node; it\'s closing tag should be the last tag in the document
 
-    -   Looks familiar!
-:::
+## Writing XML
 
-::: {.section}
-### XML Concepts
+- XML Element Names
+  - Can contain letters, digits, underscores, hyphens, and periods.
+  - Must start with an underscore or letter
+  - Must not being with any case-combination of \"xml\" as these are reserved for XML
+- Nesting XML elements is identical to nesting HTML elements
+  - Must still be careful about proper nesting
 
--   Every XML document contains one root element, which contains all
-    other elements
+## XML Namespaces
 
-    -   Similar to `<html>`
-:::
+- Suppose we want to use the use \"subject\" in multiple ways: one for subjects in high school, the other for subjects in medical schools
+- We have an ambiguity in our data format as we probably don\'t want to mix high school and medical school subjects!
+  - So we need a way to add additional categorical/hierarchical information
 
-::: {.section}
-### XML Concepts
+## XML Namespaces
 
--   XML-based markup languages are called **XML vocbaularies**
+- Namespaces allow us to give more specific scope to an XML element
+  - The namespace itself is called a **namespace prefix** and is followed by a colon (`:`) before the XML element name
+- For our exmaple
 
-    -   Provide a mechanism to describe data in a standardized,
-        structured way.
+## XML Namespaces
 
-    -   Exmaples: XHTML, MathML (math), VoiceXML (speech), XBRL
-        (financial data)
+- The `xmlns` defines a namespace
+  - Syntax `xmlns:prefix="URI"`
+  - URI can be anything, it is just supposed to be a uniform resource identifier
+  - Can be Uniform Resource Name (URN) or Uniform Resource Locator (URL)
+    - URN\'s are a series of names separated with colons
+      - E.g. `urn:schooltypes`
+  - No namespace prefix should begin with `xml` (it is reserved)
 
-    -   Why do XML vocabularies matter?
+## Example: [`namespaces.xml`](../examples/ch15_xml/namespaces.xml)
 
-        -   Large companies often employ their own XML vocabulary to
-            describe their data internally
+```{include=../examples/ch15_xml/namespaces.xml}
+```
 
-        -   They provide a standard for data markup using a standarad
-            data format (e.g. if you can read XML, a XML vocabulary will
-            be easier to understand than a propiertary data format)
-:::
+## Default Namespaces
 
-::: {.section}
-### XML Concepts
+- Specifying `xmlns = "URI"` specifies a default namespace for the entire document
 
--   XML documents have the extension `.xml` and are readable by any text
-    editor
+## Example: [`default_namespaces.xml`](../examples/ch15_xml/default_namespaces.xml)
 
--   XML is just a data format; it does not contain styling
+```{include=../examples/ch15_xml/default_namespaces.xml}
+```
 
-    -   Devices are responsible for how a XML is rendered
+## Default Namespaces
 
-    -   However, Extensible Stylesheet Language allows you specify
-        rendering on different platforms
-:::
+- Notice the difference between the two versions
+  - They have the same semantic meaning, but one contains significantly less manual tagging of elements!
+  - Use a default namespace if want every element to be in a namespace and have a namespace that is particularly common
 
-::: {.section}
-### XML Parsing
+## DTD
 
--   Because we are specifying a data markup, we need a way to understand
-    the format
+- A method for defining a grammar for validating XML
+- Reasonably simple to follow, but it\'s an aging implementation. Schema is more powerful and more intuitive once you know XML
+- Follows Extended Backus-Naur Form (EBNF) grammar
 
--   XML parsers read XML
+## DTD
 
-    -   Now that we have covered DOM, think about what your browser does
-        to load a `.html` file into the DOM tree (it has to parse it!)
-:::
+- Follows Extended Backus-Naur Form (EBNF) grammar
+  - Basically a lis of production rules for what makes up a valid document
+  - E.g. a sentence is a `SUBJECT` followed by a `PREDICATE`, but also has many optional arguments
+  - A *context-free grammar* (CGF) to recursively write rules to generate patterns
+    - Technically, English is not a context-free grammar
+    - For more about CFG\'s look into Alan Turing and Noam Chomsky\'s work, a branch of computer science called Automata Theory!
 
-::: {.section}
-### XML Parsing
+## XML Schema
 
--   Basic XML Rules:
+- Allows us to validate an XML document
+  - Why do we need to specify this?
+    - XML is a meta-language, so there\'s nothing to validate by default. We define a language to validate, so we must define the validation as well
+      - Think if you were writing your own programming language; you\'d have to write a \"syntax validator\" to validate that a program contained valid syntax
 
-    1.  Single root element
+## XML Schema
 
-    2.  A start and end tag for each element
+- Used by validating parsers to validate documents
+- Documents that conform the to schema are valid, documents that do not conform to the schema are invalid
+- Schema documents have the extension `.xsd`
+  - Can validate schema at [www.xmlforasp.net/SchemaValidator.aspx](www.xmlforasp.net/SchemaValidator.aspx)
+- Let\'s start with an example
 
-    3.  Properly nested tags
+## Example: [`book.xml`](../examples/ch15_xml/book.xml)
 
-    4.  Case sensitive
+```{include=../examples/ch15_xml/book.xml}
+```
 
-    -   Following these rules means the document is **well-formed**
-:::
+## Example: [`book.xsd`](../examples/ch15_xml/book.xsd)
 
-::: {.section}
-### XML Parsing
+```{include=../examples/ch15_xml/book.xsd}
+```
 
--   Basic XML Rules:
+## XML Schema
 
-    1.  Single root element
+- In the schema, we have two namespaces
+  - One for the schema itself, `xmlns`, which can be used to validate the schema
+  - The second, `xmlns:deitel`, which is used to define names created by us
+- Our `targetNamespace` is the URI of the XML vocabulary that this schema defines
 
-    2.  A start and end tag for each element
+## Schema Attributes
 
-    3.  Properly nested tags
+- Name corresponds to the element\'s name and type specifies the element\'s type
+- Types:
+  - XML has predefined types, or you can create user-defined types
 
-    4.  Case sensitive
+## Schema Attributes
 
--   Which of these rules does HTML break?
+- There are two categories of types:
+  1. **Simple types**: a basic type. Cannot contain attributes or child elements
+  2. **Complex types**: a complex type. Can contain attributes or child elements
+  - Complex types may have **simple content** or **complex content**. Both can contain attributes, but only complex content contain child elements. Simple content must extend or restrict a base user or XML type
 
-    -   2, 3, and 4
-:::
+## XML Types
 
-::: {.section}
-### XML Validation
+![XML Types](images/ch15_xml_types-1.png)
 
--   Some parsers can also validate the XML\'s adhere to a particular
-    markup
+## XML Types
 
--   Relies on a Document Type Definition (DTD) or a Schema
+![XML Types](images/ch15_xml_types-2.png)
 
-    -   These documents describe the proper document structure
+## Example: [`laptop.xml`](../examples/ch15_xml/laptop.xml)
 
-    -   Think of these like a grammar for what forms a valid XML
-        document using this data markup
-:::
+```{include=../examples/ch15_xml/laptop.xml}
+```
 
-::: {.section}
-### XML Validation
+## Example: [`laptop.xsd`](../examples/ch15_xml/laptop.xsd)
 
--   A validating parser reads the XML and makes sure that it follows the
-    structure defined in the DTD or Schema
-
-    -   If the document is well-formed XML and adheres to the
-        DTD/Schema, then it is valid
-
-    -   Otherwise, the document is invalid
-
-    -   Note that a document may be well-formed XML but may not be a
-        valid document
-:::
-
-::: {.section}
-### [Example: `article.xml`](../examples/ch15_xml/article.xml)
-
-:::
-
-::: {.section}
-### Writing XML
-
--   The first line, `<?xml version="1.0"?>` declares the document as a
-    XML document
-
-    -   Similar to `<!DOCTYPE HTML>`
-
-    -   NO characters must be before the XML declaration
-
--   XML Comments are identical to HTML comments
-
--   The first XML element is the root node; it\'s closing tag should be
-    the last tag in the document
-:::
-
-::: {.section}
-### Writing XML
-
--   XML Element Names
-
-    -   Can contain letters, digits, underscores, hyphens, and periods.
-
-    -   Must start with an underscore or letter
-
-    -   Must not being with any case-combination of \"xml\" as these are
-        reserved for XML
-
--   Nesting XML elements is identical to nesting HTML elements
-
-    -   Must still be careful about proper nesting
-:::
-
-::: {.section}
-### XML Namespaces
-
--   Suppose we want to use the use \"subject\" in multiple ways: one for
-    subjects in high school, the other for subjects in medical schools
-
--   We have an ambiguity in our data format as we probably don\'t want
-    to mix high school and medical school subjects!
-
-    -   So we need a way to add additional categorical/hierarchical
-        information
-:::
-
-::: {.section}
-### XML Namespaces
-
--   Namespaces allow us to give more specific scope to an XML element
-
-    -   The namespace itself is called a **namespace prefix** and is
-        followed by a colon (`:`) before the XML element name
-
--   For our exmaple
-:::
-
-::: {.section}
-### XML Namespaces
-
--   The `xmlns` defines a namespace
-
-    -   Syntax `xmlns:prefix="URI"`
-
-    -   URI can be anything, it is just supposed to be a uniform
-        resource identifier
-
-    -   Can be Uniform Resource Name (URN) or Uniform Resource Locator
-        (URL)
-
-        -   URN\'s are a series of names separated with colons
-
-            -   E.g. `urn:schooltypes`
-
-    -   No namespace prefix should begin with `xml` (it is reserved)
-:::
-
-::: {.section}
-### [Example: `namespaces.xml`](../examples/ch15_xml/namespaces.xml)
-
-:::
-
-::: {.section}
-### Default Namespaces
-
--   Specifying `xmlns = "URI"` specifies a default namespace for the
-    entire document
-:::
-
-::: {.section}
-### [Example: `default_namespaces.xml`](../examples/ch15_xml/default_namespaces.xml)
-
-:::
-
-::: {.section}
-### Default Namespaces
-
--   Notice the difference between the two versions
-
-    -   They have the same semantic meaning, but one contains
-        significantly less manual tagging of elements!
-
-    -   Use a default namespace if want every element to be in a
-        namespace and have a namespace that is particularly common
-:::
-
-::: {.section}
-### DTD
-
--   A method for defining a grammar for validating XML
-
--   Reasonably simple to follow, but it\'s an aging implementation.
-    Schema is more powerful and more intuitive once you know XML
-
--   Follows Extended Backus-Naur Form (EBNF) grammar
-:::
-
-::: {.section}
-### DTD
-
--   Follows Extended Backus-Naur Form (EBNF) grammar
-
-    -   Basically a lis of production rules for what makes up a valid
-        document
-
-    -   E.g. a sentence is a `SUBJECT` followed by a `PREDICATE`, but
-        also has many optional arguments
-
-    -   A *context-free grammar* (CGF) to recursively write rules to
-        generate patterns
-
-        -   Technically, English is not a context-free grammar
-
-        -   For more about CFG\'s look into Alan Turing and Noam
-            Chomsky\'s work, a branch of computer science called
-            Automata Theory!
-:::
-
-::: {.section}
-### XML Schema
-
--   Allows us to validate an XML document
-
-    -   Why do we need to specify this?
-
-        -   XML is a meta-language, so there\'s nothing to validate by
-            default. We define a language to validate, so we must define
-            the validation as well
-
-            -   Think if you were writing your own programming language;
-                you\'d have to write a \"syntax validator\" to validate
-                that a program contained valid syntax
-:::
-
-::: {.section}
-### XML Schema
-
--   Used by validating parsers to validate documents
-
--   Documents that conform the to schema are valid, documents that do
-    not conform to the schema are invalid
-
--   Schema documents have the extension `.xsd`
-
-    -   Can validate schema at
-        [www.xmlforasp.net/SchemaValidator.aspx](www.xmlforasp.net/SchemaValidator.aspx)
-
--   Let\'s start with an example
-:::
-
-::: {.section}
-### [Example: `book.xml`](../examples/ch15_xml/book.xml)
-
-:::
-
-::: {.section}
-### [Example: `book.xsd`](../examples/ch15_xml/book.xsd)
-
-:::
-
-::: {.section}
-### XML Schema
-
--   In the schema, we have two namespaces
-
-    -   One for the schema itself, `xmlns`, which can be used to
-        validate the schema
-
-    -   The second, `xmlns:deitel`, which is used to define names
-        created by us
-
--   Our `targetNamespace` is the URI of the XML vocabulary that this
-    schema defines
-:::
-
-::: {.section}
-### Schema Attributes
-
--   Name corresponds to the element\'s name and type specifies the
-    element\'s type
-
--   Types:
-
-    -   XML has predefined types, or you can create user-defined types
-:::
-
-::: {.section}
-### Schema Attributes
-
--   There are two categories of types:
-
-    1.  **Simple types**: a basic type. Cannot contain attributes or
-        child elements
-
-    2.  **Complex types**: a complex type. Can contain attributes or
-        child elements
-
-    -   Complex types may have **simple content** or **complex
-        content**. Both can contain attributes, but only complex content
-        contain child elements. Simple content must extend or restrict a
-        base user or XML type
-:::
-
-::: {.section}
-### XML Types
-
-![](images/ch15_xml_types-1.png)
-:::
-
-::: {.section}
-### XML Types
-
-![](images/ch15_xml_types-2.png)
-:::
-
-::: {.section}
-### [Example: `laptop.xml`](../examples/ch15_xml/laptop.xml)
-
-:::
-
-::: {.section}
-### [Example: `laptop.xsd`](../examples/ch15_xml/laptop.xsd)
-
-:::
-
-::: {.statcounter}
-[![Web Analytics Made Easy -
-StatCounter](//c.statcounter.com/11819202/0/3d207e19/0/){.statcounter}](http://statcounter.com/ "Web Analytics Made Easy -
-  StatCounter")
-:::
-:::
-:::
+```{include=../examples/ch15_xml/laptop.xsd}
+```

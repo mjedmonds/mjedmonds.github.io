@@ -2,13 +2,11 @@
 apple-mobile-web-app-capable: yes
 apple-mobile-web-app-status-bar-style: 'black-translucent'
 author: Mark Edmonds
-description: |
-    A course on the world\'s fastest growing machine learning library,
-    TensorFlow
-title: 'Introduction to HTML: Part I'
+description: Chapter 2, Introduction to HTML Part 1
+title: 'Introduction to HTML: Part 1'
 ---
 
-## Chapter 2: Introduction to HTML Part 1
+# Chapter 2: Introduction to HTML Part 1
 
 CS 80: Internet Programming
 
