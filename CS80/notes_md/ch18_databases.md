@@ -6,7 +6,7 @@ description: Chapter 18, Databases
 title: Databases
 ---
 
-# Chapter 18: Databases
+## Chapter 18: Databases
 
 CS 80: Internet Programming
 
@@ -46,6 +46,8 @@ Instructor: Mark Edmonds
 ## Employee Table
 
 - An example query result: show where each department is located in increasing order by department number
+
+![Query result](images/ch18_employee_query.png)
 
 ## The Rule of Referential Integrity
 
@@ -111,7 +113,7 @@ Instructor: Mark Edmonds
 - Lines between tables indicate how tables are connected
 - Numbers indicate the degree of the connection
   - E.g AuthorID is unique in the Authors table, but may be used multiple times in the AuthorISBN table
-- AuthorISBN provides a *many-tomany relationship* between Authors and Titles
+- AuthorISBN provides a *many-to-many relationship* between Authors and Titles
   - An author can write many books and a book can have many authors
 
 ## SQL
@@ -133,13 +135,25 @@ Instructor: Mark Edmonds
 ## SQL Queries
 
 - Example for the Books database:
+
+  ```sql
+  SELECT AuthorID, LastName
+      FROM Authors
+  ```
+
 - Gets the AuthorID and LastName from the Authors table
 
-![SQL Author ID and Lastname query](images/ch18_sql_authorID_lastname.png)
+![SQL Author ID and Last name query](images/ch18_sql_authorID_lastname.png)
 
-### SQL Queries
+## SQL Queries
 
 - A more complicated example:
+
+  ```sql
+  SELECT Title, EditionNumber, Copyright
+      FROM Titles
+      WHERE Copyright &gt; '2010'
+  ```
 
 ![SQL title, edition, copyright query](images/ch18_sql_title_edition_copyright.png)
 
@@ -148,7 +162,7 @@ Instructor: Mark Edmonds
 - Note: SQL strings are always single quoted (\'), not double quoted (\")
   - Note: A wildcard (`*`) may be used to select all columns, e.g. `SELECT * FROM Titles` selects all columns from the Titles table
 
-### Pattern Matching
+## Pattern Matching
 
 - The `WHERE Copyright > '2010'` line above uses an operator `>`
   - We also have the `<, >, <=, >=, =, !=` and `LIKE`
@@ -160,19 +174,19 @@ Instructor: Mark Edmonds
 
 - Select all authors whose last name begins with a \'D\'
 
-```sql
-SELECT AuthorID, FirstName, LastName
-    FROM Authors
-    WHERE LastName LIKE 'D%'
-```
+  ```sql
+  SELECT AuthorID, FirstName, LastName
+      FROM Authors
+      WHERE LastName LIKE 'D%'
+  ```
 
 - Select all authors whose last name starts with any character, followed by an \'o\', followed by any number of additional characters
 
-```sql
-SELECT AuthorID, FirstName, LastName
-    FROM Authors
-    WHERE LastName LIKE '_o%'
-```
+  ```sql
+  SELECT AuthorID, FirstName, LastName
+      FROM Authors
+      WHERE LastName LIKE '_o%'
+  ```
 
 ## Ordering
 
@@ -184,14 +198,14 @@ SELECT AuthorID, FirstName, LastName
 
 - Can order by multiple columns - sorts by outer sort first, then each additional sorting specified (e.g. last name then by first name)
 
-```sql
-SELECT columnName1, columnName2, …
-    FROM tableName
-    ORDER BY column ASC
-    SELECT columnName1, columnName2, …
-    FROM tableName
-    ORDER BY column DESC
-```
+  ```sql
+  SELECT columnName1, columnName2, …
+      FROM tableName
+      ORDER BY column ASC
+      SELECT columnName1, columnName2, …
+      FROM tableName
+      ORDER BY column DESC
+  ```
 
 ## Exercise
 
@@ -201,11 +215,13 @@ SELECT columnName1, columnName2, …
 
 - Solution:
 
-```sql
-        SELECT AuthorID, FirstName, LastName
-            FROM Authors
-            ORDER BY LastName DESC
-```
+  ```sql
+  SELECT AuthorID, FirstName, LastName
+      FROM Authors
+      ORDER BY LastName DESC
+  ```
+
+  ![Solution](images/ch18_sql_authorID_first_last_query.png)
 
 ## Exercise
 
@@ -215,12 +231,14 @@ SELECT columnName1, columnName2, …
 
 - Solution:
 
-```sql
-SELECT ISBN, Title, EditionNumber, Copyright
-    FROM Titles
-    WHERE Title LIKE '%How to Program'
-    ORDER BY Title ASC
-```
+  ```sql
+  SELECT ISBN, Title, EditionNumber, Copyright
+      FROM Titles
+      WHERE Title LIKE '%How to Program'
+      ORDER BY Title ASC
+  ```
+
+  ![Solution](images/ch18_sql_isbn_title_edition_copyright_query.png)
 
 ## Merging Data from Multiple Tables
 
@@ -231,9 +249,9 @@ SELECT ISBN, Title, EditionNumber, Copyright
 
 ```sql
 SELECT columnName1, columnName2, …
-    FROM table1
-    INNER JOIN table2
-    ON table1.columnName = table2.columnName
+  FROM table1
+  INNER JOIN table2
+  ON table1.columnName = table2.columnName
 ```
 
 ## Exercise
@@ -244,13 +262,13 @@ SELECT columnName1, columnName2, …
 
 - Solution:
 
-```sql
-SELECT FirstName, LastName, ISBN
-    FROM Authors
-    INNER JOIN AuthorISBN
-    ON Authors.AuthorID = AuthorISBN.AuthorID
-    ORDER BY LastName, FirstName
-```
+  ```sql
+  SELECT FirstName, LastName, ISBN
+      FROM Authors
+      INNER JOIN AuthorISBN
+      ON Authors.AuthorID = AuthorISBN.AuthorID
+      ORDER BY LastName, FirstName
+  ```
 
 - Note: the use of `Authors.AuthorID` and `AuthorISBN.AuthorID` is called a **qualified name**. When tables have matching column names, we must be more specific by stating which table we want to use with each column (think about this: why we didn\'t have to quality the `ISBN` in the `SELECT` part of the query?)
 
@@ -263,40 +281,44 @@ SELECT FirstName, LastName, ISBN
 - Insert inserts a row into a table
 - Syntax:
 
-```sql
-INSERT INTO tableName ( columnName1, columnName2, …, columnNameN )
-    VALUES ( value1, value2, …, valueN )
-```
+  ```sql
+  INSERT INTO tableName ( columnName1, columnName2, …, columnNameN )
+      VALUES ( value1, value2, …, valueN )
+  ```
 
-## Inserting, Updating, and Deleting information from a table
+## Inserting, Updating, and Deleting Information from a table
 
 - Example:
 
-```sql
-        INSERT INTO Authors ( FirstName, LastName )
-            VALUES ( 'Sue', 'Red' )
-```
+  ```sql
+  INSERT INTO Authors ( FirstName, LastName )
+      VALUES ( 'Sue', 'Red' )
+  ```
+
+  ![Query Result](images/ch18_sql_insert.png)
 
 ## SQL Update
 
 - Update modifies existing data in a table
 - Syntax:
 
-```sql
-UPDATE tableName
-    SET columnName1 = value1, columnName2 = value2, …, columnNameN = valueN
-    WHERE criteria
-```
+  ```sql
+  UPDATE tableName
+      SET columnName1 = value1, columnName2 = value2, …, columnNameN = valueN
+      WHERE criteria
+  ```
 
 ## SQL Update
 
 - Example:
 
-```sql
-UPDATE Authors
-    SET LastName = 'Black'
-    WHERE LastName = 'Red' AND FirstName = 'Sue'
-```
+  ```sql
+  UPDATE Authors
+      SET LastName = 'Black'
+      WHERE LastName = 'Red' AND FirstName = 'Sue'
+  ```
+
+  ![Query Result](images/ch18_sql_update.png)
 
 ## SQL Update
 
@@ -306,28 +328,28 @@ UPDATE Authors
 
 - Question: What else could we have used for the `WHERE` portion of the previous example?
 
-```sql
-UPDATE Authors
-    SET LastName = 'Black'
-    WHERE AuthorID = 6
-```
+  ```sql
+  UPDATE Authors
+      SET LastName = 'Black'
+      WHERE AuthorID = 6
+  ```
 
 ## SQL Delete
 
 - Removes a row from a table
 - Syntax:
 
-```sql
-DELETE FROM tableName
-    WHERE criteria
-```
+  ```sql
+  DELETE FROM tableName
+      WHERE criteria
+  ```
 
 - Example:
 
-```sql
-DELETE FROM Authors
-    WHERE LastName = 'Black' AND FirstName = 'Sue'
-```
+  ```sql
+  DELETE FROM Authors
+      WHERE LastName = 'Black' AND FirstName = 'Sue'
+  ```
 
 ## MySQL
 
@@ -343,3 +365,5 @@ DELETE FROM Authors
     5. Handling large databases (e.g., tens of thousands of tables with millions of rows).
 
 ## MySQL
+
+- You can start MySQL from XAMPP (Chapter 17)

@@ -6,7 +6,7 @@ description: Chatper 4, Introduction to CSS
 title: Introduction to CSS
 ---
 
-# Chapter 4: CSS
+## Chapter 4: CSS
 
 CS 80: Internet Programming
 
@@ -23,20 +23,20 @@ Instructor: Mark Edmonds
 ## Intro to CSS
 
 - Why not control the presentation within the HTML?
-- You can!
-- But in general, it's better to separate!
-  - Why? Because you can swap the style without changing anything in the HTML document
+  - You can!
+  - But in general, it's better to separate!
+    - Why? Because you can swap the style without changing anything in the HTML document
 
 ## Inline Style
 
 - Specify the style in the html tag through a `style` attribute
-  - E.g. to change the font size, one might apply the attribute `style=“font-size: 45pt;”` which would set the font size to 45pt.
+  - E.g. to change the font size, one might apply the attribute `style="font-size: 45pt;"` which would set the font size to 45pt.
 
 ## Inline Styles
 
-- Advantage: 
+- Advantage:
   - Styling is applied solely to this instance of the tag (useful if we want custom styling for one particular tag)
-- Disadvantage: 
+- Disadvantage:
   - Styling is applied solely to this instance of the tag (meaning it has no generality; we can't change the style of every tag across the entire document. In our example, we may want to change every `<h2>` in the document
 
 ## Example: [`inline_styles.html`](../examples/ch4_css/inline_styles.html)
@@ -50,6 +50,11 @@ Instructor: Mark Edmonds
     document
 - Example:
 
+```css
+p { font-size: x-large;
+font-family: arial, sans-serif; }
+```
+
 ## Embedded Style Sheets
 
 - What does this do?
@@ -58,9 +63,9 @@ Instructor: Mark Edmonds
 ## Embedded Style Sheets
 
 - Each property is a key-value pair
-- Key is the property to change (e.g. `font-size`)
-- Value is the setting of the property (e.g. `x-large`)
-- Key and value are always separated by a `:` and the key-value pair is terminated with a `;`
+  - Key is the property to change (e.g. `font-size`)
+  - Value is the setting of the property (e.g. `x-large`)
+  - Key and value are always separated by a `:` and the key-value pair is terminated with a `;`
 
 ## Embedded Style Sheets
 
@@ -89,7 +94,7 @@ Instructor: Mark Edmonds
   - Available relative sizes: `xx-small``, x-small, small, smaller, medium, large, ``larger``, x-large, xx-large`)
   - Preferrable to use relative sizes
     - Why? Different computers have different resolutions, so using `pt` will result in different effects based on the user's display
-    - Example: `font-size: x-small;`
+  - Example: `font-size: x-small;`
 
 ## Common CSS Properties
 
@@ -102,7 +107,7 @@ Instructor: Mark Edmonds
 
 - `background-color`
   - Sets the background color. Takes hexidemial value or rgb
-  - Example: `background-co``lor: #668B8B`
+  - Example: `background-color: #668B8B`
 
 ## Example: [`background_color.html`](../examples/ch4_css/background_color.html)
 
@@ -162,11 +167,12 @@ Instructor: Mark Edmonds
 
 ## Common CSS-related HTML Tags
 
-- An inline block
-- Has minimal width and doesn't start a new line
-- Why do these matter?
+- `<span>`
+  - An inline block
+  - Has minimal width and doesn't start a new line
+- Why do `<div>` and `<span>` matter?
   - They are commonly used to apply styling to subsections of the document, when no other divisor exists
-  - E.g. think of the `<em>some text</em>`as `<span style="font-style: italic;”>some text</span>`
+  - E.g. think of the `<em>some text</em>`as `<span style="font-style: italic;">some text</span>`
     - We may/probably don't have a built-in tag to help us, so `div` and `span` can be a very general way to apply styling to a specific section
 
 ## CSS Classes and Selectors
@@ -182,27 +188,27 @@ Instructor: Mark Edmonds
 - Usage: all classes start with `.`
 - Example:
 
-```css
-        .emph { font-style: italic; }
-```
+  ```css
+  .myemph { font-style: italic; }
+  ```
 
 - Apply this class using the `class` attribute:
 
-```html
-        <p class=“emph”>some_text</p>
-```
+  ```html
+  <p class="myemph">some_text</p>
+  ```
 
 ## CSS Classes and Selectors
 
 - We can even apply certain classes only to specific HTML tags
   - This type CSS styling increases the *specifcity* of the styling, which help resolve styling conflicts (more on this in a bit)
-- Example: 
+- Example:
 
-```css
-        p.emph { font-style: italic; }
-```
+  ```css
+  p.myemph { font-style: italic; }
+  ```
 
-  - only defines our `emph` class for use within a `<p>` HTML tag
+  - only defines our `myemph` class for use within a `<p>` HTML tag
 
 ## CSS Classes and Selectors
 
@@ -211,22 +217,22 @@ Instructor: Mark Edmonds
   - A class is a selector rule, but we also have selectors for `id`'s with `#id`
 - Example:
 
-```css
-    #htmlid { color: blue }
-```
+  ```css
+  #htmlid { color: blue }
+  ```
 
 - Corresponding HTML:
 
-```html
-    <section id=“htmlid”>
-```
+  ```html
+  <section id="htmlid">
+  ```
 
 ## CSS Precedence
 
 - ID selection has the highest precedence (e.g. `#id`)
-- Followed by tag-specific classes (e.g. `p.emph`)
-- Followed by classes (e.g. `emph`)
-- Followed by HTML tag rules (e.g. ```p`)
+- Followed by tag-specific classes (e.g. `p.myemph`)
+- Followed by classes (e.g. `myemph`)
+- Followed by HTML tag rules (e.g. `p`)
 
 ## Conflicting Styles
 
@@ -243,8 +249,8 @@ Instructor: Mark Edmonds
 ## Conflicting Styles
 
 - Let's try a weird scenario:
-  - We defined a `emph` both as a CSS class and a CSS class for `<p>`
-  - So what happens when we write a normal `<p>` (no class specified) inside of a `<div class=“emph”>`?
+  - We defined a `myemph` both as a CSS class and a CSS class for `<p>`
+  - So what happens when we write a normal `<p>` (no class specified) inside of a `<div class="myemph">`?
 
 ## Example: [`conflicting_styles.html`](../examples/ch4_css/conflicting_styles.html)
 
@@ -268,13 +274,14 @@ Instructor: Mark Edmonds
 ## External Style Sheets
 
 - Attributes required:
-  - `rel=“stylesheet”` specifies the relationship between this document and the external one, in this case, we want to link to a stylesheet
-  - `type=“text/css``“` just like how we specified with `<style type=“text/css”>`\
-  - `href=“style.css”` is the hyperlink reference to the external document\
+  - `rel="stylesheet"` specifies the relationship between this document and the external one, in this case, we want to link to a stylesheet
+  - `type="text/css"` just like how we specified with `<style type="text/css">`\
+  - `href="style.css"` is the hyperlink reference to the external document\
 - Example:
-```html
-    <link rel=“stylesheet” type=“text/css” href=“style.css">
-```
+
+  ```html
+  <link rel="stylesheet" type="text/css" href="style.css">
+  ```
 
 ## Example: [`external_styles.html`](../examples/ch4_css/external_styles.html)
 
@@ -282,9 +289,11 @@ Instructor: Mark Edmonds
 ```
 
 ## CSS Comments
+
 ```css
 /* This is a CSS comment. start with /* and end with */ */
 ```
+
 ## CSS Units
 
 - Used to control sizing
@@ -297,7 +306,7 @@ Instructor: Mark Edmonds
 ## CSS Positioning
 
 - `position` property controls the location of document elements\
-- Basic idea: answers the question: where should this element be relative to other elements?
+  - Basic idea: answers the question: where should this element be relative to other elements?
 
 ## CSS Positioning
 
@@ -331,9 +340,10 @@ Fixed positioning
 
 ## CSS Positioning
 
-- Static positioning
-  - `position: static;` the default behavior, positioning is determined by document flow/ordering
-  - Property values: <http://www.w3schools.com/cssref/pr_class_position.asp>
+Static positioning
+
+- `position: static;` the default behavior, positioning is determined by document flow/ordering
+- Property values: <http://www.w3schools.com/cssref/pr_class_position.asp>
 
 ## Example: [`positioning.html`](../examples/ch4_css/positioning.html)
 
@@ -351,11 +361,11 @@ Fixed positioning
 ## Element Dimensions
 
 - `overflow` property defines what to do if the content of an element goes over the specified dimensions
-- Possible values:
-  - `overflow: visible;` overflow will still be rendered (overflowing into over elements)
-  - `overflow: hidden;` overflow will be clipped (overflowing content will be invisible)
-  - `overflow: scroll;` scroll bars are used to view the rest of the content
-  - `overflow: auto;` if the overflow is clipped, a scroll bar will appear
+  - Possible values:
+    - `overflow: visible;` overflow will still be rendered (overflowing into over elements)
+    - `overflow: hidden;` overflow will be clipped (overflowing content will be invisible)
+    - `overflow: scroll;` scroll bars are used to view the rest of the content
+    - `overflow: auto;` if the overflow is clipped, a scroll bar will appear
 
 ## Example: [`positioning.html`](../examples/ch4_css/positioning.html)
 
@@ -421,9 +431,9 @@ Controlling borders
 ## Floating Elements
 
 - `clear` allows you to specify that an element should not flow with a float (e.g. will not flow with an element on right/left; it will start below the floated element)\
-- `clear: left;` do not allow floating to the left\
-- `clear: right;` do not allow floating to the right\
-- `clear: both;` do not allow floating to the light or right\
+  - `clear: left;` do not allow floating to the left\
+  - `clear: right;` do not allow floating to the right\
+  - `clear: both;` do not allow floating to the light or right\
 
 ## Example: [`floating.html`](../examples/ch4_css/floating.html)
 
@@ -442,11 +452,11 @@ Controlling borders
 ## Margin and Padding
 
 - `padding` property specifies the amount of space between the content and the border (see box model above)\
-- Value is a length (px, pt, cm, etc) or a % of the page
-- The `padding` attribute is shorthand for `padding-top`, `padding``-right`, `padding``-bottom`, `padding-left`
-  - See <http://www.w3schools.com/css/css_padding.asp> for padding variations\
-- Example: `padding: 50px 40px 100px 25px` (what does this mean?)
-- Example: `padding-top: 100px`
+  - Value is a length (px, pt, cm, etc) or a % of the page
+  - The `padding` attribute is shorthand for `padding-top`, `padding``-right`, `padding``-bottom`, `padding-left`
+    - See <http://www.w3schools.com/css/css_padding.asp> for padding variations\
+  - Example: `padding: 50px 40px 100px 25px` (what does this mean?)
+  - Example: `padding-top: 100px`
 - See: `media_types_queries.html` or `positioning.html`
 
 ## Media Types and Media Queries
@@ -457,14 +467,15 @@ Media Types
 - Standarad media type is `screen`, which stands for computer screen
 - Other options: `handheld` (cell phone/mobile), `speech` (read out old), `print` (printers).
 - Basic example:
-```css
-    @media all {
-    body { background-color: black; }
-    }
-    @media print{
-    body { background-color: white; }
-    }
-```
+
+  ```css
+  @media all {
+  body { background-color: black; }
+  }
+  @media print{
+  body { background-color: white; }
+  }
+  ```
 
 ## Media Types and Media Queries
 
@@ -481,6 +492,13 @@ Media Queries
 Media Queries
 
 - CSS Syntax
+
+  ```css
+  @media not|only mediatype and (media feature) {
+  CSS-Code;
+  }
+  ```
+
 - `not` negates the media query\
 - `only` applies the style only if the query matches\
 - Note: you may omit the `mediatype` and only specify a `(media feature)` if you wish

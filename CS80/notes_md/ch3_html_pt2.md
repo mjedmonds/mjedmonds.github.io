@@ -6,7 +6,7 @@ description: Chapter 3, Intoduction to HTML Part 2
 title: 'Introduction to HTML: Part 2'
 ---
 
-# Chapter 3: Introduction to HTML Part 2
+## Chapter 3: Introduction to HTML Part 2
 
 CS 80: Internet Programming
 
@@ -14,7 +14,8 @@ Instructor: Mark Edmonds
 
 ## HTML5 Forms
 
-- HTML5 introduces new input types for forms
+HTML5 introduces new input types for forms
+
 - These input types are self-validating
   - No need for javascript validation!
 - However, the input data should be verified server-side
@@ -25,7 +26,7 @@ New HTML5 form input types
 
 - Each is part of a `<input type="type">` tag
 - `color`: allows user to input a RGB, many browsers have color picker.
-  - input must be a hexadecimal value (color code)
+  - Input must be a hexadecimal value (color code)
 - `date`: calendar date input, many browsers have a calendar-style picker
 
 ## HTML5 Forms
@@ -88,23 +89,24 @@ New HTML5 form input types
 
 ## Example: [`new_forms.html`](../examples/ch3_html_pt2/new_forms.html)
 
-```{include=.../examples/ch3_html_pt2/new_forms.html}
+```{include=../examples/ch3_html_pt2/new_forms.html}
 ```
 
 ## Input Focusing
 
-- Input `tabindex` attribute
-  - `tabindex` attribute enables controlling the order of input focus on TAB
-  - Ordering starts at 1
+Input `tabindex` attribute
+
+- `tabindex` attribute enables controlling the order of input focus on TAB
+- Ordering starts at 1
 
 ## HTML5 Forms
 
 New HTML5 form attributes
 
 - `autofocus:` applied to input tag, automatically gives focus to this element (e.g. user can type immediately)
-- Can only be used on one input element per document
+  - Can only be used on one input element per document
 
-### HTML5 Forms
+## HTML5 Forms
 
 New HTML5 form attributes
 
@@ -119,9 +121,9 @@ New HTML5 form attributes
 New HTML5 form attributes
 
 - `placeholder`: applied to input tag, temporary text in an input field
-- Typically either the format of the input, or an example
-- Only applies to the following input types:
-  - `text`, `search`, `url`, `tel`, `email`
+  - Typically either the format of the input, or an example
+  - Only applies to the following input types:
+    - `text`, `search`, `url`, `tel`, `email`
 
 ## HTML5 Forms
 
@@ -150,24 +152,28 @@ A regular what?
 Telephone pattern explained
 
 - Pattern:
-```regex
-    \(\d{3}\) +\d{3}-\d{4}
-```
+
+  ```regex
+  \(\d{3}\) +\d{3}-\d{4}
+  ```
+
 - Prelimnary note: `\` in regex is similar to `&` in HTML
-- `/` escapes the special character
-  - Escaping means stripping it of its special meaning
+  - `/` escapes the special character
+    - Escaping means stripping it of its special meaning
 
 ## Regular Expressions
 
 Telephone pattern explained
 
 - Pattern:
-```regex
-    \(\d{3}\) +\d{3}-\d{4}
-```
-- `(` has a special meaning in regex, namely to start saving the matched pattern to a *group*
+
+  ```regex
+  \(\d{3}\) +\d{3}-\d{4}
+  ```
+
+- `(` has a special meaning in regex, namely to start saving the matched pattern to a *group* (saving a section of the pattern for later use)
 - `)` marks the end of the saved group
-- You can then reference it later with `\#` where `#` is the group number used in the expression you wish to reference
+- You can then reference the group later with `\#` where `#` is the group number used in the expression you wish to reference
   - E.g. to reference the first saved group, use `\1`
 - Because of this special meaning, we have to escape it
 
@@ -176,9 +182,11 @@ Telephone pattern explained
 Telephone pattern explained
 
 - Pattern:
-```regex
-    \(\d{3}\) +\d{3}-\d{4}
-```
+
+  ```regex
+  \(\d{3}\) +\d{3}-\d{4}
+  ```
+
 - `\d` says we want to look for a digit (\[0-9\])
   - In this case, the escape gives `d` a special meaning - namely a digit
 - `{3}` says we want to look for the previous pattern 3 times (3 digits)
@@ -188,9 +196,11 @@ Telephone pattern explained
 Telephone pattern explained
 
 - Pattern:
-```regex
-    \(\d{3}\) +\d{3}-\d{4}
-```
+
+  ```regex
+  \(\d{3}\) +\d{3}-\d{4}
+  ```
+
 - \"` `\" is a literal space to look for
   - `+` means match the previous pattern 1 or more times
 - Then, we look for 3 more digits, followed by a `-` then 4 more digits
@@ -200,15 +210,15 @@ Telephone pattern explained
 New HTML5 form attributes
 
 - `autocomplete`: added to form or input tag, allows user to use previously submitted information when returning to the same form
-- You can turn autocomplete on or off for specific elements, overriding a value already set
-- Allows you to protect sensitive information from being autocomplete candidates
-  - E.g. password, credit card info, etc.
+  - You can turn autocomplete on or off for specific elements, overriding a value already set
+  - Allows you to protect sensitive information from being autocomplete candidates
+    - E.g. password, credit card info, etc.
 
 ## `datalist` element
 
 - Provides input options for a text form input
 - As the user starts typing, the list will narrow
-  - how the list narrows depends on the browser
+  - How the list narrows depends on the browser
 - The datalist must be connected to an input through the `id` attribute
   - This is the glue between the list and the corresponding form input
   - Also means one list can be used on multiple form inputs
@@ -270,7 +280,8 @@ New HTML5 form attributes
 ```{include=../examples/ch3_html_pt2/new_elements.html}
 ```
 
-----------------------
+## Tools in a Toolbox
+
 Remember, these are general guidelines. HTML is a like a toolbox; you
 are free to use them as you see fit.
 
@@ -292,19 +303,19 @@ Video
 
 - `autoplay `will start the video as soon as it loads
 - The `video` tag is dissimilar from the `img` tag
-- You can use the video tag as a void tag (like an `img` tag) or you can specify multiple `source` tags
-- `source` tags specify a video file and a type
-  - A `video` tag can have multiple `source` tags; the browser will play the first type supported.
-  - If no types are supported, the text in between the `video` tag will be displayed.
+  - You can use the video tag as a void tag (like an `img` tag) or you can specify multiple `source` tags
+  - `source` tags specify a video file and a type
+    - A `video` tag can have multiple `source` tags; the browser will play the first type supported.
+    - If no types are supported, the text in between the `video` tag will be displayed.
 
 ## Advanced HTML5
 
 Audio
 
 - Extremely similar to playing video
-- Only difference with video is no `height` and `width` attribute
-- `controls`, `autoplay`, `loop`, `muted` are all the same
-- Must specify an audio file (like MP3) instead of video
+  - Only difference with video is no `height` and `width` attribute
+  - `controls`, `autoplay`, `loop`, `muted` are all the same
+  - Must specify an audio file (like MP3) instead of video
 
 ## Example: [`audio.html`](../examples/ch3_html_pt2/audio.html)
 

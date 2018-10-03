@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 
 <!-- Fig. 19.19: readCookies.php -->
-<!-- Displaying the cookie’s contents. -->
+<!-- Displaying the cookies contents. -->
 <html>
    <head>
       <meta charset = "utf-8">
-      <title>Read Cookies</title>  
+      <title>Read Cookies</title>
       <style type = "text/css">
          p { margin: 0px; }
       </style>

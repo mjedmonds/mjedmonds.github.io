@@ -1,0 +1,377 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+
+    <title>Javascript: Introduction to Scripting</title>
+
+    <meta name="description" content="CS 80: Internet Programming Notes">
+    <meta name="author" content="Mark Edmonds">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    
+    <!-- Google analytics -->
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-98378227-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="reveal.js/css/reveal.css">
+    <link rel="stylesheet" href="reveal.js/css/theme/serif.css" id="theme">
+    <link href='css/ubuntu_font.css' rel='stylesheet' type='text/css'>
+
+    <link rel="shortcut icon" href="../../favicon.png">
+    
+    <style>
+      body {
+      padding-top: 30px;
+      padding-bottom: 40px;
+      }
+      /* custom settings for reveal */
+      reveal {
+        font-size: 30px;
+      }
+      .reveal h1 {
+        font-size: 3em; }
+
+      .reveal h2 {
+        font-size: 2em; }
+
+      .reveal h3 {
+        font-size: 1.25em; }
+
+      .reveal h4 {
+        font-size: 1em; }
+
+      .reveal li {
+        padding-top: 4px;
+        padding-bottom: 4px;
+      }
+    </style>
+
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="css/highlightjs/atom-one-light.css">
+
+    <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+    <script>
+      document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+    </script>
+
+    <script src="js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+  </head>
+  <body>
+    
+    <script src="js/nav.js"></script>
+
+    <script>
+      function toggleElements(one, two) {
+      document.getElementById(one).style.display = 'none';
+      document.getElementById(two).style.display = 'block';
+      }
+    </script>
+    
+    <!-- Main body -->
+    
+    <div class="reveal">
+      <div class="slides">
+        <!-- slide content will go here -->
+        <section id="chapter-6-javascript-introduction-to-scripting" class="level2"><h2>Chapter 6: Javascript: Introduction to Scripting</h2><p>CS 80: Internet Programming</p><p>Instructor: Mark Edmonds</p></section><section id="welcome-to-javascript" class="level2"><h2>Welcome to Javascript!</h2><ul><li>What is javascript?<ul><li>Client side scripting language</li></ul></li><li>What is scripting?<ul><li>Generally tied with interpreted languages, meaning the code is translated to machine code right before execution (vs. compiled code)</li></ul></li></ul></section><section id="welcome-to-javascript-1" class="level2"><h2>Welcome to Javascript!</h2><p>Why do we care?</p><ul><li>HTML and CSS give us a lot of control over content, structure, and presentation, but we still lack the ability to have dynamic or computational websites</li><li>Javascript offers client-side programming, enabling fun stuff like these:<ul><li><a href="https://codepen.io/HarrisCarney/pen/dPjKyK" class="uri">https://codepen.io/HarrisCarney/pen/dPjKyK</a></li><li><a href="https://codepen.io/GabbeV/pen/viAec" class="uri">https://codepen.io/GabbeV/pen/viAec</a></li><li><a href="https://codepen.io/dissimulate/details/eZxEBO/" class="uri">https://codepen.io/dissimulate/details/eZxEBO/</a></li></ul></li><li>Clearly some powerful stuff!</li><li>We will start small and with fundamentals; there are many libraries to help you with graphics</li><li>We will concentrate on logic</li></ul></section><section id="getting-started" class="level2"><h2>Getting Started</h2><ul><li><code>&lt;script&gt;</code> HTML element allows us to add Javascript to our HTML document<ul><li>Typically goes in the <code>&lt;head&gt;</code> portion of the document</li></ul></li><li><p>Example:</p><pre class="html"><code>&lt;script type=&quot;text/javascript&quot;&gt; script_stuff &lt;/script&gt;</code></pre></li></ul></section><section id="example-hello_world.html" class="level2"><h2>Example: <a href="../examples/ch6_js/hello_world.html"><code>hello_world.html</code></a></h2><pre><code>&lt;!DOCTYPE html&gt;
+        &lt;!-- Fig. 6.1: welcome.html --&gt;
+        &lt;!-- Displaying a line of text. --&gt;
+        &lt;html&gt;
+        
+        &lt;head&gt;
+          &lt;meta charset=&quot;utf-8&quot;&gt;
+          &lt;title&gt;A First Program in JavaScript&lt;/title&gt;
+          &lt;script type=&quot;text/javascript&quot;&gt;
+            // the document object accesses the current HTML document
+            // writeln is a method that writes a line to the document
+            // the enclosed  argument to writeln is the content to write to the document
+            document.writeln(&quot;&lt;h1&gt;Welcome to JavaScript Programming!&lt;/h1&gt;&quot;);
+          &lt;/script&gt;
+        &lt;/head&gt;
+        
+        &lt;body&gt;
+          &lt;!-- Notice our empty body --&gt;
+        &lt;/body&gt;
+        
+        &lt;/html&gt;
+        </code></pre></section><section id="example-hello_world.html-1" class="level2"><h2>Example: <a href="../examples/ch6_js/hello_world.html"><code>hello_world.html</code></a></h2><ul><li>Finally we see the object model!</li><li>We will see more, but for now:</li><li><code>document</code> is the HTML document, represented through a javascript object<ul><li>We will cover this concept in more detail in Chapter 12 (Document Object Model)</li></ul></li><li><code>.writeln()</code> is a method within the <code>document</code> object<ul><li>It writes content to the HTML document, followed by a new line (that's the <code>ln</code>)</li><li><code>&quot;&lt;h1&gt;Welcome to JavaScript Programming!&lt;/h1&gt;&quot;</code> is a <strong>string</strong> and is the content to write to the HTML document</li></ul></li></ul></section><section id="external-javascript-files" class="level2"><h2>External Javascript Files</h2><ul><li><p>Example</p><pre class="html"><code>&lt;script src=&quot;srcipt.js&quot;&gt;</code></pre></li><li><p>Loads the Javascript in <code>srcipt.js</code> into this HTML document</p></li></ul></section><section id="javascript-basics" class="level2"><h2>Javascript Basics</h2><p>Statements and Keywords</p><ul><li><strong>Keywords</strong> are words with special meaning to javascript<ul><li><code>var</code> is an example</li></ul></li><li>A <strong>statement</strong> is a program statement to execute by the javascript interpreter<ul><li>Statements are terminated with a semicolon <code>;</code>, as in <a href="../examples/ch6_js/hello_world.html"><code>hello_world.html</code></a></li></ul></li></ul></section><section id="javascript-basics-1" class="level2"><h2>Javascript Basics</h2><p>Variables</p><ul><li>A <strong>variable</strong> is a container to store data in<ul><li>Think about this like a math variable, but in javascript, variables can store any data</li><li><em>Declared</em> with <code>var myVar;</code><ul><li>Can declare multiple variables at once with a comma-serparated list<ul><li>E.g. <code>var myVar, myVar1, myVar2;</code></li></ul></li></ul></li><li><em>Assign</em> the variable a value with <code>myVar = 5;</code></li></ul></li></ul></section><section id="example-hello_world_variables.html" class="level2"><h2>Example: <a href="../examples/ch6_js/hello_world_variables.html"><code>hello_world_variables.html</code></a></h2><pre><code>&lt;!DOCTYPE html&gt;
+        &lt;!-- Fig. 6.1: welcome.html --&gt;
+        &lt;!-- Displaying a line of text. --&gt;
+        &lt;html&gt;
+        
+        &lt;head&gt;
+          &lt;meta charset=&quot;utf-8&quot;&gt;
+          &lt;title&gt;A First Program in JavaScript&lt;/title&gt;
+          &lt;script type=&quot;text/javascript&quot;&gt;
+            // declare a variable to hold our string
+            var text = &quot;&lt;h1&gt;Welcome to JavaScript Programming!&lt;/h1&gt;&quot;;
+            var myDocVar = document;
+            
+            // use the variables to write the content to the document
+            myDocVar.writeln(text);
+          &lt;/script&gt;
+        &lt;/head&gt;
+        
+        &lt;body&gt;
+          &lt;!-- Notice our empty body --&gt;
+        &lt;/body&gt;
+        
+        &lt;/html&gt;
+        </code></pre></section><section id="javascript-basics-2" class="level2"><h2>Javascript Basics</h2><p>Variables</p><ul><li>Sidenote: Javascript variables do not have a type; their type is determined by the content they store<ul><li>What does this mean? Well, we've seen <code>var</code> be assigned to a string (<code>hello_world_variables.html</code>) and to a number (above, <code>myVar =5;</code>).<ul><li>So <code>var</code> represents any variable, could be a string, could be an int</li><li>This contrasts with many programming languages, like C/C++, Java</li><li>Moreover, a variable is not bound to a particular type. We can reassign it at any time to any type (e.g. <code>myVar = 5; myVar = &quot;cheese&quot;;</code>)</li></ul></li></ul></li></ul></section><section id="javascript-basics-3" class="level2"><h2>Javascript Basics</h2><p>Variables</p><ul><li>Despite the fact variables can store any types, we still have to have a notion of types (take more CS courses to learn more about this!)<ul><li><strong>String</strong>: a string of text. E.g. <code>var myVar = &quot;cheese&quot;;</code><ul><li>Can use double or single quotes, but must be consistent (whatever you start the string with, you must end the string with)</li></ul></li><li><strong>Number</strong>: a number. E.g. <code>var myVar = 5;</code></li><li><strong>Boolean</strong>: True/False value. E.g. <code>var myVar = true;</code></li></ul></li></ul></section><section id="javascript-basics-4" class="level2"><h2>Javascript Basics</h2><p>Variables</p><ul><li><strong>Array</strong>: multiple of values in one variable. E.g. <code>var myVar = [5, &quot;cheese&quot;, false];</code><ul><li>Elements are accessed using 0-indexing</li><li>E.g. <code>myVar[0]</code> is <code>5</code>, <code>myVar[2]</code> is <code>false</code></li></ul></li><li><strong>Object</strong>: everything in javascript is an object, and you can store objects in variables. E.g. <code>var myVar = document;</code></li></ul></section><section id="javascript-basics-5" class="level2"><h2>Javascript Basics</h2><ul><li><strong>Identifiers</strong><ul><li>Formal name for a variable's name (e.g. <code>myVar</code>)</li><li>Can contain letters, digits, underscores,and dollar signs.</li><li>Must not begin with a digit and must not be a keyword</li></ul></li></ul></section><section id="javascript-basics-6" class="level2"><h2>Javascript Basics</h2><ul><li>Comments<ul><li>Single line: start with <code>//</code></li><li>Multiline: start with <code>/*</code> ends with <code>*/</code></li></ul></li></ul></section><section id="javascript-basics-7" class="level2"><h2>Javascript Basics</h2><ul><li><strong>Literals</strong> are literal values you provide your script<ul><li>They do not change value</li><li>Can you spot the literal?<ul><li><code>var myVar = 5;</code></li><li><code>var myVar = &quot;cheese&quot;;</code></li></ul></li><li>These are not modifable, fixed values provided by you, the programmer.</li></ul></li></ul></section><section id="javascript-basics-8" class="level2"><h2>Javascript Basics</h2><p>Basic Operators</p><ul><li><strong>Basic Operators</strong> define operations on variables or literals. Used to process data. We will talk about more as we go along.</li></ul></section><section id="javascript-basics-9" class="level2"><h2>Javascript Basics</h2><p>Basic Operators</p><ul><li><strong>Addition/Concatenation</strong>: <code>+</code>, used to add two numbers together, or merge two strings<ul><li><code>6 + 9;</code> yields <code>15</code></li><li><code>&quot;Hello &quot; + &quot;world!&quot;</code> yields <code>&quot;Hello world!&quot;</code></li></ul></li></ul></section><section id="javascript-basics-10" class="level2"><h2>Javascript Basics</h2><p>Basic Operators</p><ul><li><strong>Subtract, multiply, divide</strong>: <code>-</code>, <code>*</code>, <code>/</code>, used just as they in basic math (you can't divide a string by another string, concatenation is special!)<ul><li><code>6 * 5;</code> yields <code>30</code></li></ul></li></ul></section><section id="javascript-basics-11" class="level2"><h2>Javascript Basics</h2><p>Basic Operators</p><ul><li><strong>Assignment</strong>: <code>=</code>, we've already seen this. It's used to take a value (either an object or a literal) and assign it another object (typically a variable)<ul><li><code>var myVar = 6 * 5;</code> assigns <code>myVar</code> to <code>30</code></li></ul></li></ul></section><section id="javascript-basics-12" class="level2"><h2>Javascript Basics</h2><p>Basic Operators</p><ul><li><strong>Remainder</strong>: <code>%</code>, used to perform modulo.<ul><li>Modulo/remainder division finds the remainder of an integer division</li><li>E.g. <code>11 % 5</code> yields <code>1</code> because <code>11 = 5 * 2 + 1</code><ul><li>We are interested in the <code>1</code>, since that is the remainder when you divide <code>11</code> by <code>5</code></li></ul></li></ul></li></ul></section><section id="javascript-basics-13" class="level2"><h2>Javascript Basics</h2><p>Opertaor Precedence</p><ul><li>Remember PEMDAS? (Parenthsis, Exponents, Multiplication and Division, and Addition and Subtraction)<ul><li>Defines the mathematical order-of-operations</li></ul></li></ul></section><section id="javascript-basics-14" class="level2"><h2>Javascript Basics</h2><p>Escape Sequences</p><ul><li>Used to give or take away meaning from special characters</li><li><code>\n</code>: a new line (carriage return, like hitting enter)</li><li><code>\t</code>: a tab</li><li><code>\\</code>: a literal backslash (since <code>\</code> normally has special meaning - to escape other characters!)</li><li><code>\&quot;</code>: double quote - for nested double quotes<ul><li>Need to escape so we don't accidentally end the string!</li></ul></li><li><code>\'</code>: single quote - for nested single quotes<ul><li>Need to escape so we don't accidentally end the string!</li></ul></li></ul></section><section id="javascript-basics-15" class="level2"><h2>Javascript Basics</h2><p>Examples</p><ul><li><a href="../examples/ch6_js/alert.html"><code>alert.html</code></a><ul><li><code>window</code> object refers the browser's window</li><li><code>alert</code> opens a dialog to display the string</li><li>Take a look at <code>window</code> methods and attributes: <a href="http://www.w3schools.com/jsref/obj_window.asp" class="uri">http://www.w3schools.com/jsref/obj_window.asp</a></li></ul></li></ul></section><section id="example-alert.html" class="level2"><h2>Example: <a href="../examples/ch6_js/alert.html"><code>alert.html</code></a></h2><pre><code>&lt;!DOCTYPE html&gt;
+        &lt;!-- Fig. 6.3: welcome3.html --&gt;
+        &lt;!-- Alert dialog displaying multiple lines. --&gt;
+        &lt;html&gt;
+        
+        &lt;head&gt;
+          &lt;meta charset=&quot;utf-8&quot;&gt;
+          &lt;title&gt;Printing Multiple Lines in a Dialog Box&lt;/title&gt;
+          &lt;script type=&quot;text/javascript&quot;&gt;
+            // Your book does the following &lt;!-- // --&gt; pattern inside the script tag all the time
+            // DONT DO THIS! It&#39;s for ANCIENT browsers that do not support scripts (and interprets them as an HTML comment)
+            // Seriously, I cannot stress how pointless this practice is, and you should not be doing it
+            &lt;!--
+            window.alert(&quot;Welcome to\nJavaScript\nProgramming!&quot;);
+            // --&gt;
+          &lt;/script&gt;
+        &lt;/head&gt;
+        
+        &lt;body&gt;
+          &lt;p&gt;Click Refresh (or Reload) to run this script again.&lt;/p&gt;
+        &lt;/body&gt;
+        
+        &lt;/html&gt;
+        </code></pre></section><section id="javascript-basics-16" class="level2"><h2>Javascript Basics</h2><p>Examples</p><ul><li><a href="../examples/ch6_js/dynamic_welcome.html"><code>dynamic_welcome.html</code></a><ul><li>Again using <code>window</code> with <code>prompt()</code> method to ask for user input</li><li>Creates a dynamic welcome page</li><li>We couldn't do with this HTML and CSS</li></ul></li></ul></section><section id="example-dynamic_welcome.html" class="level2"><h2>Example: <a href="../examples/ch6_js/dynamic_welcome.html"><code>dynamic_welcome.html</code></a></h2><pre><code>&lt;!DOCTYPE html&gt;
+        &lt;!-- Fig. 6.5: welcome4.html --&gt;
+        &lt;!-- Prompt box used on a welcome screen --&gt;
+        &lt;html&gt;
+        
+        &lt;head&gt;
+          &lt;meta charset=&quot;utf-8&quot;&gt;
+          &lt;title&gt;Using Prompt and Alert Boxes&lt;/title&gt;
+          &lt;script type=&quot;text/javascript&quot;&gt;
+            var name;
+            // string entered by the user
+            // read the name from the prompt box as a string
+            name = window.prompt(&quot;Please enter your name&quot;);
+            document.writeln(&quot;&lt;h1&gt;Hello &quot; + name + &quot;, welcome to JavaScript programming!&lt;/h1&gt;&quot;);
+          &lt;/script&gt;
+        &lt;/head&gt;
+        
+        &lt;body&gt;&lt;/body&gt;
+        
+        &lt;/html&gt;
+        </code></pre></section><section id="javascript-basics-17" class="level2"><h2>Javascript Basics</h2><p>Examples</p><ul><li><a href="../examples/ch6_js/addition.html"><code>addition.html</code></a><ul><li><code>parseInt()</code> function converts a string to an integer</li></ul></li></ul></section><section id="example-addition.html" class="level2"><h2>Example: <a href="../examples/ch6_js/addition.html"><code>addition.html</code></a></h2><pre><code>&lt;!DOCTYPE html&gt;
+        &lt;!-- Fig. 6.7: addition.html --&gt;
+        &lt;!-- Addition script. --&gt;
+        &lt;html&gt;
+        
+        &lt;head&gt;
+          &lt;meta charset=&quot;utf-8&quot;&gt;
+          &lt;title&gt;An Addition Program&lt;/title&gt;
+          &lt;script type=&quot;text/javascript&quot;&gt;
+            &lt;!--
+            var firstNumber; // first string entered by user
+            var secondNumber; // second string entered by user
+            var number1; // first number to add
+            var number2; // second number to add
+            var sum; // sum of number1 and number2
+            // read in first number from user as a string
+            firstNumber = window.prompt(&quot;Enter first integer&quot;);
+            // read in second number from user as a string
+            secondNumber = window.prompt(&quot;Enter second integer&quot;);
+            // convert numbers from strings to integers
+            number1 = parseFloat(firstNumber);
+            number2 = parseInt(secondNumber);
+            sum = number1 + number2; // add the numbers
+            // display the results
+            document.writeln(&quot;&lt;h1&gt;The sum is &quot; + sum + &quot;&lt;/h1&gt;&quot;);
+            // --&gt;
+          &lt;/script&gt;
+        &lt;/head&gt;
+        
+        &lt;body&gt;&lt;/body&gt;
+        
+        &lt;/html&gt;
+        </code></pre></section><section id="javascript-basics-18" class="level2"><h2>Javascript Basics</h2><p>Operators and Conditionals</p><ul><li>We need a way to encode logic - a way to direct the program based on the program's state</li><li>Primary method of controlling a programs flow</li><li>Basic idea: &quot;if a condition is true, execute some code&quot;<ul><li>We can stop at the if or say &quot;if a condition is true, execute some code, otherwise, execute this other code&quot;</li></ul></li></ul></section><section id="javascript-basics-19" class="level2"><h2>Javascript Basics</h2><p>Operators and Conditionals</p><ul><li><p>Example:</p><pre class="javascript"><code>if(5 &lt;= 10){
+          document.writeln(&quot;5 is indeed less than 10&quot;);
+        } else {
+          document.writeln(&quot;5 is somehow not less than 10...&quot;);
+        }</code></pre></li></ul></section><section id="javascript-basics-20" class="level2"><h2>Javascript Basics</h2><p>Operators and Conditionals</p><ul><li>But we can do even more by nesting if's!<ul><li>Also allows us to check for multiple potential conditions at once (e.g. <code>if(cond)...else if(cond)...else...</code>)</li></ul></li></ul></section><section id="javascript-basics-21" class="level2"><h2>Javascript Basics</h2><p>Operators and Conditionals</p><ul><li><p>Example: where <code>time</code> is the hour of the day (0-23)</p><pre class="javascript"><code>if (time &lt; 10) {
+          greeting = &quot;Good morning&quot;;
+        } else if (time &lt; 20) {
+          greeting = &quot;Good day&quot;;
+        } else {
+          greeting = &quot;Good evening&quot;;
+        }</code></pre></li></ul></section><section id="javascript-basics-22" class="level2"><h2>Javascript Basics</h2><p>Equality and Relational Operators</p><figure><img src="images/js-relational-operators.png" alt="Javascript relational operators" /><figcaption>Javascript relational operators</figcaption></figure></section><section id="javascript-basics-23" class="level2"><h2>Javascript Basics</h2><p>Operators and Conditionals</p><ul><li>Difference between <code>===</code> and <code>==</code><ul><li><code>===</code> is a more strict comparison operator</li><li>E.g. <code>&quot;75&quot; == 75</code> yields true but <code>&quot;75&quot; === 75</code> yields false</li></ul></li></ul></section><section id="javascript-basics-24" class="level2"><h2>Javascript Basics</h2><p>Operators and Conditionals</p><ul><li>Compound conditionals:<ul><li>Use logical operations <code>AND</code>, <code>OR</code>, and <code>NOT</code></li><li><code>AND</code> is represented with ``</li><li><code>OR</code> is represented with <code>||</code></li><li><code>NOT</code> is represented with <code>!</code></li><li>Combining conditions allows us to use much more powerful program flow</li></ul></li></ul></section><section id="javascript-basics-25" class="level2"><h2>Javascript Basics</h2><p>Operators and Conditionals</p><ul><li>Compound conditionals will evaluate left to right<ul><li>If the program can determine the overall value of the compound conditional, it will stop evaluting the rest of the conditional</li><li>E.g. Suppose <code>cond_a</code> is <code>true</code> and <code>cond_b</code> is <code>false</code>.<ul><li><code>if(cond_a || cond_b)</code> doens't need to look at the value of <code>cond_b</code>, the overall condition is determined by <code>cond_a</code>.</li><li>Similarly, <code>if(cond_b  cond_a)</code> doesn't need to look at the value of <code>cond_a</code>, since <code>cond_b</code> already determined the overall state of the compound conditional.</li><li>Remember: left to right!</li></ul></li><li><strong>Key takeaway</strong> order matters!</li></ul></li></ul></section><section id="javascript-basics-26" class="level2"><h2>Javascript Basics</h2><p>Operators and Conditionals</p><ul><li><p>Example: (pay close attention to evaluation order)</p><pre class="javascript"><code>if(cond_a &amp;&amp; cond_b){
+          // only executes if cond_a AND cond_b are true
+        } else if(cond_a || cond_d){
+          // only executes if 1) cond_a is true AND cond_b is false (think about why) OR cond_d is true
+        } else if(!cond_d){
+          // only executes if cond_a is false AND cond_d is true
+          // will this ever execute?
+        } else {
+          // otherwise
+        }</code></pre></li></ul></section><section id="exercise" class="level2"><h2>Exercise</h2><ul><li><p>Display the current day and time in the following format:</p><pre class="text"><code>Today is: Friday
+        Current time is: 4:50:22PM</code></pre></li><li><strong>First step</strong>: look at the <code>Date()</code> javascript function<ul><li><a href="http://www.w3schools.com/jsref/jsref_obj_date.asp" class="uri">http://www.w3schools.com/jsref/jsref_obj_date.asp</a></li></ul></li></ul></section><section id="example-date_print.html" class="level2"><h2>Example: <a href="../examples/ch6_js/date_print.html"><code>date_print.html</code></a></h2><pre><code>&lt;!DOCTYPE html&gt;
+        &lt;html&gt;
+        
+        &lt;head&gt;
+          &lt;meta charset=&quot;utf-8&quot;&gt;
+          &lt;title&gt;Display Date&lt;/title&gt;
+          &lt;script type=&quot;text/javascript&quot;&gt;
+            var today = new Date();
+            var day = today.getDay();
+            var daylist = [&quot;Sunday&quot;, &quot;Monday&quot;, &quot;Tuesday&quot;, &quot;Wednesday &quot;, &quot;Thursday&quot;, &quot;Friday&quot;, &quot;Saturday&quot;];
+        
+            document.writeln(&quot;Today is: &quot; + daylist[day] + &quot;&lt;br&gt;&quot;);
+        
+            var hour = today.getHours();
+            var minute = today.getMinutes();
+            var second = today.getSeconds();
+            console.log(&quot;hour: &quot; + hour);
+            var postpand, hour;
+            if (hour &gt;= 12) {
+              postpand = &quot;PM&quot;;
+            } else {
+              postpand = &quot;AM&quot;;
+            }
+            if (hour &gt;= 12) {
+              hour = hour - 12;
+            }
+            if (minute &lt; 10) {
+              minute = &quot;0&quot; + minute;
+            }
+            if (second &lt; 10) {
+              second = &quot;0&quot; + second;
+            }
+            document.writeln(&quot;Current time is: &quot; + hour + &quot;:&quot; + minute + &quot;:&quot; + second + postpand);
+          &lt;/script&gt;
+        &lt;/head&gt;
+        
+        &lt;body&gt;
+        &lt;/body&gt;
+        
+        &lt;/html&gt;
+        </code></pre></section><section id="exercise-1" class="level2"><h2>Exercise</h2><ul><li>Write a program that deteremines if the inpputted year is a leap year:<ul><li>Every year that is divisbly by 4, except for years divisble by 100, except for years that are divisible by 400</li></ul></li><li><strong>First step</strong>: come up with an algorithm to check</li></ul></section><section id="example-leap_year_checker.html" class="level2"><h2>Example: <a href="../examples/ch6_js/leap_year_checker.html"><code>leap_year_checker.html</code></a></h2><pre><code>&lt;!DOCTYPE html&gt;
+        &lt;html&gt;
+        
+        &lt;head&gt;
+          &lt;meta charset=&quot;utf-8&quot;&gt;
+          &lt;title&gt;Leap Year Checker&lt;/title&gt;
+          &lt;script type=&quot;text/javascript&quot;&gt;
+            var year, leapYear = false,
+              leapYearText = &quot;&quot;;
+            year = parseInt(window.prompt(&quot;Input a year: &quot;));
+            if (year % 100 === 0) {
+              if (year % 400 === 0) {
+                leapYear = true;
+              }
+            } else if (year % 4 === 0) {
+              leapYear = true;
+            }
+            if (!leapYear) {
+              leapYearText = &quot; not&quot;;
+            }
+            document.writeln(&quot;&lt;h2&gt;&quot; + year + &quot; is&quot; + leapYearText + &quot; a leap year&lt;/h2&gt;&quot;);
+          &lt;/script&gt;
+        &lt;/head&gt;
+        
+        &lt;body&gt;
+        &lt;/body&gt;
+        
+        &lt;/html&gt;
+        </code></pre></section><section id="developer-tools" class="level2"><h2>Developer Tools</h2><ul><li>No program is perfect at first</li><li>We need a way to examine program state as the program is running<ul><li>This will enable us to understand and fix problems in our code</li></ul></li><li>Debugging will help fix any error, but it's particularly good for identifying edge cases you may have not considered when writing your program<ul><li>Common edge cases: empty string <code>&quot;&quot;</code>, zero <code>0</code>, negative numbers, etc</li></ul></li></ul></section><section id="developer-tools-1" class="level2"><h2>Developer Tools</h2><ul><li>The debugger is present in any modern browser and has two main elements for javascript: console and debugger</li><li><strong>Since we are editing the program as it executes, we need to remember where we are in execution</strong><ul><li>Variables may not exist yet</li></ul></li><li>How to write information to the console to inspect state:<ul><li>Use a <code>console.log()</code> statement in your javascript</li><li>The value/text arguments will be printed to the Console section of the Developer Tools</li></ul></li></ul></section><section id="developer-tools-2" class="level2"><h2>Developer Tools</h2><ul><li>Setting a breakpoint<ul><li>Breakpoints say &quot;when you hit this line of code, pause the program for me&quot;</li><li>They allow you to inspect variable/program state during execution</li><li>Enable a breakpoint by clicking the line number</li><li>Important semantic note: The line of the breakpoint has <strong>not</strong> executed yet. It is about to execute<ul><li>E.g. if we set a breakpoint on line 9, line 9 hasn't executed when the breakpoint triggers (line 8 has, however)</li><li>Keep this in mind!</li></ul></li></ul></li></ul></section><section id="developer-tools-3" class="level2"><h2>Developer Tools</h2><ul><li>Stepping through a program<ul><li>Once we are at a breakpoint we have multiple options to control the program:<ul><li>Step Over: step over the current line of code. This means if we are at a function call, <strong>do not</strong> move the debugger into the function. Instead, the function will execute, and the program will pause after function completes</li><li>Step Into: If the program is about to call a function, move the debugger into that function and pause execution</li><li>Step Out: Finish the current function call and pause execution at the calling function</li><li>Continue: Continue the program's execution; basically unpauses the program</li></ul></li></ul></li></ul></section><section id="developer-tools-4" class="level2"><h2>Developer Tools</h2><ul><li>We can also call functions or inspect variables while paused using the console<ul><li>Move to the console, and type a javascript statement to execute<ul><li>Can also just type variable names to get their value</li></ul></li><li>If the javascript statement we called doesn't have a return value (e.g. statement doesn't yeild a value), then the console will report <code>undefined</code>.</li></ul></li></ul></section><section id="javascript-functions" class="level2"><h2>Javascript Functions</h2><ul><li>Functions enable reuseable code</li><li><p>Sum example:</p><pre class="javascript"><code>function sum1(a, b){
+          // do other amazing javascript things here
+          return a + b;
+        }</code></pre></li><li><p>We can then call <code>sum(10, 5)</code> which would return <code>15</code></p></li></ul></section><section id="javascript-functions-1" class="level2"><h2>Javascript Functions</h2><ul><li><p>Assigning functions to variables</p></li><li><p>Sum example:</p><pre class="javascript"><code>var sum2 = function(a,b){
+          return a + b;
+        }</code></pre></li><li><p>We can then call <code>sum2(10, 5)</code> which would return <code>15</code></p></li></ul></section><section id="javascript-functions-2" class="level2"><h2>Javascript Functions</h2><p>Hoisting</p><ul><li>The only thing you need to remember is that functions of the form of <code>sum1</code> are &quot;hoisted&quot; to the top of your program, meaning they can be used <em>before</em> they are declared</li></ul></section>
+      </div>
+    </div>
+    
+    <!-- end main body -->
+    
+    <script src="lib/js/head.min.js"></script>
+    <script src="reveal.js/js/reveal.js"></script>
+    
+    <script>
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+      controls: true,
+      progress: true,
+      history: true,
+      center: true,
+      mouseWheel: false,
+      rollingLinks: false,
+      showNotes: true,
+
+      theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+      transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/none
+
+      // Optional libraries used to extend on reveal.js
+      dependencies: [
+      { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+      // { src: 'plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+      { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+      { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+      { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+      { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+      { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+      // { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+      { src: 'plugin/math/math.js', async: true }
+      ]
+      });
+
+    </script>
+
+    <script>window.jQuery || document.write('<script src="js/jquery-3.2.1.min.js"><\/script>')</script>
+    <script src="js/bootstrap.min.js"></script>
+
+<!--
+    <script>
+      Reveal.addEventListener( 'slidechanged', function( event ) {
+      // event.previousSlide, event.currentSlide, event.indexh, event.indexv
+      var notes = event.currentSlide.querySelector(".notes");
+      if(notes) {
+          console.info("---");
+          console.info(notes.innerHTML.replace(/\n\s+/g,'\n'));
+      }
+      } );
+    </script>
+-->
+
+    <script>
+      Reveal.configure({ slideNumber: 'c/t' });
+    </script>
+
+
+    <script src="js/main.js"></script>
+    <!-- Default Statcounter code for Personal website http://mjedmonds.com -->
+  <script type="text/javascript">
+  var sc_project=11819202; 
+  var sc_invisible=0; 
+  var sc_security="3d207e19"; 
+  var sc_https=1; 
+  var scJsHost = (("https:" == document.location.protocol) ? "https://secure." :
+  "http://www.");
+  document.write("<sc"+"ript type='text/javascript' src='" + scJsHost+
+  "statcounter.com/counter/counter.js'></"+"script>");
+  </script>
+  <noscript><div class="statcounter"><a title="Web Analytics Made Easy -
+  StatCounter" href="http://statcounter.com/" target="_blank"><img
+  class="statcounter" src="//c.statcounter.com/11819202/0/3d207e19/0/" alt="Web
+  Analytics Made Easy - StatCounter"></a></div></noscript>
+  <!-- End of Statcounter Code -->
+  </body>
+</html>

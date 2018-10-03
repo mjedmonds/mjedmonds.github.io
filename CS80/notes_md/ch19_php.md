@@ -6,7 +6,7 @@ description: Chapter 18, PHP
 title: PHP
 ---
 
-# Chapter 18: PHP
+## Chapter 18: PHP
 
 CS 80: Internet Programming
 
@@ -53,7 +53,7 @@ Instructor: Mark Edmonds
 ```{include=../examples/ch19_php/first.php}
 ```
 
-### Important Notes
+## Important Notes
 
 - Line 6 declares a php variable named `name` and sets it equal to Paul
 - Line 14 prints text into the `<h1>` tag **before the file is served to the client**

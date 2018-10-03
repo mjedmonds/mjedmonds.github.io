@@ -1,0 +1,858 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+
+    <title>Introduction to CSS</title>
+
+    <meta name="description" content="CS 80: Internet Programming Notes">
+    <meta name="author" content="Mark Edmonds">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    
+    <!-- Google analytics -->
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-98378227-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="reveal.js/css/reveal.css">
+    <link rel="stylesheet" href="reveal.js/css/theme/serif.css" id="theme">
+    <link href='css/ubuntu_font.css' rel='stylesheet' type='text/css'>
+
+    <link rel="shortcut icon" href="../../favicon.png">
+    
+    <style>
+      body {
+      padding-top: 30px;
+      padding-bottom: 40px;
+      }
+      /* custom settings for reveal */
+      reveal {
+        font-size: 30px;
+      }
+      .reveal h1 {
+        font-size: 3em; }
+
+      .reveal h2 {
+        font-size: 2em; }
+
+      .reveal h3 {
+        font-size: 1.25em; }
+
+      .reveal h4 {
+        font-size: 1em; }
+
+      .reveal li {
+        padding-top: 4px;
+        padding-bottom: 4px;
+      }
+    </style>
+
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="css/highlightjs/atom-one-light.css">
+
+    <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+    <script>
+      document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+    </script>
+
+    <script src="js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+  </head>
+  <body>
+    
+    <script src="js/nav.js"></script>
+
+    <script>
+      function toggleElements(one, two) {
+      document.getElementById(one).style.display = 'none';
+      document.getElementById(two).style.display = 'block';
+      }
+    </script>
+    
+    <!-- Main body -->
+    
+    <div class="reveal">
+      <div class="slides">
+        <!-- slide content will go here -->
+        <section id="chapter-4-css" class="level2"><h2>Chapter 4: CSS</h2><p>CS 80: Internet Programming</p><p>Instructor: Mark Edmonds</p></section><section id="intro-to-css" class="level2"><h2>Intro to CSS</h2><ul><li>CSS = Cascading Style Sheet</li><li>What does HTML5 do?<ul><li>Specifies the content and structure of the webpage</li></ul></li><li>So far, we haven’t controlled the <em>presentation</em> of the webpage at all.</li><li>CSS allows us to control the presentation of the page</li></ul></section><section id="intro-to-css-1" class="level2"><h2>Intro to CSS</h2><ul><li>Why not control the presentation within the HTML?<ul><li>You can!</li><li>But in general, it’s better to separate!<ul><li>Why? Because you can swap the style without changing anything in the HTML document</li></ul></li></ul></li></ul></section><section id="inline-style" class="level2"><h2>Inline Style</h2><ul><li>Specify the style in the html tag through a <code>style</code> attribute<ul><li>E.g. to change the font size, one might apply the attribute <code>style=&quot;font-size: 45pt;&quot;</code> which would set the font size to 45pt.</li></ul></li></ul></section><section id="inline-styles" class="level2"><h2>Inline Styles</h2><ul><li>Advantage:<ul><li>Styling is applied solely to this instance of the tag (useful if we want custom styling for one particular tag)</li></ul></li><li>Disadvantage:<ul><li>Styling is applied solely to this instance of the tag (meaning it has no generality; we can’t change the style of every tag across the entire document. In our example, we may want to change every <code>&lt;h2&gt;</code> in the document</li></ul></li></ul></section><section id="example-inline_styles.html" class="level2"><h2>Example: <a href="../examples/ch4_css/inline_styles.html"><code>inline_styles.html</code></a></h2><pre><code>&lt;!DOCTYPE html&gt;
+        &lt;html&gt;
+        
+        &lt;head&gt;
+          &lt;meta charset=&quot;utf-8&quot;&gt;
+          &lt;title&gt;Inline CSS Styling&lt;/title&gt;
+        &lt;/head&gt;
+        
+        &lt;body&gt;
+          &lt;p style=&quot;font-size: 45pt&quot;&gt;We can apply styling to one HTML tag&lt;/p&gt;
+          &lt;p&gt;But take notice it doesn&#39;t persist in the document&lt;/p&gt;
+          &lt;h2 style=&quot;font-family: helvetica, tahoma, sans-serif; font-size: 10pt; color: blue&quot;&gt;We can overrride default settings for tags, notice the bold is still applied! &lt;/h2&gt;
+          &lt;p&gt;Note: browser will attempt to use font-family specified in order of the comma-separated list. The last entry in the list should be a generic font style (serif sans-serif, cursive, fantasy, monospace)&lt;/p&gt;
+        &lt;/body&gt;
+        
+        &lt;/html&gt;
+        </code></pre></section><section id="embedded-style-sheets" class="level2"><h2>Embedded Style Sheets</h2><ul><li>Idea: embed a styling sheet inside the <code>&lt;head&gt;</code> tag of the HTML document</li><li>Example:</li></ul><pre class="css"><code>p { font-size: x-large;
+        font-family: arial, sans-serif; }</code></pre></section><section id="embedded-style-sheets-1" class="level2"><h2>Embedded Style Sheets</h2><ul><li>What does this do?<ul><li>Changes every <code>&lt;p&gt;</code> tag in the document to have an extra large font and use Arial font</li></ul></li></ul></section><section id="embedded-style-sheets-2" class="level2"><h2>Embedded Style Sheets</h2><ul><li>Each property is a key-value pair<ul><li>Key is the property to change (e.g. <code>font-size</code>)</li><li>Value is the setting of the property (e.g. <code>x-large</code>)</li><li>Key and value are always separated by a <code>:</code> and the key-value pair is terminated with a <code>;</code></li></ul></li></ul></section><section id="embedded-style-sheets-3" class="level2"><h2>Embedded Style Sheets</h2><ul><li>Advantage:<ul><li>Styling is applied across every instance of an element in the entire document</li></ul></li><li>Disadvantage:<ul><li>Styling is still restricted to this HTML document; we cannot “export” the embedded style sheet to other HTML documents </li></ul></li></ul></section><section id="example-embedded_styles.html" class="level2"><h2>Example: <a href="../examples/ch4_css/embedded_styles.html"><code>embedded_styles.html</code></a></h2><pre><code>&lt;!DOCTYPE html&gt;
+        &lt;html&gt;
+        
+        &lt;head&gt;
+          &lt;meta charset=&quot;utf-8&quot;&gt;
+          &lt;title&gt;Embedded CSS Styling&lt;/title&gt;
+          &lt;style type=&quot;text/css&quot;&gt;
+            p { font-size: x-large;
+                font-family: arial, sans-serif; }
+          &lt;/style&gt;
+        &lt;/head&gt;
+        
+        &lt;body&gt;
+          &lt;p&gt;This tag is begin styled by the global styling of &amp;lt;p&amp;gt;&lt;/p&gt;
+          &lt;p style=&quot;font-size: x-small;&quot;&gt;But notice that inline styling &lt;strong&gt;always&lt;/strong&gt; takes precendence over global styling&lt;/p&gt;
+          &lt;p&gt;This tag is begin styled by the global styling of &amp;lt;p&amp;gt;&lt;/p&gt;
+        &lt;/body&gt;
+        
+        &lt;/html&gt;
+        </code></pre></section><section id="common-css-properties" class="level2"><h2>Common CSS Properties</h2><ul><li><code>font-family</code><ul><li>Names the font to use.</li><li>Typically a comma-separated list. The browser will attempt to use the first font availabe in the list. The final entry in the list should be a generic font, like <code>serif</code>, <code>sans-serif</code>, <code>monospace</code>, <code>cursive</code>, or <code>fantasy</code></li><li>Example: <code>font-family: helvectica, tahoma, sans-serif;</code></li></ul></li></ul></section><section id="common-css-properties-1" class="level2"><h2>Common CSS Properties</h2><ul><li><code>font-size</code><ul><li>Controls the font size of text</li><li>Can specify size two different ways: through a point value (<code>NUMBERpt)</code> or with a relative size</li><li>Available relative sizes: <code>xx-small``, x-small, small, smaller, medium, large, ``larger``, x-large, xx-large</code>)</li><li>Preferrable to use relative sizes<ul><li>Why? Different computers have different resolutions, so using <code>pt</code> will result in different effects based on the user’s display</li></ul></li><li>Example: <code>font-size: x-small;</code></li></ul></li></ul></section><section id="common-css-properties-2" class="level2"><h2>Common CSS Properties</h2><ul><li><code>font-style</code><ul><li>Controls the font’s additonal styling</li><li>Possible values: <code>normal, italic, oblique</code></li><li>Example: <code>font-style: italic</code></li></ul></li></ul></section><section id="common-css-properties-3" class="level2"><h2>Common CSS Properties</h2><ul><li><code>background-color</code><ul><li>Sets the background color. Takes hexidemial value or rgb</li><li>Example: <code>background-color: #668B8B</code></li></ul></li></ul></section><section id="example-background_color.html" class="level2"><h2>Example: <a href="../examples/ch4_css/background_color.html"><code>background_color.html</code></a></h2><pre><code>&lt;!DOCTYPE html&gt;
+        &lt;html&gt;
+        
+        &lt;head&gt;
+          &lt;meta charset=&quot;utf-8&quot;&gt;
+          &lt;title&gt;Background Color&lt;/title&gt;
+          &lt;!-- style defaults to &quot;text/css&quot; --&gt;
+          &lt;style&gt;
+          body { background-color: #668B8B;
+                 font-style: italic}
+          p    { background-color: black;
+                 color: #0198E1; }
+          &lt;/style&gt;
+        &lt;/head&gt;
+        
+        &lt;body&gt;
+        
+          Here&#39;s &lt;span style=&quot;background-color: coral&quot;&gt;some text no&lt;/span&gt; in a &amp;lt;p&amp;gt; tag
+        
+          &lt;div style=&quot;background-color: #F0F8FF;&quot;&gt;
+            &lt;p&gt;
+              Here&#39;s some text overriding the background
+            &lt;/p&gt;
+            And here&#39;s some ever more text overriding both settings!
+          &lt;/div&gt;
+          &lt;p&gt;
+            Here&#39;s some text overriding the background
+          &lt;/p&gt;
+        
+        &lt;/body&gt;
+        
+        &lt;/html&gt;
+        
+        </code></pre></section><section id="common-css-properties-4" class="level2"><h2>Common CSS Properties</h2><ul><li><code>background-image</code><ul><li>Takes a <code>url(‘image’)</code> and uses it as the background</li><li>Can have a list of comma-separated <code>url()</code> ’s to fetch</li><li>Example: <code>background-image: url(‘http://eskipaper.com/images/sand-dune-pictures-1.jpg')</code></li></ul></li></ul></section><section id="example-background_image.html" class="level2"><h2>Example: <a href="../examples/ch4_css/background_image.html"><code>background_image.html</code></a></h2><pre><code>&lt;!DOCTYPE html&gt;
+        &lt;html&gt;
+        
+        &lt;head&gt;
+          &lt;meta charset=&quot;utf-8&quot;&gt;
+          &lt;title&gt;Background Image&lt;/title&gt;
+          &lt;!-- style tag defaults to CSS --&gt;
+          &lt;style&gt;
+            body { background-image: url(http://www.noupe.com/wp-content/uploads/2009/10/pattern-13.jpg);
+                 }
+            p    { background: #000000 url(&#39;https://i.stack.imgur.com/pMAiU.jpg&#39;) center center no-repeat;
+                   color: white;
+                   text-align: center; }
+          &lt;/style&gt;
+        &lt;/head&gt;
+        
+        &lt;body&gt;
+          &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam nec lectus et diam rutrum efficitur id non risus. Pellentesque vitae velit lacinia, sollicitudin turpis in, lacinia enim. Cras in leo a nisl ullamcorper lacinia. Aliquam eu dignissim arcu. Ut ultricies orci quis sollicitudin malesuada. Morbi in mauris sed nisl gravida lobortis. Vestibulum tempor justo consectetur, pharetra lorem eget, posuere quam. Mauris leo libero, vestibulum sed viverra sed, ornare non urna. Suspendisse accumsan a libero a ullamcorper. Sed eu hendrerit est, ut consectetur neque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer diam justo, sodales a dolor sed, laoreet blandit urna. Vestibulum vestibulum ac arcu quis ornare. Nulla luctus tristique nisl vel tristique. Sed vel massa eget mauris pharetra ultrices.  
+        
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam nec lectus et diam rutrum efficitur id non risus. Pellentesque vitae velit lacinia, sollicitudin turpis in, lacinia enim. Cras in leo a nisl ullamcorper lacinia. Aliquam eu dignissim arcu. Ut ultricies orci quis sollicitudin malesuada. Morbi in mauris sed nisl gravida lobortis. Vestibulum tempor justo consectetur, pharetra lorem eget, posuere quam. Mauris leo libero, vestibulum sed viverra sed, ornare non urna. Suspendisse accumsan a libero a ullamcorper. Sed eu hendrerit est, ut consectetur neque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer diam justo, sodales a dolor sed, laoreet blandit urna. Vestibulum vestibulum ac arcu quis ornare. Nulla luctus tristique nisl vel tristique. Sed vel massa eget mauris pharetra ultrices. 
+          &lt;/p&gt;
+        &lt;/body&gt;
+        
+        &lt;/html&gt;
+        
+        </code></pre></section><section id="common-css-properties-5" class="level2"><h2>Common CSS Properties</h2><ul><li><code>background-repeat</code><ul><li>Specifies whether or not you would like the background to repeat or not</li><li>By default, background repeats</li><li>Possible values: <code>repeat, repreat-x, repeat-y, no-repeat</code><ul><li><code>repeat</code> will repeat in both the x and y direction</li></ul></li><li>Example: <code>background-repeat: repeat-x</code></li></ul></li></ul></section><section id="common-css-properties-6" class="level2"><h2>Common CSS Properties</h2><ul><li><code>background-position</code><ul><li>Specifies the background relative to the HTML element.</li><li>X is offset from the left and Y is offset from the top</li><li>Takes unit values (like width and height) or <code>left, right, center,</code> for X <code>top, bottom, center</code> for Y</li><li>By default, background position is (0,0) relative to the element’s position in the document</li><li>Example: <code>background-position: center left;</code><ul><li>If you only specify one, the other will default to center</li></ul></li></ul></li></ul></section><section id="common-css-properties-7" class="level2"><h2>Common CSS Properties</h2><ul><li><code>background</code><ul><li>This is a shorthand way to apply all of the above</li><li><code>background: bg-color bg-image position bg-repeat</code></li></ul></li></ul></section><section id="common-css-properties-8" class="level2"><h2>Common CSS Properties</h2><ul><li><code>text-align</code><br />
+        <ul><li><code>center</code>, <code>left</code>, or <code>right</code> to align text<br />
+        </li></ul></li><li>CSS property list reference: <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Properties_Reference" class="uri">https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Properties_Reference</a></li></ul></section><section id="common-css-related-html-tags" class="level2"><h2>Common CSS-related HTML Tags</h2><ul><li><code>&lt;div&gt;</code><ul><li>Specifies a HTML block element, similar to <code>&lt;p&gt;</code>, but doesn’t denote a paragraph</li><li>Starts with a new line and takes up as much width available (stretches to the left and right as much as possible)<ul><li><code>&lt;h1&gt;</code>-<code>&lt;h6&gt;</code> and <code>&lt;p&gt;</code> are also block elements (consider their behavior!)</li></ul></li></ul></li></ul></section><section id="common-css-related-html-tags-1" class="level2"><h2>Common CSS-related HTML Tags</h2><ul><li><code>&lt;span&gt;</code><ul><li>An inline block</li><li>Has minimal width and doesn’t start a new line</li></ul></li><li>Why do <code>&lt;div&gt;</code> and <code>&lt;span&gt;</code> matter?<ul><li>They are commonly used to apply styling to subsections of the document, when no other divisor exists</li><li>E.g. think of the <code>&lt;em&gt;some text&lt;/em&gt;</code>as <code>&lt;span style=&quot;font-style: italic;&quot;&gt;some text&lt;/span&gt;</code><ul><li>We may/probably don’t have a built-in tag to help us, so <code>div</code> and <code>span</code> can be a very general way to apply styling to a specific section</li></ul></li></ul></li></ul></section><section id="css-classes-and-selectors" class="level2"><h2>CSS Classes and Selectors</h2><ul><li>It’s pretty limiting to only be able to use CSS styling on an element-by-element basis</li><li>CSS classes are applied to a tag on a tag-by-tag basis using the <code>class</code> attribute</li><li>Advantages:<ul><li>Can use the same class among multiple HTML tags</li><li>Updating the CSS class will update all tags</li></ul></li></ul></section><section id="css-classes-and-selectors-1" class="level2"><h2>CSS Classes and Selectors</h2><ul><li>Usage: all classes start with <code>.</code></li><li><p>Example:</p><pre class="css"><code>.myemph { font-style: italic; }</code></pre></li><li><p>Apply this class using the <code>class</code> attribute:</p><pre class="html"><code>&lt;p class=&quot;myemph&quot;&gt;some_text&lt;/p&gt;</code></pre></li></ul></section><section id="css-classes-and-selectors-2" class="level2"><h2>CSS Classes and Selectors</h2><ul><li>We can even apply certain classes only to specific HTML tags<ul><li>This type CSS styling increases the <em>specifcity</em> of the styling, which help resolve styling conflicts (more on this in a bit)</li></ul></li><li><p>Example:</p><pre class="css"><code>p.myemph { font-style: italic; }</code></pre><ul><li>only defines our <code>myemph</code> class for use within a <code>&lt;p&gt;</code> HTML tag</li></ul></li></ul></section><section id="css-classes-and-selectors-3" class="level2"><h2>CSS Classes and Selectors</h2><ul><li>Selectors are a bit more general (classes are a type of selector)<ul><li>They specify how the CSS rules should be applied</li><li>A class is a selector rule, but we also have selectors for <code>id</code>’s with <code>#id</code></li></ul></li><li><p>Example:</p><pre class="css"><code>#htmlid { color: blue }</code></pre></li><li><p>Corresponding HTML:</p><pre class="html"><code>&lt;section id=&quot;htmlid&quot;&gt;</code></pre></li></ul></section><section id="css-precedence" class="level2"><h2>CSS Precedence</h2><ul><li>ID selection has the highest precedence (e.g. <code>#id</code>)</li><li>Followed by tag-specific classes (e.g. <code>p.myemph</code>)</li><li>Followed by classes (e.g. <code>myemph</code>)</li><li>Followed by HTML tag rules (e.g. <code>p</code>)</li></ul></section><section id="conflicting-styles" class="level2"><h2>Conflicting Styles</h2><ul><li>What does <em>Cascading</em> mean?<ul><li>“falling through”</li></ul></li><li>So far, we’ve seen rules will maintain their presence in nested children until something overwrites their value (consider <a href="../examples/ch4_css/background_color.html"><code>background_color.html</code></a>)</li></ul></section><section id="conflicting-styles-1" class="level2"><h2>Conflicting Styles</h2><ul><li>But what’s the actual logic here?<ul><li>Children of HTML elements inherit the CSS styling of their parents</li><li>Children style’s have a higher precendence over their parents, so their styling will always replace their parents (if applicable)</li></ul></li></ul></section><section id="conflicting-styles-2" class="level2"><h2>Conflicting Styles</h2><ul><li>Let’s try a weird scenario:<ul><li>We defined a <code>myemph</code> both as a CSS class and a CSS class for <code>&lt;p&gt;</code></li><li>So what happens when we write a normal <code>&lt;p&gt;</code> (no class specified) inside of a <code>&lt;div class=&quot;myemph&quot;&gt;</code>?</li></ul></li></ul></section><section id="example-conflicting_styles.html" class="level2"><h2>Example: <a href="../examples/ch4_css/conflicting_styles.html"><code>conflicting_styles.html</code></a></h2><pre><code>&lt;!DOCTYPE html&gt;
+        &lt;html&gt;
+        
+        &lt;head&gt;
+          &lt;meta charset=&quot;utf-8&quot;&gt;
+          &lt;title&gt;Classes and Selectors&lt;/title&gt;
+          &lt;style&gt;
+            .class1 { font-style: oblique; color: red;}
+            #blueele   { color: blue; }
+            p.class1 { font-style: normal; color: red;}
+          &lt;/style&gt;
+        &lt;/head&gt;
+        
+        &lt;body&gt;
+          &lt;div class=&quot;class1&quot;&gt;
+            This text adheres to the global CSS emph class
+          &lt;p&gt;
+            But with no class specified in the paragraph tag, the child is still inheriting from the parent
+          &lt;/p&gt;
+          &lt;p class=&quot;class1&quot; id=&quot;blueele&quot;&gt;
+            But now that we apply the more-specific class, the div is overridden
+          &lt;/p&gt;
+          &lt;/div&gt;
+        &lt;/body&gt;
+        
+        &lt;/html&gt;
+        </code></pre></section><section id="conflicting-styles-3" class="level2"><h2>Conflicting Styles</h2><ul><li>There are other ways to generate conflicts (such as <a href="../examples/ch4_css/background_color.html"><code>background_color.html</code></a> using normal nesting)</li><li>But the general rule: the most specific styling takes precedence</li></ul></section><section id="external-style-sheets" class="level2"><h2>External Style Sheets</h2><ul><li>Idea: store the style sheet elsewhere and import it into the HTML document</li><li>Advantages:<ul><li>We can use the same styling across multiple HTML documents</li><li>If they all import the same external style sheet, they will all adhere to the same styling rules</li><li>If we change the stylesheet once, it will affect all documents that link to it!</li></ul></li><li>The <code>&lt;link&gt;</code> HTML tag is used to import external styling</li></ul></section><section id="external-style-sheets-1" class="level2"><h2>External Style Sheets</h2><ul><li>Attributes required:<ul><li><code>rel=&quot;stylesheet&quot;</code> specifies the relationship between this document and the external one, in this case, we want to link to a stylesheet</li><li><code>type=&quot;text/css&quot;</code> just like how we specified with <code>&lt;style type=&quot;text/css&quot;&gt;</code><br />
+        </li><li><code>href=&quot;style.css&quot;</code> is the hyperlink reference to the external document<br />
+        </li></ul></li><li><p>Example:</p><pre class="html"><code>&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;style.css&quot;&gt;</code></pre></li></ul></section><section id="example-external_styles.html" class="level2"><h2>Example: <a href="../examples/ch4_css/external_styles.html"><code>external_styles.html</code></a></h2><pre><code>&lt;!DOCTYPE html&gt;
+        &lt;!-- Fig. 4.8: external.html --&gt;
+        &lt;!-- Linking an external style sheet. --&gt;
+        &lt;html&gt;
+        
+        &lt;head&gt;
+          &lt;meta charset=&quot;utf-8&quot;&gt;
+          &lt;title&gt;Linking External Style Sheets&lt;/title&gt;
+          &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;style.css&quot;&gt;
+        &lt;/head&gt;
+        
+        &lt;body&gt;
+          &lt;h1&gt;Shopping list for &lt;em&gt;Monday&lt;/em&gt;:&lt;/h1&gt;
+          &lt;ul&gt;
+            &lt;li&gt;Milk&lt;/li&gt;
+            &lt;li&gt;Bread
+              &lt;ul&gt;
+                &lt;li&gt;white bread&lt;/li&gt;
+                &lt;li&gt;Rye bread&lt;/li&gt;
+                &lt;li&gt;Whole wheat bread&lt;/li&gt;
+              &lt;/ul&gt;
+            &lt;/li&gt;
+            &lt;li&gt;Carrots&lt;/li&gt;
+            &lt;li&gt;Yogurt&lt;/li&gt;
+            &lt;li&gt;Pizza &lt;em&gt;with mushrooms&lt;/em&gt;&lt;/li&gt;
+          &lt;/ul&gt;
+          &lt;p&gt;&lt;em&gt;Go to the&lt;/em&gt;
+            &lt;a class=&quot;nodec&quot; href=&quot;http://www.deitel.com&quot;&gt;
+        Grocery store&lt;/a&gt;
+          &lt;/p&gt;
+        &lt;/body&gt;
+        
+        &lt;/html&gt;
+        </code></pre></section><section id="css-comments" class="level2"><h2>CSS Comments</h2><pre class="css"><code>/* This is a CSS comment. start with /* and end with */ */</code></pre></section><section id="css-units" class="level2"><h2>CSS Units</h2><ul><li>Used to control sizing<ul><li><code>#em</code> amount relative to the normal size<br />
+        </li><li><code>#cm</code> amount in centimeters<br />
+        </li><li><code>#px</code> amount in pixels<br />
+        </li><li><code>#pt</code> amount in points</li><li>Keep these in mind when looking at CSS</li></ul></li></ul></section><section id="css-positioning" class="level2"><h2>CSS Positioning</h2><ul><li><code>position</code> property controls the location of document elements<br />
+        <ul><li>Basic idea: answers the question: where should this element be relative to other elements?</li></ul></li></ul></section><section id="css-positioning-1" class="level2"><h2>CSS Positioning</h2><p><code>position</code> property</p><ul><li>Corresponding attributes: <code>left: value;</code> and <code>top: value;</code> which control the amount of positioning to apply<ul><li>“left” corresponds to how much to move from left</li><li>“top” corresponds to how much to move from the top</li><li>See: <a href="http://www.w3schools.com/cssref/pr_pos_left.asp" class="uri">http://www.w3schools.com/cssref/pr_pos_left.asp</a> for values</li><li>Keep these mind when considering the various positioning types</li></ul></li></ul></section><section id="css-positioning-2" class="level2"><h2>CSS Positioning</h2><p>Absolute positioning</p><ul><li><code>position: absolute;</code> sepcifies this elements position <strong>relative to it’s first positioned (not static) ancestor element</strong><br />
+        <ul><li>“Ancestor” refers to the parents of this HTML element (nesting establishes parent-child relationships) </li></ul></li></ul></section><section id="css-positioning-3" class="level2"><h2>CSS Positioning</h2><p>Relative positioning</p><ul><li><code>position: relative;</code> specifies the element’s position <strong>relative to its normal positioning</strong><br />
+        <ul><li>So if we move 5px from the left and 10px from the top, the element is positioned right 5px and down 10px</li></ul></li></ul></section><section id="css-positioning-4" class="level2"><h2>CSS Positioning</h2><p>Fixed positioning</p><ul><li><code>position: fixed;</code> specifies the element’s position <strong>relative to the browser window</strong></li></ul></section><section id="css-positioning-5" class="level2"><h2>CSS Positioning</h2><p>Static positioning</p><ul><li><code>position: static;</code> the default behavior, positioning is determined by document flow/ordering</li><li>Property values: <a href="http://www.w3schools.com/cssref/pr_class_position.asp" class="uri">http://www.w3schools.com/cssref/pr_class_position.asp</a></li></ul></section><section id="example-positioning.html" class="level2"><h2>Example: <a href="../examples/ch4_css/positioning.html"><code>positioning.html</code></a></h2><pre><code>&lt;!DOCTYPE html&gt;
+        &lt;!-- Based on: http://learnlayout.com/position-example.html --&gt;
+        &lt;html&gt;
+        
+        &lt;head&gt;
+          &lt;meta charset=&quot;utf-8&quot;&gt;
+          &lt;title&gt;CSS positioning&lt;/title&gt;
+          &lt;link href=&quot;https://dl.dropbox.com/s/p6zt773weewbvzs/styles.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; /&gt;
+          &lt;style&gt;
+            .container {
+              position: relative;
+            }
+            
+            nav {
+              position: absolute;
+              width: 200px;
+            }
+            
+            section {
+              /* position is static by default */
+              margin-left: 200px;
+              padding: 5px;
+            }
+            
+            footer {
+              position: fixed;
+              padding: 20px;
+              bottom: 0;
+              left: 0;
+              height: 70px;
+              background-color: white;
+              width: 100%;
+            }
+            
+            body {
+              margin-bottom: 120px;
+            }
+        
+            .div1 {
+              height: 100px;
+              width: 100px;
+              overflow: hidden;
+            }
+        
+            .div2 {
+              height: 415px;
+              width: 715px;
+              overflow: scroll;
+            }
+        
+            /* increase the height and width (koala.jpg is 710 x 408) to see the scroll disappear */
+            .div3 {
+              height: 415px;
+              width: 715px;
+              overflow: auto;
+            }
+          &lt;/style&gt;
+        &lt;/head&gt;
+        
+        &lt;body&gt;
+          &lt;!-- positioned relative to its normal setting; has no effect size we didn&#39;t move it (play around with it!) --&gt;
+          &lt;h3&gt;CSS Positioning and Element Dimensions&lt;/h3&gt;
+          &lt;div class=&quot;container&quot;&gt;
+            &lt;!-- our nav CSS applies; width is 200px --&gt;
+            &lt;nav&gt;
+              &lt;ul&gt;
+                &lt;li&gt;&lt;a href=&quot;http://google.com&quot;&gt;Google&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;http://google.com&quot;&gt;Google&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;http://google.com&quot;&gt;Google&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;http://google.com&quot;&gt;Google&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;http://google.com&quot;&gt;Google&lt;/a&gt;&lt;/li&gt;
+              &lt;/ul&gt;
+            &lt;/nav&gt;
+            &lt;!-- our section CSS applies; margin is 200px (will be on the right of nav)--&gt;
+            &lt;section&gt;
+              The margin-left style for sections makes sure there is room for the nav. Otherwise the absolute and static elements would overlap
+            &lt;/section&gt;
+            &lt;section&gt;
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla et dictum interdum, nisi lorem egestas odio, vitae scelerisque enim ligula venenatis dolor. Maecenas nisl est, ultrices nec congue eget, auctor vitae massa. Fusce luctus vestibulum augue ut aliquet. Mauris ante ligula, facilisis sed ornare eu, lobortis in odio. Praesent convallis urna a lacus interdum ut hendrerit risus congue. Nunc sagittis dictum nisi, sed ullamcorper ipsum dignissim ac. In at libero sed nunc venenatis imperdiet sed ornare turpis. Donec vitae dui eget tellus gravida venenatis. Integer fringilla congue eros non fermentum. Sed dapibus pulvinar nibh tempor porta. Cras ac leo purus. Mauris quis diam velit.
+            &lt;/section&gt;
+            &lt;section&gt;
+              Notice what happens when you resize your browser. It works nicely!
+            &lt;/section&gt;
+            &lt;section&gt;
+              &lt;div class=&quot;div1&quot;&gt;
+                &lt;img src=&quot;koala.jpg&quot; alt=&quot;A koala eating a leaf&quot;&gt;
+              &lt;/div&gt;
+              &lt;br&gt;
+              &lt;div class=&quot;div2&quot;&gt;
+                &lt;img src=&quot;koala.jpg&quot; alt=&quot;A koala eating a leaf&quot;&gt;
+              &lt;/div&gt;
+              &lt;div class=&quot;div3&quot;&gt;
+                &lt;img src=&quot;koala.jpg&quot; alt=&quot;A koala eating a leaf&quot;&gt;
+              &lt;/div&gt;
+            &lt;/section&gt;
+            &lt;footer&gt;
+              If you use a fixed header or footer, make sure there is room for it! I put a margin-bottom on the body.
+            &lt;/footer&gt;
+          &lt;/div&gt;
+        &lt;/body&gt;
+        
+        &lt;/html&gt;
+        </code></pre></section><section id="element-dimensions" class="level2"><h2>Element Dimensions</h2><ul><li>These allow us to specify the actual dimensions of each page element.</li><li>Benefits: helps control the size of elements, which can be useful for positioning</li><li>Two main properties:<ul><li><code>width: value;</code> to specify width</li><li><code>height: value;</code> to specify height</li></ul></li></ul></section><section id="element-dimensions-1" class="level2"><h2>Element Dimensions</h2><ul><li><code>overflow</code> property defines what to do if the content of an element goes over the specified dimensions<ul><li>Possible values:<ul><li><code>overflow: visible;</code> overflow will still be rendered (overflowing into over elements)</li><li><code>overflow: hidden;</code> overflow will be clipped (overflowing content will be invisible)</li><li><code>overflow: scroll;</code> scroll bars are used to view the rest of the content</li><li><code>overflow: auto;</code> if the overflow is clipped, a scroll bar will appear</li></ul></li></ul></li></ul></section><section id="example-positioning.html-1" class="level2"><h2>Example: <a href="../examples/ch4_css/positioning.html"><code>positioning.html</code></a></h2><pre><code>&lt;!DOCTYPE html&gt;
+        &lt;!-- Based on: http://learnlayout.com/position-example.html --&gt;
+        &lt;html&gt;
+        
+        &lt;head&gt;
+          &lt;meta charset=&quot;utf-8&quot;&gt;
+          &lt;title&gt;CSS positioning&lt;/title&gt;
+          &lt;link href=&quot;https://dl.dropbox.com/s/p6zt773weewbvzs/styles.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; /&gt;
+          &lt;style&gt;
+            .container {
+              position: relative;
+            }
+            
+            nav {
+              position: absolute;
+              width: 200px;
+            }
+            
+            section {
+              /* position is static by default */
+              margin-left: 200px;
+              padding: 5px;
+            }
+            
+            footer {
+              position: fixed;
+              padding: 20px;
+              bottom: 0;
+              left: 0;
+              height: 70px;
+              background-color: white;
+              width: 100%;
+            }
+            
+            body {
+              margin-bottom: 120px;
+            }
+        
+            .div1 {
+              height: 100px;
+              width: 100px;
+              overflow: hidden;
+            }
+        
+            .div2 {
+              height: 415px;
+              width: 715px;
+              overflow: scroll;
+            }
+        
+            /* increase the height and width (koala.jpg is 710 x 408) to see the scroll disappear */
+            .div3 {
+              height: 415px;
+              width: 715px;
+              overflow: auto;
+            }
+          &lt;/style&gt;
+        &lt;/head&gt;
+        
+        &lt;body&gt;
+          &lt;!-- positioned relative to its normal setting; has no effect size we didn&#39;t move it (play around with it!) --&gt;
+          &lt;h3&gt;CSS Positioning and Element Dimensions&lt;/h3&gt;
+          &lt;div class=&quot;container&quot;&gt;
+            &lt;!-- our nav CSS applies; width is 200px --&gt;
+            &lt;nav&gt;
+              &lt;ul&gt;
+                &lt;li&gt;&lt;a href=&quot;http://google.com&quot;&gt;Google&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;http://google.com&quot;&gt;Google&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;http://google.com&quot;&gt;Google&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;http://google.com&quot;&gt;Google&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;http://google.com&quot;&gt;Google&lt;/a&gt;&lt;/li&gt;
+              &lt;/ul&gt;
+            &lt;/nav&gt;
+            &lt;!-- our section CSS applies; margin is 200px (will be on the right of nav)--&gt;
+            &lt;section&gt;
+              The margin-left style for sections makes sure there is room for the nav. Otherwise the absolute and static elements would overlap
+            &lt;/section&gt;
+            &lt;section&gt;
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla et dictum interdum, nisi lorem egestas odio, vitae scelerisque enim ligula venenatis dolor. Maecenas nisl est, ultrices nec congue eget, auctor vitae massa. Fusce luctus vestibulum augue ut aliquet. Mauris ante ligula, facilisis sed ornare eu, lobortis in odio. Praesent convallis urna a lacus interdum ut hendrerit risus congue. Nunc sagittis dictum nisi, sed ullamcorper ipsum dignissim ac. In at libero sed nunc venenatis imperdiet sed ornare turpis. Donec vitae dui eget tellus gravida venenatis. Integer fringilla congue eros non fermentum. Sed dapibus pulvinar nibh tempor porta. Cras ac leo purus. Mauris quis diam velit.
+            &lt;/section&gt;
+            &lt;section&gt;
+              Notice what happens when you resize your browser. It works nicely!
+            &lt;/section&gt;
+            &lt;section&gt;
+              &lt;div class=&quot;div1&quot;&gt;
+                &lt;img src=&quot;koala.jpg&quot; alt=&quot;A koala eating a leaf&quot;&gt;
+              &lt;/div&gt;
+              &lt;br&gt;
+              &lt;div class=&quot;div2&quot;&gt;
+                &lt;img src=&quot;koala.jpg&quot; alt=&quot;A koala eating a leaf&quot;&gt;
+              &lt;/div&gt;
+              &lt;div class=&quot;div3&quot;&gt;
+                &lt;img src=&quot;koala.jpg&quot; alt=&quot;A koala eating a leaf&quot;&gt;
+              &lt;/div&gt;
+            &lt;/section&gt;
+            &lt;footer&gt;
+              If you use a fixed header or footer, make sure there is room for it! I put a margin-bottom on the body.
+            &lt;/footer&gt;
+          &lt;/div&gt;
+        &lt;/body&gt;
+        
+        &lt;/html&gt;
+        </code></pre></section><section id="the-box-model" class="level2"><h2>The Box Model</h2><ul><li>We’ve loosely discussed the notion of boxes with html elements (like <code>p, div, h1-h6, section</code>), but let’s formalize it</li><li>Key terms:<ul><li><strong>Content</strong>: the area the actual content makes up</li><li><strong>Padding</strong>: area between the content and the border</li><li><strong>Margin</strong>: area between the border and other elements</li></ul></li></ul></section><section id="the-box-model-1" class="level2"><h2>The Box Model</h2><figure><img src="images/css-box-model.png" alt="The box model" /><figcaption>The box model</figcaption></figure></section><section id="the-box-model-2" class="level2"><h2>The Box Model</h2><ul><li><strong>A critical note:</strong> border defines the “end” of the element box in some sense<ul><li>Margin is a means to enforce a <strong>minimum distance between two elements’ borders</strong></li><li><strong>READ THE LAST SENTENCE CAREFULLY</strong></li></ul></li><li>What this means: margins <strong>do not sum</strong><ul><li>Think of it as a “max” (which ever element has the largest margin will be enforcing the margin)</li></ul></li></ul></section><section id="the-box-model-3" class="level2"><h2>The Box Model</h2><ul><li>Quiz:<ul><li>If you have an element with a margin of 5 pixels next to an element with a margin of 10 pixels, what will be the number of pixels <strong>between the borders?</strong> (this is the effective margin)</li><li>If you have an element with a margin of 500 pixels next to an element with a margin of 10 pixels, what will be the number of pixels <strong>between the borders?</strong> (this is the effective margin)</li></ul></li></ul></section><section id="the-box-model-4" class="level2"><h2>The Box Model</h2><p>Controlling borders</p><ul><li><code>border-width</code> property<br />
+        <ul><li><a href="http://www.w3schools.com/cssref/pr_border-width.asp" class="uri">http://www.w3schools.com/cssref/pr_border-width.asp</a><br />
+        </li></ul></li><li><code>border-style</code> property<br />
+        <ul><li><a href="http://www.w3schools.com/cssref/pr_border-style.asp" class="uri">http://www.w3schools.com/cssref/pr_border-style.asp</a><br />
+        </li></ul></li><li><code>border-color</code> property<br />
+        <ul><li><a href="http://www.w3schools.com/cssref/pr_border-color.asp" class="uri">http://www.w3schools.com/cssref/pr_border-color.asp</a></li></ul></li><li>Shorthand: <code>border: width style color;</code></li></ul></section><section id="example-box_model.html" class="level2"><h2>Example: <a href="../examples/ch4_css/box_model.html"><code>box_model.html</code></a></h2><pre><code>&lt;!DOCTYPE html&gt;
+        &lt;html&gt;
+        &lt;head&gt;
+        &lt;style&gt;
+        div {
+            background-color: lightgrey;
+            width: 300px;
+            border: 25px solid green;
+            padding: 20px;
+            margin: 25px;
+        }
+        &lt;/style&gt;
+        &lt;/head&gt;
+        &lt;body&gt;
+        
+        &lt;h2&gt;Demonstrating the Box Model&lt;/h2&gt;
+        
+        &lt;p&gt;The CSS box model is essentially a box that wraps around every HTML element. It consists of: borders, padding, margins, and the actual content.&lt;/p&gt;
+        
+        &lt;div&gt;This text is the actual content of the box. We have added a 25px padding, 25px margin and a 25px green border. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&lt;/div&gt;
+        
+        &lt;/body&gt;
+        &lt;/html&gt;
+        </code></pre></section><section id="floating-elements" class="level2"><h2>Floating Elements</h2><ul><li>Allows you to move an element to one side of the screen while other content flows around it</li><li>This “breaks” our notion of block elements (such as <code>p, div, section, h1-h6</code>) to fill the width of the screen.</li><li>When used with element dimensions, page layout becomes very controllable</li></ul></section><section id="floating-elements-1" class="level2"><h2>Floating Elements</h2><ul><li>Three property values:<ul><li><code>float: none;</code> default, element is not floated<br />
+        </li><li><code>float: right;</code> element is floated to the right. Other content can flow on the left side<br />
+        </li><li><code>float: left;</code> element is floated to the left. Other content can flow on the right side<br />
+        </li></ul></li></ul></section><section id="floating-elements-2" class="level2"><h2>Floating Elements</h2><ul><li><code>clear</code> allows you to specify that an element should not flow with a float (e.g. will not flow with an element on right/left; it will start below the floated element)<br />
+        <ul><li><code>clear: left;</code> do not allow floating to the left<br />
+        </li><li><code>clear: right;</code> do not allow floating to the right<br />
+        </li><li><code>clear: both;</code> do not allow floating to the light or right<br />
+        </li></ul></li></ul></section><section id="example-floating.html" class="level2"><h2>Example: <a href="../examples/ch4_css/floating.html"><code>floating.html</code></a></h2><pre><code>&lt;!DOCTYPE html&gt;
+        &lt;!-- Example from: http://www.w3schools.com/css/tryit.asp?filename=trycss_layout_clear --&gt;
+        &lt;html&gt;
+        &lt;head&gt;
+        &lt;style&gt;
+        .div1 {
+            float: left;
+            width: 100px;
+            height: 50px;
+            margin: 10px;
+            border: 3px solid #73AD21;
+        }
+        
+        .div2 {
+            width: 500px;
+            margin-left: 150px;
+            border: 1px solid red;
+        }
+        
+        
+        .div3 {
+            float: left;
+            width: 100px;
+            height: 50px;
+            margin: 10px;
+            border: 3px solid #73AD21;
+        }
+        
+        .div4 {
+            border: 1px solid red;
+            clear: left;
+        }
+        &lt;/style&gt;
+        &lt;/head&gt;
+        &lt;body&gt;
+        
+        &lt;h2&gt;Without clear&lt;/h2&gt;
+        &lt;div class=&quot;div1&quot;&gt;div1&lt;/div&gt;
+        &lt;div class=&quot;div2&quot;&gt;div2 - Notice that the div2 element is after div1, in the HTML code. However, since div1 is floated to the left, this happens: the text in div2 is floated around div1, and div2 surrounds the whole thing.&lt;/div&gt;
+        
+        &lt;h2&gt;Using clear&lt;/h2&gt;
+        &lt;div class=&quot;div3&quot;&gt;div3&lt;/div&gt;
+        &lt;div class=&quot;div4&quot;&gt;div4 - Using clear moves div4 down below the floated div3. The value &quot;left&quot; clears elements floated to the left. You can also clear &quot;right&quot; and &quot;both&quot;.&lt;/div&gt;
+        
+        &lt;/body&gt;
+        &lt;/html&gt;
+        
+        
+        </code></pre></section><section id="margin-and-padding" class="level2"><h2>Margin and Padding</h2><ul><li><code>margin</code> property specifies the required space between the border and the next element (see box model above)<br />
+        </li><li>Value is a length (px, pt, cm, etc) or a % of the page</li><li>The <code>margin</code> attribute is shorthand for <code>margin-top</code>, <code>margin-right</code>, <code>margin-bottom</code>, <code>margin-left</code><ul><li>See <a href="http://www.w3schools.com/css/css_margin.asp" class="uri">http://www.w3schools.com/css/css_margin.asp</a> for margin variations</li></ul></li><li>Example: <code>margin: 50px 40px 100px 25px</code> (what does this mean?)</li><li>Example: <code>margin-top: 100px</code></li></ul></section><section id="margin-and-padding-1" class="level2"><h2>Margin and Padding</h2><ul><li><code>padding</code> property specifies the amount of space between the content and the border (see box model above)<br />
+        <ul><li>Value is a length (px, pt, cm, etc) or a % of the page</li><li>The <code>padding</code> attribute is shorthand for <code>padding-top</code>, <code>padding``-right</code>, <code>padding``-bottom</code>, <code>padding-left</code><ul><li>See <a href="http://www.w3schools.com/css/css_padding.asp" class="uri">http://www.w3schools.com/css/css_padding.asp</a> for padding variations<br />
+        </li></ul></li><li>Example: <code>padding: 50px 40px 100px 25px</code> (what does this mean?)</li><li>Example: <code>padding-top: 100px</code></li></ul></li><li>See: <code>media_types_queries.html</code> or <code>positioning.html</code></li></ul></section><section id="media-types-and-media-queries" class="level2"><h2>Media Types and Media Queries</h2><p>Media Types</p><ul><li>Allow you to specify what the page should look like on different media.</li><li>Standarad media type is <code>screen</code>, which stands for computer screen</li><li>Other options: <code>handheld</code> (cell phone/mobile), <code>speech</code> (read out old), <code>print</code> (printers).</li><li><p>Basic example:</p><pre class="css"><code>@media all {
+        body { background-color: black; }
+        }
+        @media print{
+        body { background-color: white; }
+        }</code></pre></li></ul></section><section id="media-types-and-media-queries-1" class="level2"><h2>Media Types and Media Queries</h2><p>Media Queries</p><ul><li>Allow you to query the user’s device and use different CSS rules based on the media <ul><li><code>height</code> - height of display area (the browser) </li><li><code>width</code> - width of display area (the browser)</li><li><code>resolution</code> - resolution of the output device</li><li><code>orientation</code> - landscape or portrait</li></ul></li></ul></section><section id="media-types-and-media-queries-2" class="level2"><h2>Media Types and Media Queries</h2><p>Media Queries</p><ul><li><p>CSS Syntax</p><pre class="css"><code>@media not|only mediatype and (media feature) {
+        CSS-Code;
+        }</code></pre></li><li><code>not</code> negates the media query<br />
+        </li><li><code>only</code> applies the style only if the query matches<br />
+        </li><li><p>Note: you may omit the <code>mediatype</code> and only specify a <code>(media feature)</code> if you wish</p></li></ul></section><section id="example-media_types_queries.html" class="level2"><h2>Example: <a href="../examples/ch4_css/media_types_queries.html"><code>media_types_queries.html</code></a></h2><pre><code>&lt;!DOCTYPE html&gt;
+        &lt;!-- Example from: http://www.w3schools.com/cssref/tryit.asp?filename=trycss3_mediaquery --&gt;
+        &lt;html&gt;
+        &lt;head&gt;
+        &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;/&gt;
+        &lt;style&gt;
+        body {
+            font-family: &quot;Lucida Sans&quot;, Verdana, sans-serif;
+        }
+        
+        .main img {
+            width: 100%;
+        }
+        
+        h1{
+            font-size: 1.625em;
+        }
+        
+        h2{
+            font-size: 1.375em;
+        }
+        
+        .header {
+            padding: 1%;
+            background-color: #f1f1f1;
+            border: 1px solid #e9e9e9;
+        }
+        
+        .menuitem {
+            margin: 4%;
+            margin-left: 0;
+            margin-top: 0;
+            padding: 4%;
+            border-bottom: 1px solid #e9e9e9;
+            cursor: pointer;
+        }
+        
+        .main {
+            padding: 2%;
+        }
+        
+        .right {
+            padding: 4%;
+            background-color: #CDF0F6;
+        }
+        
+        .footer {
+            padding: 1%;
+            text-align: center;
+            background-color: #f1f1f1;
+            border: 1px solid #e9e9e9;
+            font-size: 0.625em;
+        }
+        
+        .gridcontainer {
+            width: 100%;
+        }
+        
+        .gridwrapper {
+            overflow: hidden;
+        }
+        
+        .gridbox {
+            margin-bottom: 2%;
+            margin-right: 2%;
+            float: left;
+        }
+        
+        .gridheader {
+            width: 100%;
+        }
+        
+        .gridmenu {
+            width: 23%;
+        }
+        
+        .gridmain {
+            width: 50%;
+        }
+        
+        .gridright {
+            width: 23%;
+            margin-right: 0;
+        }
+        
+        .gridfooter {
+            width: 100%;
+            margin-bottom: 0;
+        }
+        
+        @media only screen and (max-width: 500px) {
+            .gridmenu {
+                width: 100%;
+            }
+        
+            .menuitem {
+                margin: 1%;
+                padding: 1%;
+            }
+        
+            .gridmain {
+                width: 100%;
+            }
+        
+            .main {
+                padding: 1%;
+            }
+        
+            .gridright {
+                width: 100%;
+            }
+        
+            .right {
+                padding: 1%;
+            }
+        
+            .gridbox {
+                margin-right: 0;
+                float: left;
+            }
+        }
+        
+        &lt;/style&gt;
+        &lt;/head&gt;
+        &lt;body&gt;
+        &lt;div class=&quot;gridcontainer&quot;&gt;
+            &lt;div class=&quot;gridwrapper&quot;&gt;
+                &lt;div class=&quot;gridbox gridheader&quot;&gt;
+                    &lt;div class=&quot;header&quot;&gt;
+                        &lt;h1&gt;The Pulpit Rock&lt;/h1&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;gridbox gridmenu&quot;&gt;
+                    &lt;div class=&quot;menuitem&quot;&gt;The Drive&lt;/div&gt;
+                    &lt;div class=&quot;menuitem&quot;&gt;The Walk&lt;/div&gt;
+                    &lt;div class=&quot;menuitem&quot;&gt;The Return&lt;/div&gt;
+                    &lt;div class=&quot;menuitem&quot;&gt;The End&lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;gridbox gridmain&quot;&gt;
+                    &lt;div class=&quot;main&quot;&gt;
+                      &lt;h1&gt;The Walk&lt;/h1&gt;
+                      &lt;p&gt;The walk to the Pulpit Rock will take you approximately two hours, give or take an hour depending on the weather conditions and your physical shape.&lt;/p&gt;
+                      &lt;img src=&quot;pulpitrock.jpg&quot; alt=&quot;Pulpit rock&quot; width=&quot;&quot; height=&quot;&quot;&gt;
+        
+                    &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;gridbox gridright&quot;&gt;
+                    &lt;div class=&quot;right&quot;&gt;
+                      &lt;h2&gt;What?&lt;/h2&gt;
+                      &lt;p&gt;The Pulpit Rock is a part of a mountain that looks like a pulpit.&lt;/p&gt;
+                      &lt;h2&gt;Where?&lt;/h2&gt;
+                      &lt;p&gt;The Pulpit Rock is in Norway&lt;/p&gt;
+                      &lt;h2&gt;Price?&lt;/h2&gt;
+                      &lt;p&gt;The walk is free!&lt;/p&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;gridbox gridfooter&quot;&gt;
+                    &lt;div class=&quot;footer&quot;&gt;
+                      &lt;p&gt;This web page is a part of a demonstration of fluid web design made by www.w3schools.com. Resize the browser window to see the content response to the resizing.&lt;/p&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;/body&gt;
+        &lt;/html&gt;
+        </code></pre></section><section id="drop-down-menus" class="level2"><h2>Drop-Down Menus</h2><ul><li>Excellent way to control navigation panes without using screen space</li><li>Utilized through the <code>display</code> property:<ul><li>Controls how the element is displayed; e.g. <code>block</code> (like <code>p</code>, <code>section</code> etc) or <code>inline</code> (like <code>span</code>, <code>em</code> etc)</li><li><code>display: none;</code> element is not displayed</li><li><code>display: block;</code> displays a block level element</li><li><code>display: inline;</code> displays as an inline element</li><li><code>display: inline-block;</code> display is like an inline element, but can have a specified height and width</li></ul></li></ul></section><section id="example-drop_down_menu.html" class="level2"><h2>Example: <a href="../examples/ch4_css/drop_down_menu.html"><code>drop_down_menu.html</code></a></h2><pre><code>&lt;!DOCTYPE html&gt;
+        &lt;html&gt;
+        
+        &lt;head&gt;
+          &lt;link href=&quot;https://dl.dropbox.com/s/p6zt773weewbvzs/styles.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; /&gt;
+          &lt;style&gt;
+            .dropbtn {
+              background-color: #4CAF50;
+              color: white;
+              padding: 16px;
+              font-size: 16px;
+              border: none;
+              cursor: pointer;
+            }
+            
+            .dropdown {
+              position: relative;
+              display: inline-block;
+            }
+            
+            .dropdown-content {
+              display: none;
+              position: absolute;
+              background-color: #f9f9f9;
+              min-width: 160px;
+            }
+            
+            .dropdown-content a {
+              color: black;
+              padding: 12px 16px;
+              text-decoration: none;
+              display: block;
+            }
+            
+            .dropdown-content a:hover {
+              background-color: #f1f1f1
+            }
+            
+            .dropdown:hover .dropdown-content {
+              display: block;
+            }
+            
+            .dropdown:hover .dropbtn {
+              background-color: #3e8e41;
+            }
+          &lt;/style&gt;
+        &lt;/head&gt;
+        
+        &lt;body&gt;
+        
+          &lt;h2&gt;Hoverable Dropdown&lt;/h2&gt;
+          &lt;p&gt;Move the mouse over the button to open the dropdown menu.&lt;/p&gt;
+          
+          &lt;p&gt;Note that because &lt;p&gt;
+          &lt;div class=&quot;dropdown&quot;&gt;
+            &lt;button class=&quot;dropbtn&quot;&gt;Navigation&lt;/button&gt;
+            &lt;div class=&quot;dropdown-content&quot;&gt;
+              &lt;a href=&quot;http://google.com&quot;&gt;Google&lt;/a&gt;
+              &lt;a href=&quot;http://facebook.com&quot;&gt;Facebook&lt;/a&gt;
+              &lt;a href=&quot;http://cnn.com&quot;&gt;CNN&lt;/a&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        
+        &lt;/body&gt;
+        
+        &lt;/html&gt;
+        </code></pre></section>
+      </div>
+    </div>
+    
+    <!-- end main body -->
+    
+    <script src="lib/js/head.min.js"></script>
+    <script src="reveal.js/js/reveal.js"></script>
+    
+    <script>
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+      controls: true,
+      progress: true,
+      history: true,
+      center: true,
+      mouseWheel: false,
+      rollingLinks: false,
+      showNotes: true,
+
+      theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+      transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/none
+
+      // Optional libraries used to extend on reveal.js
+      dependencies: [
+      { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+      // { src: 'plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+      { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+      { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+      { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+      { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+      { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+      // { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+      { src: 'plugin/math/math.js', async: true }
+      ]
+      });
+
+    </script>
+
+    <script>window.jQuery || document.write('<script src="js/jquery-3.2.1.min.js"><\/script>')</script>
+    <script src="js/bootstrap.min.js"></script>
+
+<!--
+    <script>
+      Reveal.addEventListener( 'slidechanged', function( event ) {
+      // event.previousSlide, event.currentSlide, event.indexh, event.indexv
+      var notes = event.currentSlide.querySelector(".notes");
+      if(notes) {
+          console.info("---");
+          console.info(notes.innerHTML.replace(/\n\s+/g,'\n'));
+      }
+      } );
+    </script>
+-->
+
+    <script>
+      Reveal.configure({ slideNumber: 'c/t' });
+    </script>
+
+
+    <script src="js/main.js"></script>
+    <!-- Default Statcounter code for Personal website http://mjedmonds.com -->
+  <script type="text/javascript">
+  var sc_project=11819202; 
+  var sc_invisible=0; 
+  var sc_security="3d207e19"; 
+  var sc_https=1; 
+  var scJsHost = (("https:" == document.location.protocol) ? "https://secure." :
+  "http://www.");
+  document.write("<sc"+"ript type='text/javascript' src='" + scJsHost+
+  "statcounter.com/counter/counter.js'></"+"script>");
+  </script>
+  <noscript><div class="statcounter"><a title="Web Analytics Made Easy -
+  StatCounter" href="http://statcounter.com/" target="_blank"><img
+  class="statcounter" src="//c.statcounter.com/11819202/0/3d207e19/0/" alt="Web
+  Analytics Made Easy - StatCounter"></a></div></noscript>
+  <!-- End of Statcounter Code -->
+  </body>
+</html>

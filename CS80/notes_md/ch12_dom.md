@@ -6,7 +6,7 @@ description: Chapter 12, the document object model
 title: Document Object Model
 ---
 
-# Chapter 12: Document Object Model
+## Chapter 12: Document Object Model
 
 CS 80: Internet Programming
 
@@ -51,30 +51,43 @@ Instructor: Mark Edmonds
 
 ## DOM Basics
 
-- Important Methods
-  - `currentNode.getAttribute(attr_name)` - gets an attribute from the node (specifically `attr_name`). Attributes are HTML attributes, such as `class` or `src`, etc.
-  - `currentNode.setAttribute(attr_name, value)` - sets an attribute from the node (specifically `attr_name` to `value`). Attributes are HTML attributes, such as `class` or `src`, etc.
-  - `currentNode.removeAttribute(attr_name)` - removes an attribute from the node (specifically `attr_name`). Attributes are HTML attributes, such as `class` or `src`, etc.
-  - `document.createElement("HTMLtag")` - creates an HTML tag of type `HTML_tag`. E.g. `var node = document.createElement("p");` creates a paragraph tag
+Important Methods
+
+- `currentNode.getAttribute(attr_name)` - gets an attribute from the node (specifically `attr_name`). Attributes are HTML attributes, such as `class` or `src`, etc.
+- `currentNode.setAttribute(attr_name, value)` - sets an attribute from the node (specifically `attr_name` to `value`). Attributes are HTML attributes, such as `class` or `src`, etc.
+- `currentNode.removeAttribute(attr_name)` - removes an attribute from the node (specifically `attr_name`). Attributes are HTML attributes, such as `class` or `src`, etc.
+- `document.createElement("HTMLtag")` - creates an HTML tag of type `HTML_tag`. E.g. `var node = document.createElement("p");` creates a paragraph tag
 
 ## DOM Basics
 
-- Important Methods
-  - `currentNode.appendChild(child_node)` - appends the DOM node `child_node` to to the `node`. Note that `child_node` must be a constructed DOM node
-  - `currentNode.insertBefore(newNode, referenceNode)` - inserts the new node before the reference node as a child of the current node
-  - `currentNode.replaceChild(newChild, oldChild)` - replaces current node\'s the old child with the new child
-  - `currentNode.removeChild(child)` - removes a child node (note that this function returns the child node)
+Important Methods
+
+- `currentNode.appendChild(child_node)` - appends the DOM node `child_node` to to the `node`. Note that `child_node` must be a constructed DOM node
+- `currentNode.insertBefore(newNode, referenceNode)` - inserts the new node before the reference node as a child of the current node
+- `currentNode.replaceChild(newChild, oldChild)` - replaces current node\'s the old child with the new child
+- `currentNode.removeChild(child)` - removes a child node (note that this function returns the child node)
 
 ## DOM Basics
 
-- Important Attributes
-  - `innerHTML` - accesses this node\'s inner HTML. This is the text to markup. E.g. if `<p>` is the `currentNode`. `currentNode.innerHTML` accesses the text within the `<p>` tag
-  - `parentNode` - accesses this node\'s parent HTML node.
-  - `length` - tells how many children node this node has
+Important Attributes
+
+- `innerHTML` - accesses this node\'s inner HTML. This is the text to markup. E.g. if `<p>` is the `currentNode`. `currentNode.innerHTML` accesses the text within the `<p>` tag
+- `parentNode` - accesses this node\'s parent HTML node.
+- `length` - tells how many children node this node has
 
 ## DOM Basics
 
 - Changing/Setting the innerHTML of a node
+
+  ```javascript
+  // Case 1: create new node
+  var h1_node = document.createElement("h1"); // create new h1_node
+  h1_node.innerHTML = "Hello, World!"; // change the inner HTML using innerHTML
+  document.body.appendChild(h1_node); // insert our new node to the document's body (document.body gives you the required &lt;body&gt; HTML tag)
+  // Case 2: modify an existing node
+  var h1_node = document.getElementById("h1_ele"); // assume there is an &lt;h1 id="h1_ele"&gt; tag in the document
+  h1_node.innerHTML = "Hello, World!"; // change the inner HTML using innerHTML
+  ```
 
 ## Example: [`editing_dom.html`](../examples/ch12_dom/editing_dom.html)
 
@@ -113,9 +126,9 @@ Instructor: Mark Edmonds
 
 - Syntax:
 
-```javascript
-    target.addEventListener(event_type, callback);
-```
+  ```javascript
+  target.addEventListener(event_type, callback);
+  ```
 
 - `target` = HTML element to listen for `event_type`
   - When `target` (DOM node) has `event_type` (event) occur, `callback` (function) is called
@@ -176,8 +189,10 @@ Instructor: Mark Edmonds
   - Note that the `onsubmit` attribute specifies a Javascript function to call upon submission (one way to do form validation!)
   - Use form object documentation to help <http://www.w3schools.com/jsref/coll_form_elements.asp>
 
-## Exercise
+## Exercise: Corresponding HTML
 
+```{include=../examples/ch12_dom/get_form_value.html}
+```
 
 ## Example: [`first_last_name.html`](../examples/ch12_dom/first_last_name.html)
 

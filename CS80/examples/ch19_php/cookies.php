@@ -1,13 +1,13 @@
 <!-- Fig. 19.18: cookies.php -->
 <!-- Writing a cookie to the client. -->
-<?php 
+<?php
    define( "FIVE_DAYS", 60 * 60 * 24 * 5 ); // define constant
 
-   // write each form field’s value to a cookie and set the 
-   // cookie’s expiration date
-   setcookie( "name", $_POST["name"], time() + FIVE_DAYS );    
+   // write each form fields value to a cookie and set the
+   // cookies expiration date
+   setcookie( "name", $_POST["name"], time() + FIVE_DAYS );
    setcookie( "height", $_POST["height"], time() + FIVE_DAYS );
-   setcookie( "color", $_POST["color"], time() + FIVE_DAYS );  
+   setcookie( "color", $_POST["color"], time() + FIVE_DAYS );
 ?><!-- end PHP script -->
 
 <!DOCTYPE html>
@@ -22,13 +22,13 @@
    </head>
    <body>
       <p>The cookie has been set with the following data:</p>
-      
+
       <!-- print each form field's value -->
-      <p>Name: <?php print( $_COOKIE["name"] ) ?></p>          
-      <p>Height: <?php print( $_COOKIE["height"] ) ?></p>         
-      <p>Favorite Color: 
+      <p>Name: <?php print( $_COOKIE["name"] ) ?></p>
+      <p>Height: <?php print( $_COOKIE["height"] ) ?></p>
+      <p>Favorite Color:
          <span style = "color: <?php print( $_COOKIE["color"] ) ?> ">
-         <?php print( $_COOKIE["color"] ) ?></span></p>      
+         <?php print( $_COOKIE["color"] ) ?></span></p>
       <p>Click <a href = "readCookies.php">here</a>
          to read the saved cookie.</p>
    </body>

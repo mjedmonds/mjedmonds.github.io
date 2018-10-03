@@ -6,7 +6,7 @@ description: Chapter 15, XMl
 title: XML
 ---
 
-# Chapter 15: XML
+## Chapter 15: XML
 
 CS 80: Internet Programming
 
@@ -44,22 +44,22 @@ Instructor: Mark Edmonds
 - XML allows us to share data efficiently
 - Consider the following
 
-```xml
-<family>
-    <member>
-      <name>John</name>
-      <age>10</age>
-    </member>
-    <member>
-      <name>Bill</name>
-      <age>15</age>
-    </member>
-    <member>
-      <name>Judy</name>
-      <age>25</age>
-    </member>
-</family>
-```
+  ```xml
+  <family>
+      <member>
+        <name>John</name>
+        <age>10</age>
+      </member>
+      <member>
+        <name>Bill</name>
+        <age>15</age>
+      </member>
+      <member>
+        <name>Judy</name>
+        <age>25</age>
+      </member>
+  </family>
+  ```
 
 ## XML describes data
 
@@ -69,9 +69,9 @@ Instructor: Mark Edmonds
 ## XML Concepts
 
 - Why care?
-  - XML makes data formats portable and application indpendent
+  - XML makes data formats portable and application independent
     - Which makes them a very good idea for the internet!
-      - Application indpendent means I don\'t need the application using the data to understand the data (contrast a format like Word document to a .txt)
+    - Application independent means I don\'t need the application using the data to understand the data (contrast a format like Word document to a .txt)
 
 ## XML Concepts
 
@@ -83,9 +83,9 @@ Instructor: Mark Edmonds
 
 - XML elements have start and end tags
   - Start tag proceeds as above, e.g. `<data>`
-  - End tag has a backslach (`\` after the `<`, e.g. `</data>`
+  - End tag has a backslash (`\` after the `<`, e.g. `</data>`
     - End tags can be shorthanded in the starting tag by place a forward slash `/` before the closing `<` of the opening tag. e.g. with `<data/>` as the start tag
-    - Looks familiar!
+  - Looks familiar!
 
 ## XML Concepts
 
@@ -96,10 +96,10 @@ Instructor: Mark Edmonds
 
 - XML-based markup languages are called **XML vocbaularies**
   - Provide a mechanism to describe data in a standardized, structured way.
-  - Exmaples: XHTML, MathML (math), VoiceXML (speech), XBRL (financial data)
+  - Examples: XHTML, MathML (math), VoiceXML (speech), XBRL (financial data)
   - Why do XML vocabularies matter?
     - Large companies often employ their own XML vocabulary to describe their data internally
-    - They provide a standard for data markup using a standarad data format (e.g. if you can read XML, a XML vocabulary will be easier to understand than a propiertary data format)
+    - They provide a standard for data markup using a standard data format (e.g. if you can read XML, a XML vocabulary will be easier to understand than a proprietary data format)
 
 ## XML Concepts
 
@@ -173,6 +173,12 @@ Instructor: Mark Edmonds
 ## XML Namespaces
 
 - Suppose we want to use the use \"subject\" in multiple ways: one for subjects in high school, the other for subjects in medical schools
+
+  ```xml
+  <subject>Geometry</subject>
+  <subject>Radiology</subject>
+  ```
+
 - We have an ambiguity in our data format as we probably don\'t want to mix high school and medical school subjects!
   - So we need a way to add additional categorical/hierarchical information
 
@@ -180,7 +186,12 @@ Instructor: Mark Edmonds
 
 - Namespaces allow us to give more specific scope to an XML element
   - The namespace itself is called a **namespace prefix** and is followed by a colon (`:`) before the XML element name
-- For our exmaple
+- For our example
+
+  ```xml
+  <highschool:subject>Geometry</highschool:subject>
+  <medicalschool:subject>Radiology</medicalschool:subject>
+  ```
 
 ## XML Namespaces
 

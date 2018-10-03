@@ -6,7 +6,7 @@ description: Chapter 2, Introduction to HTML Part 1
 title: 'Introduction to HTML: Part 1'
 ---
 
-# Chapter 2: Introduction to HTML Part 1
+## Chapter 2: Introduction to HTML Part 1
 
 CS 80: Internet Programming
 
@@ -31,9 +31,9 @@ Instructor: Mark Edmonds
 ## Editing HTML
 
 - Web browsers
-- Chrome, firefox, IE, etc
-- For this course, firefox seems to be the most agreeable
-  - There is one assignment with Ajax that only works with firefox
+  - Chrome, firefox, IE, etc
+  - For this course, firefox seems to be the most agreeable
+    - There is one assignment with Ajax that only works with firefox
 
 ## HTML Concepts
 
@@ -134,18 +134,18 @@ Instructor: Mark Edmonds
 ## Special Characters
 
 - HTML itself uses certain characters to represent the structure of the document
-- These symbols have special meaning within the document itself
-- What are some examples?
-- How are tags wrapped?
-  - Around `<` and `>`
+  - These symbols have special meaning within the document itself
+  - What are some examples?
+    - How are tags wrapped?
+      - Around `<` and `>`
 
 ## Special Characters
 
 - Clearly, we still want to be able to include these tags in an HTML document.
 - Solution: We have to use a special convention to include these restricted characters
 - These special conventions are called *character entity references*
-- The basic format: `&ref;`
-  - Where `ref` is a reference to the character you wish to insert
+  - The basic format: `&ref;`
+    - Where `ref` is a reference to the character you wish to insert
 
 ## Special Characters
 
@@ -221,8 +221,7 @@ Table Rows
 
 Table Rows
 
-- Each `<tr>` tag is comprised of `<th>` tags, which is a *header cell*.
-  - It is different from the normal cell.
+- Each `<tr>` tag is comprised of `<th>` tags, which is a *header cell*. It is different from the normal cell!
   - It is different to allow easier styling using CSS
   - The table fills left to right along the columns
 - Repeat this `<tr>` and `<th>` pattern for each row, and each column you want to specify
@@ -324,17 +323,17 @@ Important `<input>` attributes
 Important `<input>` attributes
 
 - `type`
-- `hidden` is a special type
-  - It submits data to the server that is predetermined in the HTML page
-  - The user cannot control this input
-  - Might be used for sending information to another server to identify where the form is coming from
+  - `hidden` is a special type
+    - It submits data to the server that is predetermined in the HTML page
+    - The user cannot control this input
+    - Might be used for sending information to another server to identify where the form is coming from
 
 ## Forms
 
 Important `<input>` attributes
 
 - `type`
-- `text` has a couple of special attributes: `size` - specifies the size of the text box and `maxlength` which specifies the maximum length of the input
+  - `text` has a couple of special attributes: `size` - specifies the size of the text box and `maxlength` which specifies the maximum length of the input
 
 
 ## Forms

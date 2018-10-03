@@ -6,7 +6,7 @@ description: Chapter 1, Introduction to Computers & Internet
 title: 'Introduction to Computers & the Internet'
 ---
 
-# Welcome to CS 80: Internet Programming
+## Welcome to CS 80: Internet Programming
 
 Instructor: Mark Edmonds
 
@@ -114,9 +114,9 @@ TCP/IP
 ## A brief history of the Internet
 
 - Each computer on sub-networks and the Internet is assigned its own IP address
-- We used to use IPv4, which is 32-bit (meaning approximately four billion address)
-- We ran out of IPv4 address; we now use IPv6, which is 128-bit (containing approximately 340 follow by 36 zeros worth of address
-  - We should be good for a while!
+  - We used to use IPv4, which is 32-bit (meaning approximately four billion address)
+  - We ran out of IPv4 address; we now use IPv6, which is 128-bit (containing approximately 340 follow by 36 zeros worth of address
+    - We should be good for a while!
 
 ## World Wide Web, HTML, HTTP
 
@@ -126,7 +126,7 @@ TCP/IP
 - A URL (uniform resource locator) specifies the location of the html document on the web. 
   - Start with `http://`
 
-### Web Basics
+## Web Basics
 
 Hyperlinks
 

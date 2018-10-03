@@ -6,7 +6,7 @@ description: Chapter 6, Javascript, Introduction to Scripting
 title: 'Javascript: Introduction to Scripting'
 ---
 
-# Chapter 6: Javascript: Introduction to Scripting
+## Chapter 6: Javascript: Introduction to Scripting
 
 CS 80: Internet Programming
 
@@ -14,15 +14,10 @@ Instructor: Mark Edmonds
 
 ## Welcome to Javascript!
 
-What is javascript?
-
-- Client side scripting language
-
-What is scripting?
-
-- Generally tied with interpreted languages, meaning the code is
-    translated to machine code right before execution (vs. compiled
-    code)
+- What is javascript?
+  - Client side scripting language
+- What is scripting?
+  - Generally tied with interpreted languages, meaning the code is translated to machine code right before execution (vs. compiled code)
 
 ## Welcome to Javascript!
 
@@ -43,8 +38,13 @@ Why do we care?
   - Typically goes in the `<head>` portion of the document
 - Example:
 
-```html
-        <script type="text/javascript"> script_stuff </script>
+  ```html
+  <script type="text/javascript"> script_stuff </script>
+  ```
+
+## Example: [`hello_world.html`](../examples/ch6_js/hello_world.html)
+
+```{include=../examples/ch6_js/hello_world.html}
 ```
 
 ## Example: [`hello_world.html`](../examples/ch6_js/hello_world.html)
@@ -61,9 +61,9 @@ Why do we care?
 
 - Example
 
-```html
-        <script src="srcipt.js">
-```
+  ```html
+  <script src="srcipt.js">
+  ```
 
 - Loads the Javascript in `srcipt.js` into this HTML document
 
@@ -178,7 +178,7 @@ Basic Operators
 
 - **Remainder**: `%`, used to perform modulo.
   - Modulo/remainder division finds the remainder of an integer division
-    - E.g. `11 % 5` yields `1` because `11 = 5 * 2 + 1`
+  - E.g. `11 % 5` yields `1` because `11 = 5 * 2 + 1`
     - We are interested in the `1`, since that is the remainder when you divide `11` by `5`
 
 ## Javascript Basics
@@ -256,6 +256,14 @@ Operators and Conditionals
 
 - Example:
 
+  ```javascript
+  if(5 <= 10){
+    document.writeln("5 is indeed less than 10");
+  } else {
+    document.writeln("5 is somehow not less than 10...");
+  }
+  ```
+
 ## Javascript Basics
 
 Operators and Conditionals
@@ -268,6 +276,16 @@ Operators and Conditionals
 Operators and Conditionals
 
 - Example: where `time` is the hour of the day (0-23)
+
+  ```javascript
+  if (time < 10) {
+    greeting = "Good morning";
+  } else if (time < 20) {
+    greeting = "Good day";
+  } else {
+    greeting = "Good evening";
+  }
+  ```
 
 ## Javascript Basics
 
@@ -289,7 +307,7 @@ Operators and Conditionals
 
 - Compound conditionals:
   - Use logical operations `AND`, `OR`, and `NOT`
-  - `AND` is represented with `&&`
+  - `AND` is represented with ``
   - `OR` is represented with `||`
   - `NOT` is represented with `!`
   - Combining conditions allows us to use much more powerful program flow
@@ -302,7 +320,7 @@ Operators and Conditionals
   - If the program can determine the overall value of the compound conditional, it will stop evaluting the rest of the conditional
   - E.g. Suppose `cond_a` is `true` and `cond_b` is `false`. 
     - `if(cond_a || cond_b)` doens\'t need to look at the value of `cond_b`, the overall condition is determined by `cond_a`.
-    - Similarly, `if(cond_b && cond_a)` doesn\'t need to look at the value of `cond_a`, since `cond_b` already determined the overall state of the compound conditional.
+    - Similarly, `if(cond_b  cond_a)` doesn\'t need to look at the value of `cond_a`, since `cond_b` already determined the overall state of the compound conditional.
     - Remember: left to right!
   - **Key takeaway** order matters!
 
@@ -310,16 +328,29 @@ Operators and Conditionals
 
 Operators and Conditionals
 
-- Example: (pay close attention to evaulation order)
+- Example: (pay close attention to evaluation order)
 
-### Exercise
+  ```javascript
+  if(cond_a && cond_b){
+    // only executes if cond_a AND cond_b are true
+  } else if(cond_a || cond_d){
+    // only executes if 1) cond_a is true AND cond_b is false (think about why) OR cond_d is true
+  } else if(!cond_d){
+    // only executes if cond_a is false AND cond_d is true
+    // will this ever execute?
+  } else {
+    // otherwise
+  }
+  ```
+
+## Exercise
 
 - Display the current day and time in the following format:
 
-```
-Today is: Friday
-Current time is: 4:50:22PM
-```
+  ```text
+  Today is: Friday
+  Current time is: 4:50:22PM
+  ```
 
 - **First step**: look at the `Date()` javascript function
   - <http://www.w3schools.com/jsref/jsref_obj_date.asp>
@@ -379,14 +410,21 @@ Current time is: 4:50:22PM
 ## Developer Tools
 
 - We can also call functions or inspect variables while paused using the console
-- Move to the console, and type a javascript statement to execute
-  - Can also just type variable names to get their value
-- If the javascript statement we called doesn\'t have a return value (e.g. statement doesn\'t yeild a value), then the console will report `undefined`.
+  - Move to the console, and type a javascript statement to execute
+    - Can also just type variable names to get their value
+  - If the javascript statement we called doesn\'t have a return value (e.g. statement doesn\'t yeild a value), then the console will report `undefined`.
 
 ## Javascript Functions
 
 - Functions enable reuseable code
 - Sum example:
+
+  ```javascript
+  function sum1(a, b){
+    // do other amazing javascript things here
+    return a + b;
+  }
+  ```
 
 - We can then call `sum(10, 5)` which would return `15`
 
@@ -395,6 +433,12 @@ Current time is: 4:50:22PM
 - Assigning functions to variables
 
 - Sum example:
+
+  ```javascript
+  var sum2 = function(a,b){
+    return a + b;
+  }
+  ```
 
 - We can then call `sum2(10, 5)` which would return `15`
 
