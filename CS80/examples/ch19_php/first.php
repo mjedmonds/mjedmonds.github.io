@@ -10,7 +10,7 @@
     <title>Simple PHP document</title>
   </head>
   <body>
-    <!-- print variable name’s value -->
+    <!-- print variable name's value -->
     <h1><?php print( "Welcome to PHP, $name!" ); ?></h1>
   </body>
 </html>

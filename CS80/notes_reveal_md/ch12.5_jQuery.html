@@ -30,29 +30,10 @@
     
     <style>
       body {
-      padding-top: 30px;
-      padding-bottom: 40px;
+        padding-top: 30px;
+        padding-bottom: 40px;
       }
-      /* custom settings for reveal */
-      reveal {
-        font-size: 30px;
-      }
-      .reveal h1 {
-        font-size: 3em; }
-
-      .reveal h2 {
-        font-size: 2em; }
-
-      .reveal h3 {
-        font-size: 1.25em; }
-
-      .reveal h4 {
-        font-size: 1em; }
-
-      .reveal li {
-        padding-top: 4px;
-        padding-bottom: 4px;
-      }
+      
     </style>
 
     <!-- For syntax highlighting -->
@@ -86,15 +67,19 @@
         <section id="chapter-12.5-jquery" class="level2"><h2>Chapter 12.5: jQuery</h2><p>CS 80: Internet Programming</p><p>Instructor: Mark Edmonds</p></section><section id="jquery" class="level2"><h2>jQuery</h2><ul><li>A lightweight javascript library</li><li>Main advantage: provides a lot of functionality in a minimal amount of code<ul><li>Works across browsers and platforms</li><li>Means you don't have to worry about minor differences between browsers</li></ul></li><li>Makes practical javascript much easier</li></ul></section><section id="importing-jquery" class="level2"><h2>Importing jQuery</h2><ul><li><p>jQuery is hosted by many large companies</p><pre class="html"><code>&lt;!-- import your own local jQuery --&gt;
         &lt;script src=&quot;jquery-3.1.0.min.js&quot;&gt;&lt;/script&gt;
         &lt;!-- import Google&#39;s hosting of jQuery --&gt;
-        &lt;script src=&quot;https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js&quot;&gt;&lt;/script&gt;</code></pre></li></ul></section><section id="jquery-basics" class="level2"><h2>jQuery Basics</h2><ul><li>Conceptual starting points<ul><li>We will <em>select</em> HTML elements and then perform some <em>action</em> on the elements</li><li>Basic syntax:</li></ul><pre class="javascript"><code>$(selector).action()</code></pre><ul><li><code>$</code> indicates we are using jQuery</li><li><code>( selector )</code> finds corresponding HTML elements</li><li><code>action()</code> performs some action on the elements</li></ul></li></ul></section><section id="anonymous-functions" class="level2"><h2>Anonymous Functions</h2><ul><li>Anonymous functions are functions without a name</li><li>We had subtly been using anonymous functions when we assigned variables to functions</li><li><p>Remember:</p><pre class="javascript"><code>var sum2 = function(a,b){
+        &lt;script src=&quot;https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js&quot;&gt;&lt;/script&gt;</code></pre></li></ul></section><section id="jquery-basics" class="level2"><h2>jQuery Basics</h2><ul><li>Conceptual starting points<ul><li>We will <em>select</em> HTML elements and then perform some <em>action</em> on the elements</li><li>Basic syntax:</li></ul><pre class="javascript"><code>$(selector).action()</code></pre><ul><li><code>$</code> indicates we are using jQuery</li><li><code>( selector )</code> finds corresponding HTML elements</li><li><code>action()</code> performs some action on the elements</li></ul></li></ul></section><section id="anonymous-functions" class="level2"><h2>Anonymous Functions</h2><ul><li>Anonymous functions are functions without a name</li><li>We had subtly been using anonymous functions when we assigned variables to functions</li><li><p>Remember:</p><pre class="javascript"><code>// javascript anonymous function declaration
+        var sum2 = function(a,b){
           return a + b;
-        }</code></pre></li></ul></section><section id="anonymous-functions-1" class="level2"><h2>Anonymous Functions</h2><ul><li><p>Remember:</p><pre class="javascript"><code>var sum2 = function(a,b){
+        }</code></pre></li></ul></section><section id="anonymous-functions-1" class="level2"><h2>Anonymous Functions</h2><ul><li><p>Remember:</p><pre class="javascript"><code>// javascript anonymous function declaration
+        var sum2 = function(a,b){
           return a + b;
-        }</code></pre></li><li>The right hand side of this assignment has no name!</li><li><p>We'll be seeing this pattern more, don't freak out!</p></li></ul></section><section id="document-loading" class="level2"><h2>Document Loading</h2><ul><li><p>Previously, we used the following paradigm to wait until the page is ready:</p><pre class="javascript"><code>window.addEventListener(&quot;load&quot;, start, false);
+        }</code></pre></li><li>The right hand side of this assignment has no name!</li><li><p>We'll be seeing this pattern more, don't freak out!</p></li></ul></section><section id="document-loading" class="level2"><h2>Document Loading</h2><ul><li><p>Previously, we used the following paradigm to wait until the page is ready:</p><pre class="javascript"><code>// wait for document to load to run the start function
+        window.addEventListener(&quot;load&quot;, start, false);
         
         function start(){
           // startup code
-        }</code></pre></li><li><p>jQuery makes this a lot easier…</p><pre class="javascript"><code>$( document ).ready(function() {
+        }</code></pre></li><li><p>jQuery makes this a lot easier…</p><pre class="javascript"><code>// equivalent to adding an event listener for when document is loaded
+        $( document ).ready(function() {
           // startup code
         }); //notice the syntax of this, we are passing an anonymous function as a parameter! (see the &quot;);&quot; ending the parameter</code></pre></li></ul></section><section id="document-loading-1" class="level2"><h2>Document Loading</h2><ul><li>What does this do?<ul><li><code>$(document)</code> Selects the document</li><li><code>.ready()</code> is a a jQuery event</li><li>The anonymous function is the callback to call when the event is trigger</li><li>Notice how similar this is to what we did before, but with much simplier code<ul><li>We didn't have to register a listener for the page loading, then define another function for the start of the DOM interaction.</li><li>jQuery does this in one step!</li></ul></li></ul></li></ul></section><section id="jquery-selectors" class="level2"><h2>jQuery Selectors</h2><ul><li><code>*</code> - select all</li><li><code>#id</code> - select id <code>id</code></li><li><code>.class</code> - select CSS class <code>class</code></li><li><code>ele</code> - select all HTML <code>ele</code> elements</li><li>You can also use comma separated values to select multiple selectors<ul><li>E.g. <code>.class1,.class2</code> will select both <code>.class1</code> and <code>.class2</code></li></ul></li><li>See: <a href="http://www.w3schools.com/jquery/jquery_ref_selectors.asp" class="uri">http://www.w3schools.com/jquery/jquery_ref_selectors.asp</a></li></ul></section><section id="old-example-loading_event_listeners.html" class="level2"><h2>Old Example: <a href="../examples/ch12_dom/loading_event_listeners.html"><code>loading_event_listeners.html</code></a></h2><pre><code>&lt;!DOCTYPE html&gt;
         &lt;html&gt;
@@ -268,7 +253,7 @@
     <script src="lib/js/head.min.js"></script>
     <script src="reveal.js/js/reveal.js"></script>
     
-    <script>
+    <script type="text/javascript">
       // Full list of configuration options available here:
       // https://github.com/hakimel/reveal.js#configuration
       Reveal.initialize({
@@ -321,21 +306,46 @@
 
 
     <script src="js/main.js"></script>
+    <!-- fix whitespace formatting -->
+    <script src="js/fix-whitespace.js"></script>
     <!-- Default Statcounter code for Personal website http://mjedmonds.com -->
-  <script type="text/javascript">
-  var sc_project=11819202; 
-  var sc_invisible=0; 
-  var sc_security="3d207e19"; 
-  var sc_https=1; 
-  var scJsHost = (("https:" == document.location.protocol) ? "https://secure." :
-  "http://www.");
-  document.write("<sc"+"ript type='text/javascript' src='" + scJsHost+
-  "statcounter.com/counter/counter.js'></"+"script>");
-  </script>
-  <noscript><div class="statcounter"><a title="Web Analytics Made Easy -
-  StatCounter" href="http://statcounter.com/" target="_blank"><img
-  class="statcounter" src="//c.statcounter.com/11819202/0/3d207e19/0/" alt="Web
-  Analytics Made Easy - StatCounter"></a></div></noscript>
-  <!-- End of Statcounter Code -->
+    <script type="text/javascript">
+      var sc_project=11819202; 
+      var sc_invisible=1; 
+      var sc_security="3d207e19"; 
+      var sc_https=1; 
+      var scJsHost = (("https:" == document.location.protocol) ? "https://secure." :
+      "http://www.");
+      document.write("<sc"+"ript type='text/javascript' src='" + scJsHost+
+      "statcounter.com/counter/counter.js'></"+"script>");
+    </script>
+    <noscript><div class="statcounter"><a title="Web Analytics Made Easy -
+    StatCounter" href="http://statcounter.com/" target="_blank"><img
+    class="statcounter" src="//c.statcounter.com/11819202/0/3d207e19/0/" alt="Web
+    Analytics Made Easy - StatCounter"></a></div></noscript>
+    <!-- End of Statcounter Code -->
+
+    <style type="text/css">
+      /* custom settings for reveal */
+      .reveal {
+        font-size: 30px;
+      }
+      .reveal h1 {
+        font-size: 1em; }
+
+      .reveal h2 {
+        font-size: 1.5em; }
+
+      .reveal h3 {
+        font-size: 1.15em; }
+
+      .reveal h4 {
+        font-size: 1em; }
+
+      .reveal li {
+        padding-top: 4px;
+        padding-bottom: 4px;
+      }
+    </style>
   </body>
 </html>

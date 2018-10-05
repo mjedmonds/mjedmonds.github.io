@@ -30,29 +30,10 @@
     
     <style>
       body {
-      padding-top: 30px;
-      padding-bottom: 40px;
+        padding-top: 30px;
+        padding-bottom: 40px;
       }
-      /* custom settings for reveal */
-      reveal {
-        font-size: 30px;
-      }
-      .reveal h1 {
-        font-size: 3em; }
-
-      .reveal h2 {
-        font-size: 2em; }
-
-      .reveal h3 {
-        font-size: 1.25em; }
-
-      .reveal h4 {
-        font-size: 1em; }
-
-      .reveal li {
-        padding-top: 4px;
-        padding-bottom: 4px;
-      }
+      
     </style>
 
     <!-- For syntax highlighting -->
@@ -193,6 +174,7 @@
             number1 = parseFloat(firstNumber);
             number2 = parseInt(secondNumber);
             sum = number1 + number2; // add the numbers
+        //    sum = firstNumber + secondNumber; // add the numbers (as strings)
             // display the results
             document.writeln(&quot;&lt;h1&gt;The sum is &quot; + sum + &quot;&lt;/h1&gt;&quot;);
             // --&gt;
@@ -202,24 +184,27 @@
         &lt;body&gt;&lt;/body&gt;
         
         &lt;/html&gt;
-        </code></pre></section><section id="javascript-basics-18" class="level2"><h2>Javascript Basics</h2><p>Operators and Conditionals</p><ul><li>We need a way to encode logic - a way to direct the program based on the program's state</li><li>Primary method of controlling a programs flow</li><li>Basic idea: &quot;if a condition is true, execute some code&quot;<ul><li>We can stop at the if or say &quot;if a condition is true, execute some code, otherwise, execute this other code&quot;</li></ul></li></ul></section><section id="javascript-basics-19" class="level2"><h2>Javascript Basics</h2><p>Operators and Conditionals</p><ul><li><p>Example:</p><pre class="javascript"><code>if(5 &lt;= 10){
+        </code></pre></section><section id="javascript-basics-18" class="level2"><h2>Javascript Basics</h2><p>Operators and Conditionals</p><ul><li>We need a way to encode logic - a way to direct the program based on the program's state</li><li>Primary method of controlling a programs flow</li><li>Basic idea: &quot;if a condition is true, execute some code&quot;<ul><li>We can stop at the if or say &quot;if a condition is true, execute some code, otherwise, execute this other code&quot;</li></ul></li></ul></section><section id="javascript-basics-19" class="level2"><h2>Javascript Basics</h2><p>Operators and Conditionals</p><ul><li><p>Example:</p><pre class="javascript"><code>// basic conditional
+        if(5 &lt;= 10){
           document.writeln(&quot;5 is indeed less than 10&quot;);
         } else {
           document.writeln(&quot;5 is somehow not less than 10...&quot;);
-        }</code></pre></li></ul></section><section id="javascript-basics-20" class="level2"><h2>Javascript Basics</h2><p>Operators and Conditionals</p><ul><li>But we can do even more by nesting if's!<ul><li>Also allows us to check for multiple potential conditions at once (e.g. <code>if(cond)...else if(cond)...else...</code>)</li></ul></li></ul></section><section id="javascript-basics-21" class="level2"><h2>Javascript Basics</h2><p>Operators and Conditionals</p><ul><li><p>Example: where <code>time</code> is the hour of the day (0-23)</p><pre class="javascript"><code>if (time &lt; 10) {
+        }</code></pre></li></ul></section><section id="javascript-basics-20" class="level2"><h2>Javascript Basics</h2><p>Operators and Conditionals</p><ul><li>But we can do even more by nesting if's!<ul><li>Also allows us to check for multiple potential conditions at once (e.g. <code>if(cond)...else if(cond)...else...</code>)</li></ul></li></ul></section><section id="javascript-basics-21" class="level2"><h2>Javascript Basics</h2><p>Operators and Conditionals</p><ul><li><p>Example: where <code>time</code> is the hour of the day (0-23)</p><pre class="javascript"><code>// order of the conditionals matters; what happens if we flip them?
+        if (time &lt; 10) {
           greeting = &quot;Good morning&quot;;
         } else if (time &lt; 20) {
           greeting = &quot;Good day&quot;;
         } else {
           greeting = &quot;Good evening&quot;;
-        }</code></pre></li></ul></section><section id="javascript-basics-22" class="level2"><h2>Javascript Basics</h2><p>Equality and Relational Operators</p><figure><img src="images/js-relational-operators.png" alt="Javascript relational operators" /><figcaption>Javascript relational operators</figcaption></figure></section><section id="javascript-basics-23" class="level2"><h2>Javascript Basics</h2><p>Operators and Conditionals</p><ul><li>Difference between <code>===</code> and <code>==</code><ul><li><code>===</code> is a more strict comparison operator</li><li>E.g. <code>&quot;75&quot; == 75</code> yields true but <code>&quot;75&quot; === 75</code> yields false</li></ul></li></ul></section><section id="javascript-basics-24" class="level2"><h2>Javascript Basics</h2><p>Operators and Conditionals</p><ul><li>Compound conditionals:<ul><li>Use logical operations <code>AND</code>, <code>OR</code>, and <code>NOT</code></li><li><code>AND</code> is represented with ``</li><li><code>OR</code> is represented with <code>||</code></li><li><code>NOT</code> is represented with <code>!</code></li><li>Combining conditions allows us to use much more powerful program flow</li></ul></li></ul></section><section id="javascript-basics-25" class="level2"><h2>Javascript Basics</h2><p>Operators and Conditionals</p><ul><li>Compound conditionals will evaluate left to right<ul><li>If the program can determine the overall value of the compound conditional, it will stop evaluting the rest of the conditional</li><li>E.g. Suppose <code>cond_a</code> is <code>true</code> and <code>cond_b</code> is <code>false</code>.<ul><li><code>if(cond_a || cond_b)</code> doens't need to look at the value of <code>cond_b</code>, the overall condition is determined by <code>cond_a</code>.</li><li>Similarly, <code>if(cond_b  cond_a)</code> doesn't need to look at the value of <code>cond_a</code>, since <code>cond_b</code> already determined the overall state of the compound conditional.</li><li>Remember: left to right!</li></ul></li><li><strong>Key takeaway</strong> order matters!</li></ul></li></ul></section><section id="javascript-basics-26" class="level2"><h2>Javascript Basics</h2><p>Operators and Conditionals</p><ul><li><p>Example: (pay close attention to evaluation order)</p><pre class="javascript"><code>if(cond_a &amp;&amp; cond_b){
+        }</code></pre></li></ul></section><section id="javascript-basics-22" class="level2"><h2>Javascript Basics</h2><p>Equality and Relational Operators</p><figure><img src="images/js-relational-operators.png" alt="Javascript relational operators" /><figcaption>Javascript relational operators</figcaption></figure></section><section id="javascript-basics-23" class="level2"><h2>Javascript Basics</h2><p>Operators and Conditionals</p><ul><li>Difference between <code>===</code> and <code>==</code><ul><li><code>===</code> is a more strict comparison operator</li><li>E.g. <code>&quot;75&quot; == 75</code> yields true but <code>&quot;75&quot; === 75</code> yields false</li></ul></li></ul></section><section id="javascript-basics-24" class="level2"><h2>Javascript Basics</h2><p>Operators and Conditionals</p><ul><li>Compound conditionals:<ul><li>Use logical operations <code>AND</code>, <code>OR</code>, and <code>NOT</code></li><li><code>AND</code> is represented with ``</li><li><code>OR</code> is represented with <code>||</code></li><li><code>NOT</code> is represented with <code>!</code></li><li>Combining conditions allows us to use much more powerful program flow</li></ul></li></ul></section><section id="javascript-basics-25" class="level2"><h2>Javascript Basics</h2><p>Operators and Conditionals</p><ul><li>Compound conditionals will evaluate left to right<ul><li>If the program can determine the overall value of the compound conditional, it will stop evaluting the rest of the conditional</li><li>E.g. Suppose <code>cond_a</code> is <code>true</code> and <code>cond_b</code> is <code>false</code>.<ul><li><code>if(cond_a || cond_b)</code> doens't need to look at the value of <code>cond_b</code>, the overall condition is determined by <code>cond_a</code>.</li><li>Similarly, <code>if(cond_b  cond_a)</code> doesn't need to look at the value of <code>cond_a</code>, since <code>cond_b</code> already determined the overall state of the compound conditional.</li><li>Remember: left to right!</li></ul></li><li><strong>Key takeaway</strong> order matters!</li></ul></li></ul></section><section id="javascript-basics-26" class="level2"><h2>Javascript Basics</h2><p>Operators and Conditionals</p><ul><li><p>Example: (pay close attention to evaluation order)</p><pre class="javascript"><code>// be careful analyzing this conditional
+        if(cond_a &amp;&amp; cond_b){
           // only executes if cond_a AND cond_b are true
         } else if(cond_a || cond_d){
           // only executes if 1) cond_a is true AND cond_b is false (think about why) OR cond_d is true
         } else if(!cond_d){
           // only executes if cond_a is false AND cond_d is true
-          // will this ever execute?
         } else {
+          // will this ever execute?
           // otherwise
         }</code></pre></li></ul></section><section id="exercise" class="level2"><h2>Exercise</h2><ul><li><p>Display the current day and time in the following format:</p><pre class="text"><code>Today is: Friday
         Current time is: 4:50:22PM</code></pre></li><li><strong>First step</strong>: look at the <code>Date()</code> javascript function<ul><li><a href="http://www.w3schools.com/jsref/jsref_obj_date.asp" class="uri">http://www.w3schools.com/jsref/jsref_obj_date.asp</a></li></ul></li></ul></section><section id="example-date_print.html" class="level2"><h2>Example: <a href="../examples/ch6_js/date_print.html"><code>date_print.html</code></a></h2><pre><code>&lt;!DOCTYPE html&gt;
@@ -290,10 +275,12 @@
         &lt;/body&gt;
         
         &lt;/html&gt;
-        </code></pre></section><section id="developer-tools" class="level2"><h2>Developer Tools</h2><ul><li>No program is perfect at first</li><li>We need a way to examine program state as the program is running<ul><li>This will enable us to understand and fix problems in our code</li></ul></li><li>Debugging will help fix any error, but it's particularly good for identifying edge cases you may have not considered when writing your program<ul><li>Common edge cases: empty string <code>&quot;&quot;</code>, zero <code>0</code>, negative numbers, etc</li></ul></li></ul></section><section id="developer-tools-1" class="level2"><h2>Developer Tools</h2><ul><li>The debugger is present in any modern browser and has two main elements for javascript: console and debugger</li><li><strong>Since we are editing the program as it executes, we need to remember where we are in execution</strong><ul><li>Variables may not exist yet</li></ul></li><li>How to write information to the console to inspect state:<ul><li>Use a <code>console.log()</code> statement in your javascript</li><li>The value/text arguments will be printed to the Console section of the Developer Tools</li></ul></li></ul></section><section id="developer-tools-2" class="level2"><h2>Developer Tools</h2><ul><li>Setting a breakpoint<ul><li>Breakpoints say &quot;when you hit this line of code, pause the program for me&quot;</li><li>They allow you to inspect variable/program state during execution</li><li>Enable a breakpoint by clicking the line number</li><li>Important semantic note: The line of the breakpoint has <strong>not</strong> executed yet. It is about to execute<ul><li>E.g. if we set a breakpoint on line 9, line 9 hasn't executed when the breakpoint triggers (line 8 has, however)</li><li>Keep this in mind!</li></ul></li></ul></li></ul></section><section id="developer-tools-3" class="level2"><h2>Developer Tools</h2><ul><li>Stepping through a program<ul><li>Once we are at a breakpoint we have multiple options to control the program:<ul><li>Step Over: step over the current line of code. This means if we are at a function call, <strong>do not</strong> move the debugger into the function. Instead, the function will execute, and the program will pause after function completes</li><li>Step Into: If the program is about to call a function, move the debugger into that function and pause execution</li><li>Step Out: Finish the current function call and pause execution at the calling function</li><li>Continue: Continue the program's execution; basically unpauses the program</li></ul></li></ul></li></ul></section><section id="developer-tools-4" class="level2"><h2>Developer Tools</h2><ul><li>We can also call functions or inspect variables while paused using the console<ul><li>Move to the console, and type a javascript statement to execute<ul><li>Can also just type variable names to get their value</li></ul></li><li>If the javascript statement we called doesn't have a return value (e.g. statement doesn't yeild a value), then the console will report <code>undefined</code>.</li></ul></li></ul></section><section id="javascript-functions" class="level2"><h2>Javascript Functions</h2><ul><li>Functions enable reuseable code</li><li><p>Sum example:</p><pre class="javascript"><code>function sum1(a, b){
+        </code></pre></section><section id="developer-tools" class="level2"><h2>Developer Tools</h2><ul><li>No program is perfect at first</li><li>We need a way to examine program state as the program is running<ul><li>This will enable us to understand and fix problems in our code</li></ul></li><li>Debugging will help fix any error, but it's particularly good for identifying edge cases you may have not considered when writing your program<ul><li>Common edge cases: empty string <code>&quot;&quot;</code>, zero <code>0</code>, negative numbers, etc</li></ul></li></ul></section><section id="developer-tools-1" class="level2"><h2>Developer Tools</h2><ul><li>The debugger is present in any modern browser and has two main elements for javascript: console and debugger</li><li><strong>Since we are editing the program as it executes, we need to remember where we are in execution</strong><ul><li>Variables may not exist yet</li></ul></li><li>How to write information to the console to inspect state:<ul><li>Use a <code>console.log()</code> statement in your javascript</li><li>The value/text arguments will be printed to the Console section of the Developer Tools</li></ul></li></ul></section><section id="developer-tools-2" class="level2"><h2>Developer Tools</h2><ul><li>Setting a breakpoint<ul><li>Breakpoints say &quot;when you hit this line of code, pause the program for me&quot;</li><li>They allow you to inspect variable/program state during execution</li><li>Enable a breakpoint by clicking the line number</li><li>Important semantic note: The line of the breakpoint has <strong>not</strong> executed yet. It is about to execute<ul><li>E.g. if we set a breakpoint on line 9, line 9 hasn't executed when the breakpoint triggers (line 8 has, however)</li><li>Keep this in mind!</li></ul></li></ul></li></ul></section><section id="developer-tools-3" class="level2"><h2>Developer Tools</h2><ul><li>Stepping through a program<ul><li>Once we are at a breakpoint we have multiple options to control the program:<ul><li>Step Over: step over the current line of code. This means if we are at a function call, <strong>do not</strong> move the debugger into the function. Instead, the function will execute, and the program will pause after function completes</li><li>Step Into: If the program is about to call a function, move the debugger into that function and pause execution</li><li>Step Out: Finish the current function call and pause execution at the calling function</li><li>Continue: Continue the program's execution; basically unpauses the program</li></ul></li></ul></li></ul></section><section id="developer-tools-4" class="level2"><h2>Developer Tools</h2><ul><li>We can also call functions or inspect variables while paused using the console<ul><li>Move to the console, and type a javascript statement to execute<ul><li>Can also just type variable names to get their value</li></ul></li><li>If the javascript statement we called doesn't have a return value (e.g. statement doesn't yeild a value), then the console will report <code>undefined</code>.</li></ul></li></ul></section><section id="javascript-functions" class="level2"><h2>Javascript Functions</h2><ul><li>Functions enable reuseable code</li><li><p>Sum example:</p><pre class="javascript"><code>// function declaration
+        function sum1(a, b){
           // do other amazing javascript things here
           return a + b;
-        }</code></pre></li><li><p>We can then call <code>sum(10, 5)</code> which would return <code>15</code></p></li></ul></section><section id="javascript-functions-1" class="level2"><h2>Javascript Functions</h2><ul><li><p>Assigning functions to variables</p></li><li><p>Sum example:</p><pre class="javascript"><code>var sum2 = function(a,b){
+        }</code></pre></li><li><p>We can then call <code>sum(10, 5)</code> which would return <code>15</code></p></li></ul></section><section id="javascript-functions-1" class="level2"><h2>Javascript Functions</h2><ul><li><p>Assigning functions to variables</p></li><li><p>Sum example:</p><pre class="javascript"><code>// anonymous function assigned to variable
+        var sum2 = function(a,b){
           return a + b;
         }</code></pre></li><li><p>We can then call <code>sum2(10, 5)</code> which would return <code>15</code></p></li></ul></section><section id="javascript-functions-2" class="level2"><h2>Javascript Functions</h2><p>Hoisting</p><ul><li>The only thing you need to remember is that functions of the form of <code>sum1</code> are &quot;hoisted&quot; to the top of your program, meaning they can be used <em>before</em> they are declared</li></ul></section>
       </div>
@@ -304,7 +291,7 @@
     <script src="lib/js/head.min.js"></script>
     <script src="reveal.js/js/reveal.js"></script>
     
-    <script>
+    <script type="text/javascript">
       // Full list of configuration options available here:
       // https://github.com/hakimel/reveal.js#configuration
       Reveal.initialize({
@@ -357,21 +344,46 @@
 
 
     <script src="js/main.js"></script>
+    <!-- fix whitespace formatting -->
+    <script src="js/fix-whitespace.js"></script>
     <!-- Default Statcounter code for Personal website http://mjedmonds.com -->
-  <script type="text/javascript">
-  var sc_project=11819202; 
-  var sc_invisible=0; 
-  var sc_security="3d207e19"; 
-  var sc_https=1; 
-  var scJsHost = (("https:" == document.location.protocol) ? "https://secure." :
-  "http://www.");
-  document.write("<sc"+"ript type='text/javascript' src='" + scJsHost+
-  "statcounter.com/counter/counter.js'></"+"script>");
-  </script>
-  <noscript><div class="statcounter"><a title="Web Analytics Made Easy -
-  StatCounter" href="http://statcounter.com/" target="_blank"><img
-  class="statcounter" src="//c.statcounter.com/11819202/0/3d207e19/0/" alt="Web
-  Analytics Made Easy - StatCounter"></a></div></noscript>
-  <!-- End of Statcounter Code -->
+    <script type="text/javascript">
+      var sc_project=11819202; 
+      var sc_invisible=1; 
+      var sc_security="3d207e19"; 
+      var sc_https=1; 
+      var scJsHost = (("https:" == document.location.protocol) ? "https://secure." :
+      "http://www.");
+      document.write("<sc"+"ript type='text/javascript' src='" + scJsHost+
+      "statcounter.com/counter/counter.js'></"+"script>");
+    </script>
+    <noscript><div class="statcounter"><a title="Web Analytics Made Easy -
+    StatCounter" href="http://statcounter.com/" target="_blank"><img
+    class="statcounter" src="//c.statcounter.com/11819202/0/3d207e19/0/" alt="Web
+    Analytics Made Easy - StatCounter"></a></div></noscript>
+    <!-- End of Statcounter Code -->
+
+    <style type="text/css">
+      /* custom settings for reveal */
+      .reveal {
+        font-size: 30px;
+      }
+      .reveal h1 {
+        font-size: 1em; }
+
+      .reveal h2 {
+        font-size: 1.5em; }
+
+      .reveal h3 {
+        font-size: 1.15em; }
+
+      .reveal h4 {
+        font-size: 1em; }
+
+      .reveal li {
+        padding-top: 4px;
+        padding-bottom: 4px;
+      }
+    </style>
   </body>
 </html>

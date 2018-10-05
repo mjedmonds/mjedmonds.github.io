@@ -30,29 +30,10 @@
     
     <style>
       body {
-      padding-top: 30px;
-      padding-bottom: 40px;
+        padding-top: 30px;
+        padding-bottom: 40px;
       }
-      /* custom settings for reveal */
-      reveal {
-        font-size: 30px;
-      }
-      .reveal h1 {
-        font-size: 3em; }
-
-      .reveal h2 {
-        font-size: 2em; }
-
-      .reveal h3 {
-        font-size: 1.25em; }
-
-      .reveal h4 {
-        font-size: 1em; }
-
-      .reveal li {
-        padding-top: 4px;
-        padding-bottom: 4px;
-      }
+      
     </style>
 
     <!-- For syntax highlighting -->
@@ -83,7 +64,7 @@
     <div class="reveal">
       <div class="slides">
         <!-- slide content will go here -->
-        <section id="chapter-3-introduction-to-html-part-2" class="level2"><h2>Chapter 3: Introduction to HTML Part 2</h2><p>CS 80: Internet Programming</p><p>Instructor: Mark Edmonds</p></section><section id="html5-forms" class="level2"><h2>HTML5 Forms</h2><p>HTML5 introduces new input types for forms</p><ul><li>These input types are self-validating<ul><li>No need for javascript validation!</li></ul></li><li>However, the input data should be verified server-side</li></ul></section><section id="html5-forms-1" class="level2"><h2>HTML5 Forms</h2><p>New HTML5 form input types</p><ul><li>Each is part of a <code>&lt;input type=&quot;type&quot;&gt;</code> tag</li><li><code>color</code>: allows user to input a RGB, many browsers have color picker.<ul><li>Input must be a hexadecimal value (color code)</li></ul></li><li><code>date</code>: calendar date input, many browsers have a calendar-style picker</li></ul></section><section id="html5-forms-2" class="level2"><h2>HTML5 Forms</h2><p>New HTML5 form input types</p><ul><li><code>datetime</code>: date and time input<ul><li>yyyy-mm-ddThh:mm+ff in UTC (English time)</li></ul></li><li><code>datetime-local</code>:  date and time input<ul><li>yyyy-mm-ddThh:mm+ff</li></ul></li></ul></section><section id="html5-forms-3" class="level2"><h2>HTML5 Forms</h2><p>New HTML5 form input types</p><ul><li><code>email</code>: email input<ul><li>address@domain.com</li></ul></li></ul></section><section id="html5-forms-4" class="level2"><h2>HTML5 Forms</h2><p>New HTML5 form input types</p><ul><li><code>month</code>: month input<ul><li>yyyy-mm</li></ul></li><li><code>number</code>: any number input<ul><li>min and max attributes set the min and max possible valid values</li></ul></li></ul></section><section id="html5-forms-5" class="level2"><h2>HTML5 Forms</h2><p>New HTML5 form input types</p><ul><li><code>range</code>: range slider between particular values - no validation required<ul><li>min and max attributes set the min and max possible values</li><li>all values are valid</li></ul></li></ul></section><section id="html5-forms-6" class="level2"><h2>HTML5 Forms</h2><p>New HTML5 form input types</p><ul><li><code>search</code>: search field, behaves like a text input</li><li><code>tel</code>: telephone number input, <strong>HTML5 does not validate this input!</strong></li></ul></section><section id="html5-forms-7" class="level2"><h2>HTML5 Forms</h2><p>New HTML5 form input types</p><ul><li><code>time</code>: time input<ul><li>hh:mm</li></ul></li><li><code>url</code>: valid URL input<ul><li><a href="http://domain.com/">http://domain.com</a></li></ul></li></ul></section><section id="html5-forms-8" class="level2"><h2>HTML5 Forms</h2><p>New HTML5 form input types</p><ul><li><code>week:</code>input a specific week (nn is a week number, between 01 and 53<ul><li>yyyy-Wnn</li></ul></li><li>If a browser does not support the specified input type, the type will be treated as &quot;text&quot;.<ul><li>Means you must <em>always</em> validate server-side!</li></ul></li></ul></section><section id="example-new_forms.html" class="level2"><h2>Example: <a href="../examples/ch3_html_pt2/new_forms.html"><code>new_forms.html</code></a></h2><pre><code>&lt;!DOCTYPE html&gt;
+        <section id="chapter-3-introduction-to-html-part-2" class="level2"><h2>Chapter 3: Introduction to HTML Part 2</h2><p>CS 80: Internet Programming</p><p>Instructor: Mark Edmonds</p></section><section id="html5-forms" class="level2"><h2>HTML5 Forms</h2><p>HTML5 introduces new input types for forms</p><ul><li>These input types are self-validating<ul><li>No need for javascript validation!</li></ul></li><li>However, the input data should be verified server-side</li></ul></section><section id="html5-forms-1" class="level2"><h2>HTML5 Forms</h2><p>New HTML5 form input types</p><ul><li>Each is part of a <code>&lt;input type=&quot;type&quot;&gt;</code> tag</li><li><code>color</code>: allows user to input a RGB, many browsers have color picker.<ul><li>Input must be a hexadecimal value (color code)</li></ul></li><li><code>date</code>: calendar date input, many browsers have a calendar-style picker</li></ul></section><section id="html5-forms-2" class="level2"><h2>HTML5 Forms</h2><p>New HTML5 form input types</p><ul><li><code>datetime</code>: date and time input<ul><li>yyyy-mm-ddThh:mm+ff in UTC (English time)</li></ul></li><li><code>datetime-local</code>: date and time input<ul><li>yyyy-mm-ddThh:mm+ff</li></ul></li></ul></section><section id="html5-forms-3" class="level2"><h2>HTML5 Forms</h2><p>New HTML5 form input types</p><ul><li><code>email</code>: email input<ul><li>address@domain.com</li></ul></li></ul></section><section id="html5-forms-4" class="level2"><h2>HTML5 Forms</h2><p>New HTML5 form input types</p><ul><li><code>month</code>: month input<ul><li>yyyy-mm</li></ul></li><li><code>number</code>: any number input<ul><li>min and max attributes set the min and max possible valid values</li></ul></li></ul></section><section id="html5-forms-5" class="level2"><h2>HTML5 Forms</h2><p>New HTML5 form input types</p><ul><li><code>range</code>: range slider between particular values - no validation required<ul><li>min and max attributes set the min and max possible values</li><li>all values are valid</li></ul></li></ul></section><section id="html5-forms-6" class="level2"><h2>HTML5 Forms</h2><p>New HTML5 form input types</p><ul><li><code>search</code>: search field, behaves like a text input</li><li><code>tel</code>: telephone number input, <strong>HTML5 does not validate this input!</strong></li></ul></section><section id="html5-forms-7" class="level2"><h2>HTML5 Forms</h2><p>New HTML5 form input types</p><ul><li><code>time</code>: time input<ul><li>hh:mm</li></ul></li><li><code>url</code>: valid URL input<ul><li><a href="http://domain.com/">http://domain.com</a></li></ul></li></ul></section><section id="html5-forms-8" class="level2"><h2>HTML5 Forms</h2><p>New HTML5 form input types</p><ul><li><code>week:</code>input a specific week (nn is a week number, between 01 and 53<ul><li>yyyy-Wnn</li></ul></li><li>If a browser does not support the specified input type, the type will be treated as &quot;text&quot;.<ul><li>Means you must <em>always</em> validate server-side!</li></ul></li></ul></section><section id="example-new_forms.html" class="level2"><h2>Example: <a href="../examples/ch3_html_pt2/new_forms.html"><code>new_forms.html</code></a></h2><pre><code>&lt;!DOCTYPE html&gt;
         &lt;html&gt;
         
         &lt;head&gt;
@@ -166,7 +147,7 @@
         
         &lt;/html&gt;
         
-        </code></pre></section><section id="input-focusing" class="level2"><h2>Input Focusing</h2><p>Input <code>tabindex</code> attribute</p><ul><li><code>tabindex</code> attribute enables controlling the order of input focus on TAB</li><li>Ordering starts at 1</li></ul></section><section id="html5-forms-9" class="level2"><h2>HTML5 Forms</h2><p>New HTML5 form attributes</p><ul><li><code>autofocus:</code> applied to input tag, automatically gives focus to this element (e.g. user can type immediately)<ul><li>Can only be used on one input element per document</li></ul></li></ul></section><section id="html5-forms-10" class="level2"><h2>HTML5 Forms</h2><p>New HTML5 form attributes</p><ul><li><code>formnovalidate</code>: applied to input tag, allows a form to bypass validation<ul><li>Must be applied to an input type</li><li>Means you must validate server side!!</li></ul></li><li><code>novalidate:</code> applied to the form tag, allows a form to bypass validation<ul><li>Means you must validate server side!!</li></ul></li></ul></section><section id="html5-forms-11" class="level2"><h2>HTML5 Forms</h2><p>New HTML5 form attributes</p><ul><li><code>placeholder</code>: applied to input tag, temporary text in an input field<ul><li>Typically either the format of the input, or an example</li><li>Only applies to the following input types:<ul><li><code>text</code>, <code>search</code>, <code>url</code>, <code>tel</code>, <code>email</code></li></ul></li></ul></li></ul></section><section id="html5-forms-12" class="level2"><h2>HTML5 Forms</h2><p>New HTML5 form attributes</p><ul><li><code>required:</code> applied to input tag, requires the user to input the form element<ul><li>Form cannot be submitted until they do</li><li>this is overridden by formnovalidate or novalidate</li></ul></li></ul></section><section id="html5-forms-13" class="level2"><h2>HTML5 Forms</h2><p>New HTML5 form attributes</p><ul><li><code>pattern:</code> applied to input tag, requires the input match the specified regular expression</li></ul></section><section id="regular-expressions" class="level2"><h2>Regular Expressions</h2><p>A regular what?</p><ul><li>What's a regular expression (regex)?<ul><li>A pattern matching tool</li><li>Text is described through a pattern, rather than a full description outlining every character</li></ul></li></ul></section><section id="regular-expressions-1" class="level2"><h2>Regular Expressions</h2><p>Telephone pattern explained</p><ul><li><p>Pattern:</p><pre class="regex"><code>\(\d{3}\) +\d{3}-\d{4}</code></pre></li><li>Prelimnary note: <code>\</code> in regex is similar to <code>&amp;</code> in HTML<ul><li><code>/</code> escapes the special character<ul><li>Escaping means stripping it of its special meaning</li></ul></li></ul></li></ul></section><section id="regular-expressions-2" class="level2"><h2>Regular Expressions</h2><p>Telephone pattern explained</p><ul><li><p>Pattern:</p><pre class="regex"><code>\(\d{3}\) +\d{3}-\d{4}</code></pre></li><li><code>(</code> has a special meaning in regex, namely to start saving the matched pattern to a <em>group</em> (saving a section of the pattern for later use)</li><li><code>)</code> marks the end of the saved group</li><li>You can then reference the group later with <code>\#</code> where <code>#</code> is the group number used in the expression you wish to reference<ul><li>E.g. to reference the first saved group, use <code>\1</code></li></ul></li><li><p>Because of this special meaning, we have to escape it</p></li></ul></section><section id="regular-expressions-3" class="level2"><h2>Regular Expressions</h2><p>Telephone pattern explained</p><ul><li><p>Pattern:</p><pre class="regex"><code>\(\d{3}\) +\d{3}-\d{4}</code></pre></li><li><code>\d</code> says we want to look for a digit ([0-9])<ul><li>In this case, the escape gives <code>d</code> a special meaning - namely a digit</li></ul></li><li><p><code>{3}</code> says we want to look for the previous pattern 3 times (3 digits)</p></li></ul></section><section id="regular-expressions-4" class="level2"><h2>Regular Expressions</h2><p>Telephone pattern explained</p><ul><li><p>Pattern:</p><pre class="regex"><code>\(\d{3}\) +\d{3}-\d{4}</code></pre></li><li>&quot;<code> </code>&quot; is a literal space to look for<ul><li><code>+</code> means match the previous pattern 1 or more times</li></ul></li><li><p>Then, we look for 3 more digits, followed by a <code>-</code> then 4 more digits</p></li></ul></section><section id="html5-forms-14" class="level2"><h2>HTML5 Forms</h2><p>New HTML5 form attributes</p><ul><li><code>autocomplete</code>: added to form or input tag, allows user to use previously submitted information when returning to the same form<ul><li>You can turn autocomplete on or off for specific elements, overriding a value already set</li><li>Allows you to protect sensitive information from being autocomplete candidates<ul><li>E.g. password, credit card info, etc.</li></ul></li></ul></li></ul></section><section id="datalist-element" class="level2"><h2><code>datalist</code> element</h2><ul><li>Provides input options for a text form input</li><li>As the user starts typing, the list will narrow<ul><li>How the list narrows depends on the browser</li></ul></li><li>The datalist must be connected to an input through the <code>id</code> attribute<ul><li>This is the glue between the list and the corresponding form input</li><li>Also means one list can be used on multiple form inputs</li></ul></li></ul></section><section id="example-adv_new_forms.html" class="level2"><h2>Example: <a href="../examples/ch3_html_pt2/adv_new_forms.html"><code>adv_new_forms.html</code></a></h2><pre><code>&lt;!DOCTYPE html&gt;
+        </code></pre></section><section id="input-focusing" class="level2"><h2>Input Focusing</h2><p>Input <code>tabindex</code> attribute</p><ul><li><code>tabindex</code> attribute enables controlling the order of input focus on TAB</li><li>Ordering starts at 1</li></ul></section><section id="html5-forms-9" class="level2"><h2>HTML5 Forms</h2><p>New HTML5 form attributes</p><ul><li><code>autofocus:</code> applied to input tag, automatically gives focus to this element (e.g. user can type immediately)<ul><li>Can only be used on one input element per document</li></ul></li></ul></section><section id="html5-forms-10" class="level2"><h2>HTML5 Forms</h2><p>New HTML5 form attributes</p><ul><li><code>formnovalidate</code>: applied to input tag, allows a form to bypass validation<ul><li>Must be applied to an input type</li><li>Means you must validate server side!!</li></ul></li><li><code>novalidate:</code> applied to the form tag, allows a form to bypass validation<ul><li>Means you must validate server side!!</li></ul></li></ul></section><section id="html5-forms-11" class="level2"><h2>HTML5 Forms</h2><p>New HTML5 form attributes</p><ul><li><code>placeholder</code>: applied to input tag, temporary text in an input field<ul><li>Typically either the format of the input, or an example</li><li>Only applies to the following input types:<ul><li><code>text</code>, <code>search</code>, <code>url</code>, <code>tel</code>, <code>email</code></li></ul></li></ul></li></ul></section><section id="html5-forms-12" class="level2"><h2>HTML5 Forms</h2><p>New HTML5 form attributes</p><ul><li><code>required:</code> applied to input tag, requires the user to input the form element<ul><li>Form cannot be submitted until they do</li><li>this is overridden by formnovalidate or novalidate</li></ul></li></ul></section><section id="html5-forms-13" class="level2"><h2>HTML5 Forms</h2><p>New HTML5 form attributes</p><ul><li><code>pattern:</code> applied to input tag, requires the input match the specified regular expression</li></ul></section><section id="regular-expressions" class="level2"><h2>Regular Expressions</h2><p>A regular what?</p><ul><li>What's a regular expression (regex)?<ul><li>A pattern matching tool</li><li>Text is described through a pattern, rather than a full description outlining every character</li></ul></li></ul></section><section id="regular-expressions-1" class="level2"><h2>Regular Expressions</h2><p>Telephone pattern explained</p><ul><li><p>Pattern:</p><pre class="regex"><code>\(\d{3}\) +\d{3}-\d{4}</code></pre></li><li>Prelimnary note: <code>\</code> in regex is similar to <code>&amp;</code> in HTML<ul><li><code>/</code> escapes the special character<ul><li>Escaping means stripping it of its special meaning</li></ul></li></ul></li></ul></section><section id="regular-expressions-2" class="level2"><h2>Regular Expressions</h2><p>Telephone pattern explained</p><ul><li><p>Pattern:</p><pre class="regex"><code>\(\d{3}\) +\d{3}-\d{4}</code></pre></li><li><code>(</code> has a special meaning in regex, namely to start saving the matched pattern to a <em>group</em> (saving a section of the pattern for later use)</li><li><code>)</code> marks the end of the saved group</li><li>You can then reference the group later with <code>\#</code> where <code>#</code> is the group number used in the expression you wish to reference<ul><li>E.g. to reference the first saved group, use <code>\1</code></li></ul></li><li><p>Because of this special meaning, we have to escape it</p></li></ul></section><section id="regular-expressions-3" class="level2"><h2>Regular Expressions</h2><p>Telephone pattern explained</p><ul><li><p>Pattern:</p><pre class="regex"><code>\(\d{3}\) +\d{3}-\d{4}</code></pre></li><li><code>\d</code> says we want to look for a digit ([0-9])<ul><li>In this case, the escape gives <code>d</code> a special meaning - namely a digit</li></ul></li><li><p><code>{3}</code> says we want to look for the previous pattern 3 times (3 digits)</p></li></ul></section><section id="regular-expressions-4" class="level2"><h2>Regular Expressions</h2><p>Telephone pattern explained</p><ul><li><p>Pattern:</p><pre class="regex"><code>\(\d{3}\) +\d{3}-\d{4}</code></pre></li><li>&quot;<code></code>&quot; is a literal space to look for<ul><li><code>+</code> means match the previous pattern 1 or more times</li></ul></li><li><p>Then, we look for 3 more digits, followed by a <code>-</code> then 4 more digits</p></li></ul></section><section id="html5-forms-14" class="level2"><h2>HTML5 Forms</h2><p>New HTML5 form attributes</p><ul><li><code>autocomplete</code>: added to form or input tag, allows user to use previously submitted information when returning to the same form<ul><li>You can turn autocomplete on or off for specific elements, overriding a value already set</li><li>Allows you to protect sensitive information from being autocomplete candidates<ul><li>E.g. password, credit card info, etc.</li></ul></li></ul></li></ul></section><section id="datalist-element" class="level2"><h2><code>datalist</code> element</h2><ul><li>Provides input options for a text form input</li><li>As the user starts typing, the list will narrow<ul><li>How the list narrows depends on the browser</li></ul></li><li>The datalist must be connected to an input through the <code>id</code> attribute<ul><li>This is the glue between the list and the corresponding form input</li><li>Also means one list can be used on multiple form inputs</li></ul></li></ul></section><section id="example-adv_new_forms.html" class="level2"><h2>Example: <a href="../examples/ch3_html_pt2/adv_new_forms.html"><code>adv_new_forms.html</code></a></h2><pre><code>&lt;!DOCTYPE html&gt;
         &lt;html&gt;
         
         &lt;head&gt;
@@ -435,7 +416,7 @@
                 &lt;/details&gt;
               &lt;/p&gt;
             &lt;/article&gt;
-            &lt;!-- aside element represents content in a sidebar that’s --&gt;
+            &lt;!-- aside element represents content in a sidebar that&#39;s --&gt;
             &lt;!-- related to the content around the element --&gt;
             &lt;aside&gt;
               The aside element is not formatted by the browsers.
@@ -489,7 +470,7 @@
     <script src="lib/js/head.min.js"></script>
     <script src="reveal.js/js/reveal.js"></script>
     
-    <script>
+    <script type="text/javascript">
       // Full list of configuration options available here:
       // https://github.com/hakimel/reveal.js#configuration
       Reveal.initialize({
@@ -542,21 +523,46 @@
 
 
     <script src="js/main.js"></script>
+    <!-- fix whitespace formatting -->
+    <script src="js/fix-whitespace.js"></script>
     <!-- Default Statcounter code for Personal website http://mjedmonds.com -->
-  <script type="text/javascript">
-  var sc_project=11819202; 
-  var sc_invisible=0; 
-  var sc_security="3d207e19"; 
-  var sc_https=1; 
-  var scJsHost = (("https:" == document.location.protocol) ? "https://secure." :
-  "http://www.");
-  document.write("<sc"+"ript type='text/javascript' src='" + scJsHost+
-  "statcounter.com/counter/counter.js'></"+"script>");
-  </script>
-  <noscript><div class="statcounter"><a title="Web Analytics Made Easy -
-  StatCounter" href="http://statcounter.com/" target="_blank"><img
-  class="statcounter" src="//c.statcounter.com/11819202/0/3d207e19/0/" alt="Web
-  Analytics Made Easy - StatCounter"></a></div></noscript>
-  <!-- End of Statcounter Code -->
+    <script type="text/javascript">
+      var sc_project=11819202; 
+      var sc_invisible=1; 
+      var sc_security="3d207e19"; 
+      var sc_https=1; 
+      var scJsHost = (("https:" == document.location.protocol) ? "https://secure." :
+      "http://www.");
+      document.write("<sc"+"ript type='text/javascript' src='" + scJsHost+
+      "statcounter.com/counter/counter.js'></"+"script>");
+    </script>
+    <noscript><div class="statcounter"><a title="Web Analytics Made Easy -
+    StatCounter" href="http://statcounter.com/" target="_blank"><img
+    class="statcounter" src="//c.statcounter.com/11819202/0/3d207e19/0/" alt="Web
+    Analytics Made Easy - StatCounter"></a></div></noscript>
+    <!-- End of Statcounter Code -->
+
+    <style type="text/css">
+      /* custom settings for reveal */
+      .reveal {
+        font-size: 30px;
+      }
+      .reveal h1 {
+        font-size: 1em; }
+
+      .reveal h2 {
+        font-size: 1.5em; }
+
+      .reveal h3 {
+        font-size: 1.15em; }
+
+      .reveal h4 {
+        font-size: 1em; }
+
+      .reveal li {
+        padding-top: 4px;
+        padding-bottom: 4px;
+      }
+    </style>
   </body>
 </html>

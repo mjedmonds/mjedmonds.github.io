@@ -28,7 +28,7 @@
     $testDouble = 79.2;
     $testInteger = 12;
     ?><!-- end PHP script -->
-    <!-- print each variable’s value and type -->
+    <!-- print each variable's value and type -->
     <p class = "head">Original values:</p>
     <?php
       print( "<p>$testString is a(n) " . gettype( $testString ) . "</p>" );

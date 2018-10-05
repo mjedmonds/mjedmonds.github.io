@@ -257,6 +257,7 @@ Operators and Conditionals
 - Example:
 
   ```javascript
+  // basic conditional
   if(5 <= 10){
     document.writeln("5 is indeed less than 10");
   } else {
@@ -278,6 +279,7 @@ Operators and Conditionals
 - Example: where `time` is the hour of the day (0-23)
 
   ```javascript
+  // order of the conditionals matters; what happens if we flip them?
   if (time < 10) {
     greeting = "Good morning";
   } else if (time < 20) {
@@ -331,14 +333,15 @@ Operators and Conditionals
 - Example: (pay close attention to evaluation order)
 
   ```javascript
+  // be careful analyzing this conditional
   if(cond_a && cond_b){
     // only executes if cond_a AND cond_b are true
   } else if(cond_a || cond_d){
     // only executes if 1) cond_a is true AND cond_b is false (think about why) OR cond_d is true
   } else if(!cond_d){
     // only executes if cond_a is false AND cond_d is true
-    // will this ever execute?
   } else {
+    // will this ever execute?
     // otherwise
   }
   ```
@@ -420,6 +423,7 @@ Operators and Conditionals
 - Sum example:
 
   ```javascript
+  // function declaration
   function sum1(a, b){
     // do other amazing javascript things here
     return a + b;
@@ -435,6 +439,7 @@ Operators and Conditionals
 - Sum example:
 
   ```javascript
+  // anonymous function assigned to variable
   var sum2 = function(a,b){
     return a + b;
   }

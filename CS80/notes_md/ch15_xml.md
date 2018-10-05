@@ -45,19 +45,20 @@ Instructor: Mark Edmonds
 - Consider the following
 
   ```xml
+  <!-- XML representing a family - notice the explicit structure -->
   <family>
-      <member>
-        <name>John</name>
-        <age>10</age>
-      </member>
-      <member>
-        <name>Bill</name>
-        <age>15</age>
-      </member>
-      <member>
-        <name>Judy</name>
-        <age>25</age>
-      </member>
+    <member>
+      <name>John</name>
+      <age>10</age>
+    </member>
+    <member>
+      <name>Bill</name>
+      <age>15</age>
+    </member>
+    <member>
+      <name>Judy</name>
+      <age>25</age>
+    </member>
   </family>
   ```
 

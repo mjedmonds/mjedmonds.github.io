@@ -212,7 +212,7 @@ Table Bodies, Headers, and Footers
 
 Table Rows
 
-- `<tbody>`, `<thead>`, and `<tfoot>` is comprised of at least one `<tr>` element, which is a table row 
+- `<tbody>`, `<thead>`, and `<tfoot>` is comprised of at least one `<tr>` element, which is a table row
   - Note that no table requires all three, but you should use them appropriately
 - If your table has a header, put the header, etc.
 - Makes table maintenance easier later
@@ -225,7 +225,7 @@ Table Rows
   - It is different to allow easier styling using CSS
   - The table fills left to right along the columns
 - Repeat this `<tr>` and `<th>` pattern for each row, and each column you want to specify
-- `<tfoot>` can be below or above 
+- `<tfoot>` can be below or above
 
 ## Tables
 
@@ -361,6 +361,11 @@ Important `<input>` attributes
   - `color` - allows color input
   - `number` - allows user to input a number, similar to a text but for
       numbers
+
+## Forms
+
+
+- Please lookup these elements in your book or online:
   - `range` - allows user to pick between a range of values
   - `checkbox` - allows user to tick multiple options
   - `radio` - allows user to pick one option from a list

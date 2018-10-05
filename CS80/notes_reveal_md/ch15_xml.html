@@ -30,29 +30,10 @@
     
     <style>
       body {
-      padding-top: 30px;
-      padding-bottom: 40px;
+        padding-top: 30px;
+        padding-bottom: 40px;
       }
-      /* custom settings for reveal */
-      reveal {
-        font-size: 30px;
-      }
-      .reveal h1 {
-        font-size: 3em; }
-
-      .reveal h2 {
-        font-size: 2em; }
-
-      .reveal h3 {
-        font-size: 1.25em; }
-
-      .reveal h4 {
-        font-size: 1em; }
-
-      .reveal li {
-        padding-top: 4px;
-        padding-bottom: 4px;
-      }
+      
     </style>
 
     <!-- For syntax highlighting -->
@@ -83,19 +64,20 @@
     <div class="reveal">
       <div class="slides">
         <!-- slide content will go here -->
-        <section id="chapter-15-xml" class="level2"><h2>Chapter 15: XML</h2><p>CS 80: Internet Programming</p><p>Instructor: Mark Edmonds</p></section><section id="xml-describes-data" class="level2"><h2>XML describes data</h2><ul><li>Remember the above!</li><li>Stands for &quot;Extensible Markup Language&quot;<ul><li>XML is a <em>meta-language</em> meaning it is not a lanugage itself, but rather a language for building languages</li></ul></li></ul></section><section id="xml-describes-data-1" class="level2"><h2>XML describes data</h2><ul><li>HTML is a sort of &quot;variation&quot; of XML, though it technically is not XML<ul><li>XHTML is a version of HTML that does adhere to actual XML rules</li><li>So, we've seen something very similar before</li></ul></li></ul></section><section id="xml-describes-data-2" class="level2"><h2>XML describes data</h2><ul><li>What's the point?<ul><li>XML allows us to describe data in a strict, organized, but flexible manner</li><li>This means we can create specific markup languages for any sort of data<ul><li>We'd need to parse the data for it to be meaningful, but XML is a building block</li></ul></li></ul></li></ul></section><section id="xml-describes-data-3" class="level2"><h2>XML describes data</h2><ul><li>Consider we have the following data:<ul><li><code>John 10 Bill 15 Judy 25</code></li><li>What does this data mean?<ul><li>I have no idea from just the above</li><li>If I put this on the internet, no one else will know what it means either</li></ul></li></ul></li></ul></section><section id="xml-describes-data-4" class="level2"><h2>XML describes data</h2><ul><li>XML allows us to share data efficiently</li><li><p>Consider the following</p><pre class="xml"><code>&lt;family&gt;
-            &lt;member&gt;
-              &lt;name&gt;John&lt;/name&gt;
-              &lt;age&gt;10&lt;/age&gt;
-            &lt;/member&gt;
-            &lt;member&gt;
-              &lt;name&gt;Bill&lt;/name&gt;
-              &lt;age&gt;15&lt;/age&gt;
-            &lt;/member&gt;
-            &lt;member&gt;
-              &lt;name&gt;Judy&lt;/name&gt;
-              &lt;age&gt;25&lt;/age&gt;
-            &lt;/member&gt;
+        <section id="chapter-15-xml" class="level2"><h2>Chapter 15: XML</h2><p>CS 80: Internet Programming</p><p>Instructor: Mark Edmonds</p></section><section id="xml-describes-data" class="level2"><h2>XML describes data</h2><ul><li>Remember the above!</li><li>Stands for &quot;Extensible Markup Language&quot;<ul><li>XML is a <em>meta-language</em> meaning it is not a lanugage itself, but rather a language for building languages</li></ul></li></ul></section><section id="xml-describes-data-1" class="level2"><h2>XML describes data</h2><ul><li>HTML is a sort of &quot;variation&quot; of XML, though it technically is not XML<ul><li>XHTML is a version of HTML that does adhere to actual XML rules</li><li>So, we've seen something very similar before</li></ul></li></ul></section><section id="xml-describes-data-2" class="level2"><h2>XML describes data</h2><ul><li>What's the point?<ul><li>XML allows us to describe data in a strict, organized, but flexible manner</li><li>This means we can create specific markup languages for any sort of data<ul><li>We'd need to parse the data for it to be meaningful, but XML is a building block</li></ul></li></ul></li></ul></section><section id="xml-describes-data-3" class="level2"><h2>XML describes data</h2><ul><li>Consider we have the following data:<ul><li><code>John 10 Bill 15 Judy 25</code></li><li>What does this data mean?<ul><li>I have no idea from just the above</li><li>If I put this on the internet, no one else will know what it means either</li></ul></li></ul></li></ul></section><section id="xml-describes-data-4" class="level2"><h2>XML describes data</h2><ul><li>XML allows us to share data efficiently</li><li><p>Consider the following</p><pre class="xml"><code>&lt;!-- XML representing a family - notice the explicit structure --&gt;
+        &lt;family&gt;
+          &lt;member&gt;
+            &lt;name&gt;John&lt;/name&gt;
+            &lt;age&gt;10&lt;/age&gt;
+          &lt;/member&gt;
+          &lt;member&gt;
+            &lt;name&gt;Bill&lt;/name&gt;
+            &lt;age&gt;15&lt;/age&gt;
+          &lt;/member&gt;
+          &lt;member&gt;
+            &lt;name&gt;Judy&lt;/name&gt;
+            &lt;age&gt;25&lt;/age&gt;
+          &lt;/member&gt;
         &lt;/family&gt;</code></pre></li></ul></section><section id="xml-describes-data-5" class="level2"><h2>XML describes data</h2><ul><li>This data makes a lot more sense!<ul><li>The initial data had a lot of implicit information that we have made explicit through XML</li></ul></li></ul></section><section id="xml-concepts" class="level2"><h2>XML Concepts</h2><ul><li>Why care?<ul><li>XML makes data formats portable and application independent<ul><li>Which makes them a very good idea for the internet!</li><li>Application independent means I don't need the application using the data to understand the data (contrast a format like Word document to a .txt)</li></ul></li></ul></li></ul></section><section id="xml-concepts-1" class="level2"><h2>XML Concepts</h2><ul><li>Specify the document's structure</li><li>Consist of the element's name in angle brackets</li><li>Example: <code>&lt;data&gt;</code></li></ul></section><section id="xml-concepts-2" class="level2"><h2>XML Concepts</h2><ul><li>XML elements have start and end tags<ul><li>Start tag proceeds as above, e.g. <code>&lt;data&gt;</code></li><li>End tag has a backslash (<code>\</code> after the <code>&lt;</code>, e.g. <code>&lt;/data&gt;</code><ul><li>End tags can be shorthanded in the starting tag by place a forward slash <code>/</code> before the closing <code>&lt;</code> of the opening tag. e.g. with <code>&lt;data/&gt;</code> as the start tag</li></ul></li><li>Looks familiar!</li></ul></li></ul></section><section id="xml-concepts-3" class="level2"><h2>XML Concepts</h2><ul><li>Every XML document contains one root element, which contains all other elements<ul><li>Similar to <code>&lt;html&gt;</code></li></ul></li></ul></section><section id="xml-concepts-4" class="level2"><h2>XML Concepts</h2><ul><li>XML-based markup languages are called <strong>XML vocbaularies</strong><ul><li>Provide a mechanism to describe data in a standardized, structured way.</li><li>Examples: XHTML, MathML (math), VoiceXML (speech), XBRL (financial data)</li><li>Why do XML vocabularies matter?<ul><li>Large companies often employ their own XML vocabulary to describe their data internally</li><li>They provide a standard for data markup using a standard data format (e.g. if you can read XML, a XML vocabulary will be easier to understand than a proprietary data format)</li></ul></li></ul></li></ul></section><section id="xml-concepts-5" class="level2"><h2>XML Concepts</h2><ul><li>XML documents have the extension <code>.xml</code> and are readable by any text editor</li><li>XML is just a data format; it does not contain styling<ul><li>Devices are responsible for how a XML is rendered</li><li>However, Extensible Stylesheet Language allows you specify rendering on different platforms</li></ul></li></ul></section><section id="xml-parsing" class="level2"><h2>XML Parsing</h2><ul><li>Because we are specifying a data markup, we need a way to understand the format</li><li>XML parsers read XML<ul><li>Now that we have covered DOM, think about what your browser does to load a <code>.html</code> file into the DOM tree (it has to parse it!)</li></ul></li></ul></section><section id="xml-parsing-1" class="level2"><h2>XML Parsing</h2><ul><li>Basic XML Rules:<ol type="1"><li>Single root element</li><li>A start and end tag for each element</li><li>Properly nested tags</li><li>Case sensitive</li></ol><ul><li>Following these rules means the document is <strong>well-formed</strong></li></ul></li></ul></section><section id="xml-parsing-2" class="level2"><h2>XML Parsing</h2><ul><li>Basic XML Rules:<ol type="1"><li>Single root element</li><li>A start and end tag for each element</li><li>Properly nested tags</li><li>Case sensitive</li></ol></li><li>Which of these rules does HTML break?<ul><li>2, 3, and 4</li></ul></li></ul></section><section id="xml-validation" class="level2"><h2>XML Validation</h2><ul><li>Some parsers can also validate the XML's adhere to a particular markup</li><li>Relies on a Document Type Definition (DTD) or a Schema<ul><li>These documents describe the proper document structure</li><li>Think of these like a grammar for what forms a valid XML document using this data markup</li></ul></li></ul></section><section id="xml-validation-1" class="level2"><h2>XML Validation</h2><ul><li>A validating parser reads the XML and makes sure that it follows the structure defined in the DTD or Schema<ul><li>If the document is well-formed XML and adheres to the DTD/Schema, then it is valid</li><li>Otherwise, the document is invalid</li><li>Note that a document may be well-formed XML but may not be a valid document</li></ul></li></ul></section><section id="example-article.xml" class="level2"><h2>Example: <a href="../examples/ch15_xml/article.xml"><code>article.xml</code></a></h2><pre><code>&lt;?xml version=&quot;1.0&quot;?&gt;
         &lt;!-- Fig. 15.2: article.xml --&gt;
         &lt;!-- Article structured with XML --&gt;
@@ -248,7 +230,7 @@
     <script src="lib/js/head.min.js"></script>
     <script src="reveal.js/js/reveal.js"></script>
     
-    <script>
+    <script type="text/javascript">
       // Full list of configuration options available here:
       // https://github.com/hakimel/reveal.js#configuration
       Reveal.initialize({
@@ -301,21 +283,46 @@
 
 
     <script src="js/main.js"></script>
+    <!-- fix whitespace formatting -->
+    <script src="js/fix-whitespace.js"></script>
     <!-- Default Statcounter code for Personal website http://mjedmonds.com -->
-  <script type="text/javascript">
-  var sc_project=11819202; 
-  var sc_invisible=0; 
-  var sc_security="3d207e19"; 
-  var sc_https=1; 
-  var scJsHost = (("https:" == document.location.protocol) ? "https://secure." :
-  "http://www.");
-  document.write("<sc"+"ript type='text/javascript' src='" + scJsHost+
-  "statcounter.com/counter/counter.js'></"+"script>");
-  </script>
-  <noscript><div class="statcounter"><a title="Web Analytics Made Easy -
-  StatCounter" href="http://statcounter.com/" target="_blank"><img
-  class="statcounter" src="//c.statcounter.com/11819202/0/3d207e19/0/" alt="Web
-  Analytics Made Easy - StatCounter"></a></div></noscript>
-  <!-- End of Statcounter Code -->
+    <script type="text/javascript">
+      var sc_project=11819202; 
+      var sc_invisible=1; 
+      var sc_security="3d207e19"; 
+      var sc_https=1; 
+      var scJsHost = (("https:" == document.location.protocol) ? "https://secure." :
+      "http://www.");
+      document.write("<sc"+"ript type='text/javascript' src='" + scJsHost+
+      "statcounter.com/counter/counter.js'></"+"script>");
+    </script>
+    <noscript><div class="statcounter"><a title="Web Analytics Made Easy -
+    StatCounter" href="http://statcounter.com/" target="_blank"><img
+    class="statcounter" src="//c.statcounter.com/11819202/0/3d207e19/0/" alt="Web
+    Analytics Made Easy - StatCounter"></a></div></noscript>
+    <!-- End of Statcounter Code -->
+
+    <style type="text/css">
+      /* custom settings for reveal */
+      .reveal {
+        font-size: 30px;
+      }
+      .reveal h1 {
+        font-size: 1em; }
+
+      .reveal h2 {
+        font-size: 1.5em; }
+
+      .reveal h3 {
+        font-size: 1.15em; }
+
+      .reveal h4 {
+        font-size: 1em; }
+
+      .reveal li {
+        padding-top: 4px;
+        padding-bottom: 4px;
+      }
+    </style>
   </body>
 </html>

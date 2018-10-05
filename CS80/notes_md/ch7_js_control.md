@@ -39,6 +39,7 @@ Pseudocode
 - Example: Leap year
 
   ```text
+  // leap year pseudocode
   if year is divisible by 400 then
     is_leap_year
   else if year is divisible by 100 then
@@ -59,7 +60,8 @@ Pseudocode
 - Example: Compound conditional leap year:
 
   ```text
-  if (year is divisible by 4 and not divisible by 100)then
+  // leap year pseudocode
+  if (year is divisible by 4 and not divisible by 100) then
     is_leap_year
   else
     not_leap_year
@@ -156,6 +158,7 @@ Variable Scope
 - Example block statement:
 
   ```javascript
+  // javascript blocks and scope
   var a1 = 3;
   {
     var a2 = 5;
@@ -186,6 +189,7 @@ Variable Scope
 - Consider the following possibilities (hint: the indentation does not affect the semantic meaning)
 
   ```javascript
+  // dangling else's
   if ( x > 5 )
     if ( y > 5 )
       document.writeln( "<p>x and y are > 5</p>" );
@@ -194,6 +198,7 @@ Variable Scope
   ```
 
   ```javascript
+  // dangling else's
   if ( x > 5 )
     if ( y > 5 )
       document.writeln( "<p>x and y are > 5</p>" );
@@ -206,6 +211,7 @@ Variable Scope
 - The first indentation reflects the semantics. Why?
 
   ```javascript
+  // dangling else's
   if ( x > 5 )
     if ( y > 5 )
       document.writeln( "<p>x and y are > 5</p>" );
@@ -214,6 +220,7 @@ Variable Scope
   ```
 
   ```javascript
+  // dangling else's
   if ( x > 5 )
     if ( y > 5 )
       document.writeln( "<p>x and y are > 5</p>" );
@@ -234,6 +241,7 @@ Variable Scope
 - Fix:
 
   ```javascript
+  // dangling else's
   if ( x > 5 ){
     if ( y > 5 )
       document.writeln( "<p>x and y are > 5</p>" );
@@ -245,6 +253,7 @@ Variable Scope
     with block statements:
 
   ```javascript
+  // dangling else's
   if ( x > 5 ) {
     if ( y > 5 ){
       document.writeln( "<p>x and y are > 5</p>" );
@@ -259,6 +268,7 @@ Variable Scope
 - Consider another error-prone situation:
 
   ```javascript
+  // dangling else's
   if ( grade >= 60 )
     document.writeln( "<p>Passed</p>" );
   else
@@ -271,6 +281,7 @@ Variable Scope
 ## Dangling `else`\'s
 
   ```javascript
+  // dangling else's
   if ( grade >= 60 )
     document.writeln( "<p>Passed</p>" );
   else
@@ -283,6 +294,7 @@ Variable Scope
 - Semantic version:
 
   ```javascript
+  // dangling else's
   if ( grade >= 60 )
     document.writeln( "<p>Passed</p>" );
   else
@@ -295,6 +307,7 @@ Variable Scope
 - Fix:
 
   ```javascript
+  // dangling else's
   if ( grade >= 60 )
     document.writeln( "<p>Passed</p>" );
   else {
@@ -359,6 +372,7 @@ Variable Scope
 - Example for shopping:
 
   ```javascript
+  // shopping list
   var shopping_list = ["pants", "grocercies", "car"];
   var i = 0;
   // purchase all items in the list
@@ -380,7 +394,7 @@ Variable Scope
   var product = 2;
   while ( product <= 1000 )
   {
-  product = 2 * product;
+    product = 2 * product;
   }
   ```
 
@@ -388,7 +402,7 @@ Variable Scope
 
 - If you think visually, consider the following code + flowchart
   
-  ![While loop flow chart](./images/js-program-flow.png)
+  ![](./images/js-program-flow.png)
 
 - We can think about a loop as a repeated cycle in a flowchart until a condition becomes false
 
@@ -555,7 +569,9 @@ for(initialization_statement; loop_condition; loop_end_statement)
   // loop body
 }
 // in practice
-for (var i = 0; i < 10; i++){
+for (var i = 0; i < 10; i++)
+{
+  // loop body
 }
 // which is the same as
 var i = 0;

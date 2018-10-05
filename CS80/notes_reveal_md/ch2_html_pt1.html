@@ -30,29 +30,10 @@
     
     <style>
       body {
-      padding-top: 30px;
-      padding-bottom: 40px;
+        padding-top: 30px;
+        padding-bottom: 40px;
       }
-      /* custom settings for reveal */
-      reveal {
-        font-size: 30px;
-      }
-      .reveal h1 {
-        font-size: 3em; }
-
-      .reveal h2 {
-        font-size: 2em; }
-
-      .reveal h3 {
-        font-size: 1.25em; }
-
-      .reveal h4 {
-        font-size: 1em; }
-
-      .reveal li {
-        padding-top: 4px;
-        padding-bottom: 4px;
-      }
+      
     </style>
 
     <!-- For syntax highlighting -->
@@ -267,7 +248,7 @@
         &lt;/body&gt;
         
         &lt;/html&gt;
-        </code></pre></section><section id="line-breaks" class="level2"><h2>Line Breaks</h2><ul><li><code>&lt;br&gt;</code> tag - a line break</li></ul></section><section id="tables" class="level2"><h2>Tables</h2><ul><li>Similar to a textbook table or excel spreadsheet (except without math functions)</li><li>Started with the <code>table</code> tag</li><li>The nested <code>caption</code> tag gives the table a title and summarizes the table's content</li></ul></section><section id="tables-1" class="level2"><h2>Tables</h2><p>Table Bodies, Headers, and Footers</p><ul><li><code>&lt;thead&gt;</code> and <code>&lt;tfoot&gt;</code> specify the header and footer of the table, respectively<ul><li>Maybe you want different styling for the header and footer using CSS</li><li>Again, we'll cover that later</li></ul></li></ul></section><section id="tables-2" class="level2"><h2>Tables</h2><p>Table Bodies, Headers, and Footers</p><ul><li><code>&lt;tbody&gt;</code> specifies the main body portion of the table</li><li><code>&lt;thead&gt;</code> and <code>&lt;tfoot&gt;</code> have the same internal structure</li></ul></section><section id="tables-3" class="level2"><h2>Tables</h2><p>Table Rows</p><ul><li><code>&lt;tbody&gt;</code>, <code>&lt;thead&gt;</code>, and <code>&lt;tfoot&gt;</code> is comprised of at least one <code>&lt;tr&gt;</code> element, which is a table row <ul><li>Note that no table requires all three, but you should use them appropriately</li></ul></li><li>If your table has a header, put the header, etc.</li><li>Makes table maintenance easier later</li></ul></section><section id="tables-4" class="level2"><h2>Tables</h2><p>Table Rows</p><ul><li>Each <code>&lt;tr&gt;</code> tag is comprised of <code>&lt;th&gt;</code> tags, which is a <em>header cell</em>. It is different from the normal cell!<ul><li>It is different to allow easier styling using CSS</li><li>The table fills left to right along the columns</li></ul></li><li>Repeat this <code>&lt;tr&gt;</code> and <code>&lt;th&gt;</code> pattern for each row, and each column you want to specify</li><li><code>&lt;tfoot&gt;</code> can be below or above </li></ul></section><section id="tables-5" class="level2"><h2>Tables</h2><p>Table Rows</p><ul><li><code>&lt;tbody&gt;</code> follows the same convention, but uses a <code>&lt;td&gt;</code> element instead of <code>&lt;th&gt;</code></li><li><code>td</code> stands for 'table data'</li></ul></section><section id="tables-6" class="level2"><h2>Tables</h2><p>Table Sizing</p><ul><li>By default, each table column is only as wide as its largest cell.</li><li><code>rowspan</code> and <code>colspan</code></li><li>These attributes allows a cell to span multiple rows or columns<ul><li>This is like merging rows/columns in a document</li></ul></li></ul></section><section id="tables-7" class="level2"><h2>Tables</h2><p>Table Sizing</p><ul><li><code>rowspan</code> allows a single table cell to span the width of more than one cell or row</li><li><code>colspan</code> allows a single table cell to span the width of more than one cell or column</li><li>These attributes can be applied in <code>&lt;th&gt;</code> and <code>&lt;td&gt;</code> elements</li></ul></section><section id="example-tables.html" class="level2"><h2><a href="../examples/ch2_html_pt1/tables.html">Example: <code>tables.html</code></a></h2><pre><code>&lt;!DOCTYPE html&gt;
+        </code></pre></section><section id="line-breaks" class="level2"><h2>Line Breaks</h2><ul><li><code>&lt;br&gt;</code> tag - a line break</li></ul></section><section id="tables" class="level2"><h2>Tables</h2><ul><li>Similar to a textbook table or excel spreadsheet (except without math functions)</li><li>Started with the <code>table</code> tag</li><li>The nested <code>caption</code> tag gives the table a title and summarizes the table's content</li></ul></section><section id="tables-1" class="level2"><h2>Tables</h2><p>Table Bodies, Headers, and Footers</p><ul><li><code>&lt;thead&gt;</code> and <code>&lt;tfoot&gt;</code> specify the header and footer of the table, respectively<ul><li>Maybe you want different styling for the header and footer using CSS</li><li>Again, we'll cover that later</li></ul></li></ul></section><section id="tables-2" class="level2"><h2>Tables</h2><p>Table Bodies, Headers, and Footers</p><ul><li><code>&lt;tbody&gt;</code> specifies the main body portion of the table</li><li><code>&lt;thead&gt;</code> and <code>&lt;tfoot&gt;</code> have the same internal structure</li></ul></section><section id="tables-3" class="level2"><h2>Tables</h2><p>Table Rows</p><ul><li><code>&lt;tbody&gt;</code>, <code>&lt;thead&gt;</code>, and <code>&lt;tfoot&gt;</code> is comprised of at least one <code>&lt;tr&gt;</code> element, which is a table row<ul><li>Note that no table requires all three, but you should use them appropriately</li></ul></li><li>If your table has a header, put the header, etc.</li><li>Makes table maintenance easier later</li></ul></section><section id="tables-4" class="level2"><h2>Tables</h2><p>Table Rows</p><ul><li>Each <code>&lt;tr&gt;</code> tag is comprised of <code>&lt;th&gt;</code> tags, which is a <em>header cell</em>. It is different from the normal cell!<ul><li>It is different to allow easier styling using CSS</li><li>The table fills left to right along the columns</li></ul></li><li>Repeat this <code>&lt;tr&gt;</code> and <code>&lt;th&gt;</code> pattern for each row, and each column you want to specify</li><li><code>&lt;tfoot&gt;</code> can be below or above</li></ul></section><section id="tables-5" class="level2"><h2>Tables</h2><p>Table Rows</p><ul><li><code>&lt;tbody&gt;</code> follows the same convention, but uses a <code>&lt;td&gt;</code> element instead of <code>&lt;th&gt;</code></li><li><code>td</code> stands for 'table data'</li></ul></section><section id="tables-6" class="level2"><h2>Tables</h2><p>Table Sizing</p><ul><li>By default, each table column is only as wide as its largest cell.</li><li><code>rowspan</code> and <code>colspan</code></li><li>These attributes allows a cell to span multiple rows or columns<ul><li>This is like merging rows/columns in a document</li></ul></li></ul></section><section id="tables-7" class="level2"><h2>Tables</h2><p>Table Sizing</p><ul><li><code>rowspan</code> allows a single table cell to span the width of more than one cell or row</li><li><code>colspan</code> allows a single table cell to span the width of more than one cell or column</li><li>These attributes can be applied in <code>&lt;th&gt;</code> and <code>&lt;td&gt;</code> elements</li></ul></section><section id="example-tables.html" class="level2"><h2><a href="../examples/ch2_html_pt1/tables.html">Example: <code>tables.html</code></a></h2><pre><code>&lt;!DOCTYPE html&gt;
         &lt;html&gt;
         &lt;!-- Fig. 2.12: table1.html --&gt;
         &lt;!-- Creating a basic table. --&gt;
@@ -377,7 +358,7 @@
         &lt;/body&gt;
         
         &lt;/html&gt;
-        </code></pre></section><section id="forms" class="level2"><h2>Forms</h2><ul><li>Mechanism for the user to send data to the server from the client</li><li>The user types in the data, then hits 'submit' the submit triggers a</li><li>HTTP request to the server to accept the form<ul><li>The receiving end will be covered in Chapter 17</li></ul></li><li>Forms use the <code>&lt;form&gt;</code> tag</li></ul></section><section id="forms-1" class="level2"><h2>Forms</h2><p>Important <code>&lt;form&gt;</code> attributes</p><ul><li>These setup the form and specify how and where to send data to the server</li><li><code>method</code> attribute can be two values:<ul><li><code>get</code></li><li><code>post</code></li></ul></li></ul></section><section id="forms-2" class="level2"><h2>Forms</h2><p>Important <code>&lt;form&gt;</code> attributes</p><ul><li><code>get</code><ul><li>Appends form data to url in name/value pairs</li><li>Length of URL is limited (~3000 characters limit)</li><li>Never use this to send sensitive data</li><li>Best suited for things like a query or other non-secure data (you can bookmark the url to effectively save the form submission)</li></ul></li></ul></section><section id="forms-3" class="level2"><h2>Forms</h2><p>Important <code>&lt;form&gt;</code> attributes</p><ul><li><code>post</code><ul><li>Appends form data to HTTP request</li><li>Has no size limitations</li><li>Cannot be bookmarked (since it does not modify the URL)</li></ul></li></ul></section><section id="forms-4" class="level2"><h2>Forms</h2><p>Important <code>&lt;form&gt;</code> attributes</p><ul><li><code>action</code><ul><li>Specifies where to send the form data (<em>e.g.</em> what site should process the form)</li><li>Must be a valid URL</li><li>The server <strong>should</strong> know how to respond to the form submission</li></ul></li></ul></section><section id="forms-5" class="level2"><h2>Forms</h2><p>Inputs</p><ul><li>Once we have the form setup, we can add inputs</li><li>Inputs are added using the <code>&lt;input&gt;</code> tag</li></ul></section><section id="forms-6" class="level2"><h2>Forms</h2><p>Important <code>&lt;input&gt;</code> attributes</p><ul><li><code>type</code><ul><li>Controls the type of the input; a lot of options available</li><li>Options include: <code>text</code>, <code>button</code>, <code>color</code>, <code>password</code>, <code>radio</code>, <code>range</code>, <code>reset</code>, <code>submit</code>, etc. with more available online</li></ul></li></ul></section><section id="forms-7" class="level2"><h2>Forms</h2><p>Important <code>&lt;input&gt;</code> attributes</p><ul><li><code>type</code><ul><li><code>hidden</code> is a special type<ul><li>It submits data to the server that is predetermined in the HTML page</li><li>The user cannot control this input</li><li>Might be used for sending information to another server to identify where the form is coming from</li></ul></li></ul></li></ul></section><section id="forms-8" class="level2"><h2>Forms</h2><p>Important <code>&lt;input&gt;</code> attributes</p><ul><li><code>type</code><ul><li><code>text</code> has a couple of special attributes: <code>size</code> - specifies the size of the text box and <code>maxlength</code> which specifies the maximum length of the input</li></ul></li></ul></section><section id="forms-9" class="level2"><h2>Forms</h2><p>Important <code>&lt;input&gt;</code> attributes</p><ul><li><code>name</code><ul><li>Gives the input a name that can be referenced once the server receives the submission</li><li>This is part of the glue between the client and the server that processes the form</li></ul></li></ul></section><section id="forms-10" class="level2"><h2>Forms</h2><p>Important <code>&lt;input&gt;</code> attributes</p><ul><li><code>value</code><ul><li>Gives the input an initial value</li></ul></li></ul></section><section id="forms-11" class="level2"><h2>Forms</h2><ul><li>Please lookup these elements in your book or online:<ul><li><code>textarea</code> - multiline text input, has rows and cols attributes</li><li><code>password</code> - provides a password-protected field. this is only visually enforced (displays a * instead of the text), the password still should be encrypted when sent over HTTP</li><li><code>color</code> - allows color input</li><li><code>number</code> - allows user to input a number, similar to a text but for numbers</li><li><code>range</code> - allows user to pick between a range of values</li><li><code>checkbox</code> - allows user to tick multiple options</li><li><code>radio</code> - allows user to pick one option from a list</li><li>They all follow a similar pattern, but familiarize yourself!</li></ul></li><li><code>&lt;select&gt;</code> tag presents a dropdown menu with a preselected list of options</li></ul></section><section id="example-forms.html" class="level2"><h2><a href="../examples/ch2_html_pt1/forms.html">Example: <code>forms.html</code></a></h2><pre><code>&lt;!DOCTYPE html&gt;
+        </code></pre></section><section id="forms" class="level2"><h2>Forms</h2><ul><li>Mechanism for the user to send data to the server from the client</li><li>The user types in the data, then hits 'submit' the submit triggers a</li><li>HTTP request to the server to accept the form<ul><li>The receiving end will be covered in Chapter 17</li></ul></li><li>Forms use the <code>&lt;form&gt;</code> tag</li></ul></section><section id="forms-1" class="level2"><h2>Forms</h2><p>Important <code>&lt;form&gt;</code> attributes</p><ul><li>These setup the form and specify how and where to send data to the server</li><li><code>method</code> attribute can be two values:<ul><li><code>get</code></li><li><code>post</code></li></ul></li></ul></section><section id="forms-2" class="level2"><h2>Forms</h2><p>Important <code>&lt;form&gt;</code> attributes</p><ul><li><code>get</code><ul><li>Appends form data to url in name/value pairs</li><li>Length of URL is limited (~3000 characters limit)</li><li>Never use this to send sensitive data</li><li>Best suited for things like a query or other non-secure data (you can bookmark the url to effectively save the form submission)</li></ul></li></ul></section><section id="forms-3" class="level2"><h2>Forms</h2><p>Important <code>&lt;form&gt;</code> attributes</p><ul><li><code>post</code><ul><li>Appends form data to HTTP request</li><li>Has no size limitations</li><li>Cannot be bookmarked (since it does not modify the URL)</li></ul></li></ul></section><section id="forms-4" class="level2"><h2>Forms</h2><p>Important <code>&lt;form&gt;</code> attributes</p><ul><li><code>action</code><ul><li>Specifies where to send the form data (<em>e.g.</em> what site should process the form)</li><li>Must be a valid URL</li><li>The server <strong>should</strong> know how to respond to the form submission</li></ul></li></ul></section><section id="forms-5" class="level2"><h2>Forms</h2><p>Inputs</p><ul><li>Once we have the form setup, we can add inputs</li><li>Inputs are added using the <code>&lt;input&gt;</code> tag</li></ul></section><section id="forms-6" class="level2"><h2>Forms</h2><p>Important <code>&lt;input&gt;</code> attributes</p><ul><li><code>type</code><ul><li>Controls the type of the input; a lot of options available</li><li>Options include: <code>text</code>, <code>button</code>, <code>color</code>, <code>password</code>, <code>radio</code>, <code>range</code>, <code>reset</code>, <code>submit</code>, etc. with more available online</li></ul></li></ul></section><section id="forms-7" class="level2"><h2>Forms</h2><p>Important <code>&lt;input&gt;</code> attributes</p><ul><li><code>type</code><ul><li><code>hidden</code> is a special type<ul><li>It submits data to the server that is predetermined in the HTML page</li><li>The user cannot control this input</li><li>Might be used for sending information to another server to identify where the form is coming from</li></ul></li></ul></li></ul></section><section id="forms-8" class="level2"><h2>Forms</h2><p>Important <code>&lt;input&gt;</code> attributes</p><ul><li><code>type</code><ul><li><code>text</code> has a couple of special attributes: <code>size</code> - specifies the size of the text box and <code>maxlength</code> which specifies the maximum length of the input</li></ul></li></ul></section><section id="forms-9" class="level2"><h2>Forms</h2><p>Important <code>&lt;input&gt;</code> attributes</p><ul><li><code>name</code><ul><li>Gives the input a name that can be referenced once the server receives the submission</li><li>This is part of the glue between the client and the server that processes the form</li></ul></li></ul></section><section id="forms-10" class="level2"><h2>Forms</h2><p>Important <code>&lt;input&gt;</code> attributes</p><ul><li><code>value</code><ul><li>Gives the input an initial value</li></ul></li></ul></section><section id="forms-11" class="level2"><h2>Forms</h2><ul><li>Please lookup these elements in your book or online:<ul><li><code>textarea</code> - multiline text input, has rows and cols attributes</li><li><code>password</code> - provides a password-protected field. this is only visually enforced (displays a * instead of the text), the password still should be encrypted when sent over HTTP</li><li><code>color</code> - allows color input</li><li><code>number</code> - allows user to input a number, similar to a text but for numbers</li></ul></li></ul></section><section id="forms-12" class="level2"><h2>Forms</h2><ul><li>Please lookup these elements in your book or online:<ul><li><code>range</code> - allows user to pick between a range of values</li><li><code>checkbox</code> - allows user to tick multiple options</li><li><code>radio</code> - allows user to pick one option from a list</li><li>They all follow a similar pattern, but familiarize yourself!</li></ul></li><li><code>&lt;select&gt;</code> tag presents a dropdown menu with a preselected list of options</li></ul></section><section id="example-forms.html" class="level2"><h2><a href="../examples/ch2_html_pt1/forms.html">Example: <code>forms.html</code></a></h2><pre><code>&lt;!DOCTYPE html&gt;
         &lt;html&gt;
         
         &lt;!-- Fig. 2.14: form.html --&gt;
@@ -506,7 +487,7 @@
     <script src="lib/js/head.min.js"></script>
     <script src="reveal.js/js/reveal.js"></script>
     
-    <script>
+    <script type="text/javascript">
       // Full list of configuration options available here:
       // https://github.com/hakimel/reveal.js#configuration
       Reveal.initialize({
@@ -559,21 +540,46 @@
 
 
     <script src="js/main.js"></script>
+    <!-- fix whitespace formatting -->
+    <script src="js/fix-whitespace.js"></script>
     <!-- Default Statcounter code for Personal website http://mjedmonds.com -->
-  <script type="text/javascript">
-  var sc_project=11819202; 
-  var sc_invisible=0; 
-  var sc_security="3d207e19"; 
-  var sc_https=1; 
-  var scJsHost = (("https:" == document.location.protocol) ? "https://secure." :
-  "http://www.");
-  document.write("<sc"+"ript type='text/javascript' src='" + scJsHost+
-  "statcounter.com/counter/counter.js'></"+"script>");
-  </script>
-  <noscript><div class="statcounter"><a title="Web Analytics Made Easy -
-  StatCounter" href="http://statcounter.com/" target="_blank"><img
-  class="statcounter" src="//c.statcounter.com/11819202/0/3d207e19/0/" alt="Web
-  Analytics Made Easy - StatCounter"></a></div></noscript>
-  <!-- End of Statcounter Code -->
+    <script type="text/javascript">
+      var sc_project=11819202; 
+      var sc_invisible=1; 
+      var sc_security="3d207e19"; 
+      var sc_https=1; 
+      var scJsHost = (("https:" == document.location.protocol) ? "https://secure." :
+      "http://www.");
+      document.write("<sc"+"ript type='text/javascript' src='" + scJsHost+
+      "statcounter.com/counter/counter.js'></"+"script>");
+    </script>
+    <noscript><div class="statcounter"><a title="Web Analytics Made Easy -
+    StatCounter" href="http://statcounter.com/" target="_blank"><img
+    class="statcounter" src="//c.statcounter.com/11819202/0/3d207e19/0/" alt="Web
+    Analytics Made Easy - StatCounter"></a></div></noscript>
+    <!-- End of Statcounter Code -->
+
+    <style type="text/css">
+      /* custom settings for reveal */
+      .reveal {
+        font-size: 30px;
+      }
+      .reveal h1 {
+        font-size: 1em; }
+
+      .reveal h2 {
+        font-size: 1.5em; }
+
+      .reveal h3 {
+        font-size: 1.15em; }
+
+      .reveal h4 {
+        font-size: 1em; }
+
+      .reveal li {
+        padding-top: 4px;
+        padding-bottom: 4px;
+      }
+    </style>
   </body>
 </html>

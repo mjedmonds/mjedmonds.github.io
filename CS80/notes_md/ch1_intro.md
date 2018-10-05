@@ -15,8 +15,8 @@ Instructor: Mark Edmonds
 ## Using These Slides
 
   ------- -----------------
-  `→`     next slide
-  `←`     prev slide
+  `->`     next slide
+  `<-`     prev slide
   `Esc`   global `ctrl+f`
   ------- -----------------
 
@@ -108,7 +108,7 @@ TCP/IP
   - Ensures transmitted data integrity and verifies destination address
 - IP = "Internet Protocol"
 - Different types and configurations of networks appeared over time
-  - Each one was a sub-network 
+  - Each one was a sub-network
 - IP creates a network of networks
 
 ## A brief history of the Internet
@@ -123,7 +123,7 @@ TCP/IP
 - World Wide Web is a section of the internet
 - Specifically, this \'section\' of the internet servers HTML (hypertext markup language) documents
 - The hypertext transfer protocol (HTTP) is the communication protocol used to serve an HTML document
-- A URL (uniform resource locator) specifies the location of the html document on the web. 
+- A URL (uniform resource locator) specifies the location of the html document on the web.
   - Start with `http://`
 
 ## Web Basics
@@ -137,7 +137,7 @@ Hyperlinks
 
 ## Web Basics
 
-URIs and URLs 
+URIs and URLs
 
 - URI = uniform resource identifiers
   - Can be files (`file://`), file transfers (`ftp://`),
@@ -159,9 +159,14 @@ Anatomy of a URL
 
 - This IP address uniquely identifies the host on the Internet
 - This translation occurs by looking up the hostname on a DNS server (DNS = domain name system)
-  - DNS is complex, but think of it like a network of computers whose sole purpose is to facilitate this lookup
-  - The complicated part: these servers need to sync updates without messing the entire system up
-  - Hackers perform DNS attacks to trick people into giving up personal information to the wrong website (even though the site appears legitimate)
+
+## Web Basics
+
+Anatomy of a URL
+
+- DNS is complex, but think of it like a network of computers whose sole purpose is to facilitate this lookup
+- The complicated part: these servers need to sync updates without messing the entire system up
+- Hackers perform DNS attacks to trick people into giving up personal information to the wrong website (even though the site appears legitimate)
 
 ## Web Basics
 
@@ -179,8 +184,14 @@ The request/receive process
 The request/receive process
 
 - The server responds with another message, indicating what happened with the request
-  - HTTP/1.1 200 OK → indicates success
-  - HTTP/1.1 404 Not found → indicates the resource could not be found
+  - HTTP/1.1 200 OK -> indicates success
+  - HTTP/1.1 404 Not found -> indicates the resource could not be found
+
+## Web Basics
+
+The request/receive process
+
+- The server responds with another message, indicating what happened with the request
   - 100s = informational (continue, switching protocols)
   - 200s = success (ok, accepted, no content)
   - 300s = redirects, more action needed (multiple choices, use proxy, permanent redirect)

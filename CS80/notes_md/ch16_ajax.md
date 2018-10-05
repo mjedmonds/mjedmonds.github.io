@@ -110,6 +110,7 @@ Instructor: Mark Edmonds
 - Syntax
 
   ```javascript
+  // syntax for trying a block of code and catching an exception
   try {
     // code that might throw an exception
   } catch (exception) {

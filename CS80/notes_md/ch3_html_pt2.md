@@ -35,7 +35,7 @@ New HTML5 form input types
 
 - `datetime`: date and time input
   - yyyy-mm-ddThh:mm+ff in UTC (English time)
-- `datetime-local`:  date and time input
+- `datetime-local`: date and time input
   - yyyy-mm-ddThh:mm+ff
 
 ## HTML5 Forms
@@ -201,7 +201,7 @@ Telephone pattern explained
   \(\d{3}\) +\d{3}-\d{4}
   ```
 
-- \"` `\" is a literal space to look for
+- \"`  `\" is a literal space to look for
   - `+` means match the previous pattern 1 or more times
 - Then, we look for 3 more digits, followed by a `-` then 4 more digits
 

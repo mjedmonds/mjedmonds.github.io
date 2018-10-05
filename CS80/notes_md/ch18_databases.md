@@ -137,6 +137,7 @@ Instructor: Mark Edmonds
 - Example for the Books database:
 
   ```sql
+  /* query AuthorID and LastName columns from Authors table */
   SELECT AuthorID, LastName
       FROM Authors
   ```
@@ -150,9 +151,10 @@ Instructor: Mark Edmonds
 - A more complicated example:
 
   ```sql
+  /* query with constraint that copyright is greater than 2010 */
   SELECT Title, EditionNumber, Copyright
       FROM Titles
-      WHERE Copyright &gt; '2010'
+      WHERE Copyright > '2010'
   ```
 
 ![SQL title, edition, copyright query](images/ch18_sql_title_edition_copyright.png)
@@ -175,6 +177,7 @@ Instructor: Mark Edmonds
 - Select all authors whose last name begins with a \'D\'
 
   ```sql
+  /* query with last names that start with 'D' */
   SELECT AuthorID, FirstName, LastName
       FROM Authors
       WHERE LastName LIKE 'D%'
@@ -183,6 +186,7 @@ Instructor: Mark Edmonds
 - Select all authors whose last name starts with any character, followed by an \'o\', followed by any number of additional characters
 
   ```sql
+  /* query with last names that have a second character of 'o' */
   SELECT AuthorID, FirstName, LastName
       FROM Authors
       WHERE LastName LIKE '_o%'
@@ -199,10 +203,12 @@ Instructor: Mark Edmonds
 - Can order by multiple columns - sorts by outer sort first, then each additional sorting specified (e.g. last name then by first name)
 
   ```sql
-  SELECT columnName1, columnName2, …
+  /* query and order by ascending order */
+  SELECT columnName1, columnName2, ...
       FROM tableName
       ORDER BY column ASC
-      SELECT columnName1, columnName2, …
+  /* query and order by descending order */
+  SELECT columnName1, columnName2, ...
       FROM tableName
       ORDER BY column DESC
   ```
@@ -216,6 +222,7 @@ Instructor: Mark Edmonds
 - Solution:
 
   ```sql
+  /* query and order by descending order */
   SELECT AuthorID, FirstName, LastName
       FROM Authors
       ORDER BY LastName DESC
@@ -232,6 +239,7 @@ Instructor: Mark Edmonds
 - Solution:
 
   ```sql
+  /* query that ends with 'How to Program' and sort by ascending order */
   SELECT ISBN, Title, EditionNumber, Copyright
       FROM Titles
       WHERE Title LIKE '%How to Program'
@@ -248,7 +256,8 @@ Instructor: Mark Edmonds
 ## Merging Data from Multiple Tables
 
 ```sql
-SELECT columnName1, columnName2, …
+/* query that merges data from multiple tables */
+SELECT columnName1, columnName2, ...
   FROM table1
   INNER JOIN table2
   ON table1.columnName = table2.columnName
@@ -263,6 +272,7 @@ SELECT columnName1, columnName2, …
 - Solution:
 
   ```sql
+  /* query that merges data from multiple tables */
   SELECT FirstName, LastName, ISBN
       FROM Authors
       INNER JOIN AuthorISBN
@@ -282,8 +292,9 @@ SELECT columnName1, columnName2, …
 - Syntax:
 
   ```sql
-  INSERT INTO tableName ( columnName1, columnName2, …, columnNameN )
-      VALUES ( value1, value2, …, valueN )
+  /* insertion syntax  */
+  INSERT INTO tableName ( columnName1, columnName2, ..., columnNameN )
+      VALUES ( value1, value2, ..., valueN )
   ```
 
 ## Inserting, Updating, and Deleting Information from a table
@@ -291,6 +302,7 @@ SELECT columnName1, columnName2, …
 - Example:
 
   ```sql
+  /* insertion example  */
   INSERT INTO Authors ( FirstName, LastName )
       VALUES ( 'Sue', 'Red' )
   ```
@@ -303,8 +315,9 @@ SELECT columnName1, columnName2, …
 - Syntax:
 
   ```sql
+  /* update syntax  */
   UPDATE tableName
-      SET columnName1 = value1, columnName2 = value2, …, columnNameN = valueN
+      SET columnName1 = value1, columnName2 = value2, ..., columnNameN = valueN
       WHERE criteria
   ```
 
@@ -313,6 +326,7 @@ SELECT columnName1, columnName2, …
 - Example:
 
   ```sql
+  /* update example  */
   UPDATE Authors
       SET LastName = 'Black'
       WHERE LastName = 'Red' AND FirstName = 'Sue'
@@ -329,6 +343,7 @@ SELECT columnName1, columnName2, …
 - Question: What else could we have used for the `WHERE` portion of the previous example?
 
   ```sql
+  /* update example  */
   UPDATE Authors
       SET LastName = 'Black'
       WHERE AuthorID = 6
@@ -340,6 +355,7 @@ SELECT columnName1, columnName2, …
 - Syntax:
 
   ```sql
+  /* delete syntax  */
   DELETE FROM tableName
       WHERE criteria
   ```
@@ -347,6 +363,7 @@ SELECT columnName1, columnName2, …
 - Example:
 
   ```sql
+  /* delete syntax  */
   DELETE FROM Authors
       WHERE LastName = 'Black' AND FirstName = 'Sue'
   ```
