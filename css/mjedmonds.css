@@ -1,4 +1,4 @@
-.researchimgcontainer{
+.researchimgcontainer {
   display: table;
   margin: 0 auto;
 }
@@ -8,23 +8,32 @@
   width: 250px;
   margin: 20px;
   vertical-align: middle;
-  text-align:center;
+  text-align: center;
   display: table-cell;
 }
 
-.collabcontainer{
+.collabcontainer {
   display: inline-block;
   width: 100%;
-  padding-left: 10px;
+  padding-left: 0px;
   margin: 0 0;
+}
+
+.collabcontainer ul {
+  list-style: disc;
+  padding-left: 4%;
+}
+
+.collab {
+  width: 100%;
 }
 
 .collableft {
   float: left;
-  width:80%
+  width: 80%
 }
 
-.collabright{
- text-align: center;
+.collabright {
+  text-align: center;
   float: right;
 }
