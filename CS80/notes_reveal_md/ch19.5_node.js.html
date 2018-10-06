@@ -1,17 +1,18 @@
+<!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
+<head>
+  <meta name="generator" content=
+  "HTML Tidy for HTML5 for Apple macOS version 5.6.0">
+  <meta charset="utf-8">
+  <title>node.js</title>
+  <meta name="description" content=
+  "CS 80: Internet Programming Notes">
+  <meta name="author" content="Mark Edmonds">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content=
+  "black-translucent"><!-- Google analytics -->
 
-    <title>node.js</title>
-
-    <meta name="description" content="CS 80: Internet Programming Notes">
-    <meta name="author" content="Mark Edmonds">
-
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-    
-    <!-- Google analytics -->
-    <script>
+  <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -19,120 +20,258 @@
 
       ga('create', 'UA-98378227-1', 'auto');
       ga('send', 'pageview');
-    </script>
-
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="reveal.js/css/reveal.css">
-    <link rel="stylesheet" href="reveal.js/css/theme/serif.css" id="theme">
-    <link href='css/ubuntu_font.css' rel='stylesheet' type='text/css'>
-
-    <link rel="shortcut icon" href="../../favicon.png">
-    
-    <style>
+  </script>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="reveal.js/css/reveal.css">
+  <link rel="stylesheet" href="reveal.js/css/theme/serif.css" id=
+  "theme">
+  <link href='css/ubuntu_font.css' rel='stylesheet' type=
+  'text/css'>
+  <link rel="shortcut icon" href="../../favicon.png">
+  <style>
       body {
         padding-top: 30px;
         padding-bottom: 40px;
       }
       
-    </style>
+  </style><!-- For syntax highlighting -->
+  <link rel="stylesheet" href="css/highlightjs/atom-one-light.css">
+  <!-- If the query includes 'print-pdf', use the PDF print sheet -->
 
-    <!-- For syntax highlighting -->
-    <link rel="stylesheet" href="css/highlightjs/atom-one-light.css">
-
-    <!-- If the query includes 'print-pdf', use the PDF print sheet -->
-    <script>
+  <script>
       document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
-    </script>
+  </script>
+  <script src="js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+  <script async defer src=
+  "https://buttons.github.io/buttons.js"></script>
+  <style type="text/css">
 
-    <script src="js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+      /* custom settings for reveal */
+      .reveal {
+        font-size: 30px;
+      }
+      .reveal h1 {
+        font-size: 1em; }
 
-    <script async defer src="https://buttons.github.io/buttons.js"></script>
-  </head>
-  <body>
-    
-    <script src="js/nav.js"></script>
+      .reveal h2 {
+        font-size: 1.5em; }
 
-    <script>
+      .reveal h3 {
+        font-size: 1.15em; }
+
+      .reveal h4 {
+        font-size: 1em; }
+
+      .reveal li {
+        padding-top: 4px;
+        padding-bottom: 4px;
+      }
+  </style>
+</head>
+<body>
+  <script src="js/nav.js"></script> 
+  <script>
+
       function toggleElements(one, two) {
       document.getElementById(one).style.display = 'none';
       document.getElementById(two).style.display = 'block';
       }
-    </script>
-    
-    <!-- Main body -->
-    
-    <div class="reveal">
-      <div class="slides">
-        <!-- slide content will go here -->
-        <section id="chapter-19.5-node.js" class="level2"><h2>Chapter 19.5: node.js</h2><p>CS 80: Internet Programming</p><p>Instructor: Mark Edmonds</p></section><section id="overview" class="level2"><h2>Overview</h2><ul><li>Node (node.js) enables server-side JavaScript</li><li>Much of what we did with PHP can be done with node.js</li><li>Node has much more functionality than PHP; you can basically write whatever JavaScript program you want without needing to execute in a browser</li></ul></section><section id="overview-1" class="level2"><h2>Overview</h2><ul><li>Node is designed to make it easy to write I/O-based programs that run of a server</li><li>I/O-based programs include web servers, databases, etc.</li></ul></section><section id="overview-2" class="level2"><h2>Overview</h2><ul><li>Node uses event-based asynchronous processing</li><li>We will use same event-listener and callbacks we learned in JavaScript</li></ul></section><section id="installing-node" class="level2"><h2>Installing Node</h2><ul><li>Node can be installed from <a href="https://nodejs.org/en/">nodejs.org</a></li><li>Node is a command-line program, and you start node with by typing <code>node</code> at your terminal/command prompt</li></ul></section><section id="hello-world" class="level2"><h2>Hello, world!</h2><ul><li><p>Save the following in <code>hello_world.js</code></p><pre class="javascript"><code>console.log(&quot;Hello, world!&quot;);</code></pre></li><li><p>Launch the program with</p><pre class="shell"><code>node hello_world.js</code></pre></li></ul></section><section id="example-http_server.js" class="level2"><h2>Example: <a href="../examples/ch19.5_node/http_server.js"><code>http_server.js</code></a></h2><pre><code>var http = require(&quot;http&quot;); // require the node HTTP module 
+  </script> <!-- Main body -->
+  <div class="reveal">
+    <div class="slides">
+      <!-- slide content will go here -->
+      <section id="chapter-19.5-node.js" class="level2">
+        <h2>Chapter 19.5: node.js</h2>
+        <p>CS 80: Internet Programming</p>
+        <p>Instructor: Mark Edmonds</p>
+      </section>
+      <section id="overview" class="level2">
+        <h2>Overview</h2>
+        <ul>
+          <li>Node (node.js) enables server-side JavaScript</li>
+          <li>Much of what we did with PHP can be done with
+          node.js</li>
+          <li>Node has much more functionality than PHP; you can
+          basically write whatever JavaScript program you want
+          without needing to execute in a browser</li>
+        </ul>
+      </section>
+      <section id="overview-1" class="level2">
+        <h2>Overview</h2>
+        <ul>
+          <li>Node is designed to make it easy to write I/O-based
+          programs that run of a server</li>
+          <li>I/O-based programs include web servers, databases,
+          etc.</li>
+        </ul>
+      </section>
+      <section id="overview-2" class="level2">
+        <h2>Overview</h2>
+        <ul>
+          <li>Node uses event-based asynchronous processing</li>
+          <li>We will use same event-listener and callbacks we
+          learned in JavaScript</li>
+        </ul>
+      </section>
+      <section id="installing-node" class="level2">
+        <h2>Installing Node</h2>
+        <ul>
+          <li>Node can be installed from <a href=
+          "https://nodejs.org/en/">nodejs.org</a>
+          </li>
+          <li>Node is a command-line program, and you start node
+          with by typing <code>node</code> at your terminal/command
+          prompt</li>
+        </ul>
+      </section>
+      <section id="hello-world" class="level2">
+        <h2>Hello, world!</h2>
+        <ul>
+          <li>
+            <p>Save the following in
+            <code>hello_world.js</code></p>
+            <pre class="javascript">
+            <code>console.log("Hello, world!");</code></pre>
+          </li>
+          <li>
+            <p>Launch the program with</p>
+            <pre class="shell">
+            <code>node hello_world.js</code></pre>
+          </li>
+        </ul>
+      </section>
+      <section id="example-http_server.js" class="level2">
+        <h2>Example: <a href=
+        "../examples/ch19.5_node/http_server.js"><code>http_server.js</code></a></h2>
+        <pre>
+        <code>var http = require("http"); // require the node HTTP module 
         
         function onRequest(request, response) { 
-          console.log(&quot;Request received.&quot;); 
-          response.writeHead(200, {&quot;Content-Type&quot;: &quot;text/plain&quot;}); // set HTTP response header
-          response.write(&quot;Hello World&quot;); // write content into HTTP request
+          console.log("Request received."); 
+          response.writeHead(200, {"Content-Type": "text/plain"}); // set HTTP response header
+          response.write("Hello World"); // write content into HTTP request
           response.end();  // finishes the response
         }
         
         http.createServer(onRequest).listen(8888);
         
-        console.log(&quot;Server has started.&quot;);
-        </code></pre></section><section id="modules" class="level2"><h2>Modules</h2><ul><li>We wrote <code>var http = require(&quot;http&quot;);</code> in the HTTP server example</li><li>http is a module that our node application requires</li><li>But we also want to write our own models</li><li>This is accomplished using <code>exports</code></li></ul></section><section id="example-http_server_export.js" class="level2"><h2>Example: <a href="../examples/ch19.5_node/http_server_export.js"><code>http_server_export.js</code></a></h2><pre><code>var http = require(&quot;http&quot;); // require the node HTTP module 
+        console.log("Server has started.");
+        </code></pre>
+      </section>
+      <section id="modules" class="level2">
+        <h2>Modules</h2>
+        <ul>
+          <li>We wrote <code>var http = require("http");</code> in
+          the HTTP server example</li>
+          <li>http is a module that our node application
+          requires</li>
+          <li>But we also want to write our own models</li>
+          <li>This is accomplished using <code>exports</code></li>
+        </ul>
+      </section>
+      <section id="example-http_server_export.js" class="level2">
+        <h2>Example: <a href=
+        "../examples/ch19.5_node/http_server_export.js"><code>http_server_export.js</code></a></h2>
+        <pre>
+        <code>var http = require("http"); // require the node HTTP module 
         
         function start() {
           function onRequest(request, response) { 
-            console.log(&quot;Request received.&quot;); 
-            response.writeHead(200, {&quot;Content-Type&quot;: &quot;text/plain&quot;}); // set HTTP response header
-            response.write(&quot;Hello World&quot;); // write content into HTTP request
+            console.log("Request received."); 
+            response.writeHead(200, {"Content-Type": "text/plain"}); // set HTTP response header
+            response.write("Hello World"); // write content into HTTP request
             response.end();  // finishes the response
           }
         
           http.createServer(onRequest).listen(8888);
-          console.log(&quot;Server has started.&quot;);
+          console.log("Server has started.");
         }
         
         exports.start = start;
-        </code></pre></section><section id="example-index.js" class="level2"><h2>Example: <a href="../examples/ch19.5_node/index.js"><code>index.js</code></a></h2><pre><code>var server = require(&quot;./http_server_export&quot;);
+        </code></pre>
+      </section>
+      <section id="example-index.js" class="level2">
+        <h2>Example: <a href=
+        "../examples/ch19.5_node/index.js"><code>index.js</code></a></h2>
+        <pre><code>var server = require("./http_server_export");
         
         server.start();
-        </code></pre></section><section id="modules-1" class="level2"><h2>Modules</h2><ul><li>Modules are a core component of node.js</li><li>They allow you to modularize code</li><li>This breaks our I/O-based application easier to manage and scalable</li><li>Each module can be responsible for a specific kind of I/O</li></ul></section><section id="routing" class="level2"><h2>Routing</h2><ul><li>So far, every HTTP resquest was handled the same way</li><li>Routing allows us to specify which modules process certain HTTP requests</li><li>We'll look at the URL and the data in the GET/POST parameters and make a decision about where this HTTP request should be routed.</li></ul></section><section id="example-router.js" class="level2"><h2>Example: <a href="../examples/ch19.5_node/router.js"><code>router.js</code></a></h2><pre><code>function route(pathname) { 
-          console.log(&quot;About to route a request for &quot; + pathname);
+        </code></pre>
+      </section>
+      <section id="modules-1" class="level2">
+        <h2>Modules</h2>
+        <ul>
+          <li>Modules are a core component of node.js</li>
+          <li>They allow you to modularize code</li>
+          <li>This breaks our I/O-based application easier to
+          manage and scalable</li>
+          <li>Each module can be responsible for a specific kind of
+          I/O</li>
+        </ul>
+      </section>
+      <section id="routing" class="level2">
+        <h2>Routing</h2>
+        <ul>
+          <li>So far, every HTTP resquest was handled the same
+          way</li>
+          <li>Routing allows us to specify which modules process
+          certain HTTP requests</li>
+          <li>We'll look at the URL and the data in the GET/POST
+          parameters and make a decision about where this HTTP
+          request should be routed.</li>
+        </ul>
+      </section>
+      <section id="example-router.js" class="level2">
+        <h2>Example: <a href=
+        "../examples/ch19.5_node/router.js"><code>router.js</code></a></h2>
+        <pre><code>function route(pathname) { 
+          console.log("About to route a request for " + pathname);
         }
         
         exports.route = route;
-        </code></pre></section><section id="example-http_server_router.js" class="level2"><h2>Example: <a href="../examples/ch19.5_node/http_server_router.js"><code>http_server_router.js</code></a></h2><pre><code>var http = require(&quot;http&quot;); // require the node HTTP module 
-        var url = require(&quot;url&quot;);
+        </code></pre>
+      </section>
+      <section id="example-http_server_router.js" class="level2">
+        <h2>Example: <a href=
+        "../examples/ch19.5_node/http_server_router.js"><code>http_server_router.js</code></a></h2>
+        <pre>
+        <code>var http = require("http"); // require the node HTTP module 
+        var url = require("url");
         
         function start(route) {
           function onRequest(request, response) { 
             var pathname = url.parse(request.url).pathname;
-            console.log(&quot;Request for &quot; + pathname + &quot; received.&quot;); 
+            console.log("Request for " + pathname + " received."); 
         
             route(pathname);
         
-            response.writeHead(200, {&quot;Content-Type&quot;: &quot;text/plain&quot;}); // set HTTP response header
-            response.write(&quot;Hello World&quot;); // write content into HTTP request
+            response.writeHead(200, {"Content-Type": "text/plain"}); // set HTTP response header
+            response.write("Hello World"); // write content into HTTP request
             response.end();  // finishes the response
           }
         
           http.createServer(onRequest).listen(8888);
-          console.log(&quot;Server has started.&quot;);
+          console.log("Server has started.");
         }
         
         exports.start = start;
-        </code></pre></section><section id="example-index.js-1" class="level2"><h2>Example: <a href="../examples/ch19.5_node/index_router.js"><code>index.js</code></a></h2><pre><code>var server = require(&quot;./http_server_router&quot;);
-        var router = require(&quot;./router&quot;);
+        </code></pre>
+      </section>
+      <section id="example-index.js-1" class="level2">
+        <h2>Example: <a href=
+        "../examples/ch19.5_node/index_router.js"><code>index.js</code></a></h2>
+        <pre><code>var server = require("./http_server_router");
+        var router = require("./router");
         
         server.start(router.route);
-        </code></pre></section>
-      </div>
+        </code></pre>
+      </section>
     </div>
-    
-    <!-- end main body -->
-    
-    <script src="lib/js/head.min.js"></script>
-    <script src="reveal.js/js/reveal.js"></script>
-    
-    <script type="text/javascript">
+  </div><!-- end main body -->
+  <script src="lib/js/head.min.js"></script> 
+  <script src="reveal.js/js/reveal.js"></script> 
+  <script type="text/javascript">
+
       // Full list of configuration options available here:
       // https://github.com/hakimel/reveal.js#configuration
       Reveal.initialize({
@@ -161,12 +300,11 @@
       ]
       });
 
-    </script>
-
-    <script>window.jQuery || document.write('<script src="js/jquery-3.2.1.min.js"><\/script>')</script>
-    <script src="js/bootstrap.min.js"></script>
-
-<!--
+  </script> 
+  <script>
+  window.jQuery || document.write('<script src="js/jquery-3.2.1.min.js"><\/script>')
+  </script> 
+  <script src="js/bootstrap.min.js"></script> <!--
     <script>
       Reveal.addEventListener( 'slidechanged', function( event ) {
       // event.previousSlide, event.currentSlide, event.indexh, event.indexv
@@ -178,17 +316,19 @@
       } );
     </script>
 -->
+   
+  <script>
 
-    <script>
       Reveal.configure({ slideNumber: 'c/t' });
-    </script>
+  </script> 
+  <script src="js/main.js"></script> 
+  <!-- fix whitespace formatting -->
+   
+  <script src="js/fix-whitespace.js"></script> 
+  <!-- Default Statcounter code for Personal website http://mjedmonds.com -->
+   
+  <script type="text/javascript">
 
-
-    <script src="js/main.js"></script>
-    <!-- fix whitespace formatting -->
-    <script src="js/fix-whitespace.js"></script>
-    <!-- Default Statcounter code for Personal website http://mjedmonds.com -->
-    <script type="text/javascript">
       var sc_project=11819202; 
       var sc_invisible=1; 
       var sc_security="3d207e19"; 
@@ -197,34 +337,12 @@
       "http://www.");
       document.write("<sc"+"ript type='text/javascript' src='" + scJsHost+
       "statcounter.com/counter/counter.js'></"+"script>");
-    </script>
-    <noscript><div class="statcounter"><a title="Web Analytics Made Easy -
-    StatCounter" href="http://statcounter.com/" target="_blank"><img
-    class="statcounter" src="//c.statcounter.com/11819202/0/3d207e19/0/" alt="Web
-    Analytics Made Easy - StatCounter"></a></div></noscript>
-    <!-- End of Statcounter Code -->
-
-    <style type="text/css">
-      /* custom settings for reveal */
-      .reveal {
-        font-size: 30px;
-      }
-      .reveal h1 {
-        font-size: 1em; }
-
-      .reveal h2 {
-        font-size: 1.5em; }
-
-      .reveal h3 {
-        font-size: 1.15em; }
-
-      .reveal h4 {
-        font-size: 1em; }
-
-      .reveal li {
-        padding-top: 4px;
-        padding-bottom: 4px;
-      }
-    </style>
-  </body>
+  </script> <noscript>
+  <div class="statcounter">
+    <a title="Web Analytics Made Easy - StatCounter" href=
+    "http://statcounter.com/" target="_blank"><img class=
+    "statcounter" src="//c.statcounter.com/11819202/0/3d207e19/0/"
+    alt="Web Analytics Made Easy - StatCounter"></a>
+  </div></noscript> <!-- End of Statcounter Code -->
+</body>
 </html>

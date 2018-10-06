@@ -1,17 +1,18 @@
+<!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
+<head>
+  <meta name="generator" content=
+  "HTML Tidy for HTML5 for Apple macOS version 5.6.0">
+  <meta charset="utf-8">
+  <title>XML</title>
+  <meta name="description" content=
+  "CS 80: Internet Programming Notes">
+  <meta name="author" content="Mark Edmonds">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content=
+  "black-translucent"><!-- Google analytics -->
 
-    <title>XML</title>
-
-    <meta name="description" content="CS 80: Internet Programming Notes">
-    <meta name="author" content="Mark Edmonds">
-
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-    
-    <!-- Google analytics -->
-    <script>
+  <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -19,52 +20,140 @@
 
       ga('create', 'UA-98378227-1', 'auto');
       ga('send', 'pageview');
-    </script>
-
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="reveal.js/css/reveal.css">
-    <link rel="stylesheet" href="reveal.js/css/theme/serif.css" id="theme">
-    <link href='css/ubuntu_font.css' rel='stylesheet' type='text/css'>
-
-    <link rel="shortcut icon" href="../../favicon.png">
-    
-    <style>
+  </script>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="reveal.js/css/reveal.css">
+  <link rel="stylesheet" href="reveal.js/css/theme/serif.css" id=
+  "theme">
+  <link href='css/ubuntu_font.css' rel='stylesheet' type=
+  'text/css'>
+  <link rel="shortcut icon" href="../../favicon.png">
+  <style>
       body {
         padding-top: 30px;
         padding-bottom: 40px;
       }
       
-    </style>
+  </style><!-- For syntax highlighting -->
+  <link rel="stylesheet" href="css/highlightjs/atom-one-light.css">
+  <!-- If the query includes 'print-pdf', use the PDF print sheet -->
 
-    <!-- For syntax highlighting -->
-    <link rel="stylesheet" href="css/highlightjs/atom-one-light.css">
-
-    <!-- If the query includes 'print-pdf', use the PDF print sheet -->
-    <script>
+  <script>
       document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
-    </script>
+  </script>
+  <script src="js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+  <script async defer src=
+  "https://buttons.github.io/buttons.js"></script>
+  <style type="text/css">
 
-    <script src="js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+      /* custom settings for reveal */
+      .reveal {
+        font-size: 30px;
+      }
+      .reveal h1 {
+        font-size: 1em; }
 
-    <script async defer src="https://buttons.github.io/buttons.js"></script>
-  </head>
-  <body>
-    
-    <script src="js/nav.js"></script>
+      .reveal h2 {
+        font-size: 1.5em; }
 
-    <script>
+      .reveal h3 {
+        font-size: 1.15em; }
+
+      .reveal h4 {
+        font-size: 1em; }
+
+      .reveal li {
+        padding-top: 4px;
+        padding-bottom: 4px;
+      }
+  </style>
+</head>
+<body>
+  <script src="js/nav.js"></script> 
+  <script>
+
       function toggleElements(one, two) {
       document.getElementById(one).style.display = 'none';
       document.getElementById(two).style.display = 'block';
       }
-    </script>
-    
-    <!-- Main body -->
-    
-    <div class="reveal">
-      <div class="slides">
-        <!-- slide content will go here -->
-        <section id="chapter-15-xml" class="level2"><h2>Chapter 15: XML</h2><p>CS 80: Internet Programming</p><p>Instructor: Mark Edmonds</p></section><section id="xml-describes-data" class="level2"><h2>XML describes data</h2><ul><li>Remember the above!</li><li>Stands for &quot;Extensible Markup Language&quot;<ul><li>XML is a <em>meta-language</em> meaning it is not a lanugage itself, but rather a language for building languages</li></ul></li></ul></section><section id="xml-describes-data-1" class="level2"><h2>XML describes data</h2><ul><li>HTML is a sort of &quot;variation&quot; of XML, though it technically is not XML<ul><li>XHTML is a version of HTML that does adhere to actual XML rules</li><li>So, we've seen something very similar before</li></ul></li></ul></section><section id="xml-describes-data-2" class="level2"><h2>XML describes data</h2><ul><li>What's the point?<ul><li>XML allows us to describe data in a strict, organized, but flexible manner</li><li>This means we can create specific markup languages for any sort of data<ul><li>We'd need to parse the data for it to be meaningful, but XML is a building block</li></ul></li></ul></li></ul></section><section id="xml-describes-data-3" class="level2"><h2>XML describes data</h2><ul><li>Consider we have the following data:<ul><li><code>John 10 Bill 15 Judy 25</code></li><li>What does this data mean?<ul><li>I have no idea from just the above</li><li>If I put this on the internet, no one else will know what it means either</li></ul></li></ul></li></ul></section><section id="xml-describes-data-4" class="level2"><h2>XML describes data</h2><ul><li>XML allows us to share data efficiently</li><li><p>Consider the following</p><pre class="xml"><code>&lt;!-- XML representing a family - notice the explicit structure --&gt;
+  </script> <!-- Main body -->
+  <div class="reveal">
+    <div class="slides">
+      <!-- slide content will go here -->
+      <section id="chapter-15-xml" class="level2">
+        <h2>Chapter 15: XML</h2>
+        <p>CS 80: Internet Programming</p>
+        <p>Instructor: Mark Edmonds</p>
+      </section>
+      <section id="xml-describes-data" class="level2">
+        <h2>XML describes data</h2>
+        <ul>
+          <li>Remember the above!</li>
+          <li>Stands for "Extensible Markup Language"
+            <ul>
+              <li>XML is a <em>meta-language</em> meaning it is not
+              a lanugage itself, but rather a language for building
+              languages</li>
+            </ul>
+          </li>
+        </ul>
+      </section>
+      <section id="xml-describes-data-1" class="level2">
+        <h2>XML describes data</h2>
+        <ul>
+          <li>HTML is a sort of "variation" of XML, though it
+          technically is not XML
+            <ul>
+              <li>XHTML is a version of HTML that does adhere to
+              actual XML rules</li>
+              <li>So, we've seen something very similar before</li>
+            </ul>
+          </li>
+        </ul>
+      </section>
+      <section id="xml-describes-data-2" class="level2">
+        <h2>XML describes data</h2>
+        <ul>
+          <li>What's the point?
+            <ul>
+              <li>XML allows us to describe data in a strict,
+              organized, but flexible manner</li>
+              <li>This means we can create specific markup
+              languages for any sort of data
+                <ul>
+                  <li>We'd need to parse the data for it to be
+                  meaningful, but XML is a building block</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </section>
+      <section id="xml-describes-data-3" class="level2">
+        <h2>XML describes data</h2>
+        <ul>
+          <li>Consider we have the following data:
+            <ul>
+              <li><code>John 10 Bill 15 Judy 25</code></li>
+              <li>What does this data mean?
+                <ul>
+                  <li>I have no idea from just the above</li>
+                  <li>If I put this on the internet, no one else
+                  will know what it means either</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </section>
+      <section id="xml-describes-data-4" class="level2">
+        <h2>XML describes data</h2>
+        <ul>
+          <li>XML allows us to share data efficiently</li>
+          <li>
+            <p>Consider the following</p>
+            <pre class="xml">
+            <code>&lt;!-- XML representing a family - notice the explicit structure --&gt;
         &lt;family&gt;
           &lt;member&gt;
             &lt;name&gt;John&lt;/name&gt;
@@ -78,7 +167,207 @@
             &lt;name&gt;Judy&lt;/name&gt;
             &lt;age&gt;25&lt;/age&gt;
           &lt;/member&gt;
-        &lt;/family&gt;</code></pre></li></ul></section><section id="xml-describes-data-5" class="level2"><h2>XML describes data</h2><ul><li>This data makes a lot more sense!<ul><li>The initial data had a lot of implicit information that we have made explicit through XML</li></ul></li></ul></section><section id="xml-concepts" class="level2"><h2>XML Concepts</h2><ul><li>Why care?<ul><li>XML makes data formats portable and application independent<ul><li>Which makes them a very good idea for the internet!</li><li>Application independent means I don't need the application using the data to understand the data (contrast a format like Word document to a .txt)</li></ul></li></ul></li></ul></section><section id="xml-concepts-1" class="level2"><h2>XML Concepts</h2><ul><li>Specify the document's structure</li><li>Consist of the element's name in angle brackets</li><li>Example: <code>&lt;data&gt;</code></li></ul></section><section id="xml-concepts-2" class="level2"><h2>XML Concepts</h2><ul><li>XML elements have start and end tags<ul><li>Start tag proceeds as above, e.g. <code>&lt;data&gt;</code></li><li>End tag has a backslash (<code>\</code> after the <code>&lt;</code>, e.g. <code>&lt;/data&gt;</code><ul><li>End tags can be shorthanded in the starting tag by place a forward slash <code>/</code> before the closing <code>&lt;</code> of the opening tag. e.g. with <code>&lt;data/&gt;</code> as the start tag</li></ul></li><li>Looks familiar!</li></ul></li></ul></section><section id="xml-concepts-3" class="level2"><h2>XML Concepts</h2><ul><li>Every XML document contains one root element, which contains all other elements<ul><li>Similar to <code>&lt;html&gt;</code></li></ul></li></ul></section><section id="xml-concepts-4" class="level2"><h2>XML Concepts</h2><ul><li>XML-based markup languages are called <strong>XML vocbaularies</strong><ul><li>Provide a mechanism to describe data in a standardized, structured way.</li><li>Examples: XHTML, MathML (math), VoiceXML (speech), XBRL (financial data)</li><li>Why do XML vocabularies matter?<ul><li>Large companies often employ their own XML vocabulary to describe their data internally</li><li>They provide a standard for data markup using a standard data format (e.g. if you can read XML, a XML vocabulary will be easier to understand than a proprietary data format)</li></ul></li></ul></li></ul></section><section id="xml-concepts-5" class="level2"><h2>XML Concepts</h2><ul><li>XML documents have the extension <code>.xml</code> and are readable by any text editor</li><li>XML is just a data format; it does not contain styling<ul><li>Devices are responsible for how a XML is rendered</li><li>However, Extensible Stylesheet Language allows you specify rendering on different platforms</li></ul></li></ul></section><section id="xml-parsing" class="level2"><h2>XML Parsing</h2><ul><li>Because we are specifying a data markup, we need a way to understand the format</li><li>XML parsers read XML<ul><li>Now that we have covered DOM, think about what your browser does to load a <code>.html</code> file into the DOM tree (it has to parse it!)</li></ul></li></ul></section><section id="xml-parsing-1" class="level2"><h2>XML Parsing</h2><ul><li>Basic XML Rules:<ol type="1"><li>Single root element</li><li>A start and end tag for each element</li><li>Properly nested tags</li><li>Case sensitive</li></ol><ul><li>Following these rules means the document is <strong>well-formed</strong></li></ul></li></ul></section><section id="xml-parsing-2" class="level2"><h2>XML Parsing</h2><ul><li>Basic XML Rules:<ol type="1"><li>Single root element</li><li>A start and end tag for each element</li><li>Properly nested tags</li><li>Case sensitive</li></ol></li><li>Which of these rules does HTML break?<ul><li>2, 3, and 4</li></ul></li></ul></section><section id="xml-validation" class="level2"><h2>XML Validation</h2><ul><li>Some parsers can also validate the XML's adhere to a particular markup</li><li>Relies on a Document Type Definition (DTD) or a Schema<ul><li>These documents describe the proper document structure</li><li>Think of these like a grammar for what forms a valid XML document using this data markup</li></ul></li></ul></section><section id="xml-validation-1" class="level2"><h2>XML Validation</h2><ul><li>A validating parser reads the XML and makes sure that it follows the structure defined in the DTD or Schema<ul><li>If the document is well-formed XML and adheres to the DTD/Schema, then it is valid</li><li>Otherwise, the document is invalid</li><li>Note that a document may be well-formed XML but may not be a valid document</li></ul></li></ul></section><section id="example-article.xml" class="level2"><h2>Example: <a href="../examples/ch15_xml/article.xml"><code>article.xml</code></a></h2><pre><code>&lt;?xml version=&quot;1.0&quot;?&gt;
+        &lt;/family&gt;</code></pre>
+          </li>
+        </ul>
+      </section>
+      <section id="xml-describes-data-5" class="level2">
+        <h2>XML describes data</h2>
+        <ul>
+          <li>This data makes a lot more sense!
+            <ul>
+              <li>The initial data had a lot of implicit
+              information that we have made explicit through
+              XML</li>
+            </ul>
+          </li>
+        </ul>
+      </section>
+      <section id="xml-concepts" class="level2">
+        <h2>XML Concepts</h2>
+        <ul>
+          <li>Why care?
+            <ul>
+              <li>XML makes data formats portable and application
+              independent
+                <ul>
+                  <li>Which makes them a very good idea for the
+                  internet!</li>
+                  <li>Application independent means I don't need
+                  the application using the data to understand the
+                  data (contrast a format like Word document to a
+                  .txt)</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </section>
+      <section id="xml-concepts-1" class="level2">
+        <h2>XML Concepts</h2>
+        <ul>
+          <li>Specify the document's structure</li>
+          <li>Consist of the element's name in angle brackets</li>
+          <li>Example: <code>&lt;data&gt;</code></li>
+        </ul>
+      </section>
+      <section id="xml-concepts-2" class="level2">
+        <h2>XML Concepts</h2>
+        <ul>
+          <li>XML elements have start and end tags
+            <ul>
+              <li>Start tag proceeds as above, e.g.
+              <code>&lt;data&gt;</code></li>
+              <li>End tag has a backslash (<code>\</code> after the
+              <code>&lt;</code>, e.g. <code>&lt;/data&gt;</code>
+                <ul>
+                  <li>End tags can be shorthanded in the starting
+                  tag by place a forward slash <code>/</code>
+                  before the closing <code>&lt;</code> of the
+                  opening tag. e.g.&nbsp;with
+                  <code>&lt;data/&gt;</code> as the start tag</li>
+                </ul>
+              </li>
+              <li>Looks familiar!</li>
+            </ul>
+          </li>
+        </ul>
+      </section>
+      <section id="xml-concepts-3" class="level2">
+        <h2>XML Concepts</h2>
+        <ul>
+          <li>Every XML document contains one root element, which
+          contains all other elements
+            <ul>
+              <li>Similar to <code>&lt;html&gt;</code></li>
+            </ul>
+          </li>
+        </ul>
+      </section>
+      <section id="xml-concepts-4" class="level2">
+        <h2>XML Concepts</h2>
+        <ul>
+          <li>XML-based markup languages are called <strong>XML
+          vocbaularies</strong>
+            <ul>
+              <li>Provide a mechanism to describe data in a
+              standardized, structured way.</li>
+              <li>Examples: XHTML, MathML (math), VoiceXML
+              (speech), XBRL (financial data)</li>
+              <li>Why do XML vocabularies matter?
+                <ul>
+                  <li>Large companies often employ their own XML
+                  vocabulary to describe their data internally</li>
+                  <li>They provide a standard for data markup using
+                  a standard data format (e.g.&nbsp;if you can read
+                  XML, a XML vocabulary will be easier to
+                  understand than a proprietary data format)</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </section>
+      <section id="xml-concepts-5" class="level2">
+        <h2>XML Concepts</h2>
+        <ul>
+          <li>XML documents have the extension <code>.xml</code>
+          and are readable by any text editor</li>
+          <li>XML is just a data format; it does not contain
+          styling
+            <ul>
+              <li>Devices are responsible for how a XML is
+              rendered</li>
+              <li>However, Extensible Stylesheet Language allows
+              you specify rendering on different platforms</li>
+            </ul>
+          </li>
+        </ul>
+      </section>
+      <section id="xml-parsing" class="level2">
+        <h2>XML Parsing</h2>
+        <ul>
+          <li>Because we are specifying a data markup, we need a
+          way to understand the format</li>
+          <li>XML parsers read XML
+            <ul>
+              <li>Now that we have covered DOM, think about what
+              your browser does to load a <code>.html</code> file
+              into the DOM tree (it has to parse it!)</li>
+            </ul>
+          </li>
+        </ul>
+      </section>
+      <section id="xml-parsing-1" class="level2">
+        <h2>XML Parsing</h2>
+        <ul>
+          <li>Basic XML Rules:
+            <ol type="1">
+              <li>Single root element</li>
+              <li>A start and end tag for each element</li>
+              <li>Properly nested tags</li>
+              <li>Case sensitive</li>
+            </ol>
+            <ul>
+              <li>Following these rules means the document is
+              <strong>well-formed</strong></li>
+            </ul>
+          </li>
+        </ul>
+      </section>
+      <section id="xml-parsing-2" class="level2">
+        <h2>XML Parsing</h2>
+        <ul>
+          <li>Basic XML Rules:
+            <ol type="1">
+              <li>Single root element</li>
+              <li>A start and end tag for each element</li>
+              <li>Properly nested tags</li>
+              <li>Case sensitive</li>
+            </ol>
+          </li>
+          <li>Which of these rules does HTML break?
+            <ul>
+              <li>2, 3, and 4</li>
+            </ul>
+          </li>
+        </ul>
+      </section>
+      <section id="xml-validation" class="level2">
+        <h2>XML Validation</h2>
+        <ul>
+          <li>Some parsers can also validate the XML's adhere to a
+          particular markup</li>
+          <li>Relies on a Document Type Definition (DTD) or a
+          Schema
+            <ul>
+              <li>These documents describe the proper document
+              structure</li>
+              <li>Think of these like a grammar for what forms a
+              valid XML document using this data markup</li>
+            </ul>
+          </li>
+        </ul>
+      </section>
+      <section id="xml-validation-1" class="level2">
+        <h2>XML Validation</h2>
+        <ul>
+          <li>A validating parser reads the XML and makes sure that
+          it follows the structure defined in the DTD or Schema
+            <ul>
+              <li>If the document is well-formed XML and adheres to
+              the DTD/Schema, then it is valid</li>
+              <li>Otherwise, the document is invalid</li>
+              <li>Note that a document may be well-formed XML but
+              may not be a valid document</li>
+            </ul>
+          </li>
+        </ul>
+      </section>
+      <section id="example-article.xml" class="level2">
+        <h2>Example: <a href=
+        "../examples/ch15_xml/article.xml"><code>article.xml</code></a></h2>
+        <pre><code>&lt;?xml version="1.0"?&gt;
         &lt;!-- Fig. 15.2: article.xml --&gt;
         &lt;!-- Article structured with XML --&gt;
         &lt;article&gt;
@@ -91,36 +380,252 @@
           &lt;summary&gt;XML is pretty easy.&lt;/summary&gt;
           &lt;content&gt;This chapter presents examples that use XML.&lt;/content&gt;
         &lt;/article&gt;
-        </code></pre></section><section id="writing-xml" class="level2"><h2>Writing XML</h2><ul><li>The first line, <code>&lt;?xml version=&quot;1.0&quot;?&gt;</code> declares the document as a XML document<ul><li>Similar to <code>&lt;!DOCTYPE HTML&gt;</code></li><li>NO characters must be before the XML declaration</li></ul></li><li>XML Comments are identical to HTML comments</li><li>The first XML element is the root node; it's closing tag should be the last tag in the document</li></ul></section><section id="writing-xml-1" class="level2"><h2>Writing XML</h2><ul><li>XML Element Names<ul><li>Can contain letters, digits, underscores, hyphens, and periods.</li><li>Must start with an underscore or letter</li><li>Must not being with any case-combination of &quot;xml&quot; as these are reserved for XML</li></ul></li><li>Nesting XML elements is identical to nesting HTML elements<ul><li>Must still be careful about proper nesting</li></ul></li></ul></section><section id="xml-namespaces" class="level2"><h2>XML Namespaces</h2><ul><li><p>Suppose we want to use the use &quot;subject&quot; in multiple ways: one for subjects in high school, the other for subjects in medical schools</p><pre class="xml"><code>&lt;subject&gt;Geometry&lt;/subject&gt;
-        &lt;subject&gt;Radiology&lt;/subject&gt;</code></pre></li><li>We have an ambiguity in our data format as we probably don't want to mix high school and medical school subjects!<ul><li>So we need a way to add additional categorical/hierarchical information</li></ul></li></ul></section><section id="xml-namespaces-1" class="level2"><h2>XML Namespaces</h2><ul><li>Namespaces allow us to give more specific scope to an XML element<ul><li>The namespace itself is called a <strong>namespace prefix</strong> and is followed by a colon (<code>:</code>) before the XML element name</li></ul></li><li><p>For our example</p><pre class="xml"><code>&lt;highschool:subject&gt;Geometry&lt;/highschool:subject&gt;
-        &lt;medicalschool:subject&gt;Radiology&lt;/medicalschool:subject&gt;</code></pre></li></ul></section><section id="xml-namespaces-2" class="level2"><h2>XML Namespaces</h2><ul><li>The <code>xmlns</code> defines a namespace<ul><li>Syntax <code>xmlns:prefix=&quot;URI&quot;</code></li><li>URI can be anything, it is just supposed to be a uniform resource identifier</li><li>Can be Uniform Resource Name (URN) or Uniform Resource Locator (URL)<ul><li>URN's are a series of names separated with colons<ul><li>E.g. <code>urn:schooltypes</code></li></ul></li></ul></li><li>No namespace prefix should begin with <code>xml</code> (it is reserved)</li></ul></li></ul></section><section id="example-namespaces.xml" class="level2"><h2>Example: <a href="../examples/ch15_xml/namespaces.xml"><code>namespaces.xml</code></a></h2><pre><code>&lt;?xml version=&quot;1.0&quot;?&gt;
+        </code></pre>
+      </section>
+      <section id="writing-xml" class="level2">
+        <h2>Writing XML</h2>
+        <ul>
+          <li>The first line, <code>&lt;?xml
+          version="1.0"?&gt;</code> declares the document as a XML
+          document
+            <ul>
+              <li>Similar to <code>&lt;!DOCTYPE
+              HTML&gt;</code></li>
+              <li>NO characters must be before the XML
+              declaration</li>
+            </ul>
+          </li>
+          <li>XML Comments are identical to HTML comments</li>
+          <li>The first XML element is the root node; it's closing
+          tag should be the last tag in the document</li>
+        </ul>
+      </section>
+      <section id="writing-xml-1" class="level2">
+        <h2>Writing XML</h2>
+        <ul>
+          <li>XML Element Names
+            <ul>
+              <li>Can contain letters, digits, underscores,
+              hyphens, and periods.</li>
+              <li>Must start with an underscore or letter</li>
+              <li>Must not being with any case-combination of "xml"
+              as these are reserved for XML</li>
+            </ul>
+          </li>
+          <li>Nesting XML elements is identical to nesting HTML
+          elements
+            <ul>
+              <li>Must still be careful about proper nesting</li>
+            </ul>
+          </li>
+        </ul>
+      </section>
+      <section id="xml-namespaces" class="level2">
+        <h2>XML Namespaces</h2>
+        <ul>
+          <li>
+            <p>Suppose we want to use the use "subject" in multiple
+            ways: one for subjects in high school, the other for
+            subjects in medical schools</p>
+            <pre class="xml">
+            <code>&lt;subject&gt;Geometry&lt;/subject&gt;
+        &lt;subject&gt;Radiology&lt;/subject&gt;</code></pre>
+          </li>
+          <li>We have an ambiguity in our data format as we
+          probably don't want to mix high school and medical school
+          subjects!
+            <ul>
+              <li>So we need a way to add additional
+              categorical/hierarchical information</li>
+            </ul>
+          </li>
+        </ul>
+      </section>
+      <section id="xml-namespaces-1" class="level2">
+        <h2>XML Namespaces</h2>
+        <ul>
+          <li>Namespaces allow us to give more specific scope to an
+          XML element
+            <ul>
+              <li>The namespace itself is called a
+              <strong>namespace prefix</strong> and is followed by
+              a colon (<code>:</code>) before the XML element
+              name</li>
+            </ul>
+          </li>
+          <li>
+            <p>For our example</p>
+            <pre class="xml">
+            <code>&lt;highschool:subject&gt;Geometry&lt;/highschool:subject&gt;
+        &lt;medicalschool:subject&gt;Radiology&lt;/medicalschool:subject&gt;</code></pre>
+          </li>
+        </ul>
+      </section>
+      <section id="xml-namespaces-2" class="level2">
+        <h2>XML Namespaces</h2>
+        <ul>
+          <li>The <code>xmlns</code> defines a namespace
+            <ul>
+              <li>Syntax <code>xmlns:prefix="URI"</code></li>
+              <li>URI can be anything, it is just supposed to be a
+              uniform resource identifier</li>
+              <li>Can be Uniform Resource Name (URN) or Uniform
+              Resource Locator (URL)
+                <ul>
+                  <li>URN's are a series of names separated with
+                  colons
+                    <ul>
+                      <li>E.g. <code>urn:schooltypes</code></li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+              <li>No namespace prefix should begin with
+              <code>xml</code> (it is reserved)</li>
+            </ul>
+          </li>
+        </ul>
+      </section>
+      <section id="example-namespaces.xml" class="level2">
+        <h2>Example: <a href=
+        "../examples/ch15_xml/namespaces.xml"><code>namespaces.xml</code></a></h2>
+        <pre><code>&lt;?xml version="1.0"?&gt;
         &lt;!-- Fig. 15.5: namespace.xml --&gt;
         &lt;!-- Demonstrating namespaces --&gt;
-        &lt;text:directory xmlns:text=&quot;urn:deitel:textInfo&quot; xmlns:image=&quot;urn:deitel:imageInfo&quot;&gt;
-          &lt;text:file filename=&quot;book.xml&quot;&gt;
+        &lt;text:directory xmlns:text="urn:deitel:textInfo" xmlns:image="urn:deitel:imageInfo"&gt;
+          &lt;text:file filename="book.xml"&gt;
             &lt;text:description&gt;A book list&lt;/text:description&gt;
           &lt;/text:file&gt;
-          &lt;image:file filename=&quot;funny.jpg&quot;&gt;
+          &lt;image:file filename="funny.jpg"&gt;
             &lt;image:description&gt;A funny picture&lt;/image:description&gt;
-            &lt;image:size width=&quot;200&quot; height=&quot;100&quot; /&gt;
+            &lt;image:size width="200" height="100" /&gt;
           &lt;/image:file&gt;
         &lt;/text:directory&gt;
-        </code></pre></section><section id="default-namespaces" class="level2"><h2>Default Namespaces</h2><ul><li>Specifying <code>xmlns = &quot;URI&quot;</code> specifies a default namespace for the entire document</li></ul></section><section id="example-default_namespaces.xml" class="level2"><h2>Example: <a href="../examples/ch15_xml/default_namespaces.xml"><code>default_namespaces.xml</code></a></h2><pre><code>&lt;?xml version=&quot;1.0&quot;?&gt;
+        </code></pre>
+      </section>
+      <section id="default-namespaces" class="level2">
+        <h2>Default Namespaces</h2>
+        <ul>
+          <li>Specifying <code>xmlns = "URI"</code> specifies a
+          default namespace for the entire document</li>
+        </ul>
+      </section>
+      <section id="example-default_namespaces.xml" class="level2">
+        <h2>Example: <a href=
+        "../examples/ch15_xml/default_namespaces.xml"><code>default_namespaces.xml</code></a></h2>
+        <pre><code>&lt;?xml version="1.0"?&gt;
         &lt;!-- Fig. 15.6: defaultnamespace.xml --&gt;
         &lt;!-- Using default namespaces --&gt;
-        &lt;directory xmlns=&quot;urn:deitel:textInfo&quot; xmlns:image=&quot;urn:deitel:imageInfo&quot;&gt;
-          &lt;file filename=&quot;book.xml&quot;&gt;
+        &lt;directory xmlns="urn:deitel:textInfo" xmlns:image="urn:deitel:imageInfo"&gt;
+          &lt;file filename="book.xml"&gt;
             &lt;description&gt;A book list&lt;/description&gt;
           &lt;/file&gt;
-          &lt;image:file filename=&quot;funny.jpg&quot;&gt;
+          &lt;image:file filename="funny.jpg"&gt;
             &lt;image:description&gt;A funny picture&lt;/image:description&gt;
-            &lt;image:size width=&quot;200&quot; height=&quot;100&quot; /&gt;
+            &lt;image:size width="200" height="100" /&gt;
           &lt;/image:file&gt;
         &lt;/directory&gt;
-        </code></pre></section><section id="default-namespaces-1" class="level2"><h2>Default Namespaces</h2><ul><li>Notice the difference between the two versions<ul><li>They have the same semantic meaning, but one contains significantly less manual tagging of elements!</li><li>Use a default namespace if want every element to be in a namespace and have a namespace that is particularly common</li></ul></li></ul></section><section id="dtd" class="level2"><h2>DTD</h2><ul><li>A method for defining a grammar for validating XML</li><li>Reasonably simple to follow, but it's an aging implementation. Schema is more powerful and more intuitive once you know XML</li><li>Follows Extended Backus-Naur Form (EBNF) grammar</li></ul></section><section id="dtd-1" class="level2"><h2>DTD</h2><ul><li>Follows Extended Backus-Naur Form (EBNF) grammar<ul><li>Basically a lis of production rules for what makes up a valid document</li><li>E.g. a sentence is a <code>SUBJECT</code> followed by a <code>PREDICATE</code>, but also has many optional arguments</li><li>A <em>context-free grammar</em> (CGF) to recursively write rules to generate patterns<ul><li>Technically, English is not a context-free grammar</li><li>For more about CFG's look into Alan Turing and Noam Chomsky's work, a branch of computer science called Automata Theory!</li></ul></li></ul></li></ul></section><section id="xml-schema" class="level2"><h2>XML Schema</h2><ul><li>Allows us to validate an XML document<ul><li>Why do we need to specify this?<ul><li>XML is a meta-language, so there's nothing to validate by default. We define a language to validate, so we must define the validation as well<ul><li>Think if you were writing your own programming language; you'd have to write a &quot;syntax validator&quot; to validate that a program contained valid syntax</li></ul></li></ul></li></ul></li></ul></section><section id="xml-schema-1" class="level2"><h2>XML Schema</h2><ul><li>Used by validating parsers to validate documents</li><li>Documents that conform the to schema are valid, documents that do not conform to the schema are invalid</li><li>Schema documents have the extension <code>.xsd</code><ul><li>Can validate schema at <a href="www.xmlforasp.net/SchemaValidator.aspx" class="uri">www.xmlforasp.net/SchemaValidator.aspx</a></li></ul></li><li>Let's start with an example</li></ul></section><section id="example-book.xml" class="level2"><h2>Example: <a href="../examples/ch15_xml/book.xml"><code>book.xml</code></a></h2><pre><code>&lt;?xml version=&quot;1.0&quot;?&gt;
+        </code></pre>
+      </section>
+      <section id="default-namespaces-1" class="level2">
+        <h2>Default Namespaces</h2>
+        <ul>
+          <li>Notice the difference between the two versions
+            <ul>
+              <li>They have the same semantic meaning, but one
+              contains significantly less manual tagging of
+              elements!</li>
+              <li>Use a default namespace if want every element to
+              be in a namespace and have a namespace that is
+              particularly common</li>
+            </ul>
+          </li>
+        </ul>
+      </section>
+      <section id="dtd" class="level2">
+        <h2>DTD</h2>
+        <ul>
+          <li>A method for defining a grammar for validating
+          XML</li>
+          <li>Reasonably simple to follow, but it's an aging
+          implementation. Schema is more powerful and more
+          intuitive once you know XML</li>
+          <li>Follows Extended Backus-Naur Form (EBNF) grammar</li>
+        </ul>
+      </section>
+      <section id="dtd-1" class="level2">
+        <h2>DTD</h2>
+        <ul>
+          <li>Follows Extended Backus-Naur Form (EBNF) grammar
+            <ul>
+              <li>Basically a lis of production rules for what
+              makes up a valid document</li>
+              <li>E.g. a sentence is a <code>SUBJECT</code>
+              followed by a <code>PREDICATE</code>, but also has
+              many optional arguments</li>
+              <li>A <em>context-free grammar</em> (CGF) to
+              recursively write rules to generate patterns
+                <ul>
+                  <li>Technically, English is not a context-free
+                  grammar</li>
+                  <li>For more about CFG's look into Alan Turing
+                  and Noam Chomsky's work, a branch of computer
+                  science called Automata Theory!</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </section>
+      <section id="xml-schema" class="level2">
+        <h2>XML Schema</h2>
+        <ul>
+          <li>Allows us to validate an XML document
+            <ul>
+              <li>Why do we need to specify this?
+                <ul>
+                  <li>XML is a meta-language, so there's nothing to
+                  validate by default. We define a language to
+                  validate, so we must define the validation as
+                  well
+                    <ul>
+                      <li>Think if you were writing your own
+                      programming language; you'd have to write a
+                      "syntax validator" to validate that a program
+                      contained valid syntax</li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </section>
+      <section id="xml-schema-1" class="level2">
+        <h2>XML Schema</h2>
+        <ul>
+          <li>Used by validating parsers to validate documents</li>
+          <li>Documents that conform the to schema are valid,
+          documents that do not conform to the schema are
+          invalid</li>
+          <li>Schema documents have the extension <code>.xsd</code>
+            <ul>
+              <li>Can validate schema at <a href=
+              "www.xmlforasp.net/SchemaValidator.aspx" class="uri">
+                www.xmlforasp.net/SchemaValidator.aspx</a>
+              </li>
+            </ul>
+          </li>
+          <li>Let's start with an example</li>
+        </ul>
+      </section>
+      <section id="example-book.xml" class="level2">
+        <h2>Example: <a href=
+        "../examples/ch15_xml/book.xml"><code>book.xml</code></a></h2>
+        <pre><code>&lt;?xml version="1.0"?&gt;
         &lt;!-- Fig. 15.9: book.xml --&gt;
         &lt;!-- Book list marked up as XML --&gt;
-        &lt;deitel:books xmlns:deitel=&quot;http://www.deitel.com/booklist&quot;&gt;
+        &lt;deitel:books xmlns:deitel="http://www.deitel.com/booklist"&gt;
           &lt;book&gt;
             &lt;title&gt;Visual Basic 2010 How to Program&lt;/title&gt;
           &lt;/book&gt;
@@ -137,100 +642,179 @@
             &lt;title&gt;Internet and World Wide Web How to Program, 5/e&lt;/title&gt;
           &lt;/book&gt;
         &lt;/deitel:books&gt;
-        </code></pre></section><section id="example-book.xsd" class="level2"><h2>Example: <a href="../examples/ch15_xml/book.xsd"><code>book.xsd</code></a></h2><pre><code>&lt;?xml version = &quot;1.0&quot;?&gt;
+        </code></pre>
+      </section>
+      <section id="example-book.xsd" class="level2">
+        <h2>Example: <a href=
+        "../examples/ch15_xml/book.xsd"><code>book.xsd</code></a></h2>
+        <pre><code>&lt;?xml version = "1.0"?&gt;
         &lt;!-- Fig. 15.10: book.xsd
         --&gt;
         &lt;!-- Simple W3C XML Schema document --&gt;
         &lt;!-- 
         The first xmlns defines the namespace for this document, which is a schema.
-        xmlns:deitel defines a namespace of &quot;dietel&quot;, used to differentiate between names used for the XML schema and names used by our schema
+        xmlns:deitel defines a namespace of "dietel", used to differentiate between names used for the XML schema and names used by our schema
         targetNamespace defines which namespace will use this schema for validation
         --&gt;
-        &lt;schema xmlns = &quot;http://www.w3.org/2001/XMLSchema&quot;
-          xmlns:deitel = &quot;http://www.deitel.com/booklist&quot;
-          targetNamespace = &quot;http://www.deitel.com/booklist&quot;&gt;
-          &lt;!-- declaring an element named &quot;books&quot; and its schema type, &quot;BooksType&quot; in the &quot;dietel&quot; namespace --&gt;
-          &lt;element name = &quot;books&quot; type = &quot;deitel:BooksType&quot;/&gt;
-          &lt;!-- declare the complext type &quot;BooksType&quot; used with the &quot;books&quot; element --&gt;
-          &lt;complexType name = &quot;BooksType&quot;&gt;
+        &lt;schema xmlns = "http://www.w3.org/2001/XMLSchema"
+          xmlns:deitel = "http://www.deitel.com/booklist"
+          targetNamespace = "http://www.deitel.com/booklist"&gt;
+          &lt;!-- declaring an element named "books" and its schema type, "BooksType" in the "dietel" namespace --&gt;
+          &lt;element name = "books" type = "deitel:BooksType"/&gt;
+          &lt;!-- declare the complext type "BooksType" used with the "books" element --&gt;
+          &lt;complexType name = "BooksType"&gt;
             &lt;!-- sequence specifies the order in which child elements must appear --&gt;
             &lt;sequence&gt;
-              &lt;!-- declare an element names &quot;book&quot; of type &quot;SingleBookType&quot; that must occur at least once and can occur an infinite amount of times --&gt;
-              &lt;element name = &quot;book&quot; type = &quot;deitel:SingleBookType&quot;
-                minOccurs = &quot;1&quot; maxOccurs = &quot;unbounded&quot;/&gt;
+              &lt;!-- declare an element names "book" of type "SingleBookType" that must occur at least once and can occur an infinite amount of times --&gt;
+              &lt;element name = "book" type = "deitel:SingleBookType"
+                minOccurs = "1" maxOccurs = "unbounded"/&gt;
             &lt;/sequence&gt;
           &lt;/complexType&gt;
-          &lt;!-- declare the &quot;SingleBookType&quot; complex type used with the &quot;book&quot; element --&gt;
-          &lt;complexType name = &quot;SingleBookType&quot;&gt;
+          &lt;!-- declare the "SingleBookType" complex type used with the "book" element --&gt;
+          &lt;complexType name = "SingleBookType"&gt;
             &lt;sequence&gt;
-              &lt;!-- specify that the &quot;title&quot; element is a string --&gt;
-              &lt;element name = &quot;title&quot; type = &quot;string&quot;/&gt;
+              &lt;!-- specify that the "title" element is a string --&gt;
+              &lt;element name = "title" type = "string"/&gt;
             &lt;/sequence&gt;
           &lt;/complexType&gt;
         &lt;/schema&gt;
-        </code></pre></section><section id="xml-schema-2" class="level2"><h2>XML Schema</h2><ul><li>In the schema, we have two namespaces<ul><li>One for the schema itself, <code>xmlns</code>, which can be used to validate the schema</li><li>The second, <code>xmlns:deitel</code>, which is used to define names created by us</li></ul></li><li>Our <code>targetNamespace</code> is the URI of the XML vocabulary that this schema defines</li></ul></section><section id="schema-attributes" class="level2"><h2>Schema Attributes</h2><ul><li>Name corresponds to the element's name and type specifies the element's type</li><li>Types:<ul><li>XML has predefined types, or you can create user-defined types</li></ul></li></ul></section><section id="schema-attributes-1" class="level2"><h2>Schema Attributes</h2><ul><li>There are two categories of types:<ol type="1"><li><strong>Simple types</strong>: a basic type. Cannot contain attributes or child elements</li><li><strong>Complex types</strong>: a complex type. Can contain attributes or child elements</li></ol><ul><li>Complex types may have <strong>simple content</strong> or <strong>complex content</strong>. Both can contain attributes, but only complex content contain child elements. Simple content must extend or restrict a base user or XML type</li></ul></li></ul></section><section id="xml-types" class="level2"><h2>XML Types</h2><figure><img src="images/ch15_xml_types-1.png" alt="XML Types" /><figcaption>XML Types</figcaption></figure></section><section id="xml-types-1" class="level2"><h2>XML Types</h2><figure><img src="images/ch15_xml_types-2.png" alt="XML Types" /><figcaption>XML Types</figcaption></figure></section><section id="example-laptop.xml" class="level2"><h2>Example: <a href="../examples/ch15_xml/laptop.xml"><code>laptop.xml</code></a></h2><pre><code>&lt;?xml version=&quot;1.0&quot;?&gt;
+        </code></pre>
+      </section>
+      <section id="xml-schema-2" class="level2">
+        <h2>XML Schema</h2>
+        <ul>
+          <li>In the schema, we have two namespaces
+            <ul>
+              <li>One for the schema itself, <code>xmlns</code>,
+              which can be used to validate the schema</li>
+              <li>The second, <code>xmlns:deitel</code>, which is
+              used to define names created by us</li>
+            </ul>
+          </li>
+          <li>Our <code>targetNamespace</code> is the URI of the
+          XML vocabulary that this schema defines</li>
+        </ul>
+      </section>
+      <section id="schema-attributes" class="level2">
+        <h2>Schema Attributes</h2>
+        <ul>
+          <li>Name corresponds to the element's name and type
+          specifies the element's type</li>
+          <li>Types:
+            <ul>
+              <li>XML has predefined types, or you can create
+              user-defined types</li>
+            </ul>
+          </li>
+        </ul>
+      </section>
+      <section id="schema-attributes-1" class="level2">
+        <h2>Schema Attributes</h2>
+        <ul>
+          <li>There are two categories of types:
+            <ol type="1">
+              <li><strong>Simple types</strong>: a basic type.
+              Cannot contain attributes or child elements</li>
+              <li><strong>Complex types</strong>: a complex type.
+              Can contain attributes or child elements</li>
+            </ol>
+            <ul>
+              <li>Complex types may have <strong>simple
+              content</strong> or <strong>complex content</strong>.
+              Both can contain attributes, but only complex content
+              contain child elements. Simple content must extend or
+              restrict a base user or XML type</li>
+            </ul>
+          </li>
+        </ul>
+      </section>
+      <section id="xml-types" class="level2">
+        <h2>XML Types</h2>
+        <figure>
+          <img src="images/ch15_xml_types-1.png" alt="XML Types">
+          <figcaption>
+            XML Types
+          </figcaption>
+        </figure>
+      </section>
+      <section id="xml-types-1" class="level2">
+        <h2>XML Types</h2>
+        <figure>
+          <img src="images/ch15_xml_types-2.png" alt="XML Types">
+          <figcaption>
+            XML Types
+          </figcaption>
+        </figure>
+      </section>
+      <section id="example-laptop.xml" class="level2">
+        <h2>Example: <a href=
+        "../examples/ch15_xml/laptop.xml"><code>laptop.xml</code></a></h2>
+        <pre><code>&lt;?xml version="1.0"?&gt;
         &lt;!-- Fig. 15.13: laptop.xml
         --&gt;
         &lt;!-- Laptop components marked up as XML --&gt;
-        &lt;!-- declare a laptop computer with manufacturer &quot;IBM&quot; --&gt;
-        &lt;computer:laptop xmlns:computer=&quot;http://www.deitel.com/computer&quot; manufacturer=&quot;IBM&quot;&gt;
-          &lt;processor model=&quot;Centrino&quot;&gt;Intel&lt;/processor&gt;
+        &lt;!-- declare a laptop computer with manufacturer "IBM" --&gt;
+        &lt;computer:laptop xmlns:computer="http://www.deitel.com/computer" manufacturer="IBM"&gt;
+          &lt;processor model="Centrino"&gt;Intel&lt;/processor&gt;
           &lt;monitor&gt;17&lt;/monitor&gt;
           &lt;CPUSpeed&gt;2.4&lt;/CPUSpeed&gt;
           &lt;RAM&gt;256&lt;/RAM&gt;
         &lt;/computer:laptop&gt;
-        </code></pre></section><section id="example-laptop.xsd" class="level2"><h2>Example: <a href="../examples/ch15_xml/laptop.xsd"><code>laptop.xsd</code></a></h2><pre><code>&lt;?xml version = &quot;1.0&quot;?&gt;
+        </code></pre>
+      </section>
+      <section id="example-laptop.xsd" class="level2">
+        <h2>Example: <a href=
+        "../examples/ch15_xml/laptop.xsd"><code>laptop.xsd</code></a></h2>
+        <pre><code>&lt;?xml version = "1.0"?&gt;
         &lt;!-- Fig. 15.12: computer.xsd --&gt;
         &lt;!-- W3C XML Schema document
         --&gt;
-        &lt;schema xmlns = &quot;http://www.w3.org/2001/XMLSchema&quot;
-          xmlns:computer = &quot;http://www.deitel.com/computer&quot;
-          targetNamespace = &quot;http://www.deitel.com/computer&quot;&gt;
-          &lt;!-- declare a simple type of &quot;gigahertz&quot;--&gt;
-          &lt;simpleType name = &quot;gigahertz&quot;&gt;
+        &lt;schema xmlns = "http://www.w3.org/2001/XMLSchema"
+          xmlns:computer = "http://www.deitel.com/computer"
+          targetNamespace = "http://www.deitel.com/computer"&gt;
+          &lt;!-- declare a simple type of "gigahertz"--&gt;
+          &lt;simpleType name = "gigahertz"&gt;
             &lt;!-- sepcify a restriction on the base type decimal --&gt;
-            &lt;restriction base = &quot;decimal&quot;&gt;
+            &lt;restriction base = "decimal"&gt;
               &lt;!-- set minimum value --&gt;
-              &lt;minInclusive value = &quot;2.1&quot;/&gt;
+              &lt;minInclusive value = "2.1"/&gt;
             &lt;/restriction&gt;
           &lt;/simpleType&gt;
           &lt;!-- declare a complex type of CPU --&gt;
-          &lt;complexType name = &quot;CPU&quot;&gt;
+          &lt;complexType name = "CPU"&gt;
             &lt;!-- create simple content --&gt;
             &lt;simpleContent&gt;
-              &lt;!-- here we &quot;extend&quot; the simple content to contain a string --&gt;
-              &lt;extension base = &quot;string&quot;&gt;
+              &lt;!-- here we "extend" the simple content to contain a string --&gt;
+              &lt;extension base = "string"&gt;
                 &lt;!-- set the name and the type of CPU --&gt;
-                &lt;attribute name = &quot;model&quot; type = &quot;string&quot;/&gt;
+                &lt;attribute name = "model" type = "string"/&gt;
               &lt;/extension&gt;
             &lt;/simpleContent&gt;
           &lt;/complexType&gt;
-          &lt;!-- declare a complex type &quot;portable&quot; --&gt;
-          &lt;complexType name = &quot;portable&quot;&gt;
+          &lt;!-- declare a complex type "portable" --&gt;
+          &lt;complexType name = "portable"&gt;
             &lt;!-- All specifies that each child element must be included --&gt;
             &lt;all&gt;
               &lt;!-- declare elements and their type --&gt;
-              &lt;element name = &quot;processor&quot; type = &quot;computer:CPU&quot;/&gt;
-              &lt;element name = &quot;monitor&quot; type = &quot;int&quot;/&gt;
-              &lt;element name = &quot;CPUSpeed&quot; type = &quot;computer:gigahertz&quot;/&gt;
-              &lt;element name = &quot;RAM&quot; type = &quot;int&quot;/&gt;
+              &lt;element name = "processor" type = "computer:CPU"/&gt;
+              &lt;element name = "monitor" type = "int"/&gt;
+              &lt;element name = "CPUSpeed" type = "computer:gigahertz"/&gt;
+              &lt;element name = "RAM" type = "int"/&gt;
             &lt;/all&gt;
             &lt;!-- declare an attribute for the manufacturer of the laptop --&gt;
-            &lt;attribute name = &quot;manufacturer&quot; type = &quot;string&quot;/&gt;
+            &lt;attribute name = "manufacturer" type = "string"/&gt;
           &lt;/complexType&gt;
           &lt;!-- declare a single laptop element --&gt;
-          &lt;element name = &quot;laptop&quot; type = &quot;computer:portable&quot;/&gt;
+          &lt;element name = "laptop" type = "computer:portable"/&gt;
         &lt;/schema&gt;
-        </code></pre></section>
-      </div>
+        </code></pre>
+      </section>
     </div>
-    
-    <!-- end main body -->
-    
-    <script src="lib/js/head.min.js"></script>
-    <script src="reveal.js/js/reveal.js"></script>
-    
-    <script type="text/javascript">
+  </div><!-- end main body -->
+  <script src="lib/js/head.min.js"></script> 
+  <script src="reveal.js/js/reveal.js"></script> 
+  <script type="text/javascript">
+
       // Full list of configuration options available here:
       // https://github.com/hakimel/reveal.js#configuration
       Reveal.initialize({
@@ -259,12 +843,11 @@
       ]
       });
 
-    </script>
-
-    <script>window.jQuery || document.write('<script src="js/jquery-3.2.1.min.js"><\/script>')</script>
-    <script src="js/bootstrap.min.js"></script>
-
-<!--
+  </script> 
+  <script>
+  window.jQuery || document.write('<script src="js/jquery-3.2.1.min.js"><\/script>')
+  </script> 
+  <script src="js/bootstrap.min.js"></script> <!--
     <script>
       Reveal.addEventListener( 'slidechanged', function( event ) {
       // event.previousSlide, event.currentSlide, event.indexh, event.indexv
@@ -276,17 +859,19 @@
       } );
     </script>
 -->
+   
+  <script>
 
-    <script>
       Reveal.configure({ slideNumber: 'c/t' });
-    </script>
+  </script> 
+  <script src="js/main.js"></script> 
+  <!-- fix whitespace formatting -->
+   
+  <script src="js/fix-whitespace.js"></script> 
+  <!-- Default Statcounter code for Personal website http://mjedmonds.com -->
+   
+  <script type="text/javascript">
 
-
-    <script src="js/main.js"></script>
-    <!-- fix whitespace formatting -->
-    <script src="js/fix-whitespace.js"></script>
-    <!-- Default Statcounter code for Personal website http://mjedmonds.com -->
-    <script type="text/javascript">
       var sc_project=11819202; 
       var sc_invisible=1; 
       var sc_security="3d207e19"; 
@@ -295,34 +880,12 @@
       "http://www.");
       document.write("<sc"+"ript type='text/javascript' src='" + scJsHost+
       "statcounter.com/counter/counter.js'></"+"script>");
-    </script>
-    <noscript><div class="statcounter"><a title="Web Analytics Made Easy -
-    StatCounter" href="http://statcounter.com/" target="_blank"><img
-    class="statcounter" src="//c.statcounter.com/11819202/0/3d207e19/0/" alt="Web
-    Analytics Made Easy - StatCounter"></a></div></noscript>
-    <!-- End of Statcounter Code -->
-
-    <style type="text/css">
-      /* custom settings for reveal */
-      .reveal {
-        font-size: 30px;
-      }
-      .reveal h1 {
-        font-size: 1em; }
-
-      .reveal h2 {
-        font-size: 1.5em; }
-
-      .reveal h3 {
-        font-size: 1.15em; }
-
-      .reveal h4 {
-        font-size: 1em; }
-
-      .reveal li {
-        padding-top: 4px;
-        padding-bottom: 4px;
-      }
-    </style>
-  </body>
+  </script> <noscript>
+  <div class="statcounter">
+    <a title="Web Analytics Made Easy - StatCounter" href=
+    "http://statcounter.com/" target="_blank"><img class=
+    "statcounter" src="//c.statcounter.com/11819202/0/3d207e19/0/"
+    alt="Web Analytics Made Easy - StatCounter"></a>
+  </div></noscript> <!-- End of Statcounter Code -->
+</body>
 </html>

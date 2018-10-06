@@ -15,8 +15,10 @@ cd ${INPUT_DIR}
 for f in ${INPUT_DIR}/*.md; do
   [ -f "$f" ] || break
   base_f=$(basename "$f" .md)
-  command="pandoc --wrap=none -t html5 -s --template=${TEMPLATE} --standalone --section-divs --no-highlight --filter pandoc-include-code -o ${OUTPUT_DIR}/${base_f}.html ${f}"
+  output_f=${OUTPUT_DIR}/${base_f}.html
+  command="pandoc --wrap=none -t html5 -s --template=${TEMPLATE} --standalone --section-divs --no-highlight --filter pandoc-include-code -o ${output_f} ${f}"
 
   echo ${command}
   ${command}
+  /usr/local/bin/tidy -im ${output_f}
 done
