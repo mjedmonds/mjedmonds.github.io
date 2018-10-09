@@ -1,0 +1,177 @@
+/* original uthor: Ken Geddes, kengeddes */
+/* maintainer: Mark Edmonds */
+a:hover { background-color:#EEEEEE}
+
+body {
+	font-size:100%;
+	color:#000000;
+	background-color:#FFFFFF;
+	text-align: left;
+	font-family: Helvetica, Arial, sans-serif;
+}
+
+.schedule {
+  border-collapse: collapse;
+  width: 100%;
+  vertical-align: text-top;
+}
+
+.scheduleTr {
+  padding: 5px;
+  text-align: left;
+  padding: 8px;
+  border-bottom: 1px solid #000000;
+}
+
+.scheduleCaption{
+  font-size: x-large;
+  padding: 8px;
+}
+
+.scheduleHeader{
+  width: 34px; 
+  height: 38px; 
+  padding: 8px;
+  border-bottom: 2px solid #000000;
+  border-top: 2px solid #000000;
+}
+
+.scheduleWeek {
+  width: 34px; 
+  height: 21px; 
+  text-align: center;
+}
+
+.scheduleDate {
+  width: 34px; 
+  height: 21px; 
+  text-align: center;
+}
+
+
+.bold {font-weight:bold}
+.boldBlue {font-weight: bold; color: #00F; }
+.boldOrange {
+	font-weight: bold;
+	color: #FF9900;
+}
+.boldRed  {font-weight: bold; color:#F00; }
+.boldRedBorder {
+	border: thick solid #F00;
+	padding: 5px;
+	color: #F00;
+	font-weight: bold;
+}
+.center {
+	text-align: center;
+}
+.choices {
+	border-style:solid;
+	border-top-width: 10px;
+	border-right-width: 10px;
+	border-bottom-width: 10px;
+	border-left-width: 10px;
+	border-top-color: #CCCCFF;
+	border-right-color: #CCCCFF;
+	border-bottom-color: #CCCCFF;
+	border-left-color: #CCCCFF;
+}
+.code {
+	font-family:"Courier New", Courier, monospace;
+}
+.comment {
+	font-family: "Courier New", Courier, monospace;
+	color: #666;
+}
+.deleted {
+	font-weight: bold;
+	color: #F00;
+	text-decoration: line-through;
+}
+.divOdd  {
+	background-color:#FCF;
+}
+.divEven  {
+	background-color:#FF9;
+}
+.extraLargeBold {
+	font-size: 2em;
+	font-style: normal;
+	font-weight: bolder;
+}
+.figure {
+	font-style: italic;
+	font-weight: 300;
+}
+.figureNumber {
+	font-weight: bold;
+	color: #06F;
+}
+.filename {font-family:"Courier New", Courier, monospace;}
+.fixed {font-family:"Courier New", Courier, monospace;}
+.grayBackground {background-color: #e0e0e0;}
+.greenBackground {background-color: #0F0;}
+.highlight {
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: bolder;
+	background-color: #3F6;
+}
+.indent10Percent {margin-left:10%; }
+.italic	{ font-style:italic }  
+.large {
+	font-size: large;
+}
+.largeBold {font-size: large;
+	font-weight: bold;
+}
+.largeBoldRed {font-size:1.5em; color:#F00; font-weight:bold}
+.lineByLine {background-color: #e0e0e0;}
+.linkNoDec {text-decoration: none;}
+.lightBlueBorder {border: thick solid #CCCCFF;}
+.menus {
+	font-weight: bold;
+	font-family: Arial, Helvetica, sans-serif;
+}
+.newTerm {
+	font-weight: bold;
+	color: #00F;
+}
+.option {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: medium;
+	font-weight: bold;
+}
+.orangeBackground {background-color: #FF9900;}
+.outputText {
+	font-weight: bold;
+}
+.pinkBackground {background-color: #FFC6C6;}
+.poetry {
+	font-family: "Comic Sans MS", cursive;
+	font-size: 20px;
+	line-height: 30px;
+   background-color: #cfc;
+}
+.red {color:#F00;}
+.redBackground {background-color: #FF0000;}
+.reservedWord {
+	font-family: "Courier New", Courier, monospace;
+	color: #00F;
+}
+.small {font-size: small;}
+.underline {text-decoration: underline;}
+.whiteOnBlue {
+	font-weight: bold;
+	color: #FFF;
+	background-color: #009;
+}
+.xLarge {
+	font-size: x-large;
+}
+.yellowBackground {background-color: #FFFF00;}
+.agenda { background-color:#FFEEFF; }
+.announcements	{ background-color:#EEFFEE; }  
+.assignment	{ background-color:#FFFFDD; }
+.examples { background-color:#BBDDFF; }
+.note	{ font-style:italic }  
+.references	{ background-color:#DDDDFF; }
