@@ -60,4 +60,30 @@ Instructor: Mark Edmonds
 
 ## Streams
 
-- 
+- Input streams are created with:
+
+  ```cpp
+  ifstream in_stream
+  ```
+
+- Output streams are created with:
+
+  ```cpp
+  ofstream out_stream;
+  ```
+
+- Both types are provided by `fstream`, which can be included with `#include <fstream>`
+
+## Streams
+
+- Important functions:
+  - `open()` - opens a file
+  - `close()` - close a file
+- See documentation at  
+  - <http://www.cplusplus.com/reference/fstream/ifstream/>
+  - <http://www.cplusplus.com/reference/fstream/ofstream/>
+
+## Example: [`simple_io.cpp`](../examples/ch6_io/simple_io.cpp)
+
+```{include=../examples/ch6_io/simple_io.cpp}
+```
