@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Leap Year Checker</title>
+  <script type="text/javascript">
+    // pseudocode 1 
+//    var leap_year = parseInt(window.prompt("Enter a year: "));
+//    var is_leap_year;
+//    var is_leap_year_text = "";
+//    if (leap_year % 4 == 0)
+//    {
+//      if (leap_year % 100 == 0)
+//      {
+//        if (leap_year % 400 == 0)
+//        {
+//          is_leap_year = true;
+//        }
+//        else
+//        { 
+//          is_leap_year = false;
+//        }
+//      } 
+//      else
+//      {
+//        is_leap_year = true;
+//      }
+//    } 
+//    else
+//    {
+//      is_leap_year = false;
+//    }
+//    
+//    if(!is_leap_year)
+//    {
+//      is_leap_year_text = "not ";
+//    }
+//    document.writeln("<p>" + leap_year + " is " + is_leap_year_text + "a leap year!</p>");
+    
+    // pseudocode 2
+    var leap_year = parseInt(window.prompt("Enter a year: "));
+    var is_leap_year;
+    var is_leap_year_text = "";
+    if (leap_year % 400 == 0)
+    {
+      is_leap_year = true;
+    }
+    else if (leap_year % 100 == 0)
+    {
+      is_leap_year = false;
+    }
+    else if (leap_year % 4 == 0)
+    {
+      is_leap_year = true;
+    } 
+    else
+    {
+      is_leap_year = false;
+    }
+     
+    if(!is_leap_year)
+    {
+      is_leap_year_text = "not ";
+    }
+    document.writeln("<p>" + leap_year + " is " + is_leap_year_text + "a leap year!</p>");
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

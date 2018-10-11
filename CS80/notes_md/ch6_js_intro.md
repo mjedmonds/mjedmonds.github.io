@@ -309,7 +309,7 @@ Operators and Conditionals
 
 - Compound conditionals:
   - Use logical operations `AND`, `OR`, and `NOT`
-  - `AND` is represented with ``
+  - `AND` is represented with `&&`
   - `OR` is represented with `||`
   - `NOT` is represented with `!`
   - Combining conditions allows us to use much more powerful program flow
@@ -365,8 +365,8 @@ Operators and Conditionals
 
 ## Exercise
 
-- Write a program that deteremines if the inpputted year is a leap year:
-  - Every year that is divisbly by 4, except for years divisble by 100, except for years that are divisible by 400
+- Write a program that determines if the inputted year is a leap year:
+  - Every year that is divisible by 4, except for years divisible by 100, except for years that are divisible by 400
 - **First step**: come up with an algorithm to check
 
 ## Example: [`leap_year_checker.html`](../examples/ch6_js/leap_year_checker.html)

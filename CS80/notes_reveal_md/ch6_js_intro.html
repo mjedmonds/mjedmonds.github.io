@@ -666,7 +666,7 @@
             // read in second number from user as a string
             secondNumber = window.prompt("Enter second integer");
             // convert numbers from strings to integers
-            number1 = parseFloat(firstNumber);
+            number1 = parseInt(firstNumber);
             number2 = parseInt(secondNumber);
             sum = number1 + number2; // add the numbers
         //    sum = firstNumber + secondNumber; // add the numbers (as strings)
@@ -779,7 +779,8 @@
             <ul>
               <li>Use logical operations <code>AND</code>,
               <code>OR</code>, and <code>NOT</code></li>
-              <li><code>AND</code> is represented with ``</li>
+              <li><code>AND</code> is represented with
+              <code>&amp;&</code></li>
               <li><code>OR</code> is represented with
               <code>||</code></li>
               <li><code>NOT</code> is represented with
@@ -913,11 +914,11 @@
       <section id="exercise-1" class="level2">
         <h2>Exercise</h2>
         <ul>
-          <li>Write a program that deteremines if the inpputted
-          year is a leap year:
+          <li>Write a program that determines if the inputted year
+          is a leap year:
             <ul>
-              <li>Every year that is divisbly by 4, except for
-              years divisble by 100, except for years that are
+              <li>Every year that is divisible by 4, except for
+              years divisible by 100, except for years that are
               divisible by 400</li>
             </ul>
           </li>

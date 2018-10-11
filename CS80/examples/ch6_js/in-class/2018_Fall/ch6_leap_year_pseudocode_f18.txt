@@ -1,0 +1,56 @@
+
+Write a program that determines if the inputted year is a leap year:
+    Every year that is divisble by 4, except for years divisble by 100, but including years that are divisible by 400
+First step: come up with an algorithm to check
+
+// pseudocode 1
+Get leap_year from user
+if leap_year is divisible by 4
+  if leap_year is divisible by 100
+    if leap_year is divisible by 400
+      is_leap_year is true
+    else
+      is_leap_year is false
+  else
+    is_leap_year is true
+else
+  is_leap_year is false
+  
+// pseudocode 2
+Get leap_year from user
+if leap_year is divisible by 400
+  is_leap_year is true
+else if leap_year is divisible by 100
+  is_leap_year is false
+else if leap_year is divisible by 4
+  is_leap_year is true
+else
+  is_leap_year is false
+  
+// pseudocode 3
+Get leap_year from user
+is_year_leap is false
+if leap_year is divisible by 400
+  is_leap_year is true
+else if leap_year is divisible by 4 and leap_year is not divisible by 100
+  is_leap_year is true
+
+// pseudocode 4
+Get leap_year from user
+is_year_leap is false
+if leap_year is divisible by 400 or (leap_year is divisible by 4 and leap_year is not divisible by 100)
+  is_leap_year is true
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
