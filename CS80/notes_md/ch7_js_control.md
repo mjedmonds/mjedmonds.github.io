@@ -20,14 +20,14 @@ Algorithm
   - A procedure for solving a problem. Consists of:
     1. The actions to be executed
     2. The order in which the actions are to be executed
-  - Notice: this definition has nothing to do with a programming langague, program statements, etc.
+  - Notice: this definition has nothing to do with a programming language, program statements, etc.
     - We are abstracting away code into *problem solving*
 
 ## Background and Terminology
 
 Pseudocode
 
-- A way to express the essence of an algorithm without using a programminglanguage
+- A way to express the essence of an algorithm without using a programming language
 - Informally, it is a way to express what and how the algorithm does something, but doesn\'t specify syntax
 - Why is this useful?
   - Syntax is cumbersome, many trivial details of the code do not correspond to the overarching problem the algorithm solves
@@ -192,18 +192,18 @@ Variable Scope
   // dangling else's
   if ( x > 5 )
     if ( y > 5 )
-      document.writeln( "<p>x and y are > 5</p>" );
+      document.writeln( "<p>x and y are &gt; 5</p>" );
     else
-      document.writeln( "<p>x is <= 5</p>" );
+      document.writeln( "<p>x is &lt;= 5</p>" );
   ```
 
   ```javascript
   // dangling else's
   if ( x > 5 )
     if ( y > 5 )
-      document.writeln( "<p>x and y are > 5</p>" );
+      document.writeln( "<p>x and y are &gt; 5</p>" );
   else
-    document.writeln( "<p>x is <= 5</p>" );
+    document.writeln( "<p>x is &lt;= 5</p>" );
   ```
 
 ## Dangling `else`\'s
@@ -214,18 +214,18 @@ Variable Scope
   // dangling else's
   if ( x > 5 )
     if ( y > 5 )
-      document.writeln( "<p>x and y are > 5</p>" );
+      document.writeln( "<p>x and y are &gt; 5</p>" );
     else
-      document.writeln( "<p>x is <= 5</p>" );
+      document.writeln( "<p>x is &lt;= 5</p>" );
   ```
 
   ```javascript
   // dangling else's
   if ( x > 5 )
     if ( y > 5 )
-      document.writeln( "<p>x and y are > 5</p>" );
+      document.writeln( "<p>x and y are &gt; 5</p>" );
   else
-    document.writeln( "<p>x is <= 5</p>" );
+    document.writeln( "<p>x is &lt;= 5</p>" );
   ```
 
 ## Dangling `else`\'s
@@ -244,9 +244,9 @@ Variable Scope
   // dangling else's
   if ( x > 5 ){
     if ( y > 5 )
-      document.writeln( "<p>x and y are > 5</p>" );
+      document.writeln( "<p>x and y are &gt; 5</p>" );
   } else 
-    document.writeln( "<p>x is <= 5</p>" );
+    document.writeln( "<p>x is &lt;= 5</p>" );
   ```
 
 - I (personally) recommend always wrapping conditionals, loops, etc.
@@ -256,10 +256,10 @@ Variable Scope
   // dangling else's
   if ( x > 5 ) {
     if ( y > 5 ){
-      document.writeln( "<p>x and y are > 5</p>" );
+      document.writeln( "<p>x and y are &gt; 5</p>" );
     }
   } else {
-    document.writeln( "<p>x is <= 5</p>" );
+    document.writeln( "<p>x is &lt;= 5</p>" );
   }
   ```
 

@@ -99,7 +99,7 @@
                 </ol>
               </li>
               <li>Notice: this definition has nothing to do with a
-              programming langague, program statements, etc.
+              programming language, program statements, etc.
                 <ul>
                   <li>We are abstracting away code into <em>problem
                   solving</em></li>
@@ -114,7 +114,7 @@
         <p>Pseudocode</p>
         <ul>
           <li>A way to express the essence of an algorithm without
-          using a programminglanguage</li>
+          using a programming language</li>
           <li>Informally, it is a way to express what and how the
           algorithm does something, but doesn't specify syntax</li>
           <li>Why is this useful?
@@ -416,15 +416,15 @@
             <pre class="javascript"><code>// dangling else's
         if ( x &gt; 5 )
           if ( y &gt; 5 )
-            document.writeln( "&lt;p&gt;x and y are &gt; 5&lt;/p&gt;" );
+            document.writeln( "&lt;p&gt;x and y are &amp;gt; 5&lt;/p&gt;" );
           else
-            document.writeln( "&lt;p&gt;x is &lt;= 5&lt;/p&gt;" );</code></pre>
+            document.writeln( "&lt;p&gt;x is &amp;lt;= 5&lt;/p&gt;" );</code></pre>
             <pre class="javascript"><code>// dangling else's
         if ( x &gt; 5 )
           if ( y &gt; 5 )
-            document.writeln( "&lt;p&gt;x and y are &gt; 5&lt;/p&gt;" );
+            document.writeln( "&lt;p&gt;x and y are &amp;gt; 5&lt;/p&gt;" );
         else
-          document.writeln( "&lt;p&gt;x is &lt;= 5&lt;/p&gt;" );</code></pre>
+          document.writeln( "&lt;p&gt;x is &amp;lt;= 5&lt;/p&gt;" );</code></pre>
           </li>
         </ul>
       </section>
@@ -437,15 +437,15 @@
             <pre class="javascript"><code>// dangling else's
         if ( x &gt; 5 )
           if ( y &gt; 5 )
-            document.writeln( "&lt;p&gt;x and y are &gt; 5&lt;/p&gt;" );
+            document.writeln( "&lt;p&gt;x and y are &amp;gt; 5&lt;/p&gt;" );
           else
-            document.writeln( "&lt;p&gt;x is &lt;= 5&lt;/p&gt;" );</code></pre>
+            document.writeln( "&lt;p&gt;x is &amp;lt;= 5&lt;/p&gt;" );</code></pre>
             <pre class="javascript"><code>// dangling else's
         if ( x &gt; 5 )
           if ( y &gt; 5 )
-            document.writeln( "&lt;p&gt;x and y are &gt; 5&lt;/p&gt;" );
+            document.writeln( "&lt;p&gt;x and y are &amp;gt; 5&lt;/p&gt;" );
         else
-          document.writeln( "&lt;p&gt;x is &lt;= 5&lt;/p&gt;" );</code></pre>
+          document.writeln( "&lt;p&gt;x is &amp;lt;= 5&lt;/p&gt;" );</code></pre>
           </li>
         </ul>
       </section>
@@ -478,9 +478,9 @@
             <pre class="javascript"><code>// dangling else's
         if ( x &gt; 5 ){
           if ( y &gt; 5 )
-            document.writeln( "&lt;p&gt;x and y are &gt; 5&lt;/p&gt;" );
+            document.writeln( "&lt;p&gt;x and y are &amp;gt; 5&lt;/p&gt;" );
         } else 
-          document.writeln( "&lt;p&gt;x is &lt;= 5&lt;/p&gt;" );</code></pre>
+          document.writeln( "&lt;p&gt;x is &amp;lt;= 5&lt;/p&gt;" );</code></pre>
           </li>
           <li>
             <p>I (personally) recommend always wrapping
@@ -488,10 +488,10 @@
             <pre class="javascript"><code>// dangling else's
         if ( x &gt; 5 ) {
           if ( y &gt; 5 ){
-            document.writeln( "&lt;p&gt;x and y are &gt; 5&lt;/p&gt;" );
+            document.writeln( "&lt;p&gt;x and y are &amp;gt; 5&lt;/p&gt;" );
           }
         } else {
-          document.writeln( "&lt;p&gt;x is &lt;= 5&lt;/p&gt;" );
+          document.writeln( "&lt;p&gt;x is &amp;lt;= 5&lt;/p&gt;" );
         }</code></pre>
           </li>
         </ul>
