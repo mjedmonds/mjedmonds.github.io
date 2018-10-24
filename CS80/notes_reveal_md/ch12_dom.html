@@ -727,6 +727,151 @@
         &lt;/html&gt;
         </code></pre>
       </section>
+      <section id="model-view-controller" class="level2">
+        <h2>Model, View, Controller</h2>
+        <ul>
+          <li>Model, View, Controller (MVC) is a common design
+          pattern used for webpages (it is also used elsewhere in
+          computer science)</li>
+          <li>Goal: modularize and separate distinct components of
+          an application into three broad categories: a model, a
+          view, and a controller</li>
+        </ul>
+      </section>
+      <section id="model-view-controller-1" class="level2">
+        <h2>Model, View, Controller</h2>
+        <ul>
+          <li>Consists of three parts:
+            <ul>
+              <li><em>Model</em>: data and corresponding logic of
+              this application</li>
+              <li><em>View</em>: interface/presentation to the
+              user</li>
+              <li><em>Controller</em>: logic that updates model
+              and/or view in response to user input</li>
+            </ul>
+          </li>
+        </ul>
+      </section>
+      <section id="model-view-controller-2" class="level2">
+        <h2>Model, View, Controller</h2>
+        <ul>
+          <li>Consists of three parts:
+            <ul>
+              <li><em>Model</em>: the backend (business logic)</li>
+              <li><em>View</em>: the frontend (user interface)</li>
+              <li><em>Controller</em>: the orchestrator between the
+              backend and frontend (controller between the
+              two)</li>
+            </ul>
+          </li>
+        </ul>
+      </section>
+      <section id="model-view-controller-3" class="level2">
+        <h2>Model, View, Controller</h2>
+        <figure>
+          <img src="./images/ch12_model-view-controller.png" alt=
+          "MVC architecture">
+          <figcaption>
+            MVC architecture
+          </figcaption>
+        </figure>
+      </section>
+      <section id="example-model_view_controller.html" class=
+      "level2">
+        <h2>Example: <a href=
+        "../examples/ch12_dom/model_view_controller.html"><code>model_view_controller.html</code></a></h2>
+        <pre><code>&lt;!DOCTYPE html&gt;
+        &lt;html&gt;
+        
+        &lt;head&gt;
+          &lt;meta charset="utf-8"&gt;
+          &lt;title&gt;Basic Model, View, Controller Example&lt;/title&gt;
+          &lt;script&gt;
+            
+            function start() {
+              /* Model Handles the Data */
+              var model = {
+                data: {
+                  userName : "John Doe",
+                  userBirthYear : "1900",
+                  userLoginID : "johndoe1900",
+                }, 
+                // set the model's data
+                setData : function(d){
+                  this.data.userName = d.userName;
+                  this.data.userBirthYear = d.userBirthYear;
+                  this.generateLoginID()
+                },
+                getData: function(){
+                  return this.data;
+                },
+                generateLoginID: function(){
+                  // concatenate userName with userBirthYear
+                  this.data.userLoginID = this.data.userName + this.data.userBirthYear;
+                  // remove whitespace and make lowercase
+                  this.data.userLoginID = this.data.userLoginID.replace(/ /g,'').toLowerCase();
+                }
+              }
+        
+              /* View Handles the Display */
+              var view = {
+                userName: document.getElementById("username"),
+                userBirthYear: document.getElementById("userbirthyear"),
+                userLoginID: document.getElementById("userloginid"),
+                getData: function(){
+                  data = {};
+                  data.userName = this.userName.value;
+                  data.userBirthYear = this.userBirthYear.value;
+                  return data;
+                },
+                updateView: function(username) {
+                  this.userLoginID.innerHTML = username;
+                }
+              }
+        
+              /* Controller Handles the Events */
+              var controller = {
+                model: model,
+                view: view,
+                handler: function(){
+                  viewData = this.view.getData();
+                  this.model.setData(data);
+                  modelData = this.model.getData();
+                  this.view.updateView(modelData.userLoginID);
+                }
+              }
+        
+              document.getElementById("update").addEventListener("click", function(){
+                  controller.handler();
+              }); 
+            }
+            
+            window.onload = start
+        
+          &lt;/script&gt;
+        &lt;/head&gt;
+        
+        &lt;body&gt;
+          &lt;h1&gt;Basic Model, View, Controller&lt;/h1&gt;
+          &lt;h3&gt;Login ID generator&lt;/h3&gt;
+          &lt;p&gt;
+            &lt;label&gt;Username:
+              &lt;input type='text' id="username" value="John Doe"&gt;
+            &lt;/label&gt;
+          &lt;/p&gt;
+          &lt;label&gt;Birth Year:
+            &lt;input type='text' id="userbirthyear" value="1900"&gt;
+          &lt;/label&gt;
+          &lt;button type="button" id="update"&gt;Update&lt;/button&gt;
+          &lt;p&gt;
+            Your login ID is: &lt;span id="userloginid"&gt;&lt;/span&gt;
+          &lt;/p&gt;
+        &lt;/body&gt;
+        
+        &lt;/html&gt;
+        </code></pre>
+      </section>
     </div>
   </div><!-- end main body -->
   <script src="lib/js/head.min.js"></script> 

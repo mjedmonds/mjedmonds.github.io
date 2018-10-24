@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Basic Model, View, Controller Example</title>
+  <script>
+    
+    function start() {
+      /* Model Handles the Data */
+      var model = {
+        data: {
+          userName : "John Doe",
+          userBirthYear : "1900",
+          userLoginID : "johndoe1900",
+        }, 
+        // set the model's data
+        setData : function(d){
+          this.data.userName = d.userName;
+          this.data.userBirthYear = d.userBirthYear;
+          this.generateLoginID()
+        },
+        getData: function(){
+          return this.data;
+        },
+        generateLoginID: function(){
+          // concatenate userName with userBirthYear
+          this.data.userLoginID = this.data.userName + this.data.userBirthYear;
+          // remove whitespace and make lowercase
+          this.data.userLoginID = this.data.userLoginID.replace(/ /g,'').toLowerCase();
+        }
+      }
+
+      /* View Handles the Display */
+      var view = {
+        userName: document.getElementById("username"),
+        userBirthYear: document.getElementById("userbirthyear"),
+        userLoginID: document.getElementById("userloginid"),
+        getData: function(){
+          data = {};
+          data.userName = this.userName.value;
+          data.userBirthYear = this.userBirthYear.value;
+          return data;
+        },
+        updateView: function(username) {
+          this.userLoginID.innerHTML = username;
+        }
+      }
+
+      /* Controller Handles the Events */
+      var controller = {
+        model: model,
+        view: view,
+        handler: function(){
+          viewData = this.view.getData();
+          this.model.setData(data);
+          modelData = this.model.getData();
+          this.view.updateView(modelData.userLoginID);
+        }
+      }
+
+      document.getElementById("update").addEventListener("click", function(){
+          controller.handler();
+      }); 
+    }
+    
+    window.onload = start
+
+  </script>
+</head>
+
+<body>
+  <h1>Basic Model, View, Controller</h1>
+  <h3>Login ID generator</h3>
+  <p>
+    <label>Username:
+      <input type='text' id="username" value="John Doe">
+    </label>
+  </p>
+  <label>Birth Year:
+    <input type='text' id="userbirthyear" value="1900">
+  </label>
+  <button type="button" id="update">Update</button>
+  <p>
+    Your login ID is: <span id="userloginid"></span>
+  </p>
+</body>
+
+</html>

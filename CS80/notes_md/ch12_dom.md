@@ -207,3 +207,31 @@ Important Attributes
 
 ```{include=../examples/ch12_dom/first_last_name_listener.html}
 ```
+
+## Model, View, Controller
+
+- Model, View, Controller (MVC) is a common design pattern used for webpages (it is also used elsewhere in computer science)
+- Goal: modularize and separate distinct components of an application into three broad categories: a model, a view, and a controller
+
+## Model, View, Controller
+
+- Consists of three parts:
+  - *Model*: data and corresponding logic of this application
+  - *View*: interface/presentation to the user
+  - *Controller*: logic that updates model and/or view in response to user input
+
+## Model, View, Controller
+
+- Consists of three parts:
+  - *Model*: the backend (business logic)
+  - *View*: the frontend (user interface)
+  - *Controller*: the orchestrator between the backend and frontend (controller between the two)
+
+## Model, View, Controller
+
+![MVC architecture](./images/ch12_model-view-controller.png)
+
+## Example: [`model_view_controller.html`](../examples/ch12_dom/model_view_controller.html)
+
+```{include=../examples/ch12_dom/model_view_controller.html}
+```
