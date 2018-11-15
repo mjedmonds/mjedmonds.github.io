@@ -7,11 +7,14 @@
   <script>
     
     function start(){
-      document.getElementById("p1").addEventListener("mouseenter", addHighlight, false);
-      document.getElementById("p1").addEventListener("mouseleave", removeHighlight, false);
+      document.getElementById("p1").addEventListener("mouseenter", addHighlight);
+      document.getElementById("p1").addEventListener("mouseleave", removeHighlight);
     }
 
-    window.addEventListener("load", start, false);
+    document.addEventListener("DOMContentLoaded", start);
+    
+    // the following line will not work! DOM is not loaded (yet) 
+    //start();
 
     function addHighlight() {
       var p1 = document.getElementById("p1");

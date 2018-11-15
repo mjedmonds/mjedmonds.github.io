@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta name="generator" content=
-  "HTML Tidy for HTML5 for Linux version 5.2.0">
+  "HTML Tidy for HTML5 for Apple macOS version 5.6.0">
   <meta charset="utf-8">
   <title>Document Object Model</title>
   <meta name="description" content=
@@ -41,10 +41,9 @@
   <script>
       document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
   </script>
-  <script src="js/modernizr-2.6.2-respond-1.1.0.min.js">
-  </script>
-  <script async defer src="https://buttons.github.io/buttons.js">
-  </script>
+  <script src="js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+  <script async defer src=
+  "https://buttons.github.io/buttons.js"></script>
   <style type="text/css">
       /* custom settings for reveal */
       .reveal {
@@ -69,8 +68,7 @@
   </style>
 </head>
 <body>
-  <script src="js/nav.js">
-  </script> 
+  <script src="js/nav.js"></script> 
   <script>
 
       function toggleElements(one, two) {
@@ -287,6 +285,9 @@
         
               // create new element without innerHTML
               createElement("div", document.body);
+              
+              // change the title again
+              updateHeader("header");
             });
         
             // update header with new text
@@ -309,7 +310,7 @@
               img.setAttribute("alt", new_img_alt);
             }
         
-            // create a new 
+            // create a new element
             function createElement(element, parentNode, innerHTML) {
               var new_node = document.createElement(element);
               if (innerHTML){
@@ -471,11 +472,14 @@
           &lt;script&gt;
             
             function start(){
-              document.getElementById("p1").addEventListener("mouseenter", addHighlight, false);
-              document.getElementById("p1").addEventListener("mouseleave", removeHighlight, false);
+              document.getElementById("p1").addEventListener("mouseenter", addHighlight);
+              document.getElementById("p1").addEventListener("mouseleave", removeHighlight);
             }
         
-            window.addEventListener("load", start, false);
+            document.addEventListener("DOMContentLoaded", start);
+            
+            // the following line will not work! DOM is not loaded (yet) 
+            //start();
         
             function addHighlight() {
               var p1 = document.getElementById("p1");
@@ -700,11 +704,11 @@
           &lt;script&gt;
             function start(){
               // listen for the submit event on the form
-              document.getElementById("form1").addEventListener("submit", getFormvalue, false);
+              document.getElementById("form1").addEventListener("submit", getFormvalue);
             }
         
             // the window object listens for the "load" event and executes start() when "load" triggers
-            window.addEventListener("load", start, false);
+            window.addEventListener("load", start);
         
             function getFormvalue() {
               var form = document.getElementById("form1");
@@ -800,7 +804,7 @@
                   userLoginID : "johndoe1900",
                 }, 
                 // set the model's data
-                setData : function(d){
+                setData: function(d){
                   this.data.userName = d.userName;
                   this.data.userBirthYear = d.userBirthYear;
                   this.generateLoginID()
@@ -827,8 +831,8 @@
                   data.userBirthYear = this.userBirthYear.value;
                   return data;
                 },
-                updateView: function(username) {
-                  this.userLoginID.innerHTML = username;
+                updateView: function(userloginid) {
+                  this.userLoginID.innerHTML = userloginid;
                 }
               }
         
@@ -837,9 +841,13 @@
                 model: model,
                 view: view,
                 handler: function(){
+                  // get data from view (user)
                   viewData = this.view.getData();
+                  // update the data in the model (and the model will update)
                   this.model.setData(data);
+                  // get the updated model data (userLoginID has changed)
                   modelData = this.model.getData();
+                  // update the view with the model's new data
                   this.view.updateView(modelData.userLoginID);
                 }
               }
@@ -858,7 +866,7 @@
           &lt;h1&gt;Basic Model, View, Controller&lt;/h1&gt;
           &lt;h3&gt;Login ID generator&lt;/h3&gt;
           &lt;p&gt;
-            &lt;label&gt;Username:
+            &lt;label&gt;Name:
               &lt;input type='text' id="username" value="John Doe"&gt;
             &lt;/label&gt;
           &lt;/p&gt;
@@ -876,10 +884,8 @@
       </section>
     </div>
   </div><!-- end main body -->
-  <script src="lib/js/head.min.js">
-  </script> 
-  <script src="reveal.js/js/reveal.js">
-  </script> 
+  <script src="lib/js/head.min.js"></script> 
+  <script src="reveal.js/js/reveal.js"></script> 
   <script type="text/javascript">
 
       // Full list of configuration options available here:
@@ -914,14 +920,13 @@
   <script>
   window.jQuery || document.write('<script src="js/jquery-3.2.1.min.js"><\/script>')
   </script> 
-  <script src="js/bootstrap.min.js">
-  </script> <!--
+  <script src="js/bootstrap.min.js"></script> <!--
     <script>
       Reveal.addEventListener( 'slidechanged', function( event ) {
       // event.previousSlide, event.currentSlide, event.indexh, event.indexv
       var notes = event.currentSlide.querySelector(".notes");
       if(notes) {
-          console.info("===");
+          console.info("---");
           console.info(notes.innerHTML.replace(/\n\s+/g,'\n'));
       }
       } );
@@ -932,11 +937,10 @@
 
       Reveal.configure({ slideNumber: 'c/t' });
   </script> 
-  <script src="js/main.js">
-  </script> <!-- fix whitespace formatting -->
+  <script src="js/main.js"></script> 
+  <!-- fix whitespace formatting -->
    
-  <script src="js/fix-whitespace.js">
-  </script> 
+  <script src="js/fix-whitespace.js"></script> 
   <!-- Default Statcounter code for Personal website http://mjedmonds.com -->
    
   <script type="text/javascript">

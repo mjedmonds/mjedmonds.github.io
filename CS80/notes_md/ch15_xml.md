@@ -133,7 +133,7 @@ Instructor: Mark Edmonds
   4. Case sensitive
 
 - Which of these rules does HTML break?
-  - 2, 3, and 4
+  - 2 and 4
 
 ## XML Validation
 

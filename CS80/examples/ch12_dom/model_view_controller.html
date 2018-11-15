@@ -15,7 +15,7 @@
           userLoginID : "johndoe1900",
         }, 
         // set the model's data
-        setData : function(d){
+        setData: function(d){
           this.data.userName = d.userName;
           this.data.userBirthYear = d.userBirthYear;
           this.generateLoginID()
@@ -42,8 +42,8 @@
           data.userBirthYear = this.userBirthYear.value;
           return data;
         },
-        updateView: function(username) {
-          this.userLoginID.innerHTML = username;
+        updateView: function(userloginid) {
+          this.userLoginID.innerHTML = userloginid;
         }
       }
 
@@ -52,9 +52,13 @@
         model: model,
         view: view,
         handler: function(){
+          // get data from view (user)
           viewData = this.view.getData();
+          // update the data in the model (and the model will update)
           this.model.setData(data);
+          // get the updated model data (userLoginID has changed)
           modelData = this.model.getData();
+          // update the view with the model's new data
           this.view.updateView(modelData.userLoginID);
         }
       }
@@ -73,7 +77,7 @@
   <h1>Basic Model, View, Controller</h1>
   <h3>Login ID generator</h3>
   <p>
-    <label>Username:
+    <label>Name:
       <input type='text' id="username" value="John Doe">
     </label>
   </p>

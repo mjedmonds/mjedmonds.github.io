@@ -18,6 +18,9 @@
 
       // create new element without innerHTML
       createElement("div", document.body);
+      
+      // change the title again
+      updateHeader("header");
     });
 
     // update header with new text
@@ -40,7 +43,7 @@
       img.setAttribute("alt", new_img_alt);
     }
 
-    // create a new 
+    // create a new element
     function createElement(element, parentNode, innerHTML) {
       var new_node = document.createElement(element);
       if (innerHTML){

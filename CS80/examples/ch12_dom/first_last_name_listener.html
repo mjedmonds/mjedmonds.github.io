@@ -7,11 +7,11 @@
   <script>
     function start(){
       // listen for the submit event on the form
-      document.getElementById("form1").addEventListener("submit", getFormvalue, false);
+      document.getElementById("form1").addEventListener("submit", getFormvalue);
     }
 
     // the window object listens for the "load" event and executes start() when "load" triggers
-    window.addEventListener("load", start, false);
+    window.addEventListener("load", start);
 
     function getFormvalue() {
       var form = document.getElementById("form1");
