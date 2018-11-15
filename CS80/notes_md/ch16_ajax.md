@@ -62,7 +62,7 @@ Instructor: Mark Edmonds
 
 1. Client creates XHR object
 2. XHR sends a request to the server and waits for a response
-- These requests are made **asynchronously**, which means the user can keep interacting with the web page while the request finishes
+    - These requests are made **asynchronously**, which means the user can keep interacting with the web page while the request finishes
 3. Many things can happen here, client could interact more with the webpage, create new XHR requests, etc
 4. Server replies to the request in step 2
 5. Client executes a callback function, which processes the data recieved in step 4 (could modify the DOM, etc). Commonly a partial page update
@@ -114,7 +114,7 @@ Instructor: Mark Edmonds
   try {
     // code that might throw an exception
   } catch (exception) {
-    // error recovery code 
+    // error recovery code
   }
   ```
 
