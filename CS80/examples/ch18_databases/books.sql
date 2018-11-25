@@ -35,6 +35,7 @@ INSERT INTO Authors (FirstName,LastName) VALUES ('David','Choffnes');
 INSERT INTO Titles (ISBN,Title,EditionNumber,Copyright) VALUES ('0131869000','Visual Basic 2005 How to Program',3,'2006');
 INSERT INTO AuthorISBN (AuthorID,ISBN) VALUES (1,'0131869000');
 INSERT INTO AuthorISBN (AuthorID,ISBN) VALUES (2,'0131869000');
+
 INSERT INTO Titles (ISBN,Title,EditionNumber,Copyright) VALUES ('0131525239','Visual C# 2005 How to Program',2,'2006');
 INSERT INTO AuthorISBN (AuthorID,ISBN) VALUES (1,'0131525239');
 INSERT INTO AuthorISBN (AuthorID,ISBN) VALUES (2,'0131525239');
