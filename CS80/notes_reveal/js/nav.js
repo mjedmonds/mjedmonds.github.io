@@ -28,6 +28,7 @@ document.write('\
     <li><a href="ch16_ajax.html">Ch 16. Ajax</a></li>\
     <li><a href="ch18_databases.html">Ch 18. Databases</a></li>\
     <li><a href="ch19_php.html">Ch 19. PHP</a></li>\
+    <li><a href="ch19.5_node.js.html">Ch 19.5. node.js</a></li>\
   </ul>\
 </li>\
 </ul>\

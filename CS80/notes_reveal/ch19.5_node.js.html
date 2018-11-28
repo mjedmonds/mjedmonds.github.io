@@ -88,6 +88,9 @@
         <h2>Overview</h2>
         <ul>
           <li>Node (node.js) enables server-side JavaScript</li>
+          <li>Not a programming language, but rather a server-side
+          application that allows you to program server-side
+          applications in JavaScript</li>
           <li>Much of what we did with PHP can be done with
           node.js</li>
           <li>Node has much more functionality than PHP; you can
@@ -142,14 +145,18 @@
       <section id="example-http_server.js" class="level2">
         <h2>Example: <a href=
         "../examples/ch19.5_node/http_server.js"><code>http_server.js</code></a></h2>
-        <pre>
-        <code>var http = require("http"); // require the node HTTP module 
+        <pre><code>// basic HTTP server with an export
+        var http = require("http"); // require the node HTTP module
         
-        function onRequest(request, response) { 
-          console.log("Request received."); 
-          response.writeHead(200, {"Content-Type": "text/plain"}); // set HTTP response header
+        function onRequest(request, response)
+        {
+          console.log("Request received.");
+          response.writeHead(200,
+          {
+            "Content-Type": "text/plain"
+          }); // set HTTP response header
           response.write("Hello World"); // write content into HTTP request
-          response.end();  // finishes the response
+          response.end(); // finishes the response
         }
         
         http.createServer(onRequest).listen(8888);
@@ -171,15 +178,20 @@
       <section id="example-http_server_export.js" class="level2">
         <h2>Example: <a href=
         "../examples/ch19.5_node/http_server_export.js"><code>http_server_export.js</code></a></h2>
-        <pre>
-        <code>var http = require("http"); // require the node HTTP module 
+        <pre><code>// basic HTTP server with an export
+        var http = require("http"); // require the node HTTP module
         
-        function start() {
-          function onRequest(request, response) { 
-            console.log("Request received."); 
-            response.writeHead(200, {"Content-Type": "text/plain"}); // set HTTP response header
+        function start()
+        {
+          function onRequest(request, response)
+          {
+            console.log("Request received.");
+            response.writeHead(200,
+            {
+              "Content-Type": "text/plain"
+            }); // set HTTP response header
             response.write("Hello World"); // write content into HTTP request
-            response.end();  // finishes the response
+            response.end(); // finishes the response
           }
         
           http.createServer(onRequest).listen(8888);
@@ -223,7 +235,11 @@
       <section id="example-router.js" class="level2">
         <h2>Example: <a href=
         "../examples/ch19.5_node/router.js"><code>router.js</code></a></h2>
-        <pre><code>function route(pathname) { 
+        <pre>
+        <code>// create a router; this could also route to different applications (controllers) based on the file extension, or other information
+        // here, we just print the request we are routing
+        function route(pathname)
+        {
           console.log("About to route a request for " + pathname);
         }
         
@@ -234,32 +250,98 @@
         <h2>Example: <a href=
         "../examples/ch19.5_node/http_server_router.js"><code>http_server_router.js</code></a></h2>
         <pre>
-        <code>var http = require("http"); // require the node HTTP module 
+        <code>var http = require("http"); // require the node HTTP module
         var url = require("url");
         
-        function start(route) {
-          function onRequest(request, response) { 
+        function start(route)
+        {
+          function onRequest(request, response)
+          {
             var pathname = url.parse(request.url).pathname;
-            console.log("Request for " + pathname + " received."); 
+            console.log("Request for " + pathname + " received.");
         
             route(pathname);
         
-            response.writeHead(200, {"Content-Type": "text/plain"}); // set HTTP response header
-            response.write("Hello World"); // write content into HTTP request
-            response.end();  // finishes the response
+            response.writeHead(200,
+            {
+              "Content-Type": "text/plain"
+            }); // set HTTP response header
+            response.write("Request for " + pathname + " received."); // write content into HTTP request
+            response.end(); // finishes the response
           }
         
           http.createServer(onRequest).listen(8888);
           console.log("Server has started.");
         }
         
-        exports.start = start;
+        exports.start = start
         </code></pre>
       </section>
-      <section id="example-index.js-1" class="level2">
+      <section id="example-index_router.js" class="level2">
         <h2>Example: <a href=
-        "../examples/ch19.5_node/index_router.js"><code>index.js</code></a></h2>
+        "../examples/ch19.5_node/index_router.js"><code>index_router.js</code></a></h2>
         <pre><code>var server = require("./http_server_router");
+        var router = require("./router");
+        
+        server.start(router.route);
+        </code></pre>
+      </section>
+      <section id="fileserver" class="level2">
+        <h2>Fileserver</h2>
+        <ul>
+          <li>But we actually want our webserver to <em>do</em>
+          something.</li>
+          <li>Let’s write a basic webserver, capable of serving
+          files to the client (similar to our Python
+          SimpleHTTPServer we used earlier)</li>
+        </ul>
+      </section>
+      <section id="example-http_fileserver.js" class="level2">
+        <h2>Example: <a href=
+        "../examples/ch19.5_node/http_fileserver.js"><code>http_fileserver.js</code></a></h2>
+        <pre><code>var http = require('http');
+        var url = require('url');
+        var fs = require('fs');
+        
+        function start(route)
+        {
+          function onRequest(request, response)
+          {
+            // look for file in current directory
+            var filename = "." + url.parse(request.url).pathname;
+            console.log("Request for " + filename + " received.");
+            fs.readFile(filename, function(err, data)
+            {
+              // error getting the file, return a 404
+              if (err)
+              {
+                response.writeHead(404,
+                {
+                  'Content-Type': 'text/html'
+                });
+                return response.end("404 Not Found");
+              }
+              // successfully retrieved file
+              response.writeHead(200,
+              {
+                'Content-Type': 'text/html'
+              });
+              // write the file's data into the response
+              response.write(data);
+              return response.end();
+            });
+          }
+          http.createServer(onRequest).listen(8888);
+          console.log("Server has started.");
+        }
+        
+        exports.start = start
+        </code></pre>
+      </section>
+      <section id="example-index_fileserver.js" class="level2">
+        <h2>Example: <a href=
+        "../examples/ch19.5_node/index_fileserver.js"><code>index_fileserver.js</code></a></h2>
+        <pre><code>var server = require("./http_fileserver");
         var router = require("./router");
         
         server.start(router.route);

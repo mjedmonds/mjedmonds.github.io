@@ -21,12 +21,12 @@ p
   $first[] = "three";
   // print each element's index and value
   for ( $i = 0; $i < count( $first ); ++$i )
-    print( "Element $i is $first[$i]</p>" );
+    print( "<p>Element $i is $first[$i]</p>" );
   print( "<p class = 'head'>Creating the second array</p>" );
   // call function array to create array second
   $second = array( "zero", "one", "two", "three" );
   for ( $i = 0; $i < count( $second ); ++$i )
-    print( "Element $i is $second[$i]</p>" );
+    print( "<p>Element $i is $second[$i]</p>" );
   print( "<p class = 'head'>Creating the third array</p>" );
   // assign values to entries using nonnumeric indices
   $third[ "Amy" ] = 21;
