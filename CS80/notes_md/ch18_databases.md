@@ -19,7 +19,7 @@ Instructor: Mark Edmonds
 
 ## What is a database?
 
-- Each table contains a columdn with **primary keys**. Each row has a unique value for the primary key\'s column
+- Each table contains a column with **primary keys**. Each row has a unique value for the primary key\'s column
   - This guarantees that each row has at least one unique value
   - Means we can identify and access a row uniquely
   - Examples of primary keys: ID numbers, social security numbers, etc
@@ -375,8 +375,8 @@ SELECT columnName1, columnName2, ...
 ## MySQL
 
 - Reasons why MySQL is good:
-    1. Scalability. You can embed it in an application or use it in massive data warehous- ing environments.
-    2. Performance. You can optimize performance based on the purpose of the data- base in your application.
+    1. Scalability. You can embed it in an application or use it in massive data warehousing environments.
+    2. Performance. You can optimize performance based on the purpose of the database in your application.
     3. Support for many programming languages. Later chapters demonstrate how to access a MySQL database from PHP (Chapter 19).
     4. Implementations of MySQL for Windows, Mac OS X, Linux and UNIX.
     5. Handling large databases (e.g., tens of thousands of tables with millions of rows).

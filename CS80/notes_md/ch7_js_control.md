@@ -245,7 +245,7 @@ Variable Scope
   if ( x > 5 ){
     if ( y > 5 )
       document.writeln( "<p>x and y are &gt; 5</p>" );
-  } else 
+  } else
     document.writeln( "<p>x is &lt;= 5</p>" );
   ```
 
@@ -339,14 +339,14 @@ Variable Scope
   - *Semantic errors* - valid code, but does not produce the results you expect. Example: using the wrong variable or operator somewhere in your code
   - *Design errors* - valid code and produces the results you expect. However, your understanding of the problem is wrong. Example: using the wrong forumla for something.
 
-## Errors
+## Errors - Semantic & Design
 
 - Semantic and design errors are very similar but have different implications for debugging
   - A semantic error means we understand the problem and need to adjust our code to reflect that understanding
   - A design error means we don\'t understand the problem and will never be able to produce a working program
 - A design error is a more significant problem than semantic error!
 
-## Errors
+## Fixing Errors
 
 - Ways to fix errors:
   - *Syntax error*: computer will usually give a hint as to what\'s causing the problem. Go inspect your code to see what might be wrong (generally easy, but can be incredibly frustrating)
@@ -401,7 +401,7 @@ Variable Scope
 ## Reptition (loops)
 
 - If you think visually, consider the following code + flowchart
-  
+
   ![](./images/js-program-flow.png)
 
 - We can think about a loop as a repeated cycle in a flowchart until a condition becomes false
@@ -443,7 +443,7 @@ Class Average
 
 Real Estate License
 
-- A college offers a course that prepares students for the state licensing exam for real estate brokers. Last year, 10 of the students who completed this course took the licensing exam. Naturally, the college wants to know how well its students performed. 
+- A college offers a course that prepares students for the state licensing exam for real estate brokers. Last year, 10 of the students who completed this course took the licensing exam. Naturally, the college wants to know how well its students performed.
 - You've been asked to write a script to summarize the results. You've been given a list of these 10 students. Next to each name is written a 1 if the student passed the exam and a 2 if the student failed.
 
 ## Exercise

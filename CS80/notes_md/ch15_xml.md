@@ -16,7 +16,7 @@ Instructor: Mark Edmonds
 
 - Remember the above!
 - Stands for \"Extensible Markup Language\"
-  - XML is a *meta-language* meaning it is not a lanugage itself, but rather a language for building languages
+  - XML is a *meta-language* meaning it is not a language itself, but rather a language for building languages
 
 ## XML describes data
 
@@ -95,7 +95,7 @@ Instructor: Mark Edmonds
 
 ## XML Concepts
 
-- XML-based markup languages are called **XML vocbaularies**
+- XML-based markup languages are called **XML vocabularies**
   - Provide a mechanism to describe data in a standardized, structured way.
   - Examples: XHTML, MathML (math), VoiceXML (speech), XBRL (financial data)
   - Why do XML vocabularies matter?
@@ -167,7 +167,7 @@ Instructor: Mark Edmonds
 - XML Element Names
   - Can contain letters, digits, underscores, hyphens, and periods.
   - Must start with an underscore or letter
-  - Must not being with any case-combination of \"xml\" as these are reserved for XML
+  - Must not begin with any case-combination of \"xml\" as these are reserved for XML
 - Nesting XML elements is identical to nesting HTML elements
   - Must still be careful about proper nesting
 
@@ -233,7 +233,7 @@ Instructor: Mark Edmonds
 ## DTD
 
 - Follows Extended Backus-Naur Form (EBNF) grammar
-  - Basically a lis of production rules for what makes up a valid document
+  - Basically a list of production rules for what makes up a valid document
   - E.g. a sentence is a `SUBJECT` followed by a `PREDICATE`, but also has many optional arguments
   - A *context-free grammar* (CGF) to recursively write rules to generate patterns
     - Technically, English is not a context-free grammar

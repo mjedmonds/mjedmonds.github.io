@@ -87,7 +87,7 @@ Instructor: Mark Edmonds
 
 ## Constant values
 
-- Created with `define("NAME", value);`
+- Created with `DEFINE("NAME", value);`
 - Not a variable, a constant
 - Used by simply typing `NAME` where you want the value
 
@@ -246,14 +246,13 @@ Superglobal Arrays
 
 - `mysqli_fetch_row` returns an associative array containing the column of the current row from the query result
   - The `key` is a unique column ID for the query
-- `mysqli_fecth_assoc` returns an associative array where the column names are the keys storing the corresponding values
+- `mysqli_fetch_assoc` returns an associative array where the column names are the keys storing the corresponding values
 - `mysqli_num_rows` stores the number of rows in the query result
 
 ## Cookies
 
 - What is a cookie?
   - A piece of information from the server that resides on the client\'s computer
-  - Just a text file
   - Maintains information about the client in between browsing sessions
     - Cookies mean you don\'t have to login everytime you visit a website
     - The cookie stores your login session (not password), basically meaning the website assumes you are the same user
