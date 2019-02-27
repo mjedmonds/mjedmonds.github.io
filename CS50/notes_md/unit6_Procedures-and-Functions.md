@@ -1,13 +1,15 @@
+# Procedures & Functions
+
 * All executable code resides within a **function**
 * So far, the only function we have written is called **main**, which served as the entry point for our programs.
 * A **function** is a named block of code that performs a task and then returns control to a caller.
-    * The **caller** is the function that **invoked** the function
-    * The **callee** is the function being **invoked**
-    * You can think of the caller as the "parent" to the callee
+  * The **caller** is the function that **invoked** the function
+  * The **callee** is the function being **invoked**
+  * You can think of the caller as the "parent" to the callee
 * Because a function is just a block of code, we can call it multiple times throughout a program's execution
 * After finishing, the function will branch back (return) to the caller.
 * Consider this trivial example:
-    * Suppose you want to print out the first 5 squares of numbers, do some processing, then print out the first 5 squares again. So far, we may write something like:
+  * Suppose you want to print out the first 5 squares of numbers, do some processing, then print out the first 5 squares again. So far, we may write something like:
 
 ```c
 #include <stdio.h>
@@ -29,9 +31,9 @@ int main(void)
 ```
 
 * We wrote the same loop twice!
-    * This is bad.
-    * If we want to modify this code, to say print the first 5 cubes of numbers, we'd have to change code in two places
-    * If we write a function to print the first 5 squares of numbers and call that function twice:
+  * This is bad.
+  * If we want to modify this code, to say print the first 5 cubes of numbers, we'd have to change code in two places
+  * If we write a function to print the first 5 squares of numbers and call that function twice:
 
 ```c
 #include <stdio.h>
@@ -54,13 +56,14 @@ int main(void)
 }
 ```
 
-# Functions
+## Functions
+
 * Functions operate as _black boxes_, meaning they take input (parameters/arguments), do something with the input (function body), and spit out the answer (return value)
-    * A function may not require any input at all (like our example above) and it may not return anything (like our example above - printing is not a form of returning).
+  * A function may not require any input at all (like our example above) and it may not return anything (like our example above - printing is not a form of returning).
 * Terminology:
-    * A function _f_ that uses another function _g_ is said to _call g_ (i.e. _f_ is the caller of _g_). * A function's inputs are known as its arguments (or parameters).
-    * A function _g_ that gives some kind of data back to the caller _f_ is said to return that data.
-* Let's look at a function to square the input of an integer: 
+  * A function _f_ that uses another function _g_ is said to _call g_ (i.e. _f_ is the caller of _g_). * A function's inputs are known as its arguments (or parameters).
+  * A function _g_ that gives some kind of data back to the caller _f_ is said to return that data.
+* Let's look at a function to square the input of an integer:
 
 ```c
 // the first int indicates that this function will return an integer to the caller
@@ -77,7 +80,7 @@ int square(int x)
 }
 ```
 
-* A much simplier implementation:
+* A much simpler implementation:
 
 ```c
 int square(int x)
@@ -86,21 +89,22 @@ int square(int x)
 }
 ```
 
-## Function Syntax
+### Function Syntax
+
 * Functions take the form:
 
 ```c
 type name(type1 arg1, type2 arg2, ...)
 {
   /* function body code */
-} 
+}
 ```
 
 * _type_ is the return type of the function
-    * Could be `int`, `float`, etc
-    * Can be `void` to indicate no return value
-        * When a function is `void` type, you do not place a `return` in the function body 
-        * Example void function
+  * Could be `int`, `float`, etc
+  * Can be `void` to indicate no return value
+    * When a function is `void` type, you do not place a `return` in the function body
+    * Example void function
 
 ```c
 void print_hello(int number_of_times)
@@ -127,9 +131,10 @@ float calculate_number() // or you can explicitly place void as the argument -> 
 }
 ```
 
-## Funcion declarations
+### Function declarations
+
 * A _function declaration_ tells the compiler about a function's name, return type, and parameters.
-* So far, we have looked at _function definitions_, which provide the actual code a function will execute. 
+* So far, we have looked at _function definitions_, which provide the actual code a function will execute.
 * We can declare a function without defining it (similar to declaring a variable without initializing it)
 * Function declarations take the following form:
 
@@ -139,11 +144,11 @@ type function_name(type1 arg1, type2 arg2);
 
 * Notice the semicolon at the end - this is a statement in C
 * Why bother with this?
-    * Function declarations typically exist in header files (.h), and their corresponding definitions exist in a .c file of the same name
-    * For instance, we have been writing `#include <stdio.h>`, which includes the stdio header
-    * Many times people put `main()` at the top of their program, so a fellow programmer can see the program's entry point first
-        * But a compiler reads a program top-to-bottom, so if you reference a function before the compiler is aware of its existence, the compiler won't know what to do (we'll see an example of this in a second) 
-    * But even for more complex programs, it's nice to see all of the functions in one area without having to scroll through every definition. Provides an overview of the functions available.
+  * Function declarations typically exist in header files (.h), and their corresponding definitions exist in a .c file of the same name
+  * For instance, we have been writing `#include <stdio.h>`, which includes the stdio header
+  * Many times people put `main()` at the top of their program, so a fellow programmer can see the program's entry point first
+    * But a compiler reads a program top-to-bottom, so if you reference a function before the compiler is aware of its existence, the compiler won't know what to do (we'll see an example of this in a second)
+  * But even for more complex programs, it's nice to see all of the functions in one area without having to scroll through every definition. Provides an overview of the functions available.
 * Look back at our `print_squares` example. `print_squares` is before `main`. Let's try to move it after `main`:
 
 ```c
@@ -168,7 +173,7 @@ void print_squares(void)
 ```
 
 * We'll get a compiler error when we try to build this. Why?
-    * When the compiler reads line 5, it has no idea what `print_squares` is. Function declarations let us tell the compiler: "This function will be defined later. When the linker executes (third stage of compilation), this function will be defined, compiled, and ready for linking"
+  * When the compiler reads line 5, it has no idea what `print_squares` is. Function declarations let us tell the compiler: "This function will be defined later. When the linker executes (third stage of compilation), this function will be defined, compiled, and ready for linking"
 * Let's add a function declaration to fix:
 
 ```c
@@ -196,7 +201,8 @@ void print_squares(void)
 
 * It builds! The compiler is aware that `print_squares` is a function and will be defined later.
 
-## Static functions
+### Static functions
+
 * Static functions can only be called from the file in which they were written
 * This helps protect functionality from being available in other files. Essentially makes the function private to this particular file
 * Example:
@@ -208,7 +214,8 @@ static int less_than( int a, int b )
 }
 ```
 
-# Calling functions
+## Calling functions
+
 * Say we wanted to call the `calculate_number` function.
 * Remember this function takes no arguments and returns a float
 * We would write:
@@ -235,38 +242,43 @@ square_of_x = square(x);
 ```
 
 * C will attempt to type cast whatever you pass into the appropriate type.
-    * For instance, if you pass a floating point number for an int argument, the floating point number will be type cast into an int
+  * For instance, if you pass a floating point number for an int argument, the floating point number will be type cast into an int
 * If the function doesn't return anything, simply call the function
 
 ```c
 print_hello();
 ```
 
-# Functions from the C Standard Library
+## Functions from the C Standard Library
+
 * Wide range of functions already written for you!
 * No need to reinvent the wheel
 * These exist to make your life easier
 * [https://en.wikibooks.org/wiki/C_Programming/Procedures_and_functions#Functions_from_the_C_Standard_Library](https://en.wikibooks.org/wiki/C_Programming/Procedures_and_functions#Functions_from_the_C_Standard_Library)
 
-# Variable-length Argument Lists
+## Variable-length Argument Lists
+
 * Functions don't have to specify _exactly_ how many arguments they take
-* For instance, imagine you wanted to write a function to compute the average of a set of numbers. 
-    * So far, we have no way of handling _N_ numbers. 
-    * We could write a function for averaging 2 numbers, 3 numbers, etc, but that would be very painstaking.
-* Where have we seen functions that take in an arbitrary number of arugments already?
-    * `printf`
-    * `scanf`
+* For instance, imagine you wanted to write a function to compute the average of a set of numbers.
+  * So far, we have no way of handling _N_ numbers.
+  * We could write a function for averaging 2 numbers, 3 numbers, etc, but that would be very painstaking.
+* Where have we seen functions that take in an arbitrary number of arguments already?
+  * `printf`
+  * `scanf`
 * In order to write a function that takes a variable number of arguments, first include the `stdarg.h` header
+
 ### Steps:
+
 1. Declare the function as you normally would
 2. Last argument to the function is an ellipsis `...` to indicate there is a variable list of arguments
+
 * Example function declaration:
 
 ```c
 float average (int n_args, ...);
 ```
 
-* Somehow we need to specify how many arguments are in the list. 
+* Somehow we need to specify how many arguments are in the list.
 * Above we did this with the `n_args` argument
 * Next, we need a mechanism to access the list of arguments. We'll declare a variable for the list of arguments:
 
@@ -276,9 +288,9 @@ va_list myList;
 
 * Notice the type here, `va_list`. This type is provided by `stdargs.h`
 * To actually use `myList`, we must assign it a value. The `va_start` macro (similar to a function for now)
-    * The `va_start` macro takes two arguments:
-        1. The `va_list` you plan on storing values in
-        2. The name of the last variable appearing before the ellipsis
+  * The `va_start` macro takes two arguments:
+    1. The `va_list` you plan on storing values in
+    2. The name of the last variable appearing before the ellipsis
 
 ```c
 #include <stdarg.h>
@@ -292,9 +304,9 @@ float average (int n_args, ...)
 
 * Now we have done all of the setup required to use the list
 * To actually access a value in this list, we use the `va_arg` macro, which 'pops' off the next argument in the list
-    * In the `va_arg` marco, you provide:
-        1. The `va_list` variable to pop the value from (e.g. `myList`)
-        2. The type of the variable being extracted
+  * In the `va_arg` marco, you provide:
+    1. The `va_list` variable to pop the value from (e.g. `myList`)
+    2. The type of the variable being extracted
 
 ```c
 #include <stdarg.h>
@@ -302,7 +314,7 @@ float average (int n_args, ...)
 {
   va_list myList;
   va_start (myList, n_args);
-  
+
   int myNumber = va_arg (myList, int);
   va_end (myList);
 }
@@ -317,17 +329,17 @@ float average (int n_args, ...)
 {
     va_list myList;
     va_start (myList, n_args);
-    
+
     int numbersAdded = 0;
     int sum = 0;
-     
+
     while (numbersAdded < n_args) {
         int number = va_arg (myList, int); // Get next number from list
         sum += number;
         numbersAdded += 1;
     }
     va_end (myList);
-     
+
     float avg = (float)(sum) / (float)(numbersAdded); // Find the average
     return avg;
 }
@@ -338,11 +350,10 @@ int main(){
 ```
 
 * If we call this function with 2, 10, and 30, we get the average of 10 and 20, which is 25:
-    * `average(2, 10, 20);` 
+  * `average(2, 10, 20);`
 
-# Debugging
+## Exercises
 
-# Exercises
 1. What is the effect of calling show(4)?
 
 ```c
@@ -395,7 +406,7 @@ int main(){
 int find_largest(int n_args, ...){
   va_list numbers;
   va_start (numbers, n_args);
-  
+
   int largest = -2500000; // should use INT_MIN from limits.h instead
   int num_processed = 0;
   while (num_processed < n_args){
@@ -433,4 +444,3 @@ int main(){
 }
 
 ```
-

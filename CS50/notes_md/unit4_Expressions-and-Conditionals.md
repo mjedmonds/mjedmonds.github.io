@@ -1,20 +1,24 @@
-# Operators
+# Expressions & Conditionals
+
+## Operators
+
 * C has many built-in operators
 * We discussed the basic operators in the previous unit, but here will review and expand on those operators
 * Basic operators include:
-    * `+` addition
-    * `-` subtraction
-    * `*` multiplication
-    * `/` division (floating point and integer division depending upon type)
-    * `%` modulo (remainder division)
+  * `+` addition
+  * `-` subtraction
+  * `*` multiplication
+  * `/` division (floating point and integer division depending upon type)
+  * `%` modulo (remainder division)
 
-## Increment and decrement
+### Increment and decrement
+
 * Adding 1 to a variable is so common, we have a custom operator for it
 * We have three methods of incrementing (the same is true for decrement) variables in C
 * Using addition (not technically an increment operator):
 
 ```c
-a = a + 1; // 
+a = a + 1; //
 ```
 
 * Using the prefix increment operator
@@ -30,14 +34,14 @@ a++;
 ```
 
 * What's the difference between these two statements?
-    * A lot of the time, there is no difference in practice
-    * **HOWEVER**
-    * The semantics are technically different
-    * How are they different?
-        * `++a` increments `a` and then returns the value of `a` (meaning the value returned has already been incremented)
-        * `a++` returns the value of `a` and then increments `a` (meaning the value returned has _not_ yet been incremented)
-    * When does this matter?
-        * Two cases: 
+  * A lot of the time, there is no difference in practice
+  * **HOWEVER**
+  * The semantics are technically different
+  * How are they different?
+    * `++a` increments `a` and then returns the value of `a` (meaning the value returned has already been incremented)
+    * `a++` returns the value of `a` and then increments `a` (meaning the value returned has _not_ yet been incremented)
+  * When does this matter?
+    * Two cases:
 
 ```c
 int a = 5;
@@ -48,78 +52,82 @@ int d = a++; // d has the value of 5 after this executes, a has the value of 6
 
 * All of the above also applies for the decrement operator `--`, which subtracts 1 from a variable instead of adding one
 
-## Relational and Equality Operators
+### Relational and Equality Operators
+
 * Relational and equality operators return boolean values (boolean meaning true or false)
 * Relational operators
-    * `<` less than
-    * `>` greater than
-    * `<=` less than or equal to
-    * `>=` greater than or equal to
+  * `<` less than
+  * `>` greater than
+  * `<=` less than or equal to
+  * `>=` greater than or equal to
 * Equality operators
-    * `==` equals
-    * `!=` not equals
+  * `==` equals
+  * `!=` not equals
 
-## Unary Operators
+### Unary Operators
+
 * Unary means it only acts on a single variable (whereas so far other operators have acted on two variables/values)
 * Unary operators
-    * `&` address-of (gets the memory address of a variable)
-    * `*` contents-of (gets the contents stored in a memory address)
-    * `-` negation
-    * `+` plus
-    * `!` logical negation
-    * `(type)` type casting
-        * _Type casting_ allows us to convert one variable type into another type
-        * Notice that this does **not** round, it truncates
-        * For instance, common use is to typecase a floating point number into an integer:
+  * `&` address-of (gets the memory address of a variable)
+  * `*` contents-of (gets the contents stored in a memory address)
+  * `-` negation
+  * `+` plus
+  * `!` logical negation
+  * `(type)` type casting
+    * _Type casting_ allows us to convert one variable type into another type
+    * Notice that this does **not** round, it truncates
+    * For instance, common use is to typecase a floating point number into an integer:
 
 ```c
 int b = (int)3.5; // 3.5 will be truncated to 3
 ```
 
-## Logical Operators
+### Logical Operators
+
 * `!` logical negation
 * `&&` logical AND
 * `||` logical OR
 
-## Precedence
+### Precedence
+
 * 1 (highest)
-    * `++`/`--`Postfix increcment and decrement
-    * `()`Function calls
-    * `[]` Array subscripting
-    * `.` structure/union access
-    * `->` structure/union member access through pointer
+  * `++`/`--`Postfix increment and decrement
+  * `()`Function calls
+  * `[]` Array subscripting
+  * `.` structure/union access
+  * `->` structure/union member access through pointer
 * 2 (second highest)
-    * `++`/`--` Prefix increment and decrement
-    * `+`/`-` unary plus and minux
-    * `!` logical not
-    * `(type)` type casting
-    * `*` dereference
-    * `&` addresss-of
+  * `++`/`--` Prefix increment and decrement
+  * `+`/`-` unary plus and minus
+  * `!` logical not
+  * `(type)` type casting
+  * `*` dereference
+  * `&` address-of
 * 3 (third highest)
-    * `*` multiplication
-    * `/` division
-    * `%` remainder division
+  * `*` multiplication
+  * `/` division
+  * `%` remainder division
 * 4 (forth highest)
-    * `+` addition
-    * `-` subtraction
+  * `+` addition
+  * `-` subtraction
 * 5 (fifth highest)
-    * `<` less than
-    * `>` greater than
-    * `<=` less than or equal to
-    * `>=` greater than or equal to
+  * `<` less than
+  * `>` greater than
+  * `<=` less than or equal to
+  * `>=` greater than or equal to
 * 6 (sixth highest)
-    * `==` equal
-    * `!=` not equal
+  * `==` equal
+  * `!=` not equal
 * 7 (seventh highest)
-    * `&&` logical AND
-* 8 (eighth highest)  
-    * `||` logical OR
+  * `&&` logical AND
+* 8 (eighth highest)
+  * `||` logical OR
 * 9 (ninth highest)
-    * `?:` ternary conditional
+  * `?:` ternary conditional
 * 10 (tenth highest)
-    * `=` assignment (and all other forms of assignment, `+=`, `-=`, `*=`, `/=`, `%=`)
+  * `=` assignment (and all other forms of assignment, `+=`, `-=`, `*=`, `/=`, `%=`)
 * 11 (eleventh highest)
-    * `,` comma (for creating multiple variables) 
+  * `,` comma (for creating multiple variables)
 
 ## calculations.c
 
@@ -127,13 +135,13 @@ int b = (int)3.5; // 3.5 will be truncated to 3
 /*
    Let's try writing some calculations...
  */
-#include <stdio.h>    
+#include <stdio.h>
 
 int main() {
    float value1 = 0.0, value2 = 0.0;
    int i1 = 0, i2 = 0;
 
-   /* 
+   /*
       Prompt for values
     */
    printf( "\t\tCalculation Program\n\n" );
@@ -146,7 +154,7 @@ int main() {
    printf( "The second minus the first: %f\n",  value2 - value1 );
    printf( "The first divided by the second: %f\n", value1 / value2 );
    printf( "The second divided by the first: %f\n", value2 / value1 );
-  
+
    printf( "Let's try again, as if the values were int\n" );
    i1 = (int) value1;
    i2 = (int) value2;
@@ -166,28 +174,29 @@ int main() {
 }
 ```
 
-# Conditionals
+## Conditionals
+
 * There is no meaningful program that doesn't demonstrate some basic decision-making skills
 * For instance, "I will continue driving through the intersection" is not a statement a human would act upon. But "I will stop if the light is red, go if the light is green, go only if I can safely pass if the light is yellow" might be a reasonable driving policy.
 * A conditional tells the computer to only execute a block of code if a particular condition has been satisfied (i.e. that condition is true).
 * `if...else` is the most common conditional statement
 * `switch...case` are used as a shorthand version of `if...else`
 * In C, logic is a form of arithmetic
-    * `0` represents false
-    * **any** other value represents true
-    * Logical and arithmetic operators are treated as the same thing in C
+  * `0` represents false
+  * **any** other value represents true
+  * Logical and arithmetic operators are treated as the same thing in C
 
-## selection.c
+### selection.c
 
 ```c
 /*
    Let's try writing some conditional logic...
  */
-#include <stdio.h>    
+#include <stdio.h>
 
 int main() {
    float value1 = 0.0, value2 = 0.0;
-   /* 
+   /*
       Prompt for values
     */
    printf( "\t\tConditional Logic Program\n\n" );
@@ -221,7 +230,8 @@ int main() {
 }
 ```
 
-## Relational Expressions
+### Relational Expressions
+
 * Consider the following relational and equivalence operations
 
 ```c
@@ -230,13 +240,13 @@ a > b     // 1 if a is greater than b, 0 otherwise
 a <= b    // 1 if a is less than or equal to b, 0 otherwise
 a >= b    // 1 if a is greater than or equal to b, 0 otherwise
 a == b    // 1 if a is equal to b, 0 otherwise
-a != b    // 1 if a is not equal to b, 0 otherwise 
+a != b    // 1 if a is not equal to b, 0 otherwise
 ```
 
 * Please remember `=` is for **assignment** and `==` is for **equality**
 * C does not have a dedicated boolean type that many programming languages have. Instead, integers represent booleans.
-    * 0 means false
-    * anything else means true
+  * 0 means false
+  * anything else means true
 * Our two examples of conditionals are equivalent:
 
 ```c
@@ -248,8 +258,9 @@ if (foo() != 0) {
 }
 ```
 
-## Logical Expressions
-* A way to evalute operations over logical values (i.e. `0` for false and anything else for true)
+### Logical Expressions
+
+* A way to evaluate operations over logical values (i.e. `0` for false and anything else for true)
 * Gives a way to encode "this AND that" or "this OR that"
 * Consider the following:
 
@@ -265,7 +276,8 @@ a && b    // 1 when BOTH a AND b are true, 0 otherwise
 ((a && b) || (c > d))
 ```
 
-# If-Else Statements
+## If-Else Statements
+
 * Executes a block of code if particular conditions have been met
 * Basic syntax:
 
@@ -298,22 +310,22 @@ if (a > b) {
 if (a > b) {
   c = a;
 }
- 
+
 if (a < b) {
   c = b;
 }
- 
+
 if (a == b) {
   c = 0;
 }
 ```
 
 1. Multiple `if`'s could be true, there is no guaranteed mutual exclusion
-2. Evalating `if` statements takes time (since the condition must be checked).
+2. Evaluating `if` statements takes time (since the condition must be checked).
 
 * If you only have single statement to statement to execute in your `if` or `else`, you do not need to put a block.
-    * **But you should.**
-    * Consider the following
+  * **But you should.**
+  * Consider the following
 
 ```c
 if(5 < 10)
@@ -324,9 +336,9 @@ else
 ```
 
 * Only the single statement following the `if` or `else` is associated with the conditional...so when will `5 is not less than 10` be printed?
-    * **Every time**
-    * Identation cannot be trusted!
-    * Here's a version with indentitation reflecting the semantics of the program:
+  * **Every time**
+  * Indentation cannot be trusted!
+  * Here's a version with indentation reflecting the semantics of the program:
 
 ```c
 if(5 < 10)
@@ -337,7 +349,7 @@ printf("5 is not less than 10\n");
 ```
 
 * How do you fix this?
-    * **Always use block statements!**
+  * **Always use block statements!**
 
 ```c
 if(5 < 10) {
@@ -349,18 +361,20 @@ if(5 < 10) {
 ```
 
 ## Nesting
+
 If statements can be nested, meaning you have `if` statements inside of `if` statements
-## nesting.c
+
+### nesting.c
 
 ```c
 /*
    Let's try writing some nested conditional statements...
  */
-#include <stdio.h>    
+#include <stdio.h>
 
 int main() {
    int temperature;
-   /* 
+   /*
       Prompt for values
     */
    printf( "\t\tNested Logic Program\n\n" );
@@ -414,6 +428,7 @@ c = (a > b) ? a : b;
 ```
 
 ## Switch-Case Statement
+
 * It's generally bad practice to string together more than two or three `if..else` statements together. The `switch...case` statement enables us to write many "cases" that could be handled by `if...else` in a cleaner manner
 * Basic syntax:
 
@@ -424,38 +439,38 @@ c = (a > b) ? a : b;
  case /* a different potential value */:
    /* different code */
  /* insert additional cases as needed */
- default: 
+ default:
    /* more code */
  }
 ```
 
 * The switch uses a variable, and integer or enum, to control which case to evaluate. This is a limiation; if you must compare more complicated data, you cannot use a `switch...case`
 * This variable is compared against each `case`, one the comparison is true, that particular case will activate (execute)
-    * Once a `case` has been activated, no other cases will be evaluated
+  * Once a `case` has been activated, no other cases will be evaluated
 * Typically, the last statement for each case is a `break` statement. The causes the program to jump to the statement following the closing `}` of the switch statement.
-    * This basically ends the switch statement (and this behavior is probably your intuition behind each case
-    * However, if you omit the `break`, the cases "fall throw" until the end of the switch or until a `break` is reached 
+  * This basically ends the switch statement (and this behavior is probably your intuition behind each case
+  * However, if you omit the `break`, the cases "fall throw" until the end of the switch or until a `break` is reached
 * If no cases are matched and a `default` case is specified, the default case will execute.
-    * Use of `default` is optional. 
+  * Use of `default` is optional.
 
-## multiselect.c
+### multiselect.c
 
 ```c
 /*
    Let's try writing a switch statement...
  */
-#include <stdio.h>    
+#include <stdio.h>
 
 int main() {
    char letter;
-   /* 
+   /*
       Prompt for values
     */
    printf( "\t\tCase Statement Program\n\n" );
    printf( "Please enter a letter to inspect: " );
    scanf( "%c", &letter );
 
-   /* 
+   /*
       Just for the record, you can only switch on a
 	  integral value.  The char datatype is just another
 	  name for the set of ints between 0 and 255, so you
@@ -478,7 +493,7 @@ int main() {
 	 case 'o':
 	 case 'u':
 	 case 'y':
-		 /* 
+		 /*
 		    Lacking break statements in the upper
 			listed cases, they will all "fall thru"
 			to the set of statements shown here.
@@ -487,7 +502,7 @@ int main() {
 			bug worldwide.  Namely, that folks forget that
 			all the above cases are collapsing down to
 			the code shown below.  So use this form
-			with great caution, as it often leads to 
+			with great caution, as it often leads to
 			bugs...
 		  */
 		 printf( "a nice lowercase vowel!\n" );
@@ -530,7 +545,7 @@ int main() {
 }
 ```
 
-# Exercises
+## Exercises
 
 Write a C program to check whether a given number is even or odd
 
@@ -557,7 +572,7 @@ Write a C program to find whether a given year is a leap year or not.
 void main()
 {
     int chk_year;
- 
+
     printf("Input a year :");
     scanf("%d", &chk_year);
     if ((chk_year % 400) == 0)
@@ -615,6 +630,3 @@ void main()
   }
 }
 ```
-
-
-

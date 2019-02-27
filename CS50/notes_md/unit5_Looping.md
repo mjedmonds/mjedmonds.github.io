@@ -1,13 +1,16 @@
-* Loops enable programmers to tell the computer to repeat a particuarl block of code multiple times.
-    * Is is generally impractical to use conditionals a large number of times.
-* Consider how a dishwasher might describe their time at work.
-    * Unlikely the diswasher would say "I watch a dish, and then another dish, and then another dish, ...."
-    * More like they would say "I washed dishes the entire time I was at work"
+# Looping
 
-# While Loops
+* Loops enable programmers to tell the computer to repeat a particular block of code multiple times.
+  * Is is generally impractical to use conditionals a large number of times.
+* Consider how a dishwasher might describe their time at work.
+  * Unlikely the dishwasher would say "I watch a dish, and then another dish, and then another dish, ...."
+  * More like they would say "I washed dishes the entire time I was at work"
+
+## While Loops
+
 * A while loop is the most basic type of loop.
 * `while` loops run until a specific controlling condition is not satisfied (i.e. false).
-    * The controlling condition is checked _before_ the loop executes and every time the loop loops.
+  * The controlling condition is checked _before_ the loop executes and every time the loop loops.
 * Syntax:
 
 ```c
@@ -27,9 +30,9 @@ while (a < 100) {
 ```
 
 * How many times will this loop execute?
-    * 7, last time this executes a is set to 128 at the end of the loop 
+  * 7, last time this executes a is set to 128 at the end of the loop
 * **A critical note**: something must change in the loop such that the condition is eventually false and the loop exits
-    * Otherwise, this is called an infinite loop. 
+  * Otherwise, this is called an infinite loop.
 * Consider the following:
 
 ```c
@@ -39,11 +42,11 @@ while (42) {
 }
 ```
 
-* The controlling condiition in the `while` never changes, and therefore will run forever (since 42 evaluates to true).
+* The controlling condition in the `while` never changes, and therefore will run forever (since 42 evaluates to true).
 * `break` and `continue`
-    * Allows you to control the flow of the loop from within the loop
-    * `break` will immediately exit the loop
-    * `continue` will skip the remainder of the block and start at the controlling conditional statement again.
+  * Allows you to control the flow of the loop from within the loop
+  * `break` will immediately exit the loop
+  * `continue` will skip the remainder of the block and start at the controlling conditional statement again.
 
 ```c
 int a = 1;
@@ -60,8 +63,8 @@ while (42) { // loops until the break statement in the loop is executed
 ```
 
 * Similar to `if`, you may omit the braces for the block of code associated with the while loop
-    * However, this is not recommended for the same reasons as with an `if` statement
-    * Grouping of statements is potentially ambiguous (to the programmer, not the computer) that can lead to bugs
+  * However, this is not recommended for the same reasons as with an `if` statement
+  * Grouping of statements is potentially ambiguous (to the programmer, not the computer) that can lead to bugs
 
 ```c
 int a = 1;
@@ -71,15 +74,16 @@ while (a < 100)
 
 * This will just increase `a` until it is above 100
 * When a loop ends, the program goes back to the while statement's controlling condition.
-    * If the condition is true, the loop executes again
-    * If the condition is false, the loop exits
-    * The computer does _not_ continuously check the controlling condition after each statement in the loop executes. It only checks at the end of every loop
-    * If you need to end the loop during the middle of the loop's block, use a `break` to check for the necessary conditions
+  * If the condition is true, the loop executes again
+  * If the condition is false, the loop exits
+  * The computer does _not_ continuously check the controlling condition after each statement in the loop executes. It only checks at the end of every loop
+  * If you need to end the loop during the middle of the loop's block, use a `break` to check for the necessary conditions
 
-# For Loops
+## For Loops
+
 * Functionally equivalent to a while loop, but people find them to be more readable/maintainable.
 * Typically in a while, you'd put some code to modify the controlling condition as the last statement to the while loop (increment, decrement, etc)
-    * A for loop moves this to the definition of the loop
+  * A for loop moves this to the definition of the loop
 * Syntax:
 
 ```c
@@ -88,19 +92,19 @@ for (initialization; controlling condition; loop-ending statement) {
 }
 ```
 
-* The _intitialization_ statement is executed once - at the beginning of the loop
-    * Typically, you would assign some variable to be a particular value in this loop section
-* The _controlling condition_ is the test executed to determine whether or not the loop should run again. 
-    * It is checked when the loop starts.
+* The _initialization_ statement is executed once - at the beginning of the loop
+  * Typically, you would assign some variable to be a particular value in this loop section
+* The _controlling condition_ is the test executed to determine whether or not the loop should run again.
+  * It is checked when the loop starts.
 * The _loop-ending statement_ is typically a form of incrementing/decrementing a value.
-    * This statement is executed at the end of every loop statement, but before the controlling condition is checked
-    * If you used a `continue` statement, this statement is also executed (i.e. it is not skipped because of the use of a `continue`).
+  * This statement is executed at the end of every loop statement, but before the controlling condition is checked
+  * If you used a `continue` statement, this statement is also executed (i.e. it is not skipped because of the use of a `continue`).
 * Any of these may be omitted.
-    * You do not have to run an intialization statement
-    * You do not have to provide a controlling condiiton
-        * What must you do to make sure your loop terminates if this is omitted? 
-    * You do not have to provide a loop ending statement
-        * What must you do to make sure your loop terminates if this is omitted?
+  * You do not have to run an initialization statement
+  * You do not have to provide a controlling condition
+    * What must you do to make sure your loop terminates if this is omitted?
+  * You do not have to provide a loop ending statement
+    * What must you do to make sure your loop terminates if this is omitted?
 * Counting example:
 
 ```c
@@ -110,7 +114,7 @@ for (i = 1; i <= 10; i++) {
 }
 ```
 
- * A for loop can be given no conditions:
+* A for loop can be given no conditions:
 
 ```c
 for (;;) {
@@ -128,9 +132,10 @@ for (i = 0, j = 0; i <= n; i++, j += 2) {
 }
 ```
 
-# Do-While Loops
+## Do-While Loops
+
 * The do-while loop is the same as a while loop, except the loop controlling condition is checked at the end of the loop rather than at the beginning
-* Means the loop is guaranteed to execute at least one time. 
+* Means the loop is guaranteed to execute at least one time.
 * Syntax:
 
 ```c
@@ -142,7 +147,8 @@ do {
 * Note: he terminating `;` is required.
 * `break` and `continue` operate the same as with other loops (the controlling condition will still be checked before executing the loop body again when using `continue`
 
-# Exercises
+## Exercises
+
 1. Write a C program to find the sum of first 10 natural numbers.
 
 ```c
@@ -156,7 +162,7 @@ void main()
   for (j = 1; j <= 10; j++)
   {
     sum = sum + j;
-    printf("%d ",j);    
+    printf("%d ",j);
   }
   printf("\nThe Sum is : %d\n", sum);
 }
@@ -167,7 +173,7 @@ void main()
 ```c
 #include <stdio.h>
 void main()
-{       
+{
   int i,n,sum=0;
 	float avg;
 	printf("Input the 10 numbers : \n");
@@ -180,7 +186,7 @@ void main()
 	}
 	avg=sum/10.0;
 	printf("The sum of 10 no is : %d\nThe Average is : %f\n",sum,avg);
- 
+
 }
 ```
 
@@ -214,30 +220,29 @@ void main()
 int main()
 {
   int n, num, digit, rev = 0;
-  
+
   printf("Enter a positive number: ");
   scanf("%d", &num);
-  
+
   n = num;
-  
+
   do
   {
     digit = num % 10;
     rev = (rev * 10) + digit;
     num = num / 10;
   } while (num != 0);
-  
+
   printf("The reverse of the number is: %d\n", rev);
-  
+
   if (n == rev)
     printf("The number is a palindrome\n");
   else
     printf("The number is not a palindrome\n");
-  
+
   return 0;
 }
 
 
 
 ```
-

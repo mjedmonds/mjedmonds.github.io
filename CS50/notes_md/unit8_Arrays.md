@@ -1,11 +1,15 @@
+
+# Arrays
+
 * Arrays enabling storing multiple values under a single variable
 * If multiple values are stored in a single variable, we need a way to access each value
 * We access values stored in an array using **indices**, called _subscripts_
 * Values inside of an array are _homogeneous_, meaning they all have the same type
-    * Can't mix `int`s with `float`s or vice-versa
+  * Can't mix `int`s with `float`s or vice-versa
 * Later we will introduce the idea of a _pointer_, which extend the use of arrays
 
 ## Declaration and Initialization
+
 * C arrays are declared in the following form
 
 ```c
@@ -27,7 +31,7 @@ int numbers[6];
 char letters[6];
 ```
 
-* We can initialize the array when we declare it using curly braces and intialization values using an initializer list:
+* We can initialize the array when we declare it using curly braces and initialization values using an initializer list:
 
 ```c
 int point[6] = {0,3,1,6,7,2};
@@ -45,13 +49,14 @@ int parital[6] = {1,2};
 int point[] = {0,3,1,6,7,2};
 ```
 
-![C Array](resources/C0F3DF383A7B5282EC7F107BD1FFF4CD.jpg =740x400)
+![C Array](resources/C0F3DF383A7B5282EC7F107BD1FFF4CD.jpg)
 
 ## Array Access
+
 * Now we know how to declare and initialize and array, but how do we access elements in an array?
 * We'll use an _index_ or _subscript_ to specify which element of the array we want to access
 * Arrays are 0-indexed in C, meaning the index of the first element in the array is 0, the second element in the array is 1, the third is 2, and so forth.
-    * Important note: the last **valid** index in an array is the size-1. For instance, in an array of length 6 (an array that can store 6 elements), the last valid index is 5. 0-5 is 6 numbers.   
+  * Important note: the last **valid** index in an array is the size-1. For instance, in an array of length 6 (an array that can store 6 elements), the last valid index is 5. 0-5 is 6 numbers.
 * Example:
 
 ```c
@@ -60,9 +65,9 @@ int thirdEle = point[2]; // arrays are 0-indexed in C, so thirdEle will have the
 ```
 
 * What happens if you access an array with an index is out of the bounds of the array (i.e. use 6 as an index to the `point` array?
-    * It depends. Sometimes the compiler can catch the error, but it's not guaranteed to.
-    * If your program executes, it will be in _undefined behavior_ (UB), which means the rest of your program's output is rendered meaningless and unpredicable, even if it outputs the correct thing
-        * Undefined behavior is a large and somewhat esoteric definition, but the point is that C makes zero guarantee about what will happen after you've triggered undefined behavior.
+  * It depends. Sometimes the compiler can catch the error, but it's not guaranteed to.
+  * If your program executes, it will be in _undefined behavior_ (UB), which means the rest of your program's output is rendered meaningless and unpredicable, even if it outputs the correct thing
+    * Undefined behavior is a large and somewhat esoteric definition, but the point is that C makes zero guarantee about what will happen after you've triggered undefined behavior.
 * Examples:
 
 ```c
@@ -77,8 +82,8 @@ y = point[z];
 
 * Your program may continue running normally after these cases, but you have entered UB. This must be avoided at all costs!
 * But there's got to be a better way to make sure we stay within the bounds...
-    * Well not for every case, but for any type of loop, we can use `sizeof()` to as the limit on the number of iterations the loop executes
-    * Here's an example:
+  * Well not for every case, but for any type of loop, we can use `sizeof()` to as the limit on the number of iterations the loop executes
+  * Here's an example:
 
 ```c
 int i;
@@ -100,6 +105,7 @@ for (i = 0; i < arr_len; ++i)
 * This is a great way to ensure you stay within the bounds of the array!
 
 ## Passing arrays to functions
+
 * To pass an array to a function, we'll pass the name of the variable of the array.
 * However, in the function signature, we must tell the compiler we are passing an array:
 
@@ -114,9 +120,9 @@ int main()
     float avg
     float age[] = { 23.4, 55, 22.6, 3, 40.5, 18 };
     int arr_len = sizeof(arr) / sizeof(float);
-    
+
     avg = average(age, age_len); /* Only name of array is passed as argument. */
-    
+
     printf("Average age=%.2f", avg);
     return 0;
 }
@@ -135,6 +141,7 @@ float average(float age[], size_t age_len)
 ```
 
 ### Returning arrays from functions
+
 * We'll have to introduce a symbol we will talk in greater detail about when we discuss pointers and passing-by-reference. We need to cover this for the homework assignment, but the concept will be covered later.
 * We'll use the pointer type-qualifer `*` as a part of the return type to indicate we wish to return an array.
 * Inside of the function, we'll return the symbol of the array **without accessing an element using an index**
@@ -157,11 +164,13 @@ int main(){
 ```
 
 ### Scope
+
 * Lifetime of a variable
 * Variables in callee's are not visible to the caller, and when the callee finishes, all local variables are freed from memory (meaning they will not exist in the caller).
 
 ## Multi-dimensional arrays
-* Muti-dimensional arrays are arrays-of-arrays. 
+
+* Muti-dimensional arrays are arrays-of-arrays.
 * The most basic multi-dimensional is a 2-dimensional array, which creates a rectangular array. Each row has the same number of columns.
 * To get an int array with 3 rows and 5 columns, we write:
 
@@ -175,27 +184,24 @@ int arr[3][5];
 arr[1][3] = 5; // sets the element in the second row and forth column to 5
 ```
 
-* We can also initialize a multi-dimensional array in a similar fashion as a single-dimension array using an intializer list:
+* We can also initialize a multi-dimensional array in a similar fashion as a single-dimension array using an initializer list:
 
-{% raw %}
 ```c
-int two_d[2][3] = {{ 5, 2, 1 }, 
+int two_d[2][3] = {{ 5, 2, 1 },
                    { 6, 7, 8 }};
 ```
-{% endraw %}
 
 * The amount of columns must be explicitly specified, but the compiler will sort out how many rows are needed based on the initializer list. We could have written
 
-{% raw %}
 ```c
-int two_d[][3] = {{ 5, 2, 1 }, 
+int two_d[][3] = {{ 5, 2, 1 },
                   { 6, 7, 8 }};
 ```
-{% endraw %}
 
 ### Passing multi-dimensional arrays to functions
+
 * Exactly the same as passing single-dimension, except we must specify the number of columns
-    * Can also specify both rows and columsn if you only want a  
+  * Can also specify both rows and columns if you only want a
 
 ```c
 #include <stdio.h>
@@ -214,7 +220,7 @@ int main()
   }
   // passing multi-dimensional array to function
   print_arr(num, nr);
-  
+
   return 0;
 }
 
@@ -233,37 +239,38 @@ void print_arr(int num[][2], size_t num_len)
 ```
 
 ### Returning multi-dimensional arrays from functions
+
 * This is a bit trickier and we will cover this when we cover pointers
 
-
-![Multi-dimensional arrays](resources/6B1DE2A944919F5128C780C146FA98F8.jpg =550x334)
+![Multi-dimensional arrays](resources/6B1DE2A944919F5128C780C146FA98F8.jpg)
 
 # Exercises
+
 1. Write a program in C to store 10 elements inputted by the user and write a function to print the contents of the array.
 
 ```c
-#include <stdio.h>  
-  
-int  main()  
-{  
-  int arr[10]; 
-  int i;  
+#include <stdio.h>
+
+int  main()
+{
+  int arr[10];
+  int i;
   printf("\n\nRead and Print elements of an array:\n");
-  printf("-----------------------------------------\n");	
+  printf("-----------------------------------------\n");
 
-  printf("Input 10 elements in the array :\n");  
-  for(i=0; i<10; i++)  
-  {  
+  printf("Input 10 elements in the array :\n");
+  for(i=0; i<10; i++)
+  {
     printf("element - %d : ",i);
-    scanf("%d", &arr[i]);  
-  }  
+    scanf("%d", &arr[i]);
+  }
 
-  printf("\nElements in array are: ");  
-  for(i=0; i<10; i++)  
-  {  
-    printf("%d  ", arr[i]);  
-  } 
-  printf("\n");	
+  printf("\nElements in array are: ");
+  for(i=0; i<10; i++)
+  {
+    printf("%d  ", arr[i]);
+  }
+  printf("\n");
 }
 ```
 
@@ -276,23 +283,23 @@ int main()
 {
   int arr1[100], n, count_ele = 0;
   int i, j, k;
-  
+
   printf("Input the number of elements to be stored in the array (must be less than 100):");
   scanf("%d", &n);
-  
+
   printf("Input %d elements in the array:\n", n);
   for (i = 0; i < n; i++)
   {
     printf("element - %d : ", i);
     scanf("%d", &arr1[i]);
   }
-  
+
   /*Checking duplicate elements in the array */
   printf("\nThe unique elements found in the array are: \n");
   for (i = 0; i < n; i++)
   {
     count_ele = 0;
-    
+
     /*Check duplicate before the current position and
      increase counter by 1 if found.*/
     for (j = i - 1; j >= 0; j--)
@@ -382,4 +389,3 @@ int main()
   printf("\n\n");
 }
 ```
-

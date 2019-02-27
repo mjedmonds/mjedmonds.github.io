@@ -1,16 +1,19 @@
+# Structures & Enumerations
+
 * So far, we've been unable to create our own data types.
 * We've been able to use built-in types, and create arrays of built-in types
 * Based on what we know now, how would you do the following:
-    * Create an employee management system. Each employee has a first name, last name, employee ID, social security number, and salary.
-    * Probably would create an array for each attribute, and share an index for each employee.
-        * E.g. the 10th person is index 9 across every array
-        * This is bad design!
+  * Create an employee management system. Each employee has a first name, last name, employee ID, social security number, and salary.
+  * Probably would create an array for each attribute, and share an index for each employee.
+    * E.g. the 10th person is index 9 across every array
+    * This is bad design!
 * What if we could create an _employee_ that had a first name, last name, employee ID, social security number, and salary?
-    * Then, we would only need one array, where each element of the array is a complete employee
+  * Then, we would only need one array, where each element of the array is a complete employee
 * Structs enable this grouping of basic types to form a more complex type.
 * We can make our own types!
 
-# Structs
+## Structs
+
 * A struct is a data structure that contains multiple pieces of data.
 * We define structs using the `struct` keyword:
 
@@ -33,7 +36,7 @@ struct employee mark;
 ```
 
 * How we change values?
-    * Access part of a struct using the `.` operator:
+  * Access part of a struct using the `.` operator:
 
 ```c
 mark.ssn = 0123456789;
@@ -90,7 +93,8 @@ Employee mark; // equivalent to our old struct employee mark before
 
 * Everything else stays the same (except we replaced `struct employee` with `Employee` in all declarations/usages)!
 
-## Struct initialization
+### Struct initialization
+
 * We can initialize each member of a struct using an initializer list (like what we did for an array.
 * For example, we could replace `main` above with the following:
 
@@ -99,7 +103,8 @@ struct employee mark = { "Mark", "Edmonds", 31358, 1234567890, 1000000}; // orde
 print_employee(mark);
 ```
 
-## Pointers to structs
+### Pointers to structs
+
 * We can have a pointer to a struct as well. For instance, we could write:
 
 ```c
@@ -111,14 +116,14 @@ struct employee *mark_ptr = &mark;
 * Accessing pointers works the same way as before, but we also have a shortcut:
 
 ```c
-(*mark_ptr).ssn = 1234567890; // the . operator has higher precendence than the * operator, so we need the parens
-mark_ptr->ssn = 1234567890; // the same as above, but nicer notation. The -> operator dereferences and acccesses the corresponding member
+(*mark_ptr).ssn = 1234567890; // the . operator has higher precedence than the * operator, so we need the parentheses
+mark_ptr->ssn = 1234567890; // the same as above, but nicer notation. The -> operator dereferences and accesses the corresponding member
 ```
 
 * That's all there is to structs. Just a useful way to group data to make code more readable, reliable, and maintainable.
 
+## Enumerations
 
-# Enumerations
 * Mappings between labels and integers
 * Enumerations are not composed of any data types only labels.
 * Example enum to represent colors
@@ -145,7 +150,7 @@ if(value == green){
 }
 ```
 
-* We can also use them in switch statements convienently:
+* We can also use them in switch statements conveniently:
 
 ```c
 #include <stdio.h>
@@ -189,39 +194,44 @@ int main(){
 }
 ```
 
-* Example usage: suppose we wanted to compare against the day of the week. We could use string comparisons for everything, but this is clunkly, hard to read and string comparison is computationally expensive.
-    * Because enumerations are really just labeled integers, we can make code more readable by using them!
+* Example usage: suppose we wanted to compare against the day of the week. We could use string comparisons for everything, but this is clunky, hard to read and string comparison is computationally expensive.
+  * Because enumerations are really just labeled integers, we can make code more readable by using them!
 
-# Header files
+## Header files
+
 * Header files contain C declarations and macros.
 * Header files are included into your source code using `#include` preprocessor directive.
-    * We have been including system-level header files with `#include <stdio.h>`, etc. 
+  * We have been including system-level header files with `#include <stdio.h>`, etc.
 * When we write our own header files, we will use quotes instead of `<>` to surround the filename
-    * E.g. `#include "myheader.h"`
+  * E.g. `#include "myheader.h"`
 
-## Why bother?
+### Why bother?
+
 * When you say `#include`, the preprocessor fetches the corresponding header file and literally copies its contents on the same line as the `#include` (thereby replacing the `#include` statement with many lines of code)
 * Header files end with the extension `.h`
-* This means we don't have to manually copy the contents of a header when we want to include functionality written by someone else. This would be very error-prone and prevents updating the code base in one step 
-    * If everyone is using the same header, and that header is updated, programs that use that header will be updated when they are recompiled
+* This means we don't have to manually copy the contents of a header when we want to include functionality written by someone else. This would be very error-prone and prevents updating the code base in one step
+  * If everyone is using the same header, and that header is updated, programs that use that header will be updated when they are recompiled
 
-## What should you put in a header?
+### What should you put in a header?
+
 * Headers should only contain declarations, not implementations
 * This means headers can contain:
     1. Function prototypes: `int sum(int a, int b);`
     2. Structure/enumeration declarations: `struct p {int x; int y;};`
     3. Macros/Defines: `#ifndef HEADER #define HEADER #endif`
 
-## What should you NOT put in a header?
+### What should you NOT put in a header?
+
 * Headers should not contain any implementation of any sort, only declarations
 * This means headers should not contain:
     1. Function definitions/implementations: `int sum(int a, int b) { return a + b; }`
 * Why?
-    * Suppose we have function definitions in a header, let's call it `myheader.h`, what will be linker see if `source1.c` and `source2.c` both `#include "myheader.h"`?
-        * The same function definition twice! This means it won't know which one to actually execute when the function name is called
-    * A general rule: multiple declarations is fine for the linker, but multiple definitions is not. 
+  * Suppose we have function definitions in a header, let's call it `myheader.h`, what will be linker see if `source1.c` and `source2.c` both `#include "myheader.h"`?
+    * The same function definition twice! This means it won't know which one to actually execute when the function name is called
+  * A general rule: multiple declarations is fine for the linker, but multiple definitions is not.
 
-## Example:
+### Example:
+
 * Suppose we have `myheader.h` with the following
 
 ```c
@@ -249,7 +259,8 @@ int main (void) {
 }
 ```
 
-## Header guards
+### Header guards
+
 * Header guards protect against including the same header multiple times. This means the contents will copied twice, which will result in a compiler error (for using the same symbol twice).
 * We can easily guard against this with the following scheme:
 
@@ -262,7 +273,8 @@ int main (void) {
 #endif // end the if
 ```
 
-# Employee Example
+## Employee Example
+
 ### `main.c`
 
 ```c
@@ -275,7 +287,7 @@ int main(){
   size_t len;
   struct employee employees[num_employees];
   float sum_salary = 0.0;
-  
+
   for (int i = 0; i < num_employees; i++){
     printf("Employee %d input\n", i+1);
     printf("First name: ");
@@ -283,29 +295,29 @@ int main(){
     // replace newline from fgets with null character
     len = strlen(employees[i].first_name);
     employees[i].first_name[len-1] = '\0';
-    
+
     printf("Last name: ");
     fgets(employees[i].last_name, 100, stdin);
     len = strlen(employees[i].last_name);
     employees[i].last_name[len-1] = '\0';
-    
+
     printf("Employee ID: ");
     scanf("%d", &employees[i].employee_id);
     printf("Social Security Number: ");
     scanf("%d", &employees[i].ssn);
     printf("Salary: ");
     scanf("%f", &employees[i].salary);
-    
+
     // clear buffer from scanf (prepare for next employee)
     char c;
     while((c = getchar()) != '\n' && c != EOF) { }
   }
-  
+
   for(int i = 0; i < num_employees; i++){
     print_employee(employees[i]);
     sum_salary += employees[i].salary;
   }
-  
+
   printf("The company needs $%.2f to pay the employees\n", sum_salary);
 }
 ```
@@ -344,18 +356,19 @@ void print_employee(struct employee e){
 * `employee.h` is the _header file_ for all declarations related to the employee struct
 * `main.c` is the main file, which is the bulk of the program
 
-# Exercises
+## Exercises
 
- 1. What is wrong with the following C declarations?
-    1.   `struct point ( double x, y )`
-    2.   `struct point { double x, double y };`
-    3.   `struct point { double x; double y }`
-    4.   `struct point { double x; double y; };`
-    5.   `struct point { double x; double y; }`
- 2. What is the difference among the following three programs?
+1. What is wrong with the following C declarations?
+   1.   `struct point ( double x, y )`
+   2.  `struct point { double x, double y };`
+   3.   `struct point { double x; double y }`
+   4.   `struct point { double x; double y; };`
+   5.   `struct point { double x; double y; }`
+2. What is the difference among the following three programs?
 
 Program 1
-```
+
+```c
 #include <stdio.h>
 struct point { double x; double y; };
 int main(void) {
@@ -365,8 +378,10 @@ int main(void) {
     return 0;
 }
 ```
+
 Program 2
-```
+
+```c
 #include <stdio.h>
 typedef struct { double x; double y; } Point;
 int main(void) {
@@ -376,8 +391,10 @@ int main(void) {
     return 0;
 }
 ```
+
 Program 3
-```
+
+```c
 #include <stdio.h>
 typedef struct { double x; double y; } Point;
 int main(void) {
@@ -386,6 +403,7 @@ int main(void) {
     return 0;
 }
 ```
+
 3. Write a program that uses the employee structure above to get 5 employee's data from a user and print the results. The sum of the salaries should be computed as well, as a record for the company's total salary expenditure.
 
 ```c
@@ -443,6 +461,3 @@ void print_employee(Employee e){
 }
 
 ```
-
-
-
