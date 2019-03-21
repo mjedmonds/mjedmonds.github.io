@@ -1,0 +1,18 @@
+CS Coding and Documentation Standards
+
+1.	Each program, class, unit, etc. should have a comment block at the top with the following information:
+    - Programmer name
+    - Course number
+    - Date
+    - Purpose
+    - Input
+    - Output
+2.	Each module (method, procedure, function, etc.) should have a comment block at the top with the following information:
+    - Purpose
+    - Description of parameters
+    - Description of return values
+    - Input
+    - Output
+3.	Each data item should have a meaningful identifier and should be accompanied by purpose comments as appropriate.
+4.	Any section of code that uses an unusual algorithm or has logic that is difficult to follow should be well documented.
+
