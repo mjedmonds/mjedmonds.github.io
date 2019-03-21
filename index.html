@@ -18,26 +18,35 @@
 
   <!-- Google analytics -->
   <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    (function(i, s, o, g, r, a, m)
+    {
+      i['GoogleAnalyticsObject'] = r;
+      i[r] = i[r] || function()
+      {
+        (i[r].q = i[r].q || []).push(arguments)
+      }, i[r].l = 1 * new Date();
+      a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0];
+      a.async = 1;
+      a.src = g;
+      m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
     ga('create', 'UA-98378227-1', 'auto');
     ga('send', 'pageview');
   </script>
-  
+
   <!-- CSS -->
   <link rel="stylesheet" href="css/default.css">
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/media-queries.css">
   <link rel="stylesheet" href="css/magnific-popup.css">
-  <link rel="stylesheet" href="css/mjedmonds.css">  
+  <link rel="stylesheet" href="css/mjedmonds.css">
   <link rel="stylesheet" href="css/publications.css">
   <link rel="stylesheet" href="css/bootstrap/bootstrap-iso.css">
-<link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
-  <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css"/>
-  
+  <link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css" />
+
   <!-- Script -->
   <script src="js/modernizr.js"></script>
   <script src="js/smooth-scroll.js"></script>
@@ -51,10 +60,10 @@
 </head>
 
 <body>
-  
+
   <!-- Header -->
   <header id="home">
-    
+
     <!-- navigation -->
     <nav id="nav-wrap">
       <a class="mobile-btn" href="#nav-wrap" title="Show navigation">Show navigation</a>
@@ -78,7 +87,7 @@
     <div class="row banner">
       <div class="banner-text">
         <h1 class="responsive-headline">Mark Edmonds</h1>
-        <h3>I'm currently pursuing a PhD in Computer Science at UCLA under <a href="http://www.stat.ucla.edu/~sczhu/">Dr. Song-Chun Zhu</a> with a focus on artificial intelligence and robotics. My primary research interests are on causal learning, transfer learning, computational psychology,  reinforcement learning, and learning from demonstration. Start scrolling to learn more <a data-scroll data-options='{"offset": 0}' href="#about">about me</a>.</h3>
+        <h3>I'm currently pursuing a PhD in Computer Science at UCLA under <a href="http://www.stat.ucla.edu/~sczhu/">Dr. Song-Chun Zhu</a> with a focus on artificial intelligence and robotics. My primary research interests are on causal learning, transfer learning, computational psychology, reinforcement learning, and learning from demonstration. Start scrolling to learn more <a data-scroll data-options='{"offset": 0}' href="#about">about me</a>.</h3>
         <hr />
         <ul class="social">
           <!-- <li><a href=""><i class="fa fa-facebook"></i></a></li> -->
@@ -163,7 +172,7 @@
 
       <div class="nine columns main-col">
 
-         <div class="row item">
+        <div class="row item">
 
           <div class="twelve columns">
 
@@ -222,7 +231,7 @@
 
       <div class="nine columns main-col">
 
-         <div class="row item">
+        <div class="row item">
 
           <div class="twelve columns">
 
@@ -277,7 +286,7 @@
   </section>
   <!-- Education Section End-->
 
-  
+
   <section id="publications">
 
     <!-- publications -->
@@ -292,7 +301,38 @@
         <div class="row item">
 
           <div class="twelve columns">
-            
+            <!-- TPDS, Hardware Accelerated Semantic Declarative Memory Systems through CUDA and MapReduce-->
+            <div class="pitems">
+              <div class="pubmain">
+                <div class="pubassets">
+                  <a href="projects/DM/TPDS18_HADM_final.pdf" class="tooltips" title="Paper Download">
+                    <i class="far fa-file-pdf"></i>
+                  </a>
+
+                </div>
+                <!-- end pubassests -->
+                <h5><a href="projects/DM/TPDS18_HADM_final.pdf">Hardware Accelerated Semantic Declarative Memory Systems through CUDA and MapReduce</a></h5>
+                <div class="pubauthor">
+                  <strong>M. Edmonds</strong>,
+                  <a href="https://udayton.edu/directory/engineering/electrical_and_computer/atahary-tanvir.php">T. Atahary</a>,
+                  <a href="#">S. Douglass</a>,
+                  <a href="https://udayton.edu/directory/engineering/electrical_and_computer/taha_tarek_m.php">T. Taha</a>.
+                </div <p class="paper">IEEE Transactions on Parallels and Distributed Systems (TDPS), March 2019</p>
+                <div class="researchimgcontainer">
+                  <img class="researchimg" style="width: 200px" src="projects/DM/MRLEffectiveFanIDs.png" alt="causal simulator" />
+                  <img class="researchimg" style="width: 200px" src="projects/DM/SubclassCandidateConsideration.png" alt="causal structures" />
+                </div>
+                <div class="bootstrap-iso">
+                  <span class="label label-success">Journal Publication</span>
+                  <span class="label label-primary">Declarative Memory</span>
+                </div>
+              </div>
+              <!-- end pubmain -->
+              <br style="clear:both" />
+            </div>
+            <!-- end pitems -->
+            <!-- END CogSci 2018, Human Causal Transfer: Challenges for Deep Reinforcement Learning -->
+
             <!-- CogSci 2018, Human Causal Transfer: Challenges for Deep Reinforcement Learning -->
             <div class="pitems">
               <div class="pubmain">
@@ -325,7 +365,7 @@
                 <div class="pubauthor">
                   <strong>M. Edmonds*</strong>,
                   <a href="https://sites.google.com/view/jameskubricht/home">J. Kubricht*</a>,
-                  <a href="https://www.linkedin.com/in/cxsummers/">Colin Summers</a>,
+                  <a href="https://www.linkedin.com/in/cxsummers/">C. Summers</a>,
                   <a href="http://www.yzhu.io/">Y. Zhu</a>,
                   <a href="https://www-robotics.jpl.nasa.gov/people/Brandon_Rothrock">B. Rothrock</a>,
                   <a href="http://www.stat.ucla.edu/~sczhu/">S.C. Zhu</a>,
@@ -335,8 +375,8 @@
                 </div>
                 <p class="paper">40th Annual Meeting of the Cognitive Science Society (CogSci), 2018</p>
                 <div class="researchimgcontainer">
-                  <img class="researchimg" style="width: 200px" src="projects/OpenLock/openlock_trial2.png" alt="causal simulator"/>
-                  <img class="researchimg" style="width: 200px" src="projects/OpenLock/causal_structures.png" alt="causal structures"/>
+                  <img class="researchimg" style="width: 200px" src="projects/OpenLock/openlock_trial2.png" alt="causal simulator" />
+                  <img class="researchimg" style="width: 200px" src="projects/OpenLock/causal_structures.png" alt="causal structures" />
                 </div>
                 <div class="bootstrap-iso">
                   <span class="label label-success">Conference Paper</span>
@@ -350,7 +390,7 @@
             <!-- end pitems -->
             <!-- END CogSci 2018, Human Causal Transfer: Challenges for Deep Reinforcement Learning -->
 
-            
+
             <!-- ICRA 2018, Unsupervised Learning Hierarchical HOI -->
             <div class="pitems">
               <div class="pubmain">
@@ -385,8 +425,8 @@
                 </div>
                 <p class="paper">International Conference on Robotics and Automation (IRCA), 2018</p>
                 <div class="researchimgcontainer">
-                  <img class="researchimg" style="width: 300px" src="images/icra18-clustering.png" alt="action clustering"/>
-                  <img class="researchimg" style="width: 200px" src="images/icra18_t-aog.png" alt="temporal and-or graph"/>
+                  <img class="researchimg" style="width: 300px" src="images/icra18-clustering.png" alt="action clustering" />
+                  <img class="researchimg" style="width: 200px" src="images/icra18_t-aog.png" alt="temporal and-or graph" />
                 </div>
                 <div class="bootstrap-iso">
                   <span class="label label-success">Conference Paper</span>
@@ -400,7 +440,7 @@
             <!-- END ICRA 2018, Unsupervised Learning Hierarchical HOI -->
 
 
-            <!-- IROS 2017, Open Bottle --> 
+            <!-- IROS 2017, Open Bottle -->
             <div class="pitems">
               <div class="pubmain">
                 <div class="pubassets">
@@ -414,7 +454,7 @@
                       <i class="far fa-file-pdf"></i>
                   </a> -->
                   <a href="https://github.com/xiaozhuchacha/OpenBottle" class="tooltips" title="Code">
-                      <i class="fas fa-code"></i>
+                    <i class="fas fa-code"></i>
                   </a>
                   <a href="https://vimeo.com/227504384" class="tooltips" title="Demo">
                     <i class="far fa-file-video"></i>
@@ -440,8 +480,8 @@
                 </div>
                 <p class="paper">International Conference on Intelligent Robots and Systems (IROS), 2017</p>
                 <div class="researchimgcontainer">
-                  <img class="researchimg" src="images/open_bottle1.gif" alt="Open bottle demo 1"/>
-                  <img class="researchimg" src="images/open_bottle2.gif" alt="Open bottle demo 2"/>
+                  <img class="researchimg" src="images/open_bottle1.gif" alt="Open bottle demo 1" />
+                  <img class="researchimg" src="images/open_bottle2.gif" alt="Open bottle demo 2" />
                 </div>
                 <div class="bootstrap-iso">
                   <span class="label label-success">Conference Paper</span>
@@ -451,8 +491,8 @@
               <!-- end pubmain -->
               <br style="clear:both" />
             </div>
-            <!-- end pitems --> 
-            <!-- END IROS 2017, Open Bottle --> 
+            <!-- end pitems -->
+            <!-- END IROS 2017, Open Bottle -->
 
             <!-- IROS 2017, Glove Hardware -->
             <div class="pitems">
@@ -468,7 +508,7 @@
                       <i class="far fa-file-pdf"></i>
                   </a> -->
                   <a href="https://github.com/xiaozhuchacha/VCLATactileGlove" class="tooltips" title="Code">
-                      <i class="fas fa-code"></i>
+                    <i class="fas fa-code"></i>
                   </a>
                   <a href="papers/IROS17_GloveHardware_final.pdf" class="tooltips" title="Paper Download">
                     <i class="far fa-file-pdf"></i>
@@ -491,8 +531,8 @@
                 </div>
                 <p class="paper">International Conference on Intelligent Robots and Systems (IROS), 2017</p>
                 <div class="researchimgcontainer">
-                  <img class="researchimg" src="images/glove1.png" alt="Glove visualization 1"/>
-                  <img class="researchimg" src="images/glove2.png" alt="Glove visualization 2"/>
+                  <img class="researchimg" src="images/glove1.png" alt="Glove visualization 1" />
+                  <img class="researchimg" src="images/glove2.png" alt="Glove visualization 2" />
                 </div>
                 <div class="bootstrap-iso">
                   <span class="label label-success">Conference Paper</span>
@@ -503,9 +543,9 @@
               <br style="clear:both" />
             </div>
             <!-- end pitems -->
-            <!-- END IROS 2017, Glove Hardware --> 
+            <!-- END IROS 2017, Glove Hardware -->
 
-            <!-- SNPD 2015, DM --> 
+            <!-- SNPD 2015, DM -->
             <div class="pitems">
               <div class="pubmain">
                 <div class="pubassets">
@@ -518,7 +558,7 @@
                   <a href="projects/cvpr18_scenesynthesis/scenesynthesis_supplementary_cvpr18.pdf" class="tooltips" title="Supplementary Download">
                       <i class="far fa-file-pdf"></i>
                   </a> -->
-                  
+
                   <a href="papers/SNPD_2015_HighPerformanceDM_final.pdf" class="tooltips" title="Paper Download">
                     <i class="far fa-file-pdf"></i>
                   </a>
@@ -534,8 +574,8 @@
                 </div>
                 <p class="paper">Software Engineering, Artificial Intelligence, Networking and Parallel/Distributed Computing (SNPD), 2015</p>
                 <div class="researchimgcontainer">
-                  <img class="researchimg" src="images/dm1.png" alt="declarative memory"/>
-                  <img class="researchimg" style="width: 200px" src="images/dm2.png" alt="declarative memory fan optimzation"/>
+                  <img class="researchimg" src="images/dm1.png" alt="declarative memory" />
+                  <img class="researchimg" style="width: 200px" src="images/dm2.png" alt="declarative memory fan optimzation" />
                 </div>
                 <div class="bootstrap-iso">
                   <span class="label label-success">Conference Paper</span>
@@ -545,8 +585,8 @@
               <!-- end pubmain -->
               <br style="clear:both" />
             </div>
-            <!-- end pitems --> 
-            <!-- END SNPD 2015, DM --> 
+            <!-- end pitems -->
+            <!-- END SNPD 2015, DM -->
 
             <!-- NAECON 2015, BMI -->
             <div class="pitems">
@@ -585,7 +625,7 @@
               <!-- end pubmain -->
               <br style="clear:both" />
             </div>
-            <!-- END NAECON 2015, BMI --> 
+            <!-- END NAECON 2015, BMI -->
 
           </div>
           <!-- end col -->
@@ -602,7 +642,7 @@
   </section>
   <!-- publcations Section End-->
 
- <section id="research">
+  <section id="research">
 
     <!-- research -->
     <div class="row research">
@@ -625,9 +665,9 @@
             </p>
 
             <div style="margin: 0 auto; width: 350px;">
-              <img src="projects/OpenLock/openlock_trial2.png" alt="simulator screen" >
+              <img src="projects/OpenLock/openlock_trial2.png" alt="simulator screen">
             </div>
-            
+
             <div class="collabcontainer">
               <div class="collableft">
                 <b>Collaborators:</b>
@@ -640,15 +680,15 @@
                 </ul>
               </div>
               <div class="collabright">
-                <img src="images/VCLA.png" style="width: 75px" alt="Center for Vision, Cognition, Learning and Autonomy logo"/><br>                
-                <img src="images/JPL.png" style="width: 125px" alt="Jet Propulsion Laboratory logo"/>                
+                <img src="images/VCLA.png" style="width: 75px" alt="Center for Vision, Cognition, Learning and Autonomy logo" /><br>
+                <img src="images/JPL.png" style="width: 125px" alt="Jet Propulsion Laboratory logo" />
               </div>
             </div>
             <p></p>
           </div>
 
         </div>
-        
+
         <div class="row item">
 
           <div class="twelve columns">
@@ -666,13 +706,13 @@
                 <li> Neural network training for action planning and embodiment mapping between a human demonstrator and a robot</li>
                 <li> Localization using SLAM, IMU, and wheel odometry combined with Kalman filtering using a Microsoft Kinect and Velodyne VLP16</li>
                 <li> ROS navigation stack, including a dynamic footprint based on current position of arms </li>
-              </ul> 
+              </ul>
             </div>
             <div class="researchimgcontainer">
               <iframe src="https://player.vimeo.com/video/161556506" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
               <p><a href="https://vimeo.com/161556506">Human-Robot-Collaboration (Hu-Ro-Co)</a> from <a href="https://vimeo.com/yixinzhu">Yixin Zhu</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
             </div>
-            
+
             <div class="collabcontainer">
               <div class="collableft">
                 <b>Collaborators:</b>
@@ -688,8 +728,8 @@
                 </ul>
               </div>
               <div class="collabright">
-                <img src="images/VCLA.png" style="width: 75px" alt="Center for Vision, Cognition, Learning and Autonomy logo"/><br>                
-                <img src="images/JPL.png" style="width: 125px" alt="Jet Propulsion Laboratory logo"/>                
+                <img src="images/VCLA.png" style="width: 75px" alt="Center for Vision, Cognition, Learning and Autonomy logo" /><br>
+                <img src="images/JPL.png" style="width: 125px" alt="Jet Propulsion Laboratory logo" />
               </div>
             </div>
             <p></p>
@@ -708,7 +748,7 @@
             <p>
               My undergraduate thesis was focused on accelerating the declarative memory module of the CECEP cognitive architecture, a derivative of ACT-R. The research centered on leveraging the parallel computing abilities of the CUDA programming platform to accelerate declarative retrieval. The initial, C++ implementation produced a 20 times speedup over the fastest previous implementation of declarative memory. The CUDA implementation accelerates declarative memory by a factor of 100 times while providing massive scalability. The work was jointly supported by the Air Force Research Lab and the University of Dayton Research Institute.
             </p>
-            
+
             <div class="collabcontainer">
               <div class="collableft">
                 <b>Collaborators:</b>
@@ -720,8 +760,8 @@
               </div>
               <div>
                 <div class="collabright">
-                  <img src="images/UDlogo.png" style="width: 125px" alt="University of Dayton logo"/><br>             
-                  <img src="images/AFRL.png" style="width: 125px" alt="Air Force Research Lab logo"/>                
+                  <img src="images/UDlogo.png" style="width: 125px" alt="University of Dayton logo" /><br>
+                  <img src="images/AFRL.png" style="width: 125px" alt="Air Force Research Lab logo" />
                 </div>
               </div>
             </div>
@@ -742,7 +782,7 @@
             <p>
               This project expanded the capability of a brain machine interface through EEG signals and a robotic arm. The research centered on adding additional gestures and improving the universality of the interface. The team implemented 6 new useful actions for the robotic and developed a in-house EEG signal classifier using liner discriminate analysis. The EEG classifier currently can successfully distinguish between two states but successive senior design teams will increase the number of distinguishable states.
             </p>
-            
+
             <div class="collabcontainer">
               <div class="collableft">
                 <b>Collaborators:</b>
@@ -755,10 +795,10 @@
                 </ul>
               </div>
               <div class="collabright">
-                <img src="images/UDlogo.png" style="width: 125px" alt="University of Dayton logo"/>                
+                <img src="images/UDlogo.png" style="width: 125px" alt="University of Dayton logo" />
               </div>
             </div>
-            
+
           </div>
           <!-- end col -->
 
@@ -802,7 +842,7 @@
                 </ul>
               </div>
             </div>
-            
+
           </div>
 
         </div>
@@ -1097,19 +1137,20 @@
   </script>
   <!-- Default Statcounter code for Personal website http://mjedmonds.com -->
   <script type="text/javascript">
-  var sc_project=11819202; 
-  var sc_invisible=0; 
-  var sc_security="3d207e19"; 
-  var sc_https=1; 
-  var scJsHost = (("https:" == document.location.protocol) ? "https://secure." :
-  "http://www.");
-  document.write("<sc"+"ript type='text/javascript' src='" + scJsHost+
-  "statcounter.com/counter/counter.js'></"+"script>");
+    var sc_project = 11819202;
+    var sc_invisible = 0;
+    var sc_security = "3d207e19";
+    var sc_https = 1;
+    var scJsHost = (("https:" == document.location.protocol) ? "https://secure." :
+      "http://www.");
+    document.write("<sc" + "ript type='text/javascript' src='" + scJsHost +
+      "statcounter.com/counter/counter.js'></" + "script>");
   </script>
-  <noscript><div class="statcounter"><a title="Web Analytics Made Easy -
-  StatCounter" href="http://statcounter.com/" target="_blank"><img
-  class="statcounter" src="//c.statcounter.com/11819202/0/3d207e19/0/" alt="Web
-  Analytics Made Easy - StatCounter"></a></div></noscript>
+  <noscript>
+    <div class="statcounter"><a title="Web Analytics Made Easy -
+  StatCounter" href="http://statcounter.com/" target="_blank"><img class="statcounter" src="//c.statcounter.com/11819202/0/3d207e19/0/" alt="Web
+  Analytics Made Easy - StatCounter"></a></div>
+  </noscript>
   <!-- End of Statcounter Code -->
 
 </body>
