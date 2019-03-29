@@ -1,0 +1,44 @@
+Ok, so this video is meant to introduce you to codeboard.
+And what I'm looking at right now is actually my view of how codeboard appears, so it might look a little different on your end.
+But the first think you'll notice is that there's this file called user_main.c, and you should be able to see this.
+This user main is basically going to replace what you've been using as main().
+So in your previous programs you would write int main() and then your code.
+Here, I have to replace main() with user_main(), and the reason for that is because I actually have a main.c that is hidden.
+So all of these files on the left hand side here with an "h" are only viewable by me.
+But that's fine, you don't really need to know how the backend works.
+The point being is that to use code board you'll write your code right here.
+This is your main() function, and then you can also add files as you see fit.
+So if you want to add a file, you just click this, enter the name, let's say util.c or something.
+You add the file, and now the file appears down here, and you can add header files, you can add implementation files, it doesn't matter.
+What else...
+Another thing that you need to be aware of is that you need to save your changes, so any time you edit your code board project, just go up to Project and then Save Changes.
+When you hit save, there'll be a message displayed down here saying Changes Successfully Saved.
+To actually compile your code, you'll hit this button right here called Compile, and then in the same window it will say Compilation Succeeded or it'll give you a reason as to why the compilation failed.
+After you've compiled your code, you can then hit run, which will basically execute your program.
+This program does nothing right now, but if I change this to say "print("hi\n"); or something, recompile and then...
+Oh, "printf"
+Recompile. Then hit run, we now see "hi" as the output.
+So it works very similar to how XCode or Visual Studio would.
+Finally, when you're done implementing everything and you think you have a solution, you can hit the Submit button up here.
+What Submit does is actually execute your code against a series of test cases that have been predefined, and you will get a score based on whether or not you passed those test cases.
+Right now I'm working in a template, but let's switch to the project called Conditionals.
+This is basically a project to test whether or not a set of points are in...
+It tests which quadrant the points are in.
+If we compile this, as you can see, hit Run, it doesn't do anything because we have no implementation.
+And then we hit Submit, you'll see this "Submitting your Solution"
+This may take a few seconds.
+Because we haven't implemented anything, the program actually fails and then it explains why it failed, and finally at the end it tells you your score.
+Ok you earned 0 points out of 8 possible. Fine.
+For a moment I'm going to pop into this hidden file so you can look at what it looks like when you get it correct.
+Here, I'm just switching it so instead of running user_main it runs solution_main.
+Now if I hit submit, the solution's going to run, and you see the results output.
+You see the results output: The coordinate point (1,1) lies in the First quadrant.
+Down here, it says in green, "Passed test case" etc.
+And then it finally gives you a score, 100, and you earned 8 out of 8 points.
+This is really where the power of code board comes in, you can test and verify your code works before you hit submit.
+Another caveat though is that when you're actually hitting Submit, this output up here might look different, it might look a little weird.
+Don't worry about that.
+The only think you need to pay attention to this green or red text.
+Green means that you pass; red means that you didn't pass.
+I think that's pretty much it for the brief introduction.
+Please contact me if you have any questions.
