@@ -1,58 +1,32 @@
 <section id="codeboard-submission" class="level1">
   <h1>Codeboard Submission</h1>
   <p>For this week’s assignments and onward, we will be using 
-  <a href="https://codeboard.io" class="uri">
-  https://codeboard.io</a>for homework submissions. This will make
-  submitting homework easier for a number of reasons:</p>
+  <a href="https://codeboard.io" class="uri">https://codeboard.io</a>for homework submissions. This will make submitting homework easier for a number of reasons:</p>
   <ol type="1">
-    <li>You can now verify your grade before the deadline. When you
-    hit “Submit” on Codeboard, a testing framework will execute and
-    check the output of your program. This makes it easier to get
-    full points, as you know in advance which cases your program
-    does not handle correctly.</li>
-    <li>Online IDE means you can work anywhere with an internet
-    connection. There’s no more zipping of files, Visual Studio, or
-    XCode projects to setup. I will provide you with starter code,
-    and then you go from there. You hit Submit, and you’ve
-    submitted your assignment.</li>
+    <li>You can now verify your grade before the deadline. When you hit “Submit” on Codeboard, a testing framework will execute and check the output of your program. This makes it easier to get full points, as you know in advance which cases your program does not handle correctly.</li>
+    <li>Online IDE means you can work anywhere with an internet connection. There’s no more zipping of files, Visual Studio, or XCode projects to setup. I will provide you with starter code, and then you go from there. You hit Submit, and you’ve submitted your assignment.</li>
   </ol>
   <p>See an demo video of Codeboard here:</p>
-<iframe width="840" height="472.5" src="https://www.youtube.com/embed/OqIvmbc6nrg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <iframe width="840" height="472.5" src="https://www.youtube.com/embed/OqIvmbc6nrg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen"></iframe>
+  <p>Some notes about Codeboard:</p>
   <ol type="1">
-    <li>You are free to continue to use Visual studio or XCode if
-    you wish. However, all grading will occur on Codeboard, so you
-    are required to submit and pass the test cases on
-    Codeboard.</li>
+    <li>You are free to continue to use Visual studio or XCode if you wish. However, all grading will occur on Codeboard, so you are required to submit and pass the test cases on Codeboard.</li>
     <li>You 
     <strong>must</strong>save your work under the “
     <em>Project -&gt; Save changes</em>” menu item. 
     <strong>Changes do not save automatically</strong>. 
-    <strong>Changes will not save unless you save signed up and
-    logged into your Codeboard account</strong>(you can tell
-    whether or not you are signed in the bottom left corner). Your
-    browser should warn you if you attempt to close the tab/page
-    without saving. 
+    <strong>Changes will not save unless you save signed up and logged into your Codeboard account</strong>(you can tell whether or not you are signed in the bottom left corner). Your browser should warn you if you attempt to close the tab/page without saving. 
     <strong>Pay attention</strong>.</li>
     <li>
-    <strong>Please make an account and use your SMC username as
-    your codeboard account username (remove all spaces,
-    underscores, and hyphens)</strong>. If I cannot identify who’s
-    account belongs to who, you will get a 0 until the problem is
-    fixed.</li>
-    <li>Follow the instructions of each assignment. The output
-    restrictions/expectations for test cases is very rigid. A
-    single misplaced character will result in failing a test case
-    (or all).</li>
-    <li>When you submit your assignment, your output may look odd.
-    The only thing you need to pay attention to is the green or red
-    test case output. The testing framework modifies text
-    input/output (so I can compare against correct answers), so it
-    changes how the input/output appears.</li>
-    <li>The following naming conventions are reserved for the
-    testing framework. Should you not adhere to these rules, you
-    may get a compilation error. You are 
-    <strong>not</strong>permitted to name any function or data
-    member (struct, enum, etc) according to the following:
+    <strong>Please make an account and use your SMC username as your codeboard account username (remove all spaces, underscores, and hyphens)</strong>. If I cannot identify who’s account belongs to who, you will get a 0 until the problem is fixed.</li>
+    <li>Follow the instructions of each assignment. The output restrictions/expectations for test cases is very rigid. A single misplaced character will result in failing a test case (or all).
+    <ul>
+      <li>Any attempt to manipulate or subvert the grader without satisfying the requirements 
+      <strong>will result in an automatic 0</strong>for the assignment/quiz.</li>
+    </ul></li>
+    <li>When you submit your assignment, your output may look odd. The only thing you need to pay attention to is the green or red test case output. The testing framework modifies text input/output (so I can compare against correct answers), so it changes how the input/output appears.</li>
+    <li>The following naming conventions are reserved for the testing framework. Should you not adhere to these rules, you may get a compilation error. You are 
+    <strong>not</strong>permitted to name any function or data member (struct, enum, etc) according to the following:
     <ol type="1">
       <li>
       <code>main()</code>- the testing framework defines 
@@ -60,49 +34,34 @@
       <code>user_main()</code></li>
       <li>Any function or data type starting with the name 
       <code>reserved_</code>. For instance, 
-      <code>reserved_test()</code>is not permitted for use. These
-      are reserved for the testing framework.</li>
+      <code>reserved_test()</code>is not permitted for use. These are reserved for the testing framework.</li>
     </ol></li>
   </ol>
-  <p>This tool is meant to make your life easier, and I think
-  you’ll find it very useful in securing a good grade. Please do
-  not hesitate with questions, comments, or concerns.</p>
+  <p>This tool is meant to make your life easier, and I think you’ll find it very useful in securing a good grade. Please do not hesitate with questions, comments, or concerns.</p>
   <section id="faq" class="level2">
     <h2>FAQ</h2>
     <ol type="1">
       <li>
         <strong>My score is -1, why?</strong>
         <ol type="1">
-          <li>The first possibility is that your program has more
-          inputs than expected by the testing framework. For
-          instance, you may have added an unexpected loop (the
-          description will be clear if a loop is needed), or you
-          may prompt for an additional value. If your program has
-          an extra input, the codeboard submission will never
-          finish and eventually time out, leading to a -1</li>
-          <li>Second, less likely possibility: there’s a problem
-          with the testing framework. If you are confident you have
-          matched the number of inputs in the description, please
-          reach out if you believe there is a problem. A -1 grade
-          is a common indicator something isn’t configured properly
-          between codeboard and Canvas.</li>
+          <li>The first possibility is that your program has more inputs than expected by the testing framework. For instance, you may have added an unexpected loop (the description will be clear if a loop is needed), or you may prompt for an additional value. If your program has an extra input, the codeboard submission will never finish and eventually time out, leading to a -1</li>
+          <li>Second, less likely possibility: there’s a problem with the testing framework. If you are confident you have matched the number of inputs in the description, please reach out if you believe there is a problem. A -1 grade is a common indicator something isn’t configured properly between codeboard and Canvas.</li>
         </ol>
       </li>
-      <li><strong>The professor sent a note that the testing framework in
-        codeboard was updated. How can I get the latest version?</strong>
-      <ol type="1">
-        <li>Save all of your files locally. Copy the contents of
-        all of your .cpp and .h to your local machine.</li>
-        <li>We’re going to reset your codeboard project. When you
-        launch the assignment, you should see a prompt about
-        “keeping your version” vs.&#160;“using the original.” Pick
-        use the original. This will reset your codeboard project to
-        the latest version.</li>
-        <li>Recreate all of your files and paste in the
-        source.</li>
-        <li>Run the tests again with the latest version!</li>
-      </ol></li>
+      <li>
+        <strong>The professor sent a note that the testing framework in codeboard was updated. How can I get the latest version?</strong>
+        <ol type="1">
+          <li>Save all of your files locally. Copy the contents of all of your .cpp and .h to your local machine.</li>
+          <li>We’re going to reset your codeboard project. When you launch the assignment, you should see a prompt about “keeping your version” vs.&#160;“using the original.” Pick use the original. This will reset your codeboard project to the latest version.</li>
+          <li>Recreate all of your files and paste in the source.</li>
+          <li>Run the tests again with the latest version!</li>
+        </ol>
+      </li>
     </ol>
   </section>
 </section>
-
+<section id="codeboard-submission" class="level2">
+  <h2>Codeboard Submission</h2>
+  <p>Please refer to the codeboard submission instructions here: 
+  <a href="http://mjedmonds.com/CS50/codeboard.html">http://mjedmonds.com/CS50/codeboard.html</a></p>
+</section>
