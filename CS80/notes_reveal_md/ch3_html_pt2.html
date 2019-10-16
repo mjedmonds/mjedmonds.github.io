@@ -429,8 +429,9 @@
             <pre class="regex">
             <code>\(\d{3}\) +\d{3}-\d{4}</code></pre>
           </li>
-          <li>Prelimnary note: <code>\</code> in regex is similar
-          to <code>&</code> in HTML
+          <li>
+            <p>Prelimnary note: <code>\</code> in regex is similar
+            to <code>&</code> in HTML</p>
             <ul>
               <li>
                 <code>/</code> escapes the special character
@@ -452,13 +453,19 @@
             <pre class="regex">
             <code>\(\d{3}\) +\d{3}-\d{4}</code></pre>
           </li>
-          <li><code>(</code> has a special meaning in regex, namely
-          to start saving the matched pattern to a <em>group</em>
-          (saving a section of the pattern for later use)</li>
-          <li><code>)</code> marks the end of the saved group</li>
-          <li>You can then reference the group later with
-          <code>\#</code> where <code>#</code> is the group number
-          used in the expression you wish to reference
+          <li>
+            <p><code>(</code> has a special meaning in regex,
+            namely to start saving the matched pattern to a
+            <em>group</em> (saving a section of the pattern for
+            later use)</p>
+          </li>
+          <li>
+            <p><code>)</code> marks the end of the saved group</p>
+          </li>
+          <li>
+            <p>You can then reference the group later with
+            <code>\#</code> where <code>#</code> is the group
+            number used in the expression you wish to reference</p>
             <ul>
               <li>E.g. to reference the first saved group, use
               <code>\1</code></li>
@@ -480,8 +487,8 @@
             <code>\(\d{3}\) +\d{3}-\d{4}</code></pre>
           </li>
           <li>
-            <code>\d</code> says we want to look for a digit
-            ([0-9])
+            <p><code>\d</code> says we want to look for a digit
+            ([0-9])</p>
             <ul>
               <li>In this case, the escape gives <code>d</code> a
               special meaning - namely a digit</li>
@@ -502,7 +509,8 @@
             <pre class="regex">
             <code>\(\d{3}\) +\d{3}-\d{4}</code></pre>
           </li>
-          <li>"" is a literal space to look for
+          <li>
+            <p>"" is a literal space to look for</p>
             <ul>
               <li><code>+</code> means match the previous pattern 1
               or more times</li>

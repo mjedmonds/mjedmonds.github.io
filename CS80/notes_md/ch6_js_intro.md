@@ -415,7 +415,12 @@ Operators and Conditionals
 - We can also call functions or inspect variables while paused using the console
   - Move to the console, and type a javascript statement to execute
     - Can also just type variable names to get their value
-  - If the javascript statement we called doesn\'t have a return value (e.g. statement doesn\'t yeild a value), then the console will report `undefined`.
+  - If the javascript statement we called doesn\'t have a return value (e.g. statement doesn\'t yield a value), then the console will report `undefined`.
+
+## Developer Tools
+- Each browser has a slightly different interface, but the developer tools work the same way for all.
+- Chrome introduction: [https://developers.google.com/web/tools/chrome-devtools/javascript](https://developers.google.com/web/tools/chrome-devtools/javascript)
+- Firefox introduction: [https://developer.mozilla.org/en-US/docs/Tools/Debugger](https://developer.mozilla.org/en-US/docs/Tools/Debugger)
 
 ## Javascript Functions
 
