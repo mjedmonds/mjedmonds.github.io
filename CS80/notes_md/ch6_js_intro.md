@@ -376,8 +376,7 @@ Operators and Conditionals
 
 ## Developer Tools
 
-- See the Dev Tools slides for an introduction on debugging your programs
-- [`Dev Tools Introduction`](./ch6_dev_tools.html)
+- See the [`Dev Tools slides'](./ch6_js_dev_tools.html) for an introduction on debugging your programs
 
 ## Javascript Functions
 
