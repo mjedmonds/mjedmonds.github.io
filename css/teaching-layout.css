@@ -186,7 +186,7 @@ header .scrolldown a:hover {
 
 /* hide toggle button */
 
-#nav-wrap > a.mobile-btn {
+#nav-wrap>a.mobile-btn {
   display: none;
 }
 
@@ -387,13 +387,14 @@ ul#bullet li.current a {
   padding: 0;
 }
 
-#course-content li { 
-    padding-left: 16px; 
+#course-content li {
+  padding-left: 16px;
 }
 
 #course-content li:before {
-    content: "•"; /* Insert content that looks like bullets */
-    padding-right: 8px;
+  content: "•";
+  /* Insert content that looks like bullets */
+  padding-right: 8px;
 }
 
 #course-content .header-col {
@@ -431,22 +432,22 @@ ul#bullet li.current a {
 /* d. project-page Section
 /* ------------------------------------------------------------------ */
 
-#project-page h1 {
+.project-page-section h1 {
   font: 18px/24px 'opensans-bold', sans-serif;
   text-transform: uppercase;
   letter-spacing: 1px;
 }
 
-#project-page h1 span {
+.project-page-section h1 span {
   border-bottom: 3px solid #11ABB0;
   padding-bottom: 6px;
 }
 
-#project-page h3 {
+.project-page-section h3 {
   font: 25px/30px 'opensans-bold', sans-serif;
 }
 
-#project-page {
+.project-page-section {
   background: #fff;
   padding-top: 0px;
   padding-bottom: 0px;
@@ -454,55 +455,56 @@ ul#bullet li.current a {
   text-align: justify;
 }
 
-#project-page a,
-#project-page a:visited {
+.project-page-section a,
+.project-page-section a:visited {
   color: #313131;
 }
 
-#project-page a:hover,
-#project-page a:focus {
+.project-page-section a:hover,
+.project-page-section a:focus {
   color: #11ABB0;
 }
 
-#project-page h1 {
+.project-page-section h1 {
   font: 18px/24px 'opensans-bold', sans-serif;
   text-transform: uppercase;
   letter-spacing: 1px;
   /*line-height: 40px*/
 }
 
-#project-page h1 span {
+.project-page-section h1 span {
   /*border-bottom: 3px solid #11ABB0;*/
   padding-bottom: 6px;
 }
 
-#project-page h3 {
+.project-page-section h3 {
   font: 25px/30px 'opensans-bold', sans-serif;
 }
 
-#project-page pre {
+.project-page-section pre {
   line-height: 20px;
 }
 
-#project-page ul {
+.project-page-section ul {
   list-style: none;
   padding: 0;
 }
 
-#project-page li { 
-    padding-left: 16px; 
+.project-page-section li {
+  padding-left: 16px;
 }
 
-#project-page li:before {
-    content: "•"; /* Insert content that looks like bullets */
-    padding-right: 8px;
+.project-page-section li:before {
+  content: "•";
+  /* Insert content that looks like bullets */
+  padding-right: 8px;
 }
 
-#project-page .header-col {
+.project-page-section .header-col {
   padding-top: 9px;
 }
 
-#project-page .main-col {
+.project-page-section .main-col {
   padding-right: 10%;
 }
 
@@ -512,44 +514,44 @@ ul#bullet li.current a {
   border-bottom: 1px solid #E8E8E8;
 }
 
-#project-page .info {
+.project-page-section .info {
   font: 16px/24px 'librebaskerville-italic', serif;
   color: #6E7881;
   margin-bottom: 18px;
   margin-top: 9px;
 }
 
-#project-page .info span {
+.project-page-section .info span {
   margin-right: 5px;
   margin-left: 5px;
 }
 
-#project-page .date {
+.project-page-section .date {
   font: 15px/24px 'opensans-regular', sans-serif;
   margin-top: 6px;
 }
 
-#project-page .download {
+.project-page-section .download {
   width: 58.33333%;
   padding-top: 6px;
 }
 
-#project-page .main-col {
+.project-page-section .main-col {
   padding-right: 5%;
 }
 
-#project-page .download .button {
+.project-page-section .download .button {
   margin-top: 6px;
   background: #444;
   color: #fff;
 }
 
-#project-page .download .button:hover {
+.project-page-section .download .button:hover {
   background: #11ABB0;
   color: #2B2B2B;
 }
 
-#project-page .download .button i {
+.project-page-section .download .button i {
   margin-right: 15px;
   font-size: 20px;
 }
