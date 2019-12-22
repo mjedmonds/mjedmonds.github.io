@@ -17,13 +17,22 @@
   <!-- Mobile Specific Metas
       ================================================== -->
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  
+
   <!-- Google analytics -->
   <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    (function(i, s, o, g, r, a, m)
+    {
+      i['GoogleAnalyticsObject'] = r;
+      i[r] = i[r] || function()
+      {
+        (i[r].q = i[r].q || []).push(arguments)
+      }, i[r].l = 1 * new Date();
+      a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0];
+      a.async = 1;
+      a.src = g;
+      m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
     ga('create', 'UA-98378227-1', 'auto');
     ga('send', 'pageview');
@@ -34,6 +43,7 @@
   <link rel="stylesheet" href="../../css/default.css">
   <link rel="stylesheet" href="../../css/teaching-layout.css">
   <link rel="stylesheet" href="../../css/media-queries.css">
+  <link rel="stylesheet" href="../../css/mjedmonds.css">
   <link rel="stylesheet" href="../../css/magnific-popup.css">
   <link rel="stylesheet" href="../../highlight/styles/default.css">
 
@@ -73,8 +83,8 @@
   </header>
   <!-- Header End -->
 
-  <section id="project-page">
-    
+  <section class="project-page-section">
+
     <div class="wide-row project-page">
 
       <div class="three columns header-col">
@@ -89,17 +99,17 @@
 
             <h2>Decomposing Human Causal Learning: Bottom-up Associative Learning and Top-down Schema Reasoning</h2>
             <p>
-              Mark Edmonds<sup>1,4</sup>, Siyuan Qi<sup>1,4</sup>, Yixin Zhu<sup>2,4</sup>, James Kubricht<sup>3</sup>,  Song-Chun Zhu<sup>1,2,4</sup>, Hongjing Lu<sup>2,3</sup>
+              Mark Edmonds<sup>1,4</sup>, Siyuan Qi<sup>1,4</sup>, Yixin Zhu<sup>2,4</sup>, James Kubricht<sup>3</sup>, Song-Chun Zhu<sup>1,2,4</sup>, Hongjing Lu<sup>2,3</sup>
               <br>
               <small>
-              1 Department of Computer Science, UCLA | 2 Department of Statistics, UCLA | 3 Department of Pyschology, UCLA  <br> 4 International Center for AI and Robot Autonomy (CARA)
+                1 Department of Computer Science, UCLA | 2 Department of Statistics, UCLA | 3 Department of Pyschology, UCLA <br> 4 International Center for AI and Robot Autonomy (CARA)
               </small>
             </p>
             <div style="margin: 0 auto;">
-              <img style="float:left; width: 40%; padding: 1%" src="./CogSci18_openlock_solutions.gif" alt="simulator screen" >
-              <img style="width: 45%; padding: 2%" src="./CogSci2019_hierarchy.png" alt="causal structures" >
+              <img style="float:left; width: 40%; padding: 1%" src="./CogSci18_openlock_solutions.gif" alt="simulator screen">
+              <img style="width: 45%; padding: 2%" src="./CogSci2019_hierarchy.png" alt="causal structures">
             </div>
-            
+
             <h5>Abstract</h5>
             <p>
               Transfer learning is fundamental for intelligence; agents expected to operate in novel and unfamiliar environments must be able to transfer previously learned knowledge to new domains or problems. However, knowledge transfer manifests at different levels of representation. The underlying computational mechanisms in support of different types of transfer learning remain unclear. In this paper, we approach the transfer learning challenge by decomposing the underlying computational mechanisms involved in bottom-up associative learning and top-down causal schema induction. We adopt a Bayesian framework to model causal theory induction and use the inferred causal theory to transfer abstract knowledge between similar environments. Speciﬁcally, we train a simulated agent to discover and transfer useful relational and abstract knowledge by interactively exploring the problem space and extracting relations from observed low-level attributes. A set of hierarchical causal schema is constructed to determine task structure. Our agent combines causal theories and associative learning to select a sequence of actions most likely to accomplish the task. To evaluate the proposed framework, we compare performances of the simulated agent with human performance in the OpenLock environment, a virtual “escape room” with a complex hierarchy that requires agents to reason about causal structures governing the system. While the simulated agent requires more attempts than human participants, the qualitative trends of transfer in the learning situations are similar between humans and our trained agent. These ﬁndings suggest human causal learning in complex, unfamiliar situations may rely on the synergy between bottom-up associative learning and top-down schema reasoning.
@@ -116,9 +126,9 @@
 
     </div>
   </section>
-  
-  <section id="project-page">
-    
+
+  <section class="project-page-section">
+
     <div class="wide-row project-page">
 
       <div class="three columns header-col">
@@ -130,8 +140,9 @@
         <div class="wide-row item">
 
           <div class="twelve columns">
-            <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/334518941" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
-<p><a href="https://vimeo.com/334518941">CogSci 2019 - Video Demonstration</a> from <a href="https://vimeo.com/user69261739">Mark Edmonds</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
+            <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/334518941" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe></div>
+            <script src="https://player.vimeo.com/api/player.js"></script>
+            <p><a href="https://vimeo.com/334518941">CogSci 2019 - Video Demonstration</a> from <a href="https://vimeo.com/user69261739">Mark Edmonds</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
           </div>
 
         </div>
@@ -141,9 +152,9 @@
 
     </div>
   </section>
-  
-  <section id="project-page">
-    
+
+  <section class="project-page-section">
+
     <div class="wide-row project-page">
 
       <div class="three columns header-col">
