@@ -258,7 +258,7 @@ int dummy_func(int param){
 
 int main(){
   int a = 5;
-  int b = dumm_func(a); // a is copied to dummy_func
+  int b = dummy_func(a); // a is copied to dummy_func
   // since a was copied (and then the copied value was modified in dumm_func, then returned), the value of a in main does not change
   printf("a: %d, b: %d\n", a, b);
 }
