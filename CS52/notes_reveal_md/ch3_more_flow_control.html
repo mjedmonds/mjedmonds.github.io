@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+
+    <title>More Flow of Control</title>
+
+    <meta name="description" content="CS 80: Internet Programming Notes">
+    <meta name="author" content="Mark Edmonds">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    
+    <!-- Google analytics -->
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-98378227-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="reveal.js/css/reveal.css">
+    <link rel="stylesheet" href="reveal.js/css/theme/serif.css" id="theme">
+    <link href='css/ubuntu_font.css' rel='stylesheet' type='text/css'>
+
+    <link rel="shortcut icon" href="../../favicon.png">
+    
+    <style>
+      body {
+        padding-top: 30px;
+        padding-bottom: 40px;
+      }
+      
+    </style>
+
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="css/highlightjs/atom-one-light.css">
+
+    <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+    <script>
+      document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+    </script>
+
+    <script src="js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+  </head>
+  <body>
+    
+    <script src="js/nav.js"></script>
+
+    <script>
+      function toggleElements(one, two) {
+      document.getElementById(one).style.display = 'none';
+      document.getElementById(two).style.display = 'block';
+      }
+    </script>
+    
+    <!-- Main body -->
+    
+    <div class="reveal">
+      <div class="slides">
+        <!-- slide content will go here -->
+        <section id="chapter-3-more-flow-of-control" class="level2"><h2>Chapter 3: More Flow of Control</h2><p>Instructor: Mark Edmonds</p><p><a href="mailto:edmonds_mark@smc.edu" class="email">edmonds_mark@smc.edu</a></p></section><section id="using-boolean-expressions" class="level2"><h2>Using Boolean Expressions</h2><section id="relational-and-equality-operators" class="level3"><h3>Relational and Equality Operators</h3><ul><li>Relational and equality operators return boolean values (boolean meaning true or false)</li><li>Relational operators<ul><li><code>&lt;</code> less than</li><li><code>&gt;</code> greater than</li><li><code>&lt;=</code> less than or equal to</li><li><code>&gt;=</code> greater than or equal to</li></ul></li><li>Equality operators<ul><li><code>==</code> equals</li><li><code>!=</code> not equals</li></ul></li></ul></section><section id="unary-operators" class="level3"><h3>Unary Operators</h3><ul><li>Unary means it only acts on a single variable (whereas so far other operators have acted on two variables/values)</li><li>Unary operators<ul><li><code>&amp;</code> address-of (gets the memory address of a variable)</li><li><code>*</code> contents-of (gets the contents stored in a memory address)</li><li><code>-</code> negation</li><li><code>+</code> plus</li><li><code>!</code> logical negation</li><li><code>(type)</code> type casting<ul><li><em>Type casting</em> allows us to convert one variable type into another type</li><li>Notice that this does <strong>not</strong> round, it truncates</li><li>For instance, common use is to typecase a floating point number into an integer:</li></ul></li></ul></li></ul><pre class="c"><code>int b = (int)3.5; // 3.5 will be truncated to 3</code></pre></section><section id="logical-operators" class="level3"><h3>Logical Operators</h3><ul><li><code>!</code> logical negation</li><li><code>&amp;&amp;</code> logical AND</li><li><code>||</code> logical OR</li></ul></section><section id="precedence" class="level3"><h3>Precedence</h3><ul><li>1 (highest)<ul><li><code>++</code>/<code>--</code>Postfix increment and decrement</li><li><code>()</code>Function calls</li><li><code>[]</code> Array subscripting</li><li><code>.</code> structure/union access</li><li><code>-&gt;</code> structure/union member access through pointer</li></ul></li><li>2 (second highest)<ul><li><code>++</code>/<code>--</code> Prefix increment and decrement</li><li><code>+</code>/<code>-</code> unary plus and minus</li><li><code>!</code> logical not</li><li><code>(type)</code> type casting</li><li><code>*</code> dereference</li><li><code>&amp;</code> address-of</li></ul></li><li>3 (third highest)<ul><li><code>*</code> multiplication</li><li><code>/</code> division</li><li><code>%</code> remainder division</li></ul></li><li>4 (forth highest)<ul><li><code>+</code> addition</li><li><code>-</code> subtraction</li></ul></li><li>5 (fifth highest)<ul><li><code>&lt;</code> less than</li><li><code>&gt;</code> greater than</li><li><code>&lt;=</code> less than or equal to</li><li><code>&gt;=</code> greater than or equal to</li></ul></li><li>6 (sixth highest)<ul><li><code>==</code> equal</li><li><code>!=</code> not equal</li></ul></li><li>7 (seventh highest)<ul><li><code>&amp;&amp;</code> logical AND</li></ul></li><li>8 (eighth highest)<ul><li><code>||</code> logical OR</li></ul></li><li>9 (ninth highest)<ul><li><code>?:</code> ternary conditional</li></ul></li><li>10 (tenth highest)<ul><li><code>=</code> assignment (and all other forms of assignment, <code>+=</code>, <code>-=</code>, <code>*=</code>, <code>/=</code>, <code>%=</code>)</li></ul></li><li>11 (eleventh highest)<ul><li><code>,</code> comma (for creating multiple variables)</li></ul></li></ul></section><section id="logical-expressions" class="level3"><h3>Logical Expressions</h3><ul><li>A way to evaluate operations over logical values (i.e. <code>0</code> for false and anything else for true)</li><li>Gives a way to encode “this AND that” or “this OR that”</li><li>Consider the following:</li></ul><pre class="cpp"><code>a || b    // 1 when EITHER a OR b is true, 0 otherwise
+        a &amp;&amp; b    // 1 when BOTH a AND b are true, 0 otherwise
+        !a        // 1 when a is false, 0 otherwise</code></pre><ul><li>We can string multiple logical expressions together to create compound logical expressions:</li></ul><pre class="cpp"><code>((a &amp;&amp; b) || (c &gt; d))</code></pre></section></section><section id="multiway-branches" class="level2"><h2>Multiway Branches</h2><section id="nesting" class="level3"><h3>Nesting</h3><p>If statements can be nested, meaning you have <code>if</code> statements inside of <code>if</code> statements</p><section id="nesting.cpp" class="level4"><h4>nesting.cpp</h4><pre class="cpp"><code>/* Let&#39;s try writing some nested conditional statements... */
+        #include &lt;iostream&gt;
+
+        using namespace std;
+
+        int main() {
+           int temperature;
+           /* Prompt for values */
+           cout &lt;&lt; &quot;\t\tNested Logic Program\n\n&quot;;
+           cout &lt;&lt; &quot;Please enter today&#39;s temperature: &quot;;
+           cin &gt;&gt; temperature;
+
+           if (temperature &lt; 50) {
+               cout &lt;&lt; &quot;Gosh, it feels cold...\n&quot;;
+               if (temperature &lt; 32) {
+                  cout &lt;&lt; &quot;And it looks like it&#39;s freezing...\n&quot;;
+               }
+               else if (temperature &lt; 40) {
+                  cout &lt;&lt; &quot;And it&#39;s nearly freezing...\n&quot;;
+               }
+               else {
+                  cout &lt;&lt; &quot;But atleast it&#39;s not freezing cold!\n&quot;;
+               }
+           }
+           else if (temperature &gt; 90) {
+               cout &lt;&lt; &quot;Gosh, it&#39;s hot...\n&quot;;
+               if (temperature &gt; 110) {
+                  cout &lt;&lt; &quot;And it&#39;s just boiling... head for air conditioning...\n&quot;;
+               }
+               else if (temperature &gt; 100) {
+                  cout &lt;&lt; &quot;Atleast it&#39;s not boiling...\n&quot;;
+               }
+               else {
+                  cout &lt;&lt; &quot;What a heat wave!!\n&quot;;
+               }
+           }
+           else {
+               cout &lt;&lt; &quot;Doesn&#39;t California have a nice climate!\n&quot;;
+           }
+           return( 0 );
+        }</code></pre><ul><li>The conditional expression is an if statement that can be assigned to a variable. It is commonly called the <em>ternary operator</em><ul><li>The syntax is the following:</li></ul></li></ul><pre class="cpp"><code>(/* logical expression goes here */) ? (/* if non-zero (true) */) : (/* if 0 (false) */)</code></pre><ul><li>If the logical expression is true, the overall condition evaluates to the expression between the <code>?</code> and the <code>:</code>.</li><li>If the logical expression is false, the overall condition evaluates to the expression after the <code>:</code></li><li>For example, if we want to set <code>c</code> to be the larger value of two variables <code>a</code> and <code>b</code>, we could write the following:</li></ul><pre class="cpp"><code>c = (a &gt; b) ? a : b;</code></pre></section></section><section id="switch-case-statement" class="level3"><h3>Switch-Case Statement</h3><ul><li>The <code>switch...case</code> statement enables us to write many “cases” that could be handled by <code>if...else</code> in a manner that is sometimes cleaner than <code>if...else</code> statements.<ul><li>However, the <code>switch</code> statement only switches on an integer or <code>enum</code> type, so if you are branching/selecting on a more complex type, you’ll have to use <code>if...else</code></li></ul></li><li>Basic syntax:</li></ul><pre class="cpp"><code> switch (/* integer or enum goes here */) {
+         case /* potential value of the aforementioned int or enum */:
+           /* code */
+         case /* a different potential value */:
+           /* different code */
+         /* insert additional cases as needed */
+         default:
+           /* more code */
+         }</code></pre><ul><li>The switch uses a variable, and integer or enum, to control which case to evaluate. This is a limiation; if you must compare more complicated data, you cannot use a <code>switch...case</code></li><li>This variable is compared against each <code>case</code>, one the comparison is true, that particular case will activate (execute)<ul><li>Once a <code>case</code> has been activated, no other cases will be evaluated</li></ul></li><li>Typically, the last statement for each case is a <code>break</code> statement. The causes the program to jump to the statement following the closing <code>}</code> of the switch statement.<ul><li>This basically ends the switch statement (and this behavior is probably your intuition behind each case</li><li>However, if you omit the <code>break</code>, the cases “fall throw” until the end of the switch or until a <code>break</code> is reached</li></ul></li><li>If no cases are matched and a <code>default</code> case is specified, the default case will execute.<ul><li>Use of <code>default</code> is optional.</li></ul></li></ul></section><section id="multiselect.cpp" class="level3"><h3>multiselect.cpp</h3><pre class="cpp"><code>/* Let&#39;s try writing a switch statement... */
+        #include &lt;iostream&gt;
+
+        using namespace std;
+
+        int main() {
+           char letter;
+           /* Prompt for values */
+           cout &lt;&lt; &quot;\t\tCase Statement Program\n\n&quot;;
+           cout &lt;&lt; &quot;Please enter a letter to inspect: &quot;;
+           cin &gt;&gt; letter;
+
+           /*
+             FYI: you can only switch on a
+             integral value.  The char datatype is just another
+             name for the set of ints between 0 and 255, so you
+             can switch on chars or ints
+            */
+           switch( letter ) {
+            /*
+              Individual letters must be single-quoted.
+              Individual letters map directly to constant
+              integer values based on the ASCII table which
+              we will learn about in upcoming units.  The
+              value of each case must be a constant value,
+              not an expression or variable.  This often
+              makes switch statements not applicable to your
+              situation.
+            */
+            case &#39;a&#39;:
+            case &#39;e&#39;:
+            case &#39;i&#39;:
+            case &#39;o&#39;:
+            case &#39;u&#39;:
+            case &#39;y&#39;:
+             /*
+              Lacking break statements in the upper
+              listed cases, they will all &quot;fall thru&quot;
+              to the set of statements shown here.
+              While at first this may seem very convenient,
+              this is actually the number one programming
+              bug worldwide.  Namely, that folks forget that
+              all the above cases are collapsing down to
+              the code shown below.  So use this form
+              with great caution, as it often leads to
+              bugs...
+              */
+              cout &lt;&lt; &quot;a nice lowercase vowel!\n&quot;;
+              break;
+            case &#39;A&#39;:
+            case &#39;E&#39;:
+            case &#39;I&#39;:
+            case &#39;O&#39;:
+            case &#39;U&#39;:
+            case &#39;Y&#39;:
+              cout &lt;&lt; &quot;a nice UPPERCASE vowel!\n&quot;;
+              break;
+            case &#39;0&#39;:
+            case &#39;1&#39;:
+            case &#39;2&#39;:
+            case &#39;3&#39;:
+            case &#39;4&#39;:
+            case &#39;5&#39;:
+            case &#39;6&#39;:
+            case &#39;7&#39;:
+            case &#39;8&#39;:
+            case &#39;9&#39;:
+              cout &lt;&lt; &quot;a nice number!\n&quot;;
+              break;
+            default:
+              /*
+               The default case is the one selected when
+               no other cases actually match the switched
+               data
+              */
+              cout &lt;&lt; &quot;this is not something I recognize...\n&quot;;
+              break;
+           }
+           return( 0 );
+        }</code></pre></section></section><section id="more-c-loops" class="level2"><h2>More C++ Loops</h2><section id="for-loops" class="level3"><h3>For Loops</h3><ul><li>Functionally equivalent to a while loop, but people find them to be more readable/maintainable.</li><li>Typically in a while, you’d put some code to modify the controlling condition as the last statement to the while loop (increment, decrement, etc)<ul><li>A for loop moves this to the definition of the loop</li></ul></li><li>Syntax:</li></ul><pre class="cpp"><code>for (initialization; controlling condition; loop-ending statement) {
+          /* code */
+        }</code></pre><ul><li>The <em>initialization</em> statement is executed once - at the beginning of the loop<ul><li>Typically, you would assign some variable to be a particular value in this loop section</li></ul></li><li>The <em>controlling condition</em> is the test executed to determine whether or not the loop should run again.<ul><li>It is checked when the loop starts.</li></ul></li><li>The <em>loop-ending statement</em> is typically a form of incrementing/decrementing a value.<ul><li>This statement is executed at the end of every loop statement, but before the controlling condition is checked</li><li>If you used a <code>continue</code> statement, this statement is also executed (i.e. it is not skipped because of the use of a <code>continue</code>).</li></ul></li><li>Any of these may be omitted.<ul><li>You do not have to run an initialization statement</li><li>You do not have to provide a controlling condition<ul><li>What must you do to make sure your loop terminates if this is omitted?</li></ul></li><li>You do not have to provide a loop ending statement<ul><li>What must you do to make sure your loop terminates if this is omitted?</li></ul></li></ul></li><li>Counting example:</li></ul><pre class="cpp"><code>int i;
+        for (i = 1; i &lt;= 10; i++) {
+          cout &lt;&lt; i &lt;&lt; &quot; &quot;;
+        }</code></pre><ul><li>A for loop can be given no conditions:</li></ul><pre class="cpp"><code>for (;;) {
+          /* block of statements */
+        }</code></pre><ul><li>This is an infinite loop because it will loop forever unless there is a break statement in the block for the loop</li><li>You may also use the comma operator to add multiple statements inside the loop:</li></ul><pre class="cpp"><code>int i, j, n = 10;
+        for (i = 0, j = 0; i &lt;= n; i++, j += 2) {
+          cout &lt;&lt; &quot;i = &quot; &lt;&lt; i &lt;&lt; &quot;, j = &quot; &lt;&lt; j &lt;&lt; endl;
+        }</code></pre></section></section><section id="exercises" class="level2"><h2>Exercises</h2><p>Write a C++ program to find whether a given year is a leap year or not.</p><pre class="cpp"><code>#include &lt;iostream&gt;
+
+        using namespace std;
+
+        void main()
+        {
+            int chk_year;
+
+            cout &lt;&lt; &quot;Input a year :&quot;);
+            scanf(&quot;%d&quot;, &amp;chk_year);
+            if ((chk_year % 400) == 0)
+                cout &lt;&lt; &quot;%d is a leap year.\n&quot;, chk_year);
+            else if ((chk_year % 100) == 0)
+                cout &lt;&lt; &quot;%d is a not leap year.\n&quot;, chk_year);
+            else if ((chk_year % 4) == 0)
+                cout &lt;&lt; &quot;%d is a leap year.\n&quot;, chk_year);
+            else
+                cout &lt;&lt; &quot;%d is not a leap year \n&quot;, chk_year);
+        }</code></pre><p>Write a C++ program to read any day (7 days of the week) in integer form (as a number) and display day name using the corresponding word 1 - Monday 2 - Tuesday 3 - Wednesday … 6 - Saturday 7 - Sunday</p><pre class="cpp"><code>#include &lt;stdio.h&gt;
+        void main()
+        {
+          int dayno;
+          cout &lt;&lt; &quot;Input Day No : &quot;);
+          scanf(&quot;%d&quot;,&amp;dayno);
+          switch(dayno)
+          {
+            case 1:
+               cout &lt;&lt; &quot;Monday \n&quot;);
+               break;
+            case 2:
+               cout &lt;&lt; &quot;Tuesday \n&quot;);
+               break;
+            case 3:
+               cout &lt;&lt; &quot;Wednesday \n&quot;);
+               break;
+            case 4:
+               cout &lt;&lt; &quot;Thursday \n&quot;);
+               break;
+            case 5:
+               cout &lt;&lt; &quot;Friday \n&quot;);
+               break;
+            case 6:
+               cout &lt;&lt; &quot;Saturday \n&quot;);
+               break;
+            case 7:
+               cout &lt;&lt; &quot;Sunday  \n&quot;);
+               break;
+            default:
+               cout &lt;&lt; &quot;Invalid day number. \nPlease try again ....\n&quot;);
+               break;
+          }
+        }</code></pre></section>
+      </div>
+    </div>
+    
+    <!-- end main body -->
+    
+    <script src="lib/js/head.min.js"></script>
+    <script src="reveal.js/js/reveal.js"></script>
+    
+    <script type="text/javascript">
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+      controls: true,
+      progress: true,
+      history: true,
+      center: true,
+      mouseWheel: false,
+      rollingLinks: false,
+      showNotes: true,
+
+      theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+      transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/none
+
+      // Optional libraries used to extend on reveal.js
+      dependencies: [
+      { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+      // { src: 'plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+      { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+      { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+      { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+      { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+      { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+      // { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+      { src: 'plugin/math/math.js', async: true }
+      ]
+      });
+
+    </script>
+
+    <script>window.jQuery || document.write('<script src="js/jquery-3.2.1.min.js"><\/script>')</script>
+    <script src="js/bootstrap.min.js"></script>
+
+<!--
+    <script>
+      Reveal.addEventListener( 'slidechanged', function( event ) {
+      // event.previousSlide, event.currentSlide, event.indexh, event.indexv
+      var notes = event.currentSlide.querySelector(".notes");
+      if(notes) {
+          console.info("---");
+          console.info(notes.innerHTML.replace(/\n\s+/g,'\n'));
+      }
+      } );
+    </script>
+-->
+
+    <script>
+      Reveal.configure({ slideNumber: 'c/t' });
+    </script>
+
+
+    <script src="js/main.js"></script>
+    <!-- fix whitespace formatting -->
+    <script src="js/fix-whitespace.js"></script>
+    <!-- Default Statcounter code for Personal website http://mjedmonds.com -->
+    <script type="text/javascript">
+      var sc_project=11819202; 
+      var sc_invisible=1; 
+      var sc_security="3d207e19"; 
+      var sc_https=1; 
+      var scJsHost = (("https:" == document.location.protocol) ? "https://secure." :
+      "http://www.");
+      document.write("<sc"+"ript type='text/javascript' src='" + scJsHost+
+      "statcounter.com/counter/counter.js'></"+"script>");
+    </script>
+    <noscript><div class="statcounter"><a title="Web Analytics Made Easy -
+    StatCounter" href="http://statcounter.com/" target="_blank"><img
+    class="statcounter" src="//c.statcounter.com/11819202/0/3d207e19/0/" alt="Web
+    Analytics Made Easy - StatCounter"></a></div></noscript>
+    <!-- End of Statcounter Code -->
+
+    <style type="text/css">
+      /* custom settings for reveal */
+      .reveal {
+        font-size: 30px;
+      }
+      .reveal h1 {
+        font-size: 1em; }
+
+      .reveal h2 {
+        font-size: 1.5em; }
+
+      .reveal h3 {
+        font-size: 1.15em; }
+
+      .reveal h4 {
+        font-size: 1em; }
+
+      .reveal li {
+        padding-top: 4px;
+        padding-bottom: 4px;
+      }
+    </style>
+  </body>
+</html>

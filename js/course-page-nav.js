@@ -8,6 +8,7 @@ document.write('\
         <li><a href="../CS32/CS32.html">UCLA CS 32</a></li>\
         <li><a href="../CS80/CS80.html">SMC CS 80</a></li>\
         <li><a href="../CS50/CS50.html">SMC CS 50</a></li>\
+        <li><a href="../CS52/CS52.html">SMC CS 52</a></li>\
       </ul>\
       <!-- end #nav -->\
     </nav>\

@@ -1,8 +1,8 @@
 #!/bin/bash 
 
 INPUT_DIR="./notes_md"
-TEMPLATE="./notes_md/template-revealjs.html"
-OUTPUT_DIR="./notes_reveal_md"
+TEMPLATE="./notes_md/template-eisvogel.latex"
+OUTPUT_DIR="./notes_pdf_md"
 
 # convert to absolute paths
 INPUT_DIR="${PWD}/${INPUT_DIR}"
@@ -15,10 +15,8 @@ cd ${INPUT_DIR}
 for f in ${INPUT_DIR}/*.md; do
   [ -f "$f" ] || break
   base_f=$(basename "$f" .md)
-  output_f=${OUTPUT_DIR}/${base_f}.html
-  command="pandoc --wrap=none -t html5 -s --template=${TEMPLATE} --standalone --section-divs --no-highlight --filter pandoc-include-code -o ${output_f} ${f}"
+  command="pandoc --template=${TEMPLATE} --listings --filter pandoc-include-code -o ${OUTPUT_DIR}/${base_f}.pdf ${f}" 
 
   echo ${command}
   ${command}
-  /usr/local/bin/tidy -im ${output_f}
 done

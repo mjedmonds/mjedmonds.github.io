@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 
-    <title>I/O and Streams</title>
+    <title>Functions for all subtasks</title>
 
     <meta name="description" content="CS 80: Internet Programming Notes">
     <meta name="author" content="Mark Edmonds">
@@ -65,35 +65,7 @@
     <div class="reveal">
       <div class="slides">
         <!-- slide content will go here -->
-        <section id="chapter-6-io-and-streams" class="level2"><h2>Chapter 6: I/O and Streams</h2><p>Instructor: Mark Edmonds</p><p><a href="mailto:edmonds_mark@smc.edu" class="email">edmonds_mark@smc.edu</a></p></section><section id="file-io" class="level2"><h2>File I/O</h2><ul><li>Thus far, we have either printed to the screen or gotten input directly from the user</li><li>What if we could read data from files and save data to files?</li><li>This would enable us to save information beyond the current program execution and use the data later</li></ul></section><section id="file-io-1" class="level2"><h2>File I/O</h2><ul><li>Your program <em>reads</em> from a file when it takes input from a file</li><li>Your program <em>writes</em> to a file when it sends information to a file</li><li>This chapter examines <em>streams</em> to accomplish I/O</li></ul></section><section id="streams" class="level2"><h2>Streams</h2><ul><li>Streams will serve as our first introduction to objects</li><li>A <strong>stream</strong> is a flow of characters<ul><li>If the flow is into your program, the stream is called an <strong>input stream</strong></li><li>If the flow is out of your program, the stream is called an <strong>output stream</strong></li></ul></li></ul></section><section id="streams-1" class="level2"><h2>Streams</h2><ul><li>The data in the stream can come from a file or from a keyboard - the stream does not care</li><li><code>cin</code> and <code>cout</code> are both special stream <em>objects</em> included from the <code>iostream</code> header</li></ul></section><section id="streams-2" class="level2"><h2>Streams</h2><ul><li><p>Suppose your program defines an input stream <code>in_stream</code> that comes from a file (this does not show how to create <code>in_stream</code>):</p><pre class="cpp"><code>int some_number;
-        instream &gt;&gt; some_number</code></pre></li><li><p>This <code>int</code> is filled with a number from this file.</p></li></ul></section><section id="streams-3" class="level2"><h2>Streams</h2><ul><li><p>We can also use output streams in a similar fashion:</p><pre class="cpp"><code>out_stream &lt;&lt;  some_number &lt;&lt; endl;</code></pre></li><li><p>This will output the value stored in <code>some_number</code> to the file.</p><ul><li>This effectively saves <code>some_number</code> to the file</li></ul></li></ul></section><section id="streams-4" class="level2"><h2>Streams</h2><ul><li><p>Input streams are created with:</p><pre class="cpp"><code>ifstream in_stream</code></pre></li><li><p>Output streams are created with:</p><pre class="cpp"><code>ofstream out_stream;</code></pre></li><li><p>Both types are provided by <code>fstream</code>, which can be included with <code>#include &lt;fstream&gt;</code></p></li></ul></section><section id="streams-5" class="level2"><h2>Streams</h2><ul><li>Important functions:<ul><li><code>open()</code> - opens a file</li><li><code>close()</code> - close a file</li></ul></li><li>See documentation at<ul><li><a href="http://www.cplusplus.com/reference/fstream/ifstream/" class="uri">http://www.cplusplus.com/reference/fstream/ifstream/</a></li><li><a href="http://www.cplusplus.com/reference/fstream/ofstream/" class="uri">http://www.cplusplus.com/reference/fstream/ofstream/</a></li></ul></li></ul></section><section id="example-simple_io.cpp" class="level2"><h2>Example: <a href="../examples/ch6_io/simple_io.cpp"><code>simple_io.cpp</code></a></h2><pre><code>// Reads three numbers from the file infile.dat, sums the numbers, and writes
-        // the sum to the file outfile.dat. (A better version of this program will be
-        // given in Display 6.2.)
-
-        #include &lt;fstream&gt;
-
-        int main()
-        {
-          using namespace std;
-
-          ifstream in_stream;
-          ofstream out_stream;
-
-          in_stream.open(&quot;infile.dat&quot;);
-          out_stream.open(&quot;outfile.dat&quot;);
-
-          int first, second, third;
-          in_stream &gt;&gt; first &gt;&gt; second &gt;&gt; third;
-          out_stream &lt;&lt; &quot;The sum of the first 3\n&quot;
-                     &lt;&lt; &quot;numbers in infile.dat\n&quot;
-                     &lt;&lt; &quot;is &quot; &lt;&lt; (first + second + third) &lt;&lt; endl;
-
-          in_stream.close();
-          out_stream.close();
-
-          return 0;
-        }
-        </code></pre></section>
+        <section id="chapter-5-functions-for-all-subtasks" class="level2"><h2>Chapter 5: Functions for all subtasks</h2></section>
       </div>
     </div>
     

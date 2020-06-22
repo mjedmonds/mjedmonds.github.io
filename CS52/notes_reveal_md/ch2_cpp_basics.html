@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+
+    <title>C++ Basics</title>
+
+    <meta name="description" content="CS 80: Internet Programming Notes">
+    <meta name="author" content="Mark Edmonds">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    
+    <!-- Google analytics -->
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-98378227-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="reveal.js/css/reveal.css">
+    <link rel="stylesheet" href="reveal.js/css/theme/serif.css" id="theme">
+    <link href='css/ubuntu_font.css' rel='stylesheet' type='text/css'>
+
+    <link rel="shortcut icon" href="../../favicon.png">
+    
+    <style>
+      body {
+        padding-top: 30px;
+        padding-bottom: 40px;
+      }
+      
+    </style>
+
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="css/highlightjs/atom-one-light.css">
+
+    <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+    <script>
+      document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+    </script>
+
+    <script src="js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+  </head>
+  <body>
+    
+    <script src="js/nav.js"></script>
+
+    <script>
+      function toggleElements(one, two) {
+      document.getElementById(one).style.display = 'none';
+      document.getElementById(two).style.display = 'block';
+      }
+    </script>
+    
+    <!-- Main body -->
+    
+    <div class="reveal">
+      <div class="slides">
+        <!-- slide content will go here -->
+        <section id="chapter-2-c-basics" class="level2"><h2>Chapter 2: C++ Basics</h2><p>Instructor: Mark Edmonds</p><p><a href="mailto:edmonds_mark@smc.edu" class="email">edmonds_mark@smc.edu</a></p></section><section id="variables-and-assignments" class="level2"><h2>Variables and Assignments</h2><ul><li>Variables are named memory locations to store data in</li><li>Think of them like a box that you can store data in<ul><li>We put a number (data) in the box</li><li>We can change the number (data) in the box</li><li>We can remove (erase) the number (data) in the box</li></ul></li><li>You refer to a particular box through a name (called an <em>identifier</em>)</li><li>Variables must be declared<ul><li>Variable declarations tell the computer “I want a box named <code>my_variable_name</code> to store data of a particular type”</li></ul></li></ul><section id="basic-datatypes" class="level3"><h3>Basic datatypes</h3><table><thead><tr class="header"><th>Datatype</th><th>Description</th></tr></thead><tbody><tr class="odd"><td><code>int</code>, <code>short</code>, <code>long</code></td><td>whole (integer) numbers</td></tr><tr class="even"><td><code>double</code>, <code>float</code></td><td>decimal numbers</td></tr><tr class="odd"><td><code>string</code></td><td>characters</td></tr><tr class="even"><td><code>bool</code></td><td><code>true</code> or <code>false</code></td></tr><tr class="odd"><td><code>char</code></td><td>a single character</td></tr></tbody></table></section><section id="identifiers" class="level3"><h3>Identifiers</h3><ul><li>Identifiers are the names of variables</li><li>Identifiers must:<ul><li>Begin with <code>a-z</code>, <code>A-Z</code>, or <code>_</code></li><li>Followed by <code>a-z</code>, <code>A-Z</code>, <code>0-9</code> or <code>_</code></li></ul></li><li>Identifiers are case-sensitive</li><li>It is best practice to initialize variable values when they are declared</li></ul></section><section id="declaring-variables" class="level3"><h3>Declaring variables</h3><ul><li>Before you can use a variable, you must declare it. Declaring a variable tells the compiler the type of data to store and allocates memory (a box to store data in) in computer memory.</li><li>Examples:<ul><li><code>int counter; // declares one integer named counter</code></li><li><code>double weight, height; // declares two doubles, one named weight, another named height</code></li></ul></li></ul></section><section id="assignment-statements" class="level3"><h3>Assignment statements</h3><ul><li>Assignment statements change the value of a variable.<ul><li>Example: <code>counter = 5; // sets the variable counter to be the value 5</code></li></ul></li><li>We can also assign variables to the value of other variables:<ul><li>Example: <code>counter = b;</code></li></ul></li><li>The variable that will be changed is always on the left of the assignment operator <code>=</code></li><li>The righthand side of an assignment can be:<ul><li>A constant (<code>age = 21;</code>)</li><li>A variable (<code>valueA = valueB;</code>)</li><li>Expressions (<code>valueA = valueB * 10 + valueC;</code>)</li></ul></li><li>Note that the assignment operator is not the same as an algebra statement - we are not saying “the left-hand side is equal to the right-hand side.” We are saying “the variable on the left-hand side now contains the value of the right-hand side.”</li><li>We we <em>initialize</em> a variable, we assign it to a value as we declare it<ul><li>Declaring a variable does not give it a value - we must either initialize the variable as we declare it, or assign the variable later</li></ul></li></ul><pre class="cpp"><code>int a = 5; // this initializes a to be 5
+        int b;     // this declares the variable b
+        b = 7;     // this assigns b the value 7</code></pre></section></section><section id="keywords" class="level2"><h2>Keywords</h2><ul><li>Keywords have special meaning to C++; they are reserved for the language itself</li></ul><table><thead><tr class="header"><th><!-- --></th><th><!-- --></th><th><!-- --></th></tr></thead><tbody><tr class="odd"><td><code>break</code></td><td><code>case</code></td><td><code>char</code></td></tr><tr class="even"><td><code>const</code></td><td><code>default</code></td><td><code>do</code></td></tr><tr class="odd"><td><code>double</code></td><td><code>else</code></td><td><code>extern</code></td></tr><tr class="even"><td><code>float</code></td><td><code>for</code></td><td><code>if</code></td></tr><tr class="odd"><td><code>int</code></td><td><code>long</code></td><td><code>return</code></td></tr></tbody></table><ul><li>We will learn more about these keywords as we go, but you cannot use a keyword for anything other than it’s purpose as a keyword (i.e. you cannot use a keyword as an identifier)</li></ul></section><section id="input-and-output-in-c" class="level2"><h2>Input and Output in C++</h2><ul><li>Input and output allows you to get information from the user (input) and display information to the user (output)<ul><li>We have already seen output with our <code>cout</code> statements in <a href="../examples/ch1_intro/hello_world.cpp"><code>hello_world.cpp</code></a></li></ul></li><li>C++ input statement:<ul><li><code>cin &gt;&gt; number;</code></li><li>Value is extracted from the keyboard and stored in the variable called <code>number</code></li></ul></li><li>C++ output statement:<ul><li><code>cout &lt;&lt; "Hello, world!";</code></li><li>Sends information from program to the terminal screen</li><li>Double quotes <code>"..."</code> delimit a <em>string</em></li><li><code>\n</code> sends a <em>newline character</em> to the terminal (carriage return)<ul><li>The <code>\</code> character indicates we are entering an <em>escape sequence</em>. Other notable escapes sequences include <code>\t</code> (tab), <code>\\</code> (backslash), <code>\"</code> (qoute character)</li><li>We must escape these characters because they have a special meaning in C++</li></ul></li></ul></li></ul><section id="formatting-numbers" class="level3"><h3>Formatting numbers</h3><ul><li>When we <code>cout</code> floating point numbers (<code>double</code> or <code>float</code>), we may wish to specify the precision of the output</li><li>Suppose we wanted to output a dollar amount, like $35.40</li></ul><pre class="cpp"><code>double price = 35.4;
+        cout &lt;&lt; &quot;The price is $&quot; &lt;&lt; price &lt;&lt; endl;</code></pre><ul><li>The output could be: <code>The price is $34.4</code>, <code>The price is $34.400000</code>, <code>The price is $3.4400000e1</code>.</li><li>If we want to output $34.40, we need to tell the compiler what level of precision to use</li></ul><pre class="cpp"><code>cout.setf(ios::fixed); // specify fixed point notation
+        cout.setf(ios::showpoint); // specify the decimal will always be shown
+        cout.precision(2); // specify that two decimal places will always be shown
+        // cout is now ready to print to two decimal places
+        cout &lt;&lt; &quot;The price is &quot; &lt;&lt; price &lt;&lt; endl;</code></pre></section><section id="prompts" class="level3"><h3>Prompts</h3><ul><li>It’s very common to prompt for a value with <code>cout</code> and then receive it with <code>cin</code><ul><li>Many homework assignments will expect you to do something similar!</li></ul></li></ul><pre class="cpp"><code>cout &lt;&lt; &quot;Enter your age: &quot;;
+        cin &lt;&lt; age;</code></pre></section></section><section id="literals" class="level2"><h2>Literals</h2><ul><li>A literal, fixed, static value used in a program</li><li>Literals are invariant values. They can never be changed. They can never store data.</li><li>Literals are literally some value.</li><li><code>2</code> is the literal integer value 2. <code>2.0</code> is the literal floating point value 2.0<ul><li>Note that these are actually different types of literals</li></ul></li></ul></section><section id="literals-vs.-variables" class="level2"><h2>Literals vs. Variables</h2><ul><li>A literal is a fixed values that never changes</li><li>A variable is a container for data<ul><li>A variable can change its data over time</li><li>A variable can only hold one value at a time</li></ul></li><li>A literal has no “box” (memory) to store data in; a literal is a fixed value embedded in your program.</li><li>This means that a literal can <strong>never</strong> be on the left-hand side of an assignment statement<ul><li><code>5 = 6;</code> is not possible because <code>5</code> is a literal. It is not a box (variable) that we can store data in</li><li>Always think about the left-hand side of the assignment statement in terms of boxes that you can store data in</li><li>Literals are literal values and not boxes to store data in, and therefore cannot be on the left-hand side of an assignment statement.</li></ul></li></ul><section id="basic-datatypes-revisited" class="level3"><h3>Basic datatypes (revisited)</h3><table><thead><tr class="header"><th>Datatype</th><th>Description</th></tr></thead><tbody><tr class="odd"><td><code>int</code>, <code>short</code>, <code>long</code></td><td>whole (integer) numbers</td></tr><tr class="even"><td><code>double</code>, <code>float</code></td><td>decimal numbers</td></tr><tr class="odd"><td><code>string</code></td><td>characters</td></tr><tr class="even"><td><code>bool</code></td><td><code>true</code> or <code>false</code></td></tr><tr class="odd"><td><code>char</code></td><td>a single character</td></tr></tbody></table></section><section id="int" class="level3"><h3><code>int</code></h3><ul><li>Stores an integer value.</li><li>Typically stored in 32 bits (the computer uses 32 bits to represent the number)<ul><li>If you have a set of integers centered around 0, what’s the maximum and minimum integer you can represent with 32-bits?<ul><li>32 bits leads to 4294967296 which is <span class="math inline">2<sup>32</sup></span> (binary is base 2, and we have 32 bits)</li><li>Maximum value: <code>+2147483647</code></li><li>Minimum value: <code>-2147483648</code></li></ul></li></ul></li><li>Example usage:</li></ul><pre class="c"><code>int a = 5;</code></pre></section><section id="char" class="level3"><h3><code>char</code></h3><ul><li>Capable of holding any member of the character set.</li><li>Stored in 1 byte (8 bits).</li><li>The underlying structure has the same type of data as an <code>int</code> (with a smaller range of data)<ul><li>However, we the way we <em>should</em> use chars is not through integer references</li><li>This is all because internally a character is literally an integer to the computer</li></ul></li><li>Examples of characters:</li></ul><pre class="c"><code>&#39;a&#39;
+        &#39;b&#39;
+        &#39;3&#39;
+        &#39;\0&#39;  // null character
+        &#39;\n&#39;  // newline character
+        &#39;\t&#39;  // tab character</code></pre></section><section id="string" class="level3"><h3><code>string</code></h3><ul><li>A <strong>string literal</strong> is a collection of characters in a single string<ul><li><code>"Hello, world!"</code> is an example of a string literal</li><li>String literals are denoted by " instead of ’ for their wrapping quotations</li></ul></li><li>In C++, a string is class, which is different from the other primitive datatypes we’ve discussed thus far.</li><li>Strings are used to store collections of characters.</li><li>You can use strings by including the string library with <code>#include &lt;string&gt;</code><ul><li>Then you can declare and initialize a string with <code>string name = "Mark Edmonds";</code></li></ul></li></ul></section><section id="float" class="level3"><h3><code>float</code></h3><ul><li>Holds a floating point number, such as <code>32.2</code></li><li>All representations of floating point numbers are inexact.</li><li>Adding <code>f</code> to the end of a number indicates it is to be interpreted as a float</li><li>Examples of floats:</li></ul><pre class="c"><code>32.3
+        3223.64563f
+        4.0f
+        6.022e+23f</code></pre></section><section id="double" class="level3"><h3><code>double</code></h3><ul><li>Exact same as a <code>float</code>, but uses double the precision (i.e. double the computer memory) to store the data</li></ul></section></section><section id="type-modifiers" class="level2"><h2>Type Modifiers</h2><ul><li>We may want to modify the amount of storage used by a type.</li><li>This enables data to use more or less memory depending upon the use case.</li><li>Adding a modifier of <code>long</code> will make the type use more memory</li><li>Adding a modifier of <code>short</code> will make the type use less memory</li><li>Adding a modifier of <code>unsigned</code> will make the type non-negative in all cases (changes the range of possible values</li><li>If you use <code>short</code> or <code>long</code> by itself, the <code>int</code> type is implied</li></ul><pre class="c"><code>unsigned short int usi;  /* fully qualified -- unsigned short int */
+        short si;                /* short int */
+        unsigned long uli;       /* unsigned long int */</code></pre><ul><li>The <code>const</code> makes a particular variable constant, or unmodifiable.<ul><li>You <em>must</em> initialize the value when you declare it.</li><li>What’s the advantage?<ul><li>You gain additional protections against a programmer making a mistake and modifying a value they shouldn’t</li><li>Also protects against magic numbers - don’t put the same literal all over your program. Use a constant to define the value once and use the constant everywhere you need that value</li></ul></li></ul></li></ul></section><section id="type-compatibility" class="level2"><h2>Type Compatibility</h2><ul><li>Intuitively, it makes sense that we’d be able to convert between certain types.<ul><li>For instance, converting between an integer and a floating point number seems like a reasonable thing to do</li><li>There are a few rules regarding these implicit type conversions, so we should avoid using them unless it’s really justified</li></ul></li><li>Implicit type conversions:<ul><li><code>int</code> &lt;-&gt; <code>double</code> conversion: when converting to an <code>int</code>, the decimal place will <strong>not</strong> be rounded; it will be <em>truncated</em><ul><li>This means writing something like <code>int a = 2.4;</code> will result in <code>a</code> holding the integer 2. Similarly, writing something like <code>int b = 2.7;</code> will also result in <code>a</code> holding the integer <code>2</code>.</li></ul></li><li><code>int</code> &lt;-&gt; <code>float</code> conversion: same as <code>int</code> &lt;-&gt; <code>double</code>.</li><li><code>char</code> &lt;-&gt; <code>int</code> conversions: characters are really stored as integers, but there’s no semantically meaningful way to convert between them.<ul><li>For instance, we could write <code>int value = 'A';</code>, but this integer has no semantic meaning</li><li>It’s best to avoid this at all costs - there’s really no reason to convert between an <code>int</code> and a <code>char</code></li></ul></li><li><code>bool</code> &lt;-&gt; <code>int</code> conversion: any non-zero integer is evaluted to <code>true</code> and the integer<code>0</code> is evaluated to <code>false</code><ul><li>If we convert <code>true</code> to an integer, we get the integer <code>1</code></li><li>It’s also best to avoid this - there’s no reason to convert between an <code>int</code> and a <code>bool</code></li></ul></li></ul></li></ul></section><section id="basic-arithmetic-operators" class="level2"><h2>Basic Arithmetic Operators</h2><ul><li>C++ supports basic arithmetic operators to help you do math.</li><li>Basic operators include:<ul><li><code>+</code> addition</li><li><code>-</code> subtraction</li><li><code>*</code> multiplication</li><li><code>/</code> division (floating point and integer division depending upon type)</li><li><code>%</code> modulo (remainder division)</li></ul></li></ul><section id="increment-and-decrement" class="level3"><h3>Increment and decrement</h3><ul><li>Adding 1 to a variable is so common, we have a custom operator for it</li><li>We have three methods of incrementing (the same is true for decrement) variables in C</li><li>Using addition (not technically an increment operator):</li></ul><pre class="cpp"><code>a = a + 1;</code></pre><ul><li>Using the prefix increment operator</li></ul><pre class="cpp"><code>++a;</code></pre><ul><li>Using the postfix increment operator</li></ul><pre class="cpp"><code>a++;</code></pre><ul><li>What’s the difference between these two statements?<ul><li>A lot of the time, there is no difference in practice</li><li><strong>HOWEVER</strong></li><li>The semantics are technically different</li><li>How are they different?<ul><li><code>++a</code> increments <code>a</code> and then returns the value of <code>a</code> (meaning the value returned has already been incremented)</li><li><code>a++</code> returns the value of <code>a</code> and then increments <code>a</code> (meaning the value returned has <em>not</em> yet been incremented)</li></ul></li><li>When does this matter?<ul><li>Two cases:</li></ul></li></ul></li></ul><pre class="cpp"><code>int a = 5;
+        int b = 5;
+        int c = ++a; // c has the value of 6 after this executes, a has the value of 6
+        int d = a++; // d has the value of 5 after this executes, a has the value of 6</code></pre><ul><li>All of the above also applies for the decrement operator <code>--</code>, which subtracts 1 from a variable instead of adding 1</li></ul></section><section id="floating-point-vs.-integer-division" class="level3"><h3>Floating point vs. Integer division</h3><ul><li>We have a few different types of division in C++</li><li>Noticing when we are using floating point vs. integer division is a common mistake</li><li>Floating point division occurs when at least one of the operands is a floating point variable or floating point literal</li><li>Integer division occurs when both operands are integers</li></ul><pre class="c++"><code>int a = 5;
+        int b = 7;
+        double c = 5.0;
+        int int_div1 = a / b; // result is 0, because we are doing integer division and 5/7 is 0r5
+        int int_div2 = b / a; // result is 1, because we are doing integer division and 7/5 is 1r2
+        double float_div1 = c / b; // result is 0.71, because we are doing floating point division and 5.0/7 is 0.71
+        double float_div2 = a / b; // result is 0.0, because we are doing integer divion and 5/7 is 0r5</code></pre><ul><li>The last line above may be surprising, but the right-hand side of the assignment performs integer division, resulting in <code>0</code>, and then the <code>0</code> is assigned to a double, resulting in <code>0.0</code></li></ul></section><section id="modulo-remainder-division" class="level3"><h3>Modulo (remainder division)</h3><ul><li>Remember integer division from elementary school?</li><li>e.g. <code>7/5</code> was <code>1r2</code> (1 with a remainder of 2) because 5 goes into 7 one time with a remainder of 2.</li><li>When you divide two ints, you only get the quotient (number of times the denominator goes into the numerator).</li><li>Modulo <code>%</code> gives us a way to get the remainder from the quotient division.</li><li>Modulo is <em>extremely</em> useful.<ul><li>It lets you add a bound to possible values.</li><li>For instance, suppose you want to pick a random number between 0 and 9.</li><li>Let’s say you have a <code>rand()</code> function that returns a random number between 0 and a really, really big number (say 10000000000).</li><li>You can do <code>rand() % 10</code> and you are guaranteed to get a number between 0 and 9.</li><li>It doesn’t matter how big the number is, the remainder <em>must</em> be between 0 and 9.</li><li>Otherwise, the quotient increments</li></ul></li></ul></section></section><section id="calculations.cpp" class="level2"><h2>calculations.cpp</h2><pre class="cpp"><code>/* Let&#39;s try writing some calculations... */
+        #include &lt;iostream&gt;
+
+        using namespace std;
+
+        int main() {
+           float value1 = 0.0, value2 = 0.0;
+           int i1 = 0, i2 = 0;
+
+           /* Prompt for values */
+           cout &lt;&lt; &quot;\t\tCalculation Program\n\n&quot;;
+           cout &lt;&lt; &quot;Please enter two values: &quot;;
+           cin &gt;&gt; value1;
+           cin &gt;&gt; value2;
+
+           /* perform calculations */
+           cout &lt;&lt; &quot;Their sum: &quot; &lt;&lt; value1 + value2 &lt;&lt; endl;
+           cout &lt;&lt; &quot;Their product: &quot; &lt;&lt; value1 * value2 &lt;&lt; endl;
+           cout &lt;&lt; &quot;The first minus the second: &quot; &lt;&lt; value1 - value2 &lt;&lt; endl;
+           cout &lt;&lt; &quot;The second minus the first: &quot; &lt;&lt; value2 - value1 &lt;&lt; endl;
+           cout &lt;&lt; &quot;The first divided by the second: &quot; &lt;&lt; value1 / value2 &lt;&lt; endl;
+           cout &lt;&lt; &quot;The second divided by the first: &quot; &lt;&lt; value2 / value1 &lt;&lt; endl;
+
+           /* what if they are integers? */
+           cout &lt;&lt; &quot;Let&#39;s try again, as if the values were int\n&quot;;
+           i1 = (int) value1;
+           i2 = (int) value2;
+           cout &lt;&lt; &quot;Their sum: &quot; &lt;&lt; i1 + i2 &lt;&lt; endl;
+           cout &lt;&lt; &quot;Their product: &quot; &lt;&lt; i1 * i2 &lt;&lt; endl;
+           cout &lt;&lt; &quot;The first minus the second: &quot; &lt;&lt; i1 - i2 &lt;&lt; endl;
+           cout &lt;&lt; &quot;The second minus the first: &quot; &lt;&lt; i2 - i1 &lt;&lt; endl;
+           cout &lt;&lt; &quot;The first divided by the second: &quot; &lt;&lt; i1 / i2 &lt;&lt; endl;
+
+           /* FYI: The modulo operator is only defined on int operands... */
+           cout &lt;&lt; &quot;The modulus of the first by the second: &quot; &lt;&lt; i1 % i2 &lt;&lt; endl;
+           cout &lt;&lt; &quot;The second divided by the first: &quot; &lt;&lt; i2 / i1 &lt;&lt; endl;
+           cout &lt;&lt; &quot;The modulus of the second by the first: &quot; &lt;&lt; i2 % i1 &lt;&lt; endl;
+           return( 0 );
+        }
+        }</code></pre></section><section id="conditionals" class="level2"><h2>Conditionals</h2><ul><li>There is no meaningful program that doesn’t demonstrate some basic decision-making skills</li><li>For instance, “I will continue driving through the intersection” is not a statement a human would act upon. But “I will stop if the light is red, go if the light is green, go only if I can safely pass if the light is yellow” might be a reasonable driving policy.</li><li>A conditional tells the computer to only execute a block of code if a particular condition has been satisfied (i.e. that condition is true).</li><li><code>if...else</code> is the most common conditional statement</li><li><code>switch...case</code> are used as a shorthand version of <code>if...else</code></li><li>In C, logic is a form of arithmetic<ul><li><code>0</code> represents false</li><li><strong>any</strong> other value represents true</li><li>Logical and arithmetic operators are treated as the same thing in C</li></ul></li></ul><section id="relational-expressions" class="level3"><h3>Relational Expressions</h3><ul><li>Consider the following relational and equivalence operations</li></ul><pre class="cpp"><code>a &lt; b     // 1 if a is less than b, 0 otherwise
+        a &gt; b     // 1 if a is greater than b, 0 otherwise
+        a &lt;= b    // 1 if a is less than or equal to b, 0 otherwise
+        a &gt;= b    // 1 if a is greater than or equal to b, 0 otherwise
+        a == b    // 1 if a is equal to b, 0 otherwise
+        a != b    // 1 if a is not equal to b, 0 otherwise</code></pre><ul><li>Please remember <code>=</code> is for <strong>assignment</strong> and <code>==</code> is for <strong>equality</strong></li><li>The following conditionals are equivalent due to the definition of <code>true</code> and <code>false</code> in C++:<ul><li><code>false</code> is equivalent to <code>0</code> and <code>true</code> is equivalent to anything non-zero.</li><li>I would recommend avoiding comparing against any integer values and instead compare against <code>true</code> or <code>false</code> directly.</li></ul></li></ul><pre class="cpp"><code>if (foo()) {
+          // do something
+        }
+        if (foo() == true) {
+          // do something
+        }
+        if (foo() != false) {
+          // do something
+        }
+        if (foo() != 0) {
+          // do something
+        }</code></pre></section><section id="selection.cpp" class="level3"><h3>selection.cpp</h3><pre class="cpp"><code>/* Let&#39;s try writing some conditional logic... */
+        #include &lt;iostream&gt;
+
+        using namespace std;
+
+        int main() {
+           float value1 = 0.0, value2 = 0.0;
+           /* Prompt for values */
+           cout &lt;&lt; &quot;\t\tConditional Logic Program\n\n&quot;;
+           cout &lt;&lt; &quot;Please enter two values: &quot;;
+           cin &gt;&gt; value1;
+           cin &gt;&gt; value2;
+
+           if (value1 &lt; value2) {
+               cout &lt;&lt; &quot;value1 is less than value2\n&quot;;
+           }
+           if (value1 &gt; value2) {
+               cout &lt;&lt; &quot;value1 is greater than value2\n&quot;;
+           }
+           if (value1 &lt;= value2) {
+               cout &lt;&lt; &quot;value1 is less than or equal value2\n&quot;;
+           }
+           if (value1 &gt;= value2) {
+               cout &lt;&lt; &quot;value1 is greater than or equal value2\n&quot;;
+           }
+           if (value1 == value2) {
+               cout &lt;&lt; &quot;value1 equals value2\n&quot;;
+           }
+           if (value1 != value2) {
+               cout &lt;&lt; &quot;value1 does not equals value2\n&quot;;
+           }
+           /* FYI: due to rounding errors, it is unreliable to test for equality on floating point numbers */
+           return( 0 );
+        }</code></pre></section></section><section id="if-else-statements" class="level2"><h2>If-Else Statements</h2><ul><li>Executes a block of code if particular conditions have been met</li><li>Basic syntax:</li></ul><pre class="cpp"><code>if (/* condition goes here */) {
+          /* if the condition is non-zero (true), this code will execute */
+        } else {
+          /* if the condition is 0 (false), this code will execute */
+        }</code></pre><ul><li>The first block executes if the condition is true, otherwise the second block executes</li><li>The <code>else</code> is completely optional</li><li>An <code>if</code> can directly follow an else, creating a chain of conditions to check:</li></ul><pre class="cpp"><code>if (a &gt; b) {
+          c = a;
+        } else if (b &gt; a) {
+          c = b;
+        } else {
+          c = 0;
+        }</code></pre><ul><li>This code sets the variable <code>c</code> equal to the greater of the two variables <code>a</code> or <code>b</code>, or <code>0</code> if <code>a</code> and <code>b</code> are equal.</li><li>What’s the point of the <code>else</code> when you can just do this:</li></ul><pre class="cpp"><code>if (a &gt; b) {
+          c = a;
+        }
+
+        if (a &lt; b) {
+          c = b;
+        }
+
+        if (a == b) {
+          c = 0;
+        }</code></pre><ol type="1"><li>Multiple <code>if</code>’s could be true, there is no guaranteed mutual exclusion</li><li>Evaluating <code>if</code> statements takes time (since the condition must be checked).</li></ol><ul><li>If you only have single statement to statement to execute in your <code>if</code> or <code>else</code>, you do not need to put a block.<ul><li><strong>But you should.</strong></li><li>Consider the following</li></ul></li></ul><pre class="cpp"><code>if(5 &lt; 10)
+          cout &lt;&lt; &quot;I am inside the if\n&quot;;
+        else
+          cout &lt;&lt; &quot;I am inside the else\n&quot;;
+          cout &lt;&lt; &quot;5 is not less than 10\n&quot;;</code></pre><ul><li>Only the single statement following the <code>if</code> or <code>else</code> is associated with the conditional…so when will <code>5 is not less than 10</code> be printed?<ul><li><strong>Every time</strong></li><li>Indentation cannot be trusted!</li><li>Here’s a version with indentation reflecting the semantics of the program:</li></ul></li></ul><pre class="cpp"><code>if(5 &lt; 10)
+          cout &lt;&lt; &quot;I am inside the if\n&quot;;
+        else
+          cout &lt;&lt; &quot;I am inside the else\n&quot;;
+        cout &lt;&lt; &quot;5 is not less than 10\n&quot;;</code></pre><ul><li>How do you fix this?<ul><li><strong>Always use block statements!</strong></li></ul></li></ul><pre class="c"><code>if(5 &lt; 10) {
+          printf(&quot;I am inside the if\n&quot;);
+        } else {
+          printf(&quot;I am inside the else\n&quot;);
+          printf(&quot;5 is not less than 10\n&quot;);
+        }</code></pre></section><section id="looping" class="level2"><h2>Looping</h2><ul><li>Loops enable programmers to tell the computer to repeat a particular block of code multiple times.<ul><li>Is is generally impractical to use conditionals a large number of times.</li></ul></li><li>Consider how a dishwasher might describe their time at work.<ul><li>Unlikely the dishwasher would say “I watch a dish, and then another dish, and then another dish, ….”</li><li>More like they would say “I washed dishes the entire time I was at work”</li></ul></li></ul><section id="while-loops" class="level3"><h3>While Loops</h3><ul><li>A while loop is the most basic type of loop.</li><li><code>while</code> loops run until a specific controlling condition is not satisfied (i.e. false).<ul><li>The controlling condition is checked <em>before</em> the loop executes and every time the loop loops.</li></ul></li><li>Syntax:</li></ul><pre class="cpp"><code>while(condition){
+          //loop body
+        }</code></pre><ul><li>Basic example:</li></ul><pre class="cpp"><code>int a = 1;
+        while (a &lt; 100) {
+          cout &lt;&lt; &quot;a is &quot; &lt;&lt; a &lt;&lt; endl;
+          a = a * 2;
+        }</code></pre><ul><li>How many times will this loop execute?<ul><li>7, last time this executes a is set to 128 at the end of the loop</li></ul></li><li><strong>A critical note</strong>: something must change in the loop such that the condition is eventually false and the loop exits<ul><li>Otherwise, this is called an infinite loop.</li></ul></li><li>Consider the following:</li></ul><pre class="cpp"><code>int a = 1;
+        while (42) {
+          a = a * 2;
+        }</code></pre><ul><li>The controlling condition in the <code>while</code> never changes, and therefore will run forever (since 42 evaluates to true).</li><li><code>break</code> and <code>continue</code><ul><li>Allows you to control the flow of the loop from within the loop</li><li><code>break</code> will immediately exit the loop</li><li><code>continue</code> will skip the remainder of the block and start at the controlling conditional statement again.</li></ul></li></ul><pre class="cpp"><code>int a = 1;
+        while (42) { // loops until the break statement in the loop is executed
+           cout &lt;&lt; &quot;a is %d &quot; &lt;&lt; a &lt;&lt; endl;
+           a = a * 2;
+           if (a &gt; 100) {
+             break;
+           } else if (a == 64) {
+             continue;  // Immediately restarts at while, skips next step
+           }
+           cout &lt;&lt; &quot;a is not 64\n&quot;;
+        }</code></pre><ul><li>Similar to <code>if</code>, you may omit the braces for the block of code associated with the while loop<ul><li>However, this is not recommended for the same reasons as with an <code>if</code> statement</li><li>Grouping of statements is potentially ambiguous (to the programmer, not the computer) that can lead to bugs</li></ul></li></ul><pre class="cpp"><code>int a = 1;
+        while (a &lt; 100)
+          a = a * 2;</code></pre><ul><li>This will just increase <code>a</code> until it is above 100</li><li>When a loop ends, the program goes back to the while statement’s controlling condition.<ul><li>If the condition is true, the loop executes again</li><li>If the condition is false, the loop exits</li><li>The computer does <em>not</em> continuously check the controlling condition after each statement in the loop executes. It only checks at the end of every loop</li><li>If you need to end the loop during the middle of the loop’s block, use a <code>break</code> to check for the necessary conditions</li></ul></li></ul></section><section id="do-while-loops" class="level3"><h3>Do-While Loops</h3><ul><li>The do-while loop is the same as a while loop, except the loop controlling condition is checked at the end of the loop rather than at the beginning</li><li>Means the loop is guaranteed to execute at least one time.</li><li>Syntax:</li></ul><pre class="cpp"><code>do {
+          /* do stuff */
+        } while (condition);</code></pre><ul><li>Note: he terminating <code>;</code> is required.</li><li><code>break</code> and <code>continue</code> operate the same as with other loops (the controlling condition will still be checked before executing the loop body again when using <code>continue</code></li></ul></section></section><section id="program-style" class="level2"><h2>Program style</h2><ul><li>When writing your own programs, it’s important to:<ol type="1"><li>Keep indentation clean and readable</li><li>Use sensible variable names (don’t use <code>a</code>, <code>b</code>, <code>c</code>, etc like I’ve been using in these small examples. Use names like <code>change</code> or <code>pounds</code> or <code>amount</code>)</li><li>Write comments in your code. This will help yourself and future programmers that come across your code</li></ol></li></ul></section><section id="exercises" class="level2"><h2>Exercises</h2><ol type="1"><li>Write a C++ program to check whether a given number is even or odd</li></ol><pre class="cpp"><code>#include &lt;iostream&gt;
+
+        using namespace std;
+
+        void main()
+        {
+          int num1, rem1;
+
+          cout &lt;&lt; &quot;Input an integer : &quot;;
+          cin &gt;&gt; num1;
+          rem1 = num1 % 2;
+          if (rem1 == 0)
+            cout &lt;&lt; num1 &lt;&lt; &quot; is an even integer\n&quot;;
+          else
+            cout &lt;&lt; num1 &lt;&lt; &quot; is an odd integer\n&quot;;
+        }</code></pre><ol start="2" type="1"><li>Write a C++ program to determine if a inputted integer is a palindrome</li></ol><pre class="cpp"><code>#include &lt;iostream&gt;
+
+        using namespace std;
+
+        int main()
+        {
+          int n, num, digit, rev = 0;
+
+          cout &lt;&lt; &quot;Enter a positive number: &quot;;
+          cin &gt;&gt; num;
+
+          n = num;
+
+          do
+          {
+            digit = num % 10;
+            rev = (rev * 10) + digit;
+            num = num / 10;
+          } while (num != 0);
+
+          cout &lt;&lt; &quot;The reverse of the number is: &quot; &lt;&lt; rev &lt;&lt; endl;
+
+          if (n == rev)
+            cout &lt;&lt; &quot;The number is a palindrome\n&quot;;
+          else
+            cout &lt;&lt; &quot;The number is not a palindrome\n&quot;;
+
+          return 0;
+        }</code></pre></section>
+      </div>
+    </div>
+    
+    <!-- end main body -->
+    
+    <script src="lib/js/head.min.js"></script>
+    <script src="reveal.js/js/reveal.js"></script>
+    
+    <script type="text/javascript">
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+      controls: true,
+      progress: true,
+      history: true,
+      center: true,
+      mouseWheel: false,
+      rollingLinks: false,
+      showNotes: true,
+
+      theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+      transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/none
+
+      // Optional libraries used to extend on reveal.js
+      dependencies: [
+      { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+      // { src: 'plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+      { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+      { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+      { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+      { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+      { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+      // { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+      { src: 'plugin/math/math.js', async: true }
+      ]
+      });
+
+    </script>
+
+    <script>window.jQuery || document.write('<script src="js/jquery-3.2.1.min.js"><\/script>')</script>
+    <script src="js/bootstrap.min.js"></script>
+
+<!--
+    <script>
+      Reveal.addEventListener( 'slidechanged', function( event ) {
+      // event.previousSlide, event.currentSlide, event.indexh, event.indexv
+      var notes = event.currentSlide.querySelector(".notes");
+      if(notes) {
+          console.info("---");
+          console.info(notes.innerHTML.replace(/\n\s+/g,'\n'));
+      }
+      } );
+    </script>
+-->
+
+    <script>
+      Reveal.configure({ slideNumber: 'c/t' });
+    </script>
+
+
+    <script src="js/main.js"></script>
+    <!-- fix whitespace formatting -->
+    <script src="js/fix-whitespace.js"></script>
+    <!-- Default Statcounter code for Personal website http://mjedmonds.com -->
+    <script type="text/javascript">
+      var sc_project=11819202; 
+      var sc_invisible=1; 
+      var sc_security="3d207e19"; 
+      var sc_https=1; 
+      var scJsHost = (("https:" == document.location.protocol) ? "https://secure." :
+      "http://www.");
+      document.write("<sc"+"ript type='text/javascript' src='" + scJsHost+
+      "statcounter.com/counter/counter.js'></"+"script>");
+    </script>
+    <noscript><div class="statcounter"><a title="Web Analytics Made Easy -
+    StatCounter" href="http://statcounter.com/" target="_blank"><img
+    class="statcounter" src="//c.statcounter.com/11819202/0/3d207e19/0/" alt="Web
+    Analytics Made Easy - StatCounter"></a></div></noscript>
+    <!-- End of Statcounter Code -->
+
+    <style type="text/css">
+      /* custom settings for reveal */
+      .reveal {
+        font-size: 30px;
+      }
+      .reveal h1 {
+        font-size: 1em; }
+
+      .reveal h2 {
+        font-size: 1.5em; }
+
+      .reveal h3 {
+        font-size: 1.15em; }
+
+      .reveal h4 {
+        font-size: 1em; }
+
+      .reveal li {
+        padding-top: 4px;
+        padding-bottom: 4px;
+      }
+    </style>
+  </body>
+</html>

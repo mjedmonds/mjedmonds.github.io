@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+
+    <title>Procedural Abstraction &amp; Functions</title>
+
+    <meta name="description" content="CS 80: Internet Programming Notes">
+    <meta name="author" content="Mark Edmonds">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    
+    <!-- Google analytics -->
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-98378227-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="reveal.js/css/reveal.css">
+    <link rel="stylesheet" href="reveal.js/css/theme/serif.css" id="theme">
+    <link href='css/ubuntu_font.css' rel='stylesheet' type='text/css'>
+
+    <link rel="shortcut icon" href="../../favicon.png">
+    
+    <style>
+      body {
+        padding-top: 30px;
+        padding-bottom: 40px;
+      }
+      
+    </style>
+
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="css/highlightjs/atom-one-light.css">
+
+    <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+    <script>
+      document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+    </script>
+
+    <script src="js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+  </head>
+  <body>
+    
+    <script src="js/nav.js"></script>
+
+    <script>
+      function toggleElements(one, two) {
+      document.getElementById(one).style.display = 'none';
+      document.getElementById(two).style.display = 'block';
+      }
+    </script>
+    
+    <!-- Main body -->
+    
+    <div class="reveal">
+      <div class="slides">
+        <!-- slide content will go here -->
+        <section id="chapter-4-procedural-abstraction-functions" class="level2"><h2>Chapter 4: Procedural Abstraction &amp; Functions</h2><p>Instructor: Mark Edmonds</p><p><a href="mailto:edmonds_mark@smc.edu" class="email">edmonds_mark@smc.edu</a></p></section><section id="procedures-functions" class="level2"><h2>Procedures &amp; Functions</h2><ul><li>All executable code resides within a <strong>function</strong></li><li>So far, the only function we have written is called <strong>main</strong>, which served as the entry point for our programs.</li><li>A <strong>function</strong> is a named block of code that performs a task and then returns control to a caller.<ul><li>The <strong>caller</strong> is the function that <strong>invoked</strong> the function</li><li>The <strong>callee</strong> is the function being <strong>invoked</strong></li><li>You can think of the caller as the “parent” to the callee</li></ul></li><li>Because a function is just a block of code, we can call it multiple times throughout a program’s execution</li><li>After finishing, the function will branch back (return) to the caller.</li><li>Consider this trivial example:<ul><li>Suppose you want to print out the first 5 squares of numbers, do some processing, then print out the first 5 squares again. So far, we may write something like</li></ul></li></ul><pre class="cpp"><code>#include &lt;iostream&gt;
+
+        using namespace std;
+
+        int main(void)
+        {
+          for(int i=1; i &lt;= 5; i++)
+          {
+            cout &lt;&lt; i*i &lt;&lt; endl;
+          }
+          // amazing things
+          for(int i=1; i &lt;= 5; i++)
+          {
+            cout &lt;&lt; i*i &lt;&lt; endl;
+          }
+          return 0;
+        }</code></pre><ul><li>We wrote the same loop twice!<ul><li>This is bad.</li><li>If we want to modify this code, to say print the first 5 cubes of numbers, we’d have to change code in two places</li><li>If we write a function to print the first 5 squares of numbers and call that function twice:</li></ul></li></ul><pre class="cpp"><code>#include &lt;iostream&gt;
+
+        using namespace std;
+
+        void print_squares(void)
+        {
+          for(int i=1; i &lt;=5; i++)
+          {
+            cout &lt;&lt; i*i &lt;&lt; endl;
+          }
+        }
+
+        int main(void)
+        {
+          print_squares();
+          // amazing things
+          print_squares();
+          return 0;
+        }</code></pre></section><section id="functions" class="level2"><h2>Functions</h2><ul><li>Functions operate as <em>black boxes</em>, meaning they take input (parameters/arguments), do something with the input (function body), and spit out the answer (return value)<ul><li>A function may not require any input at all (like our example above) and it may not return anything (like our example above - printing is not a form of returning).</li></ul></li><li>Terminology:<ul><li>A function <em>f</em> that uses another function <em>g</em> is said to <em>call g</em> (i.e. <em>f</em> is the caller of <em>g</em>). * A function’s inputs are known as its arguments (or parameters).</li><li>A function <em>g</em> that gives some kind of data back to the caller <em>f</em> is said to return that data.</li></ul></li><li>Let’s look at a function to square the input of an integer:</li></ul><pre class="cpp"><code>// the first int indicates that this function will return an integer to the caller
+        // square is the name of the function
+        // everything inside of the () are the function&#39;s arguments
+        // int x specifies a single argument named x of type int
+        int square(int x)
+        {
+          // function body start
+          int square_of_x;
+          square_of_x = x * x;
+          // return indicates what variable&#39;s value we return to the caller
+          return square_of_x;
+        }</code></pre><ul><li>A much simpler implementation:</li></ul><pre class="cpp"><code>int square(int x)
+        {
+           return x * x;
+        }</code></pre><section id="function-syntax" class="level3"><h3>Function Syntax</h3><ul><li>Functions take the form:</li></ul><pre class="cpp"><code>rtype name(type1 arg1, type2 arg2, ...)
+        {
+          /* function body code */
+        }</code></pre><ul><li><em>rtype</em> is the return type of the function<ul><li>Could be <code>int</code>, <code>float</code>, etc</li><li>Can be <code>void</code> to indicate no return value<ul><li>When a function is <code>void</code> type, you do not place a <code>return</code> in the function body</li><li>Example void function</li></ul></li></ul></li></ul><pre class="cpp"><code>void print_hello(int number_of_times)
+        {
+          for(int i=1; i &lt;= number_of_times; i++) {
+            cout &lt;&lt; &quot;Hello!\n&quot;;
+          }
+        }</code></pre><ul><li>What about a function that takes no arguments?</li></ul><pre class="cpp"><code>float calculate_number() // or you can explicitly place void as the argument -&gt; e.g. (void)
+        {
+          float result=1;
+          for(int i=0; i &lt; 100; i++) {
+            result += 1;
+            result = 1/result;
+          }
+          return result;
+        }</code></pre></section><section id="function-declarations" class="level3"><h3>Function declarations</h3><ul><li>A <em>function declaration</em> tells the compiler about a function’s name, return type, and parameters.</li><li>So far, we have looked at <em>function definitions</em>, which provide the actual code a function will execute.</li><li>We can declare a function without defining it (similar to declaring a variable without initializing it)</li><li>Function declarations take the following form:</li></ul><pre class="cpp"><code>rtype function_name(type1 arg1, type2 arg2);</code></pre><ul><li>Notice the semicolon at the end - this is a statement in C</li><li>Why bother with this?<ul><li>Function declarations typically exist in header files (.h), and their corresponding definitions exist in a .c file of the same name</li><li>For instance, we have been writing <code>#include &lt;stdio.h&gt;</code>, which includes the stdio header</li><li>Many times people put <code>main()</code> at the top of their program, so a fellow programmer can see the program’s entry point first<ul><li>But a compiler reads a program top-to-bottom, so if you reference a function before the compiler is aware of its existence, the compiler won’t know what to do (we’ll see an example of this in a second)</li></ul></li><li>But even for more complex programs, it’s nice to see all of the functions in one area without having to scroll through every definition. Provides an overview of the functions available.</li></ul></li><li>Look back at our <code>print_squares</code> example. <code>print_squares</code> is before <code>main</code>. Let’s try to move it after <code>main</code>:</li></ul><pre class="cpp"><code>#include &lt;iostream&gt;
+
+        using namespace std;
+
+        int main(void)
+        {
+          print_squares();
+          // amazing things
+          print_squares();
+          return 0;
+        }
+
+        void print_squares(void)
+        {
+          int i;
+          for(i=1; i &lt;=5; i++)
+          {
+            cout &lt;&lt; i*i &lt;&lt; endl;
+          }
+        }</code></pre><ul><li>We’ll get a compiler error when we try to build this. Why?<ul><li>When the compiler reads line 5, it has no idea what <code>print_squares</code> is. Function declarations let us tell the compiler: “This function will be defined later. When the linker executes (third stage of compilation), this function will be defined, compiled, and ready for linking”</li></ul></li><li>Let’s add a function declaration to fix:</li></ul><pre class="cpp"><code>#include &lt;iostream&gt;
+
+        using namespace std;
+
+        void print_squares(void);
+
+        int main(void)
+        {
+          print_squares();
+          // amazing things
+          print_squares();
+          return 0;
+        }
+
+        void print_squares(void)
+        {
+          int i;
+          for(i=1; i &lt;=5; i++)
+          {
+            cout &lt;&lt; i*i &lt;&lt; endl;
+          }
+        }</code></pre><ul><li>It builds! The compiler is aware that <code>print_squares</code> is a function and will be defined later.</li></ul></section><section id="static-functions" class="level3"><h3>Static functions</h3><ul><li>Static functions can only be called from the file in which they were written</li><li>This helps protect functionality from being available in other files. Essentially makes the function private to this particular file</li><li>Example:</li></ul><pre class="cpp"><code>static int less_than( int a, int b )
+        {
+            return (a &lt; b) ? a : b;
+        }</code></pre></section></section><section id="calling-functions" class="level2"><h2>Calling functions</h2><ul><li>Say we wanted to call the <code>calculate_number</code> function.</li><li>Remember this function takes no arguments and returns a float</li><li>We would write:</li></ul><pre class="cpp"><code>float f;
+        f = calculate_number();</code></pre><ul><li>If you do not assign the return value to a variable, the return value is discarded (will not error).</li><li>What if the function takes arguments?</li></ul><pre class="cpp"><code>int square_of_10;
+        square_of_10 = square(10);</code></pre><ul><li>We can also pass appropriately (correctly) typed variables instead of literals</li></ul><pre class="cpp"><code>int square_of_x;
+        int x = 10;
+        square_of_x = square(x);</code></pre><ul><li>C will attempt to type cast whatever you pass into the appropriate type.<ul><li>For instance, if you pass a floating point number for an int argument, the floating point number will be type cast into an int</li></ul></li><li>If the function doesn’t return anything, simply call the function</li></ul><pre class="cpp"><code>print_hello();</code></pre></section><section id="local-variables" class="level2"><h2>Local variables</h2><ul><li>Variables declared inside functions are local to that function<ul><li>If you declare variables inside a function, they are only available in the function</li><li>This is called <em>scope</em></li></ul></li><li>Scope<ul><li>Local variables conform to the rules of “block scope”</li><li>The code block (denoted by <code>{}</code>) determines the scope of variables</li><li>Blocks can be nested, as we’ve seen with <code>if</code> statements inside of <code>main</code></li></ul></li></ul></section><section id="functions-from-the-c-standard-library" class="level2"><h2>Functions from the C++ Standard Library</h2><ul><li>Wide range of functions already written for you!</li><li>No need to reinvent the wheel</li><li>These exist to make your life easier</li><li>Wikibooks reference: <a href="https://en.wikibooks.org/wiki/C%2B%2B_Programming/STL">https://en.wikibooks.org/wiki/C%2B%2B_Programming/STL</a></li><li>Cplusplus reference: <a href="http://www.cplusplus.com/reference/">http://www.cplusplus.com/reference/</a></li></ul></section><section id="exercises" class="level2"><h2>Exercises</h2><ol type="1"><li>What is the effect of calling show(4)?</li></ol><pre class="cpp"><code>int show(int x) {
+          cout &lt;&lt; x &lt;&lt; &quot; &quot; &lt;&lt; x*x &lt;&lt; endl;
+          return x*x;
+          cout &lt;&lt; x &lt;&lt; &quot; &quot; &lt;&lt; x*x*x &lt;&lt; endl;
+          return x*x*x;
+        }</code></pre><ol start="2" type="1"><li>What does the following C++ function do?</li></ol><pre class="cpp"><code>int eq3(int a, int b, int c) {
+          if ((a == b) &amp;&amp; (a == c))
+            return 1;
+          else
+            return 0;
+        }</code></pre><ol start="3" type="1"><li>Write a C++ function that takes a real number as an argument and returns the absolute value of that number.</li></ol><pre class="cpp"><code>#include &lt;iostream&gt;
+
+        using namespace std;
+
+        float absolute(float n){
+          if (n &lt; 0.0){
+            return -n;
+          } else{
+            return n;
+          }
+        }
+
+        int main(){
+          float abs1 = absolute(5.5);
+          float abs2 = absolute(-10.2);
+          cout &lt;&lt; &quot;5.5 is &quot; &lt;&lt; abs1 &lt;&lt; &quot; -10.2 is &quot; &lt;&lt; abs2 &lt;&lt; endl;
+        }</code></pre><ol start="6" type="1"><li>Write a C++ function to calculate a total cost of a meal. The function should take in a base cost, the tip percentage as a decimal, and a tax percentage as a decimal. The function should return the total cost of the meal.</li></ol><pre class="cpp"><code>#include &lt;iostream&gt;
+        #include &lt;cmath&gt;
+
+        using namespace std;
+
+        float tip_calculator(float base, float tip_pct, float tax_pct){
+          float total = base + base * tip_pct + base * tax_pct;
+          return total;
+        }
+
+        int main(){
+          float total = tip_calculator(35.6, 0.2, 0.01);
+          total = roundf(total * 100) / 100;
+          cout &lt;&lt; &quot;Total is &quot; &lt;&lt; total &lt;&lt; endl;
+        }
+        </code></pre></section>
+      </div>
+    </div>
+    
+    <!-- end main body -->
+    
+    <script src="lib/js/head.min.js"></script>
+    <script src="reveal.js/js/reveal.js"></script>
+    
+    <script type="text/javascript">
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+      controls: true,
+      progress: true,
+      history: true,
+      center: true,
+      mouseWheel: false,
+      rollingLinks: false,
+      showNotes: true,
+
+      theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+      transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/none
+
+      // Optional libraries used to extend on reveal.js
+      dependencies: [
+      { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+      // { src: 'plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+      { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+      { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+      { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+      { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+      { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+      // { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+      { src: 'plugin/math/math.js', async: true }
+      ]
+      });
+
+    </script>
+
+    <script>window.jQuery || document.write('<script src="js/jquery-3.2.1.min.js"><\/script>')</script>
+    <script src="js/bootstrap.min.js"></script>
+
+<!--
+    <script>
+      Reveal.addEventListener( 'slidechanged', function( event ) {
+      // event.previousSlide, event.currentSlide, event.indexh, event.indexv
+      var notes = event.currentSlide.querySelector(".notes");
+      if(notes) {
+          console.info("---");
+          console.info(notes.innerHTML.replace(/\n\s+/g,'\n'));
+      }
+      } );
+    </script>
+-->
+
+    <script>
+      Reveal.configure({ slideNumber: 'c/t' });
+    </script>
+
+
+    <script src="js/main.js"></script>
+    <!-- fix whitespace formatting -->
+    <script src="js/fix-whitespace.js"></script>
+    <!-- Default Statcounter code for Personal website http://mjedmonds.com -->
+    <script type="text/javascript">
+      var sc_project=11819202; 
+      var sc_invisible=1; 
+      var sc_security="3d207e19"; 
+      var sc_https=1; 
+      var scJsHost = (("https:" == document.location.protocol) ? "https://secure." :
+      "http://www.");
+      document.write("<sc"+"ript type='text/javascript' src='" + scJsHost+
+      "statcounter.com/counter/counter.js'></"+"script>");
+    </script>
+    <noscript><div class="statcounter"><a title="Web Analytics Made Easy -
+    StatCounter" href="http://statcounter.com/" target="_blank"><img
+    class="statcounter" src="//c.statcounter.com/11819202/0/3d207e19/0/" alt="Web
+    Analytics Made Easy - StatCounter"></a></div></noscript>
+    <!-- End of Statcounter Code -->
+
+    <style type="text/css">
+      /* custom settings for reveal */
+      .reveal {
+        font-size: 30px;
+      }
+      .reveal h1 {
+        font-size: 1em; }
+
+      .reveal h2 {
+        font-size: 1.5em; }
+
+      .reveal h3 {
+        font-size: 1.15em; }
+
+      .reveal h4 {
+        font-size: 1em; }
+
+      .reveal li {
+        padding-top: 4px;
+        padding-bottom: 4px;
+      }
+    </style>
+  </body>
+</html>

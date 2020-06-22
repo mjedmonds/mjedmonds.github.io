@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 
-    <title>I/O and Streams</title>
+    <title>Introduction to C++</title>
 
     <meta name="description" content="CS 80: Internet Programming Notes">
     <meta name="author" content="Mark Edmonds">
@@ -65,35 +65,19 @@
     <div class="reveal">
       <div class="slides">
         <!-- slide content will go here -->
-        <section id="chapter-6-io-and-streams" class="level2"><h2>Chapter 6: I/O and Streams</h2><p>Instructor: Mark Edmonds</p><p><a href="mailto:edmonds_mark@smc.edu" class="email">edmonds_mark@smc.edu</a></p></section><section id="file-io" class="level2"><h2>File I/O</h2><ul><li>Thus far, we have either printed to the screen or gotten input directly from the user</li><li>What if we could read data from files and save data to files?</li><li>This would enable us to save information beyond the current program execution and use the data later</li></ul></section><section id="file-io-1" class="level2"><h2>File I/O</h2><ul><li>Your program <em>reads</em> from a file when it takes input from a file</li><li>Your program <em>writes</em> to a file when it sends information to a file</li><li>This chapter examines <em>streams</em> to accomplish I/O</li></ul></section><section id="streams" class="level2"><h2>Streams</h2><ul><li>Streams will serve as our first introduction to objects</li><li>A <strong>stream</strong> is a flow of characters<ul><li>If the flow is into your program, the stream is called an <strong>input stream</strong></li><li>If the flow is out of your program, the stream is called an <strong>output stream</strong></li></ul></li></ul></section><section id="streams-1" class="level2"><h2>Streams</h2><ul><li>The data in the stream can come from a file or from a keyboard - the stream does not care</li><li><code>cin</code> and <code>cout</code> are both special stream <em>objects</em> included from the <code>iostream</code> header</li></ul></section><section id="streams-2" class="level2"><h2>Streams</h2><ul><li><p>Suppose your program defines an input stream <code>in_stream</code> that comes from a file (this does not show how to create <code>in_stream</code>):</p><pre class="cpp"><code>int some_number;
-        instream &gt;&gt; some_number</code></pre></li><li><p>This <code>int</code> is filled with a number from this file.</p></li></ul></section><section id="streams-3" class="level2"><h2>Streams</h2><ul><li><p>We can also use output streams in a similar fashion:</p><pre class="cpp"><code>out_stream &lt;&lt;  some_number &lt;&lt; endl;</code></pre></li><li><p>This will output the value stored in <code>some_number</code> to the file.</p><ul><li>This effectively saves <code>some_number</code> to the file</li></ul></li></ul></section><section id="streams-4" class="level2"><h2>Streams</h2><ul><li><p>Input streams are created with:</p><pre class="cpp"><code>ifstream in_stream</code></pre></li><li><p>Output streams are created with:</p><pre class="cpp"><code>ofstream out_stream;</code></pre></li><li><p>Both types are provided by <code>fstream</code>, which can be included with <code>#include &lt;fstream&gt;</code></p></li></ul></section><section id="streams-5" class="level2"><h2>Streams</h2><ul><li>Important functions:<ul><li><code>open()</code> - opens a file</li><li><code>close()</code> - close a file</li></ul></li><li>See documentation at<ul><li><a href="http://www.cplusplus.com/reference/fstream/ifstream/" class="uri">http://www.cplusplus.com/reference/fstream/ifstream/</a></li><li><a href="http://www.cplusplus.com/reference/fstream/ofstream/" class="uri">http://www.cplusplus.com/reference/fstream/ofstream/</a></li></ul></li></ul></section><section id="example-simple_io.cpp" class="level2"><h2>Example: <a href="../examples/ch6_io/simple_io.cpp"><code>simple_io.cpp</code></a></h2><pre><code>// Reads three numbers from the file infile.dat, sums the numbers, and writes
-        // the sum to the file outfile.dat. (A better version of this program will be
-        // given in Display 6.2.)
-
-        #include &lt;fstream&gt;
-
+        <section id="chapter-1-introduction-to-computers-and-c-programming" class="level2"><h2>Chapter 1: Introduction to Computers and C++ Programming</h2><p>Instructor: Mark Edmonds</p><p><a href="mailto:edmonds_mark@smc.edu" class="email">edmonds_mark@smc.edu</a></p></section><section id="what-is-a-program" class="level2"><h2>What is a program?</h2><ul><li>A program is a set of instructions for a computer to follow</li><li>We will write <em>source code</em> that is <em>compiled</em> into instructions the computer can execute</li><li>C++ is considered a high-level language that allows programmers to write English-like sentences to describe a program, rather than low-level machine (binary; 1’s and 0’s) instructions for the processor</li></ul></section><section id="introduction-to-c" class="level2"><h2>Introduction to C++</h2><ul><li>C++ is a <em>compiled</em> language, meaning an entire program is converted into machine instructions at once<ul><li>This is in contrast to <em>interpreted</em> languages, where the program is converted to machine instructions as the program executes (line by line)</li></ul></li></ul><figure><img src="./images/ch1_compilation.png" alt="" /><figcaption>Compilation process</figcaption></figure></section><section id="history-of-c" class="level2"><h2>History of C++</h2><ul><li>Authored by Bjorne Stroustrup, AT&amp;T</li><li>Extended the C Language<ul><li>Added features to support Object-Oriented Programming</li></ul></li><li>C++ is considered a superset of C</li><li>Language is now an international standard<ul><li>American National Standards Institute</li><li>International Standards Organization</li></ul></li></ul></section><section id="program-development" class="level2"><h2>Program Development</h2><ul><li>What is an <em>Algorithm</em>?<ul><li>A sequence of precise instructions thatleads to a solution</li></ul></li><li>Example algorithm: determine how many times a name occurs in a list of names, like <code>[Sarah, Bobby, Jack, Elizabeth, Sabrina]</code>. An algorithm may look like this:</li></ul><p><code>Get the list of names Get the name being checked Set a counter to zero For each name in the list:   Compare the name to the name being checked. If the names are the same, add one to the counter. Return the value of the counter as the answer</code></p><ul><li>What is a <em>Program</em>?<ul><li>An algorithm expressed in a language the computer can understand</li></ul></li></ul><figure><img src="./images/ch1_program_development.png" alt="" /><figcaption>Program development process</figcaption></figure></section><section id="comments" class="level2"><h2>Comments</h2><ul><li>Before we look at our first C++ program, I wanted to talk about comments. Comments let you insert text into your program to describe what your program is doing.</li><li>Comments in C++ can look like this:<ul><li><code>// double forward slash will comment to the end of the line</code></li><li><code>/* example of an enclosed comment. These comments can span multiple lines */</code></li></ul></li></ul></section><section id="example-hello_world.cpp" class="level2"><h2>Example <a href="../examples/ch1_intro/hello_world.cpp">hello_world.cpp</a></h2><pre><code>// This program displays a simple message
+        #include &lt;iostream&gt;  // for std::cout
+        using namespace std; // supports the shorthanded cout instead of std::cout
+        
+        // the main() function is the starting point of every program
         int main()
         {
-          using namespace std;
-
-          ifstream in_stream;
-          ofstream out_stream;
-
-          in_stream.open(&quot;infile.dat&quot;);
-          out_stream.open(&quot;outfile.dat&quot;);
-
-          int first, second, third;
-          in_stream &gt;&gt; first &gt;&gt; second &gt;&gt; third;
-          out_stream &lt;&lt; &quot;The sum of the first 3\n&quot;
-                     &lt;&lt; &quot;numbers in infile.dat\n&quot;
-                     &lt;&lt; &quot;is &quot; &lt;&lt; (first + second + third) &lt;&lt; endl;
-
-          in_stream.close();
-          out_stream.close();
-
+          // print the content Hello, world! to the screen
+          cout &lt;&lt; &quot;Hello World!\n&quot;;
+          // exit the program with no error
           return 0;
         }
-        </code></pre></section>
+        </code></pre></section><section id="fixing-programs" class="level2"><h2>Fixing Programs</h2><ul><li>Most programs do not work initially</li><li>There are multiple reasons why a program does not work:<ol type="1"><li>A <em>syntax error</em> means your source code cannot be converted into machine code. This source code cannot produce a valid C++ program, and therefore can never be run</li><li>A <em>runtime error</em> means your program has executed into a state not permissible by the program or by C++; in this case your program will crash.</li><li>A <em>logic error</em> means your program compiles and runs without error, but does not produce the expected result<ul><li>Hardest error to fix!</li></ul></li></ol></li><li>Fixing these problems consists of:<ol type="1"><li><em>Syntax error</em>: examine the error and determine a fix in your source code</li><li><em>Runtime error</em>: examine the error and add error handling mechanisms to correct the error</li><li><em>Logic error</em>: examine your understanding the problem (can you solve it on a piece of paper by hand?) and make sure your program implements the same logic</li></ol></li><li>A <em>debugger</em> can be used to inspect your program as it executes<ul><li>This helps fix runtime and logic errors</li><li>Allows you to trace the execution of a program and verify it behaves as you intend</li></ul></li></ul></section>
       </div>
     </div>
     
