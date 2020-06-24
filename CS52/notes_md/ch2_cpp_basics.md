@@ -450,24 +450,23 @@ int main() {
    cin >> value2;
 
    if (value1 < value2) {
-	   cout << "value1 is less than value2\n";
+     cout << "value1 is less than value2\n";
    }
    if (value1 > value2) {
-	   cout << "value1 is greater than value2\n";
+     cout << "value1 is greater than value2\n";
    }
    if (value1 <= value2) {
-	   cout << "value1 is less than or equal value2\n";
+     cout << "value1 is less than or equal value2\n";
    }
    if (value1 >= value2) {
-	   cout << "value1 is greater than or equal value2\n";
+     cout << "value1 is greater than or equal value2\n";
    }
    if (value1 == value2) {
-	   cout << "value1 equals value2\n";
+     cout << "value1 equals value2\n";
    }
    if (value1 != value2) {
-	   cout << "value1 does not equals value2\n";
+     cout << "value1 does not equals value2\n";
    }
-   /* FYI: due to rounding errors, it is unreliable to test for equality on floating point numbers */
    return( 0 );
 }
 ```
@@ -651,6 +650,44 @@ do {
 
 - Note: he terminating `;` is required.
 - `break` and `continue` operate the same as with other loops (the controlling condition will still be checked before executing the loop body again when using `continue`
+
+## loops.cpp
+
+```cpp
+#include <iostream>          // for std::cout and std::cin
+using namespace std;         // supports cout and cin
+
+int main( )
+{
+  int starting_point = 0, ending_point = 0, counter = 0;
+  char ans = 'y';
+  bool found_a_number = false;
+
+  do {
+    cout << "Please enter a starting and ending point:";
+    cin  >> starting_point >> ending_point;
+
+    counter = starting_point;
+    if (starting_point < ending_point) {
+      cout << "Here's all the even numbers between these points" << endl;
+      while (counter < ending_point) {
+        counter = counter + 1;
+        if ((counter % 2) == 0) {
+          cout << counter << " ";
+          if (!found_a_number) {
+            found_a_number = true;
+          }
+        }
+      }
+    }
+
+    if (found_a_number) cout << endl;
+      cout << "Continue (y/n)? ";
+      cin  >> ans;
+  } while (ans == 'y');
+  return 0;
+}
+```
 
 ## Program style
 

@@ -82,6 +82,52 @@ void dummy_func(int& param){ // the int& indicates we want a reference to an int
      - Since there is no copy that occurs when we pass-by-reference, we can save time by preventing the computer from copying a large amount a data from the caller to callee (this will be relevant later once we learn about classes and structs)
      - To do this, you would typically pass by *constant* reference, so the callee cannot modify the data. For the function signature of `dummy_func` above could be: `int dummy_func(const int& param)` (note the `param++` line would then fail to compile, as we aren't allowed to modify a constant `int`)
 
+### reference.cpp
+
+- This program showcases uses cases of pass-by-reference
+
+```cpp
+// This program demonstrates how you can use reference parameters
+
+#include <iostream>          // for std::cout and std::cin
+using namespace std;         // supports cout
+
+void get_values( int& input1, int& input2 );
+void swap_values( int& var1, int& var2 );
+void show_values( int value1, int value2 );
+
+int main( )
+{
+  int first = 0, second = 0;
+
+  get_values( first, second );
+  show_values( first, second );
+  swap_values( first, second );
+  show_values( first, second );
+  return 0;
+}
+
+// this effectively implements a "multiple return" as our two parameters are modified by the function
+void get_values( int& input1, int& input2 )
+{
+  cout << "Please enter two values: ";
+  cin  >> input1 >> input2;
+}
+
+// this also implments a "multiple return"
+void swap_values( int& var1, int& var2 )
+{
+  int temp = var2;
+  var2 = var1;
+  var1 = temp;
+}
+
+void show_values( int value1, int value2 )
+{
+  cout << "value1 = " << value1 << " and value2 = " << value2 << endl;
+}
+```
+
 ## Debugging & Testing
 
 - It is very difficult to write correctly the first time. Even for the most experienced programmers

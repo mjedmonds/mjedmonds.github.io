@@ -91,6 +91,35 @@ int b = (int)3.5; // 3.5 will be truncated to 3
 - 11 (eleventh highest)
   - `,` comma (for creating multiple variables)
 
+### precedence.cpp
+
+```cpp
+#include <iostream>          // for std::cout and std::cin
+using namespace std;         // supports cout and cin
+
+int main( )
+{
+  double value1 = 0.0, value2 = 0.0;
+
+  // Prompt the user for values
+  cout << "Please enter two values: ";
+  cin  >> value1 >> value2;
+
+  // This next code segment demonstrates the precedence rules
+  if ( 2 * value1 + 7.0 < value2 - 12.2 * 1.1 ) {
+    cout << "The first complex expression is true" << endl;
+  }
+  if ( 2.5 * value1 == value2 / 2.0 ) {
+    cout << "The second complex expression is true" << endl;
+  }
+  if ( 100 / value1 > value2 * 3 ) {
+    cout << "The third complex expression is true" << endl;
+  }
+
+  return 0;
+}
+```
+
 ### Logical Expressions
 
 - A way to evaluate operations over logical values (i.e. `0` for false and anything else for true)

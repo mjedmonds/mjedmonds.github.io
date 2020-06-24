@@ -81,6 +81,47 @@ int main(void)
   - A function _g_ that gives some kind of data back to the caller _f_ is said to return that data.
 - Let's look at a function to square the input of an integer:
 
+### Calling functions
+
+- We can call functions written by other programmers or write our own functions
+- The following `math.cpp` program looks at some math functionality provided by the `<cmath>` library.
+
+### math.cpp
+
+```cpp
+// This program demonstrates how you can use the standard math
+// functions available in <cmath>
+
+#include <iostream>          // for std::cout
+#include <cmath>             // for floor(x),ceil(x),fabs(x) & sqrt(x)
+using namespace std;         // supports cout
+
+int main( )
+{
+  double value = 0.0, floor_value, ceil_value, fabs_value, sqrt_value;
+
+  cout << "Please enter a value for computations: " << endl;
+  cin  >> value;
+
+  floor_value = floor( value );
+  ceil_value  = ceil( value );
+  fabs_value  = fabs( value );
+  sqrt_value  = sqrt( value );
+
+  cout << "\t floor_value = " << floor_value << endl;
+  cout << "\t ceil_value  = " << ceil_value  << endl;
+  cout << "\t fabs_value  = " << fabs_value  << endl;
+  cout << "\t sqrt_value  = " << sqrt_value  << endl;
+
+  return 0;
+}
+```
+
+### User-defined functions
+
+- We can also write functions ourselves. This allows us to reuse the same functionality as many times as needed.
+- Let's first start with an example that walks through the components of a function
+
 ```c++
 // the first int indicates that this function will return an integer to the caller
 // square is the name of the function
@@ -144,6 +185,7 @@ float calculate_number() // or you can explicitly place void as the argument -> 
   return result;
 }
 ```
+
 
 ### Function declarations
 
@@ -219,6 +261,47 @@ void print_squares(void)
 
 - It builds! The compiler is aware that `print_squares` is a function and will be defined later.
 
+### math2.cpp
+
+- As another example, let's rewrite our `math.cpp` example above using a user-defined function
+
+```cpp
+// This program demonstrates how you can define and use functions.
+// This program duplicates the functionality of MathFuncs.cpp
+
+#include <iostream>          // for std::cout
+#include <cmath>             // for floor(x),ceil(x),fabs(x) & sqrt(x)
+using namespace std;         // supports cout
+
+// precondition:  double argument assigned a value
+// postcondition: floor, ceil, fabs and sqrt of argument is computed
+//                and printed out to standard output
+int compute_and_print( double d );
+
+int main( )
+{
+  double value1 = 0.0, value2;
+
+  cout << "Please enter two values for computations: " << endl;
+  cin  >> value1 >> value2;
+
+  compute_and_print( value1 );
+  compute_and_print( value2 );
+  return 0;
+}
+
+// this function allows us to reuse code without copying and pasting large blocks of code
+int compute_and_print( double d ) {
+  cout << "\t floor_value = " << floor( d ) << endl;
+  cout << "\t ceil_value  = " << ceil( d )  << endl;
+  cout << "\t fabs_value  = " << fabs( d )  << endl;
+  cout << "\t sqrt_value  = " << sqrt( d )  << endl;
+
+  return 0;
+}
+```
+
+
 ### Static functions
 
 - Static functions can only be called from the file in which they were written
@@ -276,6 +359,50 @@ print_hello();
   - Local variables conform to the rules of "block scope"
   - The code block (denoted by `{}`) determines the scope of variables
   - Blocks can be nested, as we've seen with `if` statements inside of `main`
+- Let's look at an example showcasing scope
+
+### scope.cpp
+
+```cpp
+// This program demonstrates how variable scope occurs.
+// Look at how the variable named "value" is processed.
+
+#include <iostream>                // for std::cout
+#include <cmath>				   // for math functions
+using namespace std;               // supports cout
+
+// precondition:  double argument assigned a value
+// postcondition: floor, ceil, fabs and sqrt of argument is computed
+//                and printed out to standard output
+int compute_and_print( double d );
+
+int main( )
+{
+  double value = 0.0;   // This variable is local to the main function
+
+  cout << "Please enter a value for computations: " << endl;
+  cin  >> value;
+
+  compute_and_print( value );
+  cout << "After the function call, value=" << value << endl;
+  return 0;
+}
+
+int compute_and_print( double d ) {
+  double value;         // This variable is local to this function
+                        // it is NOT the same variable as the "value" variable in main()
+  value = floor( d );
+  cout << "\t floor_value = " << value << endl;
+  value = ceil( d );
+  cout << "\t ceil_value  = " << value  << endl;
+  value = fabs( d );
+  cout << "\t fabs_value  = " << value << endl;
+  value = sqrt( d );
+  cout << "\t sqrt_value  = " << value  << endl;
+
+  return 0;
+}
+```
 
 ## Functions from the C++ Standard Library
 
