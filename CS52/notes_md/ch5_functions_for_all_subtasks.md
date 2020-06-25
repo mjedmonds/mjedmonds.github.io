@@ -12,6 +12,92 @@ Instructor: Mark Edmonds
 
 <edmonds_mark@smc.edu>
 
+## Header vs. Implementation files
+
+- Typically, we'll write our function declarations in *header* and our function implementations in an *implementation* file.
+- Header files have the extension `.h` and implementation files have the extension `.cpp`
+- We separate the declaration from the implementation due to how C++ is compiled, but more details on that later.
+  - The gist of this is that the header file can be included in as many files as you want with statements like `#include` but the implementation file can only be compiled once. If you include an implementation file in multiple files, you'll get a compiler error saying something about "multiple definitions"
+- Let's look at an example of how to separate the function declaration from the implementation and how to use a function in a separate file. Remember this example from the last lecture notes? We'll use it as a reference:
+
+```c++
+#include <iostream>
+
+using namespace std;
+
+void print_squares(void);  // function declaration, to be moved to a header file
+
+int main(void)
+{
+  print_squares();
+  // amazing things
+  print_squares();
+  return 0;
+}
+
+// function implementation/definition, to be moved to an implementation file
+void print_squares(void)
+{
+  int i;
+  for(i=1; i <=5; i++)
+  {
+    cout << i*i << endl;
+  }
+}
+```
+
+- Next, I'll show how to split these definitions into separate files
+
+### print_squares.h
+
+```c++
+#include <iostream>
+
+using namespace std;
+
+// declare the function. This will make any file that includes print_squares.h aware that a print_squares() function exists
+void print_squares(void);
+
+```
+
+
+### print_squares.cpp
+
+```c++
+// need to include the header so we have access to std::cout
+// we should ONLY include the print_squares.h header. Any other includes should be directly placed inside print_squares.h (like <iostream>)
+#include "print_squares.h"
+
+void print_squares(void)
+{
+  int i;
+  for(i=1; i <=5; i++)
+  {
+    cout << i*i << endl;
+  }
+}
+```
+
+### main.cpp
+
+```c++
+#include <iostream>
+
+// need to include print_squares so we have access to the print_squares() function
+#include "print_squares.h"
+
+using namespace std;
+
+int main(void)
+{
+  print_squares();
+  // amazing things
+  print_squares();
+  return 0;
+}
+```
+
+
 ## Call-by-reference parameters
 
 - So far, when we've passed arguments to a function, those arguments were copied inside of the scope of the function, meaning any modification inside of the function will not affect the caller's variables.
