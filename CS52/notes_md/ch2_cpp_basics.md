@@ -128,8 +128,7 @@ cout << "The price is " << price << endl;
 
 ```c++
 cout << "Enter your age: ";
-cin >>:w
- age;
+cin >> age;
 ```
 
 ## Literals
