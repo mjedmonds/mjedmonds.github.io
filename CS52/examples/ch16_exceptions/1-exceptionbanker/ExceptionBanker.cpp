@@ -1,0 +1,98 @@
+// This program demonstrates how to make use of existing objects.
+// This program uses a BankAccount class with the interface described
+// in class.
+
+#include <iostream>                // for std::cout
+#include <string>			       			 // for string class
+#include "ExceptionBankAccount.h"              // for BankAccount class
+#include <stdexcept>               // supports Linux exceptions
+
+using namespace std;               // supports cout
+using namespace cs52;			   			 // for BankAccount class
+
+enum CHOICE { CREATE, DEPOSIT, WITHDRAW, PRINT, QUIT };
+
+CHOICE menu();
+
+int main( )
+{
+  CHOICE choice;
+  BankAccount account, withdrawaccount, depositaccount;
+  string name;
+  double balance;
+
+  cout.setf( ios::fixed );
+  cout.setf( ios::showpoint );
+  cout.precision( 2 );
+
+  cout << endl << endl << "\t\tWelcome to the Bank of SMC!" << endl;
+  do {
+	choice = menu();
+	try {
+		switch (choice) {
+		case CREATE:
+			cout << "Please enter your name and opening bank balance: ";
+			cin  >> name >> balance;
+			account.setName(name);
+			account.deposit(balance);
+			break;
+		case DEPOSIT:
+			cout << "Please enter your name and amount to withdrawal: ";
+			cin  >> name >> balance;
+			depositaccount.setName(name);
+			depositaccount.deposit(balance);
+			account = account + depositaccount;
+			break;
+		case WITHDRAW:
+			cout << "Please enter your name and amount to withdrawal: ";
+			cin  >> name >> balance;
+			withdrawaccount.setName(name);
+		  withdrawaccount.deposit(balance);
+			account = account - withdrawaccount;
+			break;
+		case PRINT:
+			cout << account;
+			break;
+		case QUIT:
+			break;
+		}
+	} catch (logic_error le) {
+		cout << "Caught logic_error" << endl;
+		cout << "Transaction failed to process" << endl;
+		cout << "Please try again!" << endl;
+	}
+
+  } while (choice != QUIT);
+
+  return 0;
+}
+
+CHOICE menu() {
+  CHOICE result;
+  char   answer;
+  cout << "(C)reate (D)eposit (W)ithdrawal (P)rint (Q)uit ";
+  cin  >> answer;
+  switch (answer) {
+  case 'C':
+  case 'c':
+		result = CREATE;
+		break;
+  case 'D':
+  case 'd':
+		result = DEPOSIT;
+		break;
+  case 'W':
+  case 'w':
+		result = WITHDRAW;
+		break;
+  case 'P':
+  case 'p':
+		result = PRINT;
+		break;
+  case 'Q':
+  case 'q':
+	    result = QUIT;
+		break;
+  }
+  return( result );
+}

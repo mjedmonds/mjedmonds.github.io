@@ -1,10 +1,10 @@
 
-# C-Strings
+# CStrings
 
 * So far, we've dealt only with string literals such as "Hello, World!", but what if we want to store strings as variables?
 * We'll use what's called a _C-style string_ to do this
 
-## C-Strings are arrays
+## CStrings are arrays
 
 * Just any array!
 * We can write an array of characters to form a string:
