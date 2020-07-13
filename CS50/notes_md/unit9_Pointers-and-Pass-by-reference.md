@@ -17,7 +17,7 @@ int *b = &a;     // declare & initialize a pointer to store the address of the v
 ```
 
 * At this point, `b` doesn't store the value 5. It stores the memory address of the variable `a`. The variable `a` stores the value 5, not `b`.
-* But how can we access the value of `a` using the pointer `a`?
+* But how can we access the value of `a` using the pointer `b`?
   * We use the **dereferencing operator** to tell the computer "take me to the memory location stored by this pointer:
 
 ```c
@@ -53,6 +53,7 @@ int *melissa = &paul; // store address of paul in melissa's house
   * 1500
   * melissa's house stores a pointer
 * Let's look at this as a diagram:
+
 ![IMAGE](resources/17D828BAAE33CEE719CBD18D1B46B96D.jpg)
 
 ### What's in your house? (*)
@@ -197,7 +198,7 @@ ip2 = ip + 1;
 #### Knowledge check
 
 ```c
-#include <iostream>
+#include <stdio.h>
 
 int main()
 {
