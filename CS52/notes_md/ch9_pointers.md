@@ -346,16 +346,169 @@ int main(){
 
   for (j = 0; j < 3; ++j)
   {
-    printf("%d  ", arr[j]);
+    cout << arr[j] << " ";
   }
+  cout << endl;
 
   // increment once more on the first element, no return
   add_to_zeroth_element_no_return(arr, 3, 5);
 
   for (j = 0; j < 3; ++j)
   {
-    printf("%d  ", arr[j]);
+    cout <<  arr[j] << " ";
   }
+  cout << endl;
+}
+```
+
+## Pointers and classes
+
+- When we use pointers with classes, we'll use a new operator `->` to access member attributes (data) and methods.
+- Consider our `BankAccount` class. Instead of accessing members with the `.` operator, we'll use the `->` operator when we have a pointer.
+
+```cpp
+#include <iostream>
+
+using namespace std;
+
+int main(){
+  BankAccount bank1("mark", 1000);
+  // declare a pointer to our bank account
+  BankAccount* bank1ptr = &bank1;
+  // when we use our normal bank1 object, we can use the . operator to access members:
+  cout << bank1.balance() << endl;
+  // when we use a pointer to a bank account object, we use the -> operator to access members:
+  cout << bank1ptr->balance() << endl;
+  // the line above is equivalent to dereferencing the pointer using the * operator and using our . operator to access members:
+  cout << (*bank1ptr).balance() << endl;
+}
+```
+
+## The `new` keyword & heap memory
+
+- So far, we have used a form of memory located on the *stack*. This means when the scope in which a variable is declared completes, that variable will be destroyed and its memory is freed.
+- For instance, consider the following
+
+```cpp
+#include <iostream>
+
+using namespace std;
+
+void dummy_func(int param){
+  int c = param + 10;
+  cout << c << endl;
+}
+
+int main(){
+  int a = 5;
+  dummy_func(a);
+}
+```
+
+- Here, `c` is only in scope inside of the `dummy_func` function. It does not exist in `main`.
+- Once `dummy_func` finishes, `c` goes out of scope, and the memory is freed.
+- This is how all memory on the *stack* behaves. Variables in stack memory exist for as long as they are in scope, and then are freed when they go out of scope.
+- However, we can use a different type of memory to have values exist beyond the scope in which they are declared. That memory is called the *heap*.
+  - Memory on the heap is managed explicitly by us. We must allocate and deallocate memory on the heap.
+- To use the heap, we'll need to use pointers and a new keyword called `new`. `new` is an instruction to allocate memory on the heap. Every time you allocate memory with `new`, it will return a pointer to the type of memory being allocated.
+- Note that heap-allocated memory is also called *dynamic memory*, and allocating memory on the heap is called *dynamic allocation*
+- The basic syntax for allocating memory on the heap is `pointer-variable = new data-type;`
+- Let's look at a simple example:
+
+```cpp
+#include <iostream>
+
+using namespace std;
+
+int main(){
+  int* a = new int; // allocate an integer on the heap
+  *a = 6; // assign the value 6 to our heap-allocated integer, using the pointer a to access the memory
+}
+```
+
+- We can do this with more complicated types, such as classes we define. Consider our `BankAccount` class we defined:
+
+```cpp
+#include <iostream>
+
+using namespace std;
+
+int main(){
+  // this bank account is allocated on the heap
+  BankAccount* mark_acc = new BankAccount("mark", 1000);
+  cout << mark_acc->balance() << endl;
+}
+```
+
+- To deallocate memory on the heap, we use teh `delete` keyword
+- Deallocating memory on the heap has the following syntax `delete pointer-variable;`
+- Whenever you deallocate memory on the heap, always immediately assign the pointer to `NULL` or `nullptr`
+- Here's a basic example of deallocating memory
+
+```cpp
+#include <iostream>
+
+using namespace std;
+
+int main(){
+  // this bank account is allocated on the heap
+  BankAccount* mark_acc = new BankAccount("mark", 1000);
+  cout << mark_acc->balance() << endl;
+  // deallocate memory
+  delete mark_acc;
+  // assign pointer to null, it now pointers to a garbage memory location
+  mark_acc = nulltpr;
+}
+```
+
+### Memory leaks
+
+- In the example above, we allocated memory of the heap with `new BankAccount(...)`, and this returns a pointer to the newly-allocated heap memory
+- This memory address is then stored in the variable `mark_acc`, which is declared as a pointer. **The pointer `mark_acc` exists on the stack. It does not exist on the heap**
+  - Think about this for a second. We allocate memory on the heap with `new`. The `new` operator returns a pointer. That memory address is then assigned to a pointer variable in scope in the current function.
+- So, what happens if our pointer goes out of scope (i.e. is automatically deallocated) before we call delete?
+  - We lose access to our heap-allocated memory! And we have no way to get it back! It's floating out there, wasting space.
+  - The only way to reclaim the lost memory is to restart the program
+  - As an analogy to the real world, imagine a random person gives you a house. They only give you the address to the house on a piece of paper. You lose the piece of paper. Now you have no way to go claim your house, but the house still exists somewhere. This is the same thing that happens to memory in a computer, and you don't want to go around losing houses!
+- Allocating memory on the heap and losing access to it before deallocation is called a *memory leak*
+- Consider the following:
+
+```cpp
+#include <iostream>
+
+using namespace std;
+
+int dummy_func(){
+  int* c = new int;
+  *c = 6;
+  return *c;
+}
+
+int main(){
+  int b = dummy_func(a);
+  // we lost all access to our dynamically-allocated int! We have no way to regain access to it and deallocate it
+}
+```
+
+- Our pointer `c` goes out of scope at the end of `dummy_func`, but it wasn't deallocated. In `main`, we have no way to deallocate it, because we no longer have the pointer.
+- To fix this, we always have to deallocate our memory once we are done using it. In the previous example, I would fix this with the following (assuming we were forced to use dynamically allocated memory):
+
+```cpp
+#include <iostream>
+
+using namespace std;
+
+int* dummy_func(){
+  int* c = new int;
+  *c = 6;
+  return c;
+}
+
+int main(){
+  int* b = dummy_func(a);
+  // by returning a pointer a the dynamically-allocated int, we can deallocate it in main!
+  delete b;
+  b = nullptr;
 }
 ```
 

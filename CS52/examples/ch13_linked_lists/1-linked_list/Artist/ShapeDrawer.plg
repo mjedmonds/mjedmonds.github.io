@@ -1,0 +1,63 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: ShapeDrawer - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x409 /fo"Debug/ShapeDrawer.res" /d "_DEBUG" "C:\Documents and Settings\Howard\Desktop\Lec11Source\Artist\ShapeDrawer.rc"" 
+Creating temporary file "C:\DOCUME~1\Howard\LOCALS~1\Temp\RSPF.tmp" with contents
+[
+/nologo /MTd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"C:\Documents and Settings\Howard\Desktop\Lec11Source\Artist\MainFrm.cpp"
+"C:\Documents and Settings\Howard\Desktop\Lec11Source\Artist\NoSuchShape.cpp"
+"C:\Documents and Settings\Howard\Desktop\Lec11Source\Artist\Shape.cpp"
+"C:\Documents and Settings\Howard\Desktop\Lec11Source\Artist\ShapeDrawer.cpp"
+"C:\Documents and Settings\Howard\Desktop\Lec11Source\Artist\ShapeDrawerDoc.cpp"
+"C:\Documents and Settings\Howard\Desktop\Lec11Source\Artist\ShapeDrawerView.cpp"
+"C:\Documents and Settings\Howard\Desktop\Lec11Source\Artist\ShapeList.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\Howard\LOCALS~1\Temp\RSPF.tmp" 
+Creating temporary file "C:\DOCUME~1\Howard\LOCALS~1\Temp\RSP10.tmp" with contents
+[
+/nologo /MTd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /Fp"Debug/ShapeDrawer.pch" /Yc"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"C:\Documents and Settings\Howard\Desktop\Lec11Source\Artist\StdAfx.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\Howard\LOCALS~1\Temp\RSP10.tmp" 
+Creating temporary file "C:\DOCUME~1\Howard\LOCALS~1\Temp\RSP11.tmp" with contents
+[
+/nologo /subsystem:windows /incremental:yes /pdb:"Debug/ShapeDrawer.pdb" /debug /machine:I386 /out:"Debug/ShapeDrawer.exe" /pdbtype:sept 
+".\Debug\MainFrm.obj"
+".\Debug\NoSuchShape.obj"
+".\Debug\Shape.obj"
+".\Debug\ShapeDrawer.obj"
+".\Debug\ShapeDrawerDoc.obj"
+".\Debug\ShapeDrawerView.obj"
+".\Debug\ShapeList.obj"
+".\Debug\StdAfx.obj"
+".\Debug\ShapeDrawer.res"
+]
+Creating command line "link.exe @C:\DOCUME~1\Howard\LOCALS~1\Temp\RSP11.tmp"
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+StdAfx.cpp
+Compiling...
+MainFrm.cpp
+NoSuchShape.cpp
+Shape.cpp
+ShapeDrawer.cpp
+ShapeDrawerDoc.cpp
+ShapeDrawerView.cpp
+ShapeList.cpp
+Generating Code...
+Linking...
+
+
+
+<h3>Results</h3>
+ShapeDrawer.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

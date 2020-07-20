@@ -1,4 +1,4 @@
-#!/bin/bash 
+#!/bin/bash
 
 INPUT_DIR="./notes_md"
 TEMPLATE="./notes_md/template-revealjs.html"
@@ -16,7 +16,7 @@ for f in ${INPUT_DIR}/*.md; do
   [ -f "$f" ] || break
   base_f=$(basename "$f" .md)
   output_f=${OUTPUT_DIR}/${base_f}.html
-  command="pandoc --wrap=none -t html5 -s --template=${TEMPLATE} --standalone --section-divs --no-highlight --filter pandoc-include-code -o ${output_f} ${f}"
+  command="pandoc --wrap=none -t html5 -s --template=${TEMPLATE} --standalone --section-divs --no-highlight --filter pandoc-include-code --filter mermaid-filter -o ${output_f} ${f}"
 
   echo ${command}
   ${command}

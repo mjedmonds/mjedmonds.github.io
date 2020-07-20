@@ -57,17 +57,23 @@ Instructor: Mark Edmonds
   - Instances must be *declared* before they can be used, just like every other variable.
 - Let's look at an example. Suppose we have the following `BankAccount` class design (this isn't C++ code yet):
 
-| BankAccount                                                |
-|------------------------------------------------------------|
-| **Methods**                                                |
-| <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>void withdraw(double) |
-| <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>void deposit(double)  |
-| <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>double balance()      |
-| <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>string name()         |
-| <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>void setName(string)  |
-| **Member variables**                                       |
-| <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>string  my_name       |
-| <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>double  my_balance    |
+```{.mermaid format=svg caption="Box diagram for BankAccount class"}
+classDiagram
+  class BankAccount{
+    -string my_name
+    -double my_balance
+    +withdraw(double) void
+    +deposit(double) void
+    +balance() double
+    +name() string
+    +setName(string) void
+  }
+```
+
+- This diagram is called a **class block diagram**
+  - The top panel indicates the class name, the middle pane indicates the member variables, and the bottom pane indicates the member methods
+  - A `-` indicates a private member and a `+` indicates a public member (more on this in a bit)
+  - For member methods (functions) they have the following form: `methodName(arg_types) : return_type`. This is a bit different than how we write functions in C++, but this diagram format is the industry-standard in computer science and software engineering
 
 - We can instantiate this class the way we do every other variable:
 

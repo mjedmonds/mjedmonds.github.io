@@ -1,4 +1,4 @@
-#!/bin/bash 
+#!/bin/bash
 
 INPUT_DIR="./notes_md"
 TEMPLATE="./notes_md/template-eisvogel.latex"
@@ -15,7 +15,7 @@ cd ${INPUT_DIR}
 for f in ${INPUT_DIR}/*.md; do
   [ -f "$f" ] || break
   base_f=$(basename "$f" .md)
-  command="pandoc --template=${TEMPLATE} --listings --filter pandoc-include-code -o ${OUTPUT_DIR}/${base_f}.pdf ${f}" 
+  command="pandoc --template=${TEMPLATE} --listings --filter pandoc-include-code --filter mermaid-filter -o ${OUTPUT_DIR}/${base_f}.pdf ${f}"
 
   echo ${command}
   ${command}
