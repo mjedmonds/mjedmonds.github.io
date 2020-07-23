@@ -3,10 +3,10 @@ apple-mobile-web-app-capable: yes
 apple-mobile-web-app-status-bar-style: 'black-translucent'
 author: Mark Edmonds
 description: Chapter 13, Linked Lists
-title: 'Inheritance'
+title: 'Linked Lists'
 ---
 
-## Chapter 15: Inheritance
+## Chapter 13: Linked Lists
 
 Instructor: Mark Edmonds
 
