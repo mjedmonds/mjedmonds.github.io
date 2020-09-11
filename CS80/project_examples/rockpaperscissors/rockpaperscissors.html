@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+        let choices = ["rock", "paper", "scissors"];
+        let playerWins = 0;
+        let compWins = 0;
+        let displayText = "";
+
+        function render() {
+            $("#playerWins").text("Player Wins: " + playerWins);
+            $("#compWins").text("Computer Wins: " + compWins);
+            $("#display").text(displayText);
+        }
+
+        $(document).ready(function() {
+            $(".choice").click(function() {
+                let playerChoice = $(this).attr("id");
+                let compChoice = choices[Math.floor(Math.random() * choices.length)];
+                let matchStatus;
+
+                if (
+                    (playerChoice === "rock" && compChoice === "scissors") ||
+                    (playerChoice === "paper" && compChoice === "rock") ||
+                    (playerChoice === "scissors" && compChoice === "paper")
+                ) {
+                    matchStatus = "Player wins";
+                    playerWins++;
+                } else if (playerChoice === compChoice) {
+                    matchStatus = "Tie";
+                } else {
+                    matchStatus = "Computer wins";
+                    compWins++;
+                }
+
+                displayText = "Player chose: " + playerChoice + ", Computer chose: " + compChoice + ". " + matchStatus;
+                render();
+
+            })
+        })
+    </script>
+</head>
+
+<body>
+    <div class="row">
+        <div class="col s12 m6">
+            <div class="card blue-grey darken-1">
+                <div class="card-content white-text">
+                    <span id="display" class="card-title">Rock Paper Scissors</span>
+                    <h4 id="playerWins">Player Wins: 0</h4>
+                    <h4 id="compWins">Computer Wins: 0</h4>
+                </div>
+                <div class="card-action">
+                    <button id="rock" class="choice waves-effect waves-light btn">Rock</button>
+                    <button id="paper" class="choice waves-effect waves-light btn">Paper</button>
+                    <button id="scissors" class="choice waves-effect waves-light btn">Scissors</button>
+                </div>
+
+</body>
+
+</html>

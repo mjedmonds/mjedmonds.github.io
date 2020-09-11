@@ -1,0 +1,1664 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Minesweeper</title>
+<!-- 
+Jos Cashon CS 80 1808 Final Project: Browser-based Minesweeper Clone
+
+Known issue with borders in Edge:
+
+Once a few tiles are revealed, strange white artifacts may intermittently
+appear at tile borders in MS Edge. I haven't been able to figure out what
+causes this visual bug or how to fix it.
+
+Known issue with 0-fill in this implementation:
+
+For large boards with a low density of mines, the majority of tiles
+will be empty. In this scenario, clicking on a tile becomes an intensive
+task because the recursive function which reveals all adjacent blank
+tiles will need to go through a large number of iterations to complete its
+task. This causes the first click function not to complete if it hits the
+browser's recursion limit.
+
+Through testing I have determined that Firefox seems to have the lowest
+recursion limit, followed by Chrome and then IE and Edge. The worst case
+of this issue occurs when number of mines = 1, which breaks click
+functionality on boards above 26x26 in Firefox 70, 90x90 in Chrome 78,
+170x170 in IE11, and 220x220 in Edge 44 (on my system, at least).
+
+To get an idea of what a typical mine distribution would look like, the
+original minesweeper on the beginner difficulty uses 10 mines on an 8x8
+grid, yielding a mine density of 0.156 mines/tile. Expert difficulty
+(24x24 with 99 mines) has a mine density of  0.172 mines/tile. I tested
+densities near this range on a very large 200x200 board in Firefox and
+determined that a mine density of 0.1 causes the recursion issue, but
+densities of 0.11 and above seem to prevent it from occurring.
+
+Taking all of this into account, the user cannot be given full control over
+the number of mines on large boards. The lower limit can be set to 1 for
+boards below size 26x26, but for boards larger than this I have set the
+minimum allowable mine count to number of tiles times 0.11 at the custom
+game selection screen. The upper limit on number of mines must always be
+number of tiles minus 9, since 9 tiles are needed in order for the first
+click to be safe.
+
+All of these restrictions are handled by the setMineInput() function to
+prevent the user from passing untested values to the game object.
+
+-->
+
+
+        <link rel="shortcut icon" href="favicon.ico">
+        <style>
+            html {
+                overflow-y: scroll;
+            }
+            body{
+                background-image: url(background.jpg);
+                background-size: cover;
+                background-attachment: fixed;
+                user-select: none;
+            }
+            #launcher{
+                cursor:pointer;
+                position:absolute;
+                text-align:center;
+                display:inline-block;
+                z-index: -3;
+            }
+            #icon{
+                position:relative;
+                left: 0.1em;
+                font-size:3em;
+                z-index: -2;
+            }
+            #shortcutIcon{
+                font-size:0.6em;
+                position:absolute;
+                top: 5em;
+                left: 2em;
+                background-color:white;
+                padding:0em;
+                z-index: -1;
+                color:#000080;
+            }
+            #iconLabel{
+                font-family: "MS Sans Serif","Microsoft MS Sans Serif","Helvetica",sans-serif;
+                color: white;
+                padding: 0.1em;
+                margin-top: 0.3em;
+                display:block;
+            }
+            #launcher:hover{
+                background-color:rgba(0,0,128,0.1);
+                border: 0.05em dashed grey;
+            }
+            #launcher:active{
+                background-color:rgba(0,0,128,0.4);
+                border: 0.05em dashed grey;
+            }
+            #game{
+                display:inline-block;
+                position:absolute;
+                background-color:#000000;
+            }
+            #gameTitle{
+                display:inline-block;
+                width:88%;
+            }
+            table{
+                border:0.4em solid lightgrey;
+                box-shadow: 0.15em 0.15em 0.2em 0.1em grey;
+                border-spacing: 0em;
+                cursor: default;
+                table-layout: fixed;
+            }
+            td{
+                border: 0.05em solid black;
+                border-collapse: collapse;
+                
+            }
+            #faceCell{
+                border-left: none;
+                border-right: none;
+                text-align: center;
+                background-color: lightgrey;
+                padding: 0.4em;
+            }
+            #face{
+                font-size: 1.5em;
+                cursor:pointer;
+                display: inline-block;
+                padding: 0.1em 0.1em 0.2em 0.1em;
+                border: 0.05em solid black;
+                background-color: lightgrey;
+            }
+            #minesCell{
+                text-align:center;
+                background-color: lightgrey;
+                border-right: none;
+            }
+            #timerCell{
+                border-left: none;
+                text-align:center;
+                background-color: lightgrey;
+            }
+            #mines, #timer{
+                display: inline-block;
+                font-family: "Consolas", "Monaco", "Lucidia Console", "Courier New", monospace;
+                font-size: 2.15em;
+                background-color:black;
+                color:red;
+                padding: 0em 0.1em 0em 0.1em;
+            }
+            tbody td{
+                width: 1.5em;
+                height: 1.5em;
+                padding: 0em;
+                background-color: #d0d0d0;
+                box-shadow: inset 0 0 0.3em grey;
+                text-align: center;
+                font-weight: bold;
+                font-size: 1em;
+                font-family: "Arial Black", "Tahoma", "Impact", sans-serif;
+                position: relative;
+            }
+            .notRevealed{
+                background-color: lightgrey;
+                box-shadow: inset -0.15em -0.15em grey, inset 0.15em 0.15em white;
+            }
+            .notRevealedDepress{
+                background-color: lightgrey;
+                box-shadow: inset -0.15em -0.15em white, inset 0.15em 0.15em grey;
+            }
+            .num1{
+               color: #2a2aff; 
+            }
+            .num2{
+                color: #2a942a;
+            }
+            .num3{
+                color: #ff0000;
+            }
+            .num4{
+                color: #2a2a94;
+            }
+            .num5{
+                color: #800000;
+            }
+            .num6{
+                color: #2a9494;
+            }
+            .num7{
+                color: #000000;
+            }
+            .num8{
+                color: #808080;
+            }
+            .titleBar{
+                font-family: "MS Sans Serif","Microsoft MS Sans Serif","Helvetica",sans-serif;
+                background-color: #000080;
+                color: white;
+                padding: 0.15em;
+                border-bottom: 0em;
+                font-weight:bold;
+            }
+            .depressed{
+                box-shadow: inset -0.15em -0.15em white, inset 0.15em 0.15em grey;
+            }
+            .notDepressed{
+                box-shadow: inset -0.15em -0.15em grey, inset 0.15em 0.15em white;
+            }
+            #closeButton{
+                width: 1em;
+                font-size: 1.35em;
+                text-align: center;
+                float: right;
+                background-color: lightgrey;
+                color:black; 
+            }
+            #menuBar{
+                border-bottom: none;
+                font-family: "MS Sans Serif","Microsoft MS Sans Serif","Helvetica",sans-serif;
+                background-color: lightgrey;
+                color: black;
+                position:relative;
+                padding: 0em;
+            }
+            #gameButton{
+                margin-left: 0.1em;
+                display:inline-block;
+                padding: 0.2em;
+            }
+            #gameMenu{
+                position: absolute;
+                top: 1.5em;
+                left: -0.05em;
+                z-index: 2;
+                background-color: lightgrey;
+                border: 0.05em solid black;
+                padding: 0.2em;
+                width: 10em;
+                box-shadow: inset -0.15em -0.15em grey, inset 0.15em 0.15em white;
+            }
+            .gameMenuElement{
+                padding: 0.2em;
+            }
+            .gameMenuElement:hover{
+                background-color: #000080;
+                color: white;
+            }
+            #helpButton{
+                margin-left: 0.1em;
+                display:inline-block;
+                padding: 0.2em;
+            }
+            #helpMenu{
+                position: absolute;
+                top: 1.5em;
+                left: 3em;
+                z-index: 2;
+                background-color: lightgrey;
+                border: 0.05em solid black;
+                padding: 0.2em;
+                width: 10em;
+                box-shadow: inset -0.15em -0.15em grey, inset 0.15em 0.15em white;
+            }
+            .helpMenuElement{
+                padding: 0.2em;
+            }
+            .helpMenuElement:hover{
+                background-color: #000080;
+                color: white;
+            }
+            #customMenu{
+                position:absolute;
+                top:50vh;
+                left:50vw;
+                transform: translate(-50%, -50%);
+                z-index: 3;
+                background-color: lightgrey;
+                border: 0.05em solid black;
+                padding: 0.2em;
+                width: 20em;
+                box-shadow: inset -0.15em -0.15em grey, inset 0.15em 0.15em white, 0.15em 0.15em 0.2em 0.1em grey;
+                cursor: default;
+            }
+            #customMenu .titleBar{
+                margin-bottom: 0.5em;
+            }
+            #customMenuTitle{
+                display:inline-block;
+                width:90%;
+            }
+            #closeCustomButton{
+                width: 1em;
+                font-size: .9em;
+                text-align: center;
+                float: right;
+                background-color: lightgrey;
+                color:black;
+                box-shadow: inset -0.15em -0.15em grey, inset 0.15em 0.15em white;
+            }
+            #closeCustomButton:active{
+                box-shadow: inset -0.15em -0.15em white, inset 0.15em 0.15em grey;
+            }
+            #customMenu button{
+                background-color: lightgrey;
+                box-shadow: inset -0.15em -0.15em grey, inset 0.15em 0.15em white;
+                padding: 0.3em 0.4em 0.4em 0.4em;
+                margin-bottom: 0.3em;
+                font-weight: bold;
+            }
+            #customMenu button:active{
+                box-shadow: inset -0.15em -0.15em white, inset 0.15em 0.15em grey;
+            }
+            #customMenu form{
+                font-family: "MS Sans Serif","Microsoft MS Sans Serif","Helvetica",sans-serif;
+                text-align: center;
+            }
+            #customMenu input{
+                width:13em;
+                display:inline-block;
+            }
+            #customMenu label{
+                float: left;
+            }
+            #customMenu span{
+                float: right;
+            }
+            #rulesMenu{
+                position:absolute;
+                top:50vh;
+                left:50vw;
+                transform: translate(-50%, -50%);
+                z-index: 3;
+                background-color: lightgrey;
+                border: 0.05em solid black;
+                padding: 0.2em;
+                width: 45em;
+                box-shadow: inset -0.15em -0.15em grey, inset 0.15em 0.15em white, 0.15em 0.15em 0.2em 0.1em grey;
+                cursor: default;
+            }
+            #rulesMenu p, h3{
+                font-family: "MS Sans Serif","Microsoft MS Sans Serif","Helvetica",sans-serif;
+                text-align: justify;
+                margin: 0.5em;
+            }
+            #closeRulesButton{
+                width: 1em;
+                font-size: .9em;
+                text-align: center;
+                float: right;
+                background-color: lightgrey;
+                color:black;
+                box-shadow: inset -0.15em -0.15em grey, inset 0.15em 0.15em white;
+            }
+            #closeRulesButton:active{
+                box-shadow: inset -0.15em -0.15em white, inset 0.15em 0.15em grey;
+            }
+            #rulesMenuTitle{
+                display:inline-block;
+                width:90%;
+            }
+            #aboutMenu{
+                position:absolute;
+                top:50vh;
+                left:50vw;
+                transform: translate(-50%, -50%);
+                z-index: 3;
+                background-color: lightgrey;
+                border: 0.05em solid black;
+                padding: 0.2em;
+                width: 25em;
+                box-shadow: inset -0.15em -0.15em grey, inset 0.15em 0.15em white, 0.15em 0.15em 0.2em 0.1em grey;
+                cursor: default;
+            }
+            #aboutMenu p, h3{
+                font-family: "MS Sans Serif","Microsoft MS Sans Serif","Helvetica",sans-serif;
+                text-align: justify;
+                margin: 0.5em;
+            }
+            .aboutMenuIcon{
+                float: left;
+                font-size: 5em;
+            }
+            #closeAboutButton{
+                width: 1em;
+                font-size: .9em;
+                text-align: center;
+                float: right;
+                background-color: lightgrey;
+                color:black;
+                box-shadow: inset -0.15em -0.15em grey, inset 0.15em 0.15em white;
+            }
+            #closeAboutButton:active{
+                box-shadow: inset -0.15em -0.15em white, inset 0.15em 0.15em grey;
+            }
+            #aboutMenuTitle{
+                display:inline-block;
+                width:90%;
+            }
+            #highScoresMenu{
+                position:absolute;
+                top:50vh;
+                left:50vw;
+                width: 18em;
+                transform: translate(-50%, -50%);
+                z-index: 3;
+                background-color: lightgrey;
+                border: 0.05em solid black;
+                padding: 0.2em;
+                box-shadow: inset -0.15em -0.15em grey, inset 0.15em 0.15em white, 0.15em 0.15em 0.2em 0.1em grey;
+                cursor: default;
+            }
+            #highScoresMenu p, h3{
+                font-family: "MS Sans Serif","Microsoft MS Sans Serif","Helvetica",sans-serif;
+                text-align: justify;
+                margin: 0.5em;
+            }
+            #highScoresMenu div:last-of-type{
+                text-align: center;
+            }
+            #highScoresMenu button{
+                background-color: lightgrey;
+                box-shadow: inset -0.15em -0.15em grey, inset 0.15em 0.15em white;
+                padding: 0.3em 0.4em 0.4em 0.4em;
+                margin-bottom: 0.3em;
+                font-weight: bold;
+            }
+            #highScoresMenu button:active{
+                box-shadow: inset -0.15em -0.15em white, inset 0.15em 0.15em grey;
+            }
+            #closeHighScoresButton{
+                width: 1em;
+                font-size: .9em;
+                text-align: center;
+                float: right;
+                background-color: lightgrey;
+                color:black;
+                box-shadow: inset -0.15em -0.15em grey, inset 0.15em 0.15em white;
+            }
+            #closeHighScoresButton:active{
+                box-shadow: inset -0.15em -0.15em white, inset 0.15em 0.15em grey;
+            }
+            #highScoresMenuTitle{
+                display:inline-block;
+                width:90%;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="fullPage">
+            <div id="launcher" onclick="if(!gameOpen)game.newGame(16,16,40);">
+                <!-- Allows user to re-launch game if they closed it -->
+                <span id="shortcutIcon">&#x1f87d;</span>
+                <span id="icon">&#x1F4A3;</span>
+                <span id="iconLabel">winmine.exe<br>- Shortcut</span>
+            </div>
+            <div id="game">
+                <!--Game will be inserted here-->
+            </div>
+            <!--Floating modal menus will be inserted here-->
+        </div>       
+        <script>
+            var game = {
+                //!!!!!!!!!!!!!!!
+                //GAME PROPERTIES
+                //!!!!!!!!!!!!!!!
+                isStarted:false,//this will hold the game's current state to determine the first click
+                sizeX: 0,//this will hold the board's horizontal size
+                sizeY: 0,//this will hold the board's vertical size
+                numMines: 0,//this will hold the number of mines on the board
+                time: 0,//this will hold the current elapsed time in seconds
+                flagCount: 0,//this will hold the number of flagged tiles to update mine counter
+                revealedCount:0,//this will hold the number of revealed tiles to check for win state
+                clock: null,//this will hold the interval which will update time
+                grid: new Array(),//this will be a two-dimensional array holding all the game's tiles
+                //!!!!!!!!!!!!!!
+                //GAME FUNCTIONS
+                //!!!!!!!!!!!!!!
+                newGame: function(newSizeX,newSizeY,newNumMines){
+                    //re-initialize game properties then create and render game board
+                    this.sizeX = newSizeX;
+                    this.sizeY = newSizeY;
+                    this.numMines = newNumMines;
+                    this.isStarted = false;
+                    this.flagCount = 0;
+                    this.revealedCount = 0;
+                    clearInterval(this.clock);
+                    this.time = 0;
+                    this.createGrid();
+                    this.renderBoard();
+                },
+                startGame: function(safeX,safeY){
+                    //this function generates mines and numbers with safe first click, then starts the timer
+                    game.isStarted = true;
+                    //generate mine placement
+                    var generatedMines = 0;
+                    while(generatedMines < game.numMines){
+                        var randomX = randomInteger(0,game.sizeX);
+                        var randomY = randomInteger(0,game.sizeY);
+                        if(randomX < safeX-1 || randomX > safeX+1  || randomY < safeY-1 || randomY > safeY+1){//ensure safe first click
+                            if(!game.grid[randomX][randomY].isMine){
+                                game.grid[randomX][randomY].isMine = true;
+                                generatedMines++;
+                            }
+                        }
+                    }
+                    //generate number values
+                    for(var x=0;x<game.sizeX;x++){
+                        for(var y=0;y<game.sizeY;y++){
+                            var adjacentTiles = game.grid[x][y].getAdjacentTiles();
+                            for(var i = 0;i<adjacentTiles.length;i++){
+                                if(adjacentTiles[i].isMine){
+                                    game.grid[x][y].adjacentMines++;
+                                }
+                            }
+                        }
+                    }
+                    //start clock:
+                    this.clock = setInterval(function(){game.time++;document.getElementById("timer").innerHTML=threeDigitString(game.time);},1000);
+                },
+                win: function(){
+                    //this function flags all remaining tiles, stops timer, checks high score, and puts on sunglasses... because you won!
+                    for(var x=0;x<game.sizeX;x++){
+                        for(var y=0;y<game.sizeY;y++){
+                            if(!this.grid[x][y].isRevealed && !this.grid[x][y].isFlagged && this.grid[x][y].isMine){
+                                this.grid[x][y].toggleFlag();
+                            }
+                            this.grid[x][y].tile.removeEventListener("mousedown",depressTile);
+                        }
+                    }
+                    document.getElementById("face").innerHTML = "&#x1F60E";
+                    clearInterval(this.clock);
+                    this.checkHighScore();
+                },
+                lose: function(){
+                    //this function reveals all mines, stops the timer, and kills the face because YOU LOSE, GOOD DAY SIR!
+                    document.getElementById("face").innerHTML = "&#x1F480";
+                    for(var x=0;x<game.sizeX;x++){
+                        for(var y=0;y<game.sizeY;y++){
+                            if(this.grid[x][y].isMine && !this.grid[x][y].isFlagged){//if unflagged mine:
+                                this.grid[x][y].tile.removeAttribute("class");//reveal tile
+                                this.grid[x][y].tile.innerHTML = "&#x1F4A3";//reveal mine
+                            }
+                            else if(!this.grid[x][y].isMine && this.grid[x][y].isFlagged){//if flagged but not mine:
+                                this.grid[x][y].tile.removeAttribute("class");//reveal tile
+                                this.grid[x][y].tile.innerHTML = "&#x1F4A3<span style='position:absolute;left:0em;z-index:1;'>&#10060;</span>";//draw X
+                            }
+                        }
+                    }
+                    clearInterval(this.clock);
+                },
+                checkHighScore: function(){
+                    //this function stores a high score if it is greater than the previously stored high score
+                    if (typeof(Storage) !== "undefined" && !isOfflineIE()) {//check that browser supports localstorage
+                        if(this.sizeX == 8 && this.sizeY == 8 && this.numMines == 10){
+                            if(localStorage.getItem("BeginnerScore") == null){//check if beginner high score exists
+                                localStorage.setItem("BeginnerScore",String(this.time));//store high score if none exists
+                                localStorage.setItem("BeginnerName",String(prompt("This is your first time winning on beginner difficulty! " +
+                                "Please enter your name for the leaderboard.")));//store name
+                                localStorage.setItem("BeginnerDate",new Date().toString());//store date of new high score
+                            }
+                            else if(parseInt(localStorage.getItem("BeginnerScore")) > this.time){
+                                localStorage.setItem("BeginnerScore",String(this.time));//else score high score if < old high score
+                                localStorage.setItem("BeginnerName",String(prompt("You achieved a new high score for beginner difficulty! " +
+                                "Please enter your name for the leaderboard.")));//store name
+                                localStorage.setItem("BeginnerDate",new Date().toString());//store date of new high score
+                            }
+                        }
+                        else if(this.sizeX == 16 && this.sizeY == 16 && this.numMines == 40){
+                            if(localStorage.getItem("IntermediateScore") == null){//check if intermediate high score exists
+                                localStorage.setItem("IntermediateScore",String(this.time));//store high score if none exists
+                                localStorage.setItem("IntermediateName",String(prompt("This is your first time winning on intermediate difficulty! " +
+                                "Please enter your name for the leaderboard.")));//store name
+                                localStorage.setItem("IntermediateDate",new Date().toString());//store date of new high score
+                            }
+                            else if(parseInt(localStorage.getItem("IntermediateScore")) > this.time){
+                                localStorage.setItem("IntermediateScore",String(this.time));//else score high score if < old high score
+                                localStorage.setItem("IntermediateName",String(prompt("You achieved a new high score for intermediate difficulty! " +
+                                "Please enter your name for the leaderboard.")));//store name
+                                localStorage.setItem("IntermediateDate",new Date().toString());//store date of new high score
+                            }
+                        }
+                        else if(this.sizeX == 24 && this.sizeY == 24 && this.numMines == 99){
+                            if(localStorage.getItem("ExpertScore") == null){//check if expert high score exists
+                                localStorage.setItem("ExpertScore",String(this.time));//store high score if none exists
+                                localStorage.setItem("ExpertName",String(prompt("This is your first time winning on expert difficulty! " +
+                                "Please enter your name for the leaderboard.")));//store name
+                                localStorage.setItem("ExpertDate",new Date().toString());//store date of new high score
+                            }
+                            else if(parseInt(localStorage.getItem("ExpertScore")) > this.time){
+                                localStorage.setItem("ExpertScore",String(this.time));//else score high score if < old high score
+                                localStorage.setItem("ExpertName",String(prompt("You achieved a new high score for expert difficulty! " +
+                                "Please enter your name for the leaderboard.")));//store name
+                                localStorage.setItem("ExpertDate",new Date().toString());//store date of new high score
+                            }
+                        }
+                    }
+                },
+                clearHighScores: function(){
+                    //this function clears all high scores
+                    if (typeof(Storage) !== "undefined" && !isOfflineIE()) {//check if browser supports localstorage
+                        localStorage.removeItem("BeginnerScore");
+                        localStorage.removeItem("BeginnerName");
+                        localStorage.removeItem("BeginnerDate");
+                        localStorage.removeItem("IntermediateScore");
+                        localStorage.removeItem("IntermediateName");
+                        localStorage.removeItem("IntermediateDate");
+                        localStorage.removeItem("ExpertScore");
+                        localStorage.removeItem("ExpertName");
+                        localStorage.removeItem("ExpertDate");
+                        hideHighScoresMenu();
+                        showHighScoresMenu();
+                    }
+                },
+                renderBoard: function(){
+                    //this function renders visual elements of game
+                    gameOpen = true;
+                    //clear old board if exists
+                    var container = document.getElementById("game");
+                    while(container.firstChild){
+                        container.removeChild(container.firstChild);
+                    }
+                    //reset menu bar interactivity
+                    gameMenuOpen = false;
+                    helpMenuOpen = false;               
+                    //create table to hold board
+                    var board = document.createElement("table");
+                    board.setAttribute("style","width:" + String(1.5*this.sizeX+1) + "em;")//set fixed table width to allow horizontal scroll
+                    //create title bar:
+                    var thead = document.createElement("thead");
+                    var row = document.createElement("tr");
+                    var cell = document.createElement("td");
+                    cell.setAttribute("class","titleBar");
+                    cell.setAttribute("colspan", String(this.sizeX));
+                    var div = document.createElement("div");
+                    div.setAttribute("id","gameTitle");
+                    div.innerHTML="&#x1F4A3;Minesweeper";
+                    cell.appendChild(div);
+                    div = document.createElement("div");
+                    div.setAttribute("id","closeButton");
+                    div.setAttribute("class","notDepressed");
+                    div.innerHTML = "&times;";
+                    div.addEventListener("mousedown",depressCloseButton);//handles clicked close button
+                    cell.appendChild(div);
+                    row.appendChild(cell);
+                    thead.appendChild(row);
+                    //create menu bar:
+                    row = document.createElement("tr");
+                    cell = document.createElement("td");
+                    cell.setAttribute("id","menuBar");
+                    cell.setAttribute("colspan", String(this.sizeX));
+                    var div = document.createElement("div");
+                    div.setAttribute("id","gameButton");
+                    div.addEventListener("mousedown",depressGameButton,true);//handles clicked game menu button
+                    div.addEventListener("mouseover",hoverGameButton);//handles hovered game menu button
+                    div.innerHTML = "Game";
+                    cell.appendChild(div);
+                    div = document.createElement("div");
+                    div.setAttribute("id","helpButton");
+                    div.addEventListener("mousedown",depressHelpButton);//handles clicked help menu button
+                    div.addEventListener("mouseover",hoverHelpButton);//handles hovered help menu button
+                    div.innerHTML = "Help";
+                    cell.appendChild(div);
+                    row.appendChild(cell);
+                    thead.appendChild(row);
+                    //create status bar:
+                    row = document.createElement("tr");
+                    //create mine counter
+                    cell = document.createElement("td");
+                    cell.setAttribute("id","minesCell");
+                    cell.setAttribute("colspan", 3);
+                    div = document.createElement("div");
+                    cell.appendChild(div);
+                    div.setAttribute("id","mines");
+                    div.innerHTML=threeDigitString(this.numMines-this.flagCount);
+                    row.appendChild(cell);
+                    //create face
+                    cell = document.createElement("td");
+                    cell.setAttribute("id","faceCell");
+                    cell.setAttribute("colspan", String(this.sizeX-6));
+                    div = document.createElement("div");
+                    cell.appendChild(div);
+                    div.innerHTML="&#x1F642";
+                    div.setAttribute("id","face");
+                    div.setAttribute("class","notDepressed");
+                    div.addEventListener("mousedown",depressFace);//handles clicked face
+                    row.appendChild(cell);
+                    //create timer
+                    cell = document.createElement("td");
+                    cell.setAttribute("id","timerCell");
+                    cell.setAttribute("colspan", 3);
+                    div = document.createElement("div");
+                    cell.appendChild(div);
+                    div.setAttribute("id","timer");
+                    div.innerHTML="000";
+                    row.appendChild(cell);
+                    thead.appendChild(row);
+                    board.appendChild(thead);
+                    //create tile grid display:
+                    var tbody = document.createElement("tbody");
+                    for(var y=0;y<this.sizeY;y++){
+                        row = document.createElement("tr");
+                        for(var x=0;x<this.sizeX;x++){
+                            cell = this.grid[x][y].tile;
+                            cell.setAttribute("class","notRevealed");
+                            cell.innerHTML = "";
+                            cell.setAttribute("id",this.grid[x][y].id);
+                            cell.addEventListener("mousedown",depressTile);//handles clicked tiles
+                            row.appendChild(cell);
+                        }
+                        tbody.appendChild(row);
+                    }
+                    board.appendChild(tbody);
+                    //insert board into page:
+                    container.appendChild(board);
+                    //prevent default click actions on gameboard:
+                    tbody.addEventListener("mousedown",function(e){e.preventDefault()});//block scroll on middle click
+                    window.addEventListener("contextmenu",function(e){e.preventDefault()});//block right click menu
+                    dragElement(document.getElementById("game"));                    
+                },
+                createGrid: function(){
+                    //this function creates a 2-dimensional array representing the game board
+                    for(var x=0;x<this.sizeX;x++){
+                        this.grid[x] = new Array(this.sizeY);//for each x create second array of y values
+                        for(var y=0;y<this.sizeY;y++){
+                            this.grid[x][y] = {//for each x,y pair create an object to hold tile properties and functions
+                                //!!!!!!!!!!!!!!!
+                                //TILE PROPERTIES
+                                //!!!!!!!!!!!!!!!
+                                id: coordsToID(x,y),
+                                xLocation: x,
+                                yLocation: y,
+                                isMine: false,
+                                isRevealed: false,
+                                isFlagged: false,
+                                adjacentMines: 0,
+                                tile: document.createElement("td"),//holds a reference to a given tile's DOM element for easy access
+                                //!!!!!!!!!!!!!!
+                                //TILE FUNCTIONS
+                                //!!!!!!!!!!!!!!
+                                reveal: function(){
+                                    //this function reveals this tile, and starts the game if first click
+                                    if(!game.isStarted){//start game if it hasn't already
+                                        game.startGame(this.xLocation,this.yLocation);
+                                    }
+                                    if(this.isFlagged){
+                                        this.toggleFlag();//first, untoggle flag if tile was flagged
+                                    }
+                                    if(!this.isRevealed){//reveal only if not already revealed
+                                        this.isRevealed = true;
+                                        this.tile.setAttribute("class","revealed");
+                                        //Reveal mine:
+                                        if(this.isMine){
+                                            this.tile.innerHTML = "&#x1F4A3";
+                                            this.tile.style.backgroundColor = "red";
+                                            game.lose();
+                                        }
+                                        else{
+                                            //Reveal Blank Tile:
+                                            if(this.adjacentMines == 0){
+                                                var adjacentTiles = this.getAdjacentTiles();
+                                                for(var i=0;i<adjacentTiles.length;i++){
+                                                    if(!adjacentTiles[i].isRevealed){
+                                                        adjacentTiles[i].reveal();
+                                                    }
+                                                    
+                                                }
+                                                
+                                            }
+                                            else{
+                                                //Reveal Number Tile
+                                                this.tile.innerHTML=String(this.adjacentMines);
+                                                this.tile.setAttribute("class","num" + String(this.adjacentMines));
+                                            }
+                                            game.revealedCount++;//increment game's revealed tile count to check for win later
+                                        }
+                                    }
+                                    if(game.revealedCount + game.numMines == game.sizeX * game.sizeY){
+                                        game.win();
+                                    }
+                                },
+                                toggleFlag: function(){
+                                    //this function toggles flag on this tile and updates mine counter
+                                    if(!this.isRevealed){
+                                        this.isFlagged = !this.isFlagged;
+                                        if(this.isFlagged){
+                                            game.flagCount++;
+                                            this.tile.innerHTML="&#x1F6A9";
+                                        }
+                                        else{
+                                            this.tile.innerHTML="";
+                                            game.flagCount--;
+                                        }
+                                        document.getElementById("mines").innerHTML = threeDigitString(game.numMines-game.flagCount);
+                                    }
+                                },
+                                chord: function(){
+                                    //this function "chords", or reveals all adjacent tiles to a number tile if adjacent flagged tiles == number value
+                                    if(this.isRevealed){
+                                        var adjacentTiles = this.getAdjacentTiles();
+                                        var adjacentFlagCount = 0;
+                                        for(var i=0;i<adjacentTiles.length;i++){
+                                            if(adjacentTiles[i].isFlagged){
+                                                adjacentFlagCount++;
+                                            }
+                                        }
+                                        if(adjacentFlagCount == this.adjacentMines){
+                                            for(var i=0;i<adjacentTiles.length;i++){
+                                                if(!adjacentTiles[i].isFlagged){
+                                                    adjacentTiles[i].reveal();
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                getAdjacentTiles: function(){
+                                    //this function returns an array of validated tiles adjacent to this tile
+                                    var adjacentTiles = new Array();
+                                    if(this.xLocation-1 >= 0 && this.yLocation-1 >= 0){
+                                        adjacentTiles.push(game.grid[this.xLocation-1][this.yLocation-1]);
+                                    }
+                                    if(this.xLocation-1 >= 0){
+                                        adjacentTiles.push(game.grid[this.xLocation-1][this.yLocation]);
+                                    }
+                                    if(this.xLocation-1 >= 0 && this.yLocation+1 < game.sizeY){
+                                        adjacentTiles.push(game.grid[this.xLocation-1][this.yLocation+1]);
+                                    }
+                                    if(this.yLocation-1 >= 0){
+                                        adjacentTiles.push(game.grid[this.xLocation][this.yLocation-1]);
+                                    }
+                                    if(this.yLocation+1 < game.sizeY){
+                                        adjacentTiles.push(game.grid[this.xLocation][this.yLocation+1]);
+                                    }
+                                    if(this.xLocation+1 < game.sizeX && this.yLocation-1 >= 0){
+                                        adjacentTiles.push(game.grid[this.xLocation+1][this.yLocation-1]);
+                                    }
+                                    if(this.xLocation+1 < game.sizeX){
+                                        adjacentTiles.push(game.grid[this.xLocation+1][this.yLocation]);
+                                    }
+                                    if(this.xLocation+1 < game.sizeX && this.yLocation+1 < game.sizeY){
+                                        adjacentTiles.push(game.grid[this.xLocation+1][this.yLocation+1]);
+                                    }
+                                    return adjacentTiles;
+                                }
+                            };
+                        }
+                    }
+                }
+
+            };
+            //!!!!!!!!!!!!!!!!!!!
+            //INTERFACE FUNCTIONS
+            //!!!!!!!!!!!!!!!!!!!
+            //these variables hold the open/close states of the various menus:
+            var gameOpen = false;
+            var gameMenuOpen = false;
+            var helpMenuOpen = false;
+            var customMenuOpen = false;
+            var rulesMenuOpen = false;
+            var aboutMenuOpen = false;
+            var highScoresMenuOpen = false;
+            var depressTile = function(e){
+                //this function is called when mousedown on tile
+                if(e.button == 0){
+                    if(this.getAttribute("class") == "notRevealed"){
+                        this.setAttribute("class","notRevealedDepress");//only do depress for left click on unrevealed tiles
+                        this.addEventListener("mouseleave",unDepressTile);//handles uncomfirmed left click
+                    }
+                }
+                this.addEventListener("mouseup",clickTile);//handles confirmed click
+            }
+            var clickTile = function(e){
+                //this function is called when mousedown on tile did result in mouseup
+                this.removeEventListener("mouseleave",unDepressTile);
+                this.removeEventListener("mouseup",clickTile);
+                switch(e.button){
+                    case 0:
+                        //this case handles left click
+                        game.grid[xFromID(this.getAttribute("id"))][yFromID(this.getAttribute("id"))].reveal();
+                        break;
+                    case 2:
+                        //this case handles right click
+                        game.grid[xFromID(this.getAttribute("id"))][yFromID(this.getAttribute("id"))].toggleFlag();
+                        break;
+                    case 1:
+                        //this case handles middle click
+                        game.grid[xFromID(this.getAttribute("id"))][yFromID(this.getAttribute("id"))].chord();
+                        break;
+                }        
+            }
+            var unDepressTile = function(e){
+                //this function is called when mousedown on tile did not result in mouseup
+                this.removeEventListener("mouseleave",unDepressTile);
+                this.removeEventListener("mouseup",clickTile);
+                this.setAttribute("class","notRevealed");
+            }
+            var depressFace = function(e){
+                //this function is called when mousedown on face
+                if(e.button == 0){
+                    this.setAttribute("class","depressed");//only do depress animation for left click
+                    this.addEventListener("mouseleave",unDepressFace);//handles uncomfirmed click
+                    this.addEventListener("mouseup",clickFace);//handles confirmed click
+                }
+            }
+            var clickFace = function(e){
+                //this function is called when mousedown on face did result in mouseup
+                if(e.button == 0){
+                    this.setAttribute("class","notDepressed");
+                    this.removeEventListener("mouseleave",unDepressFace);
+                    this.removeEventListener("mouseleave",clickFace);
+                    game.newGame(game.sizeX,game.sizeY,game.numMines);
+                }  
+            }
+            var unDepressFace = function(e){
+                //this function is called when mousedown on face did not result in mouseup
+                this.setAttribute("class","notDepressed");
+                this.removeEventListener("mouseleave",unDepressFace);
+                this.removeEventListener("mouseleave",clickFace);
+            }
+            var depressCloseButton = function(e){
+                //this function is called when user clicks close button in title bar
+                if(e.button == 0){
+                    this.setAttribute("class","depressed");//only do depress animation for left click
+                    this.addEventListener("mouseleave",unDepressCloseButton);//handles uncomfirmed click
+                    this.addEventListener("mouseup",clickCloseButton);//handles confirmed click
+                }
+            }
+            var clickCloseButton = function(e){
+                //this function is called when mousedown on close button did result in mouseup
+                if(e.button == 0){
+                    this.setAttribute("class","notDepressed");
+                    this.removeEventListener("mouseleave",unDepressCloseButton);
+                    this.removeEventListener("mouseleave",clickCloseButton);
+                    closeGame(e);
+                }  
+            }
+            var unDepressCloseButton = function(e){
+                //this function is called when mousedown on close button did not result in mouseup
+                this.setAttribute("class","notDepressed");
+                this.removeEventListener("mouseleave",unDepressCloseButton);
+                this.removeEventListener("mouseleave",clickCloseButton);
+            }
+            var depressGameButton = function(e){
+                //this function is called when user clicks game button in menu bar
+                if(e.button == 0){
+                    this.setAttribute("class","depressed");//only do depress animation for left click
+                    this.addEventListener("mouseleave",unDepressGameButton);//handles uncomfirmed click
+                    this.addEventListener("mouseup",clickGameButton);//handles confirmed click
+                }
+            }
+            var clickGameButton = function(e){
+                //this function is called when mousedown on game button did result in mouseup
+                if(e.button == 0){
+                    this.removeEventListener("mouseleave",unDepressGameButton);
+                    this.removeEventListener("mouseleave",clickGameButton);
+                    this.removeEventListener("mouseleave",unHoverGameButton);
+                    this.removeEventListener("mouseover",hoverGameButton);
+                    
+                    if(!gameMenuOpen){
+                        showGameMenu();
+                    }
+                    else{
+                        this.removeAttribute("class");
+                        hideGameMenu();
+                    }
+                }
+                e.stopPropagation();  
+            }
+            var unDepressGameButton = function(e){
+                //this function is called when mousedown on game button did not result in mouseup
+                this.removeAttribute("class");
+                this.removeEventListener("mouseleave",unDepressGameButton);
+                this.removeEventListener("mouseup",clickGameButton);
+            }
+            var showGameMenu = function(){
+                //this function renders the elements of the game menu and creates their click listeners
+                gameMenuOpen = true;
+                document.getElementById("gameButton").setAttribute("class","depressed");
+                document.getElementById("helpButton").removeEventListener("mouseover",hoverHelpButton);//stop listening for help hover animation
+                document.getElementById("helpButton").addEventListener("mouseover",showHelpMenu);//allow switching to help menu on hover
+                document.addEventListener("mouseup",cancelMenuSelection);//allow clicking elsewhere on the screen to hide the menu
+                if(helpMenuOpen){
+                    hideHelpMenu();//if help menu is open, close it.
+                }
+                var gameMenu = document.createElement("div");
+                gameMenu.setAttribute("id","gameMenu");
+                //New game button:
+                var element = document.createElement("div");
+                element.innerHTML = "New Game";
+                element.addEventListener("mouseup",function(e){game.newGame(game.sizeX,game.sizeY,game.numMines);e.stopPropagation();});
+                element.setAttribute("class","gameMenuElement");
+                gameMenu.appendChild(element);
+                //Beginner button:
+                element = document.createElement("div");
+                element.innerHTML = "Beginner";
+                element.addEventListener("mouseup",function(e){game.newGame(8,8,10);e.stopPropagation();});
+                element.setAttribute("class","gameMenuElement");
+                element.setAttribute("style","border-top:0.1em solid black;");
+                gameMenu.appendChild(element);
+                //Intermediate button:
+                element = document.createElement("div");
+                element.innerHTML = "Intermediate";
+                element.addEventListener("mouseup",function(e){game.newGame(16,16,40);e.stopPropagation();});
+                element.setAttribute("class","gameMenuElement");
+                gameMenu.appendChild(element);
+                //Expert button:
+                element = document.createElement("div");
+                element.innerHTML = "Expert";
+                element.addEventListener("mouseup",function(e){game.newGame(24,24,99);e.stopPropagation();});
+                element.setAttribute("class","gameMenuElement");
+                gameMenu.appendChild(element);
+                //Custom button:
+                element = document.createElement("div");
+                element.innerHTML = "Custom...";
+                element.addEventListener("mouseup",function(e){showCustomMenu();e.stopPropagation();});
+                element.setAttribute("style","border-top:0.1em solid black;");
+                element.setAttribute("class","gameMenuElement");
+                gameMenu.appendChild(element);
+                //High scores button:
+                element = document.createElement("div");
+                element.innerHTML = "High Scores...";
+                element.addEventListener("mouseup",function(e){showHighScoresMenu();e.stopPropagation();});
+                element.setAttribute("style","border-top:0.1em solid black;");
+                element.setAttribute("class","gameMenuElement");
+                gameMenu.appendChild(element);
+                //Exit button:
+                element = document.createElement("div");
+                element.innerHTML = "Exit";
+                element.addEventListener("mouseup",function(e){closeGame();e.stopPropagation();});
+                element.setAttribute("style","border-top:0.1em solid black;");
+                element.setAttribute("class","gameMenuElement");
+                gameMenu.appendChild(element);
+                document.getElementById("menuBar").appendChild(gameMenu);
+            }
+            var hideGameMenu = function(){
+                //this function hides the game menu
+                gameMenuOpen = false;
+                var gameMenu = document.getElementById("gameMenu");
+                document.getElementById("menuBar").removeChild(gameMenu);
+                document.getElementById("gameButton").removeAttribute("class");
+                if(!helpMenuOpen && !gameMenuOpen){//if both menus are now closed then make them hoverable again
+                    document.getElementById("helpButton").addEventListener("mouseover",hoverHelpButton);
+                    document.getElementById("gameButton").addEventListener("mouseover",hoverGameButton);
+                }
+                document.getElementById("helpButton").removeEventListener("mouseover",showHelpMenu);
+                if(!helpMenuOpen){
+                    document.removeEventListener("mouseup",cancelMenuSelection);
+                }
+            }
+            var depressHelpButton = function(e){
+                //this function is called when user clicks help button in menu bar
+                if(e.button == 0){
+                    this.setAttribute("class","depressed");//only do depress animation for left click
+                    this.addEventListener("mouseleave",unDepressHelpButton);//handles uncomfirmed click
+                    this.addEventListener("mouseup",clickHelpButton);//handles confirmed click
+                }
+            }
+            var clickHelpButton = function(e){
+                //this function is called when mousedown on help button did result in mouseup
+                if(e.button == 0){
+                    this.removeEventListener("mouseleave",unDepressHelpButton);
+                    this.removeEventListener("mouseleave",clickHelpButton);
+                    this.removeEventListener("mouseleave",unHoverHelpButton);
+                    this.removeEventListener("mouseover",hoverHelpButton);
+                    
+                    if(!helpMenuOpen){
+                        showHelpMenu();
+                    }
+                    else{
+                        this.removeAttribute("class");
+                        hideHelpMenu();
+                    }
+                }
+                e.stopPropagation();
+            }
+            var unDepressHelpButton = function(e){
+                //this function is called when mousedown on help button did not result in mouseup
+                this.removeAttribute("class");
+                this.removeEventListener("mouseleave",unDepressHelpButton);
+                this.removeEventListener("mouseup",clickHelpButton);
+            }
+            var showHelpMenu = function(){
+                //this function renders the elements of the game menu and creates their click listeners
+                helpMenuOpen = true;
+                document.getElementById("helpButton").setAttribute("class","depressed");
+                document.getElementById("gameButton").removeEventListener("mouseover",hoverGameButton);
+                document.getElementById("gameButton").addEventListener("mouseover",showGameMenu);
+                document.addEventListener("mouseup",cancelMenuSelection);
+                if(gameMenuOpen){
+                    hideGameMenu();//if help menu is open, close it.
+                }
+                var helpMenu = document.createElement("div");
+                helpMenu.setAttribute("id","helpMenu");
+                var element = document.createElement("div");
+                element.innerHTML = "Rules and Controls";
+                element.addEventListener("mouseup",function(e){showRulesMenu();e.stopPropagation();});
+                element.setAttribute("class","gameMenuElement");
+                helpMenu.appendChild(element);
+                element = document.createElement("div");
+                element.innerHTML = "About";
+                element.addEventListener("mouseup",function(e){showAboutMenu();e.stopPropagation();});
+                element.setAttribute("class","gameMenuElement");
+                helpMenu.appendChild(element);
+                document.getElementById("menuBar").appendChild(helpMenu);
+            }
+            var hideHelpMenu = function(){
+                //this function hides the help menu
+                helpMenuOpen = false;
+                var helpMenu = document.getElementById("helpMenu");
+                document.getElementById("menuBar").removeChild(helpMenu);
+                document.getElementById("helpButton").removeAttribute("class");
+                if(!helpMenuOpen && !gameMenuOpen){
+                    document.getElementById("helpButton").addEventListener("mouseover",hoverHelpButton);
+                    document.getElementById("gameButton").addEventListener("mouseover",hoverGameButton);
+                }
+                document.getElementById("gameButton").removeEventListener("mouseover",showGameMenu);
+                if(!gameMenuOpen){
+                    document.removeEventListener("mouseup",cancelMenuSelection);
+                }
+            }
+            var hoverGameButton = function(e){
+                //this function is called when user hovers over game button
+                this.setAttribute("class","notDepressed");
+                this.addEventListener("mouseleave",unHoverGameButton);
+            }
+            var hoverHelpButton = function(e){
+                //this function is called when user hovers over help button
+                this.setAttribute("class","notDepressed");
+                this.addEventListener("mouseleave",unHoverHelpButton);
+            }
+            var unHoverGameButton = function(e){
+                //this function is called when user hovers over game button
+                this.removeEventListener("mouseleave",unHoverGameButton);
+                this.removeAttribute("class");
+            }
+            var unHoverHelpButton = function(e){
+                //this function is called when user hovers over help button
+                this.removeEventListener("mouseleave",unHoverHelpButton);
+                this.removeAttribute("class");
+            }
+            var showCustomMenu = function(){
+                //this function opens the custom game pop-up menu
+                hideGameMenu();
+                if(!customMenuOpen){
+                    customMenuOpen = true;
+                    var customMenu = document.createElement("div");
+                    customMenu.setAttribute("id","customMenu");
+                    //create title bar:
+                    var titleBar = document.createElement("div");
+                    titleBar.setAttribute("class","titleBar");
+                    var div = document.createElement("div");
+                    div.setAttribute("id","customMenuTitle");
+                    div.innerHTML = "Custom Game";
+                    titleBar.appendChild(div);
+                    div = document.createElement("div");
+                    div.setAttribute("id","closeCustomButton");
+                    div.setAttribute("onclick","hideCustomMenu()");
+                    div.innerHTML = "&times;";
+                    titleBar.appendChild(div);
+                    customMenu.appendChild(titleBar);
+                    //create menu content:
+                    var menuContent = document.createElement("div");
+                    var form = document.createElement("form");
+                    form.setAttribute("oninput","setMineInput()");
+                    //create width input:
+                    div = document.createElement("div");
+                    div.appendChild(document.createElement("label"));
+                    div.firstChild.innerHTML = "XSize:";
+                    var input = document.createElement("input");
+                    input.setAttribute("id","widthInput");
+                    input.setAttribute("type","range");
+                    input.setAttribute("min","8");
+                    input.setAttribute("max","100");
+                    input.setAttribute("value",String(game.sizeX));
+                    div.appendChild(input);
+                    var span = document.createElement("span");
+                    span.setAttribute("id","widthOutput");
+                    span.innerHTML = (String(game.sizeX));
+                    div.appendChild(span);
+                    form.appendChild(div);
+                    //Create height input:
+                    div = document.createElement("div");
+                    div.appendChild(document.createElement("label"));
+                    div.firstChild.innerHTML = "YSize:";
+                    input = document.createElement("input");
+                    input.setAttribute("id","heightInput");
+                    input.setAttribute("type","range");
+                    input.setAttribute("min","8");
+                    input.setAttribute("max","100");
+                    input.setAttribute("value",String(game.sizeY));
+                    div.appendChild(input);
+                    span = document.createElement("span");
+                    span.setAttribute("id","heightOutput");
+                    span.innerHTML = (String(game.sizeY));
+                    div.appendChild(span);
+                    form.appendChild(div);
+                    menuContent.appendChild(form);
+                    //create mines input:
+                    form = document.createElement("form");
+                    form.setAttribute("oninput","updateCustomInput()");
+                    div = document.createElement("div");
+                    div.appendChild(document.createElement("label"));
+                    div.firstChild.innerHTML = "Mines:";
+                    input = document.createElement("input");
+                    input.setAttribute("id","minesInput");
+                    input.setAttribute("type","range");
+                    var minesMin = 1;
+                    if(game.sizeX*game.sizeY>26*26){
+                        minesMin = Math.ceil(game.sizeX*game.sizeY*0.11);
+                    }
+                    input.setAttribute("min",String(minesMin));
+                    input.setAttribute("max",String(game.sizeX*game.sizeY-9));
+                    input.setAttribute("value",String(game.numMines));
+                    div.appendChild(input);
+                    span = document.createElement("span");
+                    span.setAttribute("id","minesOutput");
+                    span.innerHTML = (String(game.numMines));
+                    div.appendChild(span);
+                    form.appendChild(div);
+                    menuContent.appendChild(form);
+                    //create submit button
+                    div = document.createElement("div");
+                    div.appendChild(document.createElement("button"));
+                    div.firstChild.setAttribute("onclick","submitCustomInput()");
+                    div.firstChild.setAttribute("type","button");
+                    div.firstChild.innerHTML = "Apply";
+                    form.appendChild(div);
+                    customMenu.appendChild(menuContent);
+                    document.getElementById("fullPage").appendChild(customMenu);
+                    //make custom menu movable
+                    dragElement(document.getElementById("customMenu"));
+                }
+            }
+            var updateCustomInput = function(){
+                //gets called continuously when user slides custom input sliders
+                document.getElementById("widthOutput").innerHTML = String(document.getElementById("widthInput").value);
+                document.getElementById("heightOutput").innerHTML = String(document.getElementById("heightInput").value);
+                document.getElementById("minesOutput").innerHTML = String(document.getElementById("minesInput").value);
+            }
+            var setMineInput = function(){
+                //gets called when custom height or width values change so mine min/max/value can be adjusted
+                var minesInput = document.getElementById("minesInput");
+                var width = parseInt(document.getElementById("widthInput").value);
+                var height = parseInt(document.getElementById("heightInput").value);
+                var mines = parseInt(document.getElementById("minesInput").value);
+                var minesMin = 1;
+                if(width*height>26*26){
+                    minesMin = Math.ceil(width*height*0.11);
+                }
+                var minesDefault = Math.ceil(width*height*0.15);
+                var minesMax = width*height-9;
+                minesInput.value = minesDefault;
+                minesInput.setAttribute("min",String(minesMin));
+                minesInput.setAttribute("max",String(minesMax));
+                updateCustomInput();
+            }
+            var submitCustomInput = function(){
+                //this function is called when the submit button is pressed on the custom game screen
+                var width = parseInt(document.getElementById("widthInput").value);
+                var height = parseInt(document.getElementById("heightInput").value);
+                var mines = parseInt(document.getElementById("minesInput").value);
+                game.newGame(width,height,mines);
+                hideCustomMenu();
+            }
+            var hideCustomMenu = function(){
+                //this function hides the custom game pop-up menu
+                customMenuOpen = false;
+                var customMenu = document.getElementById("customMenu");
+                document.getElementById("fullPage").removeChild(customMenu);
+            }
+            var showHighScoresMenu = function(){
+                //this function opens the About pop-up menu
+                if(gameMenuOpen){
+                    hideGameMenu();
+                }
+                if(!highScoresMenuOpen){
+                    highScoresMenuOpen = true;
+                    var highScoresMenu = document.createElement("div");
+                    highScoresMenu.setAttribute("id","highScoresMenu");
+                    //create title bar:
+                    var titleBar = document.createElement("div");
+                    titleBar.setAttribute("class","titleBar");
+                    var div = document.createElement("div");
+                    div.setAttribute("id","highScoresMenuTitle");
+                    div.innerHTML = "High Scores";
+                    titleBar.appendChild(div);
+                    div = document.createElement("div");
+                    div.setAttribute("id","closeHighScoresButton");
+                    div.setAttribute("onclick","hideHighScoresMenu()");
+                    div.innerHTML = "&times;";
+                    titleBar.appendChild(div);
+                    highScoresMenu.appendChild(titleBar);
+                    //create menu content:
+                    var menuContent = document.createElement("div");
+                    var h = document.createElement("h3");
+                    h.innerHTML = "Fastest Times by Difficulty";
+                    menuContent.appendChild(h);
+                    var p;
+                    if (typeof(Storage) !== "undefined" && !isOfflineIE()) {//check that browser supports local storage
+                        var score, name, time;
+                        p = document.createElement("p");
+                        if(localStorage.getItem("BeginnerScore") != null){
+                            score = localStorage.getItem("BeginnerScore");
+                            name = localStorage.getItem("BeginnerName");
+                            if(name == "" || name == "null")name="an unknown player";
+                            date = new Date(localStorage.getItem("BeginnerDate"));
+                            p.innerHTML = "<strong>Beginner:</strong> " + score + " seconds " +
+                            "scored by " + name +
+                            " on " + date.toDateString() +
+                            " at " + date.toLocaleTimeString('en-US');
+                        }
+                        else{
+                            p.innerHTML = "No beginner high score exists yet.";
+                        }
+                        menuContent.appendChild(p);
+                        p = document.createElement("p");
+                        if(localStorage.getItem("IntermediateScore") != null){
+                            score = localStorage.getItem("IntermediateScore");
+                            name = localStorage.getItem("IntermediateName");
+                            if(name == "" || name == "null")name="an unknown player";
+                            date = new Date(localStorage.getItem("IntermediateDate"));
+                            p.innerHTML = "<strong>Intermediate:</strong> " + score + " seconds " +
+                            "scored by " + name +
+                            " on " + date.toDateString() +
+                            " at " + date.toLocaleTimeString('en-US');
+                        }
+                        else{
+                            p.innerHTML = "No intermediate high score exists yet.";
+                        }
+                        menuContent.appendChild(p);
+                        p = document.createElement("p");
+                        if(localStorage.getItem("ExpertScore") != null){
+                            score = localStorage.getItem("ExpertScore");
+                            name = localStorage.getItem("ExpertName");
+                            if(name == "" || name == "null")name="an unknown player";
+                            date = new Date(localStorage.getItem("ExpertDate"));
+                            p.innerHTML = "<strong>Expert:</strong> " + score + " seconds " +
+                            "scored by " + name +
+                            " on " + date.toDateString() +
+                            " at " + date.toLocaleTimeString('en-US');
+                        }
+                        else{
+                            p.innerHTML = "No expert high score exists yet.";
+                        }
+                        menuContent.appendChild(p);
+                        div = document.createElement("div");
+                        div.appendChild(document.createElement("button"));
+                        div.firstChild.setAttribute("onclick","game.clearHighScores()");
+                        div.firstChild.setAttribute("type","button");
+                        div.firstChild.innerHTML = "Clear High Scores";
+                        menuContent.appendChild(div);
+                    }
+                    else{//notify if browser doesn't support localstorage:
+                        p = document.createElement("p");
+                        if(isOfflineIE){
+                            p.innerHTML = "Sorry, Internet Explorer and Edge do not support high score storage when viewed offline. " +
+                            "The page must be viewed through the http: protocol instead of the file: protocol for high scores to function. " +
+                            "Try storing the page on a local web server and accessing it through localhost."
+                        }
+                        else{
+                            p.innerHTML = "Sorry, your browser does not support high score storage. Please upgrade!";
+                        }
+                        menuContent.appendChild(p);
+                    }
+                    highScoresMenu.appendChild(menuContent);
+                    document.getElementById("fullPage").appendChild(highScoresMenu);
+                    //make menu movable
+                    dragElement(document.getElementById("highScoresMenu"));
+                }
+            }
+            var hideHighScoresMenu = function(){
+                //this function hides the About pop-up menu
+                highScoresMenuOpen = false;
+                var highScoresMenu = document.getElementById("highScoresMenu");
+                document.getElementById("fullPage").removeChild(highScoresMenu);
+            }
+            var showRulesMenu = function(){
+                //this function opens the Rules and Controls pop-up menu
+                hideHelpMenu();
+                if(!rulesMenuOpen){
+                    rulesMenuOpen = true;
+                    var rulesMenu = document.createElement("div");
+                    rulesMenu.setAttribute("id","rulesMenu");
+                    //create title bar:
+                    var titleBar = document.createElement("div");
+                    titleBar.setAttribute("class","titleBar");
+                    var div = document.createElement("div");
+                    div.setAttribute("id","rulesMenuTitle");
+                    div.innerHTML = "Rules and Controls";
+                    titleBar.appendChild(div);
+                    div = document.createElement("div");
+                    div.setAttribute("id","closeRulesButton");
+                    div.setAttribute("onclick","hideRulesMenu()");
+                    div.innerHTML = "&times;";
+                    titleBar.appendChild(div);
+                    rulesMenu.appendChild(titleBar);
+                    //create menu content:
+                    var menuContent = document.createElement("div");
+                    var p = document.createElement("p");
+                    var h = document.createElement("h3");
+                    h.innerHTML = "Rules";
+                    menuContent.appendChild(h);
+                    p.innerHTML = "Welcome to minesweeper!";
+                    menuContent.appendChild(p);
+                    p = document.createElement("p");
+                    p.innerHTML = "The rules of the game are simple: click a tile to reveal it. " +
+                    "If the tile you clicked was a mine, then you lose. Otherwise, you get to click again! " +
+                    "The first tile you click is always guaranteed to be safe.";
+                    menuContent.appendChild(p);
+                    p = document.createElement("p");
+                    p.innerHTML = "Whenever you click a tile that isn't a mine, a number is revealed. " + 
+                    "That number tells you how many adjacent tiles (including diagonals) contain a mine. " +
+                    "So as an example, if a tile with a number 1 is only adjacent to one unrevealed tile, " +
+                    "then you know that unrevealed tile must contain a mine!";
+                    menuContent.appendChild(p);
+                    p = document.createElement("p");
+                    p.innerHTML = "To help keep track of which tiles you know contain mines, you can place " + 
+                    "a flag on any tile by right clicking. The counter at the top-left of the screen will keep " +
+                    "track of how many mines remain unflagged on the board.";
+                    menuContent.appendChild(p);
+                    p = document.createElement("p");
+                    p.innerHTML = "You can also clear tiles more efficiently by chording. To chord, simply click " + 
+                    "the middle mouse button on any numbered tile that is adjacent to that number of flagged tiles. " +
+                    "All of that tile's adjacent tiles which have not been flagged will then be revealed with a single click.";
+                    menuContent.appendChild(p);
+                    p = document.createElement("p");
+                    p.innerHTML = "The game is won whenever all tiles that are not mines have been revealed. " + 
+                    "Good luck!";
+                    menuContent.appendChild(p);
+                    h = document.createElement("h3");
+                    h.innerHTML = "Controls";
+                    menuContent.appendChild(h);
+                    p = document.createElement("p");
+                    p.innerHTML = "Left click: reveal tile";
+                    menuContent.appendChild(p);
+                    p = document.createElement("p");
+                    p.innerHTML = "Right click: flag tile";
+                    menuContent.appendChild(p);
+                    p = document.createElement("p");
+                    p.innerHTML = "Middle click: chord tile";
+                    menuContent.appendChild(p);
+                    p = document.createElement("p");
+                    p.innerHTML = "Zoom: ctrl + mousewheel";
+                    menuContent.appendChild(p);
+                    rulesMenu.appendChild(menuContent);
+                    document.getElementById("fullPage").appendChild(rulesMenu);
+                    //make menu movable
+                    dragElement(document.getElementById("rulesMenu"));
+                }
+            }
+            var hideRulesMenu = function(){
+                //this function hides the Rules and Controls pop-up menu
+                rulesMenuOpen = false;
+                var rulesMenu = document.getElementById("rulesMenu");
+                document.getElementById("fullPage").removeChild(rulesMenu);
+            }
+            var showAboutMenu = function(){
+                //this function opens the About pop-up menu
+                hideHelpMenu();
+                if(!aboutMenuOpen){
+                    aboutMenuOpen = true;
+                    var aboutMenu = document.createElement("div");
+                    aboutMenu.setAttribute("id","aboutMenu");
+                    //create title bar:
+                    var titleBar = document.createElement("div");
+                    titleBar.setAttribute("class","titleBar");
+                    var div = document.createElement("div");
+                    div.setAttribute("id","aboutMenuTitle");
+                    div.innerHTML = "About";
+                    titleBar.appendChild(div);
+                    div = document.createElement("div");
+                    div.setAttribute("id","closeAboutButton");
+                    div.setAttribute("onclick","hideAboutMenu()");
+                    div.innerHTML = "&times;";
+                    titleBar.appendChild(div);
+                    aboutMenu.appendChild(titleBar);
+                    //create menu content:
+                    var menuContent = document.createElement("div");
+                    var p = document.createElement("p");
+                    var h = document.createElement("h3");
+                    h.innerHTML = "About this game";
+                    menuContent.appendChild(h);
+                    div = document.createElement("div");
+                    div.innerHTML = "&#x1F4A3;";
+                    div.setAttribute("class","aboutMenuIcon");
+                    menuContent.appendChild(div);
+                    p.innerHTML = "Minesweeper was created by Robert Donner and Curt Johnson in 1990. " +
+                    "It was first popularized with its inclusion in Microsoft's Windows 3.1 operating " +
+                    "system in 1992. Sadly, its inclusion ceased after Windows 7.";
+                    menuContent.appendChild(p);
+                    p = document.createElement("p");
+                    p.innerHTML = "You can read more about the game's history " +
+                    "<a href = 'http://www.minesweeper.info/wiki/Windows_Minesweeper' target = '_blank'>here</a>.";
+                    menuContent.appendChild(p);
+                    p = document.createElement("p");
+                    p.innerHTML = "This web clone was created by Jos Cashon as a final project for " +
+                    "MJ Edmonds' CS 80 Internet Programming Course at Santa Monica College in Los Angeles, CA.";
+                    menuContent.appendChild(p);
+                    p = document.createElement("p");
+                    p.innerHTML = "It was created for educational purposes only. No copyright infringement was intended.";
+                    menuContent.appendChild(p);
+                    p = document.createElement("p");
+                    p.innerHTML = "Minesweeper &copy;1990 Duff Software";
+                    menuContent.appendChild(p);
+                    aboutMenu.appendChild(menuContent);
+                    document.getElementById("fullPage").appendChild(aboutMenu);
+                    //make menu movable
+                    dragElement(document.getElementById("aboutMenu"));
+                }
+            }
+            var hideAboutMenu = function(){
+                //this function hides the About pop-up menu
+                aboutMenuOpen = false;
+                var aboutMenu = document.getElementById("aboutMenu");
+                document.getElementById("fullPage").removeChild(aboutMenu);
+            }
+            var cancelMenuSelection = function(){//TODO
+                //this function hides all open drop-down menus if the user clicks anywhere else
+                document.removeEventListener("mouseup",cancelMenuSelection);
+                if(gameMenuOpen){
+                    hideGameMenu();
+                    document.getElementById("gameButton").removeAttribute("class");
+                }
+                if(helpMenuOpen){
+                    hideHelpMenu();
+                    document.getElementById("helpButton").removeAttribute("class");
+                }
+            }
+            var closeGame = function(e){
+                //this function closes the entire game window
+                gameOpen = false;
+                var container = document.getElementById("game");
+                if(customMenuOpen){
+                    hideCustomMenu();
+                }
+                if(aboutMenuOpen){
+                    hideAboutMenu();
+                }
+                if(rulesMenuOpen){
+                    hideRulesMenu();
+                }
+                if(highScoresMenuOpen){
+                    hideHighScoresMenu();
+                }
+                if(gameMenuOpen || helpMenuOpen){
+                    document.removeEventListener("mouseup",cancelMenuSelection);
+                }
+                while(container.firstChild){
+                    container.removeChild(container.firstChild);
+                }
+                e.stopPropagation();
+            }
+            function dragElement(elmnt) {
+                //this function allows faux windows to be dragged to a different position
+                //found on w3schools.com
+                var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+                if (document.getElementById(elmnt.id + "Title")) {
+                    // if present, the title is where you move the DIV from:
+                    document.getElementById(elmnt.id + "Title").onmousedown = dragMouseDown;
+                }
+
+                function dragMouseDown(e) {
+                    e = e || window.event;
+                    e.preventDefault();
+                    // get the mouse cursor position at startup:
+                    pos3 = e.clientX;
+                    pos4 = e.clientY;
+                    document.onmouseup = closeDragElement;
+                    // call a function whenever the cursor moves:
+                    document.onmousemove = elementDrag;
+                }
+
+                function elementDrag(e) {
+                    e = e || window.event;
+                    e.preventDefault();
+                    // calculate the new cursor position:
+                    pos1 = pos3 - e.clientX;
+                    pos2 = pos4 - e.clientY;
+                    pos3 = e.clientX;
+                    pos4 = e.clientY;
+                    // set the element's new position:
+                    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+                    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+                }
+
+                function closeDragElement() {
+                    // stop moving when mouse button is released:
+                    document.onmouseup = null;
+                    document.onmousemove = null;
+                }
+            }
+            //!!!!!!!!!!!!!!!!!!!!!!!!!
+            //MISC PROCESSING FUNCTIONS
+            //!!!!!!!!!!!!!!!!!!!!!!!!!
+            var coordsToID = function(x,y){
+                //this function returns an ID string from given X and Y coordinate ints
+                var xString = "x" + String(x);
+                var yString = "y" + String(y);
+                return xString + yString;//concatenate and return string
+            }
+            var xFromID = function(idString){
+                //this function returns X value as int from given coord ID string
+                return Number(idString.slice(idString.indexOf("x")+1,idString.indexOf("y")));
+            }
+            var yFromID = function(idString){
+                //this function returns Y value as int from given coord ID string
+                return Number(idString.slice(idString.indexOf("y")+1));
+            }
+            var randomInteger = function(min, max){
+                //this function returns a random int from min(inclusive) to max(exclusive)
+                return Math.floor(Math.random() * (max - min) ) + min;
+            }
+            var threeDigitString = function(intInput){
+                //this function takes an integer and returns it as a 3 digit string (min -99 max 999)
+                var stringOutput = String(intInput);
+                if(intInput>=0){
+                    if(stringOutput.length == 1){
+                        return "00" + stringOutput;
+                    }
+                    else if(stringOutput.length == 2){
+                        return "0" + stringOutput;
+                    }
+                    else if(stringOutput.length == 3){
+                        return stringOutput;
+                    }
+                    else{
+                        return "999";
+                    }
+                }
+                else{
+                    stringOutput = String(Math.abs(intInput));
+                    if(stringOutput.length == 1){
+                        return "-0" + stringOutput;
+                    }
+                    if(stringOutput.length = 2){
+                        return "-" + stringOutput;
+                    }
+                    else{
+                        return "-99";
+                    }
+                }
+                
+            }
+            var isOfflineIE = function (){
+                //this function returns true if the user is using an MS browser with the file:// protocol
+                //(IE/edge do not support localstorage for offline HTML files)
+                var ua = window.navigator.userAgent;
+                if(window.location.protocol == "file:"){
+                    if(ua.indexOf('MSIE ') > -1 || ua.indexOf('Trident/') > -1 || ua.indexOf('Edge/') > -1){
+                        return true;
+                    }
+                }
+                return false;
+            }
+            //!!!!!!!!!!!!!!!!!!!!!!!
+            //LAUNCH GAME AT STARTUP:
+            //!!!!!!!!!!!!!!!!!!!!!!!
+            window.addEventListener("load",game.newGame(16,16,40),false);
+        </script>
+    </body>
+</html>
