@@ -188,7 +188,7 @@
         "../examples/ch15.5_json/simple_json.html"><code>simple_json.html</code></a></h2>
         <pre><code>&lt;!DOCTYPE html&gt;
         &lt;html&gt;
-        
+
         &lt;head&gt;
           &lt;meta charset="utf-8"&gt;
           &lt;title&gt;Simple JSON example&lt;/title&gt;
@@ -198,10 +198,10 @@
           $(document).ready(function(){
             // create JSON data
             var text = '{"name":"John Johnson","street":"Oslo West 16","phone":"555 1234567"}';
-        
+
             // parse it into an object
             var obj = JSON.parse(text);
-        
+
             // access members/attributes of the new object
             document.getElementById("demo").innerHTML =
               obj.name + "&lt;br&gt;" +
@@ -211,15 +211,15 @@
           
          &lt;/script&gt;
         &lt;/head&gt;
-        
+
         &lt;body&gt;
-        
+
           &lt;h2&gt;JSON Object Creation in JavaScript&lt;/h2&gt;
-        
+
           &lt;p id="demo"&gt;&lt;/p&gt;
-        
+
         &lt;/body&gt;
-        
+
         &lt;/html&gt;
         </code></pre>
       </section>
@@ -246,7 +246,7 @@
         "../examples/ch15.5_json/employee_json.html"><code>employee_json.html</code></a></h2>
         <pre><code>&lt;!DOCTYPE html&gt;
         &lt;html&gt;
-        
+
         &lt;head&gt;
           &lt;meta charset="utf-8"&gt;
           &lt;title&gt;Employee JSON example&lt;/title&gt;
@@ -256,10 +256,10 @@
             $(document).ready(function() {
               // create JSON text
               var data = '{"employees": [ {"firstName": "John","lastName": "Doe" }, {"firstName": "Anna", "lastName": "Smith"}, {"firstName": "Peter","lastName": "Jones" }]}';
-        
+
               // parse JSON text into object
               var employees_obj = JSON.parse(data);
-        
+
               // setup document
               document.writeln("&lt;h2&gt;Employees list&lt;/h2&gt;");
               document.writeln("&lt;p&gt;");
@@ -272,10 +272,10 @@
             });
           &lt;/script&gt;
         &lt;/head&gt;
-        
+
         &lt;body&gt;
         &lt;/body&gt;
-        
+
         &lt;/html&gt;
         </code></pre>
       </section>
@@ -298,7 +298,7 @@
         "../examples/ch15.5_json/employee_js.html"><code>employee_js.html</code></a></h2>
         <pre><code>&lt;!DOCTYPE html&gt;
         &lt;html&gt;
-        
+
         &lt;head&gt;
           &lt;meta charset="utf-8"&gt;
           &lt;title&gt;Employee JSON example&lt;/title&gt;
@@ -308,7 +308,7 @@
             $(document).ready(function() {
               // create JS object using JSON syntax
               var employees = [{ "firstName": "John","lastName": "Doe" }, {"firstName": "Anna", "lastName": "Smith"}, {"firstName": "Peter","lastName": "Jones" }];
-        
+
               // setup document
               document.writeln("&lt;h2&gt;Employees list&lt;/h2&gt;");
               document.writeln("&lt;p&gt;");
@@ -321,10 +321,10 @@
             });
           &lt;/script&gt;
         &lt;/head&gt;
-        
+
         &lt;body&gt;
         &lt;/body&gt;
-        
+
         &lt;/html&gt;
         </code></pre>
       </section>

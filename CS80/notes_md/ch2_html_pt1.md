@@ -60,6 +60,8 @@ Instructor: Mark Edmonds
 
 ## [Example: `hello_world.html`](../examples/ch2_html_pt1/hello_world.html)
 
+- Tip: try clicking the link above! This will load the example in your browser.
+
 ```{include=../examples/ch2_html_pt1/hello_world.html}
 ```
 

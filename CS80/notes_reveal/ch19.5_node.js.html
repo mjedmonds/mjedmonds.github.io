@@ -147,7 +147,7 @@
         "../examples/ch19.5_node/http_server.js"><code>http_server.js</code></a></h2>
         <pre><code>// basic HTTP server with an export
         var http = require("http"); // require the node HTTP module
-        
+
         function onRequest(request, response)
         {
           console.log("Request received.");
@@ -158,9 +158,9 @@
           response.write("Hello World"); // write content into HTTP request
           response.end(); // finishes the response
         }
-        
+
         http.createServer(onRequest).listen(8888);
-        
+
         console.log("Server has started.");
         </code></pre>
       </section>
@@ -180,7 +180,7 @@
         "../examples/ch19.5_node/http_server_export.js"><code>http_server_export.js</code></a></h2>
         <pre><code>// basic HTTP server with an export
         var http = require("http"); // require the node HTTP module
-        
+
         function start()
         {
           function onRequest(request, response)
@@ -193,11 +193,11 @@
             response.write("Hello World"); // write content into HTTP request
             response.end(); // finishes the response
           }
-        
+
           http.createServer(onRequest).listen(8888);
           console.log("Server has started.");
         }
-        
+
         exports.start = start;
         </code></pre>
       </section>
@@ -205,7 +205,7 @@
         <h2>Example: <a href=
         "../examples/ch19.5_node/index.js"><code>index.js</code></a></h2>
         <pre><code>var server = require("./http_server_export");
-        
+
         server.start();
         </code></pre>
       </section>
@@ -242,7 +242,7 @@
         {
           console.log("About to route a request for " + pathname);
         }
-        
+
         exports.route = route;
         </code></pre>
       </section>
@@ -252,16 +252,16 @@
         <pre>
         <code>var http = require("http"); // require the node HTTP module
         var url = require("url");
-        
+
         function start(route)
         {
           function onRequest(request, response)
           {
             var pathname = url.parse(request.url).pathname;
             console.log("Request for " + pathname + " received.");
-        
+
             route(pathname);
-        
+
             response.writeHead(200,
             {
               "Content-Type": "text/plain"
@@ -269,11 +269,11 @@
             response.write("Request for " + pathname + " received."); // write content into HTTP request
             response.end(); // finishes the response
           }
-        
+
           http.createServer(onRequest).listen(8888);
           console.log("Server has started.");
         }
-        
+
         exports.start = start
         </code></pre>
       </section>
@@ -282,7 +282,7 @@
         "../examples/ch19.5_node/index_router.js"><code>index_router.js</code></a></h2>
         <pre><code>var server = require("./http_server_router");
         var router = require("./router");
-        
+
         server.start(router.route);
         </code></pre>
       </section>
@@ -302,7 +302,7 @@
         <pre><code>var http = require('http');
         var url = require('url');
         var fs = require('fs');
-        
+
         function start(route)
         {
           function onRequest(request, response)
@@ -334,7 +334,7 @@
           http.createServer(onRequest).listen(8888);
           console.log("Server has started.");
         }
-        
+
         exports.start = start
         </code></pre>
       </section>
@@ -343,7 +343,7 @@
         "../examples/ch19.5_node/index_fileserver.js"><code>index_fileserver.js</code></a></h2>
         <pre><code>var server = require("./http_fileserver");
         var router = require("./router");
-        
+
         server.start(router.route);
         </code></pre>
       </section>

@@ -20,6 +20,8 @@ Instructor: Mark Edmonds
   `Esc`   global `ctrl+f`
   ------- -----------------
 
+  You can click on links when we use examples. This will load the example in your browser.
+
 ## Expectations and Success
 
 - Turn in assignments, tests, projects on time

@@ -183,7 +183,7 @@
             <pre class="javascript">
             <code>// wait for document to load to run the start function
         window.addEventListener("load", start, false);
-        
+
         function start(){
           // startup code
         }</code></pre>
@@ -251,7 +251,7 @@
         "../examples/ch12_dom/loading_event_listeners.html"><code>loading_event_listeners.html</code></a></h2>
         <pre><code>&lt;!DOCTYPE html&gt;
         &lt;html&gt;
-        
+
         &lt;head&gt;
           &lt;meta charset=utf-8 /&gt;
           &lt;title&gt;Proper Loading&lt;/title&gt;
@@ -261,12 +261,12 @@
               document.getElementById("p1").addEventListener("mouseenter", addHighlight);
               document.getElementById("p1").addEventListener("mouseleave", removeHighlight);
             }
-        
+
             document.addEventListener("DOMContentLoaded", start);
             
             // the following line will not work! DOM is not loaded (yet) 
             //start();
-        
+
             function addHighlight() {
               var p1 = document.getElementById("p1");
               p1.setAttribute("style", "background-color: #3F6");
@@ -278,13 +278,13 @@
             }
           &lt;/script&gt;
         &lt;/head&gt;
-        
+
         &lt;body&gt;
           &lt;p id="p1"&gt;
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque faucibus augue in risus tempus viverra. Etiam gravida augue a venenatis sollicitudin. Praesent varius ex varius, accumsan libero vel, bibendum eros. Aenean tristique mattis sem id scelerisque. In cursus ultrices massa nec tristique. Phasellus efficitur ac neque eu suscipit. Donec volutpat pretium justo, eget fringilla sapien. Integer vitae metus eget lorem auctor vestibulum non ut risus. Aenean hendrerit iaculis sapien. Nunc vestibulum purus quam, nec consequat sem cursus a. Aenean interdum euismod dui id dapibus. Curabitur vel placerat purus. Etiam dolor turpis, dictum in augue sit amet, suscipit suscipit leo. Aliquam auctor fringilla ligula, vitae sodales ligula facilisis quis. Donec consequat molestie tempus. Donec faucibus elit ullamcorper ante accumsan congue.
           &lt;/p&gt;
         &lt;/body&gt;
-        
+
         &lt;/html&gt;
         </code></pre>
       </section>
@@ -302,7 +302,7 @@
         "../examples/ch12.5_jQuery/highlighting_mouse.html"><code>highlighting_mouse.html</code></a></h2>
         <pre><code>&lt;!DOCTYPE html&gt;
         &lt;html&gt;
-        
+
         &lt;head&gt;
           &lt;meta charset=utf-8 /&gt;
           &lt;title&gt;Proper Loading&lt;/title&gt;
@@ -313,26 +313,26 @@
             $("#p1").mouseenter(addHighlight);
             $("#p1").mouseleave(removeStyle);
           });
-        
+
           function addHighlight(){
             $("#p1").attr("style", "background-color: #3F6");
           }
-        
+
           function removeStyle(){
             $("#p1").removeAttr("style");
           }
-        
+
           &lt;/script&gt;
         &lt;/head&gt;
-        
+
         &lt;body&gt;
           &lt;p id="p1"&gt;
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque faucibus augue in risus tempus viverra. Etiam gravida augue a venenatis sollicitudin. Praesent varius ex varius, accumsan libero vel, bibendum eros. Aenean tristique mattis sem id scelerisque. In cursus ultrices massa nec tristique. Phasellus efficitur ac neque eu suscipit. Donec volutpat pretium justo, eget fringilla sapien. Integer vitae metus eget lorem auctor vestibulum non ut risus. Aenean hendrerit iaculis sapien. Nunc vestibulum purus quam, nec consequat sem cursus a. Aenean interdum euismod dui id dapibus. Curabitur vel placerat purus. Etiam dolor turpis, dictum in augue sit amet, suscipit suscipit leo. Aliquam auctor fringilla ligula, vitae sodales ligula facilisis quis. Donec consequat molestie tempus. Donec faucibus elit ullamcorper ante accumsan congue.
           &lt;/p&gt;
         &lt;/body&gt;
-        
+
         &lt;/html&gt;
-        
+
         </code></pre>
       </section>
       <section id="exercise-1" class="level2">
@@ -348,7 +348,7 @@
         highlighting_mouse_anon.html</code></a></h2>
         <pre><code>&lt;!DOCTYPE html&gt;
         &lt;html&gt;
-        
+
         &lt;head&gt;
           &lt;meta charset=utf-8 /&gt;
           &lt;title&gt;Proper Loading&lt;/title&gt;
@@ -362,20 +362,20 @@
             $("#p1").mouseleave(function(){
               $("#p1").removeAttr("style");
             });
-        
+
           });
           &lt;/script&gt;
         &lt;/head&gt;
-        
+
         &lt;body&gt;
           &lt;p id="p1"&gt;
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque faucibus augue in risus tempus viverra. Etiam gravida augue a venenatis sollicitudin. Praesent varius ex varius, accumsan libero vel, bibendum eros. Aenean tristique mattis sem id scelerisque. In cursus ultrices massa nec tristique. Phasellus efficitur ac neque eu suscipit. Donec volutpat pretium justo, eget fringilla sapien. Integer vitae metus eget lorem auctor vestibulum non ut risus. Aenean hendrerit iaculis sapien. Nunc vestibulum purus quam, nec consequat sem cursus a. Aenean interdum euismod dui id dapibus. Curabitur vel placerat purus. Etiam dolor turpis, dictum in augue sit amet, suscipit suscipit leo. Aliquam auctor fringilla ligula, vitae sodales ligula facilisis quis. Donec consequat molestie tempus. Donec faucibus elit ullamcorper ante accumsan congue.
           &lt;/p&gt;
         &lt;/body&gt;
-        
+
         &lt;/html&gt;
-        
-        
+
+
         </code></pre>
       </section>
       <section id="exercise-2" class="level2">
@@ -405,7 +405,7 @@
         <code>highlighting_mouse_anon_func.html</code></a></h2>
         <pre><code>&lt;!DOCTYPE html&gt;
         &lt;html&gt;
-        
+
         &lt;head&gt;
           &lt;meta charset=utf-8 /&gt;
           &lt;title&gt;Proper Loading&lt;/title&gt;
@@ -427,7 +427,7 @@
           };
           &lt;/script&gt;
         &lt;/head&gt;
-        
+
         &lt;body&gt;
           &lt;p id="p1"&gt;
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque faucibus augue in risus tempus viverra. Etiam gravida augue a venenatis sollicitudin. Praesent varius ex varius, accumsan libero vel, bibendum eros. Aenean tristique mattis sem id scelerisque. In cursus ultrices massa nec tristique. Phasellus efficitur ac neque eu suscipit. Donec volutpat pretium justo, eget fringilla sapien. Integer vitae metus eget lorem auctor vestibulum non ut risus. Aenean hendrerit iaculis sapien. Nunc vestibulum purus quam, nec consequat sem cursus a. Aenean interdum euismod dui id dapibus. Curabitur vel placerat purus. Etiam dolor turpis, dictum in augue sit amet, suscipit suscipit leo. Aliquam auctor fringilla ligula, vitae sodales ligula facilisis quis. Donec consequat molestie tempus. Donec faucibus elit ullamcorper ante accumsan congue.
@@ -436,7 +436,7 @@
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque faucibus augue in risus tempus viverra. Etiam gravida augue a venenatis sollicitudin. Praesent varius ex varius, accumsan libero vel, bibendum eros. Aenean tristique mattis sem id scelerisque. In cursus ultrices massa nec tristique. Phasellus efficitur ac neque eu suscipit. Donec volutpat pretium justo, eget fringilla sapien. Integer vitae metus eget lorem auctor vestibulum non ut risus. Aenean hendrerit iaculis sapien. Nunc vestibulum purus quam, nec consequat sem cursus a. Aenean interdum euismod dui id dapibus. Curabitur vel placerat purus. Etiam dolor turpis, dictum in augue sit amet, suscipit suscipit leo. Aliquam auctor fringilla ligula, vitae sodales ligula facilisis quis. Donec consequat molestie tempus. Donec faucibus elit ullamcorper ante accumsan congue.
           &lt;/p&gt;
         &lt;/body&gt;
-        
+
         &lt;/html&gt;
         </code></pre>
       </section>
@@ -485,7 +485,7 @@
         "../examples/ch12.5_jQuery/animation.html"><code>animation.html</code></a></h2>
         <pre><code>&lt;!DOCTYPE html&gt;
         &lt;html&gt;
-        
+
         &lt;head&gt;
           &lt;!-- use google's hosting of jQuery --&gt;
           &lt;script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"&gt;&lt;/script&gt;
@@ -507,14 +507,14 @@
             });
           &lt;/script&gt;
         &lt;/head&gt;
-        
+
         &lt;body&gt;
           &lt;div id="box" style="background:#98bf21; height:100px; width:100px; margin:6px;"&gt;&lt;/div&gt;
         &lt;/body&gt;
-        
+
         &lt;/html&gt;
-        
-        
+
+
         </code></pre>
       </section>
     </div>

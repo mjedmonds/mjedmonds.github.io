@@ -267,7 +267,7 @@
         "../examples/ch12_dom/editing_dom.html"><code>editing_dom.html</code></a></h2>
         <pre><code>&lt;!DOCTYPE html&gt;
         &lt;html&gt;
-        
+
         &lt;head&gt;
           &lt;meta charset="utf-8"&gt;
           &lt;title&gt;Using Javascript to edit HTML&lt;/title&gt;
@@ -276,20 +276,20 @@
             document.addEventListener('DOMContentLoaded', function() {
               // change the title
               updateHeader("header");
-        
+
               // change the image
               updateImage("img");
-        
+
               // create new p element
               createElement("p", document.body, "Hello, World!");
-        
+
               // create new element without innerHTML
               createElement("div", document.body);
               
               // change the title again
               updateHeader("header");
             });
-        
+
             // update header with new text
             function updateHeader(id) {
               var new_header = window.prompt("Enter a new title: ");
@@ -300,7 +300,7 @@
                 console.log("No header with id " + id);
               }
             }
-        
+
             // update the image 
             function updateImage(id) {
               var new_img_src = window.prompt("Enter a new image URL: ");
@@ -309,7 +309,7 @@
               img.setAttribute("src", new_img_src);
               img.setAttribute("alt", new_img_alt);
             }
-        
+
             // create a new element
             function createElement(element, parentNode, innerHTML) {
               var new_node = document.createElement(element);
@@ -320,15 +320,15 @@
             }
           &lt;/script&gt;
         &lt;/head&gt;
-        
-        
+
+
         &lt;body&gt;
-        
+
           &lt;h1 id="header"&gt;We can edit HTML using DOM&lt;/h1&gt;
           &lt;img id="img" src="http://www.menucool.com/slider/jsImgSlider/images/image-slider-2.jpg" alt="scene from movie Up"&gt;
-        
+
         &lt;/body&gt;
-        
+
         &lt;/html&gt;
         </code></pre>
       </section>
@@ -353,14 +353,14 @@
         &lt;!-- Fig. 12.4: dom.html --&gt;
         &lt;!-- Basic DOM functionality. --&gt;
         &lt;html&gt;
-        
+
         &lt;head&gt;
           &lt;meta charset="utf-8"&gt;
           &lt;title&gt;Basic DOM Functionality&lt;/title&gt;
           &lt;link rel="stylesheet" type="text/css" href="style.css"&gt;
           &lt;script src="dom.js"&gt;&lt;/script&gt;
         &lt;/head&gt;
-        
+
         &lt;body&gt;
           &lt;h1 id="bigheading" class="highlighted"&gt;
         [bigheading] DHTML Object Model&lt;/h1&gt;
@@ -390,7 +390,7 @@
             &lt;/form&gt;
           &lt;/div&gt;
         &lt;/body&gt;
-        
+
         &lt;/html&gt;
         </code></pre>
       </section>
@@ -465,7 +465,7 @@
         "../examples/ch12_dom/loading_event_listeners.html"><code>loading_event_listeners.html</code></a></h2>
         <pre><code>&lt;!DOCTYPE html&gt;
         &lt;html&gt;
-        
+
         &lt;head&gt;
           &lt;meta charset=utf-8 /&gt;
           &lt;title&gt;Proper Loading&lt;/title&gt;
@@ -475,12 +475,12 @@
               document.getElementById("p1").addEventListener("mouseenter", addHighlight);
               document.getElementById("p1").addEventListener("mouseleave", removeHighlight);
             }
-        
+
             document.addEventListener("DOMContentLoaded", start);
             
             // the following line will not work! DOM is not loaded (yet) 
             //start();
-        
+
             function addHighlight() {
               var p1 = document.getElementById("p1");
               p1.setAttribute("style", "background-color: #3F6");
@@ -492,13 +492,13 @@
             }
           &lt;/script&gt;
         &lt;/head&gt;
-        
+
         &lt;body&gt;
           &lt;p id="p1"&gt;
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque faucibus augue in risus tempus viverra. Etiam gravida augue a venenatis sollicitudin. Praesent varius ex varius, accumsan libero vel, bibendum eros. Aenean tristique mattis sem id scelerisque. In cursus ultrices massa nec tristique. Phasellus efficitur ac neque eu suscipit. Donec volutpat pretium justo, eget fringilla sapien. Integer vitae metus eget lorem auctor vestibulum non ut risus. Aenean hendrerit iaculis sapien. Nunc vestibulum purus quam, nec consequat sem cursus a. Aenean interdum euismod dui id dapibus. Curabitur vel placerat purus. Etiam dolor turpis, dictum in augue sit amet, suscipit suscipit leo. Aliquam auctor fringilla ligula, vitae sodales ligula facilisis quis. Donec consequat molestie tempus. Donec faucibus elit ullamcorper ante accumsan congue.
           &lt;/p&gt;
         &lt;/body&gt;
-        
+
         &lt;/html&gt;
         </code></pre>
       </section>
@@ -656,7 +656,7 @@
         "../examples/ch12_dom/first_last_name.html"><code>first_last_name.html</code></a></h2>
         <pre><code>&lt;!DOCTYPE html&gt;
         &lt;html&gt;
-        
+
         &lt;head&gt;
           &lt;meta charset=utf-8 /&gt;
           &lt;title&gt;Return first and last name from a form - w3resource&lt;/title&gt;
@@ -671,7 +671,7 @@
             }
           &lt;/script&gt;
         &lt;/head&gt;
-        
+
         &lt;body&gt;
           &lt;!-- action is intentionally left blank for demonstration purposes --&gt;
           &lt;form method="get" id="form1" onsubmit="getFormvalue()"&gt;
@@ -680,7 +680,7 @@
             &lt;input type="submit" value="Submit"&gt;
           &lt;/form&gt;
         &lt;/body&gt;
-        
+
         &lt;/html&gt;
         </code></pre>
       </section>
@@ -697,7 +697,7 @@
         "../examples/ch12_dom/first_last_name_listener.html"><code>first_last_name_listener.html</code></a></h2>
         <pre><code>&lt;!DOCTYPE html&gt;
         &lt;html&gt;
-        
+
         &lt;head&gt;
           &lt;meta charset=utf-8 /&gt;
           &lt;title&gt;Return first and last name from a form - w3resource&lt;/title&gt;
@@ -706,10 +706,10 @@
               // listen for the submit event on the form
               document.getElementById("form1").addEventListener("submit", getFormvalue);
             }
-        
+
             // the window object listens for the "load" event and executes start() when "load" triggers
             window.addEventListener("load", start);
-        
+
             function getFormvalue() {
               var form = document.getElementById("form1");
               for (var i = 0; i &lt; form.length; i++) {
@@ -720,7 +720,7 @@
             }
           &lt;/script&gt;
         &lt;/head&gt;
-        
+
         &lt;body&gt;
           &lt;!-- action is intentionally left blank for demonstration purposes --&gt;
           &lt;form method="get" id="form1"&gt;
@@ -729,7 +729,7 @@
             &lt;input type="submit" value="Submit"&gt;
           &lt;/form&gt;
         &lt;/body&gt;
-        
+
         &lt;/html&gt;
         </code></pre>
       </section>
@@ -789,7 +789,7 @@
         "../examples/ch12_dom/model_view_controller.html"><code>model_view_controller.html</code></a></h2>
         <pre><code>&lt;!DOCTYPE html&gt;
         &lt;html&gt;
-        
+
         &lt;head&gt;
           &lt;meta charset="utf-8"&gt;
           &lt;title&gt;Basic Model, View, Controller Example&lt;/title&gt;
@@ -819,7 +819,7 @@
                   this.data.userLoginID = this.data.userLoginID.replace(/ /g,'').toLowerCase();
                 }
               }
-        
+
               /* View Handles the Display */
               var view = {
                 userName: document.getElementById("username"),
@@ -835,7 +835,7 @@
                   this.userLoginID.innerHTML = userloginid;
                 }
               }
-        
+
               /* Controller Handles the Events */
               var controller = {
                 model: model,
@@ -851,17 +851,17 @@
                   this.view.updateView(modelData.userLoginID);
                 }
               }
-        
+
               document.getElementById("update").addEventListener("click", function(){
                   controller.handler();
               }); 
             }
             
             window.onload = start
-        
+
           &lt;/script&gt;
         &lt;/head&gt;
-        
+
         &lt;body&gt;
           &lt;h1&gt;Basic Model, View, Controller&lt;/h1&gt;
           &lt;h3&gt;Login ID generator&lt;/h3&gt;
@@ -878,7 +878,7 @@
             Your login ID is: &lt;span id="userloginid"&gt;&lt;/span&gt;
           &lt;/p&gt;
         &lt;/body&gt;
-        
+
         &lt;/html&gt;
         </code></pre>
       </section>

@@ -285,7 +285,7 @@
         &lt;!-- Fig. 16.5: SwitchContent.html --&gt;
         &lt;!-- Asynchronously display content without reloading the page. --&gt;
         &lt;html&gt;
-        
+
         &lt;head&gt;
           &lt;meta charset="utf-8"&gt;
           &lt;style type="text/css"&gt;
@@ -297,7 +297,7 @@
           &lt;title&gt;Switch Content Asynchronously&lt;/title&gt;
           &lt;script&gt;
             var asyncRequest; // variable to hold XMLHttpRequest object
-        
+
             // set up event handlers
             function registerListeners() {
               var img;
@@ -338,7 +338,7 @@
                 });
               img.addEventListener("mouseout", clearContent);
             } // end function registerListeners
-        
+
             // set up and send the asynchronous request.
             function getContent(url) {
               // attempt to create XMLHttpRequest object and make the request
@@ -354,7 +354,7 @@
                 alert("Request failed.");
               } // end catch
             } // end function getContent
-        
+
             // displays the response data on the page
             function stateChange() {
               if (asyncRequest.readyState == 4 &amp;& asyncRequest.status == 200) {
@@ -362,7 +362,7 @@
                   asyncRequest.responseText; // places text in contentArea
               } // end if
             } // end function stateChange
-        
+
             // clear the content of the box
             function clearContent() {
               document.getElementById("contentArea").innerHTML = "";
@@ -370,7 +370,7 @@
             window.addEventListener("load", registerListeners);
           &lt;/script&gt;
         &lt;/head&gt;
-        
+
         &lt;body&gt;
           &lt;h1&gt;Mouse over a book for more information.&lt;/h1&gt;
           &lt;img id="cpphtp" alt="C++ How to Program book cover" src="cpphtp8.jpg"&gt;
@@ -381,7 +381,7 @@
           &lt;img id="javafp" alt="Java for Programmers book cover" src="javafp.jpg"&gt;
           &lt;div class="box" id="contentArea"&gt;&lt;/div&gt;
         &lt;/body&gt;
-        
+
         &lt;/html&gt;
         </code></pre>
       </section>
@@ -544,7 +544,7 @@
         &lt;!-- Fig. 16.8: PullImagesOntoPage.html --&gt;
         &lt;!-- Image catalog that uses 1Ajax to request XML data asynchronously. --&gt;
         &lt;html&gt;
-        
+
         &lt;head&gt;
           &lt;meta charset="utf-8"&gt;
           &lt;title&gt; Pulling Images onto the Page &lt;/title&gt;
@@ -561,7 +561,7 @@
           &lt;/style&gt;
           &lt;script&gt;
             var asyncRequest; // variable to hold XMLHttpRequest object
-        
+
             // set up and send the asynchronous request to get the XML file
             function getImages(url) {
               // attempt to create XMLHttpRequest object and make the request
@@ -586,7 +586,7 @@
                 asyncRequest.responseXML) {
                 
                 clearImages(); // prepare to display a new set of images
-        
+
                 // get the covers from the responseXML
                 var covers = asyncRequest.responseXML.getElementsByTagName(
                     "cover")
@@ -618,12 +618,12 @@
                 html_covers.appendChild(imagesUL); // append ul to covers div
               } // end if
             } // end function processResponse
-        
+
             // clears the covers div
             function clearImages() {
               document.getElementById("covers").innerHTML = "";
             } // end function clearImages
-        
+
             var global_name = "all.xml";
             // register event listeners
             function registerListeners() {
@@ -659,7 +659,7 @@
             window.addEventListener("load", registerListeners, false);
           &lt;/script&gt;
         &lt;/head&gt;
-        
+
         &lt;body&gt;
           &lt;input type="radio" name="Books" value="all" id="all"&gt; All Books
           &lt;input type="radio" name="Books" value="simply" id="simply"&gt; Simply Books
@@ -669,7 +669,7 @@
           &lt;input type="radio" checked name="Books" value="none" id="none"&gt; None
           &lt;div id="covers"&gt;&lt;/div&gt;
         &lt;/body&gt;
-        
+
         &lt;/html&gt;
         </code></pre>
       </section>

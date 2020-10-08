@@ -75,7 +75,7 @@ p {
 - Advantage:
   - Styling is applied across every instance of an element in the entire document
 - Disadvantage:
-  - Styling is still restricted to this HTML document; we cannot "export" the embedded style sheet to other HTML documents 
+  - Styling is still restricted to this HTML document; we cannot "export" the embedded style sheet to other HTML documents
 
 ## Example: [`embedded_styles.html`](../examples/ch4_css/embedded_styles.html)
 
@@ -326,7 +326,7 @@ p {
 Absolute positioning
 
 - `position: absolute;` sepcifies this elements position **relative to it's first positioned (not static) ancestor element**\
-  - "Ancestor" refers to the parents of this HTML element (nesting establishes parent-child relationships) 
+  - "Ancestor" refers to the parents of this HTML element (nesting establishes parent-child relationships)
 
 ## CSS Positioning
 
@@ -469,24 +469,25 @@ Media Types
 - Allow you to specify what the page should look like on different  media.
 - Standarad media type is `screen`, which stands for computer screen
 - Other options: `handheld` (cell phone/mobile), `speech` (read out old), `print` (printers).
-- Basic example:
 
-  ```css
-  /* media query example */
-  @media all {
-    body { background-color: black; }
-  }
-  @media print{
-    body { background-color: white; }
-  }
-  ```
+## Media Types and Media Queries - Basic Example
+
+```css
+/* media query example */
+@media all {
+  body { background-color: black; }
+}
+@media print{
+  body { background-color: white; }
+}
+```
 
 ## Media Types and Media Queries
 
 Media Queries
 
-- Allow you to query the user's device and use different CSS rules based on the media 
-  - `height` - height of display area (the browser) 
+- Allow you to query the user's device and use different CSS rules based on the media
+  - `height` - height of display area (the browser)
   - `width` - width of display area (the browser)
   - `resolution` - resolution of the output device
   - `orientation` - landscape or portrait

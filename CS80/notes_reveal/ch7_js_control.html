@@ -788,7 +788,7 @@
         "../examples/ch7_js_2/class_average.html"><code>class_average.html</code></a></h2>
         <pre><code>&lt;!DOCTYPE html&gt;
         &lt;html&gt;
-        
+
         &lt;head&gt;
           &lt;meta charset="utf-8"&gt;
           &lt;title&gt;Class Average Problem&lt;/title&gt;
@@ -819,7 +819,7 @@
             gradeCounter = 0;
             var numStudents = window.prompt("Enter the number of students: ", "0");
             numStudents = parseInt(numStudents);
-        
+
             if (numStudents == 0)
             {
               document.writeln("The number of students is 0");
@@ -831,7 +831,7 @@
               document.writeln("&lt;caption&gt;&lt;strong&gt;Exam scores&lt;/strong&gt;&lt;/caption&gt;");
               document.writeln("&lt;thead&gt;\n&lt;tr&gt;\n&lt;th&gt;Student Number&lt;/th&gt;\n&lt;th&gt;Grade&lt;/th&gt;\n&lt;/thead&gt;");
               document.writeln("&lt;tbody&gt;");
-        
+
               // loop, processing phase
               while (gradeCounter &lt; numStudents) {
                 // prompt for input and read grade from user
@@ -845,7 +845,7 @@
                 // add data to table
                 document.writeln("&lt;tr&gt;\n&lt;td&gt;" + gradeCounter + "&lt;/td&gt;\n&lt;td&gt;" + grade + "&lt;/td&gt;\n&lt;/tr&gt;");
               } // end while
-        
+
               // calculate the average
               average = total / numStudents;
               // display average of exam grades
@@ -855,10 +855,10 @@
             }
           &lt;/script&gt;
         &lt;/head&gt;
-        
+
         &lt;body&gt;
         &lt;/body&gt;
-        
+
         &lt;/html&gt;
         </code></pre>
       </section>
@@ -928,7 +928,7 @@
         &lt;!-- Fig. 7.11: analysis.html --&gt;
         &lt;!-- Examination-results calculation. --&gt;
         &lt;html&gt;
-        
+
         &lt;head&gt;
           &lt;meta charset="utf-8"&gt;
           &lt;title&gt;Analysis of Examination Results&lt;/title&gt;
@@ -953,16 +953,16 @@
             } // end while
             document.writeln("&lt;h1&gt;Examination Results&lt;/h1&gt;");
             document.writeln("&lt;p&gt;Passed: " + passes +"; Failed: " + failures + "&lt;/p&gt;");
-        
+
             if (passes &gt; 8)
             {
               document.writeln("&lt;p&gt;Bonus to instructor!&lt;/p&gt;");
             }
           &lt;/script&gt;
         &lt;/head&gt;
-        
+
         &lt;body&gt;&lt;/body&gt;
-        
+
         &lt;/html&gt;
         </code></pre>
       </section>
@@ -1121,7 +1121,7 @@
         while(i &lt; 10);</code></pre>
           </li>
         </ul><!-- ## Additional Repetition Structures
-        
+
         - `for...in`
           - Will be discussed after JSON -->
       </section>

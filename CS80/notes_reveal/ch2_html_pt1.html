@@ -188,12 +188,16 @@
         <h2><a href=
         "../examples/ch2_html_pt1/hello_world.html">Example:
         <code>hello_world.html</code></a></h2>
+        <ul>
+          <li>Tip: try clicking the link above! This will load the
+          example in your browser.</li>
+        </ul>
         <pre><code>&lt;!DOCTYPE html&gt;
         &lt;!-- document type declaration. required. must be on first line --&gt;
-        
+
         &lt;!-- starts the html document, the root of the document's structure. required. --&gt;
         &lt;html&gt;
-        
+
         &lt;!-- starts the head section of the document, provides info but usually not content. required. --&gt;
         &lt;head&gt;
           &lt;!-- metadata tag, here we specify the character encoding of the document. required. --&gt;
@@ -202,14 +206,14 @@
           &lt;title&gt;Hello world!&lt;/title&gt;
         &lt;!-- end of head section. required. --&gt;
         &lt;/head&gt;
-        
+
         &lt;!-- document body. the content goes here! required. --&gt;
         &lt;body&gt;
           &lt;!-- simple paragraph (the p-tag) --&gt;
           &lt;p&gt;Welcome to HTML5!&lt;/p&gt;
         &lt;!-- end of body section. required. --&gt;
         &lt;/body&gt;
-        
+
         &lt;!-- ends the html document. required. --&gt;
         &lt;/html&gt;
         </code></pre>
@@ -252,12 +256,12 @@
         "../examples/ch2_html_pt1/headings.html"><code>headings.html</code></a></h2>
         <pre><code>&lt;!DOCTYPE html&gt;
         &lt;html&gt;
-        
+
         &lt;head&gt;
           &lt;meta charset="utf-8"&gt;
           &lt;title&gt;Headings&lt;/title&gt;
         &lt;/head&gt;
-        
+
         &lt;body&gt;
           &lt;h1&gt;Level 1 Heading&lt;/h1&gt;
           &lt;h2&gt;Level 2 heading&lt;/h2&gt;
@@ -266,7 +270,7 @@
           &lt;h5&gt;Level 5 heading&lt;/h5&gt;
           &lt;h6&gt;Level 6 heading&lt;/h6&gt;
         &lt;/body&gt;
-        
+
         &lt;/html&gt;
         </code></pre>
       </section>
@@ -315,22 +319,22 @@
         "../examples/ch2_html_pt1/linking.html"><code>linking.html</code></a></h2>
         <pre><code>&lt;!DOCTYPE html&gt;
         &lt;html&gt;
-        
+
         &lt;head&gt;
           &lt;meta charset="utf-8"&gt;
           &lt;title&gt;Linking&lt;/title&gt;
         &lt;/head&gt;
-        
+
         &lt;body&gt;
           &lt;h1&gt;Welcome to CS 80 at SMC&lt;/h1&gt;
-        
+
           &lt;p&gt;Hope you enjoy; make sure to &lt;strong&gt;turn in assignments on time&lt;/strong&gt;&lt;/p&gt;
-        
+
           &lt;p&gt;&lt;a href="http://www.smc.edu/"&gt;SMC&lt;/a&gt;&lt;/p&gt;
           &lt;p&gt;&lt;a href="http://smconline.org/index.real?action=Login"&gt;eCompanion&lt;/a&gt;&lt;/p&gt;
           &lt;p&gt;&lt;a href="mailto:edmonds_mark@smc.edu"&gt;Email me&lt;/a&gt;&lt;/p&gt;
         &lt;/body&gt;
-        
+
         &lt;/html&gt;
         </code></pre>
       </section>
@@ -393,15 +397,15 @@
         "../examples/ch2_html_pt1/images.html"><code>images.html</code></a></h2>
         <pre><code>&lt;!DOCTYPE html&gt;
         &lt;html&gt;
-        
+
         &lt;head&gt;
           &lt;meta charset="utf-8"&gt;
           &lt;title&gt;Images&lt;/title&gt;
         &lt;/head&gt;
-        
+
         &lt;body&gt;
           &lt;h3&gt;Every common image type is supported&lt;/h3&gt;
-        
+
           &lt;p&gt;&lt;strong&gt;Note: alt is a required attribute&lt;/strong&gt;&lt;/p&gt;
           &lt;p&gt;
           &lt;!-- relative path --&gt;
@@ -410,18 +414,18 @@
           &lt;img src="https://cdn.meme.am/instances/500x/37834819.jpg" alt="The woes of programming" &gt;
           &lt;img src="http://www.lakeshorebranding.com/wp-content/uploads/2011/12/web-design-chicago-438x275.png" alt="The woes of programming" &gt;
           &lt;/p&gt;
-        
+
           &lt;h3&gt;We can control the width and height as well&lt;/h3&gt;
-        
+
           &lt;img src="https://media.giphy.com/media/eCqFYAVjjDksg/giphy.gif" alt="Hacking in progress" height="200" width="350"&gt;
-        
+
           &lt;h2&gt;We can make our images links as well!&lt;/h2&gt;
-        
+
           &lt;a href="http://google.com"&gt;
             &lt;img src="https://cdn.vox-cdn.com/thumbor/YodYS9ma7P_8jcAplZSoIlw4v-c=/0x0:2012x1341/920x613/filters:focal(0x0:2012x1341)/cdn.vox-cdn.com/uploads/chorus_image/image/47070706/google2.0.0.jpg" alt="The google logo."/&gt;
           &lt;/a&gt;
         &lt;/body&gt;
-        
+
         &lt;/html&gt;
         </code></pre>
       </section>
@@ -503,12 +507,12 @@
         "../examples/ch2_html_pt1/char.html"><code>char.html</code></a></h2>
         <pre><code>&lt;!DOCTYPE html&gt;
         &lt;html&gt;
-        
+
         &lt;head&gt;
           &lt;meta charset="utf-8"&gt;
           &lt;title&gt;Special characters and horizontal rules&lt;/title&gt;
         &lt;/head&gt;
-        
+
         &lt;body&gt;
           &lt;p&gt;
             &lt;!-- use some special characters --&gt; 
@@ -520,9 +524,9 @@
             We can also strike through &lt;del&gt;text&lt;/del&gt;, subscript &lt;sub&gt;text&lt;/sub&gt;, or superscript &lt;sup&gt;text&lt;/sup&gt;.
           &lt;/p&gt;
         &lt;/body&gt;
-        
+
         &lt;/html&gt;
-        
+
         </code></pre>
       </section>
       <section id="lists" class="level2">
@@ -567,15 +571,15 @@
         "../examples/ch2_html_pt1/lists.html"><code>lists.html</code></a></h2>
         <pre><code>&lt;!DOCTYPE html&gt;
         &lt;html&gt;
-        
+
         &lt;head&gt;
           &lt;meta charset="utf-8"&gt;
           &lt;title&gt;Lists&lt;/title&gt;
         &lt;/head&gt;
-        
+
         &lt;body&gt;
           &lt;h2&gt;We can make unordered and ordered lists!&lt;/h2&gt;
-        
+
           &lt;p&gt;
             This is an unordered list
           &lt;/p&gt;
@@ -584,7 +588,7 @@
             &lt;li&gt;neither does this one&lt;/li&gt;
             &lt;li&gt;this is not an exciting list&lt;/li&gt;
           &lt;/ul&gt;
-        
+
           &lt;p&gt;
             This is an ordered list with reasons why this course is good
           &lt;/p&gt;
@@ -593,7 +597,7 @@
             &lt;li&gt;The course is fun!&lt;/li&gt;
             &lt;li&gt;The tests are take home&lt;/li&gt;
           &lt;/ol&gt;
-        
+
           &lt;p&gt;
             We can nest lists too
           &lt;/p&gt;
@@ -629,10 +633,10 @@
               &lt;/li&gt;
             &lt;/ul&gt;
           &lt;/ol&gt;
-        
-        
+
+
         &lt;/body&gt;
-        
+
         &lt;/html&gt;
         </code></pre>
       </section>
@@ -763,18 +767,18 @@
         &lt;html&gt;
         &lt;!-- Fig. 2.12: table1.html --&gt;
         &lt;!-- Creating a basic table. --&gt;
-        
+
         &lt;head&gt;
           &lt;meta charset="utf-8"&gt;
           &lt;title&gt;Tables&lt;/title&gt;
         &lt;/head&gt;
-        
+
         &lt;body&gt;
-        
+
           &lt;h2&gt;Here's a simple table example&lt;/h2&gt;
-        
+
           &lt;h3&gt;Notice the table scales to the widest cell's content (and not the caption's)&lt;/h3&gt;
-        
+
           &lt;!-- the &lt;table&gt; tag opens a table --&gt;
           &lt;!-- Reminder: the border element should not be used. We are using it here before we learn CSS --&gt;
           &lt;table border="1"&gt;
@@ -820,10 +824,10 @@
               &lt;/tr&gt;
             &lt;/tbody&gt;
           &lt;/table&gt;
-        
+
           &lt;!-- &lt;br&gt; is a line break --&gt;
           &lt;br&gt;
-        
+
           &lt;h2&gt;We can make more complicated tables using rowspan and colspan&lt;/h2&gt;
           
           &lt;!-- Reminder: the border element should not be used. We are using it here before we learn CSS --&gt;
@@ -867,7 +871,7 @@
             &lt;/tbody&gt;
           &lt;/table&gt;
         &lt;/body&gt;
-        
+
         &lt;/html&gt;
         </code></pre>
       </section>
@@ -1087,15 +1091,15 @@
         <code>forms.html</code></a></h2>
         <pre><code>&lt;!DOCTYPE html&gt;
         &lt;html&gt;
-        
+
         &lt;!-- Fig. 2.14: form.html --&gt;
         &lt;!-- Form with a text field and hidden fields. --&gt;
-        
+
         &lt;head&gt;
           &lt;meta charset="utf-8"&gt;
           &lt;title&gt;Feedback Form&lt;/title&gt;
         &lt;/head&gt;
-        
+
         &lt;body&gt;
           &lt;h1&gt;Feedback Form&lt;/h1&gt;
           &lt;p&gt;Please fill out this form to help us improve our site.&lt;/p&gt;
@@ -1114,7 +1118,7 @@
                 &lt;input name = "name" type = "text" size = "25" maxlength = "30"&gt;
               &lt;/label&gt;
             &lt;/p&gt;
-        
+
             &lt;p&gt;
               &lt;label&gt;Comments:&lt;br&gt;
                 &lt;textarea name = "comments" rows = "4" cols = "36"&gt;Enter comments here.&lt;/textarea&gt;
@@ -1128,9 +1132,9 @@
               &lt;input type="reset" value="Clear"&gt;
             &lt;/p&gt;
           &lt;/form&gt;
-        
+
         &lt;/body&gt;
-        
+
         &lt;/html&gt;
         </code></pre>
       </section>
@@ -1158,7 +1162,7 @@
           &lt;meta charset="utf-8"&gt;
           &lt;title&gt;Internal Linking&lt;/title&gt;
         &lt;/head&gt;
-        
+
         &lt;body&gt;
           &lt;!-- id attribute creates an internal hyperlink destination --&gt;
           &lt;h1 id="features"&gt;The Best Features of the Internet&lt;/h1&gt;
@@ -1193,13 +1197,13 @@
             &lt;li&gt;Keeping in touch with old friends&lt;/li&gt;
             &lt;li&gt;It is the technology of the future!&lt;/li&gt;
           &lt;/ul&gt;
-        
+
           &lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;p&gt;Skipping a whole bunch of space where you would put amazing web content&lt;/p&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
           &lt;p&gt;Skipping a whole bunch of space where you would put amazing web content&lt;/p&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
           &lt;p&gt;Skipping a whole bunch of space where you would put amazing web content&lt;/p&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
           &lt;p&gt;Skipping a whole bunch of space where you would put amazing web content&lt;/p&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
           &lt;p&gt;Skipping a whole bunch of space where you would put amazing web content&lt;/p&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
-        
+
           &lt;!-- id attribute creates an internal hyperlink destination --&gt;
           &lt;h1 id="bugs"&gt;My 3 Favorite Bugs&lt;/h1&gt;
           &lt;p&gt;
@@ -1211,7 +1215,7 @@
             &lt;li&gt;Gal Ant&lt;/li&gt;
             &lt;li&gt;Roman Tic&lt;/li&gt;
           &lt;/ol&gt;
-        
+
           &lt;h1&gt;We can even reference an id in a different HTML document on a different host&lt;/h1&gt;
           &lt;p&gt;
             &lt;a href="https://en.wikipedia.org/wiki/HTML#Attributes"&gt;https://en.wikipedia.org/wiki/HTML#Attributes&lt;/a&gt;
@@ -1219,9 +1223,9 @@
           &lt;p&gt;
             &lt;a href="#"&gt;Top&lt;/a&gt;
           &lt;/p&gt;
-        
+
         &lt;/body&gt;
-        
+
         &lt;/html&gt;
         </code></pre>
       </section>

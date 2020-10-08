@@ -155,19 +155,19 @@
         "../examples/ch4_css/inline_styles.html"><code>inline_styles.html</code></a></h2>
         <pre><code>&lt;!DOCTYPE html&gt;
         &lt;html&gt;
-        
+
         &lt;head&gt;
           &lt;meta charset="utf-8"&gt;
           &lt;title&gt;Inline CSS Styling&lt;/title&gt;
         &lt;/head&gt;
-        
+
         &lt;body&gt;
           &lt;p style="font-size: 45pt"&gt;We can apply styling to one HTML tag&lt;/p&gt;
           &lt;p&gt;But take notice it doesn't persist in the document&lt;/p&gt;
           &lt;h2 style="font-family: helvetica, tahoma, sans-serif; font-size: 10pt; color: blue"&gt;We can overrride default settings for tags, notice the bold is still applied! &lt;/h2&gt;
           &lt;p&gt;Note: browser will attempt to use font-family specified in order of the comma-separated list. The last entry in the list should be a generic font style (serif sans-serif, cursive, fantasy, monospace)&lt;/p&gt;
         &lt;/body&gt;
-        
+
         &lt;/html&gt;
         </code></pre>
       </section>
@@ -235,7 +235,7 @@
         "../examples/ch4_css/embedded_styles.html"><code>embedded_styles.html</code></a></h2>
         <pre><code>&lt;!DOCTYPE html&gt;
         &lt;html&gt;
-        
+
         &lt;head&gt;
           &lt;meta charset="utf-8"&gt;
           &lt;title&gt;Embedded CSS Styling&lt;/title&gt;
@@ -244,13 +244,13 @@
                 font-family: arial, sans-serif; }
           &lt;/style&gt;
         &lt;/head&gt;
-        
+
         &lt;body&gt;
           &lt;p&gt;This tag is begin styled by the global styling of &amp;lt;p&amp;gt;&lt;/p&gt;
           &lt;p style="font-size: x-small;"&gt;But notice that inline styling &lt;strong&gt;always&lt;/strong&gt; takes precendence over global styling&lt;/p&gt;
           &lt;p&gt;This tag is begin styled by the global styling of &amp;lt;p&amp;gt;&lt;/p&gt;
         &lt;/body&gt;
-        
+
         &lt;/html&gt;
         </code></pre>
       </section>
@@ -332,7 +332,7 @@
         "../examples/ch4_css/background_color.html"><code>background_color.html</code></a></h2>
         <pre><code>&lt;!DOCTYPE html&gt;
         &lt;html&gt;
-        
+
         &lt;head&gt;
           &lt;meta charset="utf-8"&gt;
           &lt;title&gt;Background Color&lt;/title&gt;
@@ -344,11 +344,11 @@
                  color: #0198E1; }
           &lt;/style&gt;
         &lt;/head&gt;
-        
+
         &lt;body&gt;
-        
+
           Here's &lt;span style="background-color: coral"&gt;some text no&lt;/span&gt; in a &amp;lt;p&amp;gt; tag
-        
+
           &lt;div style="background-color: #F0F8FF;"&gt;
             &lt;p&gt;
               Here's some text overriding the background
@@ -358,11 +358,11 @@
           &lt;p&gt;
             Here's some text overriding the background
           &lt;/p&gt;
-        
+
         &lt;/body&gt;
-        
+
         &lt;/html&gt;
-        
+
         </code></pre>
       </section>
       <section id="common-css-properties-4" class="level2">
@@ -386,7 +386,7 @@
         "../examples/ch4_css/background_image.html"><code>background_image.html</code></a></h2>
         <pre><code>&lt;!DOCTYPE html&gt;
         &lt;html&gt;
-        
+
         &lt;head&gt;
           &lt;meta charset="utf-8"&gt;
           &lt;title&gt;Background Image&lt;/title&gt;
@@ -399,16 +399,16 @@
                    text-align: center; }
           &lt;/style&gt;
         &lt;/head&gt;
-        
+
         &lt;body&gt;
           &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam nec lectus et diam rutrum efficitur id non risus. Pellentesque vitae velit lacinia, sollicitudin turpis in, lacinia enim. Cras in leo a nisl ullamcorper lacinia. Aliquam eu dignissim arcu. Ut ultricies orci quis sollicitudin malesuada. Morbi in mauris sed nisl gravida lobortis. Vestibulum tempor justo consectetur, pharetra lorem eget, posuere quam. Mauris leo libero, vestibulum sed viverra sed, ornare non urna. Suspendisse accumsan a libero a ullamcorper. Sed eu hendrerit est, ut consectetur neque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer diam justo, sodales a dolor sed, laoreet blandit urna. Vestibulum vestibulum ac arcu quis ornare. Nulla luctus tristique nisl vel tristique. Sed vel massa eget mauris pharetra ultrices.  
-        
+
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam nec lectus et diam rutrum efficitur id non risus. Pellentesque vitae velit lacinia, sollicitudin turpis in, lacinia enim. Cras in leo a nisl ullamcorper lacinia. Aliquam eu dignissim arcu. Ut ultricies orci quis sollicitudin malesuada. Morbi in mauris sed nisl gravida lobortis. Vestibulum tempor justo consectetur, pharetra lorem eget, posuere quam. Mauris leo libero, vestibulum sed viverra sed, ornare non urna. Suspendisse accumsan a libero a ullamcorper. Sed eu hendrerit est, ut consectetur neque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer diam justo, sodales a dolor sed, laoreet blandit urna. Vestibulum vestibulum ac arcu quis ornare. Nulla luctus tristique nisl vel tristique. Sed vel massa eget mauris pharetra ultrices. 
           &lt;/p&gt;
         &lt;/body&gt;
-        
+
         &lt;/html&gt;
-        
+
         </code></pre>
       </section>
       <section id="common-css-properties-5" class="level2">
@@ -691,29 +691,32 @@
         "../examples/ch4_css/conflicting_styles.html"><code>conflicting_styles.html</code></a></h2>
         <pre><code>&lt;!DOCTYPE html&gt;
         &lt;html&gt;
-        
+
         &lt;head&gt;
           &lt;meta charset="utf-8"&gt;
           &lt;title&gt;Classes and Selectors&lt;/title&gt;
           &lt;style&gt;
             .class1 { font-style: oblique; color: red;}
             #blueele   { color: blue; }
-            p.class1 { font-style: normal; color: red;}
+            p.class1 { font-style: normal; color: green;}
           &lt;/style&gt;
         &lt;/head&gt;
-        
+
         &lt;body&gt;
           &lt;div class="class1"&gt;
             This text adheres to the global CSS emph class
           &lt;p&gt;
             But with no class specified in the paragraph tag, the child is still inheriting from the parent
           &lt;/p&gt;
+          &lt;p class="class1"&gt;
+            Now we have a p tag with class1 directly applied, so text is normal and green.
+          &lt;/p&gt;
           &lt;p class="class1" id="blueele"&gt;
             But now that we apply the more-specific class, the div is overridden
           &lt;/p&gt;
           &lt;/div&gt;
         &lt;/body&gt;
-        
+
         &lt;/html&gt;
         </code></pre>
       </section>
@@ -779,13 +782,13 @@
         &lt;!-- Fig. 4.8: external.html --&gt;
         &lt;!-- Linking an external style sheet. --&gt;
         &lt;html&gt;
-        
+
         &lt;head&gt;
           &lt;meta charset="utf-8"&gt;
           &lt;title&gt;Linking External Style Sheets&lt;/title&gt;
           &lt;link rel="stylesheet" type="text/css" href="style.css"&gt;
         &lt;/head&gt;
-        
+
         &lt;body&gt;
           &lt;h1&gt;Shopping list for &lt;em&gt;Monday&lt;/em&gt;:&lt;/h1&gt;
           &lt;ul&gt;
@@ -806,7 +809,7 @@
         Grocery store&lt;/a&gt;
           &lt;/p&gt;
         &lt;/body&gt;
-        
+
         &lt;/html&gt;
         </code></pre>
       </section>
@@ -927,7 +930,7 @@
         <pre><code>&lt;!DOCTYPE html&gt;
         &lt;!-- Based on: http://learnlayout.com/position-example.html --&gt;
         &lt;html&gt;
-        
+
         &lt;head&gt;
           &lt;meta charset="utf-8"&gt;
           &lt;title&gt;CSS positioning&lt;/title&gt;
@@ -961,19 +964,19 @@
             body {
               margin-bottom: 120px;
             }
-        
+
             .div1 {
               height: 100px;
               width: 100px;
               overflow: hidden;
             }
-        
+
             .div2 {
               height: 415px;
               width: 715px;
               overflow: scroll;
             }
-        
+
             /* increase the height and width (koala.jpg is 710 x 408) to see the scroll disappear */
             .div3 {
               height: 415px;
@@ -982,7 +985,7 @@
             }
           &lt;/style&gt;
         &lt;/head&gt;
-        
+
         &lt;body&gt;
           &lt;!-- positioned relative to its normal setting; has no effect size we didn't move it (play around with it!) --&gt;
           &lt;h3&gt;CSS Positioning and Element Dimensions&lt;/h3&gt;
@@ -1024,7 +1027,7 @@
             &lt;/footer&gt;
           &lt;/div&gt;
         &lt;/body&gt;
-        
+
         &lt;/html&gt;
         </code></pre>
       </section>
@@ -1076,7 +1079,7 @@
         <pre><code>&lt;!DOCTYPE html&gt;
         &lt;!-- Based on: http://learnlayout.com/position-example.html --&gt;
         &lt;html&gt;
-        
+
         &lt;head&gt;
           &lt;meta charset="utf-8"&gt;
           &lt;title&gt;CSS positioning&lt;/title&gt;
@@ -1110,19 +1113,19 @@
             body {
               margin-bottom: 120px;
             }
-        
+
             .div1 {
               height: 100px;
               width: 100px;
               overflow: hidden;
             }
-        
+
             .div2 {
               height: 415px;
               width: 715px;
               overflow: scroll;
             }
-        
+
             /* increase the height and width (koala.jpg is 710 x 408) to see the scroll disappear */
             .div3 {
               height: 415px;
@@ -1131,7 +1134,7 @@
             }
           &lt;/style&gt;
         &lt;/head&gt;
-        
+
         &lt;body&gt;
           &lt;!-- positioned relative to its normal setting; has no effect size we didn't move it (play around with it!) --&gt;
           &lt;h3&gt;CSS Positioning and Element Dimensions&lt;/h3&gt;
@@ -1173,7 +1176,7 @@
             &lt;/footer&gt;
           &lt;/div&gt;
         &lt;/body&gt;
-        
+
         &lt;/html&gt;
         </code></pre>
       </section>
@@ -1300,13 +1303,13 @@
         &lt;/style&gt;
         &lt;/head&gt;
         &lt;body&gt;
-        
+
         &lt;h2&gt;Demonstrating the Box Model&lt;/h2&gt;
-        
+
         &lt;p&gt;The CSS box model is essentially a box that wraps around every HTML element. It consists of: borders, padding, margins, and the actual content.&lt;/p&gt;
-        
+
         &lt;div&gt;This text is the actual content of the box. We have added a 25px padding, 25px margin and a 25px green border. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&lt;/div&gt;
-        
+
         &lt;/body&gt;
         &lt;/html&gt;
         </code></pre>
@@ -1374,14 +1377,14 @@
             margin: 10px;
             border: 3px solid #73AD21;
         }
-        
+
         .div2 {
             width: 500px;
             margin-left: 150px;
             border: 1px solid red;
         }
-        
-        
+
+
         .div3 {
             float: left;
             width: 100px;
@@ -1389,7 +1392,7 @@
             margin: 10px;
             border: 3px solid #73AD21;
         }
-        
+
         .div4 {
             border: 1px solid red;
             clear: left;
@@ -1397,19 +1400,19 @@
         &lt;/style&gt;
         &lt;/head&gt;
         &lt;body&gt;
-        
+
         &lt;h2&gt;Without clear&lt;/h2&gt;
         &lt;div class="div1"&gt;div1&lt;/div&gt;
         &lt;div class="div2"&gt;div2 - Notice that the div2 element is after div1, in the HTML code. However, since div1 is floated to the left, this happens: the text in div2 is floated around div1, and div2 surrounds the whole thing.&lt;/div&gt;
-        
+
         &lt;h2&gt;Using clear&lt;/h2&gt;
         &lt;div class="div3"&gt;div3&lt;/div&gt;
         &lt;div class="div4"&gt;div4 - Using clear moves div4 down below the floated div3. The value "left" clears elements floated to the left. You can also clear "right" and "both".&lt;/div&gt;
-        
+
         &lt;/body&gt;
         &lt;/html&gt;
-        
-        
+
+
         </code></pre>
       </section>
       <section id="margin-and-padding" class="level2">
@@ -1473,30 +1476,25 @@
         <h2>Media Types and Media Queries</h2>
         <p>Media Types</p>
         <ul>
-          <li>
-            <p>Allow you to specify what the page should look like
-            on different media.</p>
-          </li>
-          <li>
-            <p>Standarad media type is <code>screen</code>, which
-            stands for computer screen</p>
-          </li>
-          <li>
-            <p>Other options: <code>handheld</code> (cell
-            phone/mobile), <code>speech</code> (read out old),
-            <code>print</code> (printers).</p>
-          </li>
-          <li>
-            <p>Basic example:</p>
-            <pre class="css"><code>/* media query example */
+          <li>Allow you to specify what the page should look like
+          on different media.</li>
+          <li>Standarad media type is <code>screen</code>, which
+          stands for computer screen</li>
+          <li>Other options: <code>handheld</code> (cell
+          phone/mobile), <code>speech</code> (read out old),
+          <code>print</code> (printers).</li>
+        </ul>
+      </section>
+      <section id="media-types-and-media-queries---basic-example"
+      class="level2">
+        <h2>Media Types and Media Queries - Basic Example</h2>
+        <pre class="css"><code>/* media query example */
         @media all {
           body { background-color: black; }
         }
         @media print{
           body { background-color: white; }
         }</code></pre>
-          </li>
-        </ul>
       </section>
       <section id="media-types-and-media-queries-1" class="level2">
         <h2>Media Types and Media Queries</h2>
@@ -1555,25 +1553,25 @@
         body {
             font-family: "Lucida Sans", Verdana, sans-serif;
         }
-        
+
         .main img {
             width: 100%;
         }
-        
+
         h1{
             font-size: 1.625em;
         }
-        
+
         h2{
             font-size: 1.375em;
         }
-        
+
         .header {
             padding: 1%;
             background-color: #f1f1f1;
             border: 1px solid #e9e9e9;
         }
-        
+
         .menuitem {
             margin: 4%;
             margin-left: 0;
@@ -1582,16 +1580,16 @@
             border-bottom: 1px solid #e9e9e9;
             cursor: pointer;
         }
-        
+
         .main {
             padding: 2%;
         }
-        
+
         .right {
             padding: 4%;
             background-color: #CDF0F6;
         }
-        
+
         .footer {
             padding: 1%;
             text-align: center;
@@ -1599,75 +1597,75 @@
             border: 1px solid #e9e9e9;
             font-size: 0.625em;
         }
-        
+
         .gridcontainer {
             width: 100%;
         }
-        
+
         .gridwrapper {
             overflow: hidden;
         }
-        
+
         .gridbox {
             margin-bottom: 2%;
             margin-right: 2%;
             float: left;
         }
-        
+
         .gridheader {
             width: 100%;
         }
-        
+
         .gridmenu {
             width: 23%;
         }
-        
+
         .gridmain {
             width: 50%;
         }
-        
+
         .gridright {
             width: 23%;
             margin-right: 0;
         }
-        
+
         .gridfooter {
             width: 100%;
             margin-bottom: 0;
         }
-        
+
         @media only screen and (max-width: 500px) {
             .gridmenu {
                 width: 100%;
             }
-        
+
             .menuitem {
                 margin: 1%;
                 padding: 1%;
             }
-        
+
             .gridmain {
                 width: 100%;
             }
-        
+
             .main {
                 padding: 1%;
             }
-        
+
             .gridright {
                 width: 100%;
             }
-        
+
             .right {
                 padding: 1%;
             }
-        
+
             .gridbox {
                 margin-right: 0;
                 float: left;
             }
         }
-        
+
         &lt;/style&gt;
         &lt;/head&gt;
         &lt;body&gt;
@@ -1689,7 +1687,7 @@
                       &lt;h1&gt;The Walk&lt;/h1&gt;
                       &lt;p&gt;The walk to the Pulpit Rock will take you approximately two hours, give or take an hour depending on the weather conditions and your physical shape.&lt;/p&gt;
                       &lt;img src="pulpitrock.jpg" alt="Pulpit rock" width="" height=""&gt;
-        
+
                     &lt;/div&gt;
                 &lt;/div&gt;
                 &lt;div class="gridbox gridright"&gt;
@@ -1742,7 +1740,7 @@
         "../examples/ch4_css/drop_down_menu.html"><code>drop_down_menu.html</code></a></h2>
         <pre><code>&lt;!DOCTYPE html&gt;
         &lt;html&gt;
-        
+
         &lt;head&gt;
           &lt;link href="https://dl.dropbox.com/s/p6zt773weewbvzs/styles.css" rel="stylesheet" type="text/css" /&gt;
           &lt;style&gt;
@@ -1787,9 +1785,9 @@
             }
           &lt;/style&gt;
         &lt;/head&gt;
-        
+
         &lt;body&gt;
-        
+
           &lt;h2&gt;Hoverable Dropdown&lt;/h2&gt;
           &lt;p&gt;Move the mouse over the button to open the dropdown menu.&lt;/p&gt;
           
@@ -1802,9 +1800,9 @@
               &lt;a href="http://cnn.com"&gt;CNN&lt;/a&gt;
             &lt;/div&gt;
           &lt;/div&gt;
-        
+
         &lt;/body&gt;
-        
+
         &lt;/html&gt;
         </code></pre>
       </section>
