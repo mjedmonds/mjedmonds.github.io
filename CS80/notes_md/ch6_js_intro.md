@@ -322,7 +322,7 @@ Operators and Conditionals
   - If the program can determine the overall value of the compound conditional, it will stop evaluting the rest of the conditional
   - E.g. Suppose `cond_a` is `true` and `cond_b` is `false`.
     - `if(cond_a || cond_b)` doens\'t need to look at the value of `cond_b`, the overall condition is determined by `cond_a`.
-    - Similarly, `if(cond_b  cond_a)` doesn\'t need to look at the value of `cond_a`, since `cond_b` already determined the overall state of the compound conditional.
+    - Similarly, `if(cond_b && cond_a)` doesn\'t need to look at the value of `cond_a`, since `cond_b` already determined the overall state of the compound conditional.
     - Remember: left to right!
   - **Key takeaway** order matters!
 
@@ -337,9 +337,9 @@ Operators and Conditionals
   if(cond_a && cond_b){
     // only executes if cond_a AND cond_b are true
   } else if(cond_a || cond_d){
-    // only executes if 1) cond_a is true AND cond_b is false (think about why) OR cond_d is true
+    // only executes if 1) (cond_a is true AND cond_b is false (think about why)) OR cond_d is true
   } else if(!cond_d){
-    // only executes if cond_a is false AND cond_d is true
+    // only executes if cond_a is false AND cond_d is false
   } else {
     // will this ever execute?
     // otherwise

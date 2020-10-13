@@ -807,9 +807,9 @@
                   need to look at the value of <code>cond_b</code>,
                   the overall condition is determined by
                   <code>cond_a</code>.</li>
-                  <li>Similarly, <code>if(cond_b cond_a)</code>
-                  doesn't need to look at the value of
-                  <code>cond_a</code>, since <code>cond_b</code>
+                  <li>Similarly, <code>if(cond_b &amp;&
+                  cond_a)</code> doesn't need to look at the value
+                  of <code>cond_a</code>, since <code>cond_b</code>
                   already determined the overall state of the
                   compound conditional.</li>
                   <li>Remember: left to right!</li>
@@ -832,9 +832,9 @@
         if(cond_a &amp;& cond_b){
           // only executes if cond_a AND cond_b are true
         } else if(cond_a || cond_d){
-          // only executes if 1) cond_a is true AND cond_b is false (think about why) OR cond_d is true
+          // only executes if 1) (cond_a is true AND cond_b is false (think about why)) OR cond_d is true
         } else if(!cond_d){
-          // only executes if cond_a is false AND cond_d is true
+          // only executes if cond_a is false AND cond_d is false
         } else {
           // will this ever execute?
           // otherwise
@@ -891,7 +891,12 @@
             } else {
               postpand = "AM";
             }
-            if (hour &gt;= 12) {
+            // special case for midnight
+            if (hour == 0){
+              hour == 12;
+            }
+            // convert military time to AM/PM hours
+            if (hour &gt; 12) {
               hour = hour - 12;
             }
             if (minute &lt; 10) {

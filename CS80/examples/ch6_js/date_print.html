@@ -21,7 +21,12 @@
     } else {
       postpand = "AM";
     }
-    if (hour >= 12) {
+    // special case for midnight
+    if (hour == 0){
+      hour == 12;
+    }
+    // convert military time to AM/PM hours
+    if (hour > 12) {
       hour = hour - 12;
     }
     if (minute < 10) {
