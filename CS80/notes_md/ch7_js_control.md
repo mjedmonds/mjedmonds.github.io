@@ -38,17 +38,17 @@ Pseudocode
 
 - Example: Leap year
 
-  ```text
-  // leap year pseudocode
-  if year is divisible by 400 then
-    is_leap_year
-  else if year is divisible by 100 then
-    not_leap_year
-  else if year is divisible by 4 then
-    is_leap_year
-  else
-    not_leap_year
-  ```
+```text
+// leap year pseudocode
+if year is divisible by 400 then
+  is_leap_year
+else if year is divisible by 100 then
+  not_leap_year
+else if year is divisible by 4 then
+  is_leap_year
+else
+  not_leap_year
+```
 
 - This is in between code and English!
 - This can be directly converted to code, regardless of programming language used
@@ -57,17 +57,30 @@ Pseudocode
 
 Pseudocode
 
+- There are multiple ways of writing the same program, and we can write multiple versions of pseudocode
 - Example: Compound conditional leap year:
 
-  ```text
-  // leap year pseudocode
-  if (year is divisible by 4 and not divisible by 100) then
-    is_leap_year
-  else
-    not_leap_year
-  ```
+```text
+leapYear = false
+if year % 400 == 0
+  leapYear = true
+else if year % 100 != 0 and year % 4 == 0
+  leapYear = true
+```
 
 - Notice we are just describing the logic behind the program without consideration of syntax
+
+## Background and Terminology
+
+Pseudocode
+
+- Another example of the same logic encoded in different pseudocode:
+
+```text
+leapYear = false
+if year % 400 == 0 or (year % 100 != 0 and year % 4 == 0)
+  leapYear = true
+```
 
 ## Control Statements
 
@@ -437,6 +450,18 @@ Class Average
 ## Exercise: [`class_average.html`](../examples/ch7_js_2/class_average.html)
 
 ```{include=../examples/ch7_js_2/class_average.html}
+```
+
+## Exercise: [`class_average_functions.html`](../examples/ch7_js_2/class_average_functions.html)
+
+- Next, let's consider breaking our program into multiple parts.
+- We'll have one function to collect the grades
+- Another function to display the grades
+- And another function to calculate the average
+
+## Exercise: [`class_average_functions.html`](../examples/ch7_js_2/class_average_functions.html)
+
+```{include=../examples/ch7_js_2/class_average_functions.html}
 ```
 
 ## Exercise

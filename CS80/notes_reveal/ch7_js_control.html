@@ -130,9 +130,9 @@
         <h2>Background and Terminology</h2>
         <p>Pseudocode</p>
         <ul>
-          <li>
-            <p>Example: Leap year</p>
-            <pre class="text"><code>// leap year pseudocode
+          <li>Example: Leap year</li>
+        </ul>
+        <pre class="text"><code>// leap year pseudocode
         if year is divisible by 400 then
           is_leap_year
         else if year is divisible by 100 then
@@ -141,33 +141,40 @@
           is_leap_year
         else
           not_leap_year</code></pre>
-          </li>
-          <li>
-            <p>This is in between code and English!</p>
-          </li>
-          <li>
-            <p>This can be directly converted to code, regardless
-            of programming language used</p>
-          </li>
+        <ul>
+          <li>This is in between code and English!</li>
+          <li>This can be directly converted to code, regardless of
+          programming language used</li>
         </ul>
       </section>
       <section id="background-and-terminology-3" class="level2">
         <h2>Background and Terminology</h2>
         <p>Pseudocode</p>
         <ul>
-          <li>
-            <p>Example: Compound conditional leap year:</p>
-            <pre class="text"><code>// leap year pseudocode
-        if (year is divisible by 4 and not divisible by 100) then
-          is_leap_year
-        else
-          not_leap_year</code></pre>
-          </li>
-          <li>
-            <p>Notice we are just describing the logic behind the
-            program without consideration of syntax</p>
-          </li>
+          <li>There are multiple ways of writing the same program,
+          and we can write multiple versions of pseudocode</li>
+          <li>Example: Compound conditional leap year:</li>
         </ul>
+        <pre class="text"><code>leapYear = false
+        if year % 400 == 0
+          leapYear = true
+        else if year % 100 != 0 and year % 4 == 0
+          leapYear = true</code></pre>
+        <ul>
+          <li>Notice we are just describing the logic behind the
+          program without consideration of syntax</li>
+        </ul>
+      </section>
+      <section id="background-and-terminology-4" class="level2">
+        <h2>Background and Terminology</h2>
+        <p>Pseudocode</p>
+        <ul>
+          <li>Another example of the same logic encoded in
+          different pseudocode:</li>
+        </ul>
+        <pre class="text"><code>leapYear = false
+        if year % 400 == 0 or (year % 100 != 0 and year % 4 == 0)
+          leapYear = true</code></pre>
       </section>
       <section id="control-statements" class="level2">
         <h2>Control Statements</h2>
@@ -853,6 +860,124 @@
               document.writeln("&lt;tfoot&gt;\n&lt;tr&gt;\n&lt;th&gt;Average&lt;/th&gt;\n&lt;th&gt;" + average + "&lt;/th&gt;\n&lt;/tr&gt;\n&lt;/tfoot&gt;");
               document.writeln("&lt;/table&gt;");
             }
+          &lt;/script&gt;
+        &lt;/head&gt;
+
+        &lt;body&gt;
+        &lt;/body&gt;
+
+        &lt;/html&gt;
+        </code></pre>
+      </section>
+      <section id="exercise-class_average_functions.html" class=
+      "level2">
+        <h2>Exercise: <a href=
+        "../examples/ch7_js_2/class_average_functions.html"><code>class_average_functions.html</code></a></h2>
+        <ul>
+          <li>Next, let’s consider breaking our program into
+          multiple parts.</li>
+          <li>We’ll have one function to collect the grades</li>
+          <li>Another function to display the grades</li>
+          <li>And another function to calculate the average</li>
+        </ul>
+      </section>
+      <section id="exercise-class_average_functions.html-1" class=
+      "level2">
+        <h2>Exercise: <a href=
+        "../examples/ch7_js_2/class_average_functions.html"><code>class_average_functions.html</code></a></h2>
+        <pre><code>&lt;!DOCTYPE html&gt;
+        &lt;html&gt;
+
+        &lt;head&gt;
+          &lt;meta charset="utf-8"&gt;
+          &lt;title&gt;Class Average Problem&lt;/title&gt;
+          &lt;style&gt;
+            table,
+            th,
+            td {
+              border: 1px solid black;
+            }
+
+            table {
+              border-collapse: collapse;
+            }
+
+            th,
+            td {
+              padding: 15px;
+              text-align: left;
+            }
+          &lt;/style&gt;
+          &lt;script&gt;
+            function collectGrades() {
+              var total; // sum of grades
+              var gradeCounter; // number of grades entered
+              var grade; // grade typed by user
+              var average; // average of all grades
+              var grades = []; // array to store grades
+              // initialization phase
+              total = 0; // clear total
+              gradeCounter = 0;
+              var numStudents = window.prompt("Enter the number of students: ", "0");
+              numStudents = parseInt(numStudents);
+
+              // loop, processing phase
+              while (gradeCounter &lt; numStudents) {
+                // prompt for input and read grade from user
+                grade = window.prompt("Enter integer grade:", "0");
+                // convert grade from a string to an integer
+                grade = parseInt(grade);
+                // add gradeValue to total
+                total = total + grade;
+                // add 1 to gradeCounter
+                gradeCounter = gradeCounter + 1;
+                // add grade to our grades array
+                grades.push(grade);
+              } // end while
+              return grades;
+            }
+
+            function displayGrades(grades, average){
+              if (grades.length == 0)
+              {
+                document.writeln("The number of students is 0");
+                return;
+              }
+              //setup table
+              document.writeln("&lt;table&gt;");
+              document.writeln("&lt;caption&gt;&lt;strong&gt;Exam scores&lt;/strong&gt;&lt;/caption&gt;");
+              document.writeln("&lt;thead&gt;\n&lt;tr&gt;\n&lt;th&gt;Student Number&lt;/th&gt;\n&lt;th&gt;Grade&lt;/th&gt;\n&lt;/thead&gt;");
+              document.writeln("&lt;tbody&gt;");
+
+              // loop, processing phase
+              for(var i = 0; i &lt; grades.length; i++) {
+                // add data to table
+                document.writeln("&lt;tr&gt;\n&lt;td&gt;" + i + "&lt;/td&gt;\n&lt;td&gt;" + grades[i] + "&lt;/td&gt;\n&lt;/tr&gt;");
+              } // end while
+
+              // display average of exam grades
+              document.writeln("&lt;/tbody&gt;");
+              document.writeln("&lt;tfoot&gt;\n&lt;tr&gt;\n&lt;th&gt;Average&lt;/th&gt;\n&lt;th&gt;" + average + "&lt;/th&gt;\n&lt;/tr&gt;\n&lt;/tfoot&gt;");
+              document.writeln("&lt;/table&gt;");
+            }
+
+            function calculateAverage(array){
+              // loop over grades to calculate average
+              var average = 0;
+              if (array.length &gt; 0){
+                for(var i = 0; i &lt; array.length; i++){
+                  average += array[i];
+                }
+                average /= array.length;
+              }
+              return average;
+            }
+
+            var grades = collectGrades();
+
+            var average = calculateAverage(grades);
+
+            displayGrades(grades, average);
           &lt;/script&gt;
         &lt;/head&gt;
 
