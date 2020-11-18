@@ -28,7 +28,7 @@ Instructor: Mark Edmonds
 - A side note about practicality:
   - We will learn about Ajax, but running Ajax requires a webserver to respond to requests. We will eventually cover webservers which will enable us to run our own basic Ajax examples
 
-## Live Examples
+<!-- ## Live Examples
 
 - <http://test.deitel.com/iw3htp5/ch16/fig16_05/SwitchContent.html>
 - <http://test.deitel.com/iw3htp5/ch16/fig16_08/PullImagesOntoPage.html>
@@ -37,7 +37,7 @@ Instructor: Mark Edmonds
   - <http://kengeddes.com/cs80/examples/ajax.js>
 - <http://kengeddes.com/cs80/examples/ajax-b.html>
   - <http://kengeddes.com/cs80/examples/ajax-b.js>
-- <http://javascript.cs.lmu.edu/playground/ajax/>
+- <http://javascript.cs.lmu.edu/playground/ajax/> -->
 
 ## Ajax Basics
 
@@ -142,7 +142,7 @@ Instructor: Mark Edmonds
 
 - If you want to run this example, download the files from the ch16 examples
 - But this isn\'t enough, we need an actual webserver to respond to the Ajax request
-- We can start a simple webserver (using any python console) with `python -m StimpleHTTPServer` from the folder with our examples downloaded
+- We can start a simple webserver (using any python console) with `python -m http.server` (Python 3) or `python -m StimpleHTTPServer` (Python 2) from the folder with our examples downloaded
 - Then navigate to `http://localhost:8000/SwitchContent.html` in your web browser
 
 ## Ajax Events and Objects
