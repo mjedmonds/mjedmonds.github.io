@@ -139,7 +139,7 @@ Instructor: Mark Edmonds
   ```sql
   /* query AuthorID and LastName columns from Authors table */
   SELECT AuthorID, LastName
-      FROM Authors
+      FROM Authors;
   ```
 
 - Gets the AuthorID and LastName from the Authors table
@@ -154,7 +154,7 @@ Instructor: Mark Edmonds
   /* query with constraint that copyright is greater than 2010 */
   SELECT Title, EditionNumber, Copyright
       FROM Titles
-      WHERE Copyright > '2010'
+      WHERE Copyright > '2010';
   ```
 
 ![SQL title, edition, copyright query](images/ch18_sql_title_edition_copyright.png)
@@ -180,7 +180,7 @@ Instructor: Mark Edmonds
   /* query with last names that start with 'D' */
   SELECT AuthorID, FirstName, LastName
       FROM Authors
-      WHERE LastName LIKE 'D%'
+      WHERE LastName LIKE 'D%';
   ```
 
 - Select all authors whose last name starts with any character, followed by an \'o\', followed by any number of additional characters
@@ -189,7 +189,7 @@ Instructor: Mark Edmonds
   /* query with last names that have a second character of 'o' */
   SELECT AuthorID, FirstName, LastName
       FROM Authors
-      WHERE LastName LIKE '_o%'
+      WHERE LastName LIKE '_o%';
   ```
 
 ## Ordering
@@ -206,11 +206,11 @@ Instructor: Mark Edmonds
   /* query and order by ascending order */
   SELECT columnName1, columnName2, ...
       FROM tableName
-      ORDER BY column ASC
+      ORDER BY column ASC;
   /* query and order by descending order */
   SELECT columnName1, columnName2, ...
       FROM tableName
-      ORDER BY column DESC
+      ORDER BY column DESC;
   ```
 
 ## Exercise
@@ -225,7 +225,7 @@ Instructor: Mark Edmonds
   /* query and order by descending order */
   SELECT AuthorID, FirstName, LastName
       FROM Authors
-      ORDER BY LastName DESC
+      ORDER BY LastName DESC;
   ```
 
   ![Solution](images/ch18_sql_authorID_first_last_query.png)
@@ -243,7 +243,7 @@ Instructor: Mark Edmonds
   SELECT ISBN, Title, EditionNumber, Copyright
       FROM Titles
       WHERE Title LIKE '%How to Program'
-      ORDER BY Title ASC
+      ORDER BY Title ASC;
   ```
 
   ![Solution](images/ch18_sql_isbn_title_edition_copyright_query.png)
@@ -260,7 +260,7 @@ Instructor: Mark Edmonds
 SELECT columnName1, columnName2, ...
   FROM table1
   INNER JOIN table2
-  ON table1.columnName = table2.columnName
+  ON table1.columnName = table2.columnName;
 ```
 
 ## Exercise
@@ -277,7 +277,7 @@ SELECT columnName1, columnName2, ...
       FROM Authors
       INNER JOIN AuthorISBN
       ON Authors.AuthorID = AuthorISBN.AuthorID
-      ORDER BY LastName, FirstName
+      ORDER BY LastName, FirstName;
   ```
 
 - Note: the use of `Authors.AuthorID` and `AuthorISBN.AuthorID` is called a **qualified name**. When tables have matching column names, we must be more specific by stating which table we want to use with each column (think about this: why we didn\'t have to quality the `ISBN` in the `SELECT` part of the query?)
@@ -294,7 +294,7 @@ SELECT columnName1, columnName2, ...
   ```sql
   /* insertion syntax  */
   INSERT INTO tableName ( columnName1, columnName2, ..., columnNameN )
-      VALUES ( value1, value2, ..., valueN )
+      VALUES ( value1, value2, ..., valueN );
   ```
 
 ## Inserting, Updating, and Deleting Information from a table
@@ -304,7 +304,7 @@ SELECT columnName1, columnName2, ...
   ```sql
   /* insertion example  */
   INSERT INTO Authors ( FirstName, LastName )
-      VALUES ( 'Sue', 'Red' )
+      VALUES ( 'Sue', 'Red' );
   ```
 
   ![Query Result](images/ch18_sql_insert.png)
@@ -318,7 +318,7 @@ SELECT columnName1, columnName2, ...
   /* update syntax  */
   UPDATE tableName
       SET columnName1 = value1, columnName2 = value2, ..., columnNameN = valueN
-      WHERE criteria
+      WHERE criteria;
   ```
 
 ## SQL Update
@@ -329,7 +329,7 @@ SELECT columnName1, columnName2, ...
   /* update example  */
   UPDATE Authors
       SET LastName = 'Black'
-      WHERE LastName = 'Red' AND FirstName = 'Sue'
+      WHERE LastName = 'Red' AND FirstName = 'Sue';
   ```
 
   ![Query Result](images/ch18_sql_update.png)
@@ -346,7 +346,7 @@ SELECT columnName1, columnName2, ...
   /* update example  */
   UPDATE Authors
       SET LastName = 'Black'
-      WHERE AuthorID = 6
+      WHERE AuthorID = 6;
   ```
 
 ## SQL Delete
@@ -357,7 +357,7 @@ SELECT columnName1, columnName2, ...
   ```sql
   /* delete syntax  */
   DELETE FROM tableName
-      WHERE criteria
+      WHERE criteria;
   ```
 
 - Example:
@@ -365,7 +365,7 @@ SELECT columnName1, columnName2, ...
   ```sql
   /* delete syntax  */
   DELETE FROM Authors
-      WHERE LastName = 'Black' AND FirstName = 'Sue'
+      WHERE LastName = 'Black' AND FirstName = 'Sue';
   ```
 
 ## MySQL

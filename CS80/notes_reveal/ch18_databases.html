@@ -355,7 +355,7 @@
             <pre class="sql">
             <code>/* query AuthorID and LastName columns from Authors table */
         SELECT AuthorID, LastName
-            FROM Authors</code></pre>
+            FROM Authors;</code></pre>
           </li>
           <li>
             <p>Gets the AuthorID and LastName from the Authors
@@ -379,7 +379,7 @@
             <code>/* query with constraint that copyright is greater than 2010 */
         SELECT Title, EditionNumber, Copyright
             FROM Titles
-            WHERE Copyright &gt; '2010'</code></pre>
+            WHERE Copyright &gt; '2010';</code></pre>
           </li>
         </ul>
         <figure>
@@ -433,7 +433,7 @@
             <code>/* query with last names that start with 'D' */
         SELECT AuthorID, FirstName, LastName
             FROM Authors
-            WHERE LastName LIKE 'D%'</code></pre>
+            WHERE LastName LIKE 'D%';</code></pre>
           </li>
           <li>
             <p>Select all authors whose last name starts with any
@@ -443,7 +443,7 @@
             <code>/* query with last names that have a second character of 'o' */
         SELECT AuthorID, FirstName, LastName
             FROM Authors
-            WHERE LastName LIKE '_o%'</code></pre>
+            WHERE LastName LIKE '_o%';</code></pre>
           </li>
         </ul>
       </section>
@@ -471,11 +471,11 @@
             <code>/* query and order by ascending order */
         SELECT columnName1, columnName2, ...
             FROM tableName
-            ORDER BY column ASC
+            ORDER BY column ASC;
         /* query and order by descending order */
         SELECT columnName1, columnName2, ...
             FROM tableName
-            ORDER BY column DESC</code></pre>
+            ORDER BY column DESC;</code></pre>
           </li>
         </ul>
       </section>
@@ -496,7 +496,7 @@
             <code>/* query and order by descending order */
         SELECT AuthorID, FirstName, LastName
             FROM Authors
-            ORDER BY LastName DESC</code></pre>
+            ORDER BY LastName DESC;</code></pre>
             <figure>
               <img src=
               "images/ch18_sql_authorID_first_last_query.png" alt=
@@ -527,7 +527,7 @@
         SELECT ISBN, Title, EditionNumber, Copyright
             FROM Titles
             WHERE Title LIKE '%How to Program'
-            ORDER BY Title ASC</code></pre>
+            ORDER BY Title ASC;</code></pre>
             <figure>
               <img src=
               "images/ch18_sql_isbn_title_edition_copyright_query.png"
@@ -561,7 +561,7 @@
         SELECT columnName1, columnName2, ...
           FROM table1
           INNER JOIN table2
-          ON table1.columnName = table2.columnName</code></pre>
+          ON table1.columnName = table2.columnName;</code></pre>
       </section>
       <section id="exercise-4" class="level2">
         <h2>Exercise</h2>
@@ -582,7 +582,7 @@
             FROM Authors
             INNER JOIN AuthorISBN
             ON Authors.AuthorID = AuthorISBN.AuthorID
-            ORDER BY LastName, FirstName</code></pre>
+            ORDER BY LastName, FirstName;</code></pre>
           </li>
           <li>
             <p>Note: the use of <code>Authors.AuthorID</code> and
@@ -616,7 +616,7 @@
             <p>Syntax:</p>
             <pre class="sql"><code>/* insertion syntax  */
         INSERT INTO tableName ( columnName1, columnName2, ..., columnNameN )
-            VALUES ( value1, value2, ..., valueN )</code></pre>
+            VALUES ( value1, value2, ..., valueN );</code></pre>
           </li>
         </ul>
       </section>
@@ -630,7 +630,7 @@
             <p>Example:</p>
             <pre class="sql"><code>/* insertion example  */
         INSERT INTO Authors ( FirstName, LastName )
-            VALUES ( 'Sue', 'Red' )</code></pre>
+            VALUES ( 'Sue', 'Red' );</code></pre>
             <figure>
               <img src="images/ch18_sql_insert.png" alt=
               "Query Result">
@@ -652,7 +652,7 @@
             <pre class="sql"><code>/* update syntax  */
         UPDATE tableName
             SET columnName1 = value1, columnName2 = value2, ..., columnNameN = valueN
-            WHERE criteria</code></pre>
+            WHERE criteria;</code></pre>
           </li>
         </ul>
       </section>
@@ -664,7 +664,7 @@
             <pre class="sql"><code>/* update example  */
         UPDATE Authors
             SET LastName = 'Black'
-            WHERE LastName = 'Red' AND FirstName = 'Sue'</code></pre>
+            WHERE LastName = 'Red' AND FirstName = 'Sue';</code></pre>
             <figure>
               <img src="images/ch18_sql_update.png" alt=
               "Query Result">
@@ -691,7 +691,7 @@
             <pre class="sql"><code>/* update example  */
         UPDATE Authors
             SET LastName = 'Black'
-            WHERE AuthorID = 6</code></pre>
+            WHERE AuthorID = 6;</code></pre>
           </li>
         </ul>
       </section>
@@ -705,13 +705,13 @@
             <p>Syntax:</p>
             <pre class="sql"><code>/* delete syntax  */
         DELETE FROM tableName
-            WHERE criteria</code></pre>
+            WHERE criteria;</code></pre>
           </li>
           <li>
             <p>Example:</p>
             <pre class="sql"><code>/* delete syntax  */
         DELETE FROM Authors
-            WHERE LastName = 'Black' AND FirstName = 'Sue'</code></pre>
+            WHERE LastName = 'Black' AND FirstName = 'Sue';</code></pre>
           </li>
         </ul>
       </section>
