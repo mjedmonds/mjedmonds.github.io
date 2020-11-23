@@ -1,6 +1,6 @@
 <?xml version = "1.0"?>
   <covers>
-      <baseurl>http://mjedmonds.com/CS80/examples/ch16_ajax</baseurl>
+      <baseurl>http://mjedmonds.com/CS80/examples/ch16_ajax/</baseurl>
       <cover>
          <image>cpphtp8.jpg</image>
          <title>C++ How to Program</title>
