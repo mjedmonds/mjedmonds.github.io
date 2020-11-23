@@ -1,6 +1,6 @@
 <?xml version = "1.0"?>
   <covers>
-      <baseurl>http://test.deitel.com/images/thumbs/</baseurl>
+      <baseurl>http://mjedmonds.com/CS80/examples/ch16_ajax</baseurl>
   	  <cover>
          <image>simplycpp.jpg</image>
          <title>Simply C++</title>
