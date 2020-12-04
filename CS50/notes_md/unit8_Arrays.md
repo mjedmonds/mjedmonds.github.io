@@ -113,27 +113,27 @@ for (i = 0; i < arr_len; ++i)
 #include <stdio.h>
 
 // [] after the variable name indicates the variable is an array
-float average(float age[]);
+float average(float arr[], size_t arr_len);
 
 int main()
 {
-    float avg
-    float age[] = { 23.4, 55, 22.6, 3, 40.5, 18 };
+    float avg;
+    float arr[] = { 23.4, 55, 22.6, 3, 40.5, 18 };
     int arr_len = sizeof(arr) / sizeof(float);
 
-    avg = average(age, age_len); /* Only name of array is passed as argument. */
+    avg = average(arr, arr_len); /* Only name of array is passed as argument. */
 
     printf("Average age=%.2f", avg);
     return 0;
 }
 
 // [] after the variable name indicates the variable is an array
-float average(float age[], size_t age_len)
+float average(float arr[], size_t arr_len)
 {
     int i;
     float avg, sum = 0.0;
-    for (i = 0; i < age_len; ++i) {
-        sum += age[i];
+    for (i = 0; i < arr_len; ++i) {
+        sum += arr[i];
     }
     avg = (sum / 6);
     return avg;
