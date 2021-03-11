@@ -29,7 +29,7 @@
   padding: 0px 0px 35px 0px;
   min-height: 130px;
   position: relative;
-  cursor: pointer;
+  /* cursor: pointer; */
 }
 
 .pitems .pubtitle {
