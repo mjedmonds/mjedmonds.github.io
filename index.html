@@ -74,8 +74,8 @@
         <li><a data-scroll data-options=' {"offset": 0} ' href="#about">About</a></li>
         <li><a data-scroll data-options=' {"offset": 0} ' href="#education">Education</a></li>
         <li><a data-scroll href="#news">News</a></li>
-        <li><a data-scroll href="#publications">Publications</a></li>
         <li><a data-scroll href="#research">Research</a></li>
+        <li><a data-scroll href="#publications">Publications</a></li>
         <li><a data-scroll href="#experience">Work Experience</a></li>
         <!--<li><a data-scroll data-options=' "offset": 0} ' href="#motivation">Motivation</a></li>-->
         <li><a data-scroll href="#contact">Contact</a></li>
@@ -176,8 +176,10 @@
           <div class="twelve columns">
 
             <h3>University of California, Los Angeles</h3>
-            <p class="info">PhD in Computer Science, Artificial Intelligence concentration <span>&bull;</span> <em class="date">Present</em></p>
-
+            <p class="info">PhD in Computer Science, Artificial Intelligence concentration <span>&bull;</span> <em class="date">Expected June 2021</em></p>
+            <ul>
+              <li>Dissertation: "Learning how and why: Causal learning and explanation from physical and interactive environments"</li>
+            </ul>
           </div>
 
         </div>
@@ -190,7 +192,9 @@
             <br>
             <h3>University of California, Los Angeles</h3>
             <p class="info">M.S. in Computer Science <span>&bull;</span> <em class="date">June 2017</em></p>
-
+            <ul>
+              <li>Thesis: "Learning Complex Functional Manipulations by Human Demonstration and Fluent Discovery"</li>
+            </ul>
           </div>
 
         </div>
@@ -203,7 +207,9 @@
             <br>
             <h3>University of Dayton</h3>
             <p class="info">B.S. in Computer Engineering, Magna Cum Laude <span>&bull;</span> <em class="date">May 2015</em></p>
-
+            <ul>
+              <li>Thesis: "High­-Performance Declarative Memory through MapReduce"</li>
+            </ul>
           </div>
 
         </div>
@@ -311,6 +317,280 @@
   </section>
   <!-- Education Section End-->
 
+  <section id="research">
+
+    <!-- research -->
+    <div class="row research">
+
+      <div class="three columns header-col">
+        <h1><span>Research</span></h1>
+      </div>
+
+      <div class="nine columns main-col">
+
+        <div class="row item">
+
+          <div class="twelve columns">
+
+            <div id="research-overview">
+              <h3>Research Overview</h3>
+
+              <p>Humans build generalizable and explainable representations of their environment through interaction, observation, imitation, intervention, and language. The following research produced from a collaborative, team-based lab explores how artificial agents can use these five concepts to learn robust and transferable representations of tasks and environments.</p>
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="row item">
+
+          <div class="twelve columns">
+
+            <div id="vrgym-replearn">
+              <h5>Representation learning: The role of language in building generalizable representations</h5>
+              <p class="info">Center for Vision, Cognition, Learning, and Autonomy, UCLA<span>&bull;</span> <em class="date">Mar 2018 - Present</em></p>
+              <ul>
+                <li>Created a virtual playground for embodied AI to learn interpretable, common-sense representations of its environment.</li>
+                <li>Built a simulated environment using Unreal Engine 4 (UE4) that couples language and vision in a scene graph.</li>
+                <li>Devised a dataset consisting of images, language labels, and object segmentation.</li>
+                <li>Ongoing: Build representation learning algorithm to use language labels to decompose latent encoding of the environment.</li>
+              </ul>
+
+              <div class="researchimgcontainer">
+                <iframe src="https://player.vimeo.com/video/529830125" width="640" height="400" frameborder="0" allow="fullscreen;" allowfullscreen></iframe>
+              </div>
+
+              <div class="collabcontainer">
+                <div class="collableft">
+                  <b>Collaborators:</b>
+                  <ul>
+                    <li> <a href="https://xuxie1031.github.io/">Xu Xie</a>, University of California, Los Angeles</li>
+                    <li> <a href="https://www.johndang.me/">John Dang</a>, University of California, Los Angeles</li>
+                    <li> <a href="https://www.linkedin.com/in/samuel-y-hunter/">Samuel Hunter</a>, University of California, Los Angeles</li>
+                    <li> <a href="https://sushipaypay.github.io/">Paymon Haddad</a>, University of California, Los Angeles</li>
+                    <li> <a href="http://www.yzhu.io/">Yixin Zhu</a>, University of California, Los Angeles</li>
+                    <li> <a href="http://www.stat.ucla.edu/~sczhu/">Song-Chun Zhu</a>, University of California, Los Angeles</li>
+                  </ul>
+                </div>
+                <div class="collabright">
+                  <img src="images/VCLA.png" style="width: 75px" alt="Center for Vision, Cognition, Learning and Autonomy logo" /><br>
+                </div>
+              </div>
+            </div>
+
+            <div id="xai">
+              <h5>Explainable AI: How can robots explain their behavior to foster trust from humans?</h5>
+              <p class="info">Center for Vision, Cognition, Learning, and Autonomy, UCLA<span>&bull;</span> <em class="date">Feb 2018 - Dec 2019</em></p>
+
+              <ul>
+                <li>Expanded prior imitation learning work by building human-understandable visual interfaces to describe the robot's haptic network and And-Or Graph.</li>
+                <li>Showed that robots may need to "think" one way to complete a task but another way to explain their behavior: the explanations that best fostered trust were not the model components that best aided the robot to achieve the task.</li>
+                <li>Result: Consider explainability as a first-class citizen when building AI systems that interact with humans.</li>
+              </ul>
+
+              <div class="researchimgcontainer">
+                <iframe title="vimeo-player" src="https://player.vimeo.com/video/380861069" width="640" height="371" frameborder="0" allowfullscreen></iframe>
+              </div>
+
+              <div class="collabcontainer">
+                <div class="collableft">
+                  <b>Collaborators:</b>
+                  <ul>
+                    <li> <a href="https://fen9.github.io/">Feng Gao</a>, University of California, Los Angeles</li>
+                    <li> <a href="https://liuhx111.github.io/">Hangxin Liu</a>, University of California, Los Angeles</li>
+                    <li> <a href="https://xuxie1031.github.io/">Xu Xie</a>, University of California, Los Angeles</li>
+                    <li> <a href="http://web.cs.ucla.edu/~syqi/">Siyuan Qi</a>, University of California, Los Angeles</li>
+                    <li> <a href="https://www-robotics.jpl.nasa.gov/people/Brandon_Rothrock/">Brandon Rothrock</a>, NASA Jet Propulsion Laboratory</li>
+                    <li> <a href="http://www.yzhu.io/">Yixin Zhu</a>, University of California, Los Angeles</li>
+                    <li> <a href="http://www.stat.ucla.edu/~ywu/">Ying Nian Wu</a>, University of California, Los Angeles</li>
+                    <li> <a href="http://cvl.psych.ucla.edu/people.htm">Hongjing Lu</a>, University of California, Los Angeles</li>
+                    <li> <a href="http://www.stat.ucla.edu/~sczhu/">Song-Chun Zhu</a>, University of California, Los Angeles</li>
+                  </ul>
+                </div>
+                <div class="collabright">
+                  <img src="images/VCLA.png" style="width: 75px" alt="Center for Vision, Cognition, Learning and Autonomy logo" /><br>
+                  <img src="images/JPL.png" style="width: 125px" alt="Jet Propulsion Laboratory logo" />
+                </div>
+              </div>
+              <div>
+                <b>Papers published:</b>
+                <ol>
+                  <li><a href="http://robotics.sciencemag.org/cgi/content/full/4/37/eaay4663?ijkey=fn9h.cykmWa7.&keytype=ref&siteid=robotics">A tale of two explanations: Enhancing human trust by explaining robot behavior</a></li>
+                </ol>
+              </div>
+            </div>
+
+            <div id="openlock">
+              <h5>Causal learning: Virtual escape room to examine how humans and AI learn transferable causal representations</h5>
+              <p class="info">Center for Vision, Cognition, Learning, and Autonomy, UCLA<span>&bull;</span> <em class="date">Feb 2017 - Feb 2020</em></p>
+
+              <ul>
+                <li>Built virtual "escape room" to test causal generalization; surface-level features change room to room while each room is governed by a common abstract causal structure (series of levers) that describes the required actions to "unlock" the room.</li>
+                <li>Ran human subject experiments to verify human learners are capable of discovering the correct abstract causal structure.</li>
+                <li>Built hierarchical Bayesian model to achieve similar performance as human learners.  This causal model was able to solve the escape room while seven state-of-the-art model-free reinforcement learning algorithms failed at the task.</li>
+                <li>Result: Both structural abstraction and feature generalization are critical for transfer learning and generalization.</li>
+              </ul>
+
+              <div class="researchimgcontainer">
+                <iframe src="https://player.vimeo.com/video/391773142" width="640" height="360" frameborder="0" allow="fullscreen" allowfullscreen></iframe>
+              </div>
+
+              <div class="collabcontainer">
+                <div class="collableft">
+                  <b>Collaborators:</b>
+                  <ul>
+                    <li> <a href="http://www.yzhu.io/">Yixin Zhu</a>, University of California, Los Angeles</li>
+                    <li> <a href="http://reasoninglab.psych.ucla.edu/Labbies/JamesKubricht.html">James Kubricht</a>, University of California, Los Angeles</li>
+                    <li> <a href="https://www-robotics.jpl.nasa.gov/people/Brandon_Rothrock/">Brandon Rothrock</a>, NASA Jet Propulsion Laboratory</li>
+                    <li> <a href="http://cvl.psych.ucla.edu/people.htm">Hongjing Lu</a>, University of California, Los Angeles</li>
+                    <li> <a href="http://www.stat.ucla.edu/~sczhu/">Song-Chun Zhu</a>, University of California, Los Angeles</li>
+                  </ul>
+                </div>
+                <div class="collabright">
+                  <img src="images/VCLA.png" style="width: 75px" alt="Center for Vision, Cognition, Learning and Autonomy logo" /><br>
+                  <img src="images/JPL.png" style="width: 125px" alt="Jet Propulsion Laboratory logo" />
+                </div>
+              </div>
+              <div>
+                <b>Papers published:</b>
+                <ol>
+                  <li><a href="papers/AAAI20_OpenLockLearnerTransferRL_final.pdf">Theory-based Causal Transfer: Integrating Instance-level Induction and Abstract-level Structure Learning</a></li>
+                  <li><a href="papers/CogSci19_OpenLockLearner_final.pdf">Decomposing Human Causal Learning: Bottom-up Associative Learning and Top-down Schema Reasoning</a></li>
+                  <li><a href="papers/CogSci18_OpenLock_CausalRL_final.pdf">Human Causal Transfer: Challenges for Deep Reinforcement Learning </a></li>
+                </ol>
+              </div>
+            </div>
+
+            <div id="imitation-learning">
+              <h5>Imitation learning: Training a robot to twist open a medicine bottle</h5>
+              <p class="info">Center for Vision, Cognition, Learning, and Autonomy, UCLA<span>&bull;</span> <em class="date">December 2015 - Feb 2017</em></p>
+
+              <ul>
+                <li>Captured the complex human hand forces required to open seven different medicine bottles with a tactical glove covered in IMUs (inertial measurement units) and force sensors.</li>
+                <li>Constructed robot action planner using a haptic network, And-Or Graph, and the generalized Earley parser.</li>
+                <li>Result: Questioned the common structure humans see in the procedure to open any medicine bottle vs. the widely varying forces and action sequences used by the robot for each bottle. <a href="#openlock">This prompted an investigation of abstraction and generalization...</a></li>
+              </ul>
+
+              <div>
+                <b>Engineering contributions:</b>
+                <ul>
+                  <li> Neural network training for action planning and embodiment mapping between a human demonstrator and a robot</li>
+                  <li> Localization using SLAM, IMU, and wheel odometry combined with Kalman filtering using a Microsoft Kinect and Velodyne VLP16</li>
+                  <li> ROS navigation stack, including a dynamic footprint based on current position of arms </li>
+                </ul>
+              </div>
+              <div class="researchimgcontainer">
+                <iframe src="https://player.vimeo.com/video/161556506" width="640" height="360" frameborder="0" allow="fullscreen" allowfullscreen></iframe>
+              </div>
+
+              <div class="collabcontainer">
+                <div class="collableft">
+                  <b>Collaborators:</b>
+                  <ul>
+                    <li> <a href="https://fen9.github.io/">Feng Gao</a>, University of California, Los Angeles</li>
+                    <li> <a href="https://liuhx111.github.io/">Hangxin Liu</a>, University of California, Los Angeles</li>
+                    <li> <a href="https://xuxie1031.github.io/">Xu Xie</a>, University of California, Los Angeles</li>
+                    <li> <a href="http://web.cs.ucla.edu/~mmillar/info.shtml">Matt Millar</a>, University of California, Los Angeles</li>
+                    <li> <a href="http://web.cs.ucla.edu/~syqi/">Siyuan Qi</a>, University of California, Los Angeles</li>
+                    <li> <a href="http://www.yzhu.io/">Yixin Zhu</a>, University of California, Los Angeles</li>
+                    <li> <a href="https://www-robotics.jpl.nasa.gov/people/Brandon_Rothrock/">Brandon Rothrock</a>, NASA Jet Propulsion Laboratory</li>
+                    <li> <a href="http://www.stat.ucla.edu/~sczhu/">Song-Chun Zhu</a>, University of California, Los Angeles</li>
+                  </ul>
+                </div>
+                <div class="collabright">
+                  <img src="images/VCLA.png" style="width: 75px" alt="Center for Vision, Cognition, Learning and Autonomy logo" /><br>
+                  <img src="images/JPL.png" style="width: 125px" alt="Jet Propulsion Laboratory logo" />
+                </div>
+              </div>
+              <div>
+                <b>Papers published:</b>
+                <ol>
+                  <li><a href="papers/IROS17_OpenBottle_final.pdf">Feeling the Force: Integrating Force and Pose for Fluent Discovery through Imitation Learning to Open Medicine Bottles</a></li>
+                  <li><a href="papers/ICRA18_Unsupervised_learning_hierarchical_hoi.pdf">Unsupervised Learning of Hierarchical Models for Hand-Object Interactions</a></li>
+                  <li><a href="papers/IROS17_GloveHardware_final.pdf">A Glove-based System for Studying Hand-Object Manipulation via Pose and Force Sensing</a></li>
+                </ol>
+              </div>
+            </div>
+
+            <h5>Hardware Accelerated Declarative Memory for ACT-R</h5>
+            <p class="info">Wright Patterson Air Force Base, University of Dayton<span>&bull;</span> <em class="date">January 2014 - September 2015</em></p>
+
+            <ul>
+              <li>Conducted Declarative Memory (semantic knowledge retrieval system) research for the ACT-R cognitive architecture.</li>
+              <li>Architected a new declarative memory system using CUDA, thread pools, parsers, inter-process communication (IPC).</li>
+              <li>Continued project work between summers as undergrad thesis research.</li>
+              <li>Result: Parallelized declarative retrievals; yielded a 100x speedup over the fastest existing implementation.</li>
+            </ul>
+
+            <div class="collabcontainer">
+              <div class="collableft">
+                <b>Collaborators:</b>
+                <ul>
+                  <li> <a href="https://udayton.edu/directory/engineering/electrical_and_computer/taha_tarek_m.php">Tarek Taha</a>, University of Dayton</li>
+                  <li> <a href="http://act-r.psy.cmu.edu/?post_type=authors&p=10523">Scott Douglass</a>, United States Air Force Research Lab</li>
+                  <li> <a href="http://dblp.uni-trier.de/pers/hd/a/Atahary:Tanvir">Tanvir Atahary</a>, United States Air Force Research Lab</li>
+                </ul>
+              </div>
+              <div>
+                <div class="collabright">
+                  <img src="images/UDlogo.png" style="width: 125px" alt="University of Dayton logo" /><br>
+                  <img src="images/AFRL.png" style="width: 125px" alt="Air Force Research Lab logo" />
+                </div>
+              </div>
+              <div>
+                <b>Papers published:</b>
+                <ol>
+                  <li><a href="projects/DM/TPDS18_HADM_final.pdf">Hardware Accelerated Semantic Declarative Memory Systems through CUDA and MapReduce</a></li>
+                  <li><a href="papers/SNPD_2015_HighPerformanceDM_final.pdf">High Performance Declarative Memory Systems through MapReduce</a></li>
+                </ol>
+              </div>
+            </div>
+
+            <h5>Robotic Arm Brain Machine Interface</h5>
+            <p class="info">University of Dayton Senior Design Project<span>&bull;</span> <em class="date">August 2014 - May 2015</em></p>
+
+            <ul>
+              <li>Expanded the capability of a brain machine interface through EEG signals and a robotic arm.</li>
+              <li>Developed EEG signal classifier using Linear Discriminant Analysis (LDA)</li>
+              <li>Added six additional gestures and improving the universality of the interface.</li>
+            </ul>
+
+            <div class="collabcontainer">
+              <div class="collableft">
+                <b>Collaborators:</b>
+                <ul>
+                  <li> <a href="https://udayton.edu/engineering/centers/vision_lab/people_profile/dan_prince_profile.php">Daniel Prince</a>, University of Dayton</li>
+                  <li> <a href="https://www.udayton.edu/engineering/centers/vision_lab/index.php#4">Andrew Sutter</a>, University of Dayton</li>
+                  <li> <a href="https://www.udayton.edu/engineering/centers/vision_lab/index.php#4">Matthew Cusumano</a>, University of Dayton</li>
+                  <li> <a href="https://www.udayton.edu/engineering/centers/vision_lab/index.php#4">Wenjie Lu</a>, University of Dayton</li>
+                  <li> <a href="https://udayton.edu/directory/engineering/electrical_and_computer/asari_vijayan.php">Vijayan K. Asari</a>, University of Dayton</li>
+                </ul>
+              </div>
+              <div class="collabright">
+                <img src="images/UDlogo.png" style="width: 125px" alt="University of Dayton logo" />
+              </div>
+            </div>
+            <div>
+              <b>Papers published:</b>
+              <ol>
+                <li><a href="papers/bmi-using-emotiv.pdf">Brain Machine Interface Using Emotiv EPOC to Control Robai Cyton Robotic Arm</a></li>
+              </ol>
+            </div>
+          </div>
+          <!-- end col -->
+
+        </div>
+        <!-- item end -->
+
+      </div>
+      <!-- main-col end -->
+
+    </div>
+    <!-- End research -->
+
+  </section>
+  <!-- research Section End-->
 
   <section id="publications">
 
@@ -919,178 +1199,6 @@
   </section>
   <!-- publcations Section End-->
 
-  <section id="research">
-
-    <!-- research -->
-    <div class="row research">
-
-      <div class="three columns header-col">
-        <h1><span>Research</span></h1>
-      </div>
-
-      <div class="nine columns main-col">
-
-        <div class="row item">
-
-          <div class="twelve columns">
-
-            <h3>Causal Learning &amp; Reinforcement Learning</h3>
-            <p class="info">Center for Vision, Cognition, Learning, and Autonomy, UCLA<span>&bull;</span> <em class="date">August 2017 - Present</em></p>
-
-            <p>
-              This project seeks to examine how causal learning and reasoning can be connected to reinforcement learning. We developed a simulator with a latent causal model and examined how well humans converge to the optimal policy. Next, we examined how well state-of-the-art reinforcement learning algorithms can learn the optimal policy in this environment. Future work will include training model-based reinforcement learning to successfully accomplish the task with faster and better convergence than model-free reinforcement learnig.
-            </p>
-
-            <div style="margin: 0 auto; width: 350px;">
-              <img src="projects/OpenLock/openlock_trial2.png" alt="simulator screen">
-            </div>
-
-            <div class="collabcontainer">
-              <div class="collableft">
-                <b>Collaborators:</b>
-                <ul>
-                  <li> <a href="http://www.yzhu.io/">Yixin Zhu</a>, University of California, Los Angeles</li>
-                  <li> <a href="http://reasoninglab.psych.ucla.edu/Labbies/JamesKubricht.html">James Kubricht</a>, University of California, Los Angeles</li>
-                  <li> <a href="https://www-robotics.jpl.nasa.gov/people/Brandon_Rothrock/">Brandon Rothrock</a>, NASA Jet Propulsion Laboratory</li>
-                  <li> <a href="http://cvl.psych.ucla.edu/people.htm">Hongjing Lu</a>, University of California, Los Angeles</li>
-                  <li> <a href="http://www.stat.ucla.edu/~sczhu/">Song-Chun Zhu</a>, University of California, Los Angeles</li>
-                </ul>
-              </div>
-              <div class="collabright">
-                <img src="images/VCLA.png" style="width: 75px" alt="Center for Vision, Cognition, Learning and Autonomy logo" /><br>
-                <img src="images/JPL.png" style="width: 125px" alt="Jet Propulsion Laboratory logo" />
-              </div>
-            </div>
-            <p></p>
-          </div>
-
-        </div>
-
-        <div class="row item">
-
-          <div class="twelve columns">
-
-            <h3>Human Robot Collaboration</h3>
-            <p class="info">Center for Vision, Cognition, Learning, and Autonomy, UCLA<span>&bull;</span> <em class="date">Sept 2016 - August 2017</em></p>
-
-            <p>
-              The Human Robot Collaboration Project aims to create a robot platform capable of autonomously collaborating with humans to accomplish meaningful, everday tasks. Currently, the project aims to transfer causal knowledge from human demonstrators to robots. This transfer focuses on using a tactile glove to capture visually latent states in the demonstration that are irrecoverable from vision along (e.g. forces exerted by the hand). From these demonstrations, we transfer the knowledge to the robot using an And-Or graph. In the future, we plan to expand this system to include intention prediction so the robot can take an active and collaborative role assisting with human tasks.
-            </p>
-
-            <div>
-              <b>Engineering contributions:</b>
-              <ul>
-                <li> Neural network training for action planning and embodiment mapping between a human demonstrator and a robot</li>
-                <li> Localization using SLAM, IMU, and wheel odometry combined with Kalman filtering using a Microsoft Kinect and Velodyne VLP16</li>
-                <li> ROS navigation stack, including a dynamic footprint based on current position of arms </li>
-              </ul>
-            </div>
-            <div class="researchimgcontainer">
-              <iframe src="https://player.vimeo.com/video/161556506" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-              <p><a href="https://vimeo.com/161556506">Human-Robot-Collaboration (Hu-Ro-Co)</a> from <a href="https://vimeo.com/yixinzhu">Yixin Zhu</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
-            </div>
-
-            <div class="collabcontainer">
-              <div class="collableft">
-                <b>Collaborators:</b>
-                <ul>
-                  <li> <a href="https://fen9.github.io/">Feng Gao</a>, University of California, Los Angeles</li>
-                  <li> <a href="https://liuhx111.github.io/">Hangxin Liu</a>, University of California, Los Angeles</li>
-                  <li> <a href="https://xuxie1031.github.io/">Xu Xie</a>, University of California, Los Angeles</li>
-                  <li> <a href="http://web.cs.ucla.edu/~mmillar/info.shtml">Matt Millar</a>, University of California, Los Angeles</li>
-                  <li> <a href="http://web.cs.ucla.edu/~syqi/">Siyuan Qi</a>, University of California, Los Angeles</li>
-                  <li> <a href="http://www.yzhu.io/">Yixin Zhu</a>, University of California, Los Angeles</li>
-                  <li> <a href="https://www-robotics.jpl.nasa.gov/people/Brandon_Rothrock/">Brandon Rothrock</a>, NASA Jet Propulsion Laboratory</li>
-                  <li> <a href="http://www.stat.ucla.edu/~sczhu/">Song-Chun Zhu</a>, University of California, Los Angeles</li>
-                </ul>
-              </div>
-              <div class="collabright">
-                <img src="images/VCLA.png" style="width: 75px" alt="Center for Vision, Cognition, Learning and Autonomy logo" /><br>
-                <img src="images/JPL.png" style="width: 125px" alt="Jet Propulsion Laboratory logo" />
-              </div>
-            </div>
-            <p></p>
-          </div>
-
-        </div>
-        <!-- item end -->
-
-        <div class="row item">
-
-          <div class="twelve columns">
-
-            <h3>Declarative Memory</h3>
-            <p class="info">Wright Patterson Air Force Base, University of Dayton<span>&bull;</span> <em class="date">January 2014 - September 2015</em></p>
-
-            <p>
-              My undergraduate thesis was focused on accelerating the declarative memory module of the CECEP cognitive architecture, a derivative of ACT-R. The research centered on leveraging the parallel computing abilities of the CUDA programming platform to accelerate declarative retrieval. The initial, C++ implementation produced a 20 times speedup over the fastest previous implementation of declarative memory. The CUDA implementation accelerates declarative memory by a factor of 100 times while providing massive scalability. The work was jointly supported by the Air Force Research Lab and the University of Dayton Research Institute.
-            </p>
-
-            <div class="collabcontainer">
-              <div class="collableft">
-                <b>Collaborators:</b>
-                <ul>
-                  <li> <a href="https://udayton.edu/directory/engineering/electrical_and_computer/taha_tarek_m.php">Tarek Taha</a>, University of Dayton</li>
-                  <li> <a href="http://act-r.psy.cmu.edu/?post_type=authors&p=10523">Scott Douglass</a>, United States Air Force Research Lab</li>
-                  <li> <a href="http://dblp.uni-trier.de/pers/hd/a/Atahary:Tanvir">Tanvir Atahary</a>, United States Air Force Research Lab</li>
-                </ul>
-              </div>
-              <div>
-                <div class="collabright">
-                  <img src="images/UDlogo.png" style="width: 125px" alt="University of Dayton logo" /><br>
-                  <img src="images/AFRL.png" style="width: 125px" alt="Air Force Research Lab logo" />
-                </div>
-              </div>
-            </div>
-            <p></p>
-
-          </div>
-
-        </div>
-        <!-- item end -->
-
-        <div class="row item">
-
-          <div class="twelve columns">
-
-            <h3>Robotic Arm Brain Machine Interface</h3>
-            <p class="info">University of Dayton Senior Design Project<span>&bull;</span> <em class="date">August 2014 - May 2015</em></p>
-
-            <p>
-              This project expanded the capability of a brain machine interface through EEG signals and a robotic arm. The research centered on adding additional gestures and improving the universality of the interface. The team implemented 6 new useful actions for the robotic and developed a in-house EEG signal classifier using liner discriminate analysis. The EEG classifier currently can successfully distinguish between two states but successive senior design teams will increase the number of distinguishable states.
-            </p>
-
-            <div class="collabcontainer">
-              <div class="collableft">
-                <b>Collaborators:</b>
-                <ul>
-                  <li> <a href="https://udayton.edu/engineering/centers/vision_lab/people_profile/dan_prince_profile.php">Daniel Prince</a>, University of Dayton</li>
-                  <li> <a href="https://www.udayton.edu/engineering/centers/vision_lab/index.php#4">Andrew Sutter</a>, University of Dayton</li>
-                  <li> <a href="https://www.udayton.edu/engineering/centers/vision_lab/index.php#4">Matthew Cusumano</a>, University of Dayton</li>
-                  <li> <a href="https://www.udayton.edu/engineering/centers/vision_lab/index.php#4">Wenjie Lu</a>, University of Dayton</li>
-                  <li> <a href="https://udayton.edu/directory/engineering/electrical_and_computer/asari_vijayan.php">Vijayan K. Asari</a>, University of Dayton</li>
-                </ul>
-              </div>
-              <div class="collabright">
-                <img src="images/UDlogo.png" style="width: 125px" alt="University of Dayton logo" />
-              </div>
-            </div>
-
-          </div>
-          <!-- end col -->
-
-        </div>
-        <!-- item end -->
-
-      </div>
-      <!-- main-col end -->
-
-    </div>
-    <!-- End research -->
-
-  </section>
-  <!-- research Section End-->
-
   <section id="experience">
 
     <!-- Experience -->
@@ -1106,67 +1214,83 @@
 
           <div class="twelve columns">
 
-            <h3>Robotics Research Engineer Intern</h3>
-            <p class="info">International Center for AI and Robot Autonomy<span>&bull;</span> <em class="date">June 2018 - Present</em></p>
+            <div id="cara-director">
+              <h5>Director and President</h5>
+              <p class="info">Center for AI and Robot Autonomy (CARA)<span>&bull;</span> <em class="date">Mar 2021 - Present</em></p>
 
-            <p>
-              Working on transfer learning approaches for robotics research to transfer symbolic and haptic information between environments and embodiments.
-            </p>
-
-          </div>
-
-        </div>
-        <!-- item end -->
-
-        <div class="row item">
-
-          <div class="twelve columns">
-
-            <h3>Adjunct Professor</h3>
-            <p class="info">Santa Monica College<span>&bull;</span> <em class="date">June 2016 - Present</em></p>
-
-            <div class="collabcontainer">
-              <div class="collab">
-                <b>Teaching:</b>
-                <ul>
-                  <li>CS 80, Internet Programming, a class focused on HTML, CSS, JavaScript, MySQL, and PHP</li>
-                  <li>CS 50, Introduction to C Programming</li>
-                  <li>CS 52, Introduction to C++ Programming</li>
-                </ul>
-              </div>
+              <ul>
+                <li>Define updated mission and vision statements, seek alternative funding, and file paperwork to maintain 501(c)(3) status</li>
+              </ul>
             </div>
 
-          </div>
+            <div id="smc">
+              <h5>Adjunct Professor</h5>
+              <p class="info">Santa Monica College<span>&bull;</span> <em class="date">June 2016 - Present</em></p>
 
-        </div>
-        <!-- item end -->
+              <ul>
+                <li>Teaching one-two 45-student classes/quarter: lead lectures, hold office hours and create course materials.</li>
+                <li>Instructed 25 courses: Internet Programming (HTML, CSS, JavaScript, MySQL, and PHP), Intro to C, and Intro to C++.</li>
+              </ul>
+            </div>
 
-        <div class="row item">
+            <div id="cara-intern">
+              <h5>Robotics Research Engineer Intern</h5>
+              <p class="info">Center for AI and Robot Autonomy (CARA)<span>&bull;</span> <em class="date">June 2018 - Mar 2020</em></p>
 
-          <div class="twelve columns">
+              <ul>
+                <li>Worked on representation learning project to couple vision and language (details under <a href="#vrgym-replearn">Representation learning: The role of language in building generalizable representations</a>).</li>
+              </ul>
+              <p>
 
-            <h3>Software Engineering Intern</h3>
-            <p class="info">Garmin International<span>&bull;</span> <em class="date">May 2013 - August 2013</em></p>
+              </p>
+            </div>
 
-            <p>
-              Interned as a member of the Datalink team in the Aviation department of Garmin. Contributed to the ACARS protocol for Garmin Avionics software.
-            </p>
+            <div id="ucla-ta">
+              <h5>Teaching Assistant</h5>
+              <p class="info">Computer Science Department, UCLA<span>&bull;</span> <em class="date">September 2015 - June 2016</em></p>
 
-          </div>
+              <ul>
+                <li>Teaching assistant for Introduction to C, Introduction to C++: lead discussion hours (~50 students), held office hours.</li>
+              </ul>
+            </div>
 
-        </div>
-        <!-- item end -->
+            <div id="ud-ta">
+              <h5>Teaching Assistant</h5>
+              <p class="info">Electric &amp; Computer Engineering Department, University of Dayton<span>&bull;</span> <em class="date">January 2015 - May 2015</em></p>
 
-        <div class="row item">
+              <ul>
+                <li>Teaching assistant for Electronic Devices Lab: aided in lab sessions (~40 students).</li>
+              </ul>
+            </div>
 
-          <div class="twelve columns">
+            <div id="garmin">
+              <h5>Software Engineering Intern</h5>
+              <p class="info">Garmin International<span>&bull;</span> <em class="date">May 2013 - August 2013</em></p>
 
-            <h3>Tutor and Teacher</h3>
-            <p class="info">Cristo Rey Kansas City<span>&bull;</span> <em class="date">May 2011 - August 2012</em></p>
+              <ul>
+                <li>Automated the testing process for small craft airplane ACARS systems that send timed status messages to ground stations.</li>
+                <li>Reduced testing time by 40% and saved hundreds of vendor certification testing hours by optimizing simulation timing protocols and adhering to FAA safety standards.</li>
+              </ul>
+            </div>
 
-            <p>
-              Taught pre-calculus, chemistry, and physics at an inner city high school during summer and winter breaks.
-            </p>
+            <div id="ud-enrichment-workshop">
+              <h5>Enrichment Workshop Tutor</h5>
+              <p class="info">School of Engineering, University of Dayton<span>&bull;</span> <em class="date">September 2012 - May 2015</em></p>
+
+              <ul>
+                <li>Tutor for first-year engineering students covering calculus, chemistry, and physics.</li>
+                <li>Lead team of tutors: managed 8 tutors overseeing 40 students.</li>
+              </ul>
+            </div>
+
+            <div if="cristo-rey">
+              <h5>Summer School Teacher</h5>
+              <p class="info">Cristo Rey Kansas City<span>&bull;</span> <em class="date">May 2011 - August 2012</em></p>
+
+              <ul>
+                <li>Taught four junior and senior student classes at a prep school focused on college placement for underrepresented groups.</li>
+              </ul>
+            </div>
 
           </div>
 
