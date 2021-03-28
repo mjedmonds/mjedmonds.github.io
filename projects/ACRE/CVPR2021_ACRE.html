@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<!--[if lt IE 8 ]><html class="no-js ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="no-js ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 8)|!(IE)]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+
+<head>
+
+  <!--- Basic Page Needs
+    ================================================== -->
+  <meta charset="utf-8">
+  <title>ACRE: Abstract Causal REasoning Beyond Covariation</title> <meta name="description" content="ACRE: Abstract Causal REasoning Beyond Covariation">
+      <meta name="author" content="Mark Edmonds">
+
+      <!-- Mobile Specific Metas
+      ================================================== -->
+      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+      <!-- Google analytics -->
+      <script>
+        (function(i, s, o, g, r, a, m)
+        {
+          i['GoogleAnalyticsObject'] = r;
+          i[r] = i[r] || function()
+          {
+            (i[r].q = i[r].q || []).push(arguments)
+          }, i[r].l = 1 * new Date();
+          a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0];
+          a.async = 1;
+          a.src = g;
+          m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-98378227-1', 'auto');
+        ga('send', 'pageview');
+      </script>
+
+      <!-- CSS
+        ================================================== -->
+      <link rel="stylesheet" href="../../css/default.css">
+      <link rel="stylesheet" href="../../css/teaching-layout.css">
+      <link rel="stylesheet" href="../../css/media-queries.css">
+      <link rel="stylesheet" href="../../css/mjedmonds.css">
+      <link rel="stylesheet" href="../../css/magnific-popup.css">
+      <link rel="stylesheet" href="../../highlight/styles/default.css">
+
+      <!-- Script
+          ================================================== -->
+      <script src="../../js/modernizr.js"></script>
+      <script src="../../js/smooth-scroll.js"></script>
+
+      <!--code hightlighting-->
+      <script src="../../highlight/highlight.pack.js"></script>
+
+      <!-- Favicons
+            ================================================== -->
+      <link rel="shortcut icon" href="../../favicon.png">
+
+</head>
+
+<body>
+
+  <!-- Header
+                ================================================== -->
+  <header id="home">
+
+    <nav id="nav-wrap">
+
+      <a class="mobile-btn" href="#nav-wrap" title="Show navigation">Show navigation</a>
+      <a class="mobile-btn" href="#" title="Hide navigation">Hide navigation</a>
+
+      <ul id="nav" class="nav">
+        <li><a href="../../index.html">Home</a></li>
+      </ul>
+      <!-- end #nav -->
+
+    </nav>
+    <!-- end #nav-wrap -->
+
+  </header>
+  <!-- Header End -->
+
+  <section class="project-page-section">
+
+    <div class="wide-row project-page">
+
+      <div class="three columns header-col">
+        <h1><span>Abstract</span></h1>
+      </div>
+
+      <div class="nine columns main-col">
+
+        <div class="wide-row item">
+
+          <div class="twelve columns">
+
+            <h2>ACRE: Abstract Causal REasoning Beyond Covariation</h2>
+            <p>
+              Chi Zhang<sup>1</sup>, Baoxiong Jia<sup>1</sup>, Mark Edmonds<sup>1</sup>, Song-Chun Zhu<sup>1</sup>, Yixin Zhu<sup>1</sup>
+              <br>
+              <small>
+                1 Center for Vision, Cognition, Learning, and Autonomy (VCLA), UCLA
+              </small>
+            </p>
+            <h5>Abstract</h5>
+            <p>
+              Causal induction, i.e., identifying unobservable mechanisms that lead to the observable relations among variables, has played a pivotal role in modern scientific discovery, especially in scenarios with only sparse and limited data. Humans, even young toddlers, can induce causal relationships surprisingly well in various settings despite its notorious difficulty. However, in contrast to the commonplace trait of human cognition is the lack of a diagnostic benchmark to measure causal induction for modern Artificial Intelligence (AI) systems. Therefore, in this work, we introduce the Abstract Causal REasoning (ACRE) dataset for systematic evaluation of current vision systems in causal induction. Motivated by the stream of research on causal discovery in Blicket experiments, we query a visual reasoning system with the following four types of questions in either an independent scenario or an interventional scenario: direct, indirect, screening-off, and backward-blocking, intentionally going beyond the simple strategy of inducing causal relationships by covariation. By analyzing visual reasoning architectures on this testbed, we notice that pure neural models tend towards an associative strategy under their chance-level performance, whereas neuro-symbolic combinations struggle in backward-blocking reasoning. These deficiencies call for future research in models with a more comprehensive capability of causal induction.
+            </p>
+            <div class="columns download">
+              <a href="../../papers/cvpr21zhang_acre.pdf" class="button"><i class="fa fa-download"></i>Download Paper</a>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+      <!-- main-col end -->
+
+    </div>
+  </section>
+
+  <section class="project-page-section">
+
+    <div class="wide-row project-page">
+
+      <div class="three columns header-col">
+        <h1><span>Selected Figures</span></h1>
+      </div>
+
+      <div class="nine columns main-col">
+
+        <div class="wide-row item">
+
+          <div class="twelve columns">
+
+            <div style="margin: 0 auto;">
+              <figure style=>
+                <img class="centerimg" style="width: 90%; padding: 2%" src="./example.jpeg" alt="example queries and images">
+                <figcaption>Fig. 1. A sample problem in ACRE. Of the 6 context trials, we devote the first set of 3 panels for an introduction to the Blicket machinery and allow more complex configurations in the second set of panels. Queries are either on independent objects or interventional combinations for an existing trial. In this example, the first query tests causal reasoning from direct evidence, as the gray cube is independently tested and always associated with an activated machine. The second query requires comparing the fourth and fifth trial to realize that the Blicket machine is activated by the cube, not the cylinder, based on indirect evidence. As such, we infer that the red and green cylinders in the sixth trial may not activate the machine because the purple cube can already do so; despite their association with an activated machine only, their Blicketness is backward-blocked in the interventional trial. The cyan cube is screened-off by the gray cube’s Blicketness from probabilistically activating the machine. Of note, the screening-off and the backward-blocking case cannot be solved by covariation.</figcaption>
+              </figure>
+            </div>
+
+            <div style="margin: 0 auto;">
+              <figure style=>
+                <img class="centerimg" style="width: 90%; padding: 2%" src="./model.jpeg" alt="model architecture">
+                <figcaption>Fig. 2. An illustration of the proposed neuro-symbolic combination (NS-Opt) for ACRE. The neural frontend is responsible for scene parsing. In particular, we use a Mask RCNN to detect objects and classify their attributes as well as the Blicket machine’s state. The parsed results are arranged into data matrices and sent into the causal reasoning backend for optimization. A generalized SEM is learned from context trials during reasoning, which is further used to infer the state of the Blicket machine for each query.</figcaption>
+              </figure>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+      <!-- main-col end -->
+
+    </div>
+  </section>
+
+  <section class="project-page-section">
+
+    <div class="wide-row project-page">
+
+      <div class="three columns header-col">
+        <h1><span>Bibtex</span></h1>
+      </div>
+
+      <div class="nine columns main-col">
+
+        <div class="wide-row item">
+          <pre><code class="no-highlight hljs">@inproceedings{zhang2021acre,
+ title={ACRE: Abstract Causal REasoning Beyond Covariation},
+ author={Zhang, Chi and Jia, Baoxiong and Edmonds, Mark and Zhu, Song-Chun and Zhu, Yixin},
+ booktitle={Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},
+ year={2021}
+}
+</code></pre>
+
+        </div>
+
+      </div>
+      <!-- main-col end -->
+
+    </div>
+  </section>
+
+  <!-- footer ================================================== -->
+  <footer>
+
+    <div class="row">
+
+      <div class="twelve columns">
+
+        <ul class="copyright">
+          <li>&copy; Copyright 2014 CeeVee</li>
+          <li>Design by <a title="Styleshout" href="http://www.styleshout.com/">Styleshout</a></li>
+        </ul>
+
+      </div>
+
+      <div id="go-top"><a data-scroll data-options='{"offset": 0}' title="Back to Top" href="#home"><i class="icon-up-open"></i></a></div>
+
+    </div>
+
+  </footer>
+  <!-- Footer End-->
+
+
+  <!-- Java Script ================================================== -->
+  <script>
+    hljs.initHighlightingOnLoad();
+  </script>
+  <script>
+    smoothScroll.init();
+  </script>
+</body>
+
+</html>
