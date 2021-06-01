@@ -1,0 +1,95 @@
+
+
+<!DOCTYPE html>
+<!-- Fig. 16.5: SwitchContent.html -->
+<!-- Asynchronously display content without reloading the page. -->
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <style type="text/css">
+    .box {
+      border: 1px solid black;
+      padding: 10px
+    }
+  </style>
+  <title>Switch Content Asynchronously</title>
+  <script>
+    var asyncRequest; // variable to hold XMLHttpRequest object
+
+    var urlToData = {
+      "cpphtp8.html": "<div><i>C++ How To Program 8th edition</i><ul style=\"margin: 6px 0px 6px 20px; text-indent: 0pt;\"> <li>Easy-to-follow, carefully developed <b>early classes </b>and <b >early objects </b>approach</li><li >Comprehensive coverage of the <b >fundamentals of object-oriented programming </b>in C++</li><li >Optional <b >automated teller machine (ATM) case study </b>that teaches the fundamentals of software engineering and classmate object-oriented design with the UML</li><li>Integrated case studies throughout the book including: the Time <b >class </b>(Chapters 9 and 10); the Employee <b>class </b>(Chapters 12 and 13) and the GradeBook <b >class </b>(Chapters 3-7) </li><li>Uses <b  >string </b>and <b>vector classes </b>to make earlier examples more object-oriented</li><li >New optional sections on the forthcoming C++0x standard (due late in 2011 or early 2012) </li><li>Updated coverage of the <a >open source</a> Boost libraries (several of which will be included in the C++0x standard)</li></ul></div>",
+      "iw3htp.html": "hello",
+      "jhtp.html": "world",
+      "vbhtp.html": "hello2",
+      "vcshtp.html": "world2",
+      "javafp.html": "hello3"
+    }
+
+    // set up event handlers
+    function registerListeners() {
+      var img;
+      img = document.getElementById("cpphtp");
+      img.addEventListener("mouseover",
+        function() {
+          getContent("cpphtp8.html");
+        });
+      img.addEventListener("mouseout", clearContent);
+      img = document.getElementById("iw3htp");
+      img.addEventListener("mouseover",
+        function() {
+          getContent("iw3htp.html");
+        });
+      img.addEventListener("mouseout", clearContent);
+      img = document.getElementById("jhtp");
+      img.addEventListener("mouseover",
+        function() {
+          getContent("jhtp.html");
+        });
+      img.addEventListener("mouseout", clearContent);
+      img = document.getElementById("vbhtp");
+      img.addEventListener("mouseover",
+        function() {
+          getContent("vbhtp.html");
+        });
+      img.addEventListener("mouseout", clearContent);
+      img = document.getElementById("vcshtp");
+      img.addEventListener("mouseover",
+        function() {
+          getContent("vcshtp.html");
+        });
+      img.addEventListener("mouseout", clearContent);
+      img = document.getElementById("javafp");
+      img.addEventListener("mouseover",
+        function() {
+          getContent("javafp.html");
+        });
+      img.addEventListener("mouseout", clearContent);
+    } // end function registerListeners
+
+    // set up and send the asynchronous request.
+    function getContent(url) {
+      var data = urlToData[url];
+      document.getElementById("contentArea").innerHTML = data;
+    } // end function getContent
+
+    // clear the content of the box
+    function clearContent() {
+      document.getElementById("contentArea").innerHTML = "";
+    } // end function clearContent
+    window.addEventListener("load", registerListeners);
+  </script>
+</head>
+
+<body>
+  <h1>Mouse over a book for more information.</h1>
+  <img id="cpphtp" alt="C++ How to Program book cover" src="cpphtp8.jpg">
+  <img id="iw3htp" alt="Internet & WWW How to Program book cover" src="iw3htp5.jpg">
+  <img id="jhtp" alt="Java How to Program book cover" src="jhtp9.jpg">
+  <img id="vbhtp" alt="Visual Basic 2010 How to Program book cover" src="vb2010htp.jpg">
+  <img id="vcshtp" alt="Visual C# 2010 How to Program book cover" src="vcsharp2010htp.jpg">
+  <img id="javafp" alt="Java for Programmers book cover" src="javafp.jpg">
+  <div class="box" id="contentArea"></div>
+</body>
+
+</html>
