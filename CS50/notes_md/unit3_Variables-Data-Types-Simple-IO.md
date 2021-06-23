@@ -262,7 +262,8 @@ int main(void)
 
 ### Input
 
-* Similar to `printf`, we use a function called `scanf` to get basic input from the user.
+* Similar to `printf`, we use a function called `scanf()` to get basic input from the user.
+  * Note: Visual Studio users will need to use `scanf_s()` because `scanf()` is technically insecure due a longstanding bug. You can use `scanf_s()` the same way you would use `scanf()`
 * Placeholders are mostly similar to those of `printf`
 * However, because we are getting a value from the user, we need a place to store that value
   * Where should we store this value? A variable
