@@ -1,2 +1,4 @@
 .vscode
 notes_md/.vscode
+*.fdb_latexmk
+*.fls
