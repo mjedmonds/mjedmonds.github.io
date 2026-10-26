@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+# Copy pre-Jekyll static content into the built site, byte for byte.
+#
+# These paths are excluded in _config.yml so Jekyll never parses them (the course
+# slides contain Liquid-like syntax and nested reveal.js checkouts). Copying them
+# after the build keeps every old URL (/CS80/..., /papers/..., /cv/*.pdf) working.
+#
+# Usage: bin/copy-legacy [site_dir]   (default: _site)
+set -euo pipefail
+
+cd "$(dirname "$0")/.."
+SITE="${1:-_site}"
+[ -d "$SITE" ] || { echo "copy-legacy: $SITE does not exist; run jekyll build first" >&2; exit 1; }
+
+LEGACY_DIRS=(CS31 CS32 CS50 CS52 CS80 css js highlight papers projects)
+LEGACY_FILES=(CS31.html CS32.html teaching.html favicon.png)
+
+for d in "${LEGACY_DIRS[@]}"; do
+  rsync -a --exclude '.git' --exclude '.DS_Store' --exclude 'Icon?' "$d/" "$SITE/$d/"
+done
+for f in "${LEGACY_FILES[@]}"; do
+  cp "$f" "$SITE/$f"
+done
+
+# CV and resume PDFs come from the cv submodule; nothing else from it is published.
+mkdir -p "$SITE/cv"
+cp cv/mark_edmonds_cv.pdf cv/mark_edmonds_resume.pdf "$SITE/cv/"
+
+# Paper PDFs referenced from _bibliography/papers.bib (al-folio looks in /assets/pdf/).
+mkdir -p "$SITE/assets/pdf"
+cp papers/*.pdf projects/DM/TPDS18_HADM_final.pdf "$SITE/assets/pdf/"
+
+echo "copy-legacy: copied legacy content into $SITE"

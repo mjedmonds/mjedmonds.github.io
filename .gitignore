@@ -2,3 +2,14 @@
 notes_md/.vscode
 *.fdb_latexmk
 *.fls
+# al-folio / Jekyll build output
+_site
+.jekyll-cache
+.jekyll-metadata
+.sass-cache
+.bundle
+vendor
+node_modules/
+assets/libs/
+al-folio-upgrade-report.md
+__pycache__/
