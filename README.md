@@ -10,6 +10,7 @@ Personal site built with [Astro](https://astro.build) and a small custom theme, 
 | News | `src/content/news/` (one Markdown file per item) |
 | Publications | `src/data/papers.bib` (thumbnails in `public/assets/img/publication_preview/`) |
 | Research projects | `src/content/research/` (served under `/research/`, not linked in the nav) |
+| Paper project pages | `src/content/projects/` (served at their old `/projects/<dir>/<name>.html` URLs; images stay in `projects/`) |
 | Experience and education | `src/data/experience.ts` |
 | Teaching | `src/data/teaching.ts` |
 | Nav and social links | `src/data/site.ts` |
@@ -19,7 +20,7 @@ In `papers.bib`, `selected = {true}` puts a paper on the home page, `*` after a 
 
 ## Legacy content
 
-The course sites (`CS31`–`CS80`, including the reveal.js slides), the old project pages (`projects/`), and paper PDFs (`papers/`) are plain static files from the previous site. `src/integrations/legacy.ts` serves them as-is in `npm run dev` and copies them into `dist/` on build, so their URLs stay the same. It also publishes the CV and resume PDFs from the `cv` submodule at `/cv/*.pdf`.
+The course sites (`CS31`–`CS80`, including the reveal.js slides), the images and data files for the paper project pages (`projects/`), and paper PDFs (`papers/`) are plain static files from the previous site. `src/integrations/legacy.ts` serves them as-is in `npm run dev` and copies them into `dist/` on build, so their URLs stay the same. It also publishes the CV and resume PDFs from the `cv` submodule at `/cv/*.pdf`.
 
 To update the CV or resume, commit in the `cv` submodule, then commit the updated submodule pointer here.
 

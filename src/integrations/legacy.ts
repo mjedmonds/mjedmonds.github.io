@@ -6,7 +6,8 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 // Static content from the pre-Astro site, published byte for byte at its old URLs
-// (/CS80/..., /papers/..., /cv/*.pdf). Each path is relative to the repo root and is
+// (/CS80/..., /papers/..., /cv/*.pdf). The old project pages under projects/ were moved into
+// src/content/projects; their images and data files are still served from here. Each path is relative to the repo root and is
 // served at the same path on the site. Astro never parses these: the course slides
 // contain template-like syntax and nested reveal.js checkouts.
 const LEGACY_PATHS = [

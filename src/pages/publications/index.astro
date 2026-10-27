@@ -1,8 +1,8 @@
 ---
-import Base from '../layouts/Base.astro';
-import Card from '../components/Card.astro';
-import PaperItem from '../components/PaperItem.astro';
-import { papers } from '../lib/papers';
+import Base from '../../layouts/Base.astro';
+import Card from '../../components/Card.astro';
+import PaperItem from '../../components/PaperItem.astro';
+import { papers } from '../../lib/papers';
 
 const years = [...new Set(papers.map((p) => p.year))];
 ---

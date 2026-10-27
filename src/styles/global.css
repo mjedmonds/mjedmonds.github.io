@@ -148,7 +148,7 @@ main.container { padding-block: 32px 16px; display: flex; flex-direction: column
 }
 .btn::-webkit-details-marker { display: none; }
 .btn:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
-.links details[open] { flex-basis: 100%; }
+.links details[open] { flex-basis: 100%; min-width: 0; }
 .links details[open] .btn { border-color: var(--accent); color: var(--accent); }
 .page-actions { margin-top: -8px; }
 .page-actions .btn { font-size: 0.9rem; padding: 4px 12px; }
@@ -170,7 +170,8 @@ pre {
   background: var(--bg);
   border: 1px solid var(--border);
   font: 0.8rem/1.5 var(--mono);
-  overflow-x: auto;
+  white-space: pre-wrap; /* long author lists wrap instead of overflowing the box */
+  overflow-wrap: anywhere;
 }
 
 /* Home intro */
@@ -188,7 +189,7 @@ pre {
 
 /* Papers */
 .paper-list > * + * { border-top: 1px solid var(--border); }
-.paper { display: grid; grid-template-columns: 140px 1fr; gap: 20px; padding: 16px 0; }
+.paper { display: grid; grid-template-columns: 140px minmax(0, 1fr); gap: 20px; padding: 16px 0; }
 .paper:first-child { padding-top: 0; }
 .paper:last-child { padding-bottom: 0; }
 .paper-side { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; }
@@ -222,6 +223,18 @@ pre {
 .role-head .muted { font-size: 0.9rem; }
 .role-org { margin: 2px 0 0; }
 .role ul { font-size: 0.95rem; }
+
+/* Project pages */
+.project-authors { margin: 0; }
+.project-affiliations { margin-top: 6px; color: var(--muted); font-size: 0.875rem; }
+.project-images { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; justify-content: center; }
+.project-images img { max-height: 320px; width: auto; border: 1px solid var(--border); }
+.figures { display: flex; flex-direction: column; gap: 28px; }
+.figures figure { margin: 0; }
+.figures img { margin: 0 auto; border: 1px solid var(--border); }
+.figures figcaption, .video-title { margin-top: 10px; color: var(--muted); font-size: 0.9rem; }
+.videos { display: flex; flex-direction: column; gap: 24px; }
+.coverage { margin: 0; }
 
 /* Markdown (research pages) */
 .prose > * + * { margin-top: 1em; }
@@ -283,6 +296,7 @@ pre {
   .theme-toggle:hover { background: var(--accent-soft); }
   .menu-only { display: inline; }
   .masthead-home .masthead-text { padding-block: 64px 40px; }
+  .masthead-text h1 { font-size: 1.5rem; }
   .masthead-home h1 { font-size: 2.25rem; }
   .card { padding: 16px; }
   .card-image { width: calc(100% + 32px); margin: -16px -16px 14px; }

@@ -1,0 +1,81 @@
+---
+// Paper pages from the old site, at their old URLs (/projects/<dir>/<name>.html).
+import { getCollection, render, type CollectionEntry } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Card from '../../components/Card.astro';
+import { paperByKey } from '../../lib/papers';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects');
+  return projects.map((project) => ({ params: { path: project.data.path }, props: { project } }));
+}
+
+const { project } = Astro.props as { project: CollectionEntry<'projects'> };
+const { data } = project;
+const { Content } = await render(project);
+const paper = paperByKey(data.paper);
+---
+
+<Base title={data.title} description={`${data.title}. ${paper.venue}, ${paper.year}.`} lead={`${paper.venue}, ${paper.year}`}>
+  <Card>
+    <p class="project-authors" set:html={data.authors} />
+    {data.affiliations && <p class="project-affiliations" set:html={data.affiliations} />}
+    <div class="links">
+      {data.links.map((l) => <a class="btn" href={l.href}>{l.label}</a>)}
+    </div>
+  </Card>
+
+  {data.images.length > 0 && (
+    <Card>
+      <div class="project-images">
+        {data.images.map((img) => <img src={img.src} alt={img.alt} loading="lazy" />)}
+      </div>
+    </Card>
+  )}
+
+  <Card label="Abstract">
+    <Content />
+  </Card>
+
+  {data.figures.length > 0 && (
+    <Card label="Selected figures">
+      <div class="figures">
+        {data.figures.map((f) => (
+          <figure>
+            <img src={f.src} alt={f.alt} loading="lazy" />
+            <figcaption set:html={f.caption} />
+          </figure>
+        ))}
+      </div>
+    </Card>
+  )}
+
+  {data.videos.length > 0 && (
+    <Card label="Videos">
+      <div class="videos">
+        {data.videos.map((v) => (
+          <div>
+            <div class="video"><iframe src={v.src} title={v.title} allow="fullscreen" allowfullscreen></iframe></div>
+            <p class="video-title">{v.title}</p>
+          </div>
+        ))}
+      </div>
+    </Card>
+  )}
+
+  {data.coverage.length > 0 && (
+    <Card label="News coverage">
+      <ul class="coverage">
+        {data.coverage.map((c) => (
+          <li>{c.source}: <a href={c.href}>{c.title}</a></li>
+        ))}
+      </ul>
+    </Card>
+  )}
+
+  {paper.bibtex && (
+    <Card label="BibTeX">
+      <pre>{paper.bibtex}</pre>
+    </Card>
+  )}
+</Base>
