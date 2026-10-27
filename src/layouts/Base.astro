@@ -8,7 +8,7 @@ interface Props {
   lead?: string; // shown under the page heading
 }
 
-const { title, description = 'Mark Edmonds: Staff Applied Scientist at General Motors.', lead } = Astro.props;
+const { title, description = 'Mark Edmonds: Staff AI/ML Applied Scientist at General Motors.', lead } = Astro.props;
 const pageTitle = title ? `${title} | ${author}` : author;
 const path = Astro.url.pathname;
 const isActive = (href: string) => (href === '/' ? path === '/' : path.startsWith(href));

@@ -9,20 +9,33 @@ export interface Role {
 
 export const work: Role[] = [
   {
-    title: 'Staff Applied Scientist',
+    title: 'Staff AI/ML Applied Scientist',
     org: '<a href="https://www.gm.com">General Motors</a>',
-    dates: 'January 2026 – present',
+    dates: 'February 2026 – present',
     location: 'Remote',
+    bullets: [
+      'Develop end-to-end driving models and self-play reinforcement learning.',
+      'Joined GM through its acquisition of Cruise.',
+    ],
   },
   {
     title: 'Senior Applied Scientist II',
     org: '<a href="https://getcruise.com">Cruise</a>',
-    dates: 'October 2021 – December 2025',
-    location: 'San Francisco, CA',
+    dates: 'April 2024 – February 2026',
+    location: 'Remote',
     bullets: [
-      'Worked at the intersection of machine learning and planning on the Behavior Planning team; joined as a Senior Software Engineer working on maneuver planning.',
-      'Used imitation learning, PyTorch, and ROS to deploy safer and more capable ML models to cars driving on the road.',
+      'Built autoregressive foundation models for driving.',
+      'Demonstrated scaling laws for autonomous driving.',
+      'Applied imitation and reinforcement learning to trajectory generation.',
+      'Distilled models for deployment.',
     ],
+  },
+  {
+    title: 'Senior Applied Scientist',
+    org: '<a href="https://getcruise.com">Cruise</a>',
+    dates: 'October 2021 – April 2024',
+    location: 'Remote',
+    bullets: ['Applied imitation learning to trajectory generation.'],
   },
   {
     title: 'Director and President',
