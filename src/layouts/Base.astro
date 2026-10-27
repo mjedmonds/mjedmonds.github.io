@@ -1,0 +1,75 @@
+---
+import '../styles/global.css';
+import { author, nav } from '../data/site';
+
+interface Props {
+  title?: string; // omitted on the home page, which fills the "masthead" slot instead
+  description?: string;
+  lead?: string; // shown under the page heading
+}
+
+const { title, description = 'Mark Edmonds: Staff AI/ML Applied Scientist at General Motors.', lead } = Astro.props;
+const pageTitle = title ? `${title} | ${author}` : author;
+const path = Astro.url.pathname;
+const isActive = (href: string) => (href === '/' ? path === '/' : path.startsWith(href));
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={new URL(path, Astro.site)} />
+    <link rel="icon" href="/assets/img/favicon.png" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={new URL('/assets/img/prof_pic.jpg', Astro.site)} />
+    <!-- Apply a saved theme before first paint to avoid a flash. -->
+    <script is:inline>
+      try {
+        const theme = localStorage.getItem('theme');
+        if (theme) document.documentElement.dataset.theme = theme;
+      } catch {}
+    </script>
+  </head>
+  <body>
+    <header class:list={['masthead', { 'masthead-home': path === '/' }]}>
+      <div class="container header-inner">
+        <a class="site-name" href="/"><strong>Mark</strong> Edmonds</a>
+        <nav>
+          {nav.map((item) => (
+            <a href={item.href} aria-current={isActive(item.href) ? 'page' : undefined}>{item.label}</a>
+          ))}
+          <button class="theme-toggle" type="button" aria-label="Toggle dark mode">◐</button>
+        </nav>
+      </div>
+      <div class="container masthead-text">
+        <slot name="masthead">
+          <h1>{title}</h1>
+          {lead && <p>{lead}</p>}
+        </slot>
+      </div>
+    </header>
+
+    <main class="container">
+      <slot />
+    </main>
+
+    <footer class="container site-footer">© {new Date().getFullYear()} {author}</footer>
+
+    <script is:inline>
+      document.querySelector('.theme-toggle').addEventListener('click', () => {
+        const root = document.documentElement;
+        const dark = root.dataset.theme
+          ? root.dataset.theme === 'dark'
+          : matchMedia('(prefers-color-scheme: dark)').matches;
+        root.dataset.theme = dark ? 'light' : 'dark';
+        try {
+          localStorage.setItem('theme', root.dataset.theme);
+        } catch {}
+      });
+    </script>
+  </body>
+</html>

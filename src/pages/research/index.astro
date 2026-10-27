@@ -1,0 +1,22 @@
+---
+// Not linked from the nav, but project pages are still linked from experience and news.
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+
+const projects = (await getCollection('research')).sort((a, b) => a.data.order - b.data.order);
+---
+
+<Base
+  title="research"
+  lead="Humans build generalizable and explainable representations of their environment through interaction, observation, imitation, intervention, and language. This research explores how artificial agents can use these five concepts to learn robust and transferable representations of tasks and environments."
+>
+  <div class="grid">
+    {projects.map((p) => (
+      <a class="card card-link" href={`/research/${p.id}/`}>
+        {p.data.image && <img class="card-image" src={p.data.image} alt="" loading="lazy" />}
+        <h3>{p.data.title}</h3>
+        <p>{p.data.description}</p>
+      </a>
+    ))}
+  </div>
+</Base>

@@ -1,0 +1,24 @@
+---
+import { getCollection, render } from 'astro:content';
+
+interface Props {
+  limit?: number;
+}
+
+// Newest first; items in the same month keep their file order (2019-11-2 before 2019-11-1).
+const items = (await getCollection('news'))
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime() || b.id.localeCompare(a.id))
+  .slice(0, Astro.props.limit);
+
+const rows = await Promise.all(items.map(async (item) => ({ item, ...(await render(item)) })));
+const month = (d: Date) => d.toLocaleDateString('en-US', { month: 'short', year: 'numeric', timeZone: 'UTC' });
+---
+
+<ul class="news">
+  {rows.map(({ item, Content }) => (
+    <li>
+      <time datetime={item.data.date.toISOString().slice(0, 10)}>{month(item.data.date)}</time>
+      <div><Content /></div>
+    </li>
+  ))}
+</ul>

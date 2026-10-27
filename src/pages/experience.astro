@@ -1,0 +1,41 @@
+---
+import Base from '../layouts/Base.astro';
+import Card from '../components/Card.astro';
+import { education, work, type Role } from '../data/experience';
+
+const sections: [string, Role[]][] = [
+  ['Education', education],
+  ['Work experience', work],
+];
+---
+
+<Base title="experience" description="Work experience and education." lead="Work experience and education.">
+  <div class="links page-actions">
+    <a class="btn" href="/cv/mark_edmonds_resume.pdf">Resume (PDF)</a>
+    <a class="btn" href="/cv/mark_edmonds_cv.pdf">CV (PDF)</a>
+  </div>
+
+  {sections.map(([label, roles]) => (
+    <Card label={label}>
+      <div class="roles">
+        {roles.map((role) => (
+          <article class="role">
+            <div class="role-head">
+              <h3>{role.title}</h3>
+              <span class="muted">{role.dates}</span>
+            </div>
+            <p class="role-org">
+              <Fragment set:html={role.org} />
+              {role.location && <span class="muted"> · {role.location}</span>}
+            </p>
+            {role.bullets && (
+              <ul>
+                {role.bullets.map((b) => <li set:html={b} />)}
+              </ul>
+            )}
+          </article>
+        ))}
+      </div>
+    </Card>
+  ))}
+</Base>

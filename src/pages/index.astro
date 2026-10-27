@@ -1,0 +1,48 @@
+---
+import Base from '../layouts/Base.astro';
+import Card from '../components/Card.astro';
+import NewsList from '../components/NewsList.astro';
+import PaperItem from '../components/PaperItem.astro';
+import { papers } from '../lib/papers';
+import { socials } from '../data/site';
+---
+
+<Base>
+  <Fragment slot="masthead">
+    <h1><strong>Mark</strong> Edmonds</h1>
+    <p>Staff AI/ML Applied Scientist at <a href="https://www.gm.com">General Motors</a> · PhD, Computer Science, UCLA</p>
+  </Fragment>
+
+  <Card class="intro">
+    <div class="intro-text">
+      <p>
+        ML engineer, roboticist, and builder at heart. I'm interested in domains with direct societal benefits via
+        applied research. I want to use AI to save lives, make basic needs more affordable, and protect the environment.
+      </p>
+      <p>
+        I'm a Staff AI/ML Applied Scientist at <a href="https://www.gm.com">General Motors</a>, working on end-to-end
+        driving models. I joined GM through its acquisition of <a href="https://getcruise.com">Cruise</a>, where I spent
+        over four years on machine learning for autonomous driving. I received my PhD in Computer Science from UCLA
+        under <a href="http://www.stat.ucla.edu/~sczhu/">Dr. Song-Chun Zhu</a>, with a focus on artificial intelligence,
+        robotics, and cognitive science.
+      </p>
+      <div class="links">
+        {socials.map((s) => <a class="btn" href={s.href}>{s.label}</a>)}
+      </div>
+    </div>
+    <figure class="intro-photo">
+      <img src="/assets/img/prof_pic.jpg" alt="Mark Edmonds" width="800" height="800" />
+      <figcaption>(my friends call me Marcus)</figcaption>
+    </figure>
+  </Card>
+
+  <Card label="News" more={{ href: '/news/', text: 'All news' }}>
+    <NewsList limit={5} />
+  </Card>
+
+  <Card label="Selected publications" more={{ href: '/publications/', text: 'All publications' }}>
+    <div class="paper-list">
+      {papers.filter((p) => p.selected).map((paper) => <PaperItem paper={paper} />)}
+    </div>
+  </Card>
+</Base>

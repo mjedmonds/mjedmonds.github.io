@@ -1,0 +1,18 @@
+---
+import Base from '../layouts/Base.astro';
+import Card from '../components/Card.astro';
+import PaperItem from '../components/PaperItem.astro';
+import { papers } from '../lib/papers';
+
+const years = [...new Set(papers.map((p) => p.year))];
+---
+
+<Base title="publications" lead="* denotes equal contribution">
+  {years.map((year) => (
+    <Card label={String(year)}>
+      <div class="paper-list">
+        {papers.filter((p) => p.year === year).map((paper) => <PaperItem paper={paper} />)}
+      </div>
+    </Card>
+  ))}
+</Base>
