@@ -7,3 +7,6 @@ dist/
 .astro/
 node_modules/
 __pycache__/
+# Leftovers from the old Jekyll build
+_site/
+.jekyll-cache/
