@@ -290,7 +290,9 @@ pre {
   .intro-photo { order: -1; }
   .intro-photo img { width: 180px; margin: 0 auto; }
   .paper { grid-template-columns: 1fr; gap: 10px; }
-  .paper-side { flex-direction: row; align-items: center; }
-  .paper-side img { width: 96px; }
+  /* Full-width thumbnail with the venue badge over its corner */
+  .paper-side { position: relative; display: block; }
+  .paper-side img { width: 100%; aspect-ratio: 2 / 1; }
+  .paper-side:has(img) .badge { position: absolute; top: 8px; left: 8px; }
   .news li { grid-template-columns: 1fr; gap: 0; }
 }
