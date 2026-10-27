@@ -1,0 +1,126 @@
+---
+// Homework-submission instructions for CS 50. Not linked from the site; students got the URL directly.
+import Base from '../../layouts/Base.astro';
+import Card from '../../components/Card.astro';
+---
+
+<Base
+  title="Codeboard submission"
+  description="How CS 50 homework is submitted and graded on Codeboard."
+  lead="SMC CS 50 · Introduction to C Programming"
+>
+  <Card>
+    <div class="prose">
+      <p>
+        For this week’s assignments and onward, we will be using <a href="https://codeboard.io">codeboard.io</a> for
+        homework submissions. This will make submitting homework easier for a number of reasons:
+      </p>
+      <ol>
+        <li>
+          You can now verify your grade before the deadline. When you hit “Submit” on Codeboard, a testing framework
+          will execute and check the output of your program. This makes it easier to get full points, as you know in
+          advance which cases your program does not handle correctly.
+        </li>
+        <li>
+          Online IDE means you can work anywhere with an internet connection. There’s no more zipping of files, Visual
+          Studio, or XCode projects to set up. I will provide you with starter code, and then you go from there. You
+          hit Submit, and you’ve submitted your assignment.
+        </li>
+      </ol>
+      <p>See a demo video of Codeboard here:</p>
+      <div class="video">
+        <iframe src="https://www.youtube.com/embed/OqIvmbc6nrg" title="Codeboard demo" allow="fullscreen" allowfullscreen></iframe>
+      </div>
+    </div>
+  </Card>
+
+  <Card label="Notes about Codeboard">
+    <ol>
+      <li>
+        You are free to continue to use Visual Studio or XCode if you wish. However, all grading will occur on
+        Codeboard, so you are required to submit and pass the test cases on Codeboard.
+      </li>
+      <li>
+        You <strong>must</strong> be signed in when you submit. If you anonymously submit, you may be given a 0.
+        <ul>
+          <li>
+            Please make an account and use your <strong>SMC username</strong> as your Codeboard account username
+            (remove all spaces, underscores, and hyphens). If I cannot identify whose account belongs to whom, you will
+            get a 0 until the problem is fixed.
+          </li>
+        </ul>
+      </li>
+      <li>
+        You <strong>must</strong> save your work under the “<em>Project → Save changes</em>” menu item. <strong>Changes do not save automatically</strong>. <strong>Changes will not save unless you are signed up
+        and logged into your Codeboard account</strong> (you can tell whether or not you are signed in from the bottom
+        left corner). Your browser should warn you if you attempt to close the tab/page without saving. <strong>Pay attention</strong>.
+      </li>
+      <li>
+        Follow the instructions of each assignment. The output restrictions/expectations for test cases are very
+        rigid. A single misplaced character will result in failing a test case (or all).
+        <ul>
+          <li>
+            Any attempt to manipulate or subvert the grader without satisfying the requirements <strong>will result in an automatic 0</strong> for the assignment/quiz.
+          </li>
+        </ul>
+      </li>
+      <li>
+        When you submit your assignment, your output may look odd. The only thing you need to pay attention to is the
+        green or red test case output. The testing framework modifies text input/output (so I can compare against
+        correct answers), so it changes how the input/output appears.
+      </li>
+      <li>
+        The following naming conventions are reserved for the testing framework. Should you not adhere to these rules,
+        you may get a compilation error. You are <strong>not</strong> permitted to name any function or data member
+        (struct, enum, etc.) according to the following:
+        <ol>
+          <li>
+            <code>main()</code> - the testing framework defines <code>main()</code> for you. Your main is called <code>user_main()</code>.
+          </li>
+          <li>
+            Any function or data type starting with the name <code>reserved_</code>. For instance, <code>reserved_test()</code> is not permitted for use. These are reserved for the testing framework.
+          </li>
+        </ol>
+      </li>
+    </ol>
+    <p>
+      This tool is meant to make your life easier, and I think you’ll find it very useful in securing a good grade.
+      Please do not hesitate with questions, comments, or concerns.
+    </p>
+  </Card>
+
+  <Card label="FAQ">
+    <ol>
+      <li>
+        <strong>My score is -1, why?</strong>
+        <ol>
+          <li>
+            The first possibility is that your program has more inputs than expected by the testing framework. For
+            instance, you may have added an unexpected loop (the description will be clear if a loop is needed), or you
+            may prompt for an additional value. If your program has an extra input, the Codeboard submission will never
+            finish and eventually time out, leading to a -1.
+          </li>
+          <li>
+            Second, less likely possibility: there’s a problem with the testing framework. If you are confident you
+            have matched the number of inputs in the description, please reach out if you believe there is a problem.
+            A -1 grade is a common indicator something isn’t configured properly between Codeboard and Canvas.
+          </li>
+        </ol>
+      </li>
+      <li>
+        <strong>The professor sent a note that the testing framework in Codeboard was updated. How can I get the latest
+        version?</strong>
+        <ol>
+          <li>Save all of your files locally. Copy the contents of all of your .cpp and .h files to your local machine.</li>
+          <li>
+            We’re going to reset your Codeboard project. When you launch the assignment, you should see a prompt about
+            “keeping your version” vs. “using the original.” Pick use the original. This will reset your Codeboard
+            project to the latest version.
+          </li>
+          <li>Recreate all of your files and paste in the source.</li>
+          <li>Run the tests again with the latest version!</li>
+        </ol>
+      </li>
+    </ol>
+  </Card>
+</Base>

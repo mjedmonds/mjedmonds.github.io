@@ -1,0 +1,44 @@
+---
+// Student project showcase for CS 80. Not linked from the site; shared with students directly.
+import Base from '../../../layouts/Base.astro';
+import Card from '../../../components/Card.astro';
+
+type Project = { title: string; href: string; by?: string };
+
+const sections: [string, Project[]][] = [
+  [
+    'Recent examples',
+    [
+      { title: 'Memory Game', href: '/CS80/project_examples/memory_game/memory_game.html', by: 'Kyle Fox' },
+      { title: 'Minesweeper', href: '/CS80/project_examples/minesweeper/minesweeper.html', by: 'Jos Cashon' },
+      { title: 'Motivator Map', href: '/CS80/project_examples/motivator_map/motivatormap.html', by: 'Daniel Castillo' },
+      { title: 'Rock Paper Scissors Game', href: '/CS80/project_examples/rockpaperscissors/rockpaperscissors.html', by: 'Cristian Verduzco' },
+      { title: 'Color and Derivative Game', href: '/CS80/project_examples/colormathgame/main.html' },
+      { title: 'Macaron Site', href: 'http://simplyjic.com/MacaronSiteProject/' },
+    ],
+  ],
+  [
+    'Older examples',
+    [
+      { title: 'Random Flickr Pics', href: 'https://majormike.us/cs80/', by: 'Michael Taefi' },
+      { title: 'PHP Flash Cards', href: 'http://jenifrei.com/project/cards2.html' },
+      { title: 'Superfood Snacks', href: 'http://www.superfoodsnacks.com/' },
+    ],
+  ],
+];
+---
+
+<Base title="CS 80 project examples" description="Team projects from SMC CS 80 students." lead="SMC CS 80 · Internet Programming">
+  {sections.map(([label, projects]) => (
+    <Card label={label}>
+      <ul class="courses">
+        {projects.map((p) => (
+          <li>
+            <a href={p.href}>{p.title}</a>
+            {p.by && <span class="muted"> by {p.by}</span>}
+          </li>
+        ))}
+      </ul>
+    </Card>
+  ))}
+</Base>
