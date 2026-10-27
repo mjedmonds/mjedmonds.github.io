@@ -178,7 +178,7 @@ pre {
 .intro { display: grid; grid-template-columns: 1fr 200px; gap: 28px; padding: 28px; }
 .intro-text .links { margin-top: 16px; }
 .intro-photo { margin: 0; }
-.intro-photo img { border: 1px solid var(--border); }
+.intro-photo img { border: 1px solid var(--border); border-radius: 50%; aspect-ratio: 1; object-fit: cover; } /* the one round element */
 .intro-photo figcaption { margin-top: 8px; color: var(--muted); font-size: 0.85rem; text-align: center; }
 
 /* News */
