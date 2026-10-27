@@ -2,6 +2,7 @@ export const author = 'Mark Edmonds';
 
 export const nav = [
   { href: '/', label: 'about' },
+  { href: '/news/', label: 'news' },
   { href: '/publications/', label: 'publications' },
   { href: '/experience/', label: 'experience' },
   { href: '/teaching/', label: 'teaching' },
