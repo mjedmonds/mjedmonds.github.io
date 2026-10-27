@@ -27,13 +27,13 @@ export const work: Role[] = [
   {
     title: 'Director and President',
     org: 'Center for AI and Robot Autonomy (CARA)',
-    dates: 'March 2021 – present',
-    bullets: ['Define updated mission and vision statements, seek alternative funding, and maintain 501(c)(3) status.'],
+    dates: 'March 2021 – May 2025',
+    bullets: ['Defined updated mission and vision statements, sought alternative funding, and maintained 501(c)(3) status.'],
   },
   {
     title: 'Adjunct Professor',
     org: 'Santa Monica College',
-    dates: 'June 2016 – present',
+    dates: 'June 2016 – September 2021',
     bullets: [
       'Taught one or two 45-student classes per quarter: led lectures, held office hours, and created course materials.',
       'Instructed 25 courses: Internet Programming (HTML, CSS, JavaScript, MySQL, and PHP), Intro to C, and Intro to C++. See <a href="/teaching/">teaching</a>.',
