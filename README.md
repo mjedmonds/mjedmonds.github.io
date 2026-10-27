@@ -1,6 +1,6 @@
 # mjedmonds.com
 
-Personal site built with [Astro](https://astro.build) and a small custom theme (one CSS file, no client-side framework). `.github/workflows/deploy.yml` builds it on every push to `master` and deploys it to GitHub Pages; the Pages source must be set to **GitHub Actions**.
+Personal site built with [Astro](https://astro.build) and a small custom theme, mjedmonds-theme (one CSS file, no client-side framework). `.github/workflows/deploy.yml` builds it on every push to `master` and deploys it to GitHub Pages; the Pages source must be set to **GitHub Actions**.
 
 ## Content
 

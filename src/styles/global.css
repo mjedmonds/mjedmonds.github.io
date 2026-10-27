@@ -1,3 +1,4 @@
+/* mjedmonds-theme */
 /* Square corners throughout. Light and dark values side by side; the OS setting picks one unless the toggle sets data-theme. */
 :root {
   color-scheme: light dark;
