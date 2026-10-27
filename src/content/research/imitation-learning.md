@@ -18,4 +18,4 @@ publications: [edmonds2017feeling, xie2018unsupervised, liu2017glove]
 
 <div class="video"><iframe src="https://player.vimeo.com/video/161556506" title="Video" allow="fullscreen" allowfullscreen></iframe></div>
 
-**Collaborators:** [Feng Gao](https://fen9.github.io/), [Hangxin Liu](https://liuhx111.github.io/), [Xu Xie](https://xuxie1031.github.io/), Matt Millar, [Siyuan Qi](http://web.cs.ucla.edu/~syqi/), [Yixin Zhu](http://www.yzhu.io/), Brandon Rothrock (NASA JPL), [Song-Chun Zhu](http://www.stat.ucla.edu/~sczhu/)
+**Collaborators:** [Feng Gao](https://fen9.github.io/), [Hangxin Liu](https://liuhx111.github.io/), [Xu Xie](https://xuxie1031.github.io/), Matt Millar, [Siyuan Qi](http://web.cs.ucla.edu/~syqi/), [Yixin Zhu](https://yzhu.io/), Brandon Rothrock (NASA JPL), [Song-Chun Zhu](https://zhusongchun.net/)

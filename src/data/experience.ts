@@ -20,7 +20,7 @@ export const work: Role[] = [
   },
   {
     title: 'Senior Applied Scientist II',
-    org: '<a href="https://getcruise.com">Cruise</a>',
+    org: '<a href="https://en.wikipedia.org/wiki/Cruise_(autonomous_vehicle)">Cruise</a>',
     dates: 'April 2024 – February 2026',
     location: 'Remote',
     bullets: [
@@ -32,7 +32,7 @@ export const work: Role[] = [
   },
   {
     title: 'Senior Applied Scientist',
-    org: '<a href="https://getcruise.com">Cruise</a>',
+    org: '<a href="https://en.wikipedia.org/wiki/Cruise_(autonomous_vehicle)">Cruise</a>',
     dates: 'October 2021 – April 2024',
     location: 'Remote',
     bullets: ['Applied imitation learning to trajectory generation.'],

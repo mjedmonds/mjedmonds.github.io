@@ -13,4 +13,4 @@ publications: [edmonds2020theory, edmonds2019decomposing, edmonds2018human, zhan
 
 <div class="video"><iframe src="https://player.vimeo.com/video/391773142" title="Video" allow="fullscreen" allowfullscreen></iframe></div>
 
-**Collaborators:** [Yixin Zhu](http://www.yzhu.io/), [James Kubricht](https://sites.google.com/view/jameskubricht/home), Brandon Rothrock (NASA JPL), [Hongjing Lu](http://cvl.psych.ucla.edu/people.htm), [Song-Chun Zhu](http://www.stat.ucla.edu/~sczhu/)
+**Collaborators:** [Yixin Zhu](https://yzhu.io/), [James Kubricht](https://sites.google.com/view/jameskubricht/home), Brandon Rothrock (NASA JPL), [Hongjing Lu](http://cvl.psych.ucla.edu/people.htm), [Song-Chun Zhu](https://zhusongchun.net/)

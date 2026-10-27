@@ -35,7 +35,7 @@ ul { margin: 0.5em 0 0; padding-left: 1.25em; }
 li + li { margin-top: 0.25em; }
 .muted { color: var(--muted); }
 
-.container { max-width: 880px; margin: 0 auto; padding: 0 16px; }
+.container { max-width: 1040px; margin: 0 auto; padding: 0 16px; }
 
 /* Masthead: the robot photo from the original site, behind the nav and the page title */
 .masthead {

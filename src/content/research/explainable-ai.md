@@ -12,4 +12,4 @@ publications: [edmonds2019tale, yuan2022situ]
 
 <div class="video"><iframe src="https://player.vimeo.com/video/380861069" title="Video" allow="fullscreen" allowfullscreen></iframe></div>
 
-**Collaborators:** [Feng Gao](https://fen9.github.io/), [Hangxin Liu](https://liuhx111.github.io/), [Xu Xie](https://xuxie1031.github.io/), [Siyuan Qi](http://web.cs.ucla.edu/~syqi/), Brandon Rothrock (NASA JPL), [Yixin Zhu](http://www.yzhu.io/), [Ying Nian Wu](http://www.stat.ucla.edu/~ywu/), [Hongjing Lu](http://cvl.psych.ucla.edu/people.htm), [Song-Chun Zhu](http://www.stat.ucla.edu/~sczhu/)
+**Collaborators:** [Feng Gao](https://fen9.github.io/), [Hangxin Liu](https://liuhx111.github.io/), [Xu Xie](https://xuxie1031.github.io/), [Siyuan Qi](http://web.cs.ucla.edu/~syqi/), Brandon Rothrock (NASA JPL), [Yixin Zhu](https://yzhu.io/), [Ying Nian Wu](http://www.stat.ucla.edu/~ywu/), [Hongjing Lu](http://cvl.psych.ucla.edu/people.htm), [Song-Chun Zhu](https://zhusongchun.net/)
