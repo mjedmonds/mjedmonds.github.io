@@ -1,6 +1,7 @@
 import type { AstroIntegration } from 'astro';
 import { createReadStream } from 'node:fs';
 import { cp, mkdir, stat } from 'node:fs/promises';
+import type { IncomingMessage, ServerResponse } from 'node:http';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -50,13 +51,30 @@ export default function legacy(): AstroIntegration {
   return {
     name: 'legacy-content',
     hooks: {
-      // `astro dev`: serve legacy files straight from the repo.
-      'astro:server:setup': ({ server }) => {
-        server.middlewares.use(async (req, res, next) => {
-          const file = await resolveLegacy((req.url ?? '/').split('?')[0]);
-          if (!file) return next();
-          res.setHeader('Content-Type', MIME[path.extname(file).toLowerCase()] ?? 'application/octet-stream');
-          createReadStream(file).pipe(res);
+      // `astro dev`: serve legacy files straight from the repo. Astro's dev route guard 404s
+      // page requests for files outside src/ and public/, and it puts itself at the front of
+      // the middleware stack once the server is set up. This plugin's post hook runs after
+      // Astro's, so unshifting here puts the legacy handler ahead of the guard.
+      'astro:config:setup': ({ updateConfig }) => {
+        updateConfig({
+          vite: {
+            plugins: [
+              {
+                name: 'legacy-content-dev',
+                configureServer: (server) => () => {
+                  server.middlewares.stack.unshift({
+                    route: '',
+                    handle: async (req: IncomingMessage, res: ServerResponse, next: () => void) => {
+                      const file = await resolveLegacy((req.url ?? '/').split('?')[0]);
+                      if (!file) return next();
+                      res.setHeader('Content-Type', MIME[path.extname(file).toLowerCase()] ?? 'application/octet-stream');
+                      createReadStream(file).pipe(res);
+                    },
+                  });
+                },
+              },
+            ],
+          },
         });
       },
       // `astro build`: copy legacy files into the output.

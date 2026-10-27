@@ -36,14 +36,19 @@ li + li { margin-top: 0.25em; }
 
 .container { max-width: 880px; margin: 0 auto; padding: 0 16px; }
 
-/* Header */
-.site-header {
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  background: var(--surface);
-  border-bottom: 1px solid var(--border);
+/* Masthead: the robot photo from the original site, behind the nav and the page title */
+.masthead {
+  position: relative;
+  color: #fff;
+  background: #1c1918 url('/assets/img/header.jpg') center 72% / cover no-repeat;
 }
+.masthead::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgb(0 0 0 / 0.62), rgb(0 0 0 / 0.18));
+}
+.masthead > * { position: relative; }
 .header-inner {
   display: flex;
   flex-wrap: wrap;
@@ -53,31 +58,33 @@ li + li { margin-top: 0.25em; }
   min-height: 56px;
   padding-block: 8px;
 }
-.site-name { color: var(--text); font-size: 1.15rem; font-weight: 300; }
+.site-name { color: #fff; font-size: 1.15rem; font-weight: 300; }
 .site-name strong { font-weight: 650; }
 nav { display: flex; flex-wrap: wrap; align-items: center; gap: 2px; }
-nav a {
-  color: var(--muted);
-  padding: 4px 10px;
-}
-nav a:hover { color: var(--text); background: var(--accent-soft); text-decoration: none; }
-nav a[aria-current='page'] { color: var(--accent); font-weight: 600; }
+nav a { color: rgb(255 255 255 / 0.8); padding: 4px 10px; }
+nav a:hover { color: #fff; background: rgb(255 255 255 / 0.14); text-decoration: none; }
+nav a[aria-current='page'] { color: #fff; font-weight: 600; box-shadow: inset 0 -2px 0 #fff; }
 .theme-toggle {
   margin-left: 4px;
   width: 32px;
   height: 32px;
-  border: 1px solid var(--border);
+  border: 1px solid rgb(255 255 255 / 0.45);
   background: none;
-  color: var(--muted);
+  color: #fff;
   font-size: 1rem;
   cursor: pointer;
 }
-.theme-toggle:hover { color: var(--text); }
+.theme-toggle:hover { background: rgb(255 255 255 / 0.14); }
+
+.masthead-text { padding-block: 32px 36px; }
+.masthead-text h1 { font-size: 2rem; font-weight: 650; }
+.masthead-text p { max-width: 640px; margin: 8px 0 0; color: rgb(255 255 255 / 0.85); }
+.masthead-text a { color: #fff; text-decoration: underline; text-decoration-color: rgb(255 255 255 / 0.5); }
+.masthead-home .masthead-text { padding-block: 120px 64px; }
+.masthead-home h1 { font-size: 3rem; font-weight: 300; }
+.masthead-home h1 strong { font-weight: 650; }
 
 main.container { padding-block: 32px 16px; display: flex; flex-direction: column; gap: 20px; }
-
-.page-heading h1 { font-size: 2rem; font-weight: 650; }
-.page-heading p { color: var(--muted); margin-top: 6px; }
 
 .site-footer {
   padding-block: 24px 40px;
@@ -166,9 +173,7 @@ pre {
 
 /* Home intro */
 .intro { display: grid; grid-template-columns: 1fr 200px; gap: 28px; padding: 28px; }
-.intro h1 { font-size: 2.25rem; font-weight: 300; }
-.intro h1 strong { font-weight: 650; }
-.subtitle { color: var(--muted); margin: 6px 0 16px; }
+.intro-text .links { margin-top: 16px; }
 .intro-photo { margin: 0; }
 .intro-photo img { border: 1px solid var(--border); }
 .intro-photo figcaption { margin-top: 8px; color: var(--muted); font-size: 0.85rem; text-align: center; }
@@ -196,6 +201,15 @@ pre {
 .paper .authors { color: var(--muted); }
 .paper .authors strong { color: var(--text); }
 
+/* Teaching */
+.courses { list-style: none; margin: 0; padding: 0; }
+.courses li { margin: 0; padding: 14px 0; }
+.courses li:first-child { padding-top: 0; }
+.courses li:last-child { padding-bottom: 0; }
+.courses li + li { border-top: 1px solid var(--border); }
+.courses h3 { font-size: 1rem; font-weight: 600; margin-bottom: 4px; }
+.courses p { font-size: 0.95rem; margin: 0 0 4px; }
+
 /* Experience */
 .roles > * + * { border-top: 1px solid var(--border); }
 .role { padding: 14px 0; }
@@ -217,6 +231,8 @@ pre {
   main.container { padding-top: 20px; }
   nav { margin-left: -8px; }
   nav a { padding: 4px 8px; }
+  .masthead-home .masthead-text { padding-block: 64px 40px; }
+  .masthead-home h1 { font-size: 2.25rem; }
   .card { padding: 16px; }
   .card-image { width: calc(100% + 32px); margin: -16px -16px 14px; }
   .intro { grid-template-columns: 1fr; padding: 20px 16px; }

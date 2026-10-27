@@ -3,7 +3,7 @@ import '../styles/global.css';
 import { author, nav } from '../data/site';
 
 interface Props {
-  title?: string; // omitted on the home page
+  title?: string; // omitted on the home page, which fills the "masthead" slot instead
   description?: string;
   lead?: string; // shown under the page heading
 }
@@ -35,7 +35,7 @@ const isActive = (href: string) => (href === '/' ? path === '/' : path.startsWit
     </script>
   </head>
   <body>
-    <header class="site-header">
+    <header class:list={['masthead', { 'masthead-home': path === '/' }]}>
       <div class="container header-inner">
         <a class="site-name" href="/"><strong>Mark</strong> Edmonds</a>
         <nav>
@@ -45,15 +45,15 @@ const isActive = (href: string) => (href === '/' ? path === '/' : path.startsWit
           <button class="theme-toggle" type="button" aria-label="Toggle dark mode">◐</button>
         </nav>
       </div>
+      <div class="container masthead-text">
+        <slot name="masthead">
+          <h1>{title}</h1>
+          {lead && <p>{lead}</p>}
+        </slot>
+      </div>
     </header>
 
     <main class="container">
-      {title && (
-        <div class="page-heading">
-          <h1>{title}</h1>
-          {lead && <p>{lead}</p>}
-        </div>
-      )}
       <slot />
     </main>
 
