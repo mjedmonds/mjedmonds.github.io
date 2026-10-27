@@ -1,0 +1,38 @@
+---
+// Course landing pages from the old site, at their old URLs (/CS80/CS80.html). The slides,
+// PDFs and examples they link to are still legacy files (src/integrations/legacy.ts).
+import { Code } from 'astro:components';
+import Base from '../../layouts/Base.astro';
+import Card from '../../components/Card.astro';
+import { courses } from '../../data/teaching';
+
+type Block = { html: string } | { code: string; lang: string };
+type CoursePage = { path: string; sections: { title: string; id: string | null; blocks: Block[] }[] };
+
+export function getStaticPaths() {
+  const pages = import.meta.glob<CoursePage>('../../data/courses/*.json', { eager: true, import: 'default' });
+  return Object.values(pages).map((page) => {
+    const [course, name] = page.path.split('/');
+    return { params: { course, name }, props: { page } };
+  });
+}
+
+const { page } = Astro.props as { page: CoursePage };
+const course = courses.find((c) => c.href === `/${page.path}.html`)!;
+---
+
+<Base title={course.title} description={course.summary} lead={course.summary}>
+  {page.sections.map((section) => (
+    <Card label={section.title} id={section.id ?? undefined}>
+      <div class="course prose">
+        {section.blocks.map((block) =>
+          'code' in block ? (
+            <Code code={block.code} lang={block.lang as 'cpp' | 'txt'} themes={{ light: 'github-light', dark: 'github-dark' }} defaultColor={false} />
+          ) : (
+            <div set:html={block.html} />
+          ),
+        )}
+      </div>
+    </Card>
+  ))}
+</Base>

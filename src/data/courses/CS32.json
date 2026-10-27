@@ -1,0 +1,158 @@
+{
+  "path": "CS32/CS32",
+  "sections": [
+    {
+      "title": "General",
+      "id": null,
+      "blocks": [
+        {
+          "html": "<p><em>Spring 2016</em></p>\n<p>\nThe purpose of this site is to provide small code examples of particular concepts presented in discussion. It is not intended to replace attending discussion.\n<h5>General questions to ask yourself during this course:</h5>\n<ol>\n<li>Does my function work for cases in the middle? </li>\n<li>Does my function work for beginning cases?</li>\n<li>Does my function work for end cases?</li>\n<li>Does my function work for an empty structure?</li>\n<li>Does my function work for single-element structures?</li>\n<li>Does my function protect against undefined references?</li>\n</ol>\n</p>\nContent:\n<ul>\n<li>\n<a href=\"#ctors\">Constructors, Destructors, Copy Constructors, Assignment Operators</a>\n</li>\n<li>\n<a href=\"#linkedlists\">Linked Lists</a>\n</li>\n<li>\n<a href=\"#StacksQueues\">Stacks and Queues</a>\n</li>\n<li>\n<a href=\"#RecursionTemplates\">Recursion and Templates</a>\n</li>\n<li>\n<a href=\"#InheritancePolymorphism\">Inheritance and Polymorphism</a>\n</li>\n<li>\n<a href=\"#Sorting\">Sorting</a>\n</li>\n</ul>"
+        }
+      ]
+    },
+    {
+      "title": "Constructors, Destructors, Copy Constuctors, Assignment Operators",
+      "id": "ctors",
+      "blocks": [
+        {
+          "html": "<h5>Key Concepts</h5>\n<ul>\n<li>If you dynamically allocate memory, you need to write your own (this is not an exhaustive list in general, just what we have covered so far):</li>\n<ul>\n<li>destructor</li>\n<li>copy constructor</li>\n<li>assignment operator</li>\n</ul>\n</ul>\n<h5>main.cpp</h5>"
+        },
+        {
+          "code": "#include <iostream>\n\nclass Class1\n{\n public:\n  Class1();                              // constructor\n  ~Class1();                             // destructor\n  Class1(const Class1& obj);             // copy constructor\n  Class1& operator=(const Class1& rhs);  // assignment operator\n\n  int geta() { return *a_; }\n  int getb() { return b_; }\n  void seta(int a) { *a_ = a; }\n  void setb(int b) { b_ = b; }\n private:\n  int* a_;\n  int b_;\n};\n\nClass1::Class1() : b_(10) // member initializer list\n{\n  a_ = new int(5);\n  std::cout << \"Class1 constructor\" << std::endl;\n}\n\nClass1::~Class1()\n{\n  delete a_;\n  std::cout << \"Class1 destructor\" << std::endl;\n}\n\nClass1::Class1(const Class1& obj)\n{\n  // deep copy the contects of obj into this\n  a_ = new int;\n  *a_ = *obj.a_;\n  b_ = obj.b_;\n  std::cout << \"Class1 copy-constructor\" << std::endl;\n}\n\nClass1& Class1::operator=(const Class1& rhs)\n{\n  if(this == &rhs) //assignment to self\n    return *this;\n  // deep copy the contects of rhs into this\n  a_ = new int;\n  *a_ = *rhs.a_;\n  b_ = rhs.b_;\n  std::cout << \"Class1 assignment operator called\" << std::endl;\n  return *this;\n}\n\nint main()\n{\n  // Part 1. Construction\n  Class1 c1;\n  std::cout << \"c1 exists in main()\" << std::endl;\n  // Part 2. Destructor\n  Class1* c1_ptr = new Class1;\n  std::cout << \"c1_ptr exists in main()\" << std::endl;\n  delete c1_ptr;\n  // Part 3. Copy Constructors\n  Class1 c2(c1);\n  std::cout << \"c2 exists in main()\\n\";\n  // Part 4. Assignment Operator\n  Class1 c3;\n  c3 = c2;\n  std::cout << \"c3 exists in main()\\n\";\n  // Note that destructors for c1, c2, c3 will called at the end of main()\n}",
+          "lang": "cpp"
+        },
+        {
+          "html": "<h5>Output: </h5>"
+        },
+        {
+          "code": "Class1 constructor\nc1 exists in main()\nClass1 constructor\nc1_ptr exists in main()\nClass1 destructor\nClass1 copy-constructor\nc2 exists in main()\nClass1 constructor\nClass1 assignment operator called\nc3 exists in main()\nClass1 destructor\nClass1 destructor\nClass1 destructor",
+          "lang": "txt"
+        }
+      ]
+    },
+    {
+      "title": "Linked Lists",
+      "id": "linkedlists",
+      "blocks": [
+        {
+          "html": "The following code stubs are for example's sake and need a full linked list to actually be useful. Given the nature of project 2, I can't give you a linked list class! But this should still be helpful. We will rely heavily on this <a href=\"/CS32/SupplementLinkedLists.pdf\">supplemental material</a>. Let's start with this basic definition of a node:"
+        },
+        {
+          "code": "// Simple class, for the sake of the demo\n// This should live inside of a linked list class\nclass Node\n{\n public:\n  Node() : m_prev(nullptr), m_next(nullptr) {}\n  Node* m_prev;\n  Node* m_next;\n  int value;\n}",
+          "lang": "cpp"
+        },
+        {
+          "html": "Now suppose you wanted to remove the head item in the linked list. Consider the following:"
+        },
+        {
+          "code": "// this function lives somewhere in the LinkedList class\n// initial remove_head()\nvoid remove_head()\n{  // so much bad!\n  Node* old_head = head;\n  //might be dereferencing nullptr (Q 4,6)\n  head = head->m_next;\n  //might be dereferencing nullptr (Q 5,6)\n  head->m_prev = nullptr; \n  delete old_head;\n}",
+          "lang": "cpp"
+        },
+        {
+          "html": "This has a lot of problems: 1) head might be null, 2) if we are removing the last element, we should update tail:"
+        },
+        {
+          "code": "// safe remove head function\nvoid remove_head()\n{\n  if (head != nullptr)\n  {  // make sure head is safe to dereference\n    Node* old_head = head;\n    head = head->m_next;\n    if (head == nullptr)\n    {  // if head is at nullptr, tail should be too\n      tail = nullptr;\n    }\n    else\n    {  // safe to deference head in this case\n       // set new head's previous to null\n      head->m_prev = nullptr;\n    }\n    delete old_head;\n  }\n}",
+          "lang": "cpp"
+        },
+        {
+          "html": "Here we introduce a circularly linked list (see <a href=\"/CS32/SupplementLinkedLists.pdf\">supplemental</a>) to make our implementation less error prone. Note that we don't need a tail in a circularly linked list, as that is simply head-&gt;previous:"
+        },
+        {
+          "code": "// circularly linked list safe function\n// Note: explicit tail is removed from this model\nvoid remove_head()\n{\n  if (head != nullptr)\n  {  // make sure head is safe to dereference\n    Node* old_head = head;\n    if (head->m_next == head)\n    {  // removing the last element\n      head = nullptr;\n    }\n    else\n    {  // Things to do:\n      //  1) update head\n      //  2) update new head's previous\n      //  3) update tail's next\n      head = head->m_next;\n      // copy old previous\n      head->m_prev = old_head->m_prev;\n      // update tail's next\n      head->m_prev->m_next = head;\n    }\n    delete old_head;\n  }\n}",
+          "lang": "cpp"
+        },
+        {
+          "html": "We'll introduce a dummy node to further reduce the error-proniness of our implementation (see <a href=\"/CS32/SupplementLinkedLists.pdf\">supplemental</a>). The resulting remove_head() function is:"
+        },
+        {
+          "code": "// dummy included\n// main advantage: there is *always* at least one element in the list!\n//    This avoids a lot of the special cases we had to handle\nvoid remove_head()\n{\n  Node* actual_head = head->m_next;\n  if (actual_head != head)\n  {  // don't want to delete the dummy head, empty list case if oldHead == head\n    // Things to do:\n    // 1) update dummy head's next to the new actual head\n    // 2) update new actual head's previous to the dummy head\n    head->m_next = actual_head->m_next;\n    actual_head->m_next->m_prev = head;\n    delete actual_head;\n  }\n}",
+          "lang": "cpp"
+        },
+        {
+          "html": "Notice how much simplier our final implementation is compared to our initial correct version. The key takeaway: we can reduce the complexity of our implementation by removing edge cases from our data structure model."
+        }
+      ]
+    },
+    {
+      "title": "Stacks and Queues",
+      "id": "StacksQueues",
+      "blocks": [
+        {
+          "html": "<h5>Stacks</h5>\n<p>\nStacks follow a First-In, Last-Out (FILO) policy. Stacks have three primary operations: push, pop, and top. Push adds an element to the stack. Pop removes and element from the stack. Top access the element at the top of the stack. Typical stack usage consists of at least one push, followed by top, then pop. You can obviously push after popping.\n</p>\n<p>\nHere's the implementation we created in class, using the standard library's list class as our underlying data structure.\n</p>"
+        },
+        {
+          "code": "#include <list>\n#include <iostream>\n#include <stdexcept>\n\ntypedef int ItemType;\n\nclass Stack\n{\n public:\n  Stack();\n  bool pop();\n  ItemType top();\n  void push(const ItemType& val);\n  int size() { return list_.size(); }\n private:\n  std::list<ItemType> list_;\n};\n\nStack::Stack()\n{\n}\n\nbool Stack::pop()\n{\n  if (list_.size() == 0)\n    return false;\n\n  list_.pop_front();\n  return true;\n}\n\nItemType Stack::top()\n{\n  if (list_.size() == 0)\n    throw std::runtime_error(\"Trying to access empty stack\");\n\n  return list_.front();\n}\n\nvoid Stack::push(const ItemType& val)\n{\n  list_.push_front(val);\n}\n\nint main()\n{\n  Stack s;\n  s.push(5);\n  s.push(6);\n  s.push(7);\n  try\n  {\n    std::cout << s.top() << std::endl;\n    s.pop();\n    std::cout << s.top() << std::endl;\n    s.pop();\n    std::cout << s.top() << std::endl;\n    s.pop();\n  }\n  catch (std::runtime_error e)\n  {\n    std::cout << e.what() << std::endl;\n  }\n}",
+          "lang": "cpp"
+        },
+        {
+          "html": "<h5>Queues</h5>\n<p>\nQueues follow a First-In, First-Out (FIFO) policy. Queues have three primary operations: enqueue, dequeue, and front. Enqueue adds an element to the queue. Dequeue removes and element from the queue. Front access the element at the top of the queue.\n</p>\n<p>\nHere's the implementation we created in class, using the standard library's list class as our underlying data structure. Notice that outside of renaming functions, we only changed one line of one function: where we insert elements into our linked list (at the beginning for a stack, now at the end).\n</p>"
+        },
+        {
+          "code": "#include <list>\n#include &lt;iostream&gt;\n#include &lt;stdexcept&gt;\n\ntypedef int ItemType;\n\nclass Queue\n{\n public:\n  Queue();\n  bool dequeue();\n  ItemType front();\n  void enqueue(const ItemType& val);\n  int size() { return list_.size(); }\n private:\n  std::list<ItemType> list_;\n};\n\nQueue::Queue()\n{\n}\n\nbool Queue::dequeue()\n{\n  if (list_.size() == 0)\n    return false;\n\n  list_.pop_front();\n  return true;\n}\n\nItemType Queue::front()\n{\n  if (list_.size() == 0)\n    throw std::runtime_error(\"Trying to access empty stack\");\n\n  return list_.front();\n}\n\nvoid Queue::enqueue(const ItemType& val)\n{\n  list_.push_back(val);\n}\n\nint main()\n{\n  Queue s;\n  s.enqueue(5);\n  s.enqueue(6);\n  s.enqueue(7);\n  try\n  {\n    std::cout << s.front() << std::endl;\n    s.dequeue();\n    std::cout << s.front() << std::endl;\n    s.dequeue();\n    std::cout << s.front() << std::endl;\n    s.dequeue();\n  }\n  catch (std::runtime_error e)\n  {\n    std::cout << e.what() << std::endl;\n  }\n}",
+          "lang": "cpp"
+        }
+      ]
+    },
+    {
+      "title": "Recursion and Templates",
+      "id": "RecursionTemplates",
+      "blocks": [
+        {
+          "html": "<h5>Recursion</h5>\n<p>Recursion is an incredibly powerful and critical mechanism to control a function's repeated execution. Recursive functions call themselves and terminate upon a <i>base case</i>. The base case is a condition for the function to stop calling itself. Without it, a recursive function will call itself forever, eventually crashing your program due to stack overflow (or other nasty things). I unfortunately cannot post what we went over in class online since it was based on the homework solution, however, you should have received an email with the solutions. The basic idea I presented to help with debugging/examining recursive functions is the following: visually display the level of recursion using a depth parameter and a simple helper function. Here's the helper function:</p>"
+        },
+        {
+          "code": "void print_tabs(int level)\n{\n  // print tabs out to the level\n  for (int i = 0; i < level; i++)\n  {\n    std::cout << \"\\t\";\n  }\n  std::cout << \"level: \" << level;\n}",
+          "lang": "cpp"
+        },
+        {
+          "html": "<p>To use it, you would add a parameter to represent the recursive level you are currently executing. Here's an example:\n</p>"
+        },
+        {
+          "code": "int indexOfLeast(const string a[], int n, int level)",
+          "lang": "cpp"
+        },
+        {
+          "html": "<p>In the recursive call to <code>indexOfLeast()</code>, you increment the current level. This way, calls to <code>print_tabs()</code> will print the number of tabs of the current recursive depth, providing a nice visualization. See the following example for <code>indexOfLeast()</code>:\n</p>"
+        },
+        {
+          "code": "level: 0\n\tlevel: 1\n\t\tlevel: 2\n\t\t\tlevel: 3\n\t\t\tlevel: 3\treturning: 0\n\t\tlevel: 2\tk: 1\treturning: 0\n\tlevel: 1\tk: 1\treturning: 1\nlevel: 0\tk: 2\treturning: 2\n2",
+          "lang": "cpp"
+        },
+        {
+          "html": "<h5>Templates</h5>\n<p>\nTemplates enable generic types for a given class or function. This is similar to the <code>typedef ItemType int</code> we used for our Stack and Queue class, but significantly more abstract and power. Templates allow for generic types of a given class for function. What does this mean? For templated functions, you don't have to worry about the types passed to the function - if the user passes two ints or two strings, the function will process the corresponding types the same way. This does place a requirement on the types passed; the types must support the operations the function performs (e.g. the operators used are defined for T). Here's our stack and queue class implemented using templates:\n</p>"
+        },
+        {
+          "code": "#include <list>\n#include <iostream>\n#include <stdexcept>\n\ntemplate<typename T>\nclass Stack\n{\n public:\n  Stack();\n  bool pop();\n  T top();\n  void push(const T& val);\n  int size() { return list_.size(); }\n private:\n  std::list<T> list_;\n};\n\ntemplate<typename T>\nStack<T>::Stack()\n{\n}\n\ntemplate<typename T>\nbool Stack<T>::pop()\n{\n  if (list_.size() == 0)\n    return false;\n\n  list_.pop_front();\n  return true;\n}\n\ntemplate<typename T>\nT Stack<T>::top()\n{\n  if (list_.size() == 0)\n    throw std::runtime_error(\"Trying to access empty stack\");\n\n  return list_.front();\n}\n\ntemplate<typename T>\nvoid Stack<T>::push(const T& val)\n{\n  list_.push_front(val);\n}\n\nint main()\n{\n  Stack<int> s;\n  s.push(5);\n  s.push(6);\n  s.push(7);\n  try\n  {\n    std::cout << s.top() << std::endl;\n    s.pop();\n    std::cout << s.top() << std::endl;\n    s.pop();\n    std::cout << s.top() << std::endl;\n    s.pop();\n  }\n  catch (std::runtime_error e)\n  {\n    std::cout << e.what() << std::endl;\n  }\n}",
+          "lang": "cpp"
+        },
+        {
+          "code": "#include <list>\n#include <iostream>\n#include <stdexcept>\n\ntemplate <typename T>\nclass Queue\n{\n public:\n  Queue();\n  bool dequeue();\n  T front();\n  void enqueue(const T& val);\n  int size() { return list_.size(); }\n private:\n  std::list<T> list_;\n};\n\ntemplate <typename T>\nQueue<T>::Queue()\n{\n}\n\ntemplate <typename T>\nbool Queue<T>::dequeue()\n{\n  if (list_.size() == 0)\n    return false;\n\n  list_.pop_front();\n  return true;\n}\n\ntemplate <typename T>\nT Queue<T>::front()\n{\n  if (list_.size() == 0)\n    throw std::runtime_error(\"Trying to access empty stack\");\n\n  return list_.front();\n}\n\ntemplate <typename T>\nvoid Queue<T>::enqueue(const T& val)\n{\n  list_.push_back(val);\n}\n\nint main()\n{\n  Queue<int> s;\n  s.enqueue(5);\n  s.enqueue(6);\n  s.enqueue(7);\n  try\n  {\n    std::cout << s.front() << std::endl;\n    s.dequeue();\n    std::cout << s.front() << std::endl;\n    s.dequeue();\n    std::cout << s.front() << std::endl;\n    s.dequeue();\n  }\n  catch (std::runtime_error e)\n  {\n    std::cout << e.what() << std::endl;\n  }\n} ",
+          "lang": "cpp"
+        }
+      ]
+    },
+    {
+      "title": "Inheritance and Polymorphism",
+      "id": "InheritancePolymorphism",
+      "blocks": [
+        {
+          "html": "<h5>Inheritance and Polymorphism</h5>\n<p>\nWe didn't cover this in discussion due to the lecture that took place instead, but here are the fundamentals. Inheritance lets you define type-hierarchy relationships. The classic example is that a Truck is-a Vehicle, and similarly a Car is-a Vehicle. However, Trucks and Cars have different enough properties that they should be represented with different classes. Trucks and Cars also have a lot in common; they both move, turn, honk, etc. So it makes sense to have a <i>base class</i> that represents those common properties (Vehicle), and <i>derived classes</i> that build on the base class (Truck and Car). In this model, the Truck and Car class would inherit from the Vehicle class.\n</p>\n<p>\nIn our vehicle example, suppose we wanted to store a list of all trucks <i>and</i> cars. We can accomplish this by have a list of pointers to each Vehicle. If we want the execute the derived class behavior with this list of Vehicles, we need to tell the Vehicle pointer it might actually be a derived class. We accomplish this using the <pre>virtual</pre> keyword on the Vehicle (base class) functions we want to be polymorphic. The virtual keyword basically means 'if I am actually a pointer to a derived class, prefer to run their version of the function, if it exists.' Here's a trivial example that encompasses inheritance, polymorphism, and order of construction when using inheritance:\n</p>"
+        },
+        {
+          "code": "#include <iostream>\n\nclass A\n{\n public:\n  A() { std::cout << \"A \"; };\n  ~A() { std::cout << \"~A \"; };\n};\n\nclass B\n{\n public:\n  B() { std::cout << \"B \"; };\n  ~B() { std::cout << \"~B \"; };\n  void hello() { std::cout << \"\\nB says hello \\n\"; };\n  virtual void goodbye() { std::cout << \"B says goodbye \\n\"; };\n private:\n  A a;\n};\n\nclass D\n{\n public:\n  D() { std::cout << \"D \"; };\n  ~D() { std::cout << \"~D \"; };\n};\n\nclass C : public B\n{\n public:\n  C() { std::cout << \"C \"; };\n  ~C() { std::cout << \"~C \"; };\n  void hello() { std::cout << \"\\nC says hello \\n\"; };\n  void goodbye() { std::cout << \"C says goodbye \\n\"; };\n private:\n  D d;\n};\n\nint main()\n{\n  C c;\n  B* b = &c;\n  b->hello();\n  b->goodbye();\n}",
+          "lang": "cpp"
+        }
+      ]
+    },
+    {
+      "title": "Sorting",
+      "id": "Sorting",
+      "blocks": [
+        {
+          "html": "<h5>Sorting</h5>\n<p>\nWe'll use the following helper functions for these sorting algorithms:\n</p>\n<pre><code class=\"cpp hljs\">void print_arr(int arr[], int n, int start = 0)\n{\nfor (int j = start; j &lt; n; j++)\n{\nstd::cout &lt;&lt; arr[j] &lt;&lt; \" \";\n}\nstd::cout &lt;&lt; std::endl;\n}\nvoid print_iteration(int arr[], int i, int n, int start = 0)\n{\nstd::cout &lt;&lt; \"Iteration \" &lt;&lt; i &lt;&lt; \"\\t\";\nprint_arr(arr, n, start);\n}\n// swap items i and j\nvoid swap(int arr[], int i, int j)\n{\nint temp;\ntemp = arr[i];\narr[i] = arr[j];\narr[j] = temp;\n}\n</pre></code>\n<br>\n<h6>Selection Sort</h6>\n<ul>\n<li> Divide the list into two parts: sorted and unsorted (unsorted begins empty)\n<li>\n<li> Find the smallest element in the unsorted list, place it at the end of the sorted list </li>\n<li> Continue until the unsorted list is empty </li>\n</ul>\n<p>\nThe complexity of selection sort is O(n^2).\n</p>\n<pre><code class=\"cpp hljs\">void selection_sort(int arr[], int n)\n{\nstd::cout &lt;&lt; \"Running selection sort on array: \";\nprint_arr(arr, n);\nint i_min, temp;\nfor (int i = 0; i &lt; n - 1; i++)\n{\nprint_iteration(arr, i, n);\n// assume first element is the min\ni_min = i;\nfor (int j = i + 1; j &lt; n; j++)\n{\n// update i_min if we find an element smaller\nif (arr[j] &lt; arr[i_min])\ni_min = j;\n}\n// if i_min no longer equals i than a smaller value was found\n// this means we need to swap\nif (i_min != i)\n{\nswap(arr, i, i_min);\n}\n}\nstd::cout &lt;&lt; \"Final selection sort array: \";\nprint_arr(arr, n);\n}\n</pre></code>\n<br>\n<h6>Insertion Sort</h6>\n<ul>\n<li> Divide the list into two parts: sorted and unsorted (sorted begins empty) </li>\n<li> Arbitrarily pick an element in the unsorted list (usually the first) </li>\n<li> Scan the sorted list for where to insert the element, insert where appropriate </li>\n<li> Continue until the unsorted list is empty </li>\n</ul>\n<p>\nThe complexity of insertion sort is O(n^2).\n</p>\n<pre><code class=\"cpp hljs\">void insertion_sort(int arr[], int n)\n{\nstd::cout &lt;&lt; \"Running insertion sort on array: \";\nprint_arr(arr, n);\n// iterate over the entire array\nfor (int i = 0; i &lt; n; i++)\n{\nprint_iteration(arr, i, n);\n// scan the sorted list for the position to insert the i-th element\nfor (int j = i; j &gt; 0 &amp;&amp; arr[j - 1] &gt; arr[j]; j--)\n{\nswap(arr, j - 1, j);\n}\n}\nstd::cout &lt;&lt; \"Final insertion sort array: \";\nprint_arr(arr, n);\n}\n</pre></code>\n<br>\n<h6>Bubble Sort</h6>\n<ul>\n<li> Starting at the beginning of the list, compare adjacent elements. If the adjacent elements are unsorted, swap them </li>\n<li> Repeat passing over the entire list until you make a pass over the list without making a swap </li>\n</ul>\n<p>\nThe complexity of bubble sort is O(n^2).\n</p>\n<pre><code class=\"cpp hljs\">void bubble_sort(int arr[], int n)\n{\nstd::cout &lt;&lt; \"Running bubble sort on array: \";\nprint_arr(arr, n);\nbool swapped;\n// make at least one pass over the list\nint i = 0;\ndo\n{\nprint_iteration(arr, i, n);\nswapped = false;\nfor (int j = 1; j &lt; n; j++)\n{\n// if this pair is out of order\nif (arr[j - 1] &gt; arr[j])\n{\nswap(arr, j - 1, j);\nswapped = true;\n}\n}\ni++;\n} while (swapped);  // continue loop until we never swap\nstd::cout &lt;&lt; \"Final bubble sort array: \";\nprint_arr(arr, n);\n}</pre></code>\n<br>\n<h6>Merge Sort</h6>\n<ul>\n<li>Divides an unsorted list into n sublists (each sublist has one element and by definition is sorted) </li>\n<li>Merge sublists to produce sorted sublists </li>\n<li>Continue merging until there is one sublist remaining (the entire, sorted list) </li>\n</ul>\n<p>\nThe complexity of merge sort is O(nlogn).\n</p>\n<pre><code class=\"cpp hljs\">void merge(int arr[], int working[], int start, int mid, int end);\nvoid merge_sort_aux(int arr[], int working[], int start, int end, int depth);\nvoid merge_sort(int arr[], int n)\n{\nstd::cout &lt;&lt; \"Running merge sort on array: \";\nprint_arr(arr, n);\nint* working = new int[n];\n// run merge sort on entire array\nmerge_sort_aux(arr, working, 0, n - 1, 0);\ndelete[] working;\nstd::cout &lt;&lt; \"Final merge sort array: \";\nprint_arr(arr, n);\n}\nvoid merge_sort_aux(int arr[], int working[], int start, int end, int depth)\n{\nint mid;\nif (start &lt; end)\n{\n// find mipoint, use it to recursively split\nmid = (start + end) / 2;\nmerge_sort_aux(arr, working, start, mid, depth + 1);\nmerge_sort_aux(arr, working, mid + 1, end, depth + 1);\n// after splitting, merge the two sublists\nmerge(arr, working, start, mid, end);\nstd::cout &lt;&lt; \"Depth: \" &lt;&lt; depth &lt;&lt; \"\\t\";\nprint_arr(working, end, start);\n}\n}\nvoid merge(int arr[], int working[], int start, int mid, int end)\n{\nint h, i, j, k;\nh = start;    // position in left sublist\ni = start;    // position in working list\nj = mid + 1;  // position in right sublist\nwhile (h &lt;= mid &amp;&amp; j &lt;= end)\n{\nif (arr[h] &lt;= arr[j])\n{  // copy from the left sublist\nworking[i] = arr[h];\nh++;\n}\nelse\n{  // copy right the right sublist\nworking[i] = arr[j];\nj++;\n}\ni++;\n}\nif (h &gt; mid)\n{  // we have more contents in the right sublist to copy\nfor (k = j; k &lt;= end; k++)\n{\nworking[i] = arr[k];\ni++;\n}\n}\nelse\n{  // we have more contents in the left sublist to copy\nfor (k = h; k &lt;= mid; k++)\n{\nworking[i] = arr[k];\ni++;\n}\n}\n// copy result into original array\nfor (k = start; k &lt;= end; k++)\n{\narr[k] = working[k];\n}\n}</pre></code>\n<br>\n<h6>Quicksort</h6>\n<ul>\n<li> Pick an element in the array (pivot) </li>\n<li> Partition the array such that all elements less than the pivot are before the pivot and all elements greater are after the pivot </li>\n<li> Recursively run this partition on the elements less than the pivot and on the elements greater than the pivot (base case: array size of 0) </li>\n</ul>\n<p>\nThe complexity of quicksort is O(nlogn) on average, O(n^2) worst case. We did an implementation for Homework 3.\n</p>"
+        }
+      ]
+    }
+  ]
+}

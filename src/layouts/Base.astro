@@ -11,8 +11,8 @@ interface Props {
 const { title, description = 'Mark Edmonds: Staff AI/ML Applied Scientist at General Motors.', lead } = Astro.props;
 const pageTitle = title ? `${title} | ${author}` : author;
 const path = Astro.url.pathname;
-// Project pages hang off publications, so that nav item stays highlighted there.
-const section = path.startsWith('/projects/') ? '/publications/' : path;
+// Project and course pages hang off publications and teaching; keep those nav items highlighted.
+const section = path.startsWith('/projects/') ? '/publications/' : /^\/CS\d+\//.test(path) ? '/teaching/' : path;
 const isActive = (href: string) => (href === '/' ? section === '/' : section.startsWith(href));
 ---
 

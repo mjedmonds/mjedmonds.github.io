@@ -11,7 +11,7 @@ import { fileURLToPath } from 'node:url';
 // served at the same path on the site. Astro never parses these: the course slides
 // contain template-like syntax and nested reveal.js checkouts.
 const LEGACY_PATHS = [
-  'CS31', 'CS32', 'CS50', 'CS52', 'CS80',
+  'CS32', 'CS50', 'CS52', 'CS80', // CS31 had only its landing page, now in src/data/courses
   'css', 'js', 'highlight', 'papers', 'projects',
   'CS31.html', 'CS32.html', 'teaching.html', 'favicon.png',
   // Only the two PDFs are published from the cv submodule.

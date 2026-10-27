@@ -236,6 +236,19 @@ pre {
 .videos { display: flex; flex-direction: column; gap: 24px; }
 .coverage { margin: 0; }
 
+/* Course pages */
+.course h3 { font-size: 1rem; font-weight: 600; margin: 1.25em 0 0.25em; }
+.course > :first-child h3:first-child { margin-top: 0; }
+.course pre.astro-code {
+  white-space: pre;
+  overflow-x: auto;
+  margin: 12px 0;
+  font-size: 0.8rem;
+  background-color: light-dark(var(--shiki-light-bg), var(--shiki-dark-bg)) !important;
+}
+/* Code colors follow the site theme */
+.astro-code span { color: light-dark(var(--shiki-light), var(--shiki-dark)); }
+
 /* Markdown (research pages) */
 .prose > * + * { margin-top: 1em; }
 .prose p { margin: 0; }

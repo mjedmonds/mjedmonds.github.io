@@ -4,12 +4,13 @@ interface Props {
   label?: string;
   more?: { href: string; text: string };
   class?: string;
+  id?: string;
 }
 
-const { label, more, class: className } = Astro.props;
+const { label, more, class: className, id } = Astro.props;
 ---
 
-<section class:list={['card', className]}>
+<section class:list={['card', className]} id={id}>
   {(label || more) && (
     <div class="card-top">
       {label && <h2 class="card-label">{label}</h2>}

@@ -1,0 +1,14 @@
+{
+  "path": "CS50/CS50",
+  "sections": [
+    {
+      "title": "General",
+      "id": null,
+      "blocks": [
+        {
+          "html": "<p>\nThe purpose of this site is to provide lecture notes and examples for the course.\n</p>\n<h3>PDF Notes:</h3>\n<ul>\n<li>\n<a href=\"/CS50/notes_pdf/unit2_Introduction-to-C-IDEs.pdf\">Unit 2: Introduction to C &amp; IDEs</a>\n</li>\n<li>\n<a href=\"/CS50/notes_pdf/unit3_Variables-Data-Types-Simple-IO.pdf\">Unit 3: Variables, Data Types, &amp; Simple IO</a>\n</li>\n<li>\n<a href=\"/CS50/notes_pdf/unit4_Expressions-and-Conditionals.pdf\">Unit 4: Expressions &amp; Conditionals</a>\n</li>\n<li>\n<a href=\"/CS50/notes_pdf/unit5_Looping.pdf\">Unit 5: Looping</a>\n</li>\n<li>\n<a href=\"/CS50/notes_pdf/unit6_Procedures-and-Functions.pdf\">Unit 6: Procedures &amp; Functions</a>\n</li>\n<li>\n<a href=\"/CS50/notes_pdf/unit7_Recursion.pdf\">Unit 7: Recursion</a>\n</li>\n<li>\n<a href=\"/CS50/notes_pdf/unit8_Arrays.pdf\">Unit 8: Arrays</a>\n</li>\n<li>\n<a href=\"/CS50/notes_pdf/unit9_Pointers-and-Pass-by-reference.pdf\">Unit 9: Pointers &amp; Pass-by-reference</a>\n</li>\n<li>\n<a href=\"/CS50/notes_pdf/unit10_C-Strings.pdf\">Unit 10: C-Strings</a>\n</li>\n<li>\n<a href=\"/CS50/notes_pdf/unit10.5_Review-Week.pdf\">Mid-Semester Review</a>\n</li>\n<li>\n<a href=\"/CS50/notes_pdf/unit11_Structures-and-Enumerations.pdf\">Unit 11: Structures &amp; Enumerations</a>\n</li>\n<li>\n<a href=\"/CS50/notes_pdf/unit12_Command-line-Arguments.pdf\">Unit 12: Command-line Arguments</a>\n</li>\n</ul>"
+        }
+      ]
+    }
+  ]
+}

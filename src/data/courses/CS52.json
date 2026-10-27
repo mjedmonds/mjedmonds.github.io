@@ -1,0 +1,14 @@
+{
+  "path": "CS52/CS52",
+  "sections": [
+    {
+      "title": "General",
+      "id": null,
+      "blocks": [
+        {
+          "html": "<p>\nThe purpose of this site is to provide lecture notes and examples for the course.\n</p>\n<h3>PDF Notes:</h3>\n<ul>\n<li>\n<a href=\"/CS52/notes_pdf/ch1_intro.pdf\">Chapter 1: Introduction to Computers and C++ Programming</a>\n</li>\n<li>\n<a href=\"/CS52/notes_pdf/ch2_cpp_basics.pdf\">Chapter 2: C++ Basics</a>\n</li>\n<li>\n<a href=\"/CS52/notes_pdf/ch3_more_flow_control.pdf\"> Chapter 3: More Flow Control</a>\n</li>\n<li>\n<a href=\"/CS52/notes_pdf/ch4_abstractions_and_functions.pdf\">Chapter 4: Procedural Abstractions & Functions</a>\n</li>\n<li>\n<a href=\"/CS52/notes_pdf/ch5_functions_for_all_subtasks.pdf\">Chapter 5: Functions for All Subtaskss</a>\n</li>\n<li>\n<a href=\"/CS52/notes_pdf/ch6_io.pdf\">Chapter 6: I/O Streams</a>\n</li>\n<li>\n<a href=\"/CS52/notes_pdf/ch7_arrays.pdf\">Chapter 7: Arrays</a>\n</li>\n<li>\n<a href=\"/CS52/notes_pdf/ch8_strings_vectors.pdf\">Chapter 8: Strings & Vectors</a>\n</li>\n<li>\n<a href=\"/CS52/notes_pdf/ch9_pointers.pdf\">Chapter 9: Pointers</a>\n</li>\n<li>\n<a href=\"/CS52/notes_pdf/ch10_defining_classes.pdf\">Chapter 10: Defining Classes</a>\n</li>\n<li>\n<a href=\"/CS52/notes_pdf/ch11_friends_overloading_const.pdf\">Chapter 11: Friends, Overloading, and const</a>\n</li>\n<li>\n<a href=\"/CS52/notes_pdf/ch12_compilation_namespaces.pdf\">Chapter 12: Compilation & Namespaces</a>\n</li>\n<li>\n<a href=\"/CS52/notes_pdf/ch13_linked_lists.pdf\">Chapter 13: Linked Lists</a>\n</li>\n<li>\n<a href=\"/CS52/notes_pdf/ch14_recursion.pdf\">Chapter 14: Recursion</a>\n</li>\n<li>\n<a href=\"/CS52/notes_pdf/ch15_inheritance.pdf\">Chapter 15: Inheritance</a>\n</li>\n<li>\n<a href=\"/CS52/notes_pdf/ch16_exceptions.pdf\">Chapter 16: Exceptions</a>\n</li>\n</ul>\n</ul>\n</ul>"
+        }
+      ]
+    }
+  ]
+}
