@@ -14,7 +14,7 @@ export const work: Role[] = [
     dates: 'February 2026 – present',
     location: 'Remote',
     bullets: [
-      'Develop end-to-end driving models and self-play reinforcement learning.',
+      'Develop end-to-end driving models trained with imitation and self-play reinforcement learning.',
       'Joined GM through its acquisition of Cruise.',
     ],
   },
@@ -24,10 +24,10 @@ export const work: Role[] = [
     dates: 'April 2024 – February 2026',
     location: 'Remote',
     bullets: [
-      'Built autoregressive foundation models for driving.',
-      'Demonstrated scaling laws for autonomous driving.',
-      'Applied imitation and reinforcement learning to trajectory generation.',
-      'Distilled models for deployment.',
+      'Co-developed <a href="/papers/ICML25_DriveGPT.pdf">DriveGPT</a>, scaling autoregressive behavior models for driving to 1.4B parameters and 120M training segments (~50x more data than prior published models); demonstrated data and model scaling laws for driving (ICML 2025).',
+      'Applied imitation and reinforcement learning to trajectory generation for motion planning.',
+      'Distilled large behavior models into compact models for on-vehicle deployment.',
+      'Co-inventor on a patent application for autoregressive models for autonomous agents (<a href="/papers/US20260131822A1.pdf">US 2026/0131822 A1</a>).',
     ],
   },
   {
@@ -35,7 +35,10 @@ export const work: Role[] = [
     org: '<a href="https://en.wikipedia.org/wiki/Cruise_(autonomous_vehicle)">Cruise</a>',
     dates: 'October 2021 – April 2024',
     location: 'Remote',
-    bullets: ['Applied imitation learning to trajectory generation.'],
+    bullets: [
+      'Worked at the intersection of machine learning and motion planning on the Behavior Planning team, starting with maneuver planning.',
+      'Applied imitation learning to trajectory generation for behavior planning; used PyTorch and ROS to deploy safer, more capable ML models to vehicles driving on public roads.',
+    ],
   },
   {
     title: 'Director and President',

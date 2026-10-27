@@ -16,15 +16,18 @@ import { socials } from '../data/site';
   <Card class="intro">
     <div class="intro-text">
       <p>
-        ML engineer, roboticist, and builder at heart. I'm interested in domains with direct societal benefits via
-        applied research. I want to use AI to save lives, make basic needs more affordable, and protect the environment.
+        I'm a Staff AI/ML Applied Scientist at <a href="https://www.gm.com">General Motors</a>, where I build end-to-end
+        driving models trained with imitation and self-play reinforcement learning. I joined GM through its acquisition
+        of <a href="https://en.wikipedia.org/wiki/Cruise_(autonomous_vehicle)">Cruise</a>, where I contributed to <a href="/papers/ICML25_DriveGPT.pdf">DriveGPT</a>,
+        an autoregressive behavior model that showed scaling laws for
+        autonomous driving (ICML 2025), and distilled large models for deployment.
       </p>
       <p>
-        I'm a Staff AI/ML Applied Scientist at <a href="https://www.gm.com">General Motors</a>, working on end-to-end
-        driving models. I joined GM through its acquisition of <a href="https://en.wikipedia.org/wiki/Cruise_(autonomous_vehicle)">Cruise</a>, where I spent
-        over four years on machine learning for autonomous driving. I received my PhD in Computer Science from UCLA
-        under <a href="https://zhusongchun.net/">Dr. Song-Chun Zhu</a>, with a focus on artificial intelligence,
-        robotics, and cognitive science.
+        My research focuses on learning-based decision-making for embodied agents: models that improve with scale,
+        generalize to new situations, and can explain their behavior. I received my PhD in Computer Science from UCLA
+        under <a href="https://zhusongchun.net/">Dr. Song-Chun Zhu</a>, studying causal learning, imitation learning, and
+        explainable AI, with work published in <em>Science Robotics</em>, ICML, CVPR, and AAAI. I'm most motivated by
+        applications with direct societal benefit, starting with safer roads.
       </p>
       <div class="links">
         {socials.map((s) => <a class="btn" href={s.href}>{s.label}</a>)}
