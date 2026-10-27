@@ -1,0 +1,31 @@
+<article class="paper">
+  <div class="paper-side">
+    {paper.abbr && <span class="badge">{paper.abbr}</span>}
+    {paper.preview && <img src={paper.preview} alt="" loading="lazy" />}
+  </div>
+  <div class="paper-body">
+    <h3>{paper.title}</h3>
+    <p class="authors">
+      {paper.authors.map((a, i) => (
+        <>
+          {i > 0 && (i === paper.authors.length - 1 ? (paper.authors.length > 2 ? ', and ' : ' and ') : ', ')}
+          {a.me ? <strong>{a.name}</strong> : a.name}
+          {a.equal && '*'}
+        </>
+      ))}
+    </p>
+    <p class="venue">
+      <em>{paper.venue}</em>, {paper.year}
+      {paper.award && <span class="badge badge-award">{paper.award}</span>}
+    </p>
+    <div class="links">
+      {paper.links.map((l) => <a class="btn" href={l.href}>{l.label}</a>)}
+      {paper.bibtex && (
+        <details>
+          <summary class="btn">BibTeX</summary>
+          <pre>{paper.bibtex}</pre>
+        </details>
+      )}
+    </div>
+  </div>
+</article>

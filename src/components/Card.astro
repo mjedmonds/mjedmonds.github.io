@@ -1,0 +1,20 @@
+---
+// A bordered box with an optional small label and a "more" link in its top row.
+interface Props {
+  label?: string;
+  more?: { href: string; text: string };
+  class?: string;
+}
+
+const { label, more, class: className } = Astro.props;
+---
+
+<section class:list={['card', className]}>
+  {(label || more) && (
+    <div class="card-top">
+      {label && <h2 class="card-label">{label}</h2>}
+      {more && <a class="card-more" href={more.href}>{more.text} →</a>}
+    </div>
+  )}
+  <slot />
+</section>

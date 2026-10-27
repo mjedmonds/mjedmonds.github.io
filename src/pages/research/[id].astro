@@ -1,0 +1,29 @@
+---
+import { getCollection, render, type CollectionEntry } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Card from '../../components/Card.astro';
+import PaperItem from '../../components/PaperItem.astro';
+import { paperByKey } from '../../lib/papers';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('research');
+  return projects.map((project) => ({ params: { id: project.id }, props: { project } }));
+}
+
+const { project } = Astro.props as { project: CollectionEntry<'research'> };
+const { Content } = await render(project);
+const publications = project.data.publications.map(paperByKey);
+---
+
+<Base title={project.data.title} description={project.data.description} lead={project.data.period}>
+  <Card class="prose">
+    <Content />
+  </Card>
+  {publications.length > 0 && (
+    <Card label="Publications">
+      <div class="paper-list">
+        {publications.map((paper) => <PaperItem paper={paper} />)}
+      </div>
+    </Card>
+  )}
+</Base>

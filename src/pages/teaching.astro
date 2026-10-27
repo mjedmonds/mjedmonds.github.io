@@ -1,0 +1,16 @@
+---
+import Base from '../layouts/Base.astro';
+import { courses } from '../data/teaching';
+---
+
+<Base title="teaching" lead="Course materials from classes I've taught at Santa Monica College and UCLA.">
+  <div class="grid">
+    {courses.map((course) => (
+      <a class="card card-link" href={course.href}>
+        <h3>{course.title}</h3>
+        {course.terms && <p class="muted">{course.terms}</p>}
+        <p>{course.summary}</p>
+      </a>
+    ))}
+  </div>
+</Base>

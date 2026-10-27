@@ -1,0 +1,10 @@
+I"�<ul>
+  <li>Extended prior imitation learning work with human-understandable visual interfaces that describe the robot’s haptic network and And-Or Graph.</li>
+  <li>Showed that robots may need to “think” one way to complete a task but another way to explain their behavior: the explanations that best fostered trust were not the model components that best helped the robot achieve the task.</li>
+  <li>Result: treat explainability as a first-class citizen when building AI systems that interact with humans.</li>
+</ul>
+
+<div class="video"><iframe src="https://player.vimeo.com/video/380861069" title="Video" allow="fullscreen" allowfullscreen=""></iframe></div>
+
+<p><strong>Collaborators:</strong> <a href="https://fen9.github.io/">Feng Gao</a>, <a href="https://liuhx111.github.io/">Hangxin Liu</a>, <a href="https://xuxie1031.github.io/">Xu Xie</a>, <a href="http://web.cs.ucla.edu/~syqi/">Siyuan Qi</a>, Brandon Rothrock (NASA JPL), <a href="http://www.yzhu.io/">Yixin Zhu</a>, <a href="http://www.stat.ucla.edu/~ywu/">Ying Nian Wu</a>, <a href="http://cvl.psych.ucla.edu/people.htm">Hongjing Lu</a>, <a href="http://www.stat.ucla.edu/~sczhu/">Song-Chun Zhu</a></p>
+:ET

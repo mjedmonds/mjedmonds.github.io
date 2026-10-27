@@ -1,0 +1,8 @@
+<ul class="news">
+  {rows.map(({ item, Content }) => (
+    <li>
+      <time datetime={item.data.date.toISOString().slice(0, 10)}>{month(item.data.date)}</time>
+      <div><Content /></div>
+    </li>
+  ))}
+</ul>
