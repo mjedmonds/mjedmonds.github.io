@@ -15,7 +15,7 @@ Personal site built with [Astro](https://astro.build) and a small custom theme, 
 | Nav and social links | `src/data/site.ts` |
 | Theme | `src/styles/global.css`, `src/layouts/Base.astro`, `src/components/` |
 
-In `papers.bib`, `selected = {true}` puts a paper on the home page, `*` after a surname marks equal contribution, and a bare `pdf`/`supp` file name refers to `papers/`. The build fails if a local PDF is missing.
+In `papers.bib`, `selected = {true}` puts a paper on the home page, `*` after a surname marks equal contribution, a bare `pdf`/`supp` file name refers to `papers/`, and `arxiv = {id}` adds an arXiv link. The build fails if a local PDF is missing.
 
 ## Legacy content
 

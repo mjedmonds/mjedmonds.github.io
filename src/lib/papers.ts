@@ -75,7 +75,7 @@ function resolvePdf(key: string, value: string): string {
   return href;
 }
 
-const BIBTEX_FIELDS = ['title', 'author', 'journal', 'booktitle', 'school', 'volume', 'number', 'pages', 'year', 'month', 'doi'];
+const BIBTEX_FIELDS = ['title', 'author', 'journal', 'booktitle', 'school', 'howpublished', 'volume', 'number', 'pages', 'year', 'month', 'doi'];
 
 function toBibtex({ type, key, fields }: Entry): string {
   const lines = BIBTEX_FIELDS.filter((f) => fields[f]).map((f) => {
@@ -90,6 +90,7 @@ function toPaper(entry: Entry): Paper {
   const links: Paper['links'] = [];
   if (f.pdf) links.push({ label: 'PDF', href: resolvePdf(key, f.pdf) });
   if (f.supp) links.push({ label: 'Supplement', href: resolvePdf(key, f.supp) });
+  if (f.arxiv) links.push({ label: 'arXiv', href: `https://arxiv.org/abs/${f.arxiv}` });
   if (f.html) links.push({ label: 'Article', href: f.html });
   else if (f.doi) links.push({ label: 'DOI', href: `https://doi.org/${f.doi}` });
   if (f.website) links.push({ label: 'Project page', href: f.website });
@@ -99,7 +100,7 @@ function toPaper(entry: Entry): Paper {
     key,
     title: f.title,
     authors: f.author.split(' and ').map(parseAuthor),
-    venue: f.journal ?? f.booktitle ?? f.school ?? '',
+    venue: f.journal ?? f.booktitle ?? f.school ?? f.howpublished ?? '',
     year: Number(f.year),
     abbr: f.abbr,
     award: f.award_name,
