@@ -287,8 +287,8 @@ pre {
   .card { padding: 16px; }
   .card-image { width: calc(100% + 32px); margin: -16px -16px 14px; }
   .intro { grid-template-columns: 1fr; padding: 20px 16px; }
-  .intro-photo { order: -1; max-width: 160px; }
-  .intro-photo figcaption { text-align: left; }
+  .intro-photo { order: -1; }
+  .intro-photo img { width: 180px; margin: 0 auto; }
   .paper { grid-template-columns: 1fr; gap: 10px; }
   .paper-side { flex-direction: row; align-items: center; }
   .paper-side img { width: 96px; }
