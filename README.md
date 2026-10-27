@@ -20,7 +20,9 @@ In `papers.bib`, `selected = {true}` puts a paper on the home page, `*` after a 
 
 ## Legacy content
 
-The course sites (`CS31`–`CS80`, including the reveal.js slides), the images and data files for the paper project pages (`projects/`), and paper PDFs (`papers/`) are plain static files from the previous site. `src/integrations/legacy.ts` serves them as-is in `npm run dev` and copies them into `dist/` on build, so their URLs stay the same. It also publishes the CV and resume PDFs from the `cv` submodule at `/cv/*.pdf`.
+The course slides, PDFs and examples (`CS32`–`CS80`), the images and data files for the paper project pages (`projects/`), and the paper PDFs (`papers/`) are plain static files from the previous site. `src/integrations/legacy.ts` serves them as-is in `npm run dev` and copies them into `dist/` on build, so their URLs stay the same. It also publishes the CV and resume PDFs from the `cv` submodule at `/cv/*.pdf`. It skips the reveal.js checkouts' own README, demo and test pages, which the slides don't use.
+
+The course landing pages (`/CS80/CS80.html` and so on) come from `src/data/courses/*.json`, and the paper project pages (`/projects/.../*.html`) come from `src/content/projects/`; both use the site layout at their old URLs. The old theme's `css/`, `js/` and `highlight/` folders are no longer published.
 
 To update the CV or resume, commit in the `cv` submodule, then commit the updated submodule pointer here.
 

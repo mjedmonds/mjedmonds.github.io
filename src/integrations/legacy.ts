@@ -6,13 +6,13 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 // Static content from the pre-Astro site, published byte for byte at its old URLs
-// (/CS80/..., /papers/..., /cv/*.pdf). The old project pages under projects/ were moved into
-// src/content/projects; their images and data files are still served from here. Each path is relative to the repo root and is
-// served at the same path on the site. Astro never parses these: the course slides
-// contain template-like syntax and nested reveal.js checkouts.
+// (/CS80/..., /papers/..., /cv/*.pdf). Each path is relative to the repo root and is served at
+// the same path on the site. Astro never parses these: the course slides contain template-like
+// syntax and nested reveal.js checkouts. The course landing pages and paper project pages were
+// moved into src/ and are no longer here; their slides, images and data files still are.
 const LEGACY_PATHS = [
   'CS32', 'CS50', 'CS52', 'CS80', // CS31 had only its landing page, now in src/data/courses
-  'css', 'js', 'highlight', 'papers', 'projects',
+  'papers', 'projects',
   'CS31.html', 'CS32.html', 'teaching.html', 'favicon.png',
   // Only the two PDFs are published from the cv submodule.
   'cv/mark_edmonds_cv.pdf', 'cv/mark_edmonds_resume.pdf',
@@ -20,10 +20,16 @@ const LEGACY_PATHS = [
 
 const ROOT = fileURLToPath(new URL('../../', import.meta.url));
 
-// Git metadata and macOS/Dropbox litter ("Icon\r" files) never get published.
-const isJunk = (file: string) => {
-  const name = path.basename(file);
-  return name === '.git' || name === '.DS_Store' || name.startsWith('Icon\r');
+// Files under LEGACY_PATHS that are never published (rel is relative to the repo root).
+const isUnpublished = (rel: string) => {
+  const name = path.basename(rel);
+  // Git metadata and macOS/Dropbox litter ("Icon\r" files).
+  if (name === '.git' || name === '.DS_Store' || name.startsWith('Icon\r')) return true;
+  // The reveal.js checkouts are only needed for the CSS and JS the slide decks load, not the
+  // library's own README, demo and test pages. Decks use their own plugin/ folder.
+  const inRevealCheckout = rel.split('/').slice(0, -1).includes('reveal.js');
+  if (inRevealCheckout && (name.endsWith('.html') || name === 'test')) return true;
+  return name === 'template-revealjs.html'; // unused reveal-md templates
 };
 
 const MIME: Record<string, string> = {
@@ -38,7 +44,7 @@ const MIME: Record<string, string> = {
 async function resolveLegacy(urlPath: string): Promise<string | null> {
   const rel = decodeURIComponent(urlPath).replace(/^\/+/, '');
   const owned = LEGACY_PATHS.some((p) => rel === p || rel.startsWith(`${p}/`));
-  if (!owned || rel.split('/').some((part) => part === '..')) return null;
+  if (!owned || isUnpublished(rel) || rel.split('/').some((part) => part === '..')) return null;
   let file = path.join(ROOT, rel);
   try {
     if ((await stat(file)).isDirectory()) file = path.join(file, 'index.html');
@@ -85,7 +91,7 @@ export default function legacy(): AstroIntegration {
           await mkdir(path.dirname(path.join(out, p)), { recursive: true });
           await cp(path.join(ROOT, p), path.join(out, p), {
             recursive: true,
-            filter: (src) => !isJunk(src),
+            filter: (src) => !isUnpublished(path.relative(ROOT, src)),
           });
         }
         logger.info(`copied ${LEGACY_PATHS.length} legacy paths`);
