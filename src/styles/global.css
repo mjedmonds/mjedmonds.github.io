@@ -78,7 +78,7 @@ nav a[aria-current='page'] { color: #fff; font-weight: 600; box-shadow: inset 0 
 
 .masthead-text { padding-block: 32px 36px; }
 .masthead-text h1 { font-size: 2rem; font-weight: 650; }
-.masthead-text p { max-width: 640px; margin: 8px 0 0; color: rgb(255 255 255 / 0.85); }
+.masthead-text p { margin: 8px 0 0; color: rgb(255 255 255 / 0.85); }
 .masthead-text a { color: #fff; text-decoration: underline; text-decoration-color: rgb(255 255 255 / 0.5); }
 .masthead-home .masthead-text { padding-block: 120px 64px; }
 .masthead-home h1 { font-size: 3rem; font-weight: 300; }
