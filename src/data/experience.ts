@@ -47,6 +47,18 @@ export const work: Role[] = [
     bullets: ['Defined updated mission and vision statements, sought alternative funding, and maintained 501(c)(3) status.'],
   },
   {
+    title: 'Graduate Student Researcher',
+    org: 'Computer Science Department, UCLA',
+    dates: 'September 2016 – September 2021',
+    location: 'Los Angeles, CA',
+    bullets: [
+      '<a href="/research/causal-learning/">Causal learning</a>: built <a href="https://github.com/mjedmonds/OpenLock">OpenLock</a>, an open-source virtual escape room in which every room shares an abstract causal structure while surface features change. Ran human-subject experiments showing people discover and transfer that structure, and developed a hierarchical Bayesian model that matched human transfer while seven model-free RL algorithms failed (AAAI 2020 oral; CogSci 2018 oral; CogSci 2019).',
+      '<a href="/research/imitation-learning/">Imitation learning</a>: taught a robot to open medicine bottles from human demonstrations by integrating force and pose, captured with a custom tactile glove and planned with an embodied haptic model and a stochastic grammar (IROS 2017, two papers).',
+      '<a href="/research/explainable-ai/">Explainable AI</a>: extended the bottle-opening robot to explain its own behavior; showed that the explanations that best foster human trust differ from the components that drive task performance (Science Robotics 2019).',
+      'Also contributed to abstract causal reasoning (CVPR 2021) and in situ human-robot value alignment (Science Robotics 2022).',
+    ],
+  },
+  {
     title: 'Adjunct Professor',
     org: 'Santa Monica College',
     dates: 'June 2016 – September 2021',
