@@ -106,12 +106,12 @@ export const education: Role[] = [
     title: 'M.S. in Computer Science',
     org: 'University of California, Los Angeles',
     dates: 'June 2017',
-    bullets: ['Thesis: <em>Learning Complex Functional Manipulations by Human Demonstration and Fluent Discovery</em>'],
+    bullets: ['Thesis: <a href="https://escholarship.org/uc/item/1r15v023"><em>Learning Complex Functional Manipulations by Human Demonstration and Fluent Discovery</em></a>'],
   },
   {
     title: 'B.S. in Computer Engineering, Magna Cum Laude',
     org: 'University of Dayton',
     dates: 'May 2015',
-    bullets: ['Thesis: <em>High-Performance Declarative Memory through MapReduce</em>'],
+    bullets: ['Thesis: <a href="/papers/SNPD_2015_HighPerformanceDM_final.pdf"><em>High-Performance Declarative Memory through MapReduce</em></a>'],
   },
 ];

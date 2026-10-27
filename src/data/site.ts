@@ -12,5 +12,6 @@ export const socials = [
   { label: 'Email', href: 'mailto:mark@mjedmonds.com' },
   { label: 'LinkedIn', href: 'https://www.linkedin.com/in/mjedmonds' },
   { label: 'GitHub', href: 'https://github.com/mjedmonds' },
+  { label: 'Resume', href: '/cv/mark_edmonds_resume.pdf' },
   { label: 'CV', href: '/cv/mark_edmonds_cv.pdf' },
 ];
